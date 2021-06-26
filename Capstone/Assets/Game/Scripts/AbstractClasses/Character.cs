@@ -19,9 +19,9 @@ namespace Bladesmiths.Capstone
         public float MaxHealth { get => maxHealth; set => maxHealth = value; }
 
         // Public Methods
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
-            throw new System.NotImplementedException();
+            currentHealth -= damage;
         }
 
         // Protected Methods
