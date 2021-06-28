@@ -25,12 +25,12 @@ namespace Bladesmiths.Capstone
         }
 
         // Protected Methods
-        protected virtual void Attack() { }
-        protected virtual void ActivateAbility() { }
-        protected virtual void Block() { }
-        protected virtual void Parry() { }
-        protected virtual void Dodge() { }
-        protected virtual void SwitchWeapon(int weaponSelect) { }
-        protected virtual void Die() { }
+        protected abstract void Attack();
+        protected abstract void ActivateAbility();
+        protected abstract void Block();
+        protected abstract void Parry();
+        protected abstract void Dodge();
+        protected abstract void SwitchWeapon(int weaponSelect);
+        protected abstract void Die();
     }
 }
