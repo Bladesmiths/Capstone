@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 namespace Bladesmiths.Capstone
 {
@@ -12,12 +14,6 @@ namespace Bladesmiths.Capstone
 
 
         // Methods
-        public virtual void AddState(int key, IState newState)
-        {
-            states.Add(key, newState);
-
-        }
-
         public virtual void SetCurrentState(IState state)
         {
             if (state == currentState)
@@ -49,12 +45,30 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public virtual void Update()
+        public virtual void Tick()
         {
             if(currentState != null)
             {
                 currentState.Tick();
             }
+
+        }
+
+        //public Transition GetTransition()
+        //{
+
+
+        //}
+
+        public void AddAnyTransition(IState state, Func<bool> predicate)
+        {
+
+
+        }
+
+        public virtual void AddTransition(IState from, IState to, Func<bool> predicate)
+        {
+
 
         }
 
