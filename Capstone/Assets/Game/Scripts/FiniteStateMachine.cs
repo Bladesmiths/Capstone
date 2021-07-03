@@ -9,8 +9,7 @@ namespace Bladesmiths.Capstone
     public abstract class FiniteStateMachine : MonoBehaviour
     {
         // Fields
-        private IState currentState;
-        protected Dictionary<int, IState> states = new Dictionary<int, IState>();
+        protected IState currentState;
 
 
         // Methods
@@ -39,12 +38,6 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public virtual IState GetState(int key)
-        {
-            return states[key];
-
-        }
-
         public virtual void Tick()
         {
             if(currentState != null)
@@ -54,13 +47,10 @@ namespace Bladesmiths.Capstone
 
         }
 
-        //public Transition GetTransition()
-        //{
+        //public abstract Transition GetTransition();
 
 
-        //}
-
-        public void AddAnyTransition(IState state, Func<bool> predicate)
+        public virtual void AddAnyTransition(IState state, Func<bool> predicate)
         {
 
 

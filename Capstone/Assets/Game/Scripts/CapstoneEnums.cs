@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace Bladesmith.Capstone.Enums
+using System;
+namespace Bladesmiths.Capstone.Enums
 {
+    [Flags]
     public enum SwordType
     {
         Base,
@@ -12,6 +13,8 @@ namespace Bladesmith.Capstone.Enums
         Sword3,
         Sword4
     }
+
+    [Flags]
     public enum CharacterState
     {
         Idle,
@@ -26,6 +29,8 @@ namespace Bladesmith.Capstone.Enums
         SwitchingWeapon,
         Dead
     }
+
+    [Flags]
     public enum EnemyState
     {
         Idle,
