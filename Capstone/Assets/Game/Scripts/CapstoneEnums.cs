@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bladesmith.Capstone.Enums
+namespace Bladesmiths.Capstone.Enums
 {
     public enum SwordType
     {
