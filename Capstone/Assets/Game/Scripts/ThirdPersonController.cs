@@ -16,15 +16,22 @@ namespace Bladesmiths.Capstone
 	public class ThirdPersonController : MonoBehaviour
 	{
 		[Header("Player")]
-		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
-		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 5.335f;
+		[Tooltip("Maximum move speed of the character in m/s")]
+		public float MoveSpeedMax = 7.0f;
+		[Tooltip("Minimum move speed of the character in m/s")]
+		public float MoveSpeedMin = 0.5f;
+		//[Tooltip("Sprint speed of the character in m/s")]
+		//public float SprintSpeed = 5.335f;
 		[Tooltip("How fast the character turns to face movement direction")]
 		[Range(0.0f, 0.3f)]
 		public float RotationSmoothTime = 0.12f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		[Tooltip("Distance an analog stick must be pushed before movement is registered")]
+		public float DeadzoneMin = 0.1f;
+		[Tooltip("Distance above which all analog input is registered as maximum")]
+		public float DeadzoneMax = 0.9f;
+
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -170,8 +177,25 @@ namespace Bladesmiths.Capstone
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			//float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			float targetSpeed = _input.move.magnitude * MoveSpeedMax;
+
+			//Adjust targetSpeed based on controller deadzones
+			if (_input.move.magnitude < DeadzoneMin)
+            {
+				targetSpeed = 0;
+			}
+			else if (_input.move.magnitude > DeadzoneMax)
+            {
+				targetSpeed = MoveSpeedMax;
+            }
+			else if (targetSpeed < MoveSpeedMin)
+            {
+				targetSpeed = MoveSpeedMin;
+            }
+
+			Debug.Log(targetSpeed);
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
