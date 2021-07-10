@@ -6,15 +6,11 @@ using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    [CreateAssetMenu(fileName = "PlayerTransition", menuName = "ScriptableObjects/PlayerTransition")]
+    //[CreateAssetMenu(fileName = "PlayerTransition", menuName = "ScriptableObjects/PlayerTransition")]
     public class PlayerTransition : Transition
     {
-        [EnumFlagAttribute] CharacterState playerCondiitons;
-        public List<Func<bool>> Conditions { get; set; }
-        public Dictionary<CharacterState, Func<bool>> playerConditionsRef;
-
-
         public PlayerTransition(IState to, IState from, Func<bool> condition)
+            : base (to, from, condition)
         {
             To = to;
             From = from;
@@ -22,10 +18,7 @@ namespace Bladesmiths.Capstone
 
         }
 
-        private void Awake()
-        {
-            
-        }
+       
 
 
 

@@ -6,16 +6,17 @@ using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    [CreateAssetMenu(fileName = "EnemyTransition", menuName = "ScriptableObjects/EnemyTransition")]
+    //[CreateAssetMenu(fileName = "EnemyTransition", menuName = "ScriptableObjects/EnemyTransition")]
     public class EnemyTransition : Transition
     {
-        [EnumFlagAttribute] EnemyState enemyCondiitons;
-        public List<Func<bool>> Conditions { get; set; }
-        public Dictionary<EnemyState, Func<bool>> enemyConditionsRef;
+        //[EnumFlagsAttribute] EnemyState enemyCondiitons;
 
-
-        private void Awake()
+        public EnemyTransition(IState to, IState from, Func<bool> condition)
+            : base(to, from, condition)
         {
+            To = to;
+            From = from;
+            Condition = condition;
 
         }
 

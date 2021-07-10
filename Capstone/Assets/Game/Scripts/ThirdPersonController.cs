@@ -3,7 +3,7 @@
 using UnityEngine.InputSystem;
 using StarterAssets;
 #endif
-
+using StarterAssets;
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
@@ -92,8 +92,18 @@ namespace Bladesmiths.Capstone
 
 		private bool _hasAnimator;
 
+		private FiniteStateMachine FSM;
+		[SerializeField] private TransitionManager playerTransitionManager;
+		public GameObject targetGO;
+
 		private void Awake()
 		{
+			FSM = new FiniteStateMachine(playerTransitionManager);
+			playerTransitionManager.player = this.gameObject;
+			playerTransitionManager.target = targetGO;
+
+			//FSM.SetCurrentState();
+
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -116,6 +126,7 @@ namespace Bladesmiths.Capstone
 
 		private void Update()
 		{
+			FSM.Tick();
 			_hasAnimator = TryGetComponent(out _animator);
 			
 			JumpAndGravity();
