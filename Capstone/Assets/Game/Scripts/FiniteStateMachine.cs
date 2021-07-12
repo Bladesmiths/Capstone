@@ -21,7 +21,7 @@ namespace Bladesmiths.Capstone
         public FiniteStateMachine(TransitionManager transitionManager)
         {
             transitionManagerFSM = transitionManager;
-            filteredPlayerTransitions = transitionManager.conditionsRef;
+            //filteredPlayerTransitions = transitionManager.conditionsRef;
             SetCurrentState(transitionManager.cState);
 
         }
@@ -93,21 +93,21 @@ namespace Bladesmiths.Capstone
 
         //}
 
-        public void AddTransition(IState from, IState to, Func<bool> predicate)
-        {
-            if (filteredPlayerTransitions.TryGetValue(from.GetType(), out List<Transition> transitions) == false)
-            {
-                transitions = new List<Transition>();
-                filteredPlayerTransitions[from.GetType()] = transitions;
-            }
+        //public void AddTransition(IState from, IState to, Func<bool> predicate)
+        //{
+        //    if (filteredPlayerTransitions.TryGetValue(from.GetType(), out List<Transition> transitions) == false)
+        //    {
+        //        transitions = new List<Transition>();
+        //        filteredPlayerTransitions[from.GetType()] = transitions;
+        //    }
 
-            transitions.Add(new Transition(to, from, predicate));
+        //    transitions.Add(new Transition(to, from, predicate));
 
-        }
+        //}
 
         public void GetConditions(TransitionManager manager)
         {
-            filteredPlayerTransitions = manager.conditionsRef;
+            //filteredPlayerTransitions = manager.conditionsRef;
 
         }
 

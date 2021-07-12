@@ -7,9 +7,9 @@ namespace Bladesmiths.Capstone
 {
     public class PlayerFSMState : IState
     {
-        protected CharacterState id;
+        protected PlayerCondition id;
 
-        public CharacterState ID { get { return id; } }
+        public PlayerCondition ID { get; set; }
 
         public virtual void Tick()
         {

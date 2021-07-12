@@ -3,7 +3,6 @@
 using UnityEngine.InputSystem;
 using StarterAssets;
 #endif
-using StarterAssets;
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
