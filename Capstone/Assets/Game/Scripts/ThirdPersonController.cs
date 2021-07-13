@@ -179,17 +179,23 @@ namespace Bladesmiths.Capstone
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			//float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			// Modified from initial behavior. Removed sprinting and and added maximum and minimum speed values
 			float targetSpeed = _input.move.magnitude * MoveSpeedMax;
 
-			//Adjust targetSpeed based on controller deadzones
+			// Adjust targetSpeed based on controller deadzones
+
+			// Set speed to 0 if analog stick movement is below minimum deadzone value
 			if (_input.move.magnitude < DeadzoneMin)
             {
 				targetSpeed = 0;
 			}
+			// Set speed to maximum if analog stick movement is greater than maximum deadzone value
+			// This ensures that all controllers will reach exactly max speed instead of 0.9875x or something like that
 			else if (_input.move.magnitude > DeadzoneMax)
             {
 				targetSpeed = MoveSpeedMax;
             }
+			// Cap minimum movement speed to specified value
 			else if (targetSpeed < MoveSpeedMin)
             {
 				targetSpeed = MoveSpeedMin;
