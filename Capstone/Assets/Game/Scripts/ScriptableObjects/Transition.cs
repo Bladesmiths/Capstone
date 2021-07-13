@@ -9,22 +9,17 @@ namespace Bladesmiths.Capstone
     
     public class Transition
     {
-        [SerializeField] public Func<bool> condition;
-        [SerializeField] public IState from;
-        [SerializeField] public IState to;
-
-
-        //public Func<bool> Condition { get { return condition; } set { condition = value; } }
-        //public IState From { get { return from; } set { from = value; } }
-        //public IState To { get { return to; } set { to = value; } }
-
-
+        // The conditions for going between the 'from' and 'to' state
         public Func<bool> Condition { get; set; }
+
+        // The reference to the 'from' state
         public IState From { get; set; }
+
+        // The reference to the 'to' state
         public IState To { get; set; }
 
 
-
+        // The constructor for the Transitions class
         public Transition(IState to, IState from, Func<bool> condition)
         {
             To = to;

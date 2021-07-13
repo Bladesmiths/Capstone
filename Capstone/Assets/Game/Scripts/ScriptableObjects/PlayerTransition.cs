@@ -10,16 +10,23 @@ namespace Bladesmiths.Capstone
     [CreateAssetMenu(fileName = "PlayerTransition", menuName = "ScriptableObjects/PlayerTransition")]
     public class PlayerTransition : ScriptableObject
     {
+        // The 'to' states the user can select
         [SerializeField] public PlayerCondition eValue;
 
+        // The default 'from' state
         public PlayerFSMState from;
-        public Dictionary<PlayerFSMState, Func<bool>> toConditions;
+
+        // Contains the possible 'to' states and the conditions for getting there
+        public Dictionary<PlayerFSMState, Func<bool>> toConditions = new Dictionary<PlayerFSMState, Func<bool>>();
         public List<Transition> stateTransitions;
 
-
         public PlayerCondition EValue { get; }
-        public Dictionary<PlayerFSMState, Func<bool>> ToConditions { get; set; }
 
+        /// <summary>
+        /// Checks to see which enums the user selected 
+        /// are in the possible transitions
+        /// </summary>
+        /// <returns></returns>
         public Transition CheckConditions()
         {
             foreach (KeyValuePair<PlayerFSMState, Func<bool>> state in toConditions)

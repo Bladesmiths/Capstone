@@ -6,19 +6,19 @@ using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    //[CreateAssetMenu(fileName = "TransitionManager", menuName = "ScriptableObjects/TransitionManager")]
-    public class TransitionManager : MonoBehaviour
+    [CreateAssetMenu(fileName = "TransitionManager", menuName = "ScriptableObjects/TransitionManager")]
+    public class TransitionManager : ScriptableObject
     {
 
         [EnumFlagsAttribute] PlayerCondition playerCondiitons;
 
-        
-        public Dictionary<Type, List<Transition>> conditionsRef;
+
+        public Dictionary<Type, List<Transition>> conditionsRef = new Dictionary<Type, List<Transition>>();
 
         [SerializeField] private PlayerTransition moveTransition;
         [SerializeField] private PlayerTransition idleTransition;
 
-        public GameObject player;
+        [NonSerialized] public GameObject player;
         public GameObject target;
         //[SerializeField] public List<Transition> allTransitions;
         PlayerFSMState_MOVING move;
@@ -26,16 +26,16 @@ namespace Bladesmiths.Capstone
 
         public IState cState;
 
-        void Start()
+        void OnEnable()
         {
             //conditionsRef = new Dictionary<Type, List<Transition>>();
-            move = new PlayerFSMState_MOVING(target);
-            idle = new PlayerFSMState_IDLE(target, player);
+            move = new PlayerFSMState_MOVING();
+            idle = new PlayerFSMState_IDLE();
             move.ID = PlayerCondition.F_Moving;
             idle.ID = PlayerCondition.F_Idle;
 
-            idleTransition.ToConditions.Add(move, IsMoving());
-            moveTransition.ToConditions.Add(idle, IsStopped());
+            idleTransition.toConditions.Add(move, IsMoving());
+            moveTransition.toConditions.Add(idle, IsStopped());
 
             AddTransition(move, moveTransition);
             AddTransition(idle, idleTransition);
@@ -55,10 +55,8 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public Func<bool> IsStopped() => () => target != null &&
-               Vector3.Distance(player.transform.position, target.transform.position) >= 2f;
-        public Func<bool> IsMoving() => () => target != null &&
-               Vector3.Distance(player.transform.position, target.transform.position) < 2f;
+        public Func<bool> IsStopped() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
+        public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude > 0;
 
         
 
