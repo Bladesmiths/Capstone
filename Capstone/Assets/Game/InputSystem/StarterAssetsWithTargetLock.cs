@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Game/InputSystem/StarterAssets.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Game/InputSystem/StarterAssetsWithTargetLock.inputactions'
 
 using System;
 using System.Collections;
@@ -8,13 +8,13 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Bladesmiths.Capstone
 {
-    public class @StarterAssets : IInputActionCollection, IDisposable
+    public class @StarterAssetsWithTargetLock : IInputActionCollection, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @StarterAssets()
+        public @StarterAssetsWithTargetLock()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""StarterAssets"",
+    ""name"": ""StarterAssetsWithTargetLock"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -376,8 +376,8 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_TargetLock;
         public struct PlayerActions
         {
-            private @StarterAssets m_Wrapper;
-            public PlayerActions(@StarterAssets wrapper) { m_Wrapper = wrapper; }
+            private @StarterAssetsWithTargetLock m_Wrapper;
+            public PlayerActions(@StarterAssetsWithTargetLock wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
