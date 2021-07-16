@@ -10,13 +10,17 @@ namespace Bladesmiths.Capstone
     public class TargetLock : MonoBehaviour
     {
         private List<GameObject> enemies;
-        private GameObject closestEnemy; 
+        private GameObject targetedEnemy; 
 
         private bool targetLock;
 
         [SerializeField]
         [Tooltip("The Cinemachine Target Group that the Camera should be targeting")]
         private CinemachineTargetGroup targetGroup;
+
+        [SerializeField]
+        [Tooltip("The Cinemachine Free Look camera that follows the player")]
+        private CinemachineFreeLook playerFreeLook; 
 
         // Start is called before the first frame update
         void Start()
@@ -30,6 +34,14 @@ namespace Bladesmiths.Capstone
             Vector3 rayDirection = enemies[0].transform.Find("EnemyCameraRoot").position - transform.Find("PlayerCameraRoot").position;
 
             Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
+
+            if (targetLock)
+            {
+                if (!IsEnemyVisible(targetedEnemy))
+                {
+                    UntargetClosestEnemy(); 
+                }
+            }
         }
 
         public void OnTargetLock(InputValue value)
@@ -52,7 +64,7 @@ namespace Bladesmiths.Capstone
                     return; 
                 }
 
-                closestEnemy = visibleEnemies[0];
+                targetedEnemy = visibleEnemies[0];
 
                 Vector3 displacementVector = visibleEnemies[0].transform.position - transform.position;
                 float closestDist = displacementVector.sqrMagnitude;
@@ -64,12 +76,12 @@ namespace Bladesmiths.Capstone
 
                     if (sqMag < closestDist)
                     {
-                        closestEnemy = enemy;
+                        targetedEnemy = enemy;
                         closestDist = sqMag; 
                     }
                 }
 
-                targetGroup.AddMember(closestEnemy.transform.Find("EnemyCameraRoot"), 0.5f, 0);
+                targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 0.5f, 0);
 
                 Debug.Log("Adding Enemy"); 
             }
@@ -77,19 +89,27 @@ namespace Bladesmiths.Capstone
             {
                 if (targetGroup.m_Targets.Length >= 2)
                 {
-                    targetGroup.RemoveMember(closestEnemy.transform.Find("EnemyCameraRoot"));
-
-                    Debug.Log("Removing Closest Enemy"); 
+                    UntargetClosestEnemy(); 
                 }
                 else
                 {
-                    // Center Camera
+                    float prevRecenterTime = playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime;
+                    playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime = 0.5f; 
+                    playerFreeLook.m_RecenterToTargetHeading.RecenterNow();
+                    playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime = prevRecenterTime;
 
                     Debug.Log("No enemies visible"); 
                 }
             }
         }
 
+        private void UntargetClosestEnemy()
+        {
+            targetGroup.RemoveMember(targetedEnemy.transform.Find("EnemyCameraRoot"));
+
+            Debug.Log("Removing Closest Enemy");
+        }
+        
         private List<GameObject> FindVisibleEnemies()
         {
             List<GameObject> visibleFiltered = enemies.Where(x => IsEnemyVisible(x)).ToList(); 
@@ -105,12 +125,11 @@ namespace Bladesmiths.Capstone
         {
             RaycastHit hit;
             Vector3 rayDirection = enemy.transform.Find("EnemyCameraRoot").position - transform.Find("PlayerCameraRoot").position;
-            bool castRes = Physics.Raycast(transform.position, rayDirection, out hit);
+            bool castRes = Physics.Raycast(transform.Find("PlayerCameraRoot").position, rayDirection, out hit);
 
             Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
 
             Debug.Log(hit.transform); 
-            int test = 0;
 
             //return (Physics.Linecast(transform.position, enemy.transform.position, out hit) && hit.transform == enemy.transform); 
 

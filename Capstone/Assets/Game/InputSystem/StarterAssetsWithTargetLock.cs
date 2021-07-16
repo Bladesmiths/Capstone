@@ -240,22 +240,22 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bf36e0f4-4c6a-4c8d-be6e-42a7ca9aae68"",
-                    ""path"": ""<Keyboard>/o"",
+                    ""id"": ""997d4431-8351-4baf-8ffb-cae23b787b4a"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Target Lock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""997d4431-8351-4baf-8ffb-cae23b787b4a"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""id"": ""c9bd1499-bb3b-4558-9aa8-ab487d9ad257"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Target Lock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
