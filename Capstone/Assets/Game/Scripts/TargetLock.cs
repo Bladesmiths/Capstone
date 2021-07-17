@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using Cinemachine; 
+using Cinemachine;
+using System;
 
 namespace Bladesmiths.Capstone
 {
     public class TargetLock : MonoBehaviour
     {
+                                                                                                    
+        #region Fields
+        // List of enemies in the level
         private List<GameObject> enemies;
+
+        // List of enemies that are visible to the player
+        // Updated each time the system is re-enabled
+        private List<GameObject> visibleEnemies; 
+
+        // The enemy currently being targeted
         private GameObject targetedEnemy; 
 
+        // Is the target locking system active or not
         private bool targetLock;
 
         [SerializeField]
@@ -20,43 +31,81 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         [Tooltip("The Cinemachine Free Look camera that follows the player")]
-        private CinemachineFreeLook playerFreeLook; 
+        private CinemachineFreeLook playerFreeLook;
+        #endregion
 
-        // Start is called before the first frame update
         void Start()
         {
-            enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+            // Finds all enemies in the level
+            // Should probably be updated eventually so it only gets enemies within a radius
+            enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Targettable"));
         }
 
-        // Update is called once per frame
         void Update()
         {
-            Vector3 rayDirection = enemies[0].transform.Find("EnemyCameraRoot").position - transform.Find("PlayerCameraRoot").position;
+            // Debug logic to see where the player's targetting ray will be looking
+            if (Application.isEditor && targetedEnemy != null)
+            {
+                Vector3 rayDirection = targetedEnemy.transform.Find("EnemyCameraRoot").position - 
+                    transform.Find("PlayerCameraRoot").position;
 
-            Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
+                Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
+            }
 
+            // If target lock is enabled
             if (targetLock)
             {
+                // Check if the targetted enemy is visible
                 if (!IsEnemyVisible(targetedEnemy))
                 {
-                    UntargetClosestEnemy(); 
+                    // If it is not, run lock on again to check if there are any other visible
+                    // enemies. If not, turn off the target locking system
+                    LockOnEnemy(); 
                 }
             }
         }
 
+        #region Methods
+
+        #region On Input Methods
+        /// <summary>
+        /// Input method that runs when the target lock control is hit
+        /// </summary>
+        /// <param name="value">The value of the control</param>
         public void OnTargetLock(InputValue value)
         {
+            // Toggles the target lock state to its opposite value
             targetLock = !targetLock; 
 
+            // Runs the LockOnEnemy method no matter what because it serves both purposes
             LockOnEnemy(); 
         }
 
-        private void LockOnEnemy()
+        public void OnMoveTarget(InputValue value)
         {
             if (targetLock)
             {
-                List<GameObject> visibleEnemies = FindVisibleEnemies();
+                MoveTarget(value.Get<Vector2>());
+            }
+        }
 
+        #endregion
+
+        /// <summary>
+        /// Finds the closest enemy and locks on to them or untargets them depending on whether the
+        /// target locking system is active or not
+        /// </summary>
+        private void LockOnEnemy()
+        {
+            // If the target lock system is currently active
+            // Find all visible enemies and then find the closest
+            if (targetLock)
+            {
+                // Find all visible enemies and place them in a list
+                visibleEnemies = FindVisibleEnemies();
+
+                // If there are no visible enemies
+                // Turn off the target locking system, run this method again, then end the method
                 if (visibleEnemies == null)
                 {
                     targetLock = false;
@@ -64,33 +113,47 @@ namespace Bladesmiths.Capstone
                     return; 
                 }
 
+                // Sets the currently targeted enemy to the first enemy in the list of visible enemies
                 targetedEnemy = visibleEnemies[0];
 
+                // Calculates the squared distance to that enemy and sets a variable
+                // to that value for use in comparisons with other enemies
                 Vector3 displacementVector = visibleEnemies[0].transform.position - transform.position;
                 float closestDist = displacementVector.sqrMagnitude;
 
+                // Loop through all visible enemies
                 foreach (GameObject enemy in visibleEnemies)
                 {
+                    // Calculate squared distance to this enemy
                     displacementVector = enemy.transform.position - transform.position;
                     float sqMag = displacementVector.sqrMagnitude; 
 
+                    // Compare that distance to the current smallest distance
                     if (sqMag < closestDist)
                     {
+                        // If it is smaller update the targeted enemy and the closest distance field
                         targetedEnemy = enemy;
                         closestDist = sqMag; 
                     }
                 }
 
+                // Add the updated targeted enemy to the target group
+                // so the camera takes it into account
                 targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 0.5f, 0);
 
                 Debug.Log("Adding Enemy"); 
             }
+            // If the target locking system isn't active
             else
             {
+                // If there are 2 or more objects in the target group
+                // untarget the enemy in the target group
                 if (targetGroup.m_Targets.Length >= 2)
                 {
                     UntargetClosestEnemy(); 
                 }
+                // If there are less than 2 objects in the target group
+                // Recenter the camera to the player's heading
                 else
                 {
                     float prevRecenterTime = playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime;
@@ -103,17 +166,95 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        private void MoveTarget(Vector2 input)
+        {
+            // Check horizontal component of input; ignore vertical
+            float xInput = input.x;
+
+            Func<GameObject, bool> filterFunction = x => { return false; } ; 
+
+            // If input is positive move to the next enemy to the right
+            if (xInput > 0)
+            {
+                filterFunction = x =>
+                {
+                    return Vector3.Dot(targetedEnemy.transform.right, x.transform.position) > 0;
+                };
+            }
+            // if input is negative move to the next enemy to the left
+            else if (xInput < 0)
+            {
+                filterFunction = x =>
+                {
+                    return Vector3.Dot(targetedEnemy.transform.right, x.transform.position) > 0;
+                };
+            }
+
+            // Compare dot product of enemies to current target's position
+
+            // Filter to desirable enemies from visible enemies
+
+            List<GameObject> desireableEnemies = visibleEnemies.Where(x =>  x != targetedEnemy && filterFunction(x)).ToList();
+
+            if (desireableEnemies.Count == 0)
+            {
+                return; 
+            }
+
+            // Target the desireable enemy closest to the current target
+
+            // Sets the first enemy in the list to the closest first for comparison
+            GameObject closestEnemyToTarget = desireableEnemies[0];
+
+            // Calculates the squared distance to that enemy and sets a variable
+            // to that value for use in comparisons with other enemies
+            Vector3 displacementVector = desireableEnemies[0].transform.position - targetedEnemy.transform.position;
+            float closestDist = displacementVector.sqrMagnitude;
+
+            // Loop through all visible enemies
+            foreach (GameObject enemy in desireableEnemies)
+            {
+                // Calculate squared distance to this enemy
+                displacementVector = enemy.transform.position - targetedEnemy.transform.position;
+                float sqMag = displacementVector.sqrMagnitude;
+
+                // Compare that distance to the current smallest distance
+                if (sqMag < closestDist)
+                {
+                    // If it is smaller update the targeted enemy and the closest distance field
+                    closestEnemyToTarget = enemy;
+                    closestDist = sqMag;
+                }
+            }
+
+            UntargetClosestEnemy(); 
+            targetedEnemy = closestEnemyToTarget;
+            targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 0.5f, 0);
+        }
+
+        #region Helper Methods
+        /// <summary>
+        /// Untarget the closest enemy
+        /// </summary>
         private void UntargetClosestEnemy()
         {
+            // Remove the targeted enemy from the target group
             targetGroup.RemoveMember(targetedEnemy.transform.Find("EnemyCameraRoot"));
 
             Debug.Log("Removing Closest Enemy");
         }
         
+        /// <summary>
+        /// Find all enemies that are visible to the player
+        /// </summary>
+        /// <returns>Null if there are no visible enemies or the list of visible enemies
+        /// if there are some</returns>
         private List<GameObject> FindVisibleEnemies()
         {
+            // Filter the list of enemies to only the enemies that are visible
             List<GameObject> visibleFiltered = enemies.Where(x => IsEnemyVisible(x)).ToList(); 
 
+            // If there aren't any visible enemies return null
             if (visibleFiltered.Count == 0)
             {
                 return null; 
@@ -121,19 +262,27 @@ namespace Bladesmiths.Capstone
             return visibleFiltered;
         }
 
+        /// <summary>
+        /// Check if an enemy is visible to the player
+        /// </summary>
+        /// <param name="enemy">The object to check if visible</param>
+        /// <returns>A boolean indicating whether or not the object is visible</returns>
         private bool IsEnemyVisible(GameObject enemy)
         {
             RaycastHit hit;
-            Vector3 rayDirection = enemy.transform.Find("EnemyCameraRoot").position - transform.Find("PlayerCameraRoot").position;
-            bool castRes = Physics.Raycast(transform.Find("PlayerCameraRoot").position, rayDirection, out hit);
+            //Vector3 rayDirection = enemy.transfor
 
-            Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
+            //m.Find("EnemyCameraRoot").position - 
+            //    transform.Find("PlayerCameraRoot").position;
 
-            Debug.Log(hit.transform); 
+            //bool castRes = Physics.Raycast(transform.Find("PlayerCameraRoot").position, rayDirection, out hit);
 
-            //return (Physics.Linecast(transform.position, enemy.transform.position, out hit) && hit.transform == enemy.transform); 
+            return (Physics.Linecast(transform.Find("PlayerCameraRoot").position, enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
 
-            return castRes && hit.transform == enemy.transform; 
+            //return castRes && hit.transform == enemy.transform; 
         }
+        #endregion
+        
+        #endregion
     }
 }

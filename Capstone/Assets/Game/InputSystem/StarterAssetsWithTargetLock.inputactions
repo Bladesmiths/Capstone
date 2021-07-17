@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Move Target",
+                    "type": "Button",
+                    "id": "eb4a1147-b46f-4187-b1ef-47194806d004",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -242,6 +250,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Target Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "791b52fc-f6e2-4013-b71b-8261af464712",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)",
+                    "groups": "Gamepad",
+                    "action": "Move Target",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

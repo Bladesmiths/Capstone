@@ -59,6 +59,14 @@ namespace Bladesmiths.Capstone
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Move Target"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb4a1147-b46f-4187-b1ef-47194806d004"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -259,6 +267,17 @@ namespace Bladesmiths.Capstone
                     ""action"": ""Target Lock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""791b52fc-f6e2-4013-b71b-8261af464712"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -320,6 +339,7 @@ namespace Bladesmiths.Capstone
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
+            m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -374,6 +394,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_TargetLock;
+        private readonly InputAction m_Player_MoveTarget;
         public struct PlayerActions
         {
             private @StarterAssetsWithTargetLock m_Wrapper;
@@ -383,6 +404,7 @@ namespace Bladesmiths.Capstone
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
+            public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -407,6 +429,9 @@ namespace Bladesmiths.Capstone
                     @TargetLock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
+                    @MoveTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
+                    @MoveTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
+                    @MoveTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -426,6 +451,9 @@ namespace Bladesmiths.Capstone
                     @TargetLock.started += instance.OnTargetLock;
                     @TargetLock.performed += instance.OnTargetLock;
                     @TargetLock.canceled += instance.OnTargetLock;
+                    @MoveTarget.started += instance.OnMoveTarget;
+                    @MoveTarget.performed += instance.OnMoveTarget;
+                    @MoveTarget.canceled += instance.OnMoveTarget;
                 }
             }
         }
@@ -473,6 +501,7 @@ namespace Bladesmiths.Capstone
             void OnJump(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);
+            void OnMoveTarget(InputAction.CallbackContext context);
         }
     }
 }
