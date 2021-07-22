@@ -16,12 +16,10 @@ namespace Bladesmiths.Capstone
 	public class ThirdPersonController : MonoBehaviour
 	{
 		[Header("Player")]
-		[Tooltip("Maximum move speed of the character in m/s. Used for run toggle.")]
-		public float RunSpeed = 6.0f;
-		[Tooltip("Minimum move speed of the character in m/s. Used for walk toggle.")]
-		public float WalkSpeed = 2.0f;
-		[Tooltip("Current maximum move speed as set by walk / run toggle.")]
-		public float MoveSpeedMax = 6.0f;
+		[Tooltip("Maximum move speed of the character in m/s")]
+		public float MoveSpeedMax = 7.0f;
+		[Tooltip("Minimum move speed of the character in m/s")]
+		public float MoveSpeedMin = 0.5f;
 		//[Tooltip("Sprint speed of the character in m/s")]
 		//public float SprintSpeed = 5.335f;
 		[Tooltip("How fast the character turns to face movement direction")]
@@ -184,26 +182,26 @@ namespace Bladesmiths.Capstone
 			// Modified from initial behavior. Removed sprinting and and added maximum and minimum speed values
 			float targetSpeed = _input.move.magnitude * MoveSpeedMax;
 
-			//// Adjust targetSpeed based on controller deadzones
+			// Adjust targetSpeed based on controller deadzones
 
-			//// Set speed to 0 if analog stick movement is below minimum deadzone value
-			//if (_input.move.magnitude < DeadzoneMin)
-   //         {
-			//	targetSpeed = 0;
-			//}
-			//// Set speed to maximum if analog stick movement is greater than maximum deadzone value
-			//// This ensures that all controllers will reach exactly max speed instead of 0.9875x or something like that
-			//else if (_input.move.magnitude > DeadzoneMax)
-   //         {
-			//	targetSpeed = MoveSpeedMax;
-   //         }
-			// Cap minimum movement speed to specified value
-			if (targetSpeed > 0 && targetSpeed < WalkSpeed)
+			// Set speed to 0 if analog stick movement is below minimum deadzone value
+			if (_input.move.magnitude < DeadzoneMin)
             {
-				targetSpeed = WalkSpeed;
+				targetSpeed = 0;
+			}
+			// Set speed to maximum if analog stick movement is greater than maximum deadzone value
+			// This ensures that all controllers will reach exactly max speed instead of 0.9875x or something like that
+			else if (_input.move.magnitude > DeadzoneMax)
+            {
+				targetSpeed = MoveSpeedMax;
+            }
+			// Cap minimum movement speed to specified value
+			else if (targetSpeed < MoveSpeedMin)
+            {
+				targetSpeed = MoveSpeedMin;
             }
 
-			//Debug.Log(targetSpeed);
+			Debug.Log(targetSpeed);
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
