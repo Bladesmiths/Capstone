@@ -3,7 +3,6 @@
 using UnityEngine.InputSystem;
 using StarterAssets;
 #endif
-
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
@@ -91,6 +90,7 @@ namespace Bladesmiths.Capstone
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
+
 
 		private void Awake()
 		{
