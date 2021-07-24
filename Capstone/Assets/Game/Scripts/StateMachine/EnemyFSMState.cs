@@ -74,4 +74,35 @@ namespace Bladesmiths.Capstone
         }
 
     }
+
+    public class EnemyFSMState_SEEK : EnemyFSMState
+    {
+        private Player player;
+        private Enemy enemy;
+
+        public EnemyFSMState_SEEK(Player _player, Enemy _enemy)
+        {
+            player = _player;
+            enemy = _enemy;
+        }
+
+        public override void Tick()
+        {
+            Vector3 dist = player.transform.position - enemy.transform.position;
+
+            enemy.gameObject.transform.position += dist.normalized * Time.deltaTime;
+
+        }
+
+        public override void OnEnter()
+        {
+
+        }
+
+        public override void OnExit()
+        {
+
+        }
+
+    }
 }
