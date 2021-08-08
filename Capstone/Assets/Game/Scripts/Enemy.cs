@@ -6,14 +6,15 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class Player : Character
+    public class Enemy : Character
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
         //[SerializeField] private TransitionManager playerTransitionManager;
 
         // Gets a reference to the player
-        [SerializeField] private GameObject player;
+        // Will be used for finding the player in the world
+        [SerializeField] private Player player;
 
         private void Awake()
         {
@@ -21,18 +22,21 @@ namespace Bladesmiths.Capstone
             FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
+            //PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
+            //PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
 
+            EnemyFSMState_SEEK seek = new EnemyFSMState_SEEK(player, this);
+            EnemyFSMState_IDLE idle = new EnemyFSMState_IDLE();
+            
             // Adds all of the possible transitions
-            FSM.AddTransition(move, idle, IsIdle());
-            FSM.AddTransition(idle, move, IsMoving());
+            FSM.AddTransition(seek, idle, IsIdle());
+            FSM.AddTransition(idle, seek, IsClose());
 
             // Sets the current state
             FSM.SetCurrentState(idle);
 
-            
-          
+
+
 
         }
 
@@ -40,14 +44,17 @@ namespace Bladesmiths.Capstone
         /// The condition for going between the IDLE and MOVE states
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
+        //public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
 
         /// <summary>
         /// The condition for going between the MOVE and IDLE states
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
+        //public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
 
+
+        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
+        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
 
         private void Update()
         {
