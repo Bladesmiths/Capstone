@@ -23,6 +23,7 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
             PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
+            PlayerFSMState_PARRY parry = new PlayerFSMState_PARRY();
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());

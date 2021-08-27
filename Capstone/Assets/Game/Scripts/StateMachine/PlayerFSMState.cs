@@ -51,26 +51,51 @@ namespace Bladesmiths.Capstone
     }
 
     public class PlayerFSMState_IDLE : PlayerFSMState
-    {      
+    {
         public PlayerFSMState_IDLE()
         {
-            
+
         }
 
         public override void Tick()
         {
-            
+
         }
 
         public override void OnEnter()
         {
-            
+
         }
 
         public override void OnExit()
         {
-            
+
         }
 
     }
+
+    public class PlayerFSMState_PARRY : PlayerFSMState
+    {
+        public PlayerFSMState_PARRY()
+        {
+
+        }
+
+        public override void Tick()
+        {
+
+        }
+
+        public override void OnEnter()
+        {
+
+        }
+
+        public override void OnExit()
+        {
+
+        }
+
+    }
+
 }
