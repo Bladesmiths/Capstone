@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/StarterAssets/InputSystem/WalkRun.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/WalkRun.inputactions'
 
 using System;
 using System.Collections;
@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
         public @WalkRunInputs()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""WalkRunInputs"",
+    ""name"": ""WalkRun"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -56,6 +56,14 @@ namespace Bladesmiths.Capstone
                     ""name"": ""Walk Toggle"",
                     ""type"": ""Button"",
                     ""id"": ""04dcdcd8-8953-4ec2-85db-449954e643f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""3945fcc8-39c8-4b26-aa15-12819a0c9934"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -248,6 +256,17 @@ namespace Bladesmiths.Capstone
                     ""action"": ""Walk Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a12ad93-3dc6-4873-8250-9851e94efbcf"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -309,6 +328,7 @@ namespace Bladesmiths.Capstone
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_WalkToggle = m_Player.FindAction("Walk Toggle", throwIfNotFound: true);
+            m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -363,6 +383,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_WalkToggle;
+        private readonly InputAction m_Player_Parry;
         public struct PlayerActions
         {
             private @WalkRunInputs m_Wrapper;
@@ -372,6 +393,7 @@ namespace Bladesmiths.Capstone
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @WalkToggle => m_Wrapper.m_Player_WalkToggle;
+            public InputAction @Parry => m_Wrapper.m_Player_Parry;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -396,6 +418,9 @@ namespace Bladesmiths.Capstone
                     @WalkToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
                     @WalkToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
                     @WalkToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
+                    @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                    @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                    @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -415,6 +440,9 @@ namespace Bladesmiths.Capstone
                     @WalkToggle.started += instance.OnWalkToggle;
                     @WalkToggle.performed += instance.OnWalkToggle;
                     @WalkToggle.canceled += instance.OnWalkToggle;
+                    @Parry.started += instance.OnParry;
+                    @Parry.performed += instance.OnParry;
+                    @Parry.canceled += instance.OnParry;
                 }
             }
         }
@@ -462,6 +490,7 @@ namespace Bladesmiths.Capstone
             void OnJump(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnWalkToggle(InputAction.CallbackContext context);
+            void OnParry(InputAction.CallbackContext context);
         }
     }
 }

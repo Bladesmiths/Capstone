@@ -29,6 +29,8 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(move, idle, IsIdle());
             FSM.AddTransition(idle, move, IsMoving());
 
+            FSM.AddTransition(idle, parry, IsBlockReleased());
+
             // Sets the current state
             FSM.SetCurrentState(idle);
 
@@ -48,6 +50,13 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
+
+        /// <summary>
+        /// The condition fro going between the BLOCK and PARRY state
+        /// Should be replaced with the input system call later on and not hard coded to right click
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsBlockReleased() => () => Input.GetMouseButtonUp(1) == true;
 
 
         private void Update()
