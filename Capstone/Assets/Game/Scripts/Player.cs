@@ -16,6 +16,7 @@ namespace Bladesmiths.Capstone
 
         // Gets a reference to the player
         [SerializeField] private GameObject player;
+        [SerializeField] private GameObject sword;
 
         private void Awake()
         {
@@ -25,7 +26,7 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
             PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-            PlayerFSMState_ATTACK attack = new PlayerFSMState_ATTACK(this, inputs);
+            PlayerFSMState_ATTACK attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());
@@ -63,8 +64,6 @@ namespace Bladesmiths.Capstone
 
        
 
-
-
         private void FixedUpdate()
         {
             FSM.Tick();
@@ -98,6 +97,9 @@ namespace Bladesmiths.Capstone
         {
 
         }
+
+       
+
 
     }
 }
