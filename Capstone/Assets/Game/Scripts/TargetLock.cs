@@ -32,6 +32,7 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         [Tooltip("The Cinemachine Free Look camera that follows the player")]
         private CinemachineFreeLook playerFreeLook;
+        //private CinemachineVirtualCamera playerFreeLook;
         #endregion
 
         void Start()
@@ -81,11 +82,19 @@ namespace Bladesmiths.Capstone
             LockOnEnemy(); 
         }
 
-        public void OnMoveTarget(InputValue value)
+        public void OnMoveTargetRight(InputValue value)
         {
             if (targetLock)
             {
-                MoveTarget(value.Get<Vector2>());
+                MoveTarget(1);
+            }
+        }
+
+        public void OnMoveTargetLeft(InputValue value)
+        {
+            if (targetLock)
+            {
+                MoveTarget(-1);
             }
         }
 
@@ -139,7 +148,7 @@ namespace Bladesmiths.Capstone
 
                 // Add the updated targeted enemy to the target group
                 // so the camera takes it into account
-                targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 0.5f, 0);
+                targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 1.0f, 0);
 
                 Debug.Log("Adding Enemy"); 
             }
@@ -166,15 +175,12 @@ namespace Bladesmiths.Capstone
             }
         }
 
-        private void MoveTarget(Vector2 input)
-        {
-            // Check horizontal component of input; ignore vertical
-            float xInput = input.x;
-
+        private void MoveTarget(float xDirection)
+        { 
             Func<GameObject, bool> filterFunction = x => { return false; } ; 
 
             // If input is positive move to the next enemy to the right
-            if (xInput > 0)
+            if (xDirection > 0)
             {
                 filterFunction = x =>
                 {
@@ -182,7 +188,7 @@ namespace Bladesmiths.Capstone
                 };
             }
             // if input is negative move to the next enemy to the left
-            else if (xInput < 0)
+            else if (xDirection < 0)
             {
                 filterFunction = x =>
                 {
@@ -229,7 +235,7 @@ namespace Bladesmiths.Capstone
 
             UntargetClosestEnemy(); 
             targetedEnemy = closestEnemyToTarget;
-            targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 0.5f, 0);
+            targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 1.0f, 0);
         }
 
         #region Helper Methods

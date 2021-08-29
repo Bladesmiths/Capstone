@@ -30,7 +30,7 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": ""Look"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""2690c379-f54d-45be-a724-414123833eb4"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -61,9 +61,17 @@ namespace Bladesmiths.Capstone
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Move Target"",
+                    ""name"": ""Move Target Right"",
                     ""type"": ""Button"",
                     ""id"": ""eb4a1147-b46f-4187-b1ef-47194806d004"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Move Target Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b95fc22-6ef3-41d0-9f76-ae02ba27d8bc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -185,7 +193,7 @@ namespace Bladesmiths.Capstone
                     ""id"": ""ed66cbff-2900-4a62-8896-696503cfcd31"",
                     ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=15,y=15)"",
+                    ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -271,11 +279,44 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""791b52fc-f6e2-4013-b71b-8261af464712"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
+                    ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Move Target"",
+                    ""action"": ""Move Target Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2fb98dd-2940-4332-94e3-c6725ac6a5b2"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move Target Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d47c6ee6-2f21-4353-88e5-4fa531ff7f1e"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move Target Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecb454a1-5c80-4e93-b8e0-485ec05ff3b1"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move Target Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -339,7 +380,8 @@ namespace Bladesmiths.Capstone
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
-            m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
+            m_Player_MoveTargetRight = m_Player.FindAction("Move Target Right", throwIfNotFound: true);
+            m_Player_MoveTargetLeft = m_Player.FindAction("Move Target Left", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -394,7 +436,8 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_TargetLock;
-        private readonly InputAction m_Player_MoveTarget;
+        private readonly InputAction m_Player_MoveTargetRight;
+        private readonly InputAction m_Player_MoveTargetLeft;
         public struct PlayerActions
         {
             private @StarterAssetsWithTargetLock m_Wrapper;
@@ -404,7 +447,8 @@ namespace Bladesmiths.Capstone
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
-            public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
+            public InputAction @MoveTargetRight => m_Wrapper.m_Player_MoveTargetRight;
+            public InputAction @MoveTargetLeft => m_Wrapper.m_Player_MoveTargetLeft;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -429,9 +473,12 @@ namespace Bladesmiths.Capstone
                     @TargetLock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
-                    @MoveTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
-                    @MoveTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
-                    @MoveTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
+                    @MoveTargetRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetRight;
+                    @MoveTargetRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetRight;
+                    @MoveTargetRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetRight;
+                    @MoveTargetLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetLeft;
+                    @MoveTargetLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetLeft;
+                    @MoveTargetLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetLeft;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -451,9 +498,12 @@ namespace Bladesmiths.Capstone
                     @TargetLock.started += instance.OnTargetLock;
                     @TargetLock.performed += instance.OnTargetLock;
                     @TargetLock.canceled += instance.OnTargetLock;
-                    @MoveTarget.started += instance.OnMoveTarget;
-                    @MoveTarget.performed += instance.OnMoveTarget;
-                    @MoveTarget.canceled += instance.OnMoveTarget;
+                    @MoveTargetRight.started += instance.OnMoveTargetRight;
+                    @MoveTargetRight.performed += instance.OnMoveTargetRight;
+                    @MoveTargetRight.canceled += instance.OnMoveTargetRight;
+                    @MoveTargetLeft.started += instance.OnMoveTargetLeft;
+                    @MoveTargetLeft.performed += instance.OnMoveTargetLeft;
+                    @MoveTargetLeft.canceled += instance.OnMoveTargetLeft;
                 }
             }
         }
@@ -501,7 +551,8 @@ namespace Bladesmiths.Capstone
             void OnJump(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);
-            void OnMoveTarget(InputAction.CallbackContext context);
+            void OnMoveTargetRight(InputAction.CallbackContext context);
+            void OnMoveTargetLeft(InputAction.CallbackContext context);
         }
     }
 }
