@@ -20,7 +20,7 @@ namespace Bladesmiths.Capstone
         private List<GameObject> visibleEnemies; 
 
         // The enemy currently being targeted
-        private GameObject targetedEnemy; 
+        private (int, GameObject) targetedEnemy; 
 
         // Is the target locking system active or not
         private bool targetLock;
@@ -45,9 +45,9 @@ namespace Bladesmiths.Capstone
         void Update()
         {
             // Debug logic to see where the player's targetting ray will be looking
-            if (Application.isEditor && targetedEnemy != null)
+            if (Application.isEditor && targetedEnemy.Item2 != null)
             {
-                Vector3 rayDirection = targetedEnemy.transform.Find("EnemyCameraRoot").position - 
+                Vector3 rayDirection = targetedEnemy.Item2.transform.Find("EnemyCameraRoot").position - 
                     transform.Find("PlayerCameraRoot").position;
 
                 Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
@@ -57,7 +57,7 @@ namespace Bladesmiths.Capstone
             if (targetLock)
             {
                 // Check if the targetted enemy is visible
-                if (!IsEnemyVisible(targetedEnemy))
+                if (!IsEnemyVisible(targetedEnemy.Item2))
                 {
                     // If it is not, run lock on again to check if there are any other visible
                     // enemies. If not, turn off the target locking system
@@ -82,19 +82,22 @@ namespace Bladesmiths.Capstone
             LockOnEnemy(); 
         }
 
-        public void OnMoveTargetRight(InputValue value)
+        public void OnMoveTarget(InputValue value)
         {
             if (targetLock)
             {
-                MoveTarget(1);
-            }
-        }
+                float moveDirection = value.Get<float>();
 
-        public void OnMoveTargetLeft(InputValue value)
-        {
-            if (targetLock)
-            {
-                MoveTarget(-1);
+                Debug.Log(moveDirection);
+
+                if (moveDirection > 0)
+                {
+                    MoveTarget(1);
+                }
+                else if (moveDirection < 0)
+                {
+                    MoveTarget(-1); 
+                }
             }
         }
 
@@ -106,6 +109,10 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void LockOnEnemy()
         {
+            // TO-DO: Update this so in keyboard system it moves to next target on mouse scroll
+            //        In gamepad, should switch target based on right stick movement
+            //        Once target is locked, camera should no longer be free look
+
             // If the target lock system is currently active
             // Find all visible enemies and then find the closest
             if (targetLock)
@@ -123,7 +130,7 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Sets the currently targeted enemy to the first enemy in the list of visible enemies
-                targetedEnemy = visibleEnemies[0];
+                targetedEnemy.Item2 = visibleEnemies[0];
 
                 // Calculates the squared distance to that enemy and sets a variable
                 // to that value for use in comparisons with other enemies
@@ -141,14 +148,14 @@ namespace Bladesmiths.Capstone
                     if (sqMag < closestDist)
                     {
                         // If it is smaller update the targeted enemy and the closest distance field
-                        targetedEnemy = enemy;
+                        targetedEnemy.Item2 = enemy;
                         closestDist = sqMag; 
                     }
                 }
 
                 // Add the updated targeted enemy to the target group
                 // so the camera takes it into account
-                targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+                targetGroup.AddMember(targetedEnemy.Item2.transform.Find("EnemyCameraRoot"), 1.0f, 0);
 
                 Debug.Log("Adding Enemy"); 
             }
@@ -184,7 +191,7 @@ namespace Bladesmiths.Capstone
             {
                 filterFunction = x =>
                 {
-                    return Vector3.Dot(targetedEnemy.transform.right, x.transform.position) > 0;
+                    return Vector3.Dot(targetedEnemy.Item2.transform.right, x.transform.position) > 0;
                 };
             }
             // if input is negative move to the next enemy to the left
@@ -192,7 +199,7 @@ namespace Bladesmiths.Capstone
             {
                 filterFunction = x =>
                 {
-                    return Vector3.Dot(targetedEnemy.transform.right, x.transform.position) > 0;
+                    return Vector3.Dot(targetedEnemy.Item2.transform.right, x.transform.position) > 0;
                 };
             }
 
@@ -200,7 +207,7 @@ namespace Bladesmiths.Capstone
 
             // Filter to desirable enemies from visible enemies
 
-            List<GameObject> desireableEnemies = visibleEnemies.Where(x =>  x != targetedEnemy && filterFunction(x)).ToList();
+            List<GameObject> desireableEnemies = visibleEnemies.Where(x =>  x != targetedEnemy.Item2 && filterFunction(x)).ToList();
 
             if (desireableEnemies.Count == 0)
             {
@@ -214,14 +221,14 @@ namespace Bladesmiths.Capstone
 
             // Calculates the squared distance to that enemy and sets a variable
             // to that value for use in comparisons with other enemies
-            Vector3 displacementVector = desireableEnemies[0].transform.position - targetedEnemy.transform.position;
+            Vector3 displacementVector = desireableEnemies[0].transform.position - targetedEnemy.Item2.transform.position;
             float closestDist = displacementVector.sqrMagnitude;
 
             // Loop through all visible enemies
             foreach (GameObject enemy in desireableEnemies)
             {
                 // Calculate squared distance to this enemy
-                displacementVector = enemy.transform.position - targetedEnemy.transform.position;
+                displacementVector = enemy.transform.position - targetedEnemy.Item2.transform.position;
                 float sqMag = displacementVector.sqrMagnitude;
 
                 // Compare that distance to the current smallest distance
@@ -234,8 +241,8 @@ namespace Bladesmiths.Capstone
             }
 
             UntargetClosestEnemy(); 
-            targetedEnemy = closestEnemyToTarget;
-            targetGroup.AddMember(targetedEnemy.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+            targetedEnemy.Item2 = closestEnemyToTarget;
+            targetGroup.AddMember(targetedEnemy.Item2.transform.Find("EnemyCameraRoot"), 1.0f, 0);
         }
 
         #region Helper Methods
@@ -245,7 +252,7 @@ namespace Bladesmiths.Capstone
         private void UntargetClosestEnemy()
         {
             // Remove the targeted enemy from the target group
-            targetGroup.RemoveMember(targetedEnemy.transform.Find("EnemyCameraRoot"));
+            targetGroup.RemoveMember(targetedEnemy.Item2.transform.Find("EnemyCameraRoot"));
 
             Debug.Log("Removing Closest Enemy");
         }

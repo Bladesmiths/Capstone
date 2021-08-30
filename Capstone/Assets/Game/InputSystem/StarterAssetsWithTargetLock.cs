@@ -61,18 +61,10 @@ namespace Bladesmiths.Capstone
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Move Target Right"",
-                    ""type"": ""Button"",
+                    ""name"": ""Move Target"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""eb4a1147-b46f-4187-b1ef-47194806d004"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Move Target Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""6b95fc22-6ef3-41d0-9f76-ae02ba27d8bc"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -278,45 +270,23 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""791b52fc-f6e2-4013-b71b-8261af464712"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""id"": ""02ef222e-6d4e-4f2c-be49-dd01bfee7d67"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Move Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6877791-0b59-4496-ad42-30f4cd5860be"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Move Target Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b2fb98dd-2940-4332-94e3-c6725ac6a5b2"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move Target Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d47c6ee6-2f21-4353-88e5-4fa531ff7f1e"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move Target Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ecb454a1-5c80-4e93-b8e0-485ec05ff3b1"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move Target Left"",
+                    ""action"": ""Move Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -380,8 +350,7 @@ namespace Bladesmiths.Capstone
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
-            m_Player_MoveTargetRight = m_Player.FindAction("Move Target Right", throwIfNotFound: true);
-            m_Player_MoveTargetLeft = m_Player.FindAction("Move Target Left", throwIfNotFound: true);
+            m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -436,8 +405,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_TargetLock;
-        private readonly InputAction m_Player_MoveTargetRight;
-        private readonly InputAction m_Player_MoveTargetLeft;
+        private readonly InputAction m_Player_MoveTarget;
         public struct PlayerActions
         {
             private @StarterAssetsWithTargetLock m_Wrapper;
@@ -447,8 +415,7 @@ namespace Bladesmiths.Capstone
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
-            public InputAction @MoveTargetRight => m_Wrapper.m_Player_MoveTargetRight;
-            public InputAction @MoveTargetLeft => m_Wrapper.m_Player_MoveTargetLeft;
+            public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -473,12 +440,9 @@ namespace Bladesmiths.Capstone
                     @TargetLock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
-                    @MoveTargetRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetRight;
-                    @MoveTargetRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetRight;
-                    @MoveTargetRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetRight;
-                    @MoveTargetLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetLeft;
-                    @MoveTargetLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetLeft;
-                    @MoveTargetLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTargetLeft;
+                    @MoveTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
+                    @MoveTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
+                    @MoveTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -498,12 +462,9 @@ namespace Bladesmiths.Capstone
                     @TargetLock.started += instance.OnTargetLock;
                     @TargetLock.performed += instance.OnTargetLock;
                     @TargetLock.canceled += instance.OnTargetLock;
-                    @MoveTargetRight.started += instance.OnMoveTargetRight;
-                    @MoveTargetRight.performed += instance.OnMoveTargetRight;
-                    @MoveTargetRight.canceled += instance.OnMoveTargetRight;
-                    @MoveTargetLeft.started += instance.OnMoveTargetLeft;
-                    @MoveTargetLeft.performed += instance.OnMoveTargetLeft;
-                    @MoveTargetLeft.canceled += instance.OnMoveTargetLeft;
+                    @MoveTarget.started += instance.OnMoveTarget;
+                    @MoveTarget.performed += instance.OnMoveTarget;
+                    @MoveTarget.canceled += instance.OnMoveTarget;
                 }
             }
         }
@@ -551,8 +512,7 @@ namespace Bladesmiths.Capstone
             void OnJump(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);
-            void OnMoveTargetRight(InputAction.CallbackContext context);
-            void OnMoveTargetLeft(InputAction.CallbackContext context);
+            void OnMoveTarget(InputAction.CallbackContext context);
         }
     }
 }
