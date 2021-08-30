@@ -13,14 +13,14 @@ namespace Bladesmiths.Capstone
                                                                                                     
         #region Fields
         // List of enemies in the level
-        private List<GameObject> enemies;
+        private List<GameObject> targettableList;
 
         // List of enemies that are visible to the player
         // Updated each time the system is re-enabled
-        private List<GameObject> visibleEnemies; 
+        private List<GameObject> visibleTargets; 
 
         // The enemy currently being targeted
-        private (int, GameObject) targetedEnemy; 
+        private GameObject targetedObject; 
 
         // Is the target locking system active or not
         private bool targetLock;
@@ -31,23 +31,25 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         [Tooltip("The Cinemachine Free Look camera that follows the player")]
-        private CinemachineFreeLook playerFreeLook;
-        //private CinemachineVirtualCamera playerFreeLook;
+        private CinemachineVirtualCamera targetLockCam;
+
+        [SerializeField]
+        private ThirdPersonController thirdPersonController;
         #endregion
 
         void Start()
         {
             // Finds all enemies in the level
             // Should probably be updated eventually so it only gets enemies within a radius
-            enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Targettable"));
+            targettableList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Targettable"));
         }
 
         void Update()
         {
             // Debug logic to see where the player's targetting ray will be looking
-            if (Application.isEditor && targetedEnemy.Item2 != null)
+            if (Application.isEditor && targetedObject != null)
             {
-                Vector3 rayDirection = targetedEnemy.Item2.transform.Find("EnemyCameraRoot").position - 
+                Vector3 rayDirection = targetedObject.transform.Find("EnemyCameraRoot").position - 
                     transform.Find("PlayerCameraRoot").position;
 
                 Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
@@ -57,7 +59,7 @@ namespace Bladesmiths.Capstone
             if (targetLock)
             {
                 // Check if the targetted enemy is visible
-                if (!IsEnemyVisible(targetedEnemy.Item2))
+                if (!IsEnemyVisible(targetedObject))
                 {
                     // If it is not, run lock on again to check if there are any other visible
                     // enemies. If not, turn off the target locking system
@@ -118,11 +120,11 @@ namespace Bladesmiths.Capstone
             if (targetLock)
             {
                 // Find all visible enemies and place them in a list
-                visibleEnemies = FindVisibleEnemies();
+                visibleTargets = FindVisibleEnemies();
 
                 // If there are no visible enemies
                 // Turn off the target locking system, run this method again, then end the method
-                if (visibleEnemies == null)
+                if (visibleTargets == null)
                 {
                     targetLock = false;
                     LockOnEnemy();
@@ -130,15 +132,15 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Sets the currently targeted enemy to the first enemy in the list of visible enemies
-                targetedEnemy.Item2 = visibleEnemies[0];
+                targetedObject = visibleTargets[0];
 
                 // Calculates the squared distance to that enemy and sets a variable
                 // to that value for use in comparisons with other enemies
-                Vector3 displacementVector = visibleEnemies[0].transform.position - transform.position;
+                Vector3 displacementVector = visibleTargets[0].transform.position - transform.position;
                 float closestDist = displacementVector.sqrMagnitude;
 
                 // Loop through all visible enemies
-                foreach (GameObject enemy in visibleEnemies)
+                foreach (GameObject enemy in visibleTargets)
                 {
                     // Calculate squared distance to this enemy
                     displacementVector = enemy.transform.position - transform.position;
@@ -148,14 +150,19 @@ namespace Bladesmiths.Capstone
                     if (sqMag < closestDist)
                     {
                         // If it is smaller update the targeted enemy and the closest distance field
-                        targetedEnemy.Item2 = enemy;
+                        targetedObject = enemy;
                         closestDist = sqMag; 
                     }
                 }
 
                 // Add the updated targeted enemy to the target group
                 // so the camera takes it into account
-                targetGroup.AddMember(targetedEnemy.Item2.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+                targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.5f, 10.0f);
+
+                targetLockCam.Priority = 2;
+
+                thirdPersonController.target = targetedObject;
+                transform.LookAt(targetedObject.transform);
 
                 Debug.Log("Adding Enemy"); 
             }
@@ -172,13 +179,17 @@ namespace Bladesmiths.Capstone
                 // Recenter the camera to the player's heading
                 else
                 {
-                    float prevRecenterTime = playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime;
-                    playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime = 0.5f; 
-                    playerFreeLook.m_RecenterToTargetHeading.RecenterNow();
-                    playerFreeLook.m_RecenterToTargetHeading.m_RecenteringTime = prevRecenterTime;
+                    //float prevRecenterTime = targetLockCam.m_RecenterToTargetHeading.m_RecenteringTime;
+                    //targetLockCam.m_RecenterToTargetHeading.m_RecenteringTime = 0.5f; 
+                    //targetLockCam.m_RecenterToTargetHeading.RecenterNow();
+                    //targetLockCam.m_RecenterToTargetHeading.m_RecenteringTime = prevRecenterTime;
 
                     Debug.Log("No enemies visible"); 
                 }
+
+                targetLockCam.Priority = 0;
+
+                thirdPersonController.target = null;
             }
         }
 
@@ -191,7 +202,7 @@ namespace Bladesmiths.Capstone
             {
                 filterFunction = x =>
                 {
-                    return Vector3.Dot(targetedEnemy.Item2.transform.right, x.transform.position) > 0;
+                    return Vector3.Dot(targetedObject.transform.right, x.transform.position) > 0;
                 };
             }
             // if input is negative move to the next enemy to the left
@@ -199,7 +210,7 @@ namespace Bladesmiths.Capstone
             {
                 filterFunction = x =>
                 {
-                    return Vector3.Dot(targetedEnemy.Item2.transform.right, x.transform.position) > 0;
+                    return Vector3.Dot(targetedObject.transform.right, x.transform.position) > 0;
                 };
             }
 
@@ -207,7 +218,7 @@ namespace Bladesmiths.Capstone
 
             // Filter to desirable enemies from visible enemies
 
-            List<GameObject> desireableEnemies = visibleEnemies.Where(x =>  x != targetedEnemy.Item2 && filterFunction(x)).ToList();
+            List<GameObject> desireableEnemies = visibleTargets.Where(x =>  x != targetedObject && filterFunction(x)).ToList();
 
             if (desireableEnemies.Count == 0)
             {
@@ -221,14 +232,14 @@ namespace Bladesmiths.Capstone
 
             // Calculates the squared distance to that enemy and sets a variable
             // to that value for use in comparisons with other enemies
-            Vector3 displacementVector = desireableEnemies[0].transform.position - targetedEnemy.Item2.transform.position;
+            Vector3 displacementVector = desireableEnemies[0].transform.position - targetedObject.transform.position;
             float closestDist = displacementVector.sqrMagnitude;
 
             // Loop through all visible enemies
             foreach (GameObject enemy in desireableEnemies)
             {
                 // Calculate squared distance to this enemy
-                displacementVector = enemy.transform.position - targetedEnemy.Item2.transform.position;
+                displacementVector = enemy.transform.position - targetedObject.transform.position;
                 float sqMag = displacementVector.sqrMagnitude;
 
                 // Compare that distance to the current smallest distance
@@ -241,8 +252,11 @@ namespace Bladesmiths.Capstone
             }
 
             UntargetClosestEnemy(); 
-            targetedEnemy.Item2 = closestEnemyToTarget;
-            targetGroup.AddMember(targetedEnemy.Item2.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+            targetedObject = closestEnemyToTarget;
+            targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+
+            thirdPersonController.target = targetedObject;
+            transform.LookAt(targetedObject.transform);
         }
 
         #region Helper Methods
@@ -252,7 +266,7 @@ namespace Bladesmiths.Capstone
         private void UntargetClosestEnemy()
         {
             // Remove the targeted enemy from the target group
-            targetGroup.RemoveMember(targetedEnemy.Item2.transform.Find("EnemyCameraRoot"));
+            targetGroup.RemoveMember(targetedObject.transform.Find("EnemyCameraRoot"));
 
             Debug.Log("Removing Closest Enemy");
         }
@@ -265,7 +279,7 @@ namespace Bladesmiths.Capstone
         private List<GameObject> FindVisibleEnemies()
         {
             // Filter the list of enemies to only the enemies that are visible
-            List<GameObject> visibleFiltered = enemies.Where(x => IsEnemyVisible(x)).ToList(); 
+            List<GameObject> visibleFiltered = targettableList.Where(x => IsEnemyVisible(x)).ToList(); 
 
             // If there aren't any visible enemies return null
             if (visibleFiltered.Count == 0)
