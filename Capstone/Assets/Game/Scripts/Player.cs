@@ -12,8 +12,11 @@ namespace Bladesmiths.Capstone
         private FiniteStateMachine FSM;
         //[SerializeField] private TransitionManager playerTransitionManager;
 
+        [SerializeField] private PlayerInputsScript inputs;
+
         // Gets a reference to the player
         [SerializeField] private GameObject player;
+        [SerializeField] private GameObject sword;
 
         private void Awake()
         {
@@ -23,10 +26,15 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
             PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
+            PlayerFSMState_ATTACK attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());
             FSM.AddTransition(idle, move, IsMoving());
+            FSM.AddTransition(idle, attack, IsAttacking());
+            FSM.AddTransition(move, attack, IsAttacking());
+            FSM.AddTransition(attack, move, IsMoving());
+            FSM.AddTransition(attack, idle, IsIdle());
 
             // Sets the current state
             FSM.SetCurrentState(idle);
@@ -48,15 +56,22 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
 
+        /// <summary>
+        /// The condition for going between MOVE/IDLE and the ATTACK states
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsAttacking() => () => inputs.attack;
 
-        private void Update()
+       
+
+        private void FixedUpdate()
         {
             FSM.Tick();
         }
 
         protected override void Attack()
         {
-
+            // Physics.Raycast(transform.position + new Vector3(0, 1, 0), transform.TransformDirection(Vector3.forward), 2) && 
         }
         protected override void ActivateAbility()
         {
@@ -82,6 +97,9 @@ namespace Bladesmiths.Capstone
         {
 
         }
+
+       
+
 
     }
 }

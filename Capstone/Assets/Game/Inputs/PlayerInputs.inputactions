@@ -1,5 +1,5 @@
 {
-    "name": "WalkRun",
+    "name": "PlayerInputs",
     "maps": [
         {
             "name": "Player",
@@ -41,6 +41,14 @@
                     "name": "Walk Toggle",
                     "type": "Button",
                     "id": "04dcdcd8-8953-4ec2-85db-449954e643f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "5fda3d27-9275-4dbe-b399-17b5ecd33a12",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -231,6 +239,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Walk Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f3c19d4-661c-452b-8abf-571e62b6f301",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

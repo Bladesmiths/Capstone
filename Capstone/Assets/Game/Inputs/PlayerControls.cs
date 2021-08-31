@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/StarterAssets/InputSystem/WalkRun.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/PlayerInputs.inputactions'
 
 using System;
 using System.Collections;
@@ -8,13 +8,13 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Bladesmiths.Capstone
 {
-    public class @WalkRunInputs : IInputActionCollection, IDisposable
+    public class @PlayerControls : IInputActionCollection, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @WalkRunInputs()
+        public @PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""WalkRunInputs"",
+    ""name"": ""PlayerInputs"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -56,6 +56,14 @@ namespace Bladesmiths.Capstone
                     ""name"": ""Walk Toggle"",
                     ""type"": ""Button"",
                     ""id"": ""04dcdcd8-8953-4ec2-85db-449954e643f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fda3d27-9275-4dbe-b399-17b5ecd33a12"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -248,6 +256,17 @@ namespace Bladesmiths.Capstone
                     ""action"": ""Walk Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f3c19d4-661c-452b-8abf-571e62b6f301"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -309,6 +328,7 @@ namespace Bladesmiths.Capstone
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_WalkToggle = m_Player.FindAction("Walk Toggle", throwIfNotFound: true);
+            m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -363,15 +383,17 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_WalkToggle;
+        private readonly InputAction m_Player_Attack;
         public struct PlayerActions
         {
-            private @WalkRunInputs m_Wrapper;
-            public PlayerActions(@WalkRunInputs wrapper) { m_Wrapper = wrapper; }
+            private @PlayerControls m_Wrapper;
+            public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @WalkToggle => m_Wrapper.m_Player_WalkToggle;
+            public InputAction @Attack => m_Wrapper.m_Player_Attack;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -396,6 +418,9 @@ namespace Bladesmiths.Capstone
                     @WalkToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
                     @WalkToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
                     @WalkToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
+                    @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                    @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                    @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -415,6 +440,9 @@ namespace Bladesmiths.Capstone
                     @WalkToggle.started += instance.OnWalkToggle;
                     @WalkToggle.performed += instance.OnWalkToggle;
                     @WalkToggle.canceled += instance.OnWalkToggle;
+                    @Attack.started += instance.OnAttack;
+                    @Attack.performed += instance.OnAttack;
+                    @Attack.canceled += instance.OnAttack;
                 }
             }
         }
@@ -462,6 +490,7 @@ namespace Bladesmiths.Capstone
             void OnJump(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnWalkToggle(InputAction.CallbackContext context);
+            void OnAttack(InputAction.CallbackContext context);
         }
     }
 }

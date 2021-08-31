@@ -16,6 +16,9 @@ namespace Bladesmiths.Capstone
         // Will be used for finding the player in the world
         [SerializeField] private Player player;
 
+        private bool damaged = false;
+        private float timer = 0f;
+
         private void Awake()
         {
             // Creates the FSM
@@ -27,11 +30,11 @@ namespace Bladesmiths.Capstone
 
             EnemyFSMState_SEEK seek = new EnemyFSMState_SEEK(player, this);
             EnemyFSMState_IDLE idle = new EnemyFSMState_IDLE();
-            
+
             // Adds all of the possible transitions
             FSM.AddTransition(seek, idle, IsIdle());
             FSM.AddTransition(idle, seek, IsClose());
-
+           
             // Sets the current state
             FSM.SetCurrentState(idle);
 
@@ -55,10 +58,30 @@ namespace Bladesmiths.Capstone
 
         public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
         public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
-
+       
         private void Update()
         {
             FSM.Tick();
+
+            if (damaged)
+            {
+                timer += Time.deltaTime;
+
+                if (timer >= 1f)
+                {
+                    gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                    damaged = false;
+                    timer = 0f;
+                }
+            }
+        }
+
+        public void Damaged()
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+            damaged = true;
+
         }
 
         protected override void Attack()

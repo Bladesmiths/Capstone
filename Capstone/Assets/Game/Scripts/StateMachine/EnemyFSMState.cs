@@ -53,13 +53,16 @@ namespace Bladesmiths.Capstone
 
     public class EnemyFSMState_IDLE : EnemyFSMState
     {
+       
         public EnemyFSMState_IDLE()
         {
+           
 
         }
 
         public override void Tick()
         {
+            
 
         }
 
@@ -77,20 +80,47 @@ namespace Bladesmiths.Capstone
 
     public class EnemyFSMState_SEEK : EnemyFSMState
     {
-        private Player player;
-        private Enemy enemy;
+        private Player _player;
+        private Enemy _enemy;
 
-        public EnemyFSMState_SEEK(Player _player, Enemy _enemy)
+        public EnemyFSMState_SEEK(Player player, Enemy enemy)
         {
-            player = _player;
-            enemy = _enemy;
+            _player = player;
+            _enemy = enemy;
+           
         }
 
         public override void Tick()
         {
-            Vector3 dist = player.transform.position - enemy.transform.position;
+            Vector3 dist = _player.transform.position + Vector3.up - _enemy.transform.position;
 
-            enemy.gameObject.transform.position += dist.normalized * Time.deltaTime;
+            _enemy.gameObject.transform.position += dist.normalized * Time.deltaTime;
+
+                       
+
+        }
+
+        public override void OnEnter()
+        {
+
+        }
+
+        public override void OnExit()
+        {
+
+        }
+
+    }
+
+    public class EnemyFSMState_DAMAGED : EnemyFSMState
+    {
+        public EnemyFSMState_DAMAGED()
+        {
+
+        }
+
+        public override void Tick()
+        {
 
         }
 
