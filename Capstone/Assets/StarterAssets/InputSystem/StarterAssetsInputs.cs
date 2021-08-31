@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 
+using StarterAssets;
+
 namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
@@ -12,6 +14,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool parry;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +48,12 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnParry(InputValue value)
+        {
+			Debug.Log(value.isPressed);
+			ParryInput(value.isPressed);
+        }
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -69,6 +78,11 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+
+		public void ParryInput(bool newParryState)
+        {
+			parry = newParryState;
+        }
 
 #if !UNITY_IOS || !UNITY_ANDROID
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bladesmiths.Capstone.Enums;
+using StarterAssets;
 
 namespace Bladesmiths.Capstone
 {
@@ -33,14 +34,27 @@ namespace Bladesmiths.Capstone
     }
 
     public class PlayerFSMState_MOVING : PlayerFSMState
-    {       
-        public PlayerFSMState_MOVING()
+    {
+        public float timer;
+        StarterAssetsInputs _inputs;
+
+        public PlayerFSMState_MOVING(StarterAssetsInputs inputs)
         {
-            
+            _inputs = inputs;
         }
+
+        public override void Tick()
+        {
+            if(_inputs.move == Vector2.zero)
+            {
+                timer += Time.deltaTime;
+
+            }
+        }
+
         public override void OnEnter()
         {
-
+            timer = 0;
         }
 
         public override void OnExit()
@@ -76,6 +90,7 @@ namespace Bladesmiths.Capstone
 
     public class PlayerFSMState_PARRY : PlayerFSMState
     {
+        public float timer;
         public PlayerFSMState_PARRY()
         {
 
@@ -83,12 +98,12 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
-
+            timer += Time.deltaTime;
         }
 
         public override void OnEnter()
         {
-
+            timer = 0;
         }
 
         public override void OnExit()

@@ -5,12 +5,14 @@ using System;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
+using StarterAssets;
+
 namespace Bladesmiths.Capstone
 {
     public class Player : Character
     {
-        private WalkRunInputs walkRunInputs;
-        private InputAction parryAction;
+        //private WalkRunInputs walkRunInputs;
+        //private InputAction parryAction;
 
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
@@ -19,70 +21,83 @@ namespace Bladesmiths.Capstone
         // Gets a reference to the player
         [SerializeField] private GameObject player;
 
+        private StarterAssetsInputs inputs;
+        private PlayerFSMState_MOVING move;
+        private PlayerFSMState_PARRY parry;
+        private PlayerFSMState_IDLE idle;
+
         private void Awake()
         {
             // Create the WalkRunInputs InputAction object 
-            walkRunInputs = new WalkRunInputs();
+            //walkRunInputs = new WalkRunInputs();
+
+            inputs = gameObject.GetComponent<StarterAssetsInputs>();
 
             // Creates the FSM
             FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-            PlayerFSMState_PARRY parry = new PlayerFSMState_PARRY();
+            move = new PlayerFSMState_MOVING(inputs);
+            idle = new PlayerFSMState_IDLE();
+            parry = new PlayerFSMState_PARRY();
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());
             FSM.AddTransition(idle, move, IsMoving());
 
-            //FSM.AddTransition(idle, parry, IsBlockReleased());
+            FSM.AddTransition(idle, parry, IsBlockReleased());
+            FSM.AddTransition(move, parry, IsBlockReleased());
+
+            FSM.AddTransition(parry, idle, IsReleased());
 
             // Sets the current state
             FSM.SetCurrentState(idle);
 
         }
 
-        private void OnEnable()
-        {
-            // Enable the controls needed for parrying
-            parryAction = walkRunInputs.Player.Parry;
-            parryAction.Enable();
+        //private void OnEnable()
+        //{
+        //    // Enable the controls needed for parrying
+        //    parryAction = walkRunInputs.Player.Parry;
+        //    parryAction.Enable();
 
-            walkRunInputs.Player.Parry.canceled += Parry;
-            walkRunInputs.Player.Parry.Enable();
-        }
+        //    walkRunInputs.Player.Parry.canceled += Parry;
+        //    walkRunInputs.Player.Parry.Enable();
+        //}
 
-        private void OnDisable()
-        {
-            // Disable the controls needed for parrying
-            parryAction.Disable();
-            walkRunInputs.Player.Parry.Disable();
-        }
+        //private void OnDisable()
+        //{
+        //    // Disable the controls needed for parrying
+        //    parryAction.Disable();
+        //    walkRunInputs.Player.Parry.Disable();
+        //}
 
-        private void Parry(InputAction.CallbackContext obj)
-        {
-            Debug.Log("Parry");
-        }
+        //private void Parry(InputAction.CallbackContext obj)
+        //{
+        //    Debug.Log("Parry");
+        //}
 
         /// <summary>
         /// The condition for going between the IDLE and MOVE states
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
+        public Func<bool> IsMoving() => () => inputs.move != Vector2.zero;
 
         /// <summary>
         /// The condition for going between the MOVE and IDLE states
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
+        public Func<bool> IsIdle() => () => move.timer >= 0.5f;
 
         /// <summary>
         /// The condition fro going between the BLOCK and PARRY state
         /// Should be replaced with the input system call later on and not hard coded to right click
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsBlockReleased() => () => Input.GetMouseButtonUp(1) == true;
+        public Func<bool> IsBlockReleased() => () => inputs.parry == true;
+
+
+        public Func<bool> IsReleased() => () => parry.timer >= 0.5;
 
         private void Update()
         {
