@@ -91,14 +91,17 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState_PARRY : PlayerFSMState
     {
         public float timer;
-        public PlayerFSMState_PARRY()
+        private GameObject _playerParryBox;
+        public PlayerFSMState_PARRY(GameObject playerParryBox)
         {
-
+            _playerParryBox = playerParryBox;
         }
 
         public override void Tick()
         {
             timer += Time.deltaTime;
+
+            _playerParryBox.SetActive(true);
         }
 
         public override void OnEnter()
@@ -108,7 +111,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
-
+            _playerParryBox.SetActive(false);
         }
 
     }
