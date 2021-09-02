@@ -170,4 +170,60 @@ namespace Bladesmiths.Capstone
         }
 
     }
+
+    public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
+    {
+        private Player _player;
+        private bool _isDamaged;
+        public float timer;
+
+        public PlayerFSMState_TAKEDAMAGE(Player player)
+        {
+            _player = player;
+
+        }
+
+        public override void Tick()
+        {
+            timer += Time.deltaTime;
+
+        }
+
+        public override void OnEnter()
+        {
+            _player.isDamaged = false;
+            timer = 0;
+
+        }
+
+        public override void OnExit()
+        {
+
+        }
+
+    }
+
+    public class PlayerFSMState_DEATH : PlayerFSMState
+    {
+        public PlayerFSMState_DEATH()
+        {
+
+        }
+
+        public override void Tick()
+        {
+
+        }
+
+        public override void OnEnter()
+        {
+
+        }
+
+        public override void OnExit()
+        {
+
+        }
+
+    }
 }
