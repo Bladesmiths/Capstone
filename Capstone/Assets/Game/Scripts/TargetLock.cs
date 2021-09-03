@@ -161,9 +161,6 @@ namespace Bladesmiths.Capstone
 
                 targetLockCam.Priority = 2;
 
-                thirdPersonController.target = targetedObject;
-                transform.LookAt(targetedObject.transform);
-
                 Debug.Log("Adding Enemy"); 
             }
             // If the target locking system isn't active
@@ -188,8 +185,6 @@ namespace Bladesmiths.Capstone
                 }
 
                 targetLockCam.Priority = 0;
-
-                thirdPersonController.target = null;
             }
         }
 
@@ -254,9 +249,6 @@ namespace Bladesmiths.Capstone
             UntargetClosestEnemy(); 
             targetedObject = closestEnemyToTarget;
             targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.0f, 0);
-
-            thirdPersonController.target = targetedObject;
-            transform.LookAt(targetedObject.transform);
         }
 
         #region Helper Methods
@@ -297,16 +289,8 @@ namespace Bladesmiths.Capstone
         private bool IsEnemyVisible(GameObject enemy)
         {
             RaycastHit hit;
-            //Vector3 rayDirection = enemy.transfor
-
-            //m.Find("EnemyCameraRoot").position - 
-            //    transform.Find("PlayerCameraRoot").position;
-
-            //bool castRes = Physics.Raycast(transform.Find("PlayerCameraRoot").position, rayDirection, out hit);
 
             return (Physics.Linecast(transform.Find("PlayerCameraRoot").position, enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
-
-            //return castRes && hit.transform == enemy.transform; 
         }
         #endregion
         

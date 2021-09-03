@@ -92,8 +92,6 @@ namespace Bladesmiths.Capstone
 
 		private bool _hasAnimator;
 
-		public GameObject target = null; 
-
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -211,17 +209,10 @@ namespace Bladesmiths.Capstone
 			{
 				_targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
 
-				if (target == null)
-                {
-					float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
+				float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
 
-					// rotate to face input direction relative to camera position
-					transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-				}
-				else if (target != null)
-                {
-					transform.LookAt(target.transform); 
-                }
+				// rotate to face input direction relative to camera position
+				transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 			}
 
 
