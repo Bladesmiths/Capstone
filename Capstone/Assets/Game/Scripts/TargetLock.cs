@@ -26,12 +26,11 @@ namespace Bladesmiths.Capstone
         private bool targetLock;
 
         [SerializeField]
-        [Tooltip("The Cinemachine Target Group that the Camera should be targeting")]
-        private CinemachineTargetGroup targetGroup;
-
-        [SerializeField]
         [Tooltip("The Cinemachine Virtual Camera used to target enemies")]
         private CinemachineVirtualCamera targetLockCam;
+
+        [SerializeField]
+        private Canvas targetCanvas; 
         #endregion
 
         void Start()
@@ -58,6 +57,8 @@ namespace Bladesmiths.Capstone
             // If target lock is enabled
             if (targetLock)
             {
+                RepositionTargetCanvas();
+
                 // Check if the targetted enemy is visible
                 if (!IsEnemyVisible(targetedObject))
                 {
@@ -96,8 +97,6 @@ namespace Bladesmiths.Capstone
             {
                 // Converts the input value to a usable float
                 float moveDirection = value.Get<float>();
-
-                Debug.Log(moveDirection);
                 
                 // If the value is positive
                 // Move the target to the right
@@ -167,12 +166,17 @@ namespace Bladesmiths.Capstone
              
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
+
+                targetCanvas.GetComponent<Canvas>().enabled = true;
+                RepositionTargetCanvas();
             }
             // If the target locking system isn't active
             else
             {
                 // Switch back to the free look camera having top priority
                 targetLockCam.Priority = 0;
+
+                targetCanvas.GetComponent<Canvas>().enabled = false;
             }
         }
 
@@ -275,25 +279,13 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-            //UntargetClosestEnemy(); 
             targetedObject = closestEnemyToTarget;
-            //targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.0f, 0);
-            targetLockCam.LookAt = targetedObject.transform.Find("EnemyCameraRoot"); 
+            targetLockCam.LookAt = targetedObject.transform.Find("EnemyCameraRoot");
+
+            RepositionTargetCanvas(); 
         }
 
         #region Helper Methods
-        /// <summary>
-        /// Untarget the closest enemy
-        /// </summary>
-        //private void UntargetClosestEnemy()
-        //{
-        //    // Remove the targeted enemy from the target group
-        //    //targetGroup.RemoveMember(targetedObject.transform.Find("EnemyCameraRoot"));
-
-
-        //    Debug.Log("Removing Closest Enemy");
-        //}
-        
         /// <summary>
         /// Find all enemies that are visible to the player
         /// </summary>
@@ -323,6 +315,16 @@ namespace Bladesmiths.Capstone
 
             return (Physics.Linecast(transform.Find("PlayerCameraRoot").position, 
                 enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
+        }
+
+        private void RepositionTargetCanvas()
+        {
+            Vector3 vecFromTargetToPlayer = transform.position - targetedObject.transform.position;
+            vecFromTargetToPlayer.Normalize();
+            targetCanvas.transform.position = targetedObject.transform.Find("EnemyCameraRoot").position
+                + (vecFromTargetToPlayer * 0.5f);
+            targetCanvas.transform.rotation = Quaternion.Euler(targetCanvas.transform.rotation.eulerAngles.x,
+                targetLockCam.transform.rotation.eulerAngles.y, targetCanvas.transform.rotation.eulerAngles.z);
         }
         #endregion
         
