@@ -51,7 +51,6 @@ namespace StarterAssets
 
 		public void OnParry(InputValue value)
         {
-			Debug.Log(value.isPressed);
 			ParryInput(value.isPressed);
         }
 #else

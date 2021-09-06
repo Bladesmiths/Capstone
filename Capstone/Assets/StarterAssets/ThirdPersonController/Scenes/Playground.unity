@@ -1186,6 +1186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 1142091711684890832, guid: fb20beb76e531104699c8152a34154eb, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2387295861407259328, guid: fb20beb76e531104699c8152a34154eb, type: 3}
       propertyPath: m_IsTrigger
       value: 0

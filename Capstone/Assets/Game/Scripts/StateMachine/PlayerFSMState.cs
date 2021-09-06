@@ -112,6 +112,7 @@ namespace Bladesmiths.Capstone
         public override void OnExit()
         {
             _playerParryBox.SetActive(false);
+            _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
         }
 
     }

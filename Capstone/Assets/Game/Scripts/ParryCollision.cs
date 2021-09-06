@@ -16,8 +16,12 @@ public class ParryCollision : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("HITTT");
+        if(other.transform.root.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Parry Triggered" + other.gameObject);
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+        }
     }
 }
