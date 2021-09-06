@@ -30,29 +30,29 @@ namespace Bladesmiths.Capstone
         private CinemachineTargetGroup targetGroup;
 
         [SerializeField]
-        [Tooltip("The Cinemachine Free Look camera that follows the player")]
+        [Tooltip("The Cinemachine Virtual Camera used to target enemies")]
         private CinemachineVirtualCamera targetLockCam;
-
-        [SerializeField]
-        private ThirdPersonController thirdPersonController;
         #endregion
 
         void Start()
         {
             // Finds all enemies in the level
             // Should probably be updated eventually so it only gets enemies within a radius
+            // And Targettable won't be a useful tag in the future
             targettableList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Targettable"));
         }
 
         void Update()
         {
-            // Debug logic to see where the player's targetting ray will be looking
+            // Debug logic to see where the player's targeting ray will be looking
             if (Application.isEditor && targetedObject != null)
             {
                 Vector3 rayDirection = targetedObject.transform.Find("EnemyCameraRoot").position - 
                     transform.Find("PlayerCameraRoot").position;
 
                 Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
+                Debug.DrawLine(transform.position, transform.position + transform.right, Color.blue);
+                Debug.DrawLine(transform.position, transform.position + transform.forward, Color.green); 
             }
 
             // If target lock is enabled
@@ -84,18 +84,29 @@ namespace Bladesmiths.Capstone
             LockOnEnemy(); 
         }
 
+        /// <summary>
+        /// Input method that runs when the MoveTarget input is used
+        /// </summary>
+        /// <param name="value">The value of the float input</param>
         public void OnMoveTarget(InputValue value)
         {
+            // Checks if target lock is active
+            // If not, do nothing
             if (targetLock)
             {
+                // Converts the input value to a usable float
                 float moveDirection = value.Get<float>();
 
                 Debug.Log(moveDirection);
-
+                
+                // If the value is positive
+                // Move the target to the right
                 if (moveDirection > 0)
                 {
                     MoveTarget(1);
                 }
+                // If the value is negative
+                // Move the target to the left7
                 else if (moveDirection < 0)
                 {
                     MoveTarget(-1); 
@@ -111,10 +122,6 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void LockOnEnemy()
         {
-            // TO-DO: Update this so in keyboard system it moves to next target on mouse scroll
-            //        In gamepad, should switch target based on right stick movement
-            //        Once target is locked, camera should no longer be free look
-
             // If the target lock system is currently active
             // Find all visible enemies and then find the closest
             if (targetLock)
@@ -123,11 +130,11 @@ namespace Bladesmiths.Capstone
                 visibleTargets = FindVisibleEnemies();
 
                 // If there are no visible enemies
-                // Turn off the target locking system, run this method again, then end the method
+                // Turn off the target locking system and disable the target lock camera
                 if (visibleTargets == null)
                 {
                     targetLock = false;
-                    LockOnEnemy();
+                    targetLockCam.Priority = 0; 
                     return; 
                 }
 
@@ -155,113 +162,137 @@ namespace Bladesmiths.Capstone
                     }
                 }
 
-                // Add the updated targeted enemy to the target group
-                // so the camera takes it into account
-                targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.5f, 10.0f);
-
+                // Set the target cam's look at to the closest enemy
+                targetLockCam.LookAt = targetedObject.transform.Find("EnemyCameraRoot");
+             
+                // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
-
-                Debug.Log("Adding Enemy"); 
             }
             // If the target locking system isn't active
             else
             {
-                // If there are 2 or more objects in the target group
-                // untarget the enemy in the target group
-                if (targetGroup.m_Targets.Length >= 2)
-                {
-                    UntargetClosestEnemy(); 
-                }
-                // If there are less than 2 objects in the target group
-                // Recenter the camera to the player's heading
-                else
-                {
-                    //float prevRecenterTime = targetLockCam.m_RecenterToTargetHeading.m_RecenteringTime;
-                    //targetLockCam.m_RecenterToTargetHeading.m_RecenteringTime = 0.5f; 
-                    //targetLockCam.m_RecenterToTargetHeading.RecenterNow();
-                    //targetLockCam.m_RecenterToTargetHeading.m_RecenteringTime = prevRecenterTime;
-
-                    Debug.Log("No enemies visible"); 
-                }
-
+                // Switch back to the free look camera having top priority
                 targetLockCam.Priority = 0;
             }
         }
 
+        /// <summary>
+        /// Moves the look at of the targeting camera to a different enemy
+        /// </summary>
+        /// <param name="xDirection">The direction the targeting system should move</param>
         private void MoveTarget(float xDirection)
         { 
+            // A placeholder declaration to use to hold a function to be defined later
+            // The function will filter from the list of visible enemies any enemies in the wrong direction
             Func<GameObject, bool> filterFunction = x => { return false; } ; 
 
-            // If input is positive move to the next enemy to the right
-            if (xDirection > 0)
+            // If input is negative move to the next enemy to the right
+            if (xDirection < 0)
             {
                 filterFunction = x =>
                 {
-                    return Vector3.Dot(targetedObject.transform.right, x.transform.position) > 0;
+                    // Convert the position of this entry in the list and the currently targeted object
+                    // To the targeting camera's local space
+                    Vector3 relativeCheckPoint = 
+                        targetLockCam.transform.InverseTransformPoint(x.transform.position);
+                    Vector3 relativeTargetPoint = 
+                        targetLockCam.transform.InverseTransformPoint(targetedObject.transform.position);
+
+                    // Return whether or not the relative check object's position is greater than
+                    // the relative position of the currently targeted object
+                    // Is it to the right of the current target object?
+                    return relativeCheckPoint.x > relativeTargetPoint.x;
                 };
             }
-            // if input is negative move to the next enemy to the left
-            else if (xDirection < 0)
+            // if input is positive move to the next enemy to the left
+            else if (xDirection > 0)
             {
                 filterFunction = x =>
                 {
-                    return Vector3.Dot(targetedObject.transform.right, x.transform.position) > 0;
+                    // Convert the position of this entry in the list and the currently targeted object
+                    // To the targeting camera's local space
+                    Vector3 relativeCheckPoint = 
+                        targetLockCam.transform.InverseTransformPoint(x.transform.position);
+                    Vector3 relativeTargetPoint = 
+                        targetLockCam.transform.InverseTransformPoint(targetedObject.transform.position);
+
+                    // Return whether or not the relative check object's position is greater than
+                    // the relative position of the currently targeted object
+                    // Is it to the left of the current target object?
+                    return relativeCheckPoint.x < relativeTargetPoint.x;
                 };
             }
 
-            // Compare dot product of enemies to current target's position
+            // Refresh list of visilble enemies 
+            visibleTargets = FindVisibleEnemies(); 
 
             // Filter to desirable enemies from visible enemies
+            List<GameObject> desireableTargets = visibleTargets.Where(x =>  
+                                                x != targetedObject && filterFunction(x)).ToList();
 
-            List<GameObject> desireableEnemies = visibleTargets.Where(x =>  x != targetedObject && filterFunction(x)).ToList();
-
-            if (desireableEnemies.Count == 0)
+            // If there are no targets in the desired direction
+            // Go no further
+            if (desireableTargets.Count == 0)
             {
                 return; 
             }
 
-            // Target the desireable enemy closest to the current target
+            // Target the desireable enemy closest along the direction to the current target
 
             // Sets the first enemy in the list to the closest first for comparison
-            GameObject closestEnemyToTarget = desireableEnemies[0];
+            GameObject closestEnemyToTarget = desireableTargets[0];
 
-            // Calculates the squared distance to that enemy and sets a variable
-            // to that value for use in comparisons with other enemies
-            Vector3 displacementVector = desireableEnemies[0].transform.position - targetedObject.transform.position;
-            float closestDist = displacementVector.sqrMagnitude;
+            // Convert the position of this entry in the list and the currently targeted object
+            // To the targeting camera's local space
+            // Calculates the displacement along the x direction from the currently targeted object
+            // to that enemy and sets a variable to that value for use in comparisons with other enemies
+            Vector3 relativeCheckPoint = 
+                    targetLockCam.transform.InverseTransformPoint(closestEnemyToTarget.transform.position);
+            Vector3 relativeTargetPoint = 
+                    targetLockCam.transform.InverseTransformPoint(targetedObject.transform.position);
+            float closestDist = Mathf.Abs(relativeCheckPoint.x - relativeTargetPoint.x);
 
             // Loop through all visible enemies
-            foreach (GameObject enemy in desireableEnemies)
+            foreach (GameObject enemy in desireableTargets)
             {
-                // Calculate squared distance to this enemy
-                displacementVector = enemy.transform.position - targetedObject.transform.position;
-                float sqMag = displacementVector.sqrMagnitude;
+                // Convert the position of this entry in the list and the currently targeted object
+                // To the targeting camera's local space
+                relativeCheckPoint = 
+                        targetLockCam.transform.InverseTransformPoint(enemy.transform.position);
+                relativeTargetPoint = 
+                        targetLockCam.transform.InverseTransformPoint(targetedObject.transform.position);
 
-                // Compare that distance to the current smallest distance
-                if (sqMag < closestDist)
+                // Calculates the displacement along the x direction from the currently closest enemy
+                // to this enemy and sets a variable to that value for comparison
+                float displacement = Mathf.Abs(relativeCheckPoint.x - relativeTargetPoint.x);
+
+                // Compare that displacement to the current smallest distance
+                if (displacement < closestDist)
                 {
                     // If it is smaller update the targeted enemy and the closest distance field
                     closestEnemyToTarget = enemy;
-                    closestDist = sqMag;
+                    closestDist = displacement;
                 }
             }
 
-            UntargetClosestEnemy(); 
+            //UntargetClosestEnemy(); 
             targetedObject = closestEnemyToTarget;
-            targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+            //targetGroup.AddMember(targetedObject.transform.Find("EnemyCameraRoot"), 1.0f, 0);
+            targetLockCam.LookAt = targetedObject.transform.Find("EnemyCameraRoot"); 
         }
 
         #region Helper Methods
         /// <summary>
         /// Untarget the closest enemy
         /// </summary>
-        private void UntargetClosestEnemy()
-        {
-            // Remove the targeted enemy from the target group
-            targetGroup.RemoveMember(targetedObject.transform.Find("EnemyCameraRoot"));
+        //private void UntargetClosestEnemy()
+        //{
+        //    // Remove the targeted enemy from the target group
+        //    //targetGroup.RemoveMember(targetedObject.transform.Find("EnemyCameraRoot"));
 
-            Debug.Log("Removing Closest Enemy");
-        }
+
+        //    Debug.Log("Removing Closest Enemy");
+        //}
         
         /// <summary>
         /// Find all enemies that are visible to the player
@@ -290,7 +321,8 @@ namespace Bladesmiths.Capstone
         {
             RaycastHit hit;
 
-            return (Physics.Linecast(transform.Find("PlayerCameraRoot").position, enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
+            return (Physics.Linecast(transform.Find("PlayerCameraRoot").position, 
+                enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
         }
         #endregion
         
