@@ -170,4 +170,49 @@ namespace Bladesmiths.Capstone
         }
 
     }
+
+    public class PlayerFSMState_DODGE : PlayerFSMState
+    {
+        private Player _player;
+        private PlayerInputsScript _input;
+        private Animator _animator;
+        
+        private int _animIDSpeed;
+        private int _animIDDodge;
+        private int _animIDMotionSpeed;
+        private bool _hasAnimator;
+
+        public PlayerFSMState_DODGE(Player player, PlayerInputsScript input, Animator animator)
+        {
+            _player = player;
+            _input = input;
+            _animator = animator;
+        }
+
+        public override void Tick()
+        {
+            
+        }
+        
+        public override void OnEnter()
+        {
+            _animIDSpeed = Animator.StringToHash("Speed");
+            _animIDDodge = Animator.StringToHash("Dodge");
+            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+
+            if (_animator != null)
+            {
+                _hasAnimator = true;
+            }
+            else
+            {
+                _hasAnimator = false;
+            }
+
+        }
+
+        public override void OnExit()
+        {
+        }
+    }
 }

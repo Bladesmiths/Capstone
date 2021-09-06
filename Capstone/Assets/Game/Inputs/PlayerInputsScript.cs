@@ -14,6 +14,7 @@ namespace Bladesmiths.Capstone
 		public bool jump;
 		public bool sprint;
 		public bool attack = false;
+		public bool dodge = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -52,6 +53,11 @@ namespace Bladesmiths.Capstone
 		{
 			AttackInput(value.isPressed);
 		}
+
+		public void OnDodge(InputValue value)
+		{
+			DodgeInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -80,6 +86,11 @@ namespace Bladesmiths.Capstone
 		public void AttackInput(bool newAttackState)
 		{
 			attack = newAttackState;
+		}
+
+		public void DodgeInput(bool newDodgeRollState)
+		{
+			dodge = newDodgeRollState;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

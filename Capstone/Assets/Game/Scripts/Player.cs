@@ -24,9 +24,10 @@ namespace Bladesmiths.Capstone
             FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-            PlayerFSMState_ATTACK attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
+            var move = new PlayerFSMState_MOVING();
+            var idle = new PlayerFSMState_IDLE();
+            var attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
+            var dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>());
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());
@@ -35,12 +36,12 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(move, attack, IsAttacking());
             FSM.AddTransition(attack, move, IsMoving());
             FSM.AddTransition(attack, idle, IsIdle());
+            FSM.AddTransition(move, dodge, IsDodging());
+            FSM.AddTransition(dodge, move, IsMoving());
 
             // Sets the current state
             FSM.SetCurrentState(idle);
-
             
-          
 
         }
 
@@ -62,7 +63,19 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsAttacking() => () => inputs.attack;
 
-       
+        /// <summary>
+        /// The condition for going from MOVE to DODGE state
+        /// </summary>
+        public Func<bool> IsDodging() => () => inputs.dodge;
+
+        /// <summary>
+        /// The condition for going from DODGE to MOVE state
+        /// </summary>
+        /// <returns></returns>
+        // TODO: Should implement something like when dodging animation stops
+        public Func<bool> IsDodgingStopped() => () => !inputs.dodge;
+
+
 
         private void FixedUpdate()
         {
