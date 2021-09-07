@@ -15,7 +15,6 @@ namespace Bladesmiths.Capstone
 		public bool sprint;
 		public bool attack = false;
 		public bool dodge = false;
-		public bool parry = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -58,10 +57,6 @@ namespace Bladesmiths.Capstone
 		public void OnDodge(InputValue value)
 		{
 			DodgeInput(value.isPressed);
-    }
-		public void OnParry(InputValue value)
-		{
-			ParryInput(value.isPressed);
 		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
@@ -96,11 +91,6 @@ namespace Bladesmiths.Capstone
 		public void DodgeInput(bool newDodgeRollState)
 		{
 			dodge = newDodgeRollState;
-    }
-    
-    public void ParryInput(bool newParryState)
-		{
-			parry = newParryState;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

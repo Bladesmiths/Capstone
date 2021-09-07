@@ -18,7 +18,6 @@ namespace Bladesmiths.Capstone
 
         private bool damaged = false;
         private float timer = 0f;
-        private float attackTimer = 0f;
 
         private void Awake()
         {
@@ -75,21 +74,6 @@ namespace Bladesmiths.Capstone
                     timer = 0f;
                 }
             }
-
-            if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
-            {
-                attackTimer += Time.deltaTime;
-
-                if ((attackTimer >= 1))
-                {
-                    Attack();
-                    attackTimer = 0f;
-                }
-                
-
-            }
-
-
         }
 
         public void Damaged()
@@ -102,7 +86,7 @@ namespace Bladesmiths.Capstone
 
         protected override void Attack()
         {
-            player.TakingDamage(1);
+
         }
         protected override void ActivateAbility()
         {

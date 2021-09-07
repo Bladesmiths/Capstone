@@ -135,6 +135,4 @@ namespace Bladesmiths.Capstone
         }
 
     }
-
-    
 }
