@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class Player : Character
+    public class Player : Character, IDamageable
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
@@ -18,15 +18,29 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject sword;
 
+        PlayerFSMState_MOVING move;
+        PlayerFSMState_IDLE idle;
+        PlayerFSMState_ATTACK attack;
+        PlayerFSMState_DEATH death;
+        PlayerFSMState_TAKEDAMAGE takeDamage;
+
+        public bool isDamaged;
+
         private void Awake()
         {
+            MaxHealth = 3;
+            Health = 3;
+            isDamaged = false;
+
             // Creates the FSM
             FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-            PlayerFSMState_ATTACK attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
+            move = new PlayerFSMState_MOVING();
+            idle = new PlayerFSMState_IDLE();
+            attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
+            death = new PlayerFSMState_DEATH();
+            takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());
@@ -35,6 +49,13 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(move, attack, IsAttacking());
             FSM.AddTransition(attack, move, IsMoving());
             FSM.AddTransition(attack, idle, IsIdle());
+
+            FSM.AddTransition(takeDamage, death, Alive());
+            FSM.AddTransition(move, takeDamage, IsDamaged());
+            FSM.AddTransition(idle, takeDamage, IsDamaged());
+
+            FSM.AddTransition(takeDamage, move, IsAbleToDamage());
+            
 
             // Sets the current state
             FSM.SetCurrentState(idle);
@@ -62,7 +83,24 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsAttacking() => () => inputs.attack;
 
-       
+        /// <summary>
+        /// The condition for having been attacked
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsDamaged() => () => isDamaged;
+
+        /// <summary>
+        /// The condition for having been attacked
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 1f;
+
+        /// <summary>
+        /// The condition for having been attacked
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> Alive() => () => Health == 0;
+
 
         private void FixedUpdate()
         {
@@ -95,6 +133,13 @@ namespace Bladesmiths.Capstone
         }
         protected override void Die()
         {
+
+        }
+
+        public void TakingDamage(float dmg)
+        {
+            Health -= dmg;
+            isDamaged = true;
 
         }
 
