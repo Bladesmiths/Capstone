@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bladesmiths.Capstone.Enums;
+using StarterAssets;
 
 
 namespace Bladesmiths.Capstone
@@ -34,11 +35,48 @@ namespace Bladesmiths.Capstone
     }
 
     public class PlayerFSMState_MOVING : PlayerFSMState
-    {       
-        public PlayerFSMState_MOVING()
+    {
+        public float timer;
+        StarterAssetsInputs _inputs;
+
+        public PlayerFSMState_MOVING(StarterAssetsInputs inputs)
         {
-            
+            _inputs = inputs;
         }
+
+        public override void Tick()
+        {
+            if(_inputs.move == Vector2.zero)
+            {
+                timer += Time.deltaTime;
+
+            }
+        }
+
+        public override void OnEnter()
+        {
+            timer = 0;
+        }
+
+        public override void OnExit()
+        {
+
+        }
+
+    }
+
+    public class PlayerFSMState_IDLE : PlayerFSMState
+    {
+        public PlayerFSMState_IDLE()
+        {
+
+        }
+
+        public override void Tick()
+        {
+
+        }
+
         public override void OnEnter()
         {
 
@@ -51,26 +89,31 @@ namespace Bladesmiths.Capstone
 
     }
 
-    public class PlayerFSMState_IDLE : PlayerFSMState
-    {      
-        public PlayerFSMState_IDLE()
+    public class PlayerFSMState_PARRY : PlayerFSMState
+    {
+        public float timer;
+        private GameObject _playerParryBox;
+        public PlayerFSMState_PARRY(GameObject playerParryBox)
         {
-            
+            _playerParryBox = playerParryBox;
         }
 
         public override void Tick()
         {
-            
+            timer += Time.deltaTime;
+
+            _playerParryBox.SetActive(true);
         }
 
         public override void OnEnter()
         {
-            
+            timer = 0;
         }
 
         public override void OnExit()
         {
-            
+            _playerParryBox.SetActive(false);
+            _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
         }
 
     }
@@ -170,7 +213,7 @@ namespace Bladesmiths.Capstone
         }
 
     }
-
+   
     public class PlayerFSMState_DODGE : PlayerFSMState
     {
         private Player _player;
@@ -187,7 +230,6 @@ namespace Bladesmiths.Capstone
             _player = player;
             _input = input;
             _animator = animator;
-        }
 
         public override void Tick()
         {
@@ -209,10 +251,65 @@ namespace Bladesmiths.Capstone
                 _hasAnimator = false;
             }
 
+            timer += Time.deltaTime;
+
+        }
+        
+    }
+    
+    
+    public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
+    {
+        private Player _player;
+        private bool _isDamaged;
+        public float timer;
+
+        public PlayerFSMState_TAKEDAMAGE(Player player)
+        {
+            _player = player;
+
+        }
+        
+        public override void Tick()
+        {
+            
+        }
+
+        public override void OnEnter()
+        {
+            _player.isDamaged = false;
+            timer = 0;
+
         }
 
         public override void OnExit()
         {
+
         }
+
+    }
+
+    public class PlayerFSMState_DEATH : PlayerFSMState
+    {
+        public PlayerFSMState_DEATH()
+        {
+
+        }
+
+        public override void Tick()
+        {
+
+        }
+
+        public override void OnEnter()
+        {
+
+        }
+
+        public override void OnExit()
+        {
+        
+        }      
+
     }
 }
