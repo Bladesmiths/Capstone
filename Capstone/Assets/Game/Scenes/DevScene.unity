@@ -1208,8 +1208,8 @@ PrefabInstance:
       value: -0.306
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
     - {fileID: 135756642000475821, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+    - {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
 --- !u!114 &1304768596 stripped
 MonoBehaviour:
@@ -1283,6 +1283,9 @@ MonoBehaviour:
   parryDetector: {fileID: 0}
   isDamaged: 0
   CinemachineCameraTarget: {fileID: 937506337}
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1304768604
 MonoBehaviour:
   m_ObjectHideFlags: 0

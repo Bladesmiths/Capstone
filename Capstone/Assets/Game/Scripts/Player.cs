@@ -12,7 +12,9 @@ namespace Bladesmiths.Capstone
     public class Player : Character, IDamageable
     {
         // Reference to the Finite State Machine
-        private FiniteStateMachine FSM;
+        private FiniteStateMachine Movement_FSM;
+        private FiniteStateMachine Combat_FSM;
+
         //[SerializeField] private TransitionManager playerTransitionManager;
 
         [SerializeField] private PlayerInputsScript inputs;
@@ -32,6 +34,7 @@ namespace Bladesmiths.Capstone
         PlayerFSMState_DEATH death;
         PlayerFSMState_TAKEDAMAGE takeDamage;
         PlayerFSMState_DODGE dodge;
+        PlayerFSMState_JUMP jump;
 
         public bool isDamaged;
 
@@ -44,6 +47,12 @@ namespace Bladesmiths.Capstone
         private float CameraAngleOverride = 0.0f;
         private bool LockCameraPosition = false;
 
+        public LayerMask GroundLayers;
+        public bool Grounded = true;
+        public bool isGrounded = true;
+        public float GroundedOffset = -0.10f;
+        public float GroundedRadius = 0.20f;
+
         private void Awake()
         {
 
@@ -52,42 +61,43 @@ namespace Bladesmiths.Capstone
             isDamaged = false;
 
             // Creates the FSM
-            FSM = new FiniteStateMachine();
+            Movement_FSM = new FiniteStateMachine();
+            Combat_FSM = new FiniteStateMachine();
 
             // Creates all of the states
-           
+
             parry = new PlayerFSMState_PARRY(parryDetector);
-            move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>());
+            move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
             idle = new PlayerFSMState_IDLE();
             attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
             death = new PlayerFSMState_DEATH();
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
             dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>());
+            jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers);
 
             // Adds all of the possible transitions
-            FSM.AddTransition(move, idle, IsIdle());
-            FSM.AddTransition(idle, move, IsMoving());
-            FSM.AddTransition(idle, attack, IsAttacking());
-            FSM.AddTransition(move, attack, IsAttacking());
-            FSM.AddTransition(attack, move, IsMoving());
-            FSM.AddTransition(attack, idle, IsIdle());
-            FSM.AddTransition(move, dodge, IsDodging());
-            FSM.AddTransition(dodge, move, IsDodgingStopped());
+            Movement_FSM.AddTransition(move, idle, IsIdle());
+            Movement_FSM.AddTransition(idle, move, IsMoving());
+            Movement_FSM.AddTransition(move, dodge, IsDodging());
+            Movement_FSM.AddTransition(dodge, move, IsDodgingStopped());
+            Movement_FSM.AddTransition(jump, idle, IsGrounded());
+            Movement_FSM.AddTransition(move, jump, IsJumping());
+            Movement_FSM.AddTransition(idle, jump, IsJumping());
 
-            FSM.AddTransition(takeDamage, death, Alive());
-            FSM.AddTransition(move, takeDamage, IsDamaged());
-            FSM.AddTransition(idle, takeDamage, IsDamaged());
 
-            FSM.AddTransition(takeDamage, move, IsAbleToDamage());
-            
+            Combat_FSM.AddTransition(idle, attack, IsAttacking());
+            Combat_FSM.AddTransition(attack, idle, IsIdle());
+            Combat_FSM.AddTransition(idle, death, Alive());
+            Combat_FSM.AddTransition(attack, death, Alive());
+            Combat_FSM.AddTransition(idle, parry, IsBlockReleased());
+            Combat_FSM.AddTransition(parry, idle, IsReleased());
 
-            FSM.AddTransition(idle, parry, IsBlockReleased());
-            FSM.AddTransition(move, parry, IsBlockReleased());
 
-            FSM.AddTransition(parry, idle, IsReleased());
 
             // Sets the current state
-            FSM.SetCurrentState(idle);
+            Combat_FSM.SetCurrentState(idle);
+            Movement_FSM.SetCurrentState(idle);
+
 
         }
 
@@ -150,16 +160,38 @@ namespace Bladesmiths.Capstone
 
         public Func<bool> IsReleased() => () => parry.timer >= 0.5;
 
+        /// <summary>
+        /// Checks if the player is grounded
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsGrounded() => () => GroundedCheck();
 
+        /// <summary>
+        /// Checks to see if the jump button has been pressed
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsJumping() => () => inputs.jump;
 
-        private void FixedUpdate()
+        private void Update()
         {
-            FSM.Tick();
+            Movement_FSM.Tick();
+            Combat_FSM.Tick();
+
         }
 
         private void LateUpdate()
         {
             CameraRotation();
+        }
+
+        private bool GroundedCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(this.transform.position.x, this.transform.position.y - GroundedOffset, this.transform.position.z);
+            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+
+            return Grounded;
+
         }
 
         private void CameraRotation()
