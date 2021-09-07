@@ -33,11 +33,11 @@ namespace Bladesmiths.Capstone
             EnemyFSMState_IDLE idle = new EnemyFSMState_IDLE();
 
             // Adds all of the possible transitions
-            FSM.AddTransition(seek, idle, IsIdle());
-            FSM.AddTransition(idle, seek, IsClose());
+            //FSM.AddTransition(seek, idle, IsIdle());
+            //FSM.AddTransition(idle, seek, IsClose());
            
             // Sets the current state
-            FSM.SetCurrentState(idle);
+            //FSM.SetCurrentState(idle);
 
 
 

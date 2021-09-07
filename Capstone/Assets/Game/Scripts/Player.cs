@@ -23,7 +23,6 @@ namespace Bladesmiths.Capstone
 
         [SerializeField] private GameObject parryDetector;
 
-        private StarterAssetsInputs inputss;
         private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRY parry;
         private PlayerFSMState_IDLE idle;
@@ -32,12 +31,21 @@ namespace Bladesmiths.Capstone
         PlayerFSMState_ATTACK attack;
         PlayerFSMState_DEATH death;
         PlayerFSMState_TAKEDAMAGE takeDamage;
+        PlayerFSMState_DODGE dodge;
 
         public bool isDamaged;
 
+        private float _cinemachineTargetYaw;
+        private float _cinemachineTargetPitch;
+        private const float _threshold = 0.01f;
+        [SerializeField] private GameObject CinemachineCameraTarget;
+        private float TopClamp = 70.0f;
+        private float BottomClamp = -30.0f;
+        private float CameraAngleOverride = 0.0f;
+        private bool LockCameraPosition = false;
+
         private void Awake()
         {
-            inputss = gameObject.GetComponent<StarterAssetsInputs>();
 
             MaxHealth = 3;
             Health = 3;
@@ -49,15 +57,12 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
            
             parry = new PlayerFSMState_PARRY(parryDetector);
-            move = new PlayerFSMState_MOVING(inputss);
+            move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>());
             idle = new PlayerFSMState_IDLE();
             attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
             death = new PlayerFSMState_DEATH();
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
-            var move = new PlayerFSMState_MOVING();
-            var idle = new PlayerFSMState_IDLE();
-            var attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
-            var dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>());
+            dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>());
 
             // Adds all of the possible transitions
             FSM.AddTransition(move, idle, IsIdle());
@@ -67,7 +72,7 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(attack, move, IsMoving());
             FSM.AddTransition(attack, idle, IsIdle());
             FSM.AddTransition(move, dodge, IsDodging());
-            FSM.AddTransition(dodge, move, IsMoving());
+            FSM.AddTransition(dodge, move, IsDodgingStopped());
 
             FSM.AddTransition(takeDamage, death, Alive());
             FSM.AddTransition(move, takeDamage, IsDamaged());
@@ -96,7 +101,8 @@ namespace Bladesmiths.Capstone
         /// The condition for going between the MOVE and IDLE states
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsIdle() => () => move.timer >= 0.5f;
+        //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
+        public Func<bool> IsIdle() => () => this.gameObject.GetComponent<CharacterController>().velocity.magnitude <= 0;
 
         /// <summary>
         /// The condition fro going between the BLOCK and PARRY state
@@ -123,6 +129,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 1f;
+
         /// <summary>
         /// The condition for going from MOVE to DODGE state
         /// </summary>
@@ -133,9 +140,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         // TODO: Should implement something like when dodging animation stops
-        public Func<bool> IsDodgingStopped() => () => !inputs.dodge;
-
-
+        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 0.7;
 
         /// <summary>
         /// The condition for having been attacked
@@ -150,6 +155,35 @@ namespace Bladesmiths.Capstone
         private void FixedUpdate()
         {
             FSM.Tick();
+        }
+
+        private void LateUpdate()
+        {
+            CameraRotation();
+        }
+
+        private void CameraRotation()
+        {
+            // if there is an input and camera position is not fixed
+            if (inputs.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+            {
+                _cinemachineTargetYaw += inputs.look.x * Time.deltaTime;
+                _cinemachineTargetPitch += inputs.look.y * Time.deltaTime;
+            }
+
+            // clamp our rotations so our values are limited 360 degrees
+            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+            // Cinemachine will follow this target
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
+        }
+
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        {
+            if (lfAngle < -360f) lfAngle += 360f;
+            if (lfAngle > 360f) lfAngle -= 360f;
+            return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
         protected override void Attack()
