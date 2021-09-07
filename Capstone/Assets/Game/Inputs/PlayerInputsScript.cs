@@ -14,6 +14,7 @@ namespace Bladesmiths.Capstone
 		public bool jump;
 		public bool sprint;
 		public bool attack = false;
+		public bool parry = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -52,6 +53,11 @@ namespace Bladesmiths.Capstone
 		{
 			AttackInput(value.isPressed);
 		}
+
+		public void OnParry(InputValue value)
+		{
+			ParryInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -80,6 +86,11 @@ namespace Bladesmiths.Capstone
 		public void AttackInput(bool newAttackState)
 		{
 			attack = newAttackState;
+		}
+
+		public void ParryInput(bool newParryState)
+		{
+			parry = newParryState;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

@@ -29,7 +29,7 @@ namespace Bladesmiths.Capstone
         void OnEnable()
         {
             //conditionsRef = new Dictionary<Type, List<Transition>>();
-            move = new PlayerFSMState_MOVING();
+            //move = new PlayerFSMState_MOVING();
             idle = new PlayerFSMState_IDLE();
             move.ID = PlayerCondition.F_Moving;
             idle.ID = PlayerCondition.F_Idle;
