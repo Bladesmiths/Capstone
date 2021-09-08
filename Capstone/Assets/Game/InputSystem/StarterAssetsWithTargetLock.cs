@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/PlayerInputs.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Game/InputSystem/StarterAssetsWithTargetLock.inputactions'
 
 using System;
 using System.Collections;
@@ -8,13 +8,13 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Bladesmiths.Capstone
 {
-    public class @PlayerControls : IInputActionCollection, IDisposable
+    public class @StarterAssetsWithTargetLock : IInputActionCollection, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @PlayerControls()
+        public @StarterAssetsWithTargetLock()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerInputs"",
+    ""name"": ""StarterAssetsWithTargetLock"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -30,7 +30,7 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": ""Look"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""2690c379-f54d-45be-a724-414123833eb4"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -45,33 +45,17 @@ namespace Bladesmiths.Capstone
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Walk Toggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""04dcdcd8-8953-4ec2-85db-449954e643f9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""5fda3d27-9275-4dbe-b399-17b5ecd33a12"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Dodge"",
-                    ""type"": ""Button"",
-                    ""id"": ""96ecbd72-a390-417c-a996-5cfce9dd82fd"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Sprint"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""980e881e-182c-404c-8cbf-3d09fdb48fef"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""Target Lock"",
                     ""type"": ""Button"",
-                    ""id"": ""17d446e5-78de-44d9-9135-32112553196b"",
+                    ""id"": ""ea034a5c-acd9-48f6-844e-b6da36f03dce"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -79,7 +63,7 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": ""Move Target"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""7072818c-abf1-4af9-9a2b-a798177f5a65"",
+                    ""id"": ""eb4a1147-b46f-4187-b1ef-47194806d004"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -201,7 +185,7 @@ namespace Bladesmiths.Capstone
                     ""id"": ""ed66cbff-2900-4a62-8896-696503cfcd31"",
                     ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=15,y=15)"",
+                    ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -242,73 +226,29 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e47ad5b-5ef6-4b74-a256-63aa91796547"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Walk Toggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5f3c19d4-661c-452b-8abf-571e62b6f301"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""eeb2e340-a083-40b9-afa1-9323b28549c1"",
+                    ""id"": ""dc65b89f-9bd3-43fb-92af-d0d87ba5faa4"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dodge"",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6f696616-1037-4c0b-9a9c-7cd5837c8d55"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""c8fcd86e-dcfd-4f88-8e93-b638cdbf3320"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox Controller;Gamepad"",
-                    ""action"": ""Dodge"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e67e81d5-f2d6-4f28-bd62-cec7ec46ad30"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Move Target"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0d082d1f-331c-4f79-9ad0-310c2dc21714"",
-                    ""path"": ""<Gamepad>/rightStick/x"",
-                    ""interactions"": ""Press"",
-                    ""processors"": ""AxisDeadzone,Invert"",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Move Target"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""93d3fb06-9e10-4099-8a40-a9ac96540b9d"",
+                    ""id"": ""997d4431-8351-4baf-8ffb-cae23b787b4a"",
                     ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -319,12 +259,34 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e6be1fd7-669d-4503-8c77-e234f7df12c3"",
+                    ""id"": ""c9bd1499-bb3b-4558-9aa8-ab487d9ad257"",
                     ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Target Lock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02ef222e-6d4e-4f2c-be49-dd01bfee7d67"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Move Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6877791-0b59-4496-ad42-30f4cd5860be"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
+                    ""interactions"": ""Press"",
+                    ""processors"": ""AxisDeadzone,Invert"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -386,9 +348,7 @@ namespace Bladesmiths.Capstone
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-            m_Player_WalkToggle = m_Player.FindAction("Walk Toggle", throwIfNotFound: true);
-            m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-            m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+            m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
             m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
         }
@@ -443,21 +403,17 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Jump;
-        private readonly InputAction m_Player_WalkToggle;
-        private readonly InputAction m_Player_Attack;
-        private readonly InputAction m_Player_Dodge;
+        private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_TargetLock;
         private readonly InputAction m_Player_MoveTarget;
         public struct PlayerActions
         {
-            private @PlayerControls m_Wrapper;
-            public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            private @StarterAssetsWithTargetLock m_Wrapper;
+            public PlayerActions(@StarterAssetsWithTargetLock wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
-            public InputAction @WalkToggle => m_Wrapper.m_Player_WalkToggle;
-            public InputAction @Attack => m_Wrapper.m_Player_Attack;
-            public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+            public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
             public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -478,15 +434,9 @@ namespace Bladesmiths.Capstone
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                    @WalkToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @WalkToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @WalkToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                    @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                    @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                    @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
-                    @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
-                    @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                    @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                    @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                    @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                     @TargetLock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                     @TargetLock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
@@ -506,15 +456,9 @@ namespace Bladesmiths.Capstone
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
-                    @WalkToggle.started += instance.OnWalkToggle;
-                    @WalkToggle.performed += instance.OnWalkToggle;
-                    @WalkToggle.canceled += instance.OnWalkToggle;
-                    @Attack.started += instance.OnAttack;
-                    @Attack.performed += instance.OnAttack;
-                    @Attack.canceled += instance.OnAttack;
-                    @Dodge.started += instance.OnDodge;
-                    @Dodge.performed += instance.OnDodge;
-                    @Dodge.canceled += instance.OnDodge;
+                    @Sprint.started += instance.OnSprint;
+                    @Sprint.performed += instance.OnSprint;
+                    @Sprint.canceled += instance.OnSprint;
                     @TargetLock.started += instance.OnTargetLock;
                     @TargetLock.performed += instance.OnTargetLock;
                     @TargetLock.canceled += instance.OnTargetLock;
@@ -566,9 +510,7 @@ namespace Bladesmiths.Capstone
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnWalkToggle(InputAction.CallbackContext context);
-            void OnAttack(InputAction.CallbackContext context);
-            void OnDodge(InputAction.CallbackContext context);
+            void OnSprint(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);
             void OnMoveTarget(InputAction.CallbackContext context);
         }
