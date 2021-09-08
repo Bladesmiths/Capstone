@@ -3,7 +3,6 @@
 using UnityEngine.InputSystem;
 using StarterAssets;
 #endif
-
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
@@ -16,15 +15,24 @@ namespace Bladesmiths.Capstone
 	public class ThirdPersonController : MonoBehaviour
 	{
 		[Header("Player")]
-		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
-		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 5.335f;
+		[Tooltip("Maximum move speed of the character in m/s")]
+		public float RunSpeed = 6.0f;
+		[Tooltip("Minimum move speed of the character in m/s")]
+		public float WalkSpeed = 2.0f;
+		[Tooltip("Current maximum move speed of the character in m/s. Changed by walk / run toggle.")]
+		public float MoveSpeedCurrentMax = 6.0f;
+		//[Tooltip("Sprint speed of the character in m/s")]
+		//public float SprintSpeed = 5.335f;
 		[Tooltip("How fast the character turns to face movement direction")]
 		[Range(0.0f, 0.3f)]
 		public float RotationSmoothTime = 0.12f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		[Tooltip("Distance an analog stick must be pushed before movement is registered")]
+		public float DeadzoneMin = 0.1f;
+		[Tooltip("Distance above which all analog input is registered as maximum")]
+		public float DeadzoneMax = 0.9f;
+
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -85,12 +93,13 @@ namespace Bladesmiths.Capstone
 
 		private Animator _animator;
 		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		private PlayerInputsScript _input;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
+
 
 		private void Awake()
 		{
@@ -105,7 +114,7 @@ namespace Bladesmiths.Capstone
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			_input = GetComponent<PlayerInputsScript>();
 
 			AssignAnimationIDs();
 
@@ -170,8 +179,18 @@ namespace Bladesmiths.Capstone
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			//float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+			// Modified from initial behavior. Removed sprinting and and added walk and run speed values
+			float targetSpeed = _input.move.magnitude * MoveSpeedCurrentMax;
+
+			// Cap minimum movement speed to walk speed
+			if (targetSpeed > 0 && targetSpeed < WalkSpeed)
+            {
+				targetSpeed = WalkSpeed;
+            }
+
+			//Debug.Log(targetSpeed);
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
