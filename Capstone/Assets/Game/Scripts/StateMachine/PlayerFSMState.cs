@@ -68,6 +68,7 @@ namespace Bladesmiths.Capstone
 
         private GameObject camera;
 
+
         public PlayerFSMState_MOVING(Player player, PlayerInputsScript input, Animator animator, LayerMask layers)
         {
             _player = player;
@@ -389,10 +390,12 @@ namespace Bladesmiths.Capstone
 
     public class PlayerFSMState_DODGE : PlayerFSMState
     {
+        public float timer;
+
         private Player _player;
         private PlayerInputsScript _input;
         private Animator _animator;
-        
+
         private int _animIDSpeed;
         private int _animIDDodge;
         private int _animIDMotionSpeed;
@@ -407,28 +410,56 @@ namespace Bladesmiths.Capstone
         public float SpeedChangeRate = 10.0f;
         public float RotationSmoothTime = 0.12f;
 
+        public bool Grounded = true;
+        public bool isGrounded = true;
+        public float GroundedOffset = -0.10f;
+        public float GroundedRadius = 0.20f;
+        public LayerMask GroundLayers;
+        private int _animIDGrounded;
+
+        public float JumpHeight = 1.2f;
+        public float Gravity = -15.0f;
+
         private GameObject camera;
 
-        public float timer;
-
-        public PlayerFSMState_DODGE(Player player, PlayerInputsScript input, Animator animator)
+        public PlayerFSMState_DODGE(Player player, PlayerInputsScript input, Animator animator, LayerMask layers)
         {
             _player = player;
             _input = input;
             _animator = animator;
+            GroundLayers = layers;
         }
 
         public override void Tick()
         {
+            timer += Time.deltaTime;
+            _input.dodge = false;
+
+            
+
             //Vector2 movement = _input.move.normalized * (10 * Time.deltaTime);
             //_controller.Move(new Vector3(movement.x, 0, movement.y));
 
-            timer += Time.deltaTime;
 
-            float targetSpeed = _input.move.magnitude * 10;
+            if (Grounded)
+            {
+                if (_verticalVelocity < 0.0f)
+                {
+                    _verticalVelocity = -2f;
+                }
+            }
 
+
+            Vector3 inputDirection = Vector3.zero;
+            Vector3 targetDirection = Vector3.zero;
+
+
+            float targetSpeed = _input.move.magnitude * 20;
 
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+
+            //if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -452,7 +483,7 @@ namespace Bladesmiths.Capstone
             }
 
             // normalise input direction
-            Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
@@ -463,41 +494,43 @@ namespace Bladesmiths.Capstone
 
                 // rotate to face input direction relative to camera position
                 _player.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+
             }
 
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            if (_verticalVelocity < _terminalVelocity)
+            {
+                _verticalVelocity += Gravity * Time.deltaTime;
+            }
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 
-
+            GroundedCheck();
 
         }
 
         public override void OnEnter()
         {
-            _animIDSpeed = Animator.StringToHash("Speed");
-            _animIDDodge = Animator.StringToHash("Dodge");
-            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            timer = 0;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
-            timer = 0;
-
-            if (_animator != null)
-            {
-                _hasAnimator = true;
-            }
-            else
-            {
-                _hasAnimator = false;
-            }
-
         }
 
         public override void OnExit()
         {
+
+        }
+
+        private void GroundedCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(_player.transform.position.x, _player.transform.position.y - GroundedOffset, _player.transform.position.z);
+            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+
+
         }
     }
 

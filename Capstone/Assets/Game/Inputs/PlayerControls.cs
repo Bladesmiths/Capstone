@@ -83,6 +83,14 @@ namespace Bladesmiths.Capstone
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""300c7c07-e2f3-41d9-a698-becca1321769"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -327,6 +335,17 @@ namespace Bladesmiths.Capstone
                     ""action"": ""Target Lock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a1ad1fc-292b-4677-8f2c-3825ca2d7d57"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -391,6 +410,7 @@ namespace Bladesmiths.Capstone
             m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
             m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
+            m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -448,6 +468,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Dodge;
         private readonly InputAction m_Player_TargetLock;
         private readonly InputAction m_Player_MoveTarget;
+        private readonly InputAction m_Player_Parry;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
@@ -460,6 +481,7 @@ namespace Bladesmiths.Capstone
             public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
             public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
+            public InputAction @Parry => m_Wrapper.m_Player_Parry;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -493,6 +515,9 @@ namespace Bladesmiths.Capstone
                     @MoveTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
                     @MoveTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
                     @MoveTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveTarget;
+                    @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                    @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                    @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -521,6 +546,9 @@ namespace Bladesmiths.Capstone
                     @MoveTarget.started += instance.OnMoveTarget;
                     @MoveTarget.performed += instance.OnMoveTarget;
                     @MoveTarget.canceled += instance.OnMoveTarget;
+                    @Parry.started += instance.OnParry;
+                    @Parry.performed += instance.OnParry;
+                    @Parry.canceled += instance.OnParry;
                 }
             }
         }
@@ -571,6 +599,7 @@ namespace Bladesmiths.Capstone
             void OnDodge(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);
             void OnMoveTarget(InputAction.CallbackContext context);
+            void OnParry(InputAction.CallbackContext context);
         }
     }
 }

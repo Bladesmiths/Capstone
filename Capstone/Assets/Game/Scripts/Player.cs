@@ -72,7 +72,7 @@ namespace Bladesmiths.Capstone
             attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
             death = new PlayerFSMState_DEATH();
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
-            dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>());
+            dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>(), GroundLayers);
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers);
 
             // Adds all of the possible transitions
