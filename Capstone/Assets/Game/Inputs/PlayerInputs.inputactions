@@ -52,6 +52,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Target Lock",
+                    "type": "Button",
+                    "id": "17d446e5-78de-44d9-9135-32112553196b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Move Target",
+                    "type": "PassThrough",
+                    "id": "7072818c-abf1-4af9-9a2b-a798177f5a65",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -250,6 +266,50 @@
                     "processors": "",
                     "groups": "Xbox Controller;Gamepad",
                     "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e67e81d5-f2d6-4f28-bd62-cec7ec46ad30",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Move Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d082d1f-331c-4f79-9ad0-310c2dc21714",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "Press",
+                    "processors": "AxisDeadzone,Invert",
+                    "groups": "Gamepad",
+                    "action": "Move Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93d3fb06-9e10-4099-8a40-a9ac96540b9d",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Target Lock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6be1fd7-669d-4503-8c77-e234f7df12c3",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Target Lock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
