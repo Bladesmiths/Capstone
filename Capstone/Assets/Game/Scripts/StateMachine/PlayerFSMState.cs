@@ -225,15 +225,17 @@ namespace Bladesmiths.Capstone
     {
         public float timer;
         private GameObject _playerParryBox;
-        public PlayerFSMState_PARRY(GameObject playerParryBox)
+        private PlayerInputsScript _input;
+        public PlayerFSMState_PARRY(GameObject playerParryBox, PlayerInputsScript input)
         {
             _playerParryBox = playerParryBox;
+            _input = input;
         }
 
         public override void Tick()
         {
             timer += Time.deltaTime;
-
+            
             _playerParryBox.SetActive(true);
         }
 
@@ -244,6 +246,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
+            _input.parry = false;
             _playerParryBox.SetActive(false);
             _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
         }

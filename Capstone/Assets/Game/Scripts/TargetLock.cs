@@ -31,6 +31,10 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private Canvas targetCanvas; 
+
+        [SerializeField] 
+        private Transform playerCamRoot;
+
         #endregion
 
         void Start()
@@ -46,10 +50,10 @@ namespace Bladesmiths.Capstone
             // Debug logic to see where the player's targeting ray will be looking
             if (Application.isEditor && targetedObject != null)
             {
-                Vector3 rayDirection = targetedObject.transform.Find("EnemyCameraRoot").position - 
-                    transform.Find("PlayerCameraRoot").position;
+                Vector3 rayDirection = targetedObject.transform.Find("EnemyCameraRoot").position -
+                    playerCamRoot.position;
 
-                Debug.DrawRay(transform.Find("PlayerCameraRoot").position, rayDirection, Color.red);
+                Debug.DrawRay(playerCamRoot.position, rayDirection, Color.red);
                 Debug.DrawLine(transform.position, transform.position + transform.right, Color.blue);
                 Debug.DrawLine(transform.position, transform.position + transform.forward, Color.green); 
             }
@@ -313,7 +317,7 @@ namespace Bladesmiths.Capstone
         {
             RaycastHit hit;
 
-            return (Physics.Linecast(transform.Find("PlayerCameraRoot").position, 
+            return (Physics.Linecast(playerCamRoot.position, 
                 enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
         }
 
@@ -322,7 +326,7 @@ namespace Bladesmiths.Capstone
             Vector3 vecFromTargetToPlayer = transform.position - targetedObject.transform.position;
             vecFromTargetToPlayer.Normalize();
             targetCanvas.transform.position = targetedObject.transform.Find("EnemyCameraRoot").position
-                + (vecFromTargetToPlayer * 0.5f);
+                + (vecFromTargetToPlayer * 0.15f);
             targetCanvas.transform.rotation = Quaternion.Euler(targetCanvas.transform.rotation.eulerAngles.x,
                 targetLockCam.transform.rotation.eulerAngles.y, targetCanvas.transform.rotation.eulerAngles.z);
         }

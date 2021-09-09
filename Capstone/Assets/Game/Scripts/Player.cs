@@ -71,7 +71,7 @@ namespace Bladesmiths.Capstone
             Combat_FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            parry = new PlayerFSMState_PARRY(parryDetector);
+            parry = new PlayerFSMState_PARRY(parryDetector, inputs);
             move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
             idleMovement = new PlayerFSMState_IDLE();
             idleCombat = new PlayerFSMState_IDLE();
