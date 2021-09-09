@@ -9,6 +9,11 @@ using StarterAssets;
 
 namespace Bladesmiths.Capstone
 {
+    /// <summary>
+    /// The main class for the Player character
+    /// This is where all of the transitions between states 
+    /// are defined and how they are transitioned between
+    /// </summary>
     public class Player : Character, IDamageable
     {
         // Reference to the Finite State Machine
@@ -27,9 +32,10 @@ namespace Bladesmiths.Capstone
 
         private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRY parry;
-        private PlayerFSMState_IDLE idle;
+        private PlayerFSMState_IDLE idleMovement;
+        private PlayerFSMState_IDLE idleCombat;
 
-        
+
         PlayerFSMState_ATTACK attack;
         PlayerFSMState_DEATH death;
         PlayerFSMState_TAKEDAMAGE takeDamage;
@@ -65,10 +71,10 @@ namespace Bladesmiths.Capstone
             Combat_FSM = new FiniteStateMachine();
 
             // Creates all of the states
-
             parry = new PlayerFSMState_PARRY(parryDetector);
             move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
-            idle = new PlayerFSMState_IDLE();
+            idleMovement = new PlayerFSMState_IDLE();
+            idleCombat = new PlayerFSMState_IDLE();
             attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
             death = new PlayerFSMState_DEATH();
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
@@ -76,27 +82,28 @@ namespace Bladesmiths.Capstone
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers);
 
             // Adds all of the possible transitions
-            Movement_FSM.AddTransition(move, idle, IsIdle());
-            Movement_FSM.AddTransition(idle, move, IsMoving());
+            // These are the possible transitions for the Player's Movement
+            Movement_FSM.AddTransition(move, idleMovement, IsIdle());
+            Movement_FSM.AddTransition(idleMovement, move, IsMoving());
             Movement_FSM.AddTransition(move, dodge, IsDodging());
             Movement_FSM.AddTransition(dodge, move, IsDodgingStopped());
-            Movement_FSM.AddTransition(jump, idle, IsGrounded());
+            Movement_FSM.AddTransition(jump, idleMovement, IsGrounded());
             Movement_FSM.AddTransition(move, jump, IsJumping());
-            Movement_FSM.AddTransition(idle, jump, IsJumping());
+            Movement_FSM.AddTransition(idleMovement, jump, IsJumping());
 
-
-            Combat_FSM.AddTransition(idle, attack, IsAttacking());
-            Combat_FSM.AddTransition(attack, idle, IsIdle());
-            Combat_FSM.AddTransition(idle, death, Alive());
+            // These are the possible transitions for the Player's Combat
+            Combat_FSM.AddTransition(idleCombat, attack, IsAttacking());
+            Combat_FSM.AddTransition(attack, idleCombat, IsCombatIdle());
+            Combat_FSM.AddTransition(idleCombat, death, Alive());
             Combat_FSM.AddTransition(attack, death, Alive());
-            Combat_FSM.AddTransition(idle, parry, IsBlockReleased());
-            Combat_FSM.AddTransition(parry, idle, IsReleased());
+            Combat_FSM.AddTransition(idleCombat, parry, IsBlockReleased());
+            Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
 
 
 
             // Sets the current state
-            Combat_FSM.SetCurrentState(idle);
-            Movement_FSM.SetCurrentState(idle);
+            Combat_FSM.SetCurrentState(idleCombat);
+            Movement_FSM.SetCurrentState(idleMovement);
 
 
         }
@@ -113,6 +120,13 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
         public Func<bool> IsIdle() => () => this.gameObject.GetComponent<CharacterController>().velocity.magnitude <= 0;
+
+        /// <summary>
+        /// The condition for going between the MOVE and IDLE states
+        /// </summary>
+        /// <returns></returns>
+        //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
+        public Func<bool> IsCombatIdle() => () => !inputs.attack && !inputs.parry;
 
         /// <summary>
         /// The condition fro going between the BLOCK and PARRY state
@@ -150,7 +164,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         // TODO: Should implement something like when dodging animation stops
-        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 0.7;
+        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 0.3;
 
         /// <summary>
         /// The condition for having been attacked
@@ -158,6 +172,10 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> Alive() => () => Health == 0;
 
+        /// <summary>
+        /// Waits .5 seconds until the parry switches back to the default state
+        /// </summary>
+        /// <returns></returns>
         public Func<bool> IsReleased() => () => parry.timer >= 0.5;
 
         /// <summary>
@@ -184,6 +202,10 @@ namespace Bladesmiths.Capstone
             CameraRotation();
         }
 
+        /// <summary>
+        /// Checks to see if the Player is on the ground
+        /// </summary>
+        /// <returns></returns>
         private bool GroundedCheck()
         {
             // set sphere position, with offset
@@ -194,6 +216,9 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// Allows for the camera to rotate with the player
+        /// </summary>
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
@@ -211,6 +236,13 @@ namespace Bladesmiths.Capstone
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
         }
 
+        /// <summary>
+        /// Sets the angle for the camera going around the player
+        /// </summary>
+        /// <param name="lfAngle"></param>
+        /// <param name="lfMin"></param>
+        /// <param name="lfMax"></param>
+        /// <returns></returns>
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
@@ -247,6 +279,10 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// Allows for the player to take damage
+        /// </summary>
+        /// <param name="dmg"></param>
         public void TakingDamage(float dmg)
         {
             Health -= dmg;

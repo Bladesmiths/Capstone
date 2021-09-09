@@ -8,7 +8,7 @@ using StarterAssets;
 namespace Bladesmiths.Capstone
 {
     /// <summary>
-    /// Base class for possible states
+    /// Base class for possible states for the Player
     /// </summary>
     public class PlayerFSMState : IState
     {
@@ -34,6 +34,9 @@ namespace Bladesmiths.Capstone
 
     }
 
+    /// <summary>
+    /// The state that sllows for the player to move
+    /// </summary>
     public class PlayerFSMState_MOVING : PlayerFSMState
     {
         public float timer;
@@ -95,6 +98,11 @@ namespace Bladesmiths.Capstone
                 {
                     _verticalVelocity = -2f;
                 }
+            }
+            else
+            {
+                _verticalVelocity = 0;
+
             }
 
 
@@ -183,6 +191,9 @@ namespace Bladesmiths.Capstone
         }
     }
 
+    /// <summary>
+    /// The state for when the player is not moving
+    /// </summary>
     public class PlayerFSMState_IDLE : PlayerFSMState
     {
         public PlayerFSMState_IDLE()
@@ -207,6 +218,9 @@ namespace Bladesmiths.Capstone
 
     }
 
+    /// <summary>
+    /// The state for when the Player is parrying enemy attacks
+    /// </summary>
     public class PlayerFSMState_PARRY : PlayerFSMState
     {
         public float timer;
@@ -236,6 +250,9 @@ namespace Bladesmiths.Capstone
 
     }
 
+    /// <summary>
+    /// The state for when the Player attacks
+    /// </summary>
     public class PlayerFSMState_ATTACK : PlayerFSMState
     {
         private Player _player;
@@ -332,6 +349,10 @@ namespace Bladesmiths.Capstone
 
     }
 
+    /// <summary>
+    /// The state for when the player takes damage
+    /// CURRENTLY NOT IN USE
+    /// </summary>
     public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
     {
         private Player _player;
@@ -364,6 +385,9 @@ namespace Bladesmiths.Capstone
 
     }
 
+    /// <summary>
+    /// The state for when the Player is dead
+    /// </summary>
     public class PlayerFSMState_DEATH : PlayerFSMState
     {
         public PlayerFSMState_DEATH()
@@ -388,6 +412,10 @@ namespace Bladesmiths.Capstone
 
     }
 
+    /// <summary>
+    /// The state for when the player is dodging
+    /// TODO: will need to re-write as this is only a temp interaction for what it feels like
+    /// </summary>
     public class PlayerFSMState_DODGE : PlayerFSMState
     {
         public float timer;
@@ -534,6 +562,9 @@ namespace Bladesmiths.Capstone
         }
     }
 
+    /// <summary>
+    /// The state for when the player is jumping
+    /// </summary>
     public class PlayerFSMState_JUMP : PlayerFSMState
     {
         private float _jumpTimeoutDelta;
@@ -560,6 +591,8 @@ namespace Bladesmiths.Capstone
         public float JumpHeight = 1.2f;
         public float Gravity = -15.0f;
 
+        private Vector3 controllerVelocity;
+
 
         public bool _hasAnimator;
 
@@ -583,8 +616,8 @@ namespace Bladesmiths.Capstone
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
+                    //_animator.SetBool(_animIDJump, false);
+                    //_animator.SetBool(_animIDFreeFall, false);
                     _verticalVelocity = 0f;
                 }
 
@@ -603,7 +636,7 @@ namespace Bladesmiths.Capstone
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDJump, true);
+                        //_animator.SetBool(_animIDJump, true);
                     }
                 }
 
@@ -617,7 +650,10 @@ namespace Bladesmiths.Capstone
                 //{
 
                 //}
-                _controller.Move(new Vector3(_controller.velocity.x, _verticalVelocity, _controller.velocity.z) * Time.deltaTime);
+
+                controllerVelocity = _controller.velocity.normalized;
+
+                _controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
 
 
 
@@ -638,7 +674,9 @@ namespace Bladesmiths.Capstone
                 // if we are not grounded, do not jump
                 _input.jump = false;
 
-                _controller.Move(new Vector3(_controller.velocity.x, _verticalVelocity, _controller.velocity.z) * Time.deltaTime);
+                controllerVelocity = _controller.velocity.normalized;
+
+                _controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
 
             }
 
@@ -678,7 +716,7 @@ namespace Bladesmiths.Capstone
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDGrounded, Grounded);
+                //_animator.SetBool(_animIDGrounded, Grounded);
             }
 
         }
