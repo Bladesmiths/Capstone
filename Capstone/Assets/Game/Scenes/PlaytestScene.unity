@@ -2357,6 +2357,105 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1 &913836060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 913836061}
+  - component: {fileID: 913836065}
+  - component: {fileID: 913836063}
+  - component: {fileID: 913836062}
+  m_Layer: 0
+  m_Name: SecondAreaTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &913836061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913836060}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.3, y: 1.63, z: 18.75}
+  m_LocalScale: {x: 28.089277, y: 4.0444, z: 11.606151}
+  m_Children: []
+  m_Father: {fileID: 1129916064}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913836062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913836060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb357f83bba8c7f49836794d53aae002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnEnter: 1
+  activateOnExit: 1
+  tagToCollideWith: Player
+  onEnterMethod:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1127287258}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.Testing.TestingCannon, Assembly-CSharp
+        m_MethodName: PlayerEnterSecondArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitMethod:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1127287258}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.Testing.TestingCannon, Assembly-CSharp
+        m_MethodName: PlayerLeaveSecondArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &913836063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913836060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &913836065
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913836060}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &960664105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,7 +3115,7 @@ GameObject:
   - component: {fileID: 1127287257}
   - component: {fileID: 1127287256}
   - component: {fileID: 1127287255}
-  - component: {fileID: 1127287254}
+  - component: {fileID: 1127287258}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -3032,24 +3131,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127287252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 1.5, z: 19.11}
-  m_LocalScale: {x: 1, y: 3.1528, z: 8.209644}
+  m_LocalPosition: {x: -7.5, y: 1.5, z: 19}
+  m_LocalScale: {x: 1, y: 3, z: 8}
   m_Children: []
   m_Father: {fileID: 1129916064}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1127287254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127287252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19abbb26a50d8c04c83b13c0d87dd5a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1127287255
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3082,7 +3169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: e6bdc724b8b4f0c4d83814c60dc8fe60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3112,6 +3199,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127287252}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1127287258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127287252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302ef482ddbb3a348b0a8a68f9b478b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3861298083143071199, guid: 40705d8999592c042bd81ccf366286cc, type: 3}
+  topLeft: {x: 0, y: 0, z: 0}
+  bottomRight: {x: 0, y: 0, z: 0}
+  timerLimit: 5
+  projectileVelocity: {x: 0.125, y: 0, z: 0}
 --- !u!1 &1128643864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3341,7 @@ Transform:
   - {fileID: 1515181602}
   - {fileID: 216360802}
   - {fileID: 1127287253}
+  - {fileID: 913836061}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

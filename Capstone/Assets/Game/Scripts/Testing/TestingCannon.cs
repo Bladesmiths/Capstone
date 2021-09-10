@@ -40,16 +40,16 @@ namespace Bladesmiths.Capstone.Testing
                                       transform.position.z + transform.localScale.z / 2);
 
             // Testing
-            PlayerInSecondArea(); 
+            //PlayerEnterSecondArea(); 
         }
 
-        public void PlayerInSecondArea()
+        public void PlayerEnterSecondArea()
         {
             inSecondArea = true; 
             StartCoroutine("CountdownFireTimer");
         }
 
-        public void PlayerLeavingSecondArea()
+        public void PlayerLeaveSecondArea()
         {
             inSecondArea = false; 
         }
