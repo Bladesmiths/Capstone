@@ -99,11 +99,7 @@ namespace Bladesmiths.Capstone
                     _verticalVelocity = -2f;
                 }
             }
-            else
-            {
-                //_verticalVelocity = 0;
-
-            }
+           
 
 
             Vector3 inputDirection = Vector3.zero;
@@ -115,7 +111,6 @@ namespace Bladesmiths.Capstone
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
 
-            //if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -651,9 +646,10 @@ namespace Bladesmiths.Capstone
                     }
                 }
 
-               
+               // Get the current velocity of the player
                 controllerVelocity = _controller.velocity.normalized;
 
+                // move the player
                 _controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
 
 
@@ -694,7 +690,6 @@ namespace Bladesmiths.Capstone
                 _controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 
-                //_controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
 
             }
 
