@@ -101,7 +101,7 @@ namespace Bladesmiths.Capstone
             }
             else
             {
-                _verticalVelocity = 0;
+                //_verticalVelocity = 0;
 
             }
 
@@ -173,6 +173,7 @@ namespace Bladesmiths.Capstone
             //timer = 0;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
+
         }
 
         public override void OnExit()
@@ -644,12 +645,21 @@ namespace Bladesmiths.Capstone
         private int _animIDGrounded;
 
         public float JumpHeight = 1.2f;
-        public float Gravity = -15.0f;
+        public float Gravity = -20.0f;
 
         private Vector3 controllerVelocity;
 
 
         public bool _hasAnimator;
+
+        private float _speed;
+        private float _targetRotation = 0.0f;
+        private float _rotationVelocity;
+       
+        public float SpeedChangeRate = 10.0f;
+        public float RotationSmoothTime = 0.12f;
+
+        private GameObject camera;
 
         public PlayerFSMState_JUMP(Player player, PlayerInputsScript input, LayerMask layers)
         {
@@ -665,8 +675,6 @@ namespace Bladesmiths.Capstone
             {
                 isGrounded = true;
 
-                // reset the fall timeout timer
-                _fallTimeoutDelta = FallTimeout;
 
                 // update animator if using character
                 if (_hasAnimator)
@@ -695,17 +703,7 @@ namespace Bladesmiths.Capstone
                     }
                 }
 
-                // jump timeout
-                //if (_jumpTimeoutDelta >= 0.0f)
-                //{
-                //    _jumpTimeoutDelta -= Time.deltaTime;
-
-                //}
-                //else
-                //{
-
-                //}
-
+               
                 controllerVelocity = _controller.velocity.normalized;
 
                 _controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
@@ -719,19 +717,36 @@ namespace Bladesmiths.Capstone
                 //_jumpTimeoutDelta = JumpTimeout;
                 isGrounded = false;
 
-                // fall timeout
-                if (_fallTimeoutDelta >= 0.0f)
-                {
-
-                    _fallTimeoutDelta -= Time.deltaTime;
-                }
-                
+                               
                 // if we are not grounded, do not jump
                 _input.jump = false;
 
-                controllerVelocity = _controller.velocity.normalized;
+                Vector3 inputDirection = Vector3.zero;
+                Vector3 targetDirection = Vector3.zero;
 
-                _controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
+
+                float targetSpeed = _input.move.magnitude * 5;
+
+                inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+                // if there is a move input rotate player when the player is moving
+                if (_input.move != Vector2.zero)
+                {
+                    _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
+                    float rotation = Mathf.SmoothDampAngle(_player.transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
+
+                    // rotate to face input direction relative to camera position
+                    _player.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                    targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+
+                }
+
+                // move the player
+                _controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+
+                //_controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
 
             }
 
@@ -753,6 +768,7 @@ namespace Bladesmiths.Capstone
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _controller = _player.gameObject.GetComponent<CharacterController>();
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
 
             isGrounded = false;
         }
