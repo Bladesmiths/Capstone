@@ -4854,8 +4854,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c24ef2ad788ee4aa55f582c49dd411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reportedDataNames: []
-  reportedDataTypes: 
+  analyticsLink: https://rit.az1.qualtrics.com/jfe/form/SV_824FEVQgFnFTfYq
+  reportedDataNames:
+  - numAttacks
+  - numBlocks
+  - numDodges
+  - numJumps
+  - reachedEnd
+  - remainingHealth
+  - timeToTest
+  reportedDataTypes: 09000000090000000900000009000000030000000d00000010000000
 --- !u!4 &1644626661
 Transform:
   m_ObjectHideFlags: 0

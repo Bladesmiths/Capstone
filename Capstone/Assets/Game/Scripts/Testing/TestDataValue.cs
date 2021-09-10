@@ -5,46 +5,148 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone.Testing
 {
-    public class TestDataValue
+    public abstract class TestDataValue
     {
-        #region Fields
-        private TestType dataType;
+        protected string dataName;
+        protected string dataString;
 
-        private string data; 
-        #endregion
-
-        public TestDataValue(TestType type)
+        public virtual string DataString
         {
-            dataType = type;    
+            get { return dataString; }
         }
 
-        public void Update()
+        public TestDataValue(string name)
         {
-            switch (dataType)
+            dataName = name; 
+        }
+
+        public virtual string Report()
+        {
+            return $"{dataName}={dataString}";
+        }
+    }
+
+    public class TestDataInt : TestDataValue
+    {
+        int data; 
+
+        public int Data
+        {
+            get { return data; }
+            set
             {
-                case TestType.Integer:
-                    break;
-                case TestType.Float:
-                    break;
-                case TestType.Bool:
-                    break;
-                case TestType.String:
-                    break;
-                case TestType.Time:
-                    break;
-                default:
-                    Debug.Log("Undefined Testing Type");
-                    break;
+                data = value;
+                dataString = data.ToString(); 
+            }
+        }
+        public TestDataInt(string name) : base(name)
+        {
+            data = default;
+        }
+    }
+
+    public class TestDataFloat : TestDataValue
+    {
+        float data;
+
+        public float Data
+        {
+            get { return data; }
+            set
+            {
+                data = value;
+                dataString = data.ToString();
+            }
+        }
+        public TestDataFloat(string name) : base(name)
+        {
+            data = default;
+        }
+    }
+
+    public class TestDataBool : TestDataValue
+    {
+        bool data;
+
+        public bool Data
+        {
+            get { return data; }
+            set
+            {
+                data = value;
+                dataString = data.ToString();
+            }
+        }
+        public TestDataBool(string name) : base(name)
+        {
+            data = default;
+        }
+    }
+
+    public class TestDataString : TestDataValue
+    {
+        string data;
+
+        public string Data
+        {
+            get { return data; }
+            set
+            {
+                data = value;
+                dataString = data;
+            }
+        }
+        public TestDataString(string name) : base(name)
+        {
+            data = default;
+        }
+    }
+
+    public class TestDataTime : TestDataValue
+    {
+        float data;
+        bool timerCounting; 
+
+        public TimeSpan Data
+        {
+            get { return TimeSpan.FromSeconds(data); }
+            set
+            {
+                data = (float)value.TotalSeconds;
+                dataString = TimeSpan.FromSeconds(data).ToString(@"h\:mm\:ss");
+            }
+        }
+
+        public override string DataString
+        {
+            get { return TimeSpan.FromSeconds(data).ToString(@"h\:mm\:ss"); }
+        }
+
+        public TestDataTime(string name) : base(name)
+        {
+            data = default;
+
+        }
+
+        public void StartTimer(MonoBehaviour monoBehaviourInstance)
+        {
+            timerCounting = true;
+            monoBehaviourInstance.StartCoroutine(Timer()); 
+        }
+
+        public override string Report()
+        {
+            return $"{dataName}={TimeSpan.FromSeconds(data).ToString(@"h\:mm\:ss")}";
+        }
+
+        IEnumerator Timer()
+        {
+            while (timerCounting)
+            {
+                data += Time.deltaTime;
+                yield return null;
             }
         }
     }
 
-    public enum TestType
-    {
-        Integer, 
-        Float, 
-        Bool, 
-        String, 
-        Time
-    }
 }

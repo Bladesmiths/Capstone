@@ -1,57 +1,98 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking; 
 
 namespace Bladesmiths.Capstone.Testing {
     public class TestingController : MonoBehaviour
     {
         #region Fields
         [SerializeField]
+        private string analyticsLink; 
+
+        [SerializeField]
         private List<string> reportedDataNames;
         [SerializeField]
-        private List<TestType> reportedDataTypes; 
+        private List<TypeCode> reportedDataTypes; 
 
-        private Dictionary<string, TestDataValue> reportedData;
+        private Dictionary<string, TestDataValue> reportedData = new Dictionary<string, TestDataValue>();
         #endregion
-        // Start is called before the first frame update
+
+        public Dictionary<string, TestDataValue> ReportedData
+        {
+            get { return reportedData; }
+        }
+
         void Start()
         {
-            for (int i = 0; i < reportedDataNames.Count; i++)
+            for (int i = 0; i < reportedDataTypes.Count; i++)
             {
                 string name = reportedDataNames[i];
-                TestType type = reportedDataTypes[i]; 
-                reportedData.Add(name, new TestDataValue(type)); 
+                TypeCode type = reportedDataTypes[i];
+
+                switch (type)
+                {
+                    case TypeCode.Int32:
+                        reportedData.Add(name, new TestDataInt(name));
+                        break;
+                    case TypeCode.Single:
+                        reportedData.Add(name, new TestDataFloat(name));
+                        break;
+                    case TypeCode.Boolean:
+                        reportedData.Add(name, new TestDataBool(name));
+                        break;
+                    case TypeCode.String:
+                        reportedData.Add(name, new TestDataString(name));
+                        break;
+                    case TypeCode.DateTime:
+                        reportedData.Add(name, new TestDataTime(name));
+                        ((TestDataTime)reportedData[name]).StartTimer(this);
+                        break;
+                    default:
+                        Debug.Log("Undefined Testing Type");
+                        break;
+                }
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            Debug.Log(reportedData["Timer"].DataString); 
         }
 
         public void EndTest()
         {
-
+            ReportData(); 
         }
 
-        private void ReportData(string dataName)
+        private void ReportData()
         {
+            string completeReportedLink = analyticsLink + "/?";
 
+            foreach (TestDataValue testData in reportedData.Values)
+            {
+                completeReportedLink += (testData.Report() + "&"); 
+            }
+            completeReportedLink.Remove(analyticsLink.LastIndexOf("&")); 
+
+            WWWForm form = new WWWForm();
+            UnityEngine.Networking.UnityWebRequest www = 
+                UnityEngine.Networking.UnityWebRequest.Get(completeReportedLink);
+
+            www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError || 
+                www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+                Debug.Log("Report Successful");
+            }
         }
-
-        //    WWWForm form = new WWWForm();
-        //    UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get("https://rit.az1.qualtrics.com/jfe/form/SV_afPgmwJySIesQxU/?action1=blah&action2=blah2");
-
-        //    www.SendWebRequest();
-
-        //if (www.isNetworkError || www.isHttpError)
-        //{
-        //            Debug.Log(www.error);
-        //}
-        //else
-        //{
-        //    Debug.Log(www.downloadHandler.text);
-        //    Debug.Log("successful!");
     }
 }
