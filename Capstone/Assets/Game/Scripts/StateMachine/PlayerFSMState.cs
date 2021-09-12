@@ -221,6 +221,41 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// The state for when the Player is parrying enemy attacks
     /// </summary>
+    public class PlayerFSMState_BLOCK : PlayerFSMState
+    {
+        // public float timer;
+        // private GameObject _playerParryBox;
+        // private PlayerInputsScript _input;
+        public PlayerFSMState_BLOCK()
+        {
+            //_playerParryBox = playerParryBox;
+            //_input = input;
+        }
+
+        public override void Tick()
+        {
+            //timer += Time.deltaTime;
+
+            //_playerParryBox.SetActive(true);
+        }
+
+        public override void OnEnter()
+        {
+            //timer = 0;
+        }
+
+        public override void OnExit()
+        {
+            //_input.parry = false;
+            //_playerParryBox.SetActive(false);
+            //_playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
+
+    }
+
+    /// <summary>
+    /// The state for when the Player is parrying enemy attacks
+    /// </summary>
     public class PlayerFSMState_PARRY : PlayerFSMState
     {
         public float timer;
