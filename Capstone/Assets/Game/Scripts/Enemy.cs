@@ -76,19 +76,25 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-            if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
-            {
-                attackTimer += Time.deltaTime;
+            //if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
+            //{
+            //    attackTimer += Time.deltaTime;
 
-                if ((attackTimer >= 1))
-                {
-                    Attack();
-                    attackTimer = 0f;
-                }
+            //    if ((attackTimer >= 1))
+            //    {
+            //        Attack();
+            //        attackTimer = 0f;
+            //    }
                 
 
-            }
+            //}
 
+
+        }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            Attack();
 
         }
 

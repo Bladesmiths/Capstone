@@ -15,7 +15,7 @@ namespace Bladesmiths.Capstone
 
         // The Dictionary of all of the states and their transitions
         private Dictionary<Type, List<Transition>> possibleTransitions = new Dictionary<Type, List<Transition>>();
-        
+
         // The list of transitions that can go from any state
         private List<Transition> anyTransitions = new List<Transition>();
         
@@ -134,11 +134,11 @@ namespace Bladesmiths.Capstone
         }
 
         // TO DO:
-        //public virtual void AddAnyTransition(IState state, Func<bool> predicate)
-        //{
-        //    anyTransitions.Add(new Transition(state, predicate));
+        public virtual void AddAnyTransition(IState state, Func<bool> predicate)
+        {
+            anyTransitions.Add(new Transition(state, predicate));
 
-        //}
+        }
 
         /// <summary>
         /// Adds the transition to the dictionary of possible transitions for each state
