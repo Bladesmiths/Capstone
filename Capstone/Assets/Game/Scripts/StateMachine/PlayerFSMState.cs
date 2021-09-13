@@ -237,6 +237,8 @@ namespace Bladesmiths.Capstone
             //timer += Time.deltaTime;
 
             //_playerParryBox.SetActive(true);
+
+            Debug.Log("In block");
         }
 
         public override void OnEnter()
@@ -272,6 +274,10 @@ namespace Bladesmiths.Capstone
             timer += Time.deltaTime;
             
             _playerParryBox.SetActive(true);
+
+            // Something along the lines of if the timer runs out (the parry frames), then tell the FSM to switch to idle
+
+            Debug.Log("In Parry");
         }
 
         public override void OnEnter()
