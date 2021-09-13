@@ -41,6 +41,7 @@ namespace Bladesmiths.Capstone
         PlayerFSMState_TAKEDAMAGE takeDamage;
         PlayerFSMState_DODGE dodge;
         PlayerFSMState_JUMP jump;
+        PlayerFSMState_BLOCK block;
 
         public bool isDamaged;
 
@@ -72,6 +73,7 @@ namespace Bladesmiths.Capstone
 
             // Creates all of the states
             parry = new PlayerFSMState_PARRY(parryDetector, inputs);
+            block = new PlayerFSMState_BLOCK();
             move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
             idleMovement = new PlayerFSMState_IDLE();
             idleCombat = new PlayerFSMState_IDLE();
@@ -96,8 +98,11 @@ namespace Bladesmiths.Capstone
             Combat_FSM.AddTransition(attack, idleCombat, IsCombatIdle());
             Combat_FSM.AddTransition(idleCombat, death, Alive());
             Combat_FSM.AddTransition(attack, death, Alive());
-            Combat_FSM.AddTransition(idleCombat, parry, IsBlockReleased());
-            Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
+            //Combat_FSM.AddTransition(idleCombat, parry, IsBlockReleased());
+            //Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
+            Combat_FSM.AddTransition(idleCombat, block, IsBlockPressed());
+            Combat_FSM.AddTransition(block, parry, IsBlockReleased());
+            //Combat_FSM.AddTransition(parry, idleCombat, IsParryReleased());
 
 
 
@@ -129,12 +134,22 @@ namespace Bladesmiths.Capstone
         public Func<bool> IsCombatIdle() => () => !inputs.attack && !inputs.parry;
 
         /// <summary>
-        /// The condition fro going between the BLOCK and PARRY state
-        /// Should be replaced with the input system call later on and not hard coded to right click
+        /// The condition for going between the IDLE and BLOCK state
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsBlockReleased() => () => inputs.parry == true;
+        public Func<bool> IsBlockPressed() => () => inputs.block == true;
 
+        /// <summary>
+        /// The condition for going between the BLOCK and PARRY state
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsBlockReleased() => () => inputs.block == false;
+
+        /// <summary>
+        /// The condition for going between the PARRY and IDLE state
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsParryReleased() => () => inputs.parry == false;
 
         /// <summary>
         /// The condition for going between MOVE/IDLE and the ATTACK states
