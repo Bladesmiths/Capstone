@@ -109,7 +109,11 @@ namespace Bladesmiths.Capstone
             Combat_FSM.AddTransition(block, parry, IsBlockReleased());
             Combat_FSM.AddTransition(parry, idleCombat, IsParryReleased());
 
+            Movement_FSM.AddAnyTransition(takeDamage, IsDamaged());
+            Movement_FSM.AddTransition(takeDamage, idleMovement, IsAbleToDamage());
 
+            Combat_FSM.AddAnyTransition(takeDamage, IsDamaged());
+            Combat_FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
 
             // Sets the current state
             Combat_FSM.SetCurrentState(idleCombat);
@@ -172,7 +176,7 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 1f;
+        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 0.5f;
 
         /// <summary>
         /// The condition for going from MOVE to DODGE state
@@ -305,8 +309,11 @@ namespace Bladesmiths.Capstone
         /// <param name="dmg"></param>
         public void TakingDamage(float dmg)
         {
-            Health -= dmg;
-            isDamaged = true;
+            if (dodge.canDmg)
+            {
+                Health -= dmg;
+                isDamaged = true;
+            }
         }
 
        
