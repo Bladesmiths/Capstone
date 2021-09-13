@@ -91,6 +91,14 @@ namespace Bladesmiths.Capstone
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""01ae2228-4ab3-4fa7-b6e5-94456c7e600b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -340,10 +348,21 @@ namespace Bladesmiths.Capstone
                     ""name"": """",
                     ""id"": ""8a1ad1fc-292b-4677-8f2c-3825ca2d7d57"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07836cb8-9b92-491f-a2ee-0c3623d759ef"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -411,6 +430,7 @@ namespace Bladesmiths.Capstone
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
             m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
             m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
+            m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -469,6 +489,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_TargetLock;
         private readonly InputAction m_Player_MoveTarget;
         private readonly InputAction m_Player_Parry;
+        private readonly InputAction m_Player_Block;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
@@ -482,6 +503,7 @@ namespace Bladesmiths.Capstone
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
             public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
             public InputAction @Parry => m_Wrapper.m_Player_Parry;
+            public InputAction @Block => m_Wrapper.m_Player_Block;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -518,6 +540,9 @@ namespace Bladesmiths.Capstone
                     @Parry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                     @Parry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
                     @Parry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry;
+                    @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                    @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                    @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -549,6 +574,9 @@ namespace Bladesmiths.Capstone
                     @Parry.started += instance.OnParry;
                     @Parry.performed += instance.OnParry;
                     @Parry.canceled += instance.OnParry;
+                    @Block.started += instance.OnBlock;
+                    @Block.performed += instance.OnBlock;
+                    @Block.canceled += instance.OnBlock;
                 }
             }
         }
@@ -600,6 +628,7 @@ namespace Bladesmiths.Capstone
             void OnTargetLock(InputAction.CallbackContext context);
             void OnMoveTarget(InputAction.CallbackContext context);
             void OnParry(InputAction.CallbackContext context);
+            void OnBlock(InputAction.CallbackContext context);
         }
     }
 }
