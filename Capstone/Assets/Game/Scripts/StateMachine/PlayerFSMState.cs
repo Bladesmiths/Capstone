@@ -45,7 +45,7 @@ namespace Bladesmiths.Capstone
         private PlayerInputsScript _input;
         private Animator _animator;
 
-        private int _animIDSpeed;
+        private int _animIDForward;
         private int _animIDDodge;
         private int _animIDMotionSpeed;
         private bool _hasAnimator;
@@ -137,6 +137,9 @@ namespace Bladesmiths.Capstone
             {
                 _speed = targetSpeed;
             }
+            
+            // Animator input
+            _animator.SetFloat(_animIDForward, _speed / targetSpeed);
 
             // normalise input direction
             inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -170,6 +173,8 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
+            _animIDForward = Animator.StringToHash("Forward");
+            
             //timer = 0;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -196,24 +201,36 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerFSMState_IDLE : PlayerFSMState
     {
+        private Animator _animator;
+
+        private int _animIDIdle;
+        private int _animIDForward;
+
         public PlayerFSMState_IDLE()
         {
+            
+        }
 
+        public PlayerFSMState_IDLE(Animator animator)
+        {
+            _animator = animator;
         }
 
         public override void Tick()
         {
-
+            _animator.SetBool(_animIDIdle, true);
         }
 
         public override void OnEnter()
         {
-
+            _animIDIdle = Animator.StringToHash("Idle");
+            _animIDForward = Animator.StringToHash("Forward");
+            _animator.SetFloat(_animIDForward, 0.0f);
         }
 
         public override void OnExit()
         {
-
+            _animator.SetBool(_animIDIdle, false);
         }
 
     }

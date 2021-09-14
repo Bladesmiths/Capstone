@@ -73,8 +73,8 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             parry = new PlayerFSMState_PARRY(parryDetector, inputs);
             move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
-            idleMovement = new PlayerFSMState_IDLE();
-            idleCombat = new PlayerFSMState_IDLE();
+            idleMovement = new PlayerFSMState_IDLE(GetComponent<Animator>());
+            idleCombat = new PlayerFSMState_IDLE(GetComponent<Animator>());
             attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
             death = new PlayerFSMState_DEATH();
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
