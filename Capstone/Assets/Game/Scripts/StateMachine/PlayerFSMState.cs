@@ -151,8 +151,9 @@ namespace Bladesmiths.Capstone
                 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             }
+            targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-            
+
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
@@ -723,9 +724,11 @@ namespace Bladesmiths.Capstone
         private float _rotationVelocity;
        
         public float SpeedChangeRate = 10.0f;
-        public float RotationSmoothTime = 0.12f;
+        public float RotationSmoothTime = 0.20f;
 
         private GameObject camera;
+        Vector3 currentSpeed = Vector3.zero;
+
 
         public PlayerFSMState_JUMP(Player player, PlayerInputsScript input, LayerMask layers)
         {
@@ -740,7 +743,6 @@ namespace Bladesmiths.Capstone
             if (Grounded)
             {
                 isGrounded = true;
-
 
                 // update animator if using character
                 if (_hasAnimator)
@@ -761,6 +763,7 @@ namespace Bladesmiths.Capstone
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                    controllerVelocity = _controller.velocity.normalized * _input.move.magnitude;
 
                     // update animator if using character
                     if (_hasAnimator)
@@ -769,11 +772,10 @@ namespace Bladesmiths.Capstone
                     }
                 }
 
-               // Get the current velocity of the player
-                controllerVelocity = _controller.velocity.normalized;
+                // Get the current velocity of the player
 
                 // move the player
-                _controller.Move(new Vector3(controllerVelocity.x * 10, _verticalVelocity, controllerVelocity.z * 10) * Time.deltaTime);
+                _controller.Move(new Vector3(controllerVelocity.x * 15, _verticalVelocity, controllerVelocity.z * 15) * Time.deltaTime);
 
 
 
@@ -783,18 +785,23 @@ namespace Bladesmiths.Capstone
                 // reset the jump timeout timer
                 //_jumpTimeoutDelta = JumpTimeout;
                 isGrounded = false;
-
-                               
+               
                 // if we are not grounded, do not jump
                 _input.jump = false;
 
                 Vector3 inputDirection = Vector3.zero;
+
                 Vector3 targetDirection = Vector3.zero;
+                Vector3 movementVector = Vector3.zero;
+                //controllerVelocity = Vector3.zero;
+                currentSpeed = Vector3.zero;
 
-
-                float targetSpeed = _input.move.magnitude * 5;
+                float targetSpeed = 8;
 
                 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+                currentSpeed = controllerVelocity;
+                //controllerVelocity = _controller.velocity.normalized;
+
 
                 // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
                 // if there is a move input rotate player when the player is moving
@@ -805,12 +812,37 @@ namespace Bladesmiths.Capstone
 
                     // rotate to face input direction relative to camera position
                     _player.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                    //targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
                     targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
                 }
 
+
+
+
+
+
+                movementVector = targetDirection.normalized + currentSpeed.normalized;
+
+                //movementVector = movementVector.normalized;
+
+                if (new Vector2(currentSpeed.x, currentSpeed.z) == Vector2.zero)
+                {
+                    targetSpeed = 0;
+
+                }
+
+                if (_input.move.x < 0)
+                {
+                    movementVector *= 0.99f;
+                }
+                else if (_input.move.x > 0)
+                {
+                    movementVector *= 1.01f;
+                }
+
                 // move the player
-                _controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                _controller.Move(movementVector * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 
 
@@ -837,6 +869,10 @@ namespace Bladesmiths.Capstone
             camera = GameObject.FindGameObjectWithTag("MainCamera");
 
             isGrounded = false;
+            controllerVelocity = Vector2.zero;
+
+            //currentSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
+
         }
 
         public override void OnExit()
