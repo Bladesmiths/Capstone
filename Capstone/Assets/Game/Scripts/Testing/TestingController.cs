@@ -59,7 +59,8 @@ namespace Bladesmiths.Capstone.Testing {
         // Update is called once per frame
         void Update()
         {
-            Debug.Log(reportedData["Timer"].DataString); 
+            // Testing Time Tracking
+            //Debug.Log(reportedData["timeToTest"].DataString); 
         }
 
         public void EndTest()

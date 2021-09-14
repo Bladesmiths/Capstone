@@ -60,7 +60,7 @@ namespace Bladesmiths.Capstone
         public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
         public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
        
-        private void Update()
+        public virtual void Update()
         {
             FSM.Tick();
 
@@ -128,6 +128,9 @@ namespace Bladesmiths.Capstone
         {
 
         }
-
+        public override void TakeDamage(float damage)
+        {
+            base.TakeDamage(damage);
+        }
     }
 }
