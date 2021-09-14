@@ -29,6 +29,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject sword;
 
         [SerializeField] private GameObject parryDetector;
+        [SerializeField] private GameObject blockDetector;
 
         private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRY parry;
@@ -60,6 +61,8 @@ namespace Bladesmiths.Capstone
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
 
+        public bool parryEnd;
+
         private void Awake()
         {
 
@@ -67,13 +70,15 @@ namespace Bladesmiths.Capstone
             Health = 3;
             isDamaged = false;
 
+            parryEnd = false;
+
             // Creates the FSM
             Movement_FSM = new FiniteStateMachine();
             Combat_FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            parry = new PlayerFSMState_PARRY(parryDetector, inputs);
-            block = new PlayerFSMState_BLOCK();
+            parry = new PlayerFSMState_PARRY(parryDetector, inputs, this);
+            block = new PlayerFSMState_BLOCK(blockDetector);
             move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
             idleMovement = new PlayerFSMState_IDLE();
             idleCombat = new PlayerFSMState_IDLE();
@@ -102,7 +107,7 @@ namespace Bladesmiths.Capstone
             //Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
             Combat_FSM.AddTransition(idleCombat, block, IsBlockPressed());
             Combat_FSM.AddTransition(block, parry, IsBlockReleased());
-            //Combat_FSM.AddTransition(parry, idleCombat, IsParryReleased());
+            Combat_FSM.AddTransition(parry, idleCombat, IsParryReleased());
 
 
 
@@ -149,7 +154,7 @@ namespace Bladesmiths.Capstone
         /// The condition for going between the PARRY and IDLE state
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsParryReleased() => () => inputs.parry == false;
+        public Func<bool> IsParryReleased() => () => parryEnd == true;
 
         /// <summary>
         /// The condition for going between MOVE/IDLE and the ATTACK states
