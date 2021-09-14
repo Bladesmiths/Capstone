@@ -359,7 +359,6 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
     {
         private Player _player;
-        private bool _isDamaged;
         public float timer;
 
         public PlayerFSMState_TAKEDAMAGE(Player player)
@@ -379,14 +378,14 @@ namespace Bladesmiths.Capstone
             _player.isDamaged = false;
             timer = 0;
             _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
-
+            _player.inState = true;
 
         }
 
         public override void OnExit()
         {
             _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
-
+            _player.inState = false;
         }
 
     }
@@ -396,7 +395,35 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerFSMState_DEATH : PlayerFSMState
     {
-        public PlayerFSMState_DEATH()
+        Player _player;
+        public PlayerFSMState_DEATH(Player player)
+        {
+            _player = player;
+        }
+
+        public override void Tick()
+        {
+
+        }
+
+        public override void OnEnter()
+        {
+            _player.inState = true;
+        }
+
+        public override void OnExit()
+        {
+            _player.inState = false;
+        }
+
+    }
+
+    /// <summary>
+    /// The state for when the Player is dead
+    /// </summary>
+    public class PlayerFSMState_NULL : PlayerFSMState
+    {
+        public PlayerFSMState_NULL()
         {
 
         }
@@ -512,6 +539,8 @@ namespace Bladesmiths.Capstone
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
+            
+
             float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
@@ -532,6 +561,12 @@ namespace Bladesmiths.Capstone
 
             // normalise input direction
             inputDirection = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
+
+            if (inputDirection.magnitude == 0)
+            {
+                inputDirection = new Vector3(0, 0, -1).normalized;
+
+            }
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving

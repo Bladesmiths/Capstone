@@ -94,7 +94,7 @@ namespace Bladesmiths.Capstone
 
         void OnCollisionEnter(Collision collision)
         {
-            Attack();
+            //Attack();
 
         }
 
