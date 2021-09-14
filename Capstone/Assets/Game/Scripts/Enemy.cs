@@ -92,6 +92,11 @@ namespace Bladesmiths.Capstone
 
         }
 
+        void OnCollisionEnter(Collision collision)
+        {
+            //Attack();
+        }
+
         protected override void Attack()
         {
             player.TakingDamage(1);
