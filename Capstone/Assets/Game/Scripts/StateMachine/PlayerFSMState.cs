@@ -606,6 +606,8 @@ namespace Bladesmiths.Capstone
         private GameObject camera;
         Vector3 currentSpeed = Vector3.zero;
 
+        private Vector3 maxSpeed;
+
 
         public PlayerFSMState_JUMP(Player player, PlayerInputsScript input, LayerMask layers)
         {
@@ -673,18 +675,33 @@ namespace Bladesmiths.Capstone
                 //controllerVelocity = Vector3.zero;
                 currentSpeed = Vector3.zero;
 
-                float targetSpeed = 8;
+                float targetSpeed = 20;
+                float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
                 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
                 currentSpeed = controllerVelocity;
                 //controllerVelocity = _controller.velocity.normalized;
+
+                if (currentHorizontalSpeed < targetSpeed - 0.1f || currentHorizontalSpeed > targetSpeed + 0.1f)
+                {
+                    // creates curved result rather than a linear one giving a more organic speed change
+                    // note T in Lerp is clamped, so we don't need to clamp our speed
+                    _speed = Mathf.Lerp(currentSpeed.magnitude, targetSpeed * 1f, Time.deltaTime * SpeedChangeRate);
+
+                    // round speed to 3 decimal places
+                    _speed = Mathf.Round(_speed * 1000f) / 1000f;
+                }
+                else
+                {
+                    _speed = targetSpeed;
+                }
 
 
                 // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
                 // if there is a move input rotate player when the player is moving
                 if (_input.move != Vector2.zero)
                 {
-                    _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
+                    _targetRotation = Mathf.Atan2(inputDirection.x, 0.0f) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
                     float rotation = Mathf.SmoothDampAngle(_player.transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
 
                     // rotate to face input direction relative to camera position
@@ -693,11 +710,6 @@ namespace Bladesmiths.Capstone
                     targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
                 }
-
-
-
-
-
 
                 movementVector = targetDirection.normalized + currentSpeed.normalized;
 
@@ -709,18 +721,17 @@ namespace Bladesmiths.Capstone
 
                 }
 
-                if (_input.move.x < 0)
+                if (_input.move.y < 0)
                 {
-                    movementVector *= 0.99f;
+                    movementVector *= 0.5f;
                 }
-                else if (_input.move.x > 0)
+                else if (_input.move.y > 0)
                 {
-                    movementVector *= 1.01f;
+                    movementVector *= 1.1f;
                 }
 
                 // move the player
-                _controller.Move(movementVector * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
+                _controller.Move(movementVector * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 
             }
