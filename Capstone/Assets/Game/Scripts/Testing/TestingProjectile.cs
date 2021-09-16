@@ -15,6 +15,7 @@ namespace Bladesmiths.Capstone.Testing
         void Start()
         {
             startingPosition = transform.position;
+            StartCoroutine(Util.DestroyTimer(5, gameObject));
         }
 
         // Update is called once per frame
@@ -30,5 +31,16 @@ namespace Bladesmiths.Capstone.Testing
         {
             velocity = givenVelocity;
         }
+
+        void OnCollisionEnter(Collision col)
+        {
+            if (col.gameObject.GetComponent<Player>())
+            {
+                col.gameObject.GetComponent<Player>().TakeDamage(0);
+                StartCoroutine(Util.DamageMaterialTimer(col.gameObject));
+            }
+        }
+
+
     }
 }

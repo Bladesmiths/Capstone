@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bladesmiths.Capstone
+namespace Bladesmiths.Capstone.Testing
 {
     public class TestingEnemy : Enemy
     {
@@ -23,25 +23,7 @@ namespace Bladesmiths.Capstone
         
         public override void TakeDamage(float damage)
         {
-            StartCoroutine("DamageMaterialTimer");
-        }
-
-        IEnumerable DamageMaterialTimer()
-        {
-            Material originalMaterial = gameObject.GetComponent<MeshRenderer>().material; 
-            gameObject.GetComponent<MeshRenderer>().material = damagedMaterial;
-
-            yield return new WaitForSeconds(2);
-
-            gameObject.GetComponent<MeshRenderer>().material = originalMaterial;
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                TakeDamage(0);
-            }
+            StartCoroutine(Util.DamageMaterialTimer(gameObject));
         }
     }
 }

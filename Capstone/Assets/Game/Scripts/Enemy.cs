@@ -92,14 +92,6 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public void Damaged()
-        {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-
-            damaged = true;
-
-        }
-
         protected override void Attack()
         {
             player.TakingDamage(1);
@@ -130,6 +122,10 @@ namespace Bladesmiths.Capstone
         }
         public override void TakeDamage(float damage)
         {
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+            damaged = true;
+
             base.TakeDamage(damage);
         }
     }
