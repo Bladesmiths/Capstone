@@ -630,7 +630,12 @@ namespace Bladesmiths.Capstone
 
             if (inputDirection.magnitude == 0)
             {
-                inputDirection = new Vector3(0, 0, -1).normalized;
+                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _player.transform.eulerAngles.y;
+                inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward * -1;
+
+                //inputDirection = new Vector3(0, 0, -1) + new Vector3(_player.transform.rotation.eulerAngles.y, 0.0f, 0.0f);
+
+                inputDirection.Normalize();
 
             }
 
@@ -673,6 +678,7 @@ namespace Bladesmiths.Capstone
         public override void OnExit()
         {
             canDmg = true;
+           _controller.SimpleMove(Vector3.zero);
         }
 
         private void GroundedCheck()
