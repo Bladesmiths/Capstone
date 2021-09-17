@@ -212,7 +212,7 @@ namespace Bladesmiths.Capstone
         /// Checks if the player is grounded
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsGrounded() => () => GroundedCheck();
+        public Func<bool> IsGrounded() => () => gameObject.GetComponent<CharacterController>().isGrounded;//GroundedCheck();
 
         /// <summary>
         /// Checks to see if the jump button has been pressed
