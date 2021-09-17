@@ -126,7 +126,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => !inputs.attack && !inputs.parry;
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 1) && !inputs.parry;
 
         /// <summary>
         /// The condition fro going between the BLOCK and PARRY state

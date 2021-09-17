@@ -8,7 +8,8 @@ namespace Bladesmiths.Capstone.Testing
     {
         #region Fields
         // The health of the enemy
-        private float health;
+        [SerializeField]
+        private float health = 1000;
         #endregion
 
         // Keeping start in case things are added later
@@ -23,7 +24,11 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="damage">The amount of damage to subtract</param>
         public override void TakeDamage(float damage)
         {
+            // Testing Value
+            // Needs to be changed later so that it reflects the damage of the sword)
+            damage = 5;
             health = Mathf.Max(health - damage, 0);
+
 
             StartCoroutine(Util.DamageMaterialTimer(gameObject.GetComponentInChildren<MeshRenderer>()));
         }
