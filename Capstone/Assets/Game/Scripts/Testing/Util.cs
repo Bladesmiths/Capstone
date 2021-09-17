@@ -6,13 +6,13 @@ namespace Bladesmiths.Capstone.Testing
 {
     public static class Util
     {
-        public static IEnumerator DamageMaterialTimer(GameObject obj)
+        public static IEnumerator DamageMaterialTimer(Renderer renderer)
         {
-            obj.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+            renderer.material.color = Color.red;
 
             yield return new WaitForSeconds(1);
 
-            obj.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+            renderer.material.color = Color.white;
         }
 
         public static IEnumerator DestroyTimer(float timeToDestruction, GameObject obj)

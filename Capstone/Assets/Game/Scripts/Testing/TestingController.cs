@@ -2,20 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking; 
+using UnityEngine.Networking;
+using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone.Testing {
-    public class TestingController : MonoBehaviour
+    public class TestingController : SerializedMonoBehaviour
     {
         #region Fields
+        [SerializeField][Required]
+        private string analyticsLink;
+
         [SerializeField]
-        private string analyticsLink; 
+        private GameObject player; 
+        private Transform playerStartTransform; 
 
         [SerializeField]
         private List<string> reportedDataNames;
         [SerializeField]
         private List<TypeCode> reportedDataTypes; 
 
+        [OdinSerialize]
         private Dictionary<string, TestDataValue> reportedData = new Dictionary<string, TestDataValue>();
         #endregion
 
@@ -54,6 +61,8 @@ namespace Bladesmiths.Capstone.Testing {
                         break;
                 }
             }
+
+            playerStartTransform = player.transform; 
         }
 
         // Update is called once per frame
@@ -65,7 +74,9 @@ namespace Bladesmiths.Capstone.Testing {
 
         public void EndTest()
         {
-            ReportData(); 
+            ReportData();
+            player.transform.position = playerStartTransform.position;
+            player.transform.rotation = playerStartTransform.rotation;
         }
 
         private void ReportData()
@@ -76,24 +87,24 @@ namespace Bladesmiths.Capstone.Testing {
             {
                 completeReportedLink += (testData.Report() + "&"); 
             }
-            completeReportedLink.Remove(analyticsLink.LastIndexOf("&")); 
+            completeReportedLink.Remove(analyticsLink.Length - 1,1);
 
-            WWWForm form = new WWWForm();
-            UnityEngine.Networking.UnityWebRequest www = 
-                UnityEngine.Networking.UnityWebRequest.Get(completeReportedLink);
+            Application.OpenURL(completeReportedLink);
 
-            www.SendWebRequest();
+            //UnityWebRequest www = UnityWebRequest.Get(completeReportedLink);
 
-            if (www.result == UnityWebRequest.Result.ConnectionError || 
-                www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log(www.downloadHandler.text);
-                Debug.Log("Report Successful");
-            }
+            //www.SendWebRequest();
+
+            //if (www.result == UnityWebRequest.Result.ConnectionError || 
+            //    www.result == UnityWebRequest.Result.ProtocolError)
+            //{
+            //    Debug.Log(www.error);
+            //}
+            //else
+            //{
+            //    Debug.Log(www.downloadHandler.text);
+            //    Debug.Log("Report Successful");
+            //}
         }
     }
 }

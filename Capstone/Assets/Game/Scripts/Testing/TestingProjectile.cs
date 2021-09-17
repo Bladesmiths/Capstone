@@ -37,10 +37,10 @@ namespace Bladesmiths.Capstone.Testing
             if (col.gameObject.GetComponent<Player>())
             {
                 col.gameObject.GetComponent<Player>().TakeDamage(0);
-                StartCoroutine(Util.DamageMaterialTimer(col.gameObject));
+                col.gameObject.GetComponent<Player>().StartCoroutine(Util.DamageMaterialTimer(col.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
             }
+
+            Destroy(gameObject); 
         }
-
-
     }
 }

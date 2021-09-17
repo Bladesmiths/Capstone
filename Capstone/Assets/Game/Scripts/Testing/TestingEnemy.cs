@@ -10,20 +10,14 @@ namespace Bladesmiths.Capstone.Testing
         private Material damagedMaterial;
 
         // Start is called before the first frame update
-        void Start()
-        {
-
-        }
+        void Start() { }
 
         // Update is called once per frame
-        public override void Update()
-        {
-
-        }
+        public override void Update() { }
         
         public override void TakeDamage(float damage)
         {
-            StartCoroutine(Util.DamageMaterialTimer(gameObject));
+            StartCoroutine(Util.DamageMaterialTimer(gameObject.GetComponentInChildren<MeshRenderer>()));
         }
     }
 }

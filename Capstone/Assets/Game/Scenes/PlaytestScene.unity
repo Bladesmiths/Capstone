@@ -2416,6 +2416,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1644626660}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.Testing.TestingController,
+          Assembly-CSharp
+        m_MethodName: EndTest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &913836063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4847,7 +4860,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c24ef2ad788ee4aa55f582c49dd411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: reportedData
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Bladesmiths.Capstone.Testing.TestDataValue,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   analyticsLink: https://rit.az1.qualtrics.com/jfe/form/SV_824FEVQgFnFTfYq
+  player: {fileID: 1151287364}
   reportedDataNames:
   - numAttacks
   - numBlocks
