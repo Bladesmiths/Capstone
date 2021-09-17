@@ -3456,6 +3456,8 @@ MonoBehaviour:
   sword: {fileID: 1562252284}
   parryDetector: {fileID: 1935412603}
   isDamaged: 0
+  _cinemachineTargetYaw: 0
+  _cinemachineTargetPitch: 0
   CinemachineCameraTarget: {fileID: 999110821}
   GroundLayers:
     serializedVersion: 2

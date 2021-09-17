@@ -26,7 +26,7 @@ namespace Bladesmiths.Capstone.Testing
         /// </summary>
         /// <param name="timeToDestruction">How long to wait before destroying the object</param>
         /// <param name="obj">The object to destroy</param>
-        /// <returns></returns>
+        /// <returns>Coroutine variable</returns>
         public static IEnumerator DestroyTimer(float timeToDestruction, GameObject obj)
         {
             yield return new WaitForSeconds(timeToDestruction);

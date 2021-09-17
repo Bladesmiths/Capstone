@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Cinemachine;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 
@@ -17,8 +17,10 @@ namespace Bladesmiths.Capstone.Testing {
         // The player object
         [SerializeField]
         private GameObject player;
-        // The transform where the player starts
-        private Transform playerStartTransform; 
+        // The position where the player starts
+        private Vector3 playerStartPosition;
+        // The rotation the player starts at
+        private Quaternion playerStartRotation;
 
         // The names of embedded data that should be reported
         [SerializeField]
@@ -74,7 +76,8 @@ namespace Bladesmiths.Capstone.Testing {
                 }
             }
 
-            playerStartTransform = player.transform; 
+            playerStartPosition = player.transform.position;
+            playerStartRotation = player.transform.rotation;
         }
 
         // Keeping for potential testing 
@@ -113,10 +116,18 @@ namespace Bladesmiths.Capstone.Testing {
             Application.OpenURL(completeReportedLink);
         }
 
+        /// <summary>
+        /// Reset the Player to their starting position
+        /// </summary>
         private void ResetPlayer()
         {
-            player.transform.position = playerStartTransform.position;
-            player.transform.rotation = playerStartTransform.rotation;
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.SetPositionAndRotation(playerStartPosition, playerStartRotation);
+            player.GetComponent<CharacterController>().enabled = true;
+
+            player.GetComponent<Player>().CinemachineCameraTarget.transform.rotation = Quaternion.identity;
+            player.GetComponent<Player>()._cinemachineTargetYaw = 0;
+            player.GetComponent<Player>()._cinemachineTargetPitch = 0;
         }
     }
 }

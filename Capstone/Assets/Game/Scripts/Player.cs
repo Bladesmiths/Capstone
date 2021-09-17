@@ -44,10 +44,10 @@ namespace Bladesmiths.Capstone
 
         public bool isDamaged;
 
-        private float _cinemachineTargetYaw;
-        private float _cinemachineTargetPitch;
+        public float _cinemachineTargetYaw;
+        public float _cinemachineTargetPitch;
         private const float _threshold = 0.01f;
-        [SerializeField] private GameObject CinemachineCameraTarget;
+        [SerializeField] public GameObject CinemachineCameraTarget;
         private float TopClamp = 70.0f;
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
