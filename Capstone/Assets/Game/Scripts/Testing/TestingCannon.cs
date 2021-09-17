@@ -64,7 +64,7 @@ namespace Bladesmiths.Capstone.Testing
 
             GameObject newProjectile = Instantiate(projectilePrefab, randomPosition, Quaternion.identity);
 
-            newProjectile.GetComponent<TestingProjectile>().SetValues(projectileVelocity); 
+            newProjectile.GetComponent<TestingProjectile>().Velocity = projectileVelocity; 
         }
 
         IEnumerator CountdownFireTimer()

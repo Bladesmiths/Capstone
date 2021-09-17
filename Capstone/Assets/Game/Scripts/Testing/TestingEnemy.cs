@@ -6,17 +6,25 @@ namespace Bladesmiths.Capstone.Testing
 {
     public class TestingEnemy : Enemy
     {
-        [SerializeField]
-        private Material damagedMaterial;
+        #region Fields
+        // The health of the enemy
+        private float health;
+        #endregion
 
-        // Start is called before the first frame update
+        // Keeping start in case things are added later
         void Start() { }
 
-        // Update is called once per frame
+        // Keeping update so that parent's update does not run
         public override void Update() { }
         
+        /// <summary>
+        /// Subtract damage from the enemy's health and react to damage
+        /// </summary>
+        /// <param name="damage">The amount of damage to subtract</param>
         public override void TakeDamage(float damage)
         {
+            health = Mathf.Max(health - damage, 0);
+
             StartCoroutine(Util.DamageMaterialTimer(gameObject.GetComponentInChildren<MeshRenderer>()));
         }
     }

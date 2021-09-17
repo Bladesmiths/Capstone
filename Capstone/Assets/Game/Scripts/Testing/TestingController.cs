@@ -10,29 +10,41 @@ namespace Bladesmiths.Capstone.Testing {
     public class TestingController : SerializedMonoBehaviour
     {
         #region Fields
+        // The link to the survey that may contain embedded data
         [SerializeField][Required]
         private string analyticsLink;
 
+        // The player object
         [SerializeField]
-        private GameObject player; 
+        private GameObject player;
+        // The transform where the player starts
         private Transform playerStartTransform; 
 
+        // The names of embedded data that should be reported
         [SerializeField]
         private List<string> reportedDataNames;
+        // The types of data that should be reported
         [SerializeField]
         private List<TypeCode> reportedDataTypes; 
 
+        // A dictionary mapping the names of data values to their containers
         [OdinSerialize]
         private Dictionary<string, TestDataValue> reportedData = new Dictionary<string, TestDataValue>();
         #endregion
 
+        // Returns the dictionary of data names mapped to data values
         public Dictionary<string, TestDataValue> ReportedData
         {
             get { return reportedData; }
         }
 
+        /// <summary>
+        /// Sets up the Controller's necessary values
+        /// </summary>
         void Start()
         {
+            // TO-DO: Check if Odin makes this unecessary
+            // Assembles the dictionary
             for (int i = 0; i < reportedDataTypes.Count; i++)
             {
                 string name = reportedDataNames[i];
@@ -65,46 +77,46 @@ namespace Bladesmiths.Capstone.Testing {
             playerStartTransform = player.transform; 
         }
 
-        // Update is called once per frame
+        // Keeping for potential testing 
         void Update()
         {
-            // Testing Time Tracking
-            //Debug.Log(reportedData["timeToTest"].DataString); 
+            
         }
 
+        /// <summary>
+        /// End the test by reporting data and resetting the player
+        /// </summary>
         public void EndTest()
         {
             ReportData();
-            player.transform.position = playerStartTransform.position;
-            player.transform.rotation = playerStartTransform.rotation;
+            ResetPlayer();
         }
 
+        /// <summary>
+        /// Report the data using the names and values that belong to the controller
+        /// </summary>
         private void ReportData()
         {
+            // Declare a link using the analytics link field
             string completeReportedLink = analyticsLink + "/?";
 
+            // Assemble the rest of the link using the data values
             foreach (TestDataValue testData in reportedData.Values)
             {
                 completeReportedLink += (testData.Report() + "&"); 
             }
+
+            // Remove the last character because it is an &
             completeReportedLink.Remove(analyticsLink.Length - 1,1);
 
+            // Open the URL, sending the embedded data and opening the survey
             Application.OpenURL(completeReportedLink);
+        }
 
-            //UnityWebRequest www = UnityWebRequest.Get(completeReportedLink);
-
-            //www.SendWebRequest();
-
-            //if (www.result == UnityWebRequest.Result.ConnectionError || 
-            //    www.result == UnityWebRequest.Result.ProtocolError)
-            //{
-            //    Debug.Log(www.error);
-            //}
-            //else
-            //{
-            //    Debug.Log(www.downloadHandler.text);
-            //    Debug.Log("Report Successful");
-            //}
+        private void ResetPlayer()
+        {
+            player.transform.position = playerStartTransform.position;
+            player.transform.rotation = playerStartTransform.rotation;
         }
     }
 }
