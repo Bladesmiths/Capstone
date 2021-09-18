@@ -3209,7 +3209,7 @@ MonoBehaviour:
   topLeft: {x: 0, y: 0, z: 0}
   bottomRight: {x: 0, y: 0, z: 0}
   timerLimit: 5
-  projectileVelocity: {x: 0.125, y: 0, z: 0}
+  projectileVelocity: {x: 0.0625, y: 0, z: 0}
 --- !u!1 &1128643864
 GameObject:
   m_ObjectHideFlags: 0
