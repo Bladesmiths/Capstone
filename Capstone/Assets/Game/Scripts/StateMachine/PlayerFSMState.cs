@@ -254,34 +254,6 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// The state for when the Player is parrying enemy attacks
     /// </summary>
-    public class PlayerFSMState_BLOCK : PlayerFSMState
-    {
-        private GameObject playerBlockBox;
-        public PlayerFSMState_BLOCK(GameObject playerBlockDetector)
-        {
-            playerBlockBox = playerBlockDetector;
-        }
-
-        public override void Tick()
-        {
-            
-        }
-
-        public override void OnEnter()
-        {
-            playerBlockBox.SetActive(true);
-        }
-
-        public override void OnExit()
-        {
-            playerBlockBox.SetActive(false);
-        }
-
-    }
-
-    /// <summary>
-    /// The state for when the Player is parrying enemy attacks
-    /// </summary>
     public class PlayerFSMState_PARRY : PlayerFSMState
     {
         // MOVE TO A BETTER PLACE FOR BALANCING;
