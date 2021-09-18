@@ -219,7 +219,7 @@ namespace Bladesmiths.Capstone
     }
 
     /// <summary>
-    /// The state for when the Player is parrying enemy attacks
+    /// The state for when the Player is blocking enemy attacks
     /// </summary>
     public class PlayerFSMState_BLOCK : PlayerFSMState
     {
@@ -236,12 +236,17 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
+            // Turns the block detector box on
             playerBlockBox.SetActive(true);
         }
 
         public override void OnExit()
         {
+            // Turns the block detector box off
             playerBlockBox.SetActive(false);
+
+            // Change the color back to white
+            playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
         }
 
     }

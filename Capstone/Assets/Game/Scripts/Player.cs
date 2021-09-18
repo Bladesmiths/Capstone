@@ -307,7 +307,6 @@ namespace Bladesmiths.Capstone
         {
             Health -= dmg;
             isDamaged = true;
-
         }
 
        
