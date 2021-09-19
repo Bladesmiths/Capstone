@@ -46,10 +46,10 @@ namespace Bladesmiths.Capstone
         public bool isDamaged;
         public bool inState;
 
-        private float _cinemachineTargetYaw;
-        private float _cinemachineTargetPitch;
+        public float _cinemachineTargetYaw;
+        public float _cinemachineTargetPitch;
         private const float _threshold = 0.01f;
-        [SerializeField] private GameObject CinemachineCameraTarget;
+        [SerializeField] public GameObject CinemachineCameraTarget;
         private float TopClamp = 70.0f;
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
@@ -136,7 +136,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => !inputs.attack && !inputs.parry;
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 1) && !inputs.parry;
 
         /// <summary>
         /// The condition fro going between the BLOCK and PARRY state

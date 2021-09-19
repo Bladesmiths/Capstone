@@ -6,6 +6,8 @@ namespace Bladesmiths.Capstone
 {
     public class Sword : MonoBehaviour
     {
+        private float damage; 
+
         void Start()
         {
             
@@ -21,8 +23,7 @@ namespace Bladesmiths.Capstone
         {
             if (col.gameObject.GetComponent<Enemy>())
             {
-                col.gameObject.GetComponent<Enemy>().Damaged();
-
+                col.gameObject.GetComponent<Enemy>().TakeDamage(damage);
             }
 
         }

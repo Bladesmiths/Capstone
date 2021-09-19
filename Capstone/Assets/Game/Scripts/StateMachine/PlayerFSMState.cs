@@ -282,6 +282,10 @@ namespace Bladesmiths.Capstone
         private int _animIDMotionSpeed;
         private bool _hasAnimator;
 
+        private float timer; 
+
+        public float Timer { get { return timer; } }
+
         public PlayerFSMState_ATTACK(Player player, PlayerInputsScript input, Animator animator, GameObject sword)
         {
             _player = player;
@@ -294,6 +298,8 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
+            timer += Time.deltaTime;
+
             _sword.GetComponent<Rigidbody>().detectCollisions = true;
             //int layerMask = 1 << 8;
             if (_hasAnimator)
@@ -344,6 +350,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
+            timer = 0; 
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDAttack = Animator.StringToHash("Attack");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
