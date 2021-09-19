@@ -48,6 +48,7 @@ namespace Bladesmiths.Capstone
         private int _animIDForward;
         private int _animIDDodge;
         private int _animIDMotionSpeed;
+        private float _animBlend;
         private bool _hasAnimator;
         private CharacterController _controller;
 
@@ -72,6 +73,11 @@ namespace Bladesmiths.Capstone
         private GameObject camera;
 
 
+        public float RunSpeed = 10.0f;
+        public float WalkSpeed = 4.0f;
+        public float MoveSpeedCurrentMax = 10.0f;
+
+
         public PlayerFSMState_MOVING(Player player, PlayerInputsScript input, Animator animator, LayerMask layers)
         {
             _player = player;
@@ -82,6 +88,9 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
+            _hasAnimator = _player.TryGetComponent(out _animator);
+
+
             //if(_input.move == Vector2.zero)
             //{
             //    timer += Time.deltaTime;
@@ -110,12 +119,15 @@ namespace Bladesmiths.Capstone
             Vector3 targetDirection = Vector3.zero;
 
 
-            float targetSpeed = _input.move.magnitude * 10;
+            float targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
+
+            if (targetSpeed > 0 && targetSpeed < WalkSpeed)
+            {
+                targetSpeed = WalkSpeed;
+            }
 
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-
-            //if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude; //maybe normalize this instead?
@@ -139,7 +151,8 @@ namespace Bladesmiths.Capstone
             }
             
             // Animator input
-            _animator.SetFloat(_animIDForward, _speed / targetSpeed);
+            //_animator.SetFloat(_animIDForward, _speed / targetSpeed);
+            _animBlend = Mathf.Lerp(_animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
 
             // normalise input direction
             inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -153,11 +166,11 @@ namespace Bladesmiths.Capstone
 
                 // rotate to face input direction relative to camera position
                 _player.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-                targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             }
+            targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-            
+
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
@@ -169,12 +182,19 @@ namespace Bladesmiths.Capstone
 
             GroundedCheck();
 
+            if (_hasAnimator)
+            {
+                _animator.SetFloat(_animIDForward, _animBlend);
+                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            }
+
         }
 
         public override void OnEnter()
         {
             _animIDForward = Animator.StringToHash("Forward");
-            
+            _animBlend = 0;
+
             //timer = 0;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
