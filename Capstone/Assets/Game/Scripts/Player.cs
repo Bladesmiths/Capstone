@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
     /// This is where all of the transitions between states 
     /// are defined and how they are transitioned between
     /// </summary>
-    public class Player : Character, IDamageable
+    public class Player : Character
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine Movement_FSM;
@@ -41,8 +41,10 @@ namespace Bladesmiths.Capstone
         PlayerFSMState_TAKEDAMAGE takeDamage;
         PlayerFSMState_DODGE dodge;
         PlayerFSMState_JUMP jump;
+        PlayerFSMState_NULL nullState;
 
         public bool isDamaged;
+        public bool inState;
 
         public float _cinemachineTargetYaw;
         public float _cinemachineTargetPitch;
@@ -65,6 +67,7 @@ namespace Bladesmiths.Capstone
             MaxHealth = 3;
             Health = 3;
             isDamaged = false;
+            inState = false;
 
             // Creates the FSM
             Movement_FSM = new FiniteStateMachine();
@@ -73,23 +76,29 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             parry = new PlayerFSMState_PARRY(parryDetector, inputs);
             move = new PlayerFSMState_MOVING(this, inputs, GetComponent<Animator>(), GroundLayers);
-            idleMovement = new PlayerFSMState_IDLE();
-            idleCombat = new PlayerFSMState_IDLE();
+            idleMovement = new PlayerFSMState_IDLE(GetComponent<Animator>());
+            idleCombat = new PlayerFSMState_IDLE(GetComponent<Animator>());
             attack = new PlayerFSMState_ATTACK(this, inputs, GetComponent<Animator>(), sword);
-            death = new PlayerFSMState_DEATH();
+            death = new PlayerFSMState_DEATH(this);
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
             dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>(), GroundLayers);
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers);
+            nullState = new PlayerFSMState_NULL();
 
             // Adds all of the possible transitions
             // These are the possible transitions for the Player's Movement
             Movement_FSM.AddTransition(move, idleMovement, IsIdle());
             Movement_FSM.AddTransition(idleMovement, move, IsMoving());
             Movement_FSM.AddTransition(move, dodge, IsDodging());
-            Movement_FSM.AddTransition(dodge, move, IsDodgingStopped());
+            Movement_FSM.AddTransition(dodge, idleMovement, IsDodgingStopped());
             Movement_FSM.AddTransition(jump, idleMovement, IsGrounded());
             Movement_FSM.AddTransition(move, jump, IsJumping());
             Movement_FSM.AddTransition(idleMovement, jump, IsJumping());
+            Movement_FSM.AddTransition(idleMovement, dodge, IsDodging());
+
+            // NULL state for when player is in either TAKEDAMAGE or DEAD
+            Movement_FSM.AddAnyTransition(nullState, IsNull());
+            Movement_FSM.AddTransition(nullState, idleMovement, NotNull());
 
             // These are the possible transitions for the Player's Combat
             Combat_FSM.AddTransition(idleCombat, attack, IsAttacking());
@@ -99,7 +108,8 @@ namespace Bladesmiths.Capstone
             Combat_FSM.AddTransition(idleCombat, parry, IsBlockReleased());
             Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
 
-
+            Combat_FSM.AddAnyTransition(takeDamage, IsDamaged());
+            Combat_FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
 
             // Sets the current state
             Combat_FSM.SetCurrentState(idleCombat);
@@ -152,7 +162,7 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 1f;
+        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 0.5f;
 
         /// <summary>
         /// The condition for going from MOVE to DODGE state
@@ -170,7 +180,7 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> Alive() => () => Health == 0;
+        public Func<bool> Alive() => () => Health <= 0;
 
         /// <summary>
         /// Waits .5 seconds until the parry switches back to the default state
@@ -182,13 +192,25 @@ namespace Bladesmiths.Capstone
         /// Checks if the player is grounded
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsGrounded() => () => GroundedCheck();
+        public Func<bool> IsGrounded() => () => gameObject.GetComponent<CharacterController>().isGrounded;//GroundedCheck();
 
         /// <summary>
         /// Checks to see if the jump button has been pressed
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsJumping() => () => inputs.jump;
+
+        /// <summary>
+        /// The condition for going to the NULL state
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsNull() => () => inState == true;
+
+        /// <summary>
+        /// The condition for going to the NULL state
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> NotNull() => () => inState == false;
 
         private void Update()
         {
@@ -285,9 +307,11 @@ namespace Bladesmiths.Capstone
         /// <param name="dmg"></param>
         public void TakingDamage(float dmg)
         {
-            Health -= dmg;
-            isDamaged = true;
-
+            if (dodge.canDmg)
+            {
+                Health -= dmg;
+                isDamaged = true;
+            }
         }
 
        
