@@ -119,7 +119,13 @@ namespace Bladesmiths.Capstone
             Vector3 targetDirection = Vector3.zero;
 
 
-            float targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
+            //float targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
+            float targetSpeed = _input.move.magnitude * MoveSpeedCurrentMax;
+
+            if(_input.move.magnitude > 1)
+            {
+                targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
+            }
 
             if (targetSpeed > 0 && targetSpeed < WalkSpeed)
             {
@@ -153,6 +159,7 @@ namespace Bladesmiths.Capstone
             // Animator input
             //_animator.SetFloat(_animIDForward, _speed / targetSpeed);
             _animBlend = Mathf.Lerp(_animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+            Debug.Log(_speed);
 
             // normalise input direction
             inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
