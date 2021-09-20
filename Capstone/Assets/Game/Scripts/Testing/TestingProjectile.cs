@@ -14,6 +14,7 @@ namespace Bladesmiths.Capstone.Testing
         private Vector3 startingPosition;
 
         // The damage the projectile inflicts
+        [SerializeField]
         private float damage; 
 
         [Tooltip("How long until the projectile is destroyed")]
@@ -63,9 +64,6 @@ namespace Bladesmiths.Capstone.Testing
             {
                 // Damage the player
                 col.gameObject.GetComponent<Player>().TakeDamage(damage);
-
-                // Playtest 1
-                
 
                 // Start a coroutine to change the player's material to show they've been damaged
                 col.gameObject.GetComponent<Player>().StartCoroutine(
