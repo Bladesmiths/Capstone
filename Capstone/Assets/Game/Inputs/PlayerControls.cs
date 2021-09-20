@@ -272,6 +272,17 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
+                    ""id"": ""961f1dd1-279f-4b8a-a406-42da42b1bd75"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""eeb2e340-a083-40b9-afa1-9323b28549c1"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
