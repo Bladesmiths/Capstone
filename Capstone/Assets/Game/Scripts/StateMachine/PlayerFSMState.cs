@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bladesmiths.Capstone.Enums;
+using Bladesmiths.Capstone.Testing;
 using StarterAssets;
 
 
@@ -435,7 +436,6 @@ namespace Bladesmiths.Capstone
             {
                 _hasAnimator = false;
             }
-
         }
 
         public override void OnExit()
@@ -700,6 +700,9 @@ namespace Bladesmiths.Capstone
             canDmg = false;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
+
+            // Testing
+            ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;
         }
 
         public override void OnExit()
@@ -969,6 +972,9 @@ namespace Bladesmiths.Capstone
             //currentSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
 
             LandTimeoutDelta = -1.0f;
+
+            // Testing
+            ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numJumps"]).Data.CurrentValue++;
         }
 
         public override void OnExit()

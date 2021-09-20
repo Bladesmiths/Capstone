@@ -31,6 +31,9 @@ namespace Bladesmiths.Capstone.Testing
 
 
             StartCoroutine(Util.DamageMaterialTimer(gameObject.GetComponentInChildren<MeshRenderer>()));
+
+            // Testing
+            ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numAttacks"]).Data.CurrentValue++;
         }
     }
 }

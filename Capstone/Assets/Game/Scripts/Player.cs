@@ -15,7 +15,7 @@ namespace Bladesmiths.Capstone
     /// are defined and how they are transitioned between
     /// </summary>
     public class Player : Character
-    {
+    {        
         // Reference to the Finite State Machine
         private FiniteStateMachine Movement_FSM;
         private FiniteStateMachine Combat_FSM;
@@ -67,11 +67,25 @@ namespace Bladesmiths.Capstone
 
         public bool parryEnd;
 
+        public bool parryEnd;
+        #region Testing Fields 
+        [Header("Testing Fields")]
+        [SerializeField]
+        private ReactiveInt numAttacks;
+        [SerializeField]
+        private ReactiveInt numBlocks;
+        [SerializeField]
+        private ReactiveInt numDodges;
+        [SerializeField]
+        private ReactiveInt numJumps;
+        [SerializeField]
+        private ReactiveFloat playerHealth;
+        #endregion
+
         private void Awake()
         {
 
-            MaxHealth = 3;
-            Health = 3;
+            Health = MaxHealth;
             isDamaged = false;
             inState = false;
 
@@ -148,7 +162,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 1) && !inputs.parry;
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 0.1f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
 
         /// <summary>
         /// The condition for going between the IDLE and BLOCK state
@@ -329,18 +343,19 @@ namespace Bladesmiths.Capstone
         /// <summary>
         /// Allows for the player to take damage
         /// </summary>
-        /// <param name="dmg"></param>
-        public void TakingDamage(float dmg)
+        /// <param name="damage"></param>
+        public override void TakeDamage(float damage)
         {
             if (dodge.canDmg)
             {
-                Health -= dmg;
+                base.TakeDamage(damage);
                 isDamaged = true;
+
+                // Playtest 1
+                playerHealth.CurrentValue -= damage;
+
+                // Shouldn't this be going to the Player's TakeDamage State?
             }
         }
-
-       
-
-
     }
 }

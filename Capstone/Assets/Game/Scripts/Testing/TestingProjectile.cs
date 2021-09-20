@@ -13,6 +13,11 @@ namespace Bladesmiths.Capstone.Testing
         // The starting position of the projectile
         private Vector3 startingPosition;
 
+        // The damage the projectile inflicts
+        [SerializeField]
+        private float damage; 
+
+        [Tooltip("How long until the projectile is destroyed")]
         [SerializeField]
         private float timeTillDestruction;
         #endregion
@@ -58,7 +63,7 @@ namespace Bladesmiths.Capstone.Testing
             if (col.gameObject.GetComponent<Player>())
             {
                 // Damage the player
-                col.gameObject.GetComponent<Player>().TakeDamage(0);
+                col.gameObject.GetComponent<Player>().TakeDamage(damage);
 
                 // Start a coroutine to change the player's material to show they've been damaged
                 col.gameObject.GetComponent<Player>().StartCoroutine(
@@ -77,6 +82,9 @@ namespace Bladesmiths.Capstone.Testing
         {
             if (other.gameObject.CompareTag("PreventDmg"))
             {
+                // Testing
+                ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
+
                 Destroy(gameObject);
                 return;
             }

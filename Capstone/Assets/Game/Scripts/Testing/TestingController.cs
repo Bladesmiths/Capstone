@@ -5,8 +5,10 @@ using UnityEngine;
 using Cinemachine;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 namespace Bladesmiths.Capstone.Testing {
+
     public class TestingController : SerializedMonoBehaviour
     {
         #region Fields
@@ -22,22 +24,30 @@ namespace Bladesmiths.Capstone.Testing {
         // The rotation the player starts at
         private Quaternion playerStartRotation;
 
-        // The names of embedded data that should be reported
-        [SerializeField]
-        private List<string> reportedDataNames;
-        // The types of data that should be reported
-        [SerializeField]
-        private List<TypeCode> reportedDataTypes; 
-
         // A dictionary mapping the names of data values to their containers
         [OdinSerialize]
-        private Dictionary<string, TestDataValue> reportedData = new Dictionary<string, TestDataValue>();
+        private Dictionary<string, IReportableData> reportedData = new Dictionary<string, IReportableData>();
+
+        // Testing
+        public float playerHealth;
+        public string timeString; 
         #endregion
 
         // Returns the dictionary of data names mapped to data values
-        public Dictionary<string, TestDataValue> ReportedData
+        public Dictionary<string, IReportableData> ReportedData
         {
             get { return reportedData; }
+        }
+
+        /// <summary>
+        /// Initializes all of the reportable data
+        /// </summary>
+        private void Awake()
+        {
+            foreach (KeyValuePair<string, IReportableData> reportableDatum in reportedData)
+            {
+                reportableDatum.Value.Init(reportableDatum.Key); 
+            }
         }
 
         /// <summary>
@@ -45,37 +55,6 @@ namespace Bladesmiths.Capstone.Testing {
         /// </summary>
         void Start()
         {
-            // TO-DO: Check if Odin makes this unecessary
-            // Assembles the dictionary
-            for (int i = 0; i < reportedDataTypes.Count; i++)
-            {
-                string name = reportedDataNames[i];
-                TypeCode type = reportedDataTypes[i];
-
-                switch (type)
-                {
-                    case TypeCode.Int32:
-                        reportedData.Add(name, new TestDataInt(name));
-                        break;
-                    case TypeCode.Single:
-                        reportedData.Add(name, new TestDataFloat(name));
-                        break;
-                    case TypeCode.Boolean:
-                        reportedData.Add(name, new TestDataBool(name));
-                        break;
-                    case TypeCode.String:
-                        reportedData.Add(name, new TestDataString(name));
-                        break;
-                    case TypeCode.DateTime:
-                        reportedData.Add(name, new TestDataTime(name));
-                        ((TestDataTime)reportedData[name]).StartTimer(this);
-                        break;
-                    default:
-                        Debug.Log("Undefined Testing Type");
-                        break;
-                }
-            }
-
             playerStartPosition = player.transform.position;
             playerStartRotation = player.transform.rotation;
         }
@@ -83,7 +62,17 @@ namespace Bladesmiths.Capstone.Testing {
         // Keeping for potential testing 
         void Update()
         {
-            
+            // Updating testing variables to make sure things are updated correctly
+            playerHealth = float.Parse(reportedData["remainingHealth"].DataString);
+            timeString = reportedData["timeToTest"].DataString;
+        }
+
+        /// <summary>
+        /// Starts the timer data
+        /// </summary>
+        public void StartTimeData()
+        {
+            ((TestDataTime)reportedData["timeToTest"]).StartTimer(this);
         }
 
         /// <summary>
@@ -91,8 +80,10 @@ namespace Bladesmiths.Capstone.Testing {
         /// </summary>
         public void EndTest()
         {
+            ((TestDataTime)reportedData["timeToTest"]).StopTimer();
             ReportData();
             ResetPlayer();
+            ResetData();
         }
 
         /// <summary>
@@ -104,7 +95,7 @@ namespace Bladesmiths.Capstone.Testing {
             string completeReportedLink = analyticsLink + "/?";
 
             // Assemble the rest of the link using the data values
-            foreach (TestDataValue testData in reportedData.Values)
+            foreach (IReportableData testData in reportedData.Values)
             {
                 completeReportedLink += (testData.Report() + "&"); 
             }
@@ -125,9 +116,23 @@ namespace Bladesmiths.Capstone.Testing {
             player.transform.SetPositionAndRotation(playerStartPosition, playerStartRotation);
             player.GetComponent<CharacterController>().enabled = true;
 
-            player.GetComponent<Player>().CinemachineCameraTarget.transform.rotation = Quaternion.identity;
-            player.GetComponent<Player>()._cinemachineTargetYaw = 0;
-            player.GetComponent<Player>()._cinemachineTargetPitch = 0;
+            Player playerComponent = player.GetComponent<Player>();
+            playerComponent.CinemachineCameraTarget.transform.rotation = Quaternion.identity;
+            playerComponent._cinemachineTargetYaw = 0;
+            playerComponent._cinemachineTargetPitch = 0;
+
+            playerComponent.Health = playerComponent.MaxHealth; 
+        }
+
+        /// <summary>
+        /// Resets all reportable data to its initial value
+        /// </summary>
+        private void ResetData()
+        {
+            foreach (IReportableData reportableDatum in reportedData.Values)
+            {
+                reportableDatum.ResetData();
+            }
         }
     }
 }
