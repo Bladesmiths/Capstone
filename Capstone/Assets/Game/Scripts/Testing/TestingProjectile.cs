@@ -82,6 +82,9 @@ namespace Bladesmiths.Capstone.Testing
         {
             if (other.gameObject.CompareTag("PreventDmg"))
             {
+                // Testing
+                ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
+
                 Destroy(gameObject);
                 return;
             }
