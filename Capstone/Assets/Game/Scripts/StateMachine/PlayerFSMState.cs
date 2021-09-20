@@ -48,6 +48,7 @@ namespace Bladesmiths.Capstone
         private int _animIDForward;
         private int _animIDDodge;
         private int _animIDMotionSpeed;
+        private float _animBlend;
         private bool _hasAnimator;
         private CharacterController _controller;
 
@@ -72,6 +73,11 @@ namespace Bladesmiths.Capstone
         private GameObject camera;
 
 
+        public float RunSpeed = 10.0f;
+        public float WalkSpeed = 4.0f;
+        public float MoveSpeedCurrentMax = 10.0f;
+
+
         public PlayerFSMState_MOVING(Player player, PlayerInputsScript input, Animator animator, LayerMask layers)
         {
             _player = player;
@@ -82,6 +88,9 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
+            _hasAnimator = _player.TryGetComponent(out _animator);
+
+
             //if(_input.move == Vector2.zero)
             //{
             //    timer += Time.deltaTime;
@@ -106,14 +115,24 @@ namespace Bladesmiths.Capstone
             Vector3 targetDirection = Vector3.zero;
 
 
-            float targetSpeed = _input.move.magnitude * 10;
+            //float targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
+            float targetSpeed = _input.move.magnitude * MoveSpeedCurrentMax;
+
+            if(_input.move.magnitude > 1)
+            {
+                targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
+            }
+
+            if (targetSpeed > 0 && targetSpeed < WalkSpeed)
+            {
+                targetSpeed = WalkSpeed;
+            }
 
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
 
-
             // a reference to the players current horizontal velocity
-            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude; //maybe normalize this instead?
 
             float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
@@ -134,7 +153,9 @@ namespace Bladesmiths.Capstone
             }
             
             // Animator input
-            _animator.SetFloat(_animIDForward, _speed / targetSpeed);
+            //_animator.SetFloat(_animIDForward, _speed / targetSpeed);
+            _animBlend = Mathf.Lerp(_animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+            Debug.Log(_speed);
 
             // normalise input direction
             inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -148,7 +169,6 @@ namespace Bladesmiths.Capstone
 
                 // rotate to face input direction relative to camera position
                 _player.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-                targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             }
             targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
@@ -165,12 +185,19 @@ namespace Bladesmiths.Capstone
 
             //GroundedCheck();
 
+            if (_hasAnimator)
+            {
+                _animator.SetFloat(_animIDForward, _animBlend);
+                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            }
+
         }
 
         public override void OnEnter()
         {
             _animIDForward = Animator.StringToHash("Forward");
-            
+            _animBlend = 0;
+
             //timer = 0;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -282,6 +309,10 @@ namespace Bladesmiths.Capstone
         private int _animIDMotionSpeed;
         private bool _hasAnimator;
 
+        private float timer; 
+
+        public float Timer { get { return timer; } }
+
         public PlayerFSMState_ATTACK(Player player, PlayerInputsScript input, Animator animator, GameObject sword)
         {
             _player = player;
@@ -294,6 +325,8 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
+            timer += Time.deltaTime;
+
             _sword.GetComponent<Rigidbody>().detectCollisions = true;
             //int layerMask = 1 << 8;
             if (_hasAnimator)
@@ -344,6 +377,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
+            timer = 0; 
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDAttack = Animator.StringToHash("Attack");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
