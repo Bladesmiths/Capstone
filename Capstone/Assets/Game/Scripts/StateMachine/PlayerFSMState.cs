@@ -260,29 +260,72 @@ namespace Bladesmiths.Capstone
     }
 
     /// <summary>
+    /// The state for when the Player is blocking enemy attacks
+    /// </summary>
+    public class PlayerFSMState_BLOCK : PlayerFSMState
+    {
+        private GameObject playerBlockBox;
+        public PlayerFSMState_BLOCK(GameObject playerBlockDetector)
+        {
+            playerBlockBox = playerBlockDetector;
+        }
+
+        public override void Tick()
+        {
+            
+        }
+
+        public override void OnEnter()
+        {
+            // Turns the block detector box on
+            playerBlockBox.SetActive(true);
+        }
+
+        public override void OnExit()
+        {
+            // Turns the block detector box off
+            playerBlockBox.SetActive(false);
+
+            // Change the color back to white
+            playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
+
+    }
+
+    /// <summary>
     /// The state for when the Player is parrying enemy attacks
     /// </summary>
     public class PlayerFSMState_PARRY : PlayerFSMState
     {
+        // MOVE TO A BETTER PLACE FOR BALANCING;
+        private float parryLength = 0.5f;
+
         public float timer;
         private GameObject _playerParryBox;
         private PlayerInputsScript _input;
-        public PlayerFSMState_PARRY(GameObject playerParryBox, PlayerInputsScript input)
+        private Player _player;
+        public PlayerFSMState_PARRY(GameObject playerParryBox, PlayerInputsScript input, Player player)
         {
             _playerParryBox = playerParryBox;
             _input = input;
+            _player = player;
         }
 
         public override void Tick()
         {
             timer += Time.deltaTime;
             
-            _playerParryBox.SetActive(true);
+            if(timer >= parryLength)
+            {
+                _player.parryEnd = true;
+                
+            }
         }
 
         public override void OnEnter()
         {
             timer = 0;
+            _playerParryBox.SetActive(true);
         }
 
         public override void OnExit()
@@ -290,6 +333,8 @@ namespace Bladesmiths.Capstone
             _input.parry = false;
             _playerParryBox.SetActive(false);
             _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
+            timer = 0;
+            _player.parryEnd = false;
         }
 
     }

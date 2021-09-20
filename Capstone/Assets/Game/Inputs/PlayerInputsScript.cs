@@ -15,6 +15,7 @@ namespace Bladesmiths.Capstone
 		public bool sprint;
 		public bool attack = false;
 		public bool parry = false;
+		public bool block = false;
 		public bool dodge = false;
 
 		[Header("Movement Settings")]
@@ -60,6 +61,11 @@ namespace Bladesmiths.Capstone
 			ParryInput(value.isPressed);
 		}
 
+		public void OnBlock(InputValue value)
+        {
+			BlockInput(value.isPressed);
+        }
+
 		public void OnDodge(InputValue value)
 		{
 			DodgeInput(value.isPressed);
@@ -98,6 +104,11 @@ namespace Bladesmiths.Capstone
 		{
 			parry = newParryState;
 		}
+
+		public void BlockInput(bool newBlockState)
+        {
+			block = newBlockState;
+        }
 
 		public void DodgeInput(bool newDodgeRollState)
 		{

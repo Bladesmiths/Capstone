@@ -22,6 +22,8 @@ namespace Bladesmiths.Capstone
         public virtual void TakeDamage(float damage)
         {
             currentHealth -= damage;
+
+            Debug.Log("DAMAGE TAKEN");
         }
 
         // Protected Methods

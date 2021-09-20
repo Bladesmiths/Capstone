@@ -68,5 +68,18 @@ namespace Bladesmiths.Capstone.Testing
             // Destroy the projectile once it has collided
             Destroy(gameObject); 
         }
+
+        /// <summary>
+        /// When the projectile collides with the player block box, it is destroyed and preventing the player from taking damage
+        /// </summary>
+        /// <param name="other"></param>
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("PreventDmg"))
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
     }
 }
