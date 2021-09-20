@@ -62,6 +62,10 @@ namespace Bladesmiths.Capstone
         public bool isGrounded = true;
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
+        [SerializeField] private float landTimeout;
+
+
+        public bool parryEnd;
 
         public bool parryEnd;
         #region Testing Fields 
@@ -101,7 +105,7 @@ namespace Bladesmiths.Capstone
             death = new PlayerFSMState_DEATH(this);
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
             dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>(), GroundLayers);
-            jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers);
+            jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
 
             // Adds all of the possible transitions
@@ -224,14 +228,17 @@ namespace Bladesmiths.Capstone
         /// Checks if the player is grounded
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsGrounded() => () => gameObject.GetComponent<CharacterController>().isGrounded;//GroundedCheck();
+        public Func<bool> IsGrounded() => () =>
+        { 
+            return gameObject.GetComponent<CharacterController>().isGrounded && jump.LandTimeoutDelta <= 0.0f;
+        };//GroundedCheck();
 
         /// <summary>
         /// Checks to see if the jump button has been pressed
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsJumping() => () => inputs.jump;
-
+        
         /// <summary>
         /// The condition for going to the NULL state
         /// </summary>

@@ -372,6 +372,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
+
                     ""groups"": ""Gamepad"",
                     ""action"": ""Block"",
                     ""isComposite"": false,

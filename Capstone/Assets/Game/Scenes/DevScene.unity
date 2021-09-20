@@ -1501,6 +1501,7 @@ MonoBehaviour:
   isGrounded: 1
   GroundedOffset: -0.1
   GroundedRadius: 0.2
+  landTimeout: 0.25
 --- !u!114 &302951220
 MonoBehaviour:
   m_ObjectHideFlags: 0
