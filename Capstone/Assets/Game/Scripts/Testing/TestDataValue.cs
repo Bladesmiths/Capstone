@@ -2,22 +2,54 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.Serialization;
+using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 namespace Bladesmiths.Capstone.Testing
 {
-    public abstract class TestDataValue
+    public interface IReportableData
+    {
+        public string DataString { get; }
+        public void Init(string name); 
+        public string Report();
+    }
+
+    public abstract class TestDataValue<T> : IReportableData
     {
         protected string dataName;
         protected string dataString;
+        private ReactiveType<T> data;
+
+        public virtual ReactiveType<T> Data 
+        { 
+            get { return data; }
+        }
+
+        public string DataName
+        {
+            get { return dataName; }
+        }
 
         public virtual string DataString
         {
             get { return dataString; }
         }
 
-        public TestDataValue(string name)
+        public void Init(string name)
         {
-            dataName = name; 
+            dataName = name;
+
+            Debug.Log(Data.GetType());
+
+            Data.OnValueChanged += UpdateData;
+
+            dataString = Data.ToString();
+        }
+
+        protected virtual void UpdateData()
+        {
+            dataString = Data.ToString();
         }
 
         public virtual string Report()
@@ -26,106 +58,70 @@ namespace Bladesmiths.Capstone.Testing
         }
     }
 
-    public class TestDataInt : TestDataValue
+    [Serializable]
+    public class TestDataInt : TestDataValue<int>
     {
-        int data; 
+        [SerializeField]
+        new private ReactiveInt data;
 
-        public int Data
+        public override ReactiveType<int> Data 
         {
             get { return data; }
-            set
-            {
-                data = value;
-                dataString = data.ToString(); 
-            }
-        }
-        public TestDataInt(string name) : base(name)
-        {
-            data = default;
         }
     }
 
-    public class TestDataFloat : TestDataValue
+    [Serializable]
+    public class TestDataFloat : TestDataValue<float>
     {
-        float data;
+        [SerializeField]
+        new private ReactiveFloat data;
 
-        public float Data
+        public override ReactiveType<float> Data
         {
             get { return data; }
-            set
-            {
-                data = value;
-                dataString = data.ToString();
-            }
-        }
-        public TestDataFloat(string name) : base(name)
-        {
-            data = default;
         }
     }
 
-    public class TestDataBool : TestDataValue
+    [Serializable]
+    public class TestDataBool : TestDataValue<bool>
     {
-        bool data;
+        [SerializeField]
+        new private ReactiveBool data;
 
-        public bool Data
+        public override ReactiveType<bool> Data
         {
             get { return data; }
-            set
-            {
-                data = value;
-                dataString = data.ToString();
-            }
-        }
-        public TestDataBool(string name) : base(name)
-        {
-            data = default;
         }
     }
 
-    public class TestDataString : TestDataValue
+    [Serializable]
+    public class TestDataString : TestDataValue<string>
     {
-        string data;
+        [SerializeField]
+        new private ReactiveString data;
 
-        public string Data
+        public override ReactiveType<string> Data
         {
             get { return data; }
-            set
-            {
-                data = value;
-                dataString = data;
-            }
-        }
-        public TestDataString(string name) : base(name)
-        {
-            data = default;
         }
     }
 
-    public class TestDataTime : TestDataValue
+    [Serializable]
+    public class TestDataTime : TestDataValue<TimeSpan>
     {
-        float data;
-        bool timerCounting; 
+        [SerializeField]
+        new private ReactiveTime data;
+        
+        bool timerCounting;
 
-        public TimeSpan Data
+        public override ReactiveType<TimeSpan> Data
         {
-            get { return TimeSpan.FromSeconds(data); }
-            set
-            {
-                data = (float)value.TotalSeconds;
-                dataString = TimeSpan.FromSeconds(data).ToString(@"h\:mm\:ss");
-            }
+            get { return data; }
         }
 
         public override string DataString
         {
-            get { return TimeSpan.FromSeconds(data).ToString(@"h\:mm\:ss"); }
-        }
-
-        public TestDataTime(string name) : base(name)
-        {
-            data = default;
-
+            get { return data.CurrentValue.ToString(@"h\:mm\:ss"); }
         }
 
         public void StartTimer(MonoBehaviour monoBehaviourInstance)
@@ -136,14 +132,14 @@ namespace Bladesmiths.Capstone.Testing
 
         public override string Report()
         {
-            return $"{dataName}={TimeSpan.FromSeconds(data).ToString(@"h\:mm\:ss")}";
+            return $"{dataName}={data.CurrentValue.ToString(@"h\:mm\:ss")}";
         }
 
         IEnumerator Timer()
         {
             while (timerCounting)
             {
-                data += Time.deltaTime;
+                data.CurrentValue += TimeSpan.FromSeconds(Time.deltaTime);
                 yield return null;
             }
         }

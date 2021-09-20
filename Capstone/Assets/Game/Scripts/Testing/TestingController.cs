@@ -5,8 +5,10 @@ using UnityEngine;
 using Cinemachine;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 namespace Bladesmiths.Capstone.Testing {
+
     public class TestingController : SerializedMonoBehaviour
     {
         #region Fields
@@ -31,13 +33,23 @@ namespace Bladesmiths.Capstone.Testing {
 
         // A dictionary mapping the names of data values to their containers
         [OdinSerialize]
-        private Dictionary<string, TestDataValue> reportedData = new Dictionary<string, TestDataValue>();
+        private Dictionary<string, IReportableData> reportedData = new Dictionary<string, IReportableData>();
+
+        public float playerHealth; 
         #endregion
 
         // Returns the dictionary of data names mapped to data values
-        public Dictionary<string, TestDataValue> ReportedData
+        public Dictionary<string, IReportableData> ReportedData
         {
             get { return reportedData; }
+        }
+
+        private void Awake()
+        {
+            foreach (KeyValuePair<string, IReportableData> reportableDatum in reportedData)
+            {
+                reportableDatum.Value.Init(reportableDatum.Key); 
+            }
         }
 
         /// <summary>
@@ -45,37 +57,6 @@ namespace Bladesmiths.Capstone.Testing {
         /// </summary>
         void Start()
         {
-            // TO-DO: Check if Odin makes this unecessary
-            // Assembles the dictionary
-            for (int i = 0; i < reportedDataTypes.Count; i++)
-            {
-                string name = reportedDataNames[i];
-                TypeCode type = reportedDataTypes[i];
-
-                switch (type)
-                {
-                    case TypeCode.Int32:
-                        reportedData.Add(name, new TestDataInt(name));
-                        break;
-                    case TypeCode.Single:
-                        reportedData.Add(name, new TestDataFloat(name));
-                        break;
-                    case TypeCode.Boolean:
-                        reportedData.Add(name, new TestDataBool(name));
-                        break;
-                    case TypeCode.String:
-                        reportedData.Add(name, new TestDataString(name));
-                        break;
-                    case TypeCode.DateTime:
-                        reportedData.Add(name, new TestDataTime(name));
-                        ((TestDataTime)reportedData[name]).StartTimer(this);
-                        break;
-                    default:
-                        Debug.Log("Undefined Testing Type");
-                        break;
-                }
-            }
-
             playerStartPosition = player.transform.position;
             playerStartRotation = player.transform.rotation;
         }
@@ -83,7 +64,7 @@ namespace Bladesmiths.Capstone.Testing {
         // Keeping for potential testing 
         void Update()
         {
-            
+            playerHealth = float.Parse(reportedData["remainingHealth"].DataString);
         }
 
         /// <summary>
@@ -104,7 +85,7 @@ namespace Bladesmiths.Capstone.Testing {
             string completeReportedLink = analyticsLink + "/?";
 
             // Assemble the rest of the link using the data values
-            foreach (TestDataValue testData in reportedData.Values)
+            foreach (IReportableData testData in reportedData.Values)
             {
                 completeReportedLink += (testData.Report() + "&"); 
             }
