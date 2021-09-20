@@ -1,17 +1,14 @@
 fileFormatVersion: 2
-guid: 66e4d3ba1d280b34ca7a5da141b3fcef
+guid: e303fe4e269a334439af855391673340
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: JumpStart
+      74: 1827226128182048838
+    second: JumpStartCombat
   - first:
-      74: -4712104046758411098
-    second: JumpLand
-  - first:
-      74: -2702400367771620057
-    second: InAir
+      74: 4677238288166283420
+    second: JumpLandCombat
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -41,8 +38,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: JumpStart
-      takeName: mixamo.com
+      name: JumpStartCombat
+      takeName: Take 001
       internalID: 0
       firstFrame: 17
       lastFrame: 23.4
@@ -54,9 +51,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -70,8 +67,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: JumpLand
-      takeName: mixamo.com
+      name: JumpLandCombat
+      takeName: Take 001
       internalID: 0
       firstFrame: 35
       lastFrame: 47.7
@@ -83,38 +80,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: InAir
-      takeName: mixamo.com
-      internalID: 0
-      firstFrame: 30
-      lastFrame: 31
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0

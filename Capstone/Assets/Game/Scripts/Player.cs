@@ -29,7 +29,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject sword;
 
         [SerializeField] private GameObject parryDetector;
-
+        
         private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRY parry;
         private PlayerFSMState_IDLE idleMovement;
@@ -60,6 +60,8 @@ namespace Bladesmiths.Capstone
         public bool isGrounded = true;
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
+        [SerializeField] private float landTimeout;
+
 
         private void Awake()
         {
@@ -82,7 +84,7 @@ namespace Bladesmiths.Capstone
             death = new PlayerFSMState_DEATH(this);
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
             dodge = new PlayerFSMState_DODGE(this, inputs, GetComponent<Animator>(), GroundLayers);
-            jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers);
+            jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
 
             // Adds all of the possible transitions
@@ -192,14 +194,17 @@ namespace Bladesmiths.Capstone
         /// Checks if the player is grounded
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsGrounded() => () => gameObject.GetComponent<CharacterController>().isGrounded;//GroundedCheck();
+        public Func<bool> IsGrounded() => () =>
+        { 
+            return gameObject.GetComponent<CharacterController>().isGrounded && jump.LandTimeoutDelta <= 0.0f;
+        };//GroundedCheck();
 
         /// <summary>
         /// Checks to see if the jump button has been pressed
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsJumping() => () => inputs.jump;
-
+        
         /// <summary>
         /// The condition for going to the NULL state
         /// </summary>

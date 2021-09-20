@@ -13,7 +13,7 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState : IState
     {
         protected PlayerCondition id;
-
+        
         public PlayerCondition ID { get; set; }
 
         public virtual void Tick()
@@ -155,7 +155,7 @@ namespace Bladesmiths.Capstone
             // Animator input
             //_animator.SetFloat(_animIDForward, _speed / targetSpeed);
             _animBlend = Mathf.Lerp(_animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
-            Debug.Log(_speed);
+            //Debug.Log(_speed);
 
             // normalise input direction
             inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
@@ -188,7 +188,7 @@ namespace Bladesmiths.Capstone
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDForward, _animBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                //_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
 
         }
@@ -229,7 +229,7 @@ namespace Bladesmiths.Capstone
 
         private int _animIDIdle;
         private int _animIDForward;
-
+        
         public PlayerFSMState_IDLE()
         {
             
@@ -331,7 +331,7 @@ namespace Bladesmiths.Capstone
             //int layerMask = 1 << 8;
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDAttack, false);
+                //_animator.SetBool(_animIDAttack, false);
 
             }
 
@@ -680,9 +680,12 @@ namespace Bladesmiths.Capstone
     {
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
+        public float LandTimeoutDelta = 0;
+
         public float JumpTimeout = 0.50f;
         public float FallTimeout = 0.15f;
-
+        private float _landTimeout;
+        
         private Player _player;
         private PlayerInputsScript _input;
         private CharacterController _controller;
@@ -720,26 +723,29 @@ namespace Bladesmiths.Capstone
         private Vector3 maxSpeed;
 
 
-        public PlayerFSMState_JUMP(Player player, PlayerInputsScript input, LayerMask layers)
+        public PlayerFSMState_JUMP(Player player, PlayerInputsScript input, LayerMask layers, float landTimeout)
         {
             _player = player;
             _input = input;
             GroundLayers = layers;
             isGrounded = true;
             _speed = 15;
+            _landTimeout = landTimeout;
         }
 
         public override void Tick()
         {
             if (_controller.isGrounded)
             {
+                //Debug.Log("<color=brown>Grounded</color>");
+
                 isGrounded = true;
 
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    //_animator.SetBool(_animIDJump, false);
-                    //_animator.SetBool(_animIDFreeFall, false);
+                    _animator.SetBool(_animIDJump, false);
+                    _animator.SetBool(_animIDFreeFall, false);
                     _verticalVelocity = 0f;
                 }
 
@@ -759,23 +765,41 @@ namespace Bladesmiths.Capstone
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        //_animator.SetBool(_animIDJump, true);
+                        _animator.SetBool(_animIDJump, true);
                     }
                 }
 
                 // Get the current velocity of the player
 
-                // move the player
-                _controller.Move(new Vector3(controllerVelocity.x * 15, _verticalVelocity, controllerVelocity.z * 15) * Time.deltaTime);
-
-
-
+                
+                // Land Timer
+                if (LandTimeoutDelta >= 0.0f)
+                {
+                    _animator.SetBool(_animIDJump, false);
+                    _animator.SetBool(_animIDFreeFall, false);
+                    _animator.SetBool(_animIDGrounded, true);
+                    
+                    LandTimeoutDelta -= Time.deltaTime;
+                }
+                else
+                {
+                    // move the player
+                    _controller.Move(new Vector3(controllerVelocity.x * 15, _verticalVelocity, controllerVelocity.z * 15) * Time.deltaTime);
+                }
             }
 
             else
             {
+                //Debug.Log("<color=blue>In Air</color>");
 
-
+                LandTimeoutDelta = _landTimeout;
+                
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDFreeFall, true);
+                    _animator.SetBool(_animIDGrounded, false);
+                }
+                
                 _input.jump = false;
 
                 Vector3 inputDirection = Vector3.zero;
@@ -784,10 +808,7 @@ namespace Bladesmiths.Capstone
 
                 //_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-
-
-
-
+                
                 float targetSpeed = _input.move.magnitude * 10;
 
                 //if (_input.move == Vector2.zero) targetSpeed = 0.0f;
@@ -872,8 +893,6 @@ namespace Bladesmiths.Capstone
 
                 // move the player
                 _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
-
             }
 
 
@@ -886,7 +905,7 @@ namespace Bladesmiths.Capstone
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
-
+            //Debug.Log("<color=red>LandTimeout: </color>" + LandTimeoutDelta);
 
         }
 
@@ -904,11 +923,14 @@ namespace Bladesmiths.Capstone
 
             //currentSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
 
+            LandTimeoutDelta = -1.0f;
         }
 
         public override void OnExit()
         {
-
+            if (_hasAnimator)
+            {
+            }
         }
 
         private void GroundedCheck()
