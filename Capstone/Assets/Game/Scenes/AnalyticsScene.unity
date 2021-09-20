@@ -2369,7 +2369,7 @@ Transform:
   m_LocalScale: {x: 28.089277, y: 4.0444, z: 11.606151}
   m_Children: []
   m_Father: {fileID: 1129916064}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &913836062
 MonoBehaviour:
@@ -3347,6 +3347,7 @@ Transform:
   - {fileID: 1515181602}
   - {fileID: 216360802}
   - {fileID: 1127287253}
+  - {fileID: 1979305313}
   - {fileID: 913836061}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -3463,7 +3464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4449584ac053e848ab001c59a8ecfb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 11400000, guid: e9396bd8420c322409bb315b15f98cc2, type: 2}
+  maxHealth: 100
   inputs: {fileID: 1151287367}
   player: {fileID: 1151287364}
   sword: {fileID: 1562252284}
@@ -3480,6 +3481,11 @@ MonoBehaviour:
   isGrounded: 1
   GroundedOffset: -0.1
   GroundedRadius: 0.2
+  numAttacks: {fileID: 11400000, guid: 08106fba80fc13448af41587dd27028d, type: 2}
+  numBlocks: {fileID: 11400000, guid: 52bd98b9acbc38a40be4cb66ae37ee38, type: 2}
+  numDodges: {fileID: 11400000, guid: 19c515f1b56511f4c8399fe9a02e4e14, type: 2}
+  numJumps: {fileID: 11400000, guid: 4912d19f3f29bb143ae3ef129bb70baa, type: 2}
+  playerHealth: {fileID: 11400000, guid: e9396bd8420c322409bb315b15f98cc2, type: 2}
 --- !u!114 &1151287367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5040,15 +5046,8 @@ MonoBehaviour:
       Data: 
   analyticsLink: https://rit.az1.qualtrics.com/jfe/form/SV_824FEVQgFnFTfYq
   player: {fileID: 1151287364}
-  reportedDataNames:
-  - numAttacks
-  - numBlocks
-  - numDodges
-  - numJumps
-  - reachedEnd
-  - timeToTest
-  reportedDataTypes: 090000000900000009000000090000000300000010000000
   playerHealth: 0
+  timeString: 
 --- !u!4 &1644626661
 Transform:
   m_ObjectHideFlags: 0
@@ -6382,6 +6381,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+--- !u!1 &1979305312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979305313}
+  - component: {fileID: 1979305316}
+  - component: {fileID: 1979305315}
+  - component: {fileID: 1979305314}
+  m_Layer: 0
+  m_Name: FirstAreaTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1979305313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979305312}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.3, y: 1.63, z: 10.48}
+  m_LocalScale: {x: 28.089277, y: 4.0444, z: 11.606151}
+  m_Children: []
+  m_Father: {fileID: 1129916064}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1979305314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979305312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb357f83bba8c7f49836794d53aae002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnEnter: 1
+  activateOnExit: 0
+  tagToCollideWith: Player
+  onEnterMethod:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1644626660}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.Testing.TestingController,
+          Assembly-CSharp
+        m_MethodName: StartTimeData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitMethod:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &1979305315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979305312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1634653, y: 1, z: 0.4839026}
+  m_Center: {x: -0.07616893, y: 0, z: -0.06684103}
+--- !u!33 &1979305316
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979305312}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2011468099
 GameObject:
   m_ObjectHideFlags: 0

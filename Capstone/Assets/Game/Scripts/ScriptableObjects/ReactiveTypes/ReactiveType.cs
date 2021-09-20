@@ -25,7 +25,10 @@ namespace Bladesmiths.Capstone
                 if (!value.Equals(currentDataValue))
                 {
                     currentDataValue = value;
-                    OnValueChanged();
+                    if (OnValueChanged != null)
+                    {
+                        OnValueChanged();
+                    }
                 }
             }
         }
