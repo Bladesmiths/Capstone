@@ -28,6 +28,14 @@ namespace Bladesmiths.Capstone
 
         }
 
+        // The constructor for the Transitions class
+        public Transition(IState to, Func<bool> condition)
+        {
+            To = to;
+            Condition = condition;
+
+        }
+
 
     }
 }
