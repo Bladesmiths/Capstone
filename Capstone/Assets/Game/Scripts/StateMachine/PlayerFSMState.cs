@@ -188,7 +188,7 @@ namespace Bladesmiths.Capstone
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDForward, _animBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                //_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
 
         }
@@ -331,7 +331,7 @@ namespace Bladesmiths.Capstone
             //int layerMask = 1 << 8;
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDAttack, false);
+                //_animator.SetBool(_animIDAttack, false);
 
             }
 
@@ -737,7 +737,7 @@ namespace Bladesmiths.Capstone
         {
             if (_controller.isGrounded)
             {
-                Debug.Log("<color=brown>Grounded</color>");
+                //Debug.Log("<color=brown>Grounded</color>");
 
                 isGrounded = true;
 
@@ -790,7 +790,7 @@ namespace Bladesmiths.Capstone
 
             else
             {
-                Debug.Log("<color=blue>In Air</color>");
+                //Debug.Log("<color=blue>In Air</color>");
 
                 LandTimeoutDelta = _landTimeout;
                 
@@ -905,7 +905,7 @@ namespace Bladesmiths.Capstone
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
-            Debug.Log("<color=red>LandTimeout: </color>" + LandTimeoutDelta);
+            //Debug.Log("<color=red>LandTimeout: </color>" + LandTimeoutDelta);
 
         }
 
