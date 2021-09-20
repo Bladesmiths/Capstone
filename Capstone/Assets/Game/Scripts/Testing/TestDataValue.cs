@@ -36,15 +36,9 @@ namespace Bladesmiths.Capstone.Testing
         // The name of the data value
         protected string dataName;
 
-        // The Reactive Data that backs this object
-        private ReactiveType<T> data;
-
         #region Properties
         // Returns the Reactive Data that backs this object
-        public virtual ReactiveType<T> Data 
-        { 
-            get { return data; }
-        }
+        public abstract ReactiveType<T> Data { get; }
 
         // Returns name of data value
         public string DataName
@@ -92,7 +86,7 @@ namespace Bladesmiths.Capstone.Testing
     {
         // Hiding parent's data field to get access to a more specific type
         [SerializeField]
-        new private ReactiveInt data;
+        private ReactiveInt data;
 
         // Overriding parent's data property using polymorphism
         public override ReactiveType<int> Data 
@@ -109,7 +103,7 @@ namespace Bladesmiths.Capstone.Testing
     {
         // Hiding parent's data field to get access to a more specific type
         [SerializeField]
-        new private ReactiveFloat data;
+        private ReactiveFloat data;
 
         // Overriding parent's data property using polymorphism
         public override ReactiveType<float> Data
@@ -126,7 +120,7 @@ namespace Bladesmiths.Capstone.Testing
     {
         // Hiding parent's data field to get access to a more specific type
         [SerializeField]
-        new private ReactiveBool data;
+        private ReactiveBool data;
 
         // Overriding parent's data property using polymorphism
         public override ReactiveType<bool> Data
@@ -143,7 +137,7 @@ namespace Bladesmiths.Capstone.Testing
     {
         // Hiding parent's data field to get access to a more specific type
         [SerializeField]
-        new private ReactiveString data;
+        private ReactiveString data;
 
         // Overriding parent's data property using polymorphism
         public override ReactiveType<string> Data
@@ -160,7 +154,7 @@ namespace Bladesmiths.Capstone.Testing
     {
         // Hiding parent's data field to get access to a more specific type
         [SerializeField]
-        new private ReactiveFloat data;
+        private ReactiveFloat data;
         
         // Is the timer counting or not
         private bool timerCounting;
