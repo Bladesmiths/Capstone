@@ -67,7 +67,6 @@ namespace Bladesmiths.Capstone
 
         public bool parryEnd;
 
-        public bool parryEnd;
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]

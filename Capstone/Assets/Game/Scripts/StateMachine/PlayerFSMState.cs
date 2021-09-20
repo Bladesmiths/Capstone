@@ -470,7 +470,7 @@ namespace Bladesmiths.Capstone
         {
             _player.isDamaged = false;
             timer = 0;
-            _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+            _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
             _player.inState = true;
 
         }
@@ -601,7 +601,7 @@ namespace Bladesmiths.Capstone
             }
             else
             {
-                _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+                _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
 
             }
 

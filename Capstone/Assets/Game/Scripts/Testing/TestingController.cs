@@ -121,7 +121,9 @@ namespace Bladesmiths.Capstone.Testing {
             playerComponent._cinemachineTargetYaw = 0;
             playerComponent._cinemachineTargetPitch = 0;
 
-            playerComponent.Health = playerComponent.MaxHealth; 
+            playerComponent.Health = playerComponent.MaxHealth;
+
+            playerComponent.Grounded = true; 
         }
 
         /// <summary>

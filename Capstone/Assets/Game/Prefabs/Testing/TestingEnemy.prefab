@@ -76,8 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e4ff24b10fd5b4eb56176b2504a11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
   player: {fileID: 0}
-  damagedMaterial: {fileID: 2100000, guid: 645381229fadb8548b5d067a1cea3f40, type: 2}
+  health: 1000
 --- !u!65 &8921439430127683485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 5caf195f9d8c7094c92f3afc6387b74a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
