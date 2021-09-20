@@ -16,6 +16,10 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class Player : Character
     {
+        // Player Health
+        [SerializeField]
+        private ReactiveFloat health; 
+        
         // Reference to the Finite State Machine
         private FiniteStateMachine Movement_FSM;
         private FiniteStateMachine Combat_FSM;
