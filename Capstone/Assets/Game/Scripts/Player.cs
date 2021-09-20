@@ -64,7 +64,6 @@ namespace Bladesmiths.Capstone
         public float GroundedRadius = 0.20f;
 
         public bool parryEnd;
-
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]
@@ -78,6 +77,7 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private ReactiveFloat playerHealth;
         #endregion
+
         private void Awake()
         {
 

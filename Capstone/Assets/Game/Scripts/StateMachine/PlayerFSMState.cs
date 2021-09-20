@@ -286,7 +286,6 @@ namespace Bladesmiths.Capstone
         {
             // Turns the block detector box off
             playerBlockBox.SetActive(false);
-
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
         }
