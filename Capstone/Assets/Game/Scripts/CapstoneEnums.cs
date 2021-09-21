@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 namespace Bladesmiths.Capstone.Enums
 {
     public enum SwordType
@@ -12,6 +12,33 @@ namespace Bladesmiths.Capstone.Enums
         Sword3,
         Sword4
     }
+
+    [Flags]
+    public enum PlayerCondition
+    {
+        F_Idle = 1,
+        F_Moving = 2,
+        F_Attacking = 4,
+        F_Blocking = 8,
+        F_Parrying = 16,
+        F_Dodging = 32,
+        F_Jumping = 64,
+        F_Falling = 128,
+        F_TakingDamage = 256,
+        F_SwitchingWeapon = 512,
+        F_Dead = 1024
+    }
+
+    [Flags]
+    public enum EnemyCondition
+    {
+        Idle = 1,
+        Moving = 2,
+        Attacking = 4,
+        TakingDamage = 8,
+        Dead = 16
+    }
+
     public enum CharacterState
     {
         Idle,
@@ -26,6 +53,7 @@ namespace Bladesmiths.Capstone.Enums
         SwitchingWeapon,
         Dead
     }
+
     public enum EnemyState
     {
         Idle,
