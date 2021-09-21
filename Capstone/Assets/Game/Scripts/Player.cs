@@ -119,7 +119,7 @@ namespace Bladesmiths.Capstone
             Movement_FSM.AddTransition(idleMovement, dodge, IsDodging());
 
             // NULL state for when player is in either TAKEDAMAGE or DEAD
-            Movement_FSM.AddAnyTransition(nullState, IsNull());
+            //Movement_FSM.AddAnyTransition(nullState, IsNull());
             Movement_FSM.AddTransition(nullState, idleMovement, NotNull());
 
             // These are the possible transitions for the Player's Combat
