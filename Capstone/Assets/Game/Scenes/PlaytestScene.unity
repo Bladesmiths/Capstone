@@ -1132,7 +1132,7 @@ Canvas:
   m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1399425064}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4198,7 +4198,6 @@ GameObject:
   - component: {fileID: 1151287368}
   - component: {fileID: 1151287367}
   - component: {fileID: 1151287366}
-  - component: {fileID: 1151287365}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -4206,21 +4205,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1151287365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151287364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92dee4f4d25e9a342b76671c7563dbd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLockCam: {fileID: 1240109038}
-  targetCanvas: {fileID: 657257164}
-  playerCamRoot: {fileID: 999110822}
 --- !u!114 &1151287366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4626,7 +4610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240109037}
   m_LocalRotation: {x: 0.031092457, y: -0.24434324, z: 0.007838999, w: 0.96915853}
-  m_LocalPosition: {x: 2.505636, y: 1.6854893, z: -4.6532965}
+  m_LocalPosition: {x: 2.505636, y: 1.6854893, z: -0.15329674}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1721933957}
@@ -6911,7 +6895,7 @@ MonoBehaviour:
 
     Attack - Left Mouse Button
 
-    Lock On - Middle Mouse Button'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7434,7 +7418,6 @@ MonoBehaviour:
 
     Attack - Right Trigger
 
-    Lock On - Click Right Stick
 
 '
   m_isRightToLeft: 0
