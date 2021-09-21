@@ -110,7 +110,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.36363637
+    - _Glossiness: 0.08
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 3
@@ -159,7 +159,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.2076711, g: 0.33345327, b: 0.3138075, a: 0.48051947}
+    - _Color: {r: 0.20767108, g: 0.33345324, b: 0.31380746, a: 0.30588236}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Emissive: {r: 0, g: 0, b: 0, a: 0}

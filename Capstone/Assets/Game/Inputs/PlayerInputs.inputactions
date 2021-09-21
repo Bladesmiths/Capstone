@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "39add56d-8220-4482-a829-69b26c59377d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -357,7 +365,6 @@
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "Press(behavior=2)",
                     "processors": "",
-
                     "groups": "Gamepad",
                     "action": "Block",
                     "isComposite": false,
@@ -382,6 +389,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfba604f-efbd-4661-a9ca-7201a04a5fff",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
