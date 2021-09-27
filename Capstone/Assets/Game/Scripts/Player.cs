@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 
 using StarterAssets;
 
@@ -22,14 +24,22 @@ namespace Bladesmiths.Capstone
 
         //[SerializeField] private TransitionManager playerTransitionManager;
 
-        [SerializeField] private PlayerInputsScript inputs;
+        [SerializeField] 
+        private PlayerInputsScript inputs;
 
         // Gets a reference to the player
-        [SerializeField] private GameObject player;
-        [SerializeField] private GameObject sword;
+        [SerializeField] 
+        private GameObject player;
+        [SerializeField] 
+        private GameObject sword;
 
-        [SerializeField] private GameObject parryDetector;
-        [SerializeField] private GameObject blockDetector;
+        [SerializeField] 
+        private GameObject parryDetector;
+        [SerializeField] 
+        private GameObject blockDetector;
+
+        [OdinSerialize]
+        public Dictionary<IState, float> _speedValues;
 
         //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
@@ -84,7 +94,7 @@ namespace Bladesmiths.Capstone
         private bool _hasAnimator;
         private CharacterController _controller;
 
-        private float _speed;
+        public float _speed;
         private float _targetRotation = 0.0f;
         private float _rotationVelocity;
         private float _verticalVelocity = 0.0f;
@@ -115,6 +125,7 @@ namespace Bladesmiths.Capstone
         #endregion
 
         public bool parryEnd;
+        private float dodgeTimer;
 
         #region Testing Fields 
         [Header("Testing Fields")]
@@ -135,6 +146,7 @@ namespace Bladesmiths.Capstone
             _animator = GetComponent<Animator>();
             _animIDForward = Animator.StringToHash("Forward");
             _animBlend = 0;
+            dodgeTimer = 0;
 
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
@@ -177,26 +189,42 @@ namespace Bladesmiths.Capstone
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
 
+            _speedValues.Add(parryAttempt, 0);
+            _speedValues.Add(parrySuccess, 0);
+            _speedValues.Add(block, 0);
+            _speedValues.Add(idleCombat, 10);
+            _speedValues.Add(attack, 0);
+            _speedValues.Add(death, 0);
+            _speedValues.Add(takeDamage, 0);
+            _speedValues.Add(dodge, 0);
+            _speedValues.Add(jump, 10);
+            //_speedValues.Add(move, 0);
+            _speedValues.Add(nullState, 0);
+
+
             // Adds all of the possible transitions
             // These are the possible transitions for the Player's Movement
             //Movement_FSM.AddTransition(move, idleMovement, IsIdle());
             //Movement_FSM.AddTransition(idleMovement, move, IsMoving());
             //Movement_FSM.AddTransition(move, dodge, IsDodging());
-            Movement_FSM.AddTransition(dodge, idleMovement, IsDodgingStopped());
+            //Movement_FSM.AddTransition(dodge, idleMovement, IsDodgingStopped());
             //Movement_FSM.AddTransition(jump, idleMovement, IsGrounded());
             //Movement_FSM.AddTransition(move, jump, IsJumping());
             //Movement_FSM.AddTransition(idleMovement, jump, IsJumping());
-            Movement_FSM.AddTransition(idleMovement, dodge, IsDodging());
+            //Movement_FSM.AddTransition(idleMovement, dodge, IsDodging());
 
             // NULL state for when player is in either TAKEDAMAGE or DEAD
             //Movement_FSM.AddAnyTransition(nullState, IsNull());
-            Movement_FSM.AddTransition(nullState, idleMovement, NotNull());
+            //Movement_FSM.AddTransition(nullState, idleMovement, NotNull());
 
             // These are the possible transitions for the Player's Combat
             Combat_FSM.AddTransition(idleCombat, attack, IsAttacking());
             Combat_FSM.AddTransition(attack, idleCombat, IsCombatIdle());
             Combat_FSM.AddTransition(idleCombat, death, Alive());
             Combat_FSM.AddTransition(attack, death, Alive());
+            Combat_FSM.AddTransition(idleCombat, dodge, IsDodging());
+            Combat_FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
+
             //Combat_FSM.AddTransition(idleCombat, parry, IsBlockReleased());
             //Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
             Combat_FSM.AddTransition(idleCombat, block, IsBlockPressed());
@@ -322,11 +350,15 @@ namespace Bladesmiths.Capstone
 
         private void Update()
         {
-            Movement_FSM.Tick();
+            //Movement_FSM.Tick();
             Combat_FSM.Tick();
 
-            Jump();
-            Move();
+            if (Combat_FSM.GetCurrentState() != dodge)
+            {
+                Jump();
+                Debug.Log("no dodge");
+                Move();
+            }
         }
 
         private void LateUpdate()
@@ -415,7 +447,11 @@ namespace Bladesmiths.Capstone
 
 
             //float targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
-            float targetSpeed = inputs.move.magnitude * MoveSpeedCurrentMax;
+            //float targetSpeed = 0;
+            //float regSpeed = MoveSpeedCurrentMax;
+            _speedValues.TryGetValue(Combat_FSM.GetCurrentState(), out float targetSpeed);
+            
+            targetSpeed *= inputs.move.magnitude;
 
             if (inputs.move.magnitude > 1)
             {
@@ -470,7 +506,14 @@ namespace Bladesmiths.Capstone
                 this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
             }
+            if(inputs.dodge)
+            {
+                Debug.Log("bruh");
+            }
             targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+
+
+            
 
 
             if (_verticalVelocity < _terminalVelocity)
