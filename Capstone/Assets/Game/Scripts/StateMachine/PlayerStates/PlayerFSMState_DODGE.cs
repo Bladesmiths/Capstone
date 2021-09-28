@@ -150,13 +150,14 @@ namespace Bladesmiths.Capstone
             }
             else
             {
-                _targetRotation = _player.transform.eulerAngles.y;
+                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-                Vector3 inputVector = new Vector3(_input.move.x, 0.0f, _input.move.y);
-                float inputDot = Vector3.Dot(Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward, inputVector);
-                float inputRotation = Mathf.Acos((inputDot / (inputVector.magnitude * 1)));
+                // rotate to face input direction relative to camera position
+                _targetRotation = Mathf.Atan2(inputMove.x, inputMove.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
 
-                inputDirection = Quaternion.Euler(0.0f, inputRotation, 0.0f) * new Vector3(_input.move.x, 0.0f, _input.move.y);
+                _player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
+
+                inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
             
             }
 

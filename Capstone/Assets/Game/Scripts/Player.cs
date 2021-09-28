@@ -19,8 +19,7 @@ namespace Bladesmiths.Capstone
     public class Player : Character
     {        
         // Reference to the Finite State Machine
-        private FiniteStateMachine Movement_FSM;
-        private FiniteStateMachine Combat_FSM;
+        private FiniteStateMachine FSM;
 
         //[SerializeField] private TransitionManager playerTransitionManager;
 
@@ -174,8 +173,7 @@ namespace Bladesmiths.Capstone
             parryEnd = false;
 
             // Creates the FSM
-            Movement_FSM = new FiniteStateMachine();
-            Combat_FSM = new FiniteStateMachine();
+            FSM = new FiniteStateMachine();
 
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
@@ -205,40 +203,22 @@ namespace Bladesmiths.Capstone
 
 
             // Adds all of the possible transitions
-            // These are the possible transitions for the Player's Movement
-            //Movement_FSM.AddTransition(move, idleMovement, IsIdle());
-            //Movement_FSM.AddTransition(idleMovement, move, IsMoving());
-            //Movement_FSM.AddTransition(move, dodge, IsDodging());
-            //Movement_FSM.AddTransition(dodge, idleMovement, IsDodgingStopped());
-            //Movement_FSM.AddTransition(jump, idleMovement, IsGrounded());
-            //Movement_FSM.AddTransition(move, jump, IsJumping());
-            //Movement_FSM.AddTransition(idleMovement, jump, IsJumping());
-            //Movement_FSM.AddTransition(idleMovement, dodge, IsDodging());
+            FSM.AddTransition(idleCombat, attack, IsAttacking());
+            FSM.AddTransition(attack, idleCombat, IsCombatIdle());
+            FSM.AddTransition(idleCombat, death, Alive());
+            FSM.AddTransition(attack, death, Alive());
+            FSM.AddTransition(idleCombat, dodge, IsDodging());
+            FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
 
-            // NULL state for when player is in either TAKEDAMAGE or DEAD
-            //Movement_FSM.AddAnyTransition(nullState, IsNull());
-            //Movement_FSM.AddTransition(nullState, idleMovement, NotNull());
+            FSM.AddTransition(idleCombat, block, IsBlockPressed());
+            FSM.AddTransition(block, parryAttempt, IsBlockReleased());
+            FSM.AddTransition(parryAttempt, idleCombat, IsParryReleased());
 
-            // These are the possible transitions for the Player's Combat
-            Combat_FSM.AddTransition(idleCombat, attack, IsAttacking());
-            Combat_FSM.AddTransition(attack, idleCombat, IsCombatIdle());
-            Combat_FSM.AddTransition(idleCombat, death, Alive());
-            Combat_FSM.AddTransition(attack, death, Alive());
-            Combat_FSM.AddTransition(idleCombat, dodge, IsDodging());
-            Combat_FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
-
-            //Combat_FSM.AddTransition(idleCombat, parry, IsBlockReleased());
-            //Combat_FSM.AddTransition(parry, idleCombat, IsReleased());
-            Combat_FSM.AddTransition(idleCombat, block, IsBlockPressed());
-            Combat_FSM.AddTransition(block, parryAttempt, IsBlockReleased());
-            Combat_FSM.AddTransition(parryAttempt, idleCombat, IsParryReleased());
-
-            Combat_FSM.AddAnyTransition(takeDamage, IsDamaged());
-            Combat_FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
+            FSM.AddAnyTransition(takeDamage, IsDamaged());
+            FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
 
             // Sets the current state
-            Combat_FSM.SetCurrentState(idleCombat);
-            Movement_FSM.SetCurrentState(idleMovement);
+            FSM.SetCurrentState(idleCombat);
 
 
         }
@@ -302,7 +282,7 @@ namespace Bladesmiths.Capstone
         /// <summary>
         /// The condition for going from MOVE to DODGE state
         /// </summary>
-        public Func<bool> IsDodging() => () => inputs.dodge;
+        public Func<bool> IsDodging() => () => inputs.dodge && _controller.isGrounded;
 
         /// <summary>
         /// The condition for going from DODGE to MOVE state
@@ -330,7 +310,7 @@ namespace Bladesmiths.Capstone
         public Func<bool> IsGrounded() => () =>
         { 
             return gameObject.GetComponent<CharacterController>().isGrounded && jump.LandTimeoutDelta <= 0.0f;
-        };//GroundedCheck();
+        };
 
         /// <summary>
         /// Checks to see if the jump button has been pressed
@@ -352,14 +332,11 @@ namespace Bladesmiths.Capstone
 
         private void Update()
         {
-            //Movement_FSM.Tick();
-            Combat_FSM.Tick();
+            FSM.Tick();
 
-            //if (Combat_FSM.GetCurrentState() != dodge)
-            //{
-                Jump();
-                Move();
-            //}
+            Jump();
+            Move();
+            
         }
 
         private void LateUpdate()
@@ -439,7 +416,8 @@ namespace Bladesmiths.Capstone
 
 
             // Gets each speed value based off of what state the player is in
-            _speedValues.TryGetValue(Combat_FSM.GetCurrentState(), out float targetSpeed);
+            _speedValues.TryGetValue(FSM.GetCurrentState(), out float targetSpeed);
+            _speed = targetSpeed;
 
 
             // if the input is greater than 1 then set the speed to the max
@@ -535,7 +513,7 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Jump
-                if (inputs.jump && _jumpTimeoutDelta <= 0.0f)
+                if (inputs.jump && _speed != 0)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -581,30 +559,20 @@ namespace Bladesmiths.Capstone
 
                 // reset the jump timeout timer
                 _jumpTimeoutDelta = JumpTimeout;
-
-                // fall timeout
-                if (_fallTimeoutDelta >= 0.0f)
+                    
+                // update animator if using character
+                if (_hasAnimator)
                 {
-                    _fallTimeoutDelta -= Time.deltaTime;
+                    _animator.SetBool(_animIDFreeFall, true);
+                    _animator.SetBool(_animIDGrounded, false);
+                    
                 }
-                else
-                {
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                        _animator.SetBool(_animIDGrounded, false);
-
-                    }
-                }
+            
                
                 inputs.jump = false;
 
                 
             }
-
-
-
 
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
