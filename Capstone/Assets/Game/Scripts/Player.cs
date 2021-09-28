@@ -39,7 +39,7 @@ namespace Bladesmiths.Capstone
         private GameObject blockDetector;
 
         [OdinSerialize]
-        public Dictionary<IState, float> _speedValues;
+        public Dictionary<IState, float> _speedValues = new Dictionary<IState, float>();
 
         //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
@@ -147,6 +147,8 @@ namespace Bladesmiths.Capstone
             _animIDForward = Animator.StringToHash("Forward");
             _animBlend = 0;
             dodgeTimer = 0;
+
+            
 
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
@@ -353,12 +355,11 @@ namespace Bladesmiths.Capstone
             //Movement_FSM.Tick();
             Combat_FSM.Tick();
 
-            if (Combat_FSM.GetCurrentState() != dodge)
-            {
+            //if (Combat_FSM.GetCurrentState() != dodge)
+            //{
                 Jump();
-                Debug.Log("no dodge");
                 Move();
-            }
+            //}
         }
 
         private void LateUpdate()
@@ -421,17 +422,8 @@ namespace Bladesmiths.Capstone
         {
             _hasAnimator = this.TryGetComponent(out _animator);
 
-
-            //if(_input.move == Vector2.zero)
-            //{
-            //    timer += Time.deltaTime;
-
-            //}
-
-            //Vector2 movement = _input.move.normalized * (10 * Time.deltaTime);
-            //_controller.Move(new Vector3(movement.x, 0, movement.y));
-
-
+           
+            // Checks to see if the player is grounded
             if (_controller.isGrounded)
             {
                 if (_verticalVelocity < 0.0f)
@@ -446,71 +438,51 @@ namespace Bladesmiths.Capstone
             Vector3 targetDirection = Vector3.zero;
 
 
-            //float targetSpeed = _input.move.normalized.magnitude * MoveSpeedCurrentMax;
-            //float targetSpeed = 0;
-            //float regSpeed = MoveSpeedCurrentMax;
+            // Gets each speed value based off of what state the player is in
             _speedValues.TryGetValue(Combat_FSM.GetCurrentState(), out float targetSpeed);
-            
-            targetSpeed *= inputs.move.magnitude;
 
+
+            // if the input is greater than 1 then set the speed to the max
             if (inputs.move.magnitude > 1)
             {
-                targetSpeed = MoveSpeedCurrentMax;
+                targetSpeed *= 1;
+            }
+            else
+            {
+                targetSpeed *= inputs.move.magnitude;
             }
 
+            // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
             if (targetSpeed > 0 && targetSpeed < WalkSpeed)
             {
                 targetSpeed = WalkSpeed;
             }
 
+            // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) targetSpeed = 0.0f;
 
-
-            // a reference to the players current horizontal velocity
-            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude; //maybe normalize this instead?
-
-            float speedOffset = 0.1f;
-            float inputMagnitude = inputs.analogMovement ? inputs.move.magnitude : 1f;
-
-            // accelerate or decelerate to target speed
-            if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-            {
-                // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
-
-                // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            }
-            else
-            {
-                _speed = targetSpeed;
-            }
 
             // Animator input
             //_animator.SetFloat(_animIDForward, _speed / targetSpeed);
             _animBlend = Mathf.Lerp(_animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
-            //Debug.Log(_speed);
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
-            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-            // if there is a move input rotate player when the player is moving
-            if (inputs.move != Vector2.zero)
+            // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
+            // This allows for the player to not rotate a different direction based off of what they
+            // are inputting when dodging or in another state
+            if (inputs.move != Vector2.zero && targetSpeed != 0)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
                 this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             }
-            if(inputs.dodge)
-            {
-                Debug.Log("bruh");
-            }
-            targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            
 
 
             
@@ -522,7 +494,7 @@ namespace Bladesmiths.Capstone
             }
 
             // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            _controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 
             //GroundedCheck();

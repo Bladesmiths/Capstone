@@ -104,19 +104,19 @@ namespace Bladesmiths.Capstone
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
             // accelerate or decelerate to target speed
-            if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-            {
-                // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
+            //if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
+            //{
+            //    // creates curved result rather than a linear one giving a more organic speed change
+            //    // note T in Lerp is clamped, so we don't need to clamp our speed
+            //    _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
 
-                // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            }
-            else
-            {
-                _speed = targetSpeed;
-            }
+            //    // round speed to 3 decimal places
+            //    _speed = Mathf.Round(_speed * 1000f) / 1000f;
+            //}
+            //else
+            //{
+            //    _speed = targetSpeed;
+            //}
            
             if (_verticalVelocity < _terminalVelocity)
             {
@@ -124,7 +124,7 @@ namespace Bladesmiths.Capstone
             }
 
             // move the player
-            _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            _controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
 
 
@@ -138,17 +138,29 @@ namespace Bladesmiths.Capstone
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
 
-            inputDirection = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
+            //inputDirection = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
 
             if (_input.move == Vector2.zero)
             {
                 _targetRotation = _player.transform.eulerAngles.y;
 
                 inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.back;
-
-                inputDirection.Normalize();
+                
 
             }
+            else
+            {
+                _targetRotation = _player.transform.eulerAngles.y;
+
+                Vector3 inputVector = new Vector3(_input.move.x, 0.0f, _input.move.y);
+                float inputDot = Vector3.Dot(Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward, inputVector);
+                float inputRotation = Mathf.Acos((inputDot / (inputVector.magnitude * 1)));
+
+                inputDirection = Quaternion.Euler(0.0f, inputRotation, 0.0f) * new Vector3(_input.move.x, 0.0f, _input.move.y);
+            
+            }
+
+            //_player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
 
             // Testing
             ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;
