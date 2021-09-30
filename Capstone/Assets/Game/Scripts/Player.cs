@@ -38,7 +38,7 @@ namespace Bladesmiths.Capstone
         private GameObject blockDetector;
 
         [OdinSerialize]
-        public Dictionary<IState, float> _speedValues = new Dictionary<IState, float>();
+        public Dictionary<PlayerFSMState, float> _speedValues = new Dictionary<PlayerFSMState, float>();
 
         //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
@@ -47,13 +47,13 @@ namespace Bladesmiths.Capstone
         private PlayerFSMState_IDLE idleCombat;
 
 
-        PlayerFSMState_ATTACK attack;
-        PlayerFSMState_DEATH death;
-        PlayerFSMState_TAKEDAMAGE takeDamage;
-        PlayerFSMState_DODGE dodge;
-        PlayerFSMState_JUMP jump;
-        PlayerFSMState_BLOCK block;
-        PlayerFSMState_NULL nullState;
+        private PlayerFSMState_ATTACK attack;
+        private PlayerFSMState_DEATH death;
+        private PlayerFSMState_TAKEDAMAGE takeDamage;
+        private PlayerFSMState_DODGE dodge;
+        private PlayerFSMState_JUMP jump;
+        private PlayerFSMState_BLOCK block;
+        private PlayerFSMState_NULL nullState;
 
         public bool isDamaged;
         public bool inState;
@@ -147,12 +147,9 @@ namespace Bladesmiths.Capstone
             _animBlend = 0;
             dodgeTimer = 0;
 
-            
-
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
 
-            //timer = 0;
             _controller = GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
 
@@ -189,17 +186,17 @@ namespace Bladesmiths.Capstone
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
 
-            _speedValues.Add(parryAttempt, 0);
-            _speedValues.Add(parrySuccess, 0);
-            _speedValues.Add(block, 0);
-            _speedValues.Add(idleCombat, 10);
-            _speedValues.Add(attack, 0);
-            _speedValues.Add(death, 0);
-            _speedValues.Add(takeDamage, 0);
-            _speedValues.Add(dodge, 0);
-            _speedValues.Add(jump, 10);
-            //_speedValues.Add(move, 0);
-            _speedValues.Add(nullState, 0);
+            //_speedValues.Add(parryAttempt, 0);
+            //_speedValues.Add(parrySuccess, 0);
+            //_speedValues.Add(block, 0);
+            //_speedValues.Add(idleCombat, 10);
+            //_speedValues.Add(attack, 0);
+            //_speedValues.Add(death, 0);
+            //_speedValues.Add(takeDamage, 0);
+            //_speedValues.Add(dodge, 0);
+            //_speedValues.Add(jump, 10);
+            ////_speedValues.Add(move, 0);
+            //_speedValues.Add(nullState, 0);
 
 
             // Adds all of the possible transitions
@@ -416,7 +413,7 @@ namespace Bladesmiths.Capstone
 
 
             // Gets each speed value based off of what state the player is in
-            _speedValues.TryGetValue(FSM.GetCurrentState(), out float targetSpeed);
+            _speedValues.TryGetValue((PlayerFSMState)FSM.GetCurrentState(), out float targetSpeed);
             _speed = targetSpeed;
 
 

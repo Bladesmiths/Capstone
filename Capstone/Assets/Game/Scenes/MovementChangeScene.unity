@@ -3781,18 +3781,33 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _speedValues
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.IState,
-        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
+      Data: 0|Unity.Cloud.Collaborate.Common.SerializableDictionary`2[[Bladesmiths.Capstone.PlayerFSMState,
+        Assembly-CSharp],[System.Single, mscorlib]], Unity.CollabProxy.Editor
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Bladesmiths.Capstone.IState,
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Bladesmiths.Capstone.PlayerFSMState,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 2|Bladesmiths.Capstone.PlayerFSMState_IDLE, Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 4
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
