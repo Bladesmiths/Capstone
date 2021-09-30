@@ -14,8 +14,8 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState : IState
     {
         protected PlayerCondition id;
-        
-        public PlayerCondition ID { get; set; }
+
+        public PlayerCondition ID { get { return id; } set { id = value; } }
 
         public virtual void Tick()
         {
@@ -31,6 +31,7 @@ namespace Bladesmiths.Capstone
         {
 
         }
+
 
 
     }

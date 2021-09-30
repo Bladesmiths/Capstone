@@ -16,6 +16,7 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState_BLOCK(GameObject playerBlockDetector)
         {
             playerBlockBox = playerBlockDetector;
+            id = PlayerCondition.F_Blocking;
         }
 
         public override void Tick()

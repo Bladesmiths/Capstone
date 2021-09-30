@@ -16,6 +16,7 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState_DEATH(Player player)
         {
             _player = player;
+            id = PlayerCondition.F_Dead;
         }
 
         public override void Tick()

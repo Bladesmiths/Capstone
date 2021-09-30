@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Bladesmiths.Capstone.Enums;
 
 using StarterAssets;
 
@@ -38,7 +39,7 @@ namespace Bladesmiths.Capstone
         private GameObject blockDetector;
 
         [OdinSerialize]
-        private Dictionary<PlayerFSMState, float> speedValues = new Dictionary<PlayerFSMState, float>();
+        private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
         //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
@@ -89,6 +90,8 @@ namespace Bladesmiths.Capstone
         private CharacterController controller;
 
         public float speed;
+        float targetSpeed = 0;
+
         private float targetRotation = 0.0f;
         private float rotationVelocity;
         private float verticalVelocity = 0.0f;
@@ -167,6 +170,8 @@ namespace Bladesmiths.Capstone
             // Creates the FSM
             FSM = new FiniteStateMachine();
 
+            FSM.OnStateChange += SpeedUpdate;
+
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
             parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
@@ -181,16 +186,16 @@ namespace Bladesmiths.Capstone
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
 
-            speedValues.Add(parryAttempt, 0);
-            speedValues.Add(parrySuccess, 0);
-            speedValues.Add(block, 0);
-            speedValues.Add(idleCombat, 10);
-            speedValues.Add(attack, 0);
-            speedValues.Add(death, 0);
-            speedValues.Add(takeDamage, 0);
-            speedValues.Add(dodge, 0);
-            speedValues.Add(jump, 10);
-            speedValues.Add(nullState, 0);
+            //speedValues.Add(parryAttempt, 0);
+            //speedValues.Add(parrySuccess, 0);
+            //speedValues.Add(block, 0);
+            //speedValues.Add(idleCombat, 10);
+            //speedValues.Add(attack, 0);
+            //speedValues.Add(death, 0);
+            //speedValues.Add(takeDamage, 0);
+            //speedValues.Add(dodge, 0);
+            //speedValues.Add(jump, 10);
+            //speedValues.Add(nullState, 0);
             //speedValues.Add(move, 0);
 
 
@@ -385,6 +390,17 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// Runs whenever the state changes in the FSM
+        /// Attaches to the Delegate in the class
+        /// </summary>
+        private void SpeedUpdate()
+        {
+            // Gets each speed value based off of what state the player is in
+            speedValues.TryGetValue(((PlayerFSMState)FSM.GetCurrentState()).ID, out targetSpeed);            
+
+        }
+
+        /// <summary>
         /// Is ran in the Update and allows for the player to move
         /// </summary>
         private void Move()
@@ -401,40 +417,28 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-
-
             Vector3 inputDirection = Vector3.zero;
             Vector3 targetDirection = Vector3.zero;
 
-
-            // Gets each speed value based off of what state the player is in
-            speedValues.TryGetValue((PlayerFSMState)FSM.GetCurrentState(), out float targetSpeed);
             speed = targetSpeed;
 
 
             // if the input is greater than 1 then set the speed to the max
-            if (inputs.move.magnitude > 1)
+            if (inputs.move.magnitude <= 1)
             {
-                targetSpeed *= 1;
-            }
-            else
-            {
-                targetSpeed *= inputs.move.magnitude;
+               speed *= inputs.move.magnitude;
             }
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
-            if (targetSpeed > 0 && targetSpeed < WalkSpeed)
-            {
-                targetSpeed = WalkSpeed;
-            }
+            speed = Mathf.Clamp(speed, WalkSpeed, targetSpeed);
 
             // If the player isn't moving set their speed to 0
-            if (inputs.move == Vector2.zero) targetSpeed = 0.0f;
+            if (inputs.move == Vector2.zero) speed = 0.0f;
 
 
             // Animator input
             //animator.SetFloat(animIDForward, speed / targetSpeed);
-            animBlend = Mathf.Lerp(animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+            animBlend = Mathf.Lerp(animBlend, speed, Time.deltaTime * SpeedChangeRate);
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
@@ -442,7 +446,7 @@ namespace Bladesmiths.Capstone
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
             // are inputting when dodging or in another state
-            if (inputs.move != Vector2.zero && targetSpeed != 0)
+            if (inputs.move != Vector2.zero && speed != 0)
             {
                 targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
@@ -453,21 +457,14 @@ namespace Bladesmiths.Capstone
 
             }
             
-
-
-            
-
-
             if (verticalVelocity < terminalVelocity)
             {
                 verticalVelocity += Gravity * Time.deltaTime;
             }
 
             // move the player
-            controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
+            controller.Move(targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
-
-            //GroundedCheck();
 
             if (hasAnimator)
             {

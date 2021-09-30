@@ -3737,8 +3737,8 @@ GameObject:
   - component: {fileID: 1151287369}
   - component: {fileID: 1151287368}
   - component: {fileID: 1151287367}
-  - component: {fileID: 1151287366}
   - component: {fileID: 1151287365}
+  - component: {fileID: 1151287366}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3779,29 +3779,56 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _speedValues
+    - Name: speedValues
       Entry: 7
-      Data: 0|Unity.Cloud.Collaborate.Common.SerializableDictionary`2[[Bladesmiths.Capstone.PlayerFSMState,
-        Assembly-CSharp],[System.Single, mscorlib]], Unity.CollabProxy.Editor
+      Data: 0|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.PlayerCondition,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Bladesmiths.Capstone.PlayerFSMState,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.PlayerCondition,
         Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 7
-      Data: 2|Bladesmiths.Capstone.PlayerFSMState_IDLE, Assembly-CSharp
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 4
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3892
+    - Name: $v
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 64
     - Name: $v
       Entry: 4
       Data: 10
@@ -3814,7 +3841,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  maxHealth: 10000
+  maxHealth: 10
   inputs: {fileID: 1151287367}
   player: {fileID: 1151287364}
   sword: {fileID: 919132148703937968}
@@ -3822,8 +3849,8 @@ MonoBehaviour:
   blockDetector: {fileID: 793848444}
   isDamaged: 0
   inState: 0
-  _cinemachineTargetYaw: 0
-  _cinemachineTargetPitch: 0
+  cinemachineTargetYaw: 0
+  cinemachineTargetPitch: 0
   CinemachineCameraTarget: {fileID: 999110821}
   GroundLayers:
     serializedVersion: 2
@@ -3834,7 +3861,7 @@ MonoBehaviour:
   GroundedRadius: 0.2
   landTimeout: 0.02
   timer: 0
-  _speed: 0
+  speed: 0
   SpeedChangeRate: 10
   RotationSmoothTime: 0.12
   FallTimeout: 0.15
@@ -3846,11 +3873,11 @@ MonoBehaviour:
   MoveSpeedCurrentMax: 10
   JumpTimeout: 0.5
   parryEnd: 0
-  numAttacks: {fileID: 11400000, guid: 08106fba80fc13448af41587dd27028d, type: 2}
-  numBlocks: {fileID: 11400000, guid: 52bd98b9acbc38a40be4cb66ae37ee38, type: 2}
-  numDodges: {fileID: 11400000, guid: 19c515f1b56511f4c8399fe9a02e4e14, type: 2}
-  numJumps: {fileID: 11400000, guid: 4912d19f3f29bb143ae3ef129bb70baa, type: 2}
-  playerHealth: {fileID: 11400000, guid: e9396bd8420c322409bb315b15f98cc2, type: 2}
+  numAttacks: {fileID: 0}
+  numBlocks: {fileID: 0}
+  numDodges: {fileID: 0}
+  numJumps: {fileID: 0}
+  playerHealth: {fileID: 0}
 --- !u!114 &1151287367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8240,7 +8267,7 @@ PrefabInstance:
     - target: {fileID: 7643115073397065415, guid: 9b0f5d943fd227844946a74907ee56e7, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1151287366}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7685553948906245343, guid: 9b0f5d943fd227844946a74907ee56e7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9b0f5d943fd227844946a74907ee56e7, type: 3}

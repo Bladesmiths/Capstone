@@ -65,6 +65,7 @@ namespace Bladesmiths.Capstone
             isGrounded = true;
             _speed = 15;
             _landTimeout = landTimeout;
+            id = PlayerCondition.F_Jumping;
         }
 
         public override void Tick()
