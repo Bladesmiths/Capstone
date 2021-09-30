@@ -38,7 +38,7 @@ namespace Bladesmiths.Capstone
         private GameObject blockDetector;
 
         [OdinSerialize]
-        public Dictionary<PlayerFSMState, float> _speedValues = new Dictionary<PlayerFSMState, float>();
+        private Dictionary<PlayerFSMState, float> speedValues = new Dictionary<PlayerFSMState, float>();
 
         //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
@@ -58,9 +58,9 @@ namespace Bladesmiths.Capstone
         public bool isDamaged;
         public bool inState;
 
-        public float _cinemachineTargetYaw;
-        public float _cinemachineTargetPitch;
-        private const float _threshold = 0.01f;
+        public float cinemachineTargetYaw;
+        public float cinemachineTargetPitch;
+        private const float threshold = 0.01f;
         [SerializeField] public GameObject CinemachineCameraTarget;
         private float TopClamp = 70.0f;
         private float BottomClamp = -30.0f;
@@ -78,31 +78,26 @@ namespace Bladesmiths.Capstone
 
         public float timer;
 
-        private Player _player;
-        private PlayerInputsScript _input;
-        private Animator _animator;
+        private Animator animator;
 
-        private int _animIDForward;
-        private int _animIDDodge;
-        private int _animIDMotionSpeed;
-        private int _animIDSpeed;
-        private int _animIDGrounded;
-        private int _animIDJump;
-        private int _animIDFreeFall;
-        private float _animBlend;
-        private bool _hasAnimator;
-        private CharacterController _controller;
+        private int animIDForward;
+        private int animIDGrounded;
+        private int animIDJump;
+        private int animIDFreeFall;
+        private float animBlend;
+        private bool hasAnimator;
+        private CharacterController controller;
 
-        public float _speed;
-        private float _targetRotation = 0.0f;
-        private float _rotationVelocity;
-        private float _verticalVelocity = 0.0f;
-        private float _terminalVelocity = 53.0f;
+        public float speed;
+        private float targetRotation = 0.0f;
+        private float rotationVelocity;
+        private float verticalVelocity = 0.0f;
+        private float terminalVelocity = 53.0f;
         public float SpeedChangeRate = 10.0f;
         public float RotationSmoothTime = 0.12f;
 
         public float FallTimeout = 0.15f;
-        private float _landTimeout;
+        //private float landTimeout;
         public float LandTimeoutDelta = 0;
 
         private Vector3 controllerVelocity;
@@ -119,8 +114,8 @@ namespace Bladesmiths.Capstone
 
         public float JumpTimeout = 0.50f;
 
-        private float _jumpTimeoutDelta;
-        private float _fallTimeoutDelta;
+        private float jumpTimeoutDelta;
+        private float fallTimeoutDelta;
         #endregion
 
         public bool parryEnd;
@@ -142,21 +137,21 @@ namespace Bladesmiths.Capstone
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
-            _animIDForward = Animator.StringToHash("Forward");
-            _animBlend = 0;
+            animator = GetComponent<Animator>();
+            animIDForward = Animator.StringToHash("Forward");
+            animBlend = 0;
             dodgeTimer = 0;
 
-            _jumpTimeoutDelta = JumpTimeout;
-            _fallTimeoutDelta = FallTimeout;
+            jumpTimeoutDelta = JumpTimeout;
+            fallTimeoutDelta = FallTimeout;
 
-            _controller = GetComponent<CharacterController>();
+            controller = GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
 
-            _hasAnimator = TryGetComponent(out _animator);
-            _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
-            _animIDFreeFall = Animator.StringToHash("FreeFall");
+            hasAnimator = TryGetComponent(out animator);
+            animIDGrounded = Animator.StringToHash("Grounded");
+            animIDJump = Animator.StringToHash("Jump");
+            animIDFreeFall = Animator.StringToHash("FreeFall");
 
             LandTimeoutDelta = -1.0f;
 
@@ -176,27 +171,27 @@ namespace Bladesmiths.Capstone
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
             parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
             block = new PlayerFSMState_BLOCK(blockDetector);
-            //move = new PlayerFSMState_MOVING(this, inputs, _animator, GroundLayers);
-            idleMovement = new PlayerFSMState_IDLE(_animator);
-            idleCombat = new PlayerFSMState_IDLE(_animator);
-            attack = new PlayerFSMState_ATTACK(this, inputs, _animator, sword);
+            //move = new PlayerFSMState_MOVING(this, inputs, animator, GroundLayers);
+            idleMovement = new PlayerFSMState_IDLE(animator);
+            idleCombat = new PlayerFSMState_IDLE(animator);
+            attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
             death = new PlayerFSMState_DEATH(this);
             takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
-            dodge = new PlayerFSMState_DODGE(this, inputs, _animator, GroundLayers);
+            dodge = new PlayerFSMState_DODGE(this, inputs, animator, GroundLayers);
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
 
-            //_speedValues.Add(parryAttempt, 0);
-            //_speedValues.Add(parrySuccess, 0);
-            //_speedValues.Add(block, 0);
-            //_speedValues.Add(idleCombat, 10);
-            //_speedValues.Add(attack, 0);
-            //_speedValues.Add(death, 0);
-            //_speedValues.Add(takeDamage, 0);
-            //_speedValues.Add(dodge, 0);
-            //_speedValues.Add(jump, 10);
-            ////_speedValues.Add(move, 0);
-            //_speedValues.Add(nullState, 0);
+            speedValues.Add(parryAttempt, 0);
+            speedValues.Add(parrySuccess, 0);
+            speedValues.Add(block, 0);
+            speedValues.Add(idleCombat, 10);
+            speedValues.Add(attack, 0);
+            speedValues.Add(death, 0);
+            speedValues.Add(takeDamage, 0);
+            speedValues.Add(dodge, 0);
+            speedValues.Add(jump, 10);
+            speedValues.Add(nullState, 0);
+            //speedValues.Add(move, 0);
 
 
             // Adds all of the possible transitions
@@ -279,7 +274,7 @@ namespace Bladesmiths.Capstone
         /// <summary>
         /// The condition for going from MOVE to DODGE state
         /// </summary>
-        public Func<bool> IsDodging() => () => inputs.dodge && _controller.isGrounded;
+        public Func<bool> IsDodging() => () => inputs.dodge && controller.isGrounded;
 
         /// <summary>
         /// The condition for going from DODGE to MOVE state
@@ -361,18 +356,18 @@ namespace Bladesmiths.Capstone
         private void CameraRotation()
         {
             // if there is an input and camera position is not fixed
-            if (inputs.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+            if (inputs.look.sqrMagnitude >= threshold && !LockCameraPosition)
             {
-                _cinemachineTargetYaw += inputs.look.x * Time.deltaTime;
-                _cinemachineTargetPitch += inputs.look.y * Time.deltaTime;
+                cinemachineTargetYaw += inputs.look.x * Time.deltaTime;
+                cinemachineTargetPitch += inputs.look.y * Time.deltaTime;
             }
 
             // clamp our rotations so our values are limited 360 degrees
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+            cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
+            cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
 
             // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
         }
 
         /// <summary>
@@ -394,15 +389,15 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void Move()
         {
-            _hasAnimator = this.TryGetComponent(out _animator);
+            hasAnimator = this.TryGetComponent(out animator);
 
            
             // Checks to see if the player is grounded
-            if (_controller.isGrounded)
+            if (controller.isGrounded)
             {
-                if (_verticalVelocity < 0.0f)
+                if (verticalVelocity < 0.0f)
                 {
-                    _verticalVelocity = -2f;
+                    verticalVelocity = -2f;
                 }
             }
 
@@ -413,8 +408,8 @@ namespace Bladesmiths.Capstone
 
 
             // Gets each speed value based off of what state the player is in
-            _speedValues.TryGetValue((PlayerFSMState)FSM.GetCurrentState(), out float targetSpeed);
-            _speed = targetSpeed;
+            speedValues.TryGetValue((PlayerFSMState)FSM.GetCurrentState(), out float targetSpeed);
+            speed = targetSpeed;
 
 
             // if the input is greater than 1 then set the speed to the max
@@ -438,8 +433,8 @@ namespace Bladesmiths.Capstone
 
 
             // Animator input
-            //_animator.SetFloat(_animIDForward, _speed / targetSpeed);
-            _animBlend = Mathf.Lerp(_animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+            //animator.SetFloat(animIDForward, speed / targetSpeed);
+            animBlend = Mathf.Lerp(animBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
@@ -449,12 +444,12 @@ namespace Bladesmiths.Capstone
             // are inputting when dodging or in another state
             if (inputs.move != Vector2.zero && targetSpeed != 0)
             {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
+                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
+                float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
                 this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-                targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+                targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
 
             }
             
@@ -463,21 +458,21 @@ namespace Bladesmiths.Capstone
             
 
 
-            if (_verticalVelocity < _terminalVelocity)
+            if (verticalVelocity < terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                verticalVelocity += Gravity * Time.deltaTime;
             }
 
             // move the player
-            _controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            controller.Move(targetDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
 
             //GroundedCheck();
 
-            if (_hasAnimator)
+            if (hasAnimator)
             {
-                _animator.SetFloat(_animIDForward, _animBlend);
-                //_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                animator.SetFloat(animIDForward, animBlend);
+                //animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
 
         }
@@ -488,45 +483,45 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void Jump()
         {
-            if (_controller.isGrounded)
+            if (controller.isGrounded)
             {
                 //Debug.Log("<color=brown>Grounded</color>");
-                _fallTimeoutDelta = FallTimeout;
+                fallTimeoutDelta = FallTimeout;
 
                 isGrounded = true;
 
                 // update animator if using character
-                if (_hasAnimator)
+                if (hasAnimator)
                 {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                    _verticalVelocity = 0f;
+                    animator.SetBool(animIDJump, false);
+                    animator.SetBool(animIDFreeFall, false);
+                    verticalVelocity = 0f;
                 }
 
                 // stop our velocity dropping infinitely when grounded
-                if (_verticalVelocity < 0.0f)
+                if (verticalVelocity < 0.0f)
                 {
-                    _verticalVelocity = -2f;
+                    verticalVelocity = -2f;
                 }
 
                 // Jump
-                if (inputs.jump && _speed != 0)
+                if (inputs.jump && speed != 0)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-                    controllerVelocity = _controller.velocity.normalized * inputs.move.magnitude;
+                    verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                    controllerVelocity = controller.velocity.normalized * inputs.move.magnitude;
 
                     // update animator if using character
-                    if (_hasAnimator)
+                    if (hasAnimator)
                     {
-                        _animator.SetBool(_animIDJump, true);
+                        animator.SetBool(animIDJump, true);
                     }
                 }
 
                 // jump timeout
-                if (_jumpTimeoutDelta >= 0.0f)
+                if (jumpTimeoutDelta >= 0.0f)
                 {
-                    _jumpTimeoutDelta -= Time.deltaTime;
+                    jumpTimeoutDelta -= Time.deltaTime;
                 }
 
                 // Get the current velocity of the player
@@ -535,9 +530,9 @@ namespace Bladesmiths.Capstone
                 // Land Timer
                 if (LandTimeoutDelta >= 0.0f)
                 {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                    _animator.SetBool(_animIDGrounded, true);
+                    animator.SetBool(animIDJump, false);
+                    animator.SetBool(animIDFreeFall, false);
+                    animator.SetBool(animIDGrounded, true);
 
                     LandTimeoutDelta -= Time.deltaTime;
                 }
@@ -552,16 +547,16 @@ namespace Bladesmiths.Capstone
             {
                 //Debug.Log("<color=blue>In Air</color>");
 
-                LandTimeoutDelta = _landTimeout;
+                LandTimeoutDelta = landTimeout;
 
                 // reset the jump timeout timer
-                _jumpTimeoutDelta = JumpTimeout;
+                jumpTimeoutDelta = JumpTimeout;
                     
                 // update animator if using character
-                if (_hasAnimator)
+                if (hasAnimator)
                 {
-                    _animator.SetBool(_animIDFreeFall, true);
-                    _animator.SetBool(_animIDGrounded, false);
+                    animator.SetBool(animIDFreeFall, true);
+                    animator.SetBool(animIDGrounded, false);
                     
                 }
             
@@ -573,9 +568,9 @@ namespace Bladesmiths.Capstone
 
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-            if (_verticalVelocity < _terminalVelocity)
+            if (verticalVelocity < terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                verticalVelocity += Gravity * Time.deltaTime;
             }
 
         }
