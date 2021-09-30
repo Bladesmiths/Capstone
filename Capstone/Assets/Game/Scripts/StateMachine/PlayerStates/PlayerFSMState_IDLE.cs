@@ -25,6 +25,7 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState_IDLE(Animator animator)
         {
             _animator = animator;
+            id = PlayerCondition.F_Idle;
         }
 
         public override void Tick()

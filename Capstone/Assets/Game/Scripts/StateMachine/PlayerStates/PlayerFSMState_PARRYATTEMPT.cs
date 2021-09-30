@@ -24,6 +24,7 @@ namespace Bladesmiths.Capstone
             _playerParryBox = playerParryBox;
             _input = input;
             _player = player;
+            id = PlayerCondition.F_ParryAttempt;
         }
 
         public override void Tick()
