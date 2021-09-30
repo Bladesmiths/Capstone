@@ -3877,7 +3877,7 @@ MonoBehaviour:
   numBlocks: {fileID: 0}
   numDodges: {fileID: 0}
   numJumps: {fileID: 0}
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 11400000, guid: e9396bd8420c322409bb315b15f98cc2, type: 2}
 --- !u!114 &1151287367
 MonoBehaviour:
   m_ObjectHideFlags: 0
