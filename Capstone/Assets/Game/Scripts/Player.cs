@@ -18,24 +18,24 @@ namespace Bladesmiths.Capstone
     /// are defined and how they are transitioned between
     /// </summary>
     public class Player : Character
-    {        
+    {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
 
         //[SerializeField] private TransitionManager playerTransitionManager;
 
-        [SerializeField] 
+        [SerializeField]
         private PlayerInputsScript inputs;
 
         // Gets a reference to the player
-        [SerializeField] 
+        [SerializeField]
         private GameObject player;
-        [SerializeField] 
+        [SerializeField]
         private GameObject sword;
 
-        [SerializeField] 
+        [SerializeField]
         private GameObject parryDetector;
-        [SerializeField] 
+        [SerializeField]
         private GameObject blockDetector;
 
         [OdinSerialize]
@@ -170,6 +170,7 @@ namespace Bladesmiths.Capstone
             // Creates the FSM
             FSM = new FiniteStateMachine();
 
+            // Subscribe to the FSM's OnStateChange event
             FSM.OnStateChange += SpeedUpdate;
 
             // Creates all of the states
@@ -185,19 +186,6 @@ namespace Bladesmiths.Capstone
             dodge = new PlayerFSMState_DODGE(this, inputs, animator, GroundLayers);
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
-
-            //speedValues.Add(parryAttempt, 0);
-            //speedValues.Add(parrySuccess, 0);
-            //speedValues.Add(block, 0);
-            //speedValues.Add(idleCombat, 10);
-            //speedValues.Add(attack, 0);
-            //speedValues.Add(death, 0);
-            //speedValues.Add(takeDamage, 0);
-            //speedValues.Add(dodge, 0);
-            //speedValues.Add(jump, 10);
-            //speedValues.Add(nullState, 0);
-            //speedValues.Add(move, 0);
-
 
             // Adds all of the possible transitions
             FSM.AddTransition(idleCombat, attack, IsAttacking());
@@ -216,8 +204,6 @@ namespace Bladesmiths.Capstone
 
             // Sets the current state
             FSM.SetCurrentState(idleCombat);
-
-
         }
 
         /// <summary>
@@ -305,7 +291,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsGrounded() => () =>
-        { 
+        {
             return gameObject.GetComponent<CharacterController>().isGrounded && jump.LandTimeoutDelta <= 0.0f;
         };
 
@@ -314,7 +300,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> IsJumping() => () => inputs.jump;
-        
+
         /// <summary>
         /// The condition for going to the NULL state
         /// </summary>
@@ -333,7 +319,6 @@ namespace Bladesmiths.Capstone
 
             Jump();
             Move();
-            
         }
 
         private void LateUpdate()
@@ -352,7 +337,6 @@ namespace Bladesmiths.Capstone
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
             return Grounded;
-
         }
 
         /// <summary>
@@ -396,8 +380,10 @@ namespace Bladesmiths.Capstone
         private void SpeedUpdate()
         {
             // Gets each speed value based off of what state the player is in
-            speedValues.TryGetValue(((PlayerFSMState)FSM.GetCurrentState()).ID, out targetSpeed);            
-
+            if (!speedValues.TryGetValue(((PlayerFSMState)FSM.GetCurrentState()).ID, out targetSpeed))
+            {
+                Debug.Log($"Speed Update Failed. Current State is {((PlayerFSMState)FSM.GetCurrentState()).ID}");
+            }
         }
 
         /// <summary>
@@ -407,7 +393,6 @@ namespace Bladesmiths.Capstone
         {
             hasAnimator = this.TryGetComponent(out animator);
 
-           
             // Checks to see if the player is grounded
             if (controller.isGrounded)
             {
@@ -422,11 +407,10 @@ namespace Bladesmiths.Capstone
 
             speed = targetSpeed;
 
-
             // if the input is greater than 1 then set the speed to the max
             if (inputs.move.magnitude <= 1)
             {
-               speed *= inputs.move.magnitude;
+                speed *= inputs.move.magnitude;
             }
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
@@ -434,7 +418,6 @@ namespace Bladesmiths.Capstone
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
-
 
             // Animator input
             //animator.SetFloat(animIDForward, speed / targetSpeed);
@@ -454,9 +437,8 @@ namespace Bladesmiths.Capstone
                 // rotate to face input direction relative to camera position
                 this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
                 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
-
             }
-            
+
             if (verticalVelocity < terminalVelocity)
             {
                 verticalVelocity += Gravity * Time.deltaTime;
@@ -465,13 +447,11 @@ namespace Bladesmiths.Capstone
             // move the player
             controller.Move(targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
-
             if (hasAnimator)
             {
                 animator.SetFloat(animIDForward, animBlend);
                 //animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
-
         }
 
         /// <summary>
@@ -502,7 +482,8 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Jump
-                if (inputs.jump && speed != 0)
+                // Checks to make sure that the player should be able to move
+                if (inputs.jump && targetSpeed != 0)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -521,9 +502,6 @@ namespace Bladesmiths.Capstone
                     jumpTimeoutDelta -= Time.deltaTime;
                 }
 
-                // Get the current velocity of the player
-
-
                 // Land Timer
                 if (LandTimeoutDelta >= 0.0f)
                 {
@@ -537,9 +515,7 @@ namespace Bladesmiths.Capstone
                 {
                     LandTimeoutDelta = -1f;
                 }
-                
             }
-
             else
             {
                 //Debug.Log("<color=blue>In Air</color>");
@@ -548,19 +524,16 @@ namespace Bladesmiths.Capstone
 
                 // reset the jump timeout timer
                 jumpTimeoutDelta = JumpTimeout;
-                    
+
                 // update animator if using character
                 if (hasAnimator)
                 {
                     animator.SetBool(animIDFreeFall, true);
                     animator.SetBool(animIDGrounded, false);
-                    
-                }
-            
-               
-                inputs.jump = false;
 
-                
+                }
+
+                inputs.jump = false;
             }
 
 
@@ -569,7 +542,6 @@ namespace Bladesmiths.Capstone
             {
                 verticalVelocity += Gravity * Time.deltaTime;
             }
-
         }
 
         protected override void Attack()
