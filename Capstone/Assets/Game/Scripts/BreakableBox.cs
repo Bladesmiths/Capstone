@@ -7,13 +7,15 @@ public class BreakableBox : MonoBehaviour
     private bool isBroken;
     private float fadeOutTimer;
     private float fadeOutLength;
+    private float shrinkSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         isBroken = false;
         fadeOutTimer = 0;
-        fadeOutLength = 1.5f;
+        fadeOutLength = 20.5f;
+        shrinkSpeed = 1.0f;
     }
 
     // Update is called once per frame
@@ -24,9 +26,17 @@ public class BreakableBox : MonoBehaviour
             fadeOutTimer += Time.deltaTime;
         }
 
+        // When the object should fade out
         if(fadeOutTimer >= fadeOutLength)
         {
-            Destroy(gameObject);
+            // Shrink the cubes
+            transform.localScale = new Vector3(transform.localScale.x - (shrinkSpeed * Time.deltaTime), transform.localScale.y - (shrinkSpeed * Time.deltaTime), transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+            // After the cubes are shrunk, destroy it
+            if(transform.localScale.x <= 0 && transform.localScale.y <= 0 && transform.localScale.z <= 0)
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
 
