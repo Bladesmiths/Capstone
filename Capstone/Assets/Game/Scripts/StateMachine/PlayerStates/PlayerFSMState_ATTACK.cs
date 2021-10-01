@@ -103,11 +103,14 @@ namespace Bladesmiths.Capstone
             {
                 _hasAnimator = false;
             }
+
+            _animator.SetBool(_animIDAttack, true); 
         }
 
         public override void OnExit()
         {
             _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            _animator.SetBool(_animIDAttack, false);
         }
 
     }

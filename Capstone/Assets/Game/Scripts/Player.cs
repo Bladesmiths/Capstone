@@ -163,7 +163,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 0.1f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 2.0f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
 
         /// <summary>
         /// The condition for going between the IDLE and BLOCK state
