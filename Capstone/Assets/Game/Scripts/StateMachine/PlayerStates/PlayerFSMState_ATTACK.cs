@@ -33,7 +33,7 @@ namespace Bladesmiths.Capstone
             _animator = animator;
             _sword = sword;
             _sword.GetComponent<Rigidbody>().detectCollisions = false;
-
+            id = PlayerCondition.F_Attacking;
         }
 
         public override void Tick()

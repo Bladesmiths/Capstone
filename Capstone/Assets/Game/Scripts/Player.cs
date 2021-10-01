@@ -414,7 +414,7 @@ namespace Bladesmiths.Capstone
             }
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
-            speed = Mathf.Clamp(speed, WalkSpeed, targetSpeed);
+            speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;

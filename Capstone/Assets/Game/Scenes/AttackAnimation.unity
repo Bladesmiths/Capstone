@@ -3770,6 +3770,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4449584ac053e848ab001c59a8ecfb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: speedValues
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.PlayerCondition,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.PlayerCondition,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 64
+    - Name: $v
+      Entry: 4
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 4
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 32
+    - Name: $v
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1024
+    - Name: $v
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   maxHealth: 10000
   inputs: {fileID: 1151287367}
   player: {fileID: 1151287364}
@@ -3778,8 +3885,8 @@ MonoBehaviour:
   blockDetector: {fileID: 793848444}
   isDamaged: 0
   inState: 0
-  _cinemachineTargetYaw: 0
-  _cinemachineTargetPitch: 0
+  cinemachineTargetYaw: 0
+  cinemachineTargetPitch: 0
   CinemachineCameraTarget: {fileID: 999110821}
   GroundLayers:
     serializedVersion: 2
@@ -3789,6 +3896,18 @@ MonoBehaviour:
   GroundedOffset: -0.1
   GroundedRadius: 0.2
   landTimeout: 0.02
+  timer: 0
+  speed: 0
+  SpeedChangeRate: 10
+  RotationSmoothTime: 0.12
+  FallTimeout: 0.15
+  LandTimeoutDelta: 0
+  JumpHeight: 1.2
+  Gravity: -15
+  RunSpeed: 10
+  WalkSpeed: 4
+  MoveSpeedCurrentMax: 10
+  JumpTimeout: 0.5
   parryEnd: 0
   numAttacks: {fileID: 11400000, guid: 08106fba80fc13448af41587dd27028d, type: 2}
   numBlocks: {fileID: 11400000, guid: 52bd98b9acbc38a40be4cb66ae37ee38, type: 2}
@@ -7610,8 +7729,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148703937968}
-  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
-  m_LocalPosition: {x: -0.375, y: 0.101, z: 0.029}
+  m_LocalRotation: {x: -0.2924699, y: 0.9562748, z: -0.0000005513426, w: -0.0000023841844}
+  m_LocalPosition: {x: -0.21755931, y: 0.40131405, z: 0.028999567}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 6522691510565743084}
@@ -7623,7 +7742,7 @@ Transform:
   - {fileID: 5927742080979603319}
   m_Father: {fileID: 1545655688}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -34.012}
 --- !u!1 &919132148703937968
 GameObject:
   m_ObjectHideFlags: 0
