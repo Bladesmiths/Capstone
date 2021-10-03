@@ -23,6 +23,8 @@ public class MainMenuFunctions : MonoBehaviour
     void Start()
     {
         lastselect = new GameObject();
+        // If the video has ended
+        videoPlayer.loopPointReached += EndReached;
     }
 
     // Update is called once per frame
@@ -52,9 +54,6 @@ public class MainMenuFunctions : MonoBehaviour
                 SceneManager.LoadScene("IntroCutscene");
             }
         }
-
-        // If the video has ended
-        videoPlayer.loopPointReached += EndReached;
 
     }
 
