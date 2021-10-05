@@ -224,7 +224,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 0.1f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 2.0f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
 
         /// <summary>
         /// The condition for going between the IDLE and BLOCK state
@@ -414,7 +414,7 @@ namespace Bladesmiths.Capstone
             }
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
-            speed = Mathf.Clamp(speed, WalkSpeed, targetSpeed);
+            speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
