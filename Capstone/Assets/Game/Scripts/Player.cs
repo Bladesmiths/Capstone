@@ -200,7 +200,7 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(parryAttempt, idleCombat, IsParryReleased());
 
 
-            _cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
+            cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
             FSM.AddAnyTransition(takeDamage, IsDamaged());
             FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());

@@ -179,7 +179,7 @@ namespace Bladesmiths.Capstone
             //_player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
 
             // Testing
-            ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;
+            //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;
         }
 
         public override void OnExit()
