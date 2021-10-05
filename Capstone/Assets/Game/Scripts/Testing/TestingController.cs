@@ -118,8 +118,8 @@ namespace Bladesmiths.Capstone.Testing {
 
             Player playerComponent = player.GetComponent<Player>();
             playerComponent.CinemachineCameraTarget.transform.rotation = Quaternion.identity;
-            playerComponent._cinemachineTargetYaw = 0;
-            playerComponent._cinemachineTargetPitch = 0;
+            playerComponent.cinemachineTargetYaw = 0;
+            playerComponent.cinemachineTargetPitch = 0;
 
             playerComponent.Health = playerComponent.MaxHealth;
 

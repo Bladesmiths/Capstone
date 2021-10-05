@@ -63,6 +63,7 @@ namespace Bladesmiths.Capstone
             }
 
             currentState = state;
+            OnStateChange();
             Debug.Log(currentState);
 
             possibleTransitions.TryGetValue(currentState.GetType(), out currentTransitions);
@@ -76,6 +77,11 @@ namespace Bladesmiths.Capstone
 
         }
 
+        public delegate void OnStateChangeDelegate();
+        public event OnStateChangeDelegate OnStateChange; 
+            
+
+
         /// <summary>
         /// Gets the current state
         /// </summary>
@@ -85,6 +91,7 @@ namespace Bladesmiths.Capstone
             return currentState;
 
         }
+
 
         /// <summary>
         /// The 'Update' method for the FSM
