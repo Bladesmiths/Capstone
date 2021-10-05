@@ -19,10 +19,14 @@ namespace Bladesmiths.Capstone
         private Player _player;
         private PlayerInputsScript _input;
         private Animator _animator;
+        private bool hasAnimator;
 
         private int _animIDSpeed;
         private int _animIDDodge;
         private int _animIDMotionSpeed;
+        private int _animIDForward;
+        private int _animIDDodgeMove;
+        private float animBlend;
         private bool _hasAnimator;
         private CharacterController _controller;
 
@@ -67,7 +71,7 @@ namespace Bladesmiths.Capstone
             _input.dodge = false;
 
             dmgTimer += Time.deltaTime;
-            if (dmgTimer >= 0.1f)
+            if (dmgTimer >= 0.3f)
             {
                 canDmg = true;
                 _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
@@ -92,7 +96,7 @@ namespace Bladesmiths.Capstone
             Vector3 targetDirection = Vector3.zero;
 
 
-            float targetSpeed = 20;
+            float targetSpeed = 5;
 
             
 
@@ -118,7 +122,14 @@ namespace Bladesmiths.Capstone
             //{
             //    _speed = targetSpeed;
             //}
-           
+
+            if (hasAnimator)
+            {
+                _animator.SetBool(_animIDDodge, true);
+                
+            }
+
+
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
@@ -138,6 +149,9 @@ namespace Bladesmiths.Capstone
             canDmg = false;
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
+            hasAnimator = _player.TryGetComponent(out _animator);
+            _animIDDodge = Animator.StringToHash("Dodge");
+            _animIDForward = Animator.StringToHash("Forward");
 
             //inputDirection = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
 
@@ -172,8 +186,10 @@ namespace Bladesmiths.Capstone
         {
             canDmg = true;
             _controller.SimpleMove(Vector3.zero);
+            _animator.SetBool(_animIDDodge, false);
+
         }
 
-       
+
     }
 }

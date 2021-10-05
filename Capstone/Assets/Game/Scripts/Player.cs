@@ -272,7 +272,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         // TODO: Should implement something like when dodging animation stops
-        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 0.3;
+        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 1.1f;
 
         /// <summary>
         /// The condition for having been attacked
@@ -414,6 +414,7 @@ namespace Bladesmiths.Capstone
             }
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
+
             speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
 
             // If the player isn't moving set their speed to 0
