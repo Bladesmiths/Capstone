@@ -199,11 +199,15 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(block, parryAttempt, IsBlockReleased());
             FSM.AddTransition(parryAttempt, idleCombat, IsParryReleased());
 
+
+            _cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
+
             FSM.AddAnyTransition(takeDamage, IsDamaged());
             FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
 
             // Sets the current state
             FSM.SetCurrentState(idleCombat);
+
         }
 
         /// <summary>
