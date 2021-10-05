@@ -140,7 +140,7 @@ namespace Bladesmiths.Capstone
             Combat_FSM.SetCurrentState(idleCombat);
             Movement_FSM.SetCurrentState(idleMovement);
 
-
+            _cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
         }
 
         /// <summary>
