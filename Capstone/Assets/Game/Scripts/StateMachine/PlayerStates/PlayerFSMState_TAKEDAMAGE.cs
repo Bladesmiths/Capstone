@@ -19,7 +19,7 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState_TAKEDAMAGE(Player player)
         {
             _player = player;
-
+            id = PlayerCondition.F_TakingDamage;
         }
 
         public override void Tick()

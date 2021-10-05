@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
-    public abstract class Character : MonoBehaviour, IDamageable
+    public abstract class Character : SerializedMonoBehaviour, IDamageable
     {
         // Fields
         protected ThirdPersonController characterController;
