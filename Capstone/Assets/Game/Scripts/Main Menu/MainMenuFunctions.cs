@@ -63,7 +63,8 @@ public class MainMenuFunctions : MonoBehaviour
     /// <param name="vp"></param>
     private void EndReached(VideoPlayer vp)
     {
-        SceneManager.LoadScene("PlaytestScene");
+        SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadScene("VillageEnvironment", LoadSceneMode.Additive);
     }
 
     /// <summary>
