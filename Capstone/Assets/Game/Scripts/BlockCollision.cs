@@ -80,5 +80,14 @@ namespace Bladesmiths.Capstone
                 }
             }
         }
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     if (other.transform.root.gameObject.tag == "Damaging")
+        //     {
+        //         Debug.Log("Block Triggered" + other.gameObject);
+        //         gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+        //         gameObject.transform.root.gameObject.GetComponent<Player>().isDamagable = false;
+        //     }
+        // }
     }
 }

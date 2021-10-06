@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Targettable
   - PreventDmg
+  - Damaging
   layers:
   - Default
   - TransparentFX
