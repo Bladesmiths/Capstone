@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockCollision : MonoBehaviour
+namespace Bladesmiths.Capstone
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BlockCollision : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.root.gameObject.tag == "Targettable")
+        // Start is called before the first frame update
+        void Start()
         {
-            Debug.Log("Block Triggered" + other.gameObject);
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.root.gameObject.tag == "Damaging")
+            {
+                Debug.Log("Block Triggered" + other.gameObject);
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                gameObject.transform.root.gameObject.GetComponent<Player>().isDamagable = false;
+            }
         }
     }
 }

@@ -124,6 +124,10 @@ namespace Bladesmiths.Capstone
         public bool parryEnd;
         private float dodgeTimer;
 
+        public bool isDamagable;
+        private float damagableTimer;
+        private float invincibleLength = 0.5f;
+
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]
@@ -207,6 +211,8 @@ namespace Bladesmiths.Capstone
 
             // Sets the current state
             FSM.SetCurrentState(idleCombat);
+
+            damagableTimer = invincibleLength;
 
         }
 
@@ -323,6 +329,20 @@ namespace Bladesmiths.Capstone
 
             Jump();
             Move();
+
+
+            // Used to prevent player from taking damage after a block has been detected. 
+            //Basically it should work where this is triggered from however block is detected and it should tell the player to not take damage / not enter damge state
+            if(isDamagable == false)
+            {
+                damagableTimer -= Time.deltaTime;
+
+                if (damagableTimer <= 0)
+                {
+                    isDamagable = true;
+                    damagableTimer = invincibleLength;
+                }
+            }
         }
 
         private void LateUpdate()
@@ -584,7 +604,7 @@ namespace Bladesmiths.Capstone
         /// <param name="damage"></param>
         public override void TakeDamage(float damage)
         {
-            if (dodge.canDmg)
+            if (dodge.canDmg && isDamagable)
             {
                 base.TakeDamage(damage);
                 isDamaged = true;
