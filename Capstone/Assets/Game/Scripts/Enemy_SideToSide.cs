@@ -18,6 +18,8 @@ namespace Bladesmiths.Capstone
         private float moveTimer = 0f;
         private int flip = 1;
 
+        public List<Vector3> movePoints = new List<Vector3>();
+
       
         private void Update()
         {
@@ -63,6 +65,12 @@ namespace Bladesmiths.Capstone
             gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
             damaged = true;
+
+        }
+
+        public void FindNextPoint()
+        {
+
 
         }
 
