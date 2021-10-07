@@ -1,12 +1,12 @@
-using System;
-using Bladesmiths.Capstone.ScriptableObjects;
-using Sirenix.OdinInspector;
-using UnityEditor.SceneManagement;
-
 #if UNITY_EDITOR
 namespace Bladesmiths.Capstone.Editor
 {
+    using System;
+    using Bladesmiths.Capstone.ScriptableObjects;
+    using Sirenix.OdinInspector;
+    using UnityEditor.SceneManagement;
     using Sirenix.OdinInspector.Editor;
+    using System.IO;
     using System.Linq;
     using UnityEngine;
     using Sirenix.Utilities.Editor;
@@ -54,9 +54,9 @@ namespace Bladesmiths.Capstone.Editor
             // Menu Item #2 - Loaded Multi-scene Setup Data
             //tree.MenuItems.Insert(2, new MSEGeneralMenuItem(tree, new SomeCustomClass()));
 
-            tree.AddAllAssetsAtPath("Multi-Scene Setup Data", this.settings.pathToMSSetupData,
+            tree.AddAllAssetsAtPath("Multi-Scene Setup Data", this.settings.pathToLoad,
                     typeof(MultiSceneSetupData),
-                    true, true)
+                    false, true)
                 .AddThumbnailIcons();
 
             return tree;
@@ -76,9 +76,9 @@ namespace Bladesmiths.Capstone.Editor
                     GUILayout.Label(selected.Name);
                 }
 
-                if (SirenixEditorGUI.ToolbarButton(new GUIContent("Save Current Scene Setup")))
-                {
-                }
+                // if (SirenixEditorGUI.ToolbarButton(new GUIContent("Save Current Scene Setup")))
+                // {
+                // }
 
                 if (selected is { Name: "General Settings" })
                 {
@@ -96,8 +96,12 @@ namespace Bladesmiths.Capstone.Editor
                         if (selectedObj.GetType() == typeof(MultiSceneSetupData))
                         {
                             var data = (MultiSceneSetupData)selectedObj;
-                            EditorSceneManager.RestoreSceneManagerSetup(data.GetSetup());
-                            Debug.Log("<color=green>Success: </color>Scene setup is successfully loaded!");
+
+                            if (data.ValidateSetupData())
+                            {
+                                EditorSceneManager.RestoreSceneManagerSetup(data.GetSetup());
+                                Debug.Log("<color=green>Success: </color>Scene setup is successfully loaded!");
+                            }
                         }
                     }
                 }
@@ -111,11 +115,64 @@ namespace Bladesmiths.Capstone.Editor
     {
         [ShowInInspector]
         [FolderPath(RequireExistingPath = true)]
-        public string pathToMSSetupData
+        [TitleGroup("Folder Paths", "$folderPathsSubtitle", horizontalLine: true)]
+        [BoxGroup("Folder Paths/Multi-Scene Setup Data")]
+        public string pathToLoad
         {
             // Use EditorPrefs to hold persistent user-variables.
-            get => EditorPrefs.GetString("MSE.MSSetupDataFolderPath", "Assets/Game/Scenes/");
-            set => EditorPrefs.SetString("MSE.MSSetupDataFolderPath", value);
+            get => EditorPrefs.GetString("MSE.LoadPath", "Assets/Game/Scenes/");
+            set => EditorPrefs.SetString("MSE.LoadPath", value);
+        }
+
+        [ShowInInspector]
+        [FolderPath(RequireExistingPath = true)]
+        [TitleGroup("Folder Paths")]
+        [BoxGroup("Folder Paths/Multi-Scene Setup Data")]
+        public string pathToSave
+        {
+            // Use EditorPrefs to hold persistent user-variables.
+            get => EditorPrefs.GetString("MSE.SavePath", "Assets/Game/Scenes/");
+            set => EditorPrefs.SetString("MSE.SavePath", value);
+        }
+
+
+        // Actions Section
+
+        [TitleGroup("Actions")]
+        [ButtonGroup("Actions/Buttons")]
+        public void CreateNewMultiSceneSetupData()
+        {
+            var obj = ScriptableObject.CreateInstance(typeof(MultiSceneSetupData));
+
+            string dest = ConvertRelativePathToAbsolute(pathToSave).TrimEnd('/');
+
+            if (!Directory.Exists(dest))
+            {
+                Directory.CreateDirectory(dest);
+                AssetDatabase.Refresh();
+            }
+
+            dest = EditorUtility.SaveFilePanel("Save object as", dest,
+                "New " + typeof(MultiSceneSetupData).GetNiceName(), "asset");
+
+            if (!string.IsNullOrEmpty(dest) &&
+                PathUtilities.TryMakeRelative(Path.GetDirectoryName(Application.dataPath), dest, out dest))
+            {
+                AssetDatabase.CreateAsset(obj, dest);
+                AssetDatabase.Refresh();
+            }
+            else
+            {
+                UnityEngine.Object.DestroyImmediate(obj);
+            }
+        }
+
+        private string folderPathsSubtitle = "The folder paths are persistent values, even across Unity projects.";
+
+        // Utility Methods
+        private string ConvertRelativePathToAbsolute(string relative)
+        {
+            return Application.dataPath + relative.Replace("Assets/", "/");
         }
     }
 }

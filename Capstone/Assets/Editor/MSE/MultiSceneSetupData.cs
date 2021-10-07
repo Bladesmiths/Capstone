@@ -22,9 +22,40 @@ namespace Bladesmiths.Capstone.ScriptableObjects
         // Public Methods
         public SceneSetup[] GetSetup()
         {
+            return setupList.Select(ConvertToSceneSetup).ToArray();
+        }
+
+        public bool ValidateSetupData()
+        {
             _activeSceneCount = 0;
 
-            return setupList.Select(ConvertToSceneSetup).ToArray();
+            foreach (var data in setupList)
+            {
+                if (data.scenePath == string.Empty)
+                {
+                    Debug.Log("<color=red>Error: </color>Scene path not valid.");
+                    return false;
+                }
+
+                if (data.isActive)
+                {
+                    if (!data.isLoaded)
+                    {
+                        Debug.Log("<color=red>Error: </color>The active scene must be loaded.");
+                        return false;
+                    }
+
+                    _activeSceneCount++;
+                }
+            }
+
+            if (_activeSceneCount != 1)
+            {
+                Debug.Log("<color=red>Error: </color>There has to be 1 active scene.");
+                return false;
+            }
+
+            return true;
         }
 
         #region Odin Utility Methods
@@ -50,15 +81,8 @@ namespace Bladesmiths.Capstone.ScriptableObjects
             {
                 path = data.scenePath,
                 isLoaded = data.isLoaded,
+                isActive = data.isActive
             };
-
-            if (data.isActive)
-                _activeSceneCount++;
-            ss.isActive = _activeSceneCount <= 1 && data.isActive;
-
-            if (_activeSceneCount == 2 && data.isActive)
-                Debug.Log(
-                    "<color=yellow>Warning: </color>Only 1 active scene is allowed! The 1st active scene in the setup list will be loaded in default.");
 
             return ss;
         }
