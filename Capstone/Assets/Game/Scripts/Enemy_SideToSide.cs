@@ -17,25 +17,40 @@ namespace Bladesmiths.Capstone
         private float attackTimer = 0f;
         private float moveTimer = 0f;
         private int flip = 1;
+        private int index;
 
+        [SerializeField][Range(0, 1)]
+        private float speed;
         public List<Vector3> movePoints = new List<Vector3>();
 
-      
+        public void Start()
+        {
+            transform.position = movePoints[0];
+            index = 0;
+            player = GameObject.Find("Player").GetComponent<Player>();
+        }
+
+
         private void Update()
         {
-
-            if(transform.position.x > 12)
+            if (index >= movePoints.Count)
             {
-                flip = -1;
+                index = 0;
             }
 
-            if (transform.position.x < 8)
+            if (transform.position == movePoints[index])
             {
-                flip = 1;
-
+                index++;
+                
             }
 
-            transform.position += new Vector3(2 * flip * Time.deltaTime, 0, 0);
+            
+
+            transform.position = Vector3.MoveTowards(transform.position, movePoints[index], Vector3.Distance(transform.position, movePoints[index]));
+            
+
+
+            
 
 
             if (damaged)
@@ -70,7 +85,14 @@ namespace Bladesmiths.Capstone
 
         public void FindNextPoint()
         {
+            for(int i = 0; i < movePoints.Count;)
+            {
+                if(transform.position == movePoints[i])
+                {
+                    i++;
+                }
 
+            }
 
         }
 
