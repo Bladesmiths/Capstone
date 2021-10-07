@@ -21,6 +21,10 @@ namespace Bladesmiths.Capstone
         private float speed;
         public List<Vector3> movePoints = new List<Vector3>();
 
+        // Incase we want to use transforms instead of Vector3's
+        // We will need to do some code changes below but it should be similar
+        //public List<Transform> movePoints = new List<Transform>();
+
         public void Start()
         {
             transform.position = movePoints[0];
