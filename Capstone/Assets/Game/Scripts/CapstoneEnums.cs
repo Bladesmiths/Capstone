@@ -20,13 +20,14 @@ namespace Bladesmiths.Capstone.Enums
         F_Moving = 2,
         F_Attacking = 4,
         F_Blocking = 8,
-        F_Parrying = 16,
+        F_ParryAttempt = 16,
         F_Dodging = 32,
         F_Jumping = 64,
         F_Falling = 128,
         F_TakingDamage = 256,
         F_SwitchingWeapon = 512,
-        F_Dead = 1024
+        F_Dead = 1024,
+        F_ParrySuccess = 2048
     }
 
     [Flags]

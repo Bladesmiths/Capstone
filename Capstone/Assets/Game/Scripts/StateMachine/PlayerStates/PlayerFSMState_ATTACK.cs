@@ -33,7 +33,7 @@ namespace Bladesmiths.Capstone
             _animator = animator;
             _sword = sword;
             _sword.GetComponent<Rigidbody>().detectCollisions = false;
-
+            id = PlayerCondition.F_Attacking;
         }
 
         public override void Tick()
@@ -103,11 +103,14 @@ namespace Bladesmiths.Capstone
             {
                 _hasAnimator = false;
             }
+
+            _animator.SetBool(_animIDAttack, true); 
         }
 
         public override void OnExit()
         {
             _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            _animator.SetBool(_animIDAttack, false);
         }
 
     }
