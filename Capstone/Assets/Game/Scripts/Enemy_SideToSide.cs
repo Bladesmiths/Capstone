@@ -15,8 +15,6 @@ namespace Bladesmiths.Capstone
         private bool damaged = false;
         private float timer = 0f;
         private float attackTimer = 0f;
-        private float moveTimer = 0f;
-        private int flip = 1;
         private int index;
 
         [SerializeField][Range(0, 1)]
@@ -33,25 +31,20 @@ namespace Bladesmiths.Capstone
 
         private void Update()
         {
-            if (index >= movePoints.Count)
-            {
-                index = 0;
-            }
-
+            // Checks if the enemy is equal to the position
             if (transform.position == movePoints[index])
             {
                 index++;
-                
+                // If the index is greater than the list's length, set it back at the beginning
+                if (index >= movePoints.Count)
+                {
+                    index = 0;
+                }
             }
 
+            // Move the enemy towards the new point
+            transform.position = Vector3.MoveTowards(transform.position, movePoints[index], speed);
             
-
-            transform.position = Vector3.MoveTowards(transform.position, movePoints[index], Vector3.Distance(transform.position, movePoints[index]));
-            
-
-
-            
-
 
             if (damaged)
             {
