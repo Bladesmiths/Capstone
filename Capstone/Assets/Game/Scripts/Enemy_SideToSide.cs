@@ -30,6 +30,7 @@ namespace Bladesmiths.Capstone
             transform.position = movePoints[0];
             index = 0;
             player = GameObject.Find("Player").GetComponent<Player>();
+            FindNextPoint();
         }
 
 
@@ -39,13 +40,17 @@ namespace Bladesmiths.Capstone
             if (transform.position == movePoints[index])
             {
                 index++;
-                // If the index is greater than the list's length, set it back at the beginning
-                if (index >= movePoints.Count)
-                {
-                    index = 0;
-                }
+                FindNextPoint();
+
             }
 
+            
+
+            // If the index is greater than the list's length, set it back at the beginning
+            if (index >= movePoints.Count)
+            {
+                index = 0;
+            }
             // Move the enemy towards the new point
             transform.position = Vector3.MoveTowards(transform.position, movePoints[index], speed);
             
@@ -80,15 +85,24 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// Checks to see if the next point is able to be reached
+        /// </summary>
         public void FindNextPoint()
         {
-            for(int i = 0; i < movePoints.Count;)
+            if (index >= movePoints.Count)
             {
-                if(transform.position == movePoints[i])
-                {
-                    i++;
-                }
+                index = 0;
+            }
 
+            RaycastHit hit;
+
+            if (Physics.Linecast(transform.position, movePoints[index], out hit))
+            {
+                if (hit.collider != null)
+                {
+                    index++;
+                }
             }
 
         }
