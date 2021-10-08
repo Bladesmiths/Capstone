@@ -8,98 +8,58 @@ namespace Bladesmiths.Capstone
 {
     public class EnemySwing : Character
     {
-        // Reference to the Finite State Machine
-        private FiniteStateMachine FSM;
-        //[SerializeField] private TransitionManager playerTransitionManager;
-
         // Gets a reference to the player
         // Will be used for finding the player in the world
-        [SerializeField] private Player player;
+        private Player player;
 
-        private bool damaged = false;
-        private float timer = 0f;
-        private float attackTimer = 0f;
+        private float rotate;
+        private float speed = 100;
 
-        private void Awake()
+        private void Start()
         {
-            // Creates the FSM
-            FSM = new FiniteStateMachine();
+            rotate = Time.deltaTime * speed;
 
-            // Creates all of the states
-            //PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            //PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-
-            
-
-            // Adds all of the possible transitions
-            //FSM.AddTransition(seek, idle, IsIdle());
-            //FSM.AddTransition(idle, seek, IsClose());
-           
-            // Sets the current state
-            //FSM.SetCurrentState(idle);
-
-
-
-
-        }
-
-        /// <summary>
-        /// The condition for going between the IDLE and MOVE states
-        /// </summary>
-        /// <returns></returns>
-        //public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
-
-        /// <summary>
-        /// The condition for going between the MOVE and IDLE states
-        /// </summary>
-        /// <returns></returns>
-        //public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
-
-
-        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
-        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
+        }        
        
         public virtual void Update()
         {
-            FSM.Tick();
 
-            if (damaged)
+            if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
             {
-                timer += Time.deltaTime;
+                rotate = Time.deltaTime * speed;
 
-                if (timer >= 1f)
-                {
-                    gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-                    damaged = false;
-                    timer = 0f;
-                }
             }
 
-            //if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
-            //{
-            //    attackTimer += Time.deltaTime;
+            else if (transform.parent.eulerAngles.x >= 30 && transform.parent.eulerAngles.x < 180)
+            {
+                rotate = -Time.deltaTime * speed;
 
-            //    if ((attackTimer >= 1))
-            //    {
-            //        Attack();
-            //        attackTimer = 0f;
-            //    }
-                
+            }
 
-            //}
-
+            transform.parent.Rotate(new Vector3(rotate, 0, 0));
 
         }
 
         void OnCollisionEnter(Collision collision)
         {
-            //Attack();
+            if(collision.collider.GetComponent<Player>() == true)
+            {
+                // Damage Player
+
+
+            }
+
+            else if(collision.collider.tag == "PreventDmg")
+            {
+                // Damage Enemy
+
+            }
 
         }
 
         protected override void Attack()
         {
-            player.TakeDamage(1);
+            //player.TakeDamage(1);
         }
         protected override void ActivateAbility()
         {
@@ -128,8 +88,6 @@ namespace Bladesmiths.Capstone
         public override void TakeDamage(float damage)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-
-            damaged = true;
 
             base.TakeDamage(damage);
         }
