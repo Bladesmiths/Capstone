@@ -15,21 +15,22 @@ namespace Bladesmiths.Capstone
         private bool damaged = false;
         private float timer = 0f;
         private float attackTimer = 0f;
-        private int index;
+        private int movePointsIndex;
 
         [SerializeField][Range(0, 1)]
         private float speed;
-        public List<Vector3> movePoints = new List<Vector3>();
+        [SerializeField]
+        private List<Transform> movePoints = new List<Transform>();
 
-        // Incase we want to use transforms instead of Vector3's
-        // We will need to do some code changes below but it should be similar
-        //public List<Transform> movePoints = new List<Transform>();
+        private BreakableBox thisBox;
+
+       
 
         public void Start()
         {
-            transform.position = movePoints[0];
-            index = 0;
-            player = GameObject.Find("Player").GetComponent<Player>();
+            transform.position = movePoints[0].position;
+            movePointsIndex = 0;
+            thisBox = GetComponent<BreakableBox>();
             FindNextPoint();
         }
 
@@ -37,23 +38,31 @@ namespace Bladesmiths.Capstone
         private void Update()
         {
             // Checks if the enemy is equal to the position
-            if (transform.position == movePoints[index])
+            if (transform.position == movePoints[movePointsIndex].position)
             {
-                index++;
+                movePointsIndex++;
+
+                // If the index is greater than the list's length, set it back at the beginning
+                if (movePointsIndex >= movePoints.Count)
+                {
+                    movePointsIndex = 0;
+                }
+
                 FindNextPoint();
 
+                if (movePointsIndex >= movePoints.Count)
+                {
+                    movePointsIndex = 0;
+                }
+
+
             }
 
-            
-
-            // If the index is greater than the list's length, set it back at the beginning
-            if (index >= movePoints.Count)
-            {
-                index = 0;
-            }
             // Move the enemy towards the new point
-            transform.position = Vector3.MoveTowards(transform.position, movePoints[index], speed);
-            
+            if (thisBox.isBroken == false)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, movePoints[movePointsIndex].position, speed);
+            }
 
             if (damaged)
             {
@@ -90,18 +99,13 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public void FindNextPoint()
         {
-            if (index >= movePoints.Count)
-            {
-                index = 0;
-            }
-
             RaycastHit hit;
 
-            if (Physics.Linecast(transform.position, movePoints[index], out hit))
+            if (Physics.Linecast(transform.position, movePoints[movePointsIndex].position, out hit))
             {
                 if (hit.collider != null)
                 {
-                    index++;
+                    movePointsIndex++;
                 }
             }
 
