@@ -31,6 +31,7 @@ namespace Bladesmiths.Capstone
             transform.position = movePoints[0].position;
             movePointsIndex = 0;
             thisBox = GetComponent<BreakableBox>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             FindNextPoint();
         }
 
