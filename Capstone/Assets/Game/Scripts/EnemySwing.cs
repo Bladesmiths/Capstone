@@ -16,7 +16,7 @@ namespace Bladesmiths.Capstone
         private float speed = 100;
         private bool isBroken = false;
         private float fadeOutTimer = 0f;
-        private float fadeOutLength = 2f;
+        private float fadeOutLength = 1f;
         private float shrinkSpeed = 1.0f;
 
         [SerializeField]
@@ -30,7 +30,6 @@ namespace Bladesmiths.Capstone
        
         public virtual void Update()
         {
-
             if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
             {
                 rotate = Time.deltaTime * speed;
@@ -77,10 +76,12 @@ namespace Bladesmiths.Capstone
             {
                 // Damage Player
                 collision.collider.GetComponent<Player>().TakeDamage(1);
-                Debug.Log("Player hit!!");
+
+                // Knockback Player
+                // Will likly be a method in the Player class
+                //collision.collider.GetComponent<Player>().Knockback();
 
             }
-            Debug.Log("Collision Happened!!");
 
             
 
@@ -126,9 +127,7 @@ namespace Bladesmiths.Capstone
         }
         public override void TakeDamage(float damage)
         {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-
-            base.TakeDamage(damage);
+            
         }
     }
 }
