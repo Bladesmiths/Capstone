@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
+using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy : Character
+    public class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
@@ -19,6 +20,14 @@ namespace Bladesmiths.Capstone
         private bool damaged = false;
         private float timer = 0f;
         private float attackTimer = 0f;
+
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+        // Testing for damaging system
+        private float damagingTimer;
+        [SerializeField]
+        private float damagingTimerLimit;
+        private bool damaging;
 
         private void Awake()
         {
@@ -35,13 +44,11 @@ namespace Bladesmiths.Capstone
             // Adds all of the possible transitions
             //FSM.AddTransition(seek, idle, IsIdle());
             //FSM.AddTransition(idle, seek, IsClose());
-           
+
             // Sets the current state
             //FSM.SetCurrentState(idle);
 
-
-
-
+            DamageableObjectTeam = Team.Enemy;
         }
 
         /// <summary>
@@ -85,11 +92,29 @@ namespace Bladesmiths.Capstone
             //        Attack();
             //        attackTimer = 0f;
             //    }
-                
+
 
             //}
 
+            // Testing
+            if (damaging)
+            {
+                damagingTimer += Time.deltaTime;
 
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
+            }
         }
 
         void OnCollisionEnter(Collision collision)
@@ -100,7 +125,7 @@ namespace Bladesmiths.Capstone
 
         protected override void Attack()
         {
-            player.TakeDamage(1);
+            player.TakeDamage(ID, 1);
         }
         protected override void ActivateAbility()
         {
@@ -126,13 +151,17 @@ namespace Bladesmiths.Capstone
         {
 
         }
-        public override void TakeDamage(float damage)
+        public override bool TakeDamage(int damagingID, float damage)
         {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            bool damageResult = base.TakeDamage(damagingID, damage);
+            if (damageResult)
+            {
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
-            damaged = true;
+                damaged = true;
+            }
 
-            base.TakeDamage(damage);
+            return damageResult;
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy_SideToSide : Character
+    public class Enemy_SideToSide : Character, IDamaging
     {
         // Gets a reference to the player
         // Will be used for finding the player in the world
@@ -18,7 +18,14 @@ namespace Bladesmiths.Capstone
         private float moveTimer = 0f;
         private int flip = 1;
 
-      
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+        // Testing for damaging system
+        private float damagingTimer;
+        [SerializeField]
+        private float damagingTimerLimit;
+        private bool damaging;
+
         private void Update()
         {
 
@@ -48,8 +55,25 @@ namespace Bladesmiths.Capstone
                 }
             }
 
+            // Testing
+            if (damaging)
+            {
+                damagingTimer += Time.deltaTime;
 
-
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
+            }
         }
 
         void OnCollisionEnter(Collision collision)
@@ -68,7 +92,7 @@ namespace Bladesmiths.Capstone
 
         protected override void Attack()
         {
-            player.TakeDamage(1);
+            player.TakeDamage(ID, 1);
         }
         protected override void ActivateAbility()
         {
