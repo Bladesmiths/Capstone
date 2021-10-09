@@ -14,6 +14,13 @@ namespace Bladesmiths.Capstone
 
         private float rotate;
         private float speed = 100;
+        private bool isBroken = false;
+        private float fadeOutTimer = 0f;
+        private float fadeOutLength = 2f;
+        private float shrinkSpeed = 1.0f;
+
+        [SerializeField]
+        private GameObject enemyObject;
 
         private void Start()
         {
@@ -36,7 +43,31 @@ namespace Bladesmiths.Capstone
 
             }
 
-            transform.parent.Rotate(new Vector3(rotate, 0, 0));
+            if (isBroken == false)
+            {
+                transform.parent.Rotate(new Vector3(rotate, 0, 0));
+            }
+            else
+            {
+                fadeOutTimer += Time.deltaTime;
+            }
+
+            // When the object should fade out
+            if (fadeOutTimer >= fadeOutLength)
+            {
+                // Shrink the cubes
+                enemyObject.transform.localScale = new Vector3(
+                    enemyObject.transform.localScale.x - (shrinkSpeed * Time.deltaTime), 
+                    enemyObject.transform.localScale.y - (shrinkSpeed * Time.deltaTime), 
+                    enemyObject.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+
+                // After the cubes are shrunk, destroy it
+                if (enemyObject.transform.localScale.x <= 0 && enemyObject.transform.localScale.y <= 0 && enemyObject.transform.localScale.z <= 0)
+                {
+                    Destroy(enemyObject);
+                }
+
+            }
 
         }
 
@@ -45,16 +76,24 @@ namespace Bladesmiths.Capstone
             if(collision.collider.GetComponent<Player>() == true)
             {
                 // Damage Player
-
+                collision.collider.GetComponent<Player>().TakeDamage(1);
+                Debug.Log("Player hit!!");
 
             }
+            Debug.Log("Collision Happened!!");
 
-            else if(collision.collider.tag == "PreventDmg")
+            
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "PreventDmg")
             {
                 // Damage Enemy
-
+                Debug.Log("Block hit!!");
+                isBroken = true;
             }
-
         }
 
         protected override void Attack()
