@@ -15,26 +15,55 @@ namespace Bladesmiths.Capstone
         private bool damaged = false;
         private float timer = 0f;
         private float attackTimer = 0f;
-        private float moveTimer = 0f;
-        private int flip = 1;
+        private int movePointsIndex;
 
-      
+        [SerializeField][Range(0, 1)]
+        private float speed;
+        [SerializeField]
+        private List<Transform> movePoints = new List<Transform>();
+
+        private BreakableBox thisBox;
+
+       
+
+        public void Start()
+        {
+            transform.position = movePoints[0].position;
+            movePointsIndex = 0;
+            thisBox = GetComponent<BreakableBox>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            FindNextPoint();
+        }
+
+
         private void Update()
         {
-
-            if(transform.position.x > 12)
+            // Checks if the enemy is equal to the position
+            if (transform.position == movePoints[movePointsIndex].position)
             {
-                flip = -1;
+                movePointsIndex++;
+
+                // If the index is greater than the list's length, set it back at the beginning
+                if (movePointsIndex >= movePoints.Count)
+                {
+                    movePointsIndex = 0;
+                }
+
+                FindNextPoint();
+
+                if (movePointsIndex >= movePoints.Count)
+                {
+                    movePointsIndex = 0;
+                }
+
+
             }
 
-            if (transform.position.x < 8)
+            // Move the enemy towards the new point
+            if (thisBox.isBroken == false)
             {
-                flip = 1;
-
+                transform.position = Vector3.MoveTowards(transform.position, movePoints[movePointsIndex].position, speed);
             }
-
-            transform.position += new Vector3(2 * flip * Time.deltaTime, 0, 0);
-
 
             if (damaged)
             {
@@ -63,6 +92,23 @@ namespace Bladesmiths.Capstone
             gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
             damaged = true;
+
+        }
+
+        /// <summary>
+        /// Checks to see if the next point is able to be reached
+        /// </summary>
+        public void FindNextPoint()
+        {
+            RaycastHit hit;
+
+            if (Physics.Linecast(transform.position, movePoints[movePointsIndex].position, out hit))
+            {
+                if (hit.collider != null)
+                {
+                    movePointsIndex++;
+                }
+            }
 
         }
 

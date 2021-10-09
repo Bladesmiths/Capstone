@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BreakableBox : MonoBehaviour
 {
-    private bool isBroken;
+    public bool isBroken;
     private float fadeOutTimer;
     private float fadeOutLength;
     private float shrinkSpeed;
