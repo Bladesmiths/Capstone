@@ -193,7 +193,7 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
             parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
-            block = new PlayerFSMState_BLOCK(blockDetector);
+            block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
             //move = new PlayerFSMState_MOVING(this, inputs, animator, GroundLayers);
             idleMovement = new PlayerFSMState_IDLE(animator);
             idleCombat = new PlayerFSMState_IDLE(animator);
