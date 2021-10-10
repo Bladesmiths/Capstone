@@ -97,7 +97,7 @@ namespace Bladesmiths.Capstone
 
         protected override void Attack()
         {
-            player.TakeDamage(1);
+            player.TakeDamage(ID, 1);
         }
         protected override void ActivateAbility()
         {

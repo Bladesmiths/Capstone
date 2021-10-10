@@ -50,7 +50,7 @@ namespace Bladesmiths.Capstone
             // Debug logic to see where the player's targeting ray will be looking
             if (Application.isEditor && targetedObject != null)
             {
-                Vector3 rayDirection = targetedObject.transform.Find("EnemyCameraRoot").position -
+                Vector3 rayDirection = targetedObject.GetComponent<Collider>().bounds.center -
                     playerCamRoot.position;
 
                 Debug.DrawRay(playerCamRoot.position, rayDirection, Color.red);
@@ -166,7 +166,7 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Set the target cam's look at to the closest enemy
-                targetLockCam.LookAt = targetedObject.transform.Find("EnemyCameraRoot");
+                targetLockCam.LookAt = targetedObject.transform;
              
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
@@ -284,7 +284,7 @@ namespace Bladesmiths.Capstone
             }
 
             targetedObject = closestEnemyToTarget;
-            targetLockCam.LookAt = targetedObject.transform.Find("EnemyCameraRoot");
+            targetLockCam.LookAt = targetedObject.transform;
 
             RepositionTargetCanvas(); 
         }
@@ -315,17 +315,21 @@ namespace Bladesmiths.Capstone
         /// <returns>A boolean indicating whether or not the object is visible</returns>
         private bool IsEnemyVisible(GameObject enemy)
         {
+            // Ignoring the Player Layer
+            int layerMask = 1 << 6;
+            layerMask = ~layerMask;
+
             RaycastHit hit;
 
             return (Physics.Linecast(playerCamRoot.position, 
-                enemy.transform.Find("EnemyCameraRoot").position, out hit) && hit.transform == enemy.transform); 
+                enemy.GetComponent<Collider>().bounds.center, out hit, layerMask) && hit.transform == enemy.transform); 
         }
 
         private void RepositionTargetCanvas()
         {
             Vector3 vecFromTargetToPlayer = transform.position - targetedObject.transform.position;
             vecFromTargetToPlayer.Normalize();
-            targetCanvas.transform.position = targetedObject.transform.Find("EnemyCameraRoot").position
+            targetCanvas.transform.position = targetedObject.GetComponent<Collider>().bounds.center
                 + (vecFromTargetToPlayer * 0.15f);
             targetCanvas.transform.rotation = Quaternion.Euler(targetCanvas.transform.rotation.eulerAngles.x,
                 targetLockCam.transform.rotation.eulerAngles.y, targetCanvas.transform.rotation.eulerAngles.z);
