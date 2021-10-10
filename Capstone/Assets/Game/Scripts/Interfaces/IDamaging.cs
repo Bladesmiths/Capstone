@@ -14,11 +14,10 @@ namespace Bladesmiths.Capstone
         int ID { get; set; }
         ObjectController ObjectController { get; set; }
 
+        public delegate void OnDamagingFinishedDelegate(int id);
+
         // Event declaration
         public event OnDamagingFinishedDelegate DamagingFinished;
-
-        // Method declaration
-        public delegate void OnDamagingFinishedDelegate(int id); 
     }
 }
 
