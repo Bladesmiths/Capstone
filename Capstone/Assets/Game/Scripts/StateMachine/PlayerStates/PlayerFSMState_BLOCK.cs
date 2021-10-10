@@ -44,7 +44,7 @@ namespace Bladesmiths.Capstone
         public override void OnEnter()
         {
             // Turns the block detector box on
-            //playerBlockBox.SetActive(true);
+            playerBlockBox.SetActive(true);
 
             // Assign block paramater id
             _animIDBlock = Animator.StringToHash("Block");
@@ -63,20 +63,20 @@ namespace Bladesmiths.Capstone
             _animator.SetBool(_animIDBlock, true);
 
             // Set the sword to detect collisions
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
         }
 
         public override void OnExit()
         {
             // Turns the block detector box off
-            //playerBlockBox.SetActive(false);
+            playerBlockBox.SetActive(false);
 
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
 
             // Set the sword to not detect collisions
             // and turn off blocking paramater
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
             _animator.SetBool(_animIDBlock, false);
         }
 

@@ -22,9 +22,19 @@ namespace Bladesmiths.Capstone
         {
             if (other.transform.root.gameObject.tag == "Damaging")
             {
-                Debug.Log("Block Triggered" + other.gameObject);
+                Player player = gameObject.transform.root.gameObject.GetComponent<Player>();
+
+                // For now the boss cylinder is hard coded to add it's id to the list. In the future replace with an interface
+                if (other.transform.root.gameObject.name == "BossCylinder")
+                {
+                    //Debug.Log("blocked");
+                    if(player.damagingIds.Contains(other.transform.root.gameObject.GetComponent<BossCylinder>().id) == false)
+                    {
+                        player.damagingIds.Add(other.transform.root.gameObject.GetComponent<BossCylinder>().id);
+                    }
+                }
+                //Debug.Log("Block Triggered" + other.gameObject);
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                gameObject.transform.root.gameObject.GetComponent<Player>().isDamagable = false;
             }
         }
     }
