@@ -82,10 +82,11 @@ namespace Bladesmiths.Capstone
         public float GroundedRadius = 0.20f;
         [SerializeField] private float landTimeout;
 
-        private float damagingTimer;
+        // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
         [SerializeField]
         private float damagingTimerLimit;
+        private float damagingTimer;
         private bool damaging;
 
         #region Fields from the Move State and Jump State
@@ -135,6 +136,7 @@ namespace Bladesmiths.Capstone
         private float fallTimeoutDelta;
         #endregion
 
+        // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         #region Testing Fields 
@@ -340,20 +342,29 @@ namespace Bladesmiths.Capstone
             Move();
 
             // Testing
+            // If the enemy is currently damaging an object
             if (damaging)
             {
+                // Update the timer
                 damagingTimer += Time.deltaTime;
 
+                // If the timer is equal to or exceeds the limit
                 if (damagingTimer >= damagingTimerLimit)
                 {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
                     if (DamagingFinished != null)
                     {
                         DamagingFinished(ID);
                     }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
                     else
                     {
                         Debug.Log("Damaging Finished Event was not subscribed to correctly");
                     }
+
+                    // Reset fields
                     damagingTimer = 0.0f;
                     damaging = false;
                 }
@@ -613,6 +624,11 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// Attack with the player's sword
+        /// </summary>
+        /// <param name="targetID">The id of the object to attack</param>
+        /// <param name="damage">The amount of damage to give to the target</param>
         public void SwordAttack(int targetID, float damage)
         {
             ObjectController.DamageableObjects[targetID].DamageableObject.TakeDamage(ID, damage);
@@ -622,15 +638,23 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
-        /// Allows for the player to take damage
+        /// Subtract an amount of damage from the character's health
         /// </summary>
-        /// <param name="damage"></param>
+        /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
+        /// <param name="damage">The amount of damage to be subtracted</param>
+        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
         public override bool TakeDamage(int damagingID, float damage)
         {
+            // If the player is not in invincibility frames
+            // They can take damage
             if (dodge.canDmg)
             {
+                // The resullt of Character's Take Damage
+                // Was damage taken or not
                 bool damageResult = base.TakeDamage(damagingID, damage);
 
+                // If damage was taken
+                // Update the playerHealth field for analytics
                 if (damageResult)
                 {
                     // Playtest 1
@@ -638,7 +662,12 @@ namespace Bladesmiths.Capstone
 
                     damaged = true;
                 }
+
+                // Return whether damage was taken or not
+                return damageResult; 
             }
+
+            // Return false if the player cannot currently be damaged
             return false; 
         }
     }

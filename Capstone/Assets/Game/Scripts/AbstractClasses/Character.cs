@@ -45,23 +45,41 @@ namespace Bladesmiths.Capstone
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
 
         // Public Methods
+        /// <summary>
+        /// Subtract an amount of damage from the character's health
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
+        /// <param name="damage">The amount of damage to be subtracted</param>
+        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
         public virtual bool TakeDamage(int damagingID, float damage)
         {
+            // If the damaging object belongs to the same team as this character
+            // Or if the damaging object has already hurt this character recently
+            // Don't take any damage
             if (objectController.DamagingObjects[damagingID].ObjectTeam == objectTeam || 
                 DamagingObjectIDs.Contains(damagingID))
             {
                 damage = 0; 
             }
-            currentHealth -= damage;
+            
+            // Subtract damage from health
+            Health -= damage;
 
+            // If damage was taken
+            // Add the damaging object's id to the damaging id list
+            // And subscribe to that object's DamagingFinished event
+            // Stopping it from hurting this character again right away
             if (damage != 0)
             {
                 damagingObjectIDs.Add(damagingID);
                 objectController.DamagingObjects[damagingID].DamagingObject.DamagingFinished += RemoveDamagingID; 
             }
 
+            // Log the amount of damage taken
             Debug.Log($"DAMAGE TAKEN: {damage}");
 
+            // Return true if damage is greater than 0
+            // Return false if damage is 0 or less
             return damage > 0;
         }
 
@@ -74,6 +92,10 @@ namespace Bladesmiths.Capstone
         protected abstract void SwitchWeapon(int weaponSelect);
         protected abstract void Die();
 
+        /// <summary>
+        /// Remove an id from the damaging id list
+        /// </summary>
+        /// <param name="damagingID">The id to be removed</param>
         public void RemoveDamagingID(int damagingID)
         {
             damagingObjectIDs.Remove(damagingID);

@@ -26,12 +26,14 @@ namespace Bladesmiths.Capstone.Testing
         [SerializeField]
         private ObjectController objectController;
 
+        // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         // Testing for damaging system
-        private float damagingTimer;
+        [Header("Damaging Timer Fields (Testing)")]
         [SerializeField]
         private float damagingTimerLimit;
+        private float damagingTimer;
         private bool damaging;
         #endregion
 
@@ -68,20 +70,29 @@ namespace Bladesmiths.Capstone.Testing
             }
 
             // Testing
+            // If the enemy is currently damaging an object
             if (damaging)
             {
+                // Update the timer
                 damagingTimer += Time.deltaTime;
 
+                // If the timer is equal to or exceeds the limit
                 if (damagingTimer >= damagingTimerLimit)
                 {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
                     if (DamagingFinished != null)
                     {
                         DamagingFinished(ID);
                     }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
                     else
                     {
                         Debug.Log("Damaging Finished Event was not subscribed to correctly");
                     }
+
+                    // Reset fields
                     damagingTimer = 0.0f;
                     damaging = false;
                 }

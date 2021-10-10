@@ -21,12 +21,14 @@ namespace Bladesmiths.Capstone
         private float timer = 0f;
         private float attackTimer = 0f;
 
+        // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         // Testing for damaging system
-        private float damagingTimer;
+        [Header("Damaging Timer Fields (Testing)")]
         [SerializeField]
         private float damagingTimerLimit;
+        private float damagingTimer;
         private bool damaging;
 
         private void Awake()
@@ -48,6 +50,7 @@ namespace Bladesmiths.Capstone
             // Sets the current state
             //FSM.SetCurrentState(idle);
 
+            // Sets the team of the enemy
             DamageableObjectTeam = Team.Enemy;
         }
 
@@ -97,20 +100,29 @@ namespace Bladesmiths.Capstone
             //}
 
             // Testing
+            // If the enemy is currently damaging an object
             if (damaging)
             {
+                // Update the timer
                 damagingTimer += Time.deltaTime;
 
+                // If the timer is equal to or exceeds the limit
                 if (damagingTimer >= damagingTimerLimit)
                 {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
                     if (DamagingFinished != null)
                     {
                         DamagingFinished(ID);
                     }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
                     else
                     {
                         Debug.Log("Damaging Finished Event was not subscribed to correctly");
                     }
+
+                    // Reset fields
                     damagingTimer = 0.0f;
                     damaging = false;
                 }
@@ -151,9 +163,21 @@ namespace Bladesmiths.Capstone
         {
 
         }
+
+        /// <summary>
+        /// Subtract an amount of damage from the character's health
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
+        /// <param name="damage">The amount of damage to be subtracted</param>
+        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
         public override bool TakeDamage(int damagingID, float damage)
         {
+            // The resullt of Character's Take Damage
+            // Was damage taken or not
             bool damageResult = base.TakeDamage(damagingID, damage);
+
+            // If damage was taken
+            // Change the object to red and set damaged to true
             if (damageResult)
             {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
@@ -161,6 +185,7 @@ namespace Bladesmiths.Capstone
                 damaged = true;
             }
 
+            // Return whether damage was taken or not
             return damageResult;
         }
     }

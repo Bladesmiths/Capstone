@@ -7,43 +7,53 @@ using Sirenix.Serialization;
 
 namespace Bladesmiths.Capstone
 {
+    /// <summary>
+    /// Manages all damageable and damaging objects in the scene
+    /// </summary>
     public class ObjectController : SerializedMonoBehaviour
     {
-        [SerializeField]
+        [SerializeField] [Tooltip("The next ID to assign to an object")]
         private int currentValidId = 1;
-        [OdinSerialize]
+
+        // Dictionaries of damageable and damaging objects
+        [OdinSerialize] [Tooltip("IDs mapped to Damageable Objects and their teams")]
         private Dictionary<int, DamageableTeamPair> damageableObjects = new Dictionary<int, DamageableTeamPair>();
-        [OdinSerialize]
+        [OdinSerialize] [Tooltip("IDs mapped to Damaging Objects and their teams")]
         private Dictionary<int, DamagingTeamPair> damagingObjects = new Dictionary<int, DamagingTeamPair>();
 
         public Dictionary<int, DamageableTeamPair> DamageableObjects { get => damageableObjects; }
         public Dictionary<int, DamagingTeamPair> DamagingObjects { get => damagingObjects; }
 
-        // Start is called before the first frame update
         void Start()
         {
             VerifyObjects();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
+        void Update() { }
 
-        }
-
+        /// <summary>
+        /// Generate the next valid ID for an object and updates the valid ID field
+        /// </summary>
+        /// <returns>Returns the next valid ID</returns>
         public int GenerateID()
         {
             return currentValidId++;
         }
 
+        /// <summary>
+        /// Verify that all objects in dictionaries have the correct ID
+        /// and have a reference to this object
+        /// </summary>
         public void VerifyObjects()
         {
+            // Verify damageable objects
             foreach (KeyValuePair<int, DamageableTeamPair> damageablePair in damageableObjects)
             {
                 damageablePair.Value.DamageableObject.ID = damageablePair.Key;
                 damageablePair.Value.DamageableObject.ObjectController = this;
             }
 
+            // Verify damaging objects
             foreach (KeyValuePair<int, DamagingTeamPair> damagingPair in damagingObjects)
             {
                 damagingPair.Value.DamagingObject.ID = damagingPair.Key;
@@ -52,6 +62,9 @@ namespace Bladesmiths.Capstone
         }
     }
 
+    /// <summary>
+    /// Maintains a reference to a damageable object and its team
+    /// </summary>
     public struct DamageableTeamPair
     {
         [SerializeField]
@@ -69,6 +82,9 @@ namespace Bladesmiths.Capstone
         }
     }
 
+    /// <summary>
+    /// Maintains a reference to a damaging object and its team
+    /// </summary>
     public struct DamagingTeamPair
     {
         [SerializeField]

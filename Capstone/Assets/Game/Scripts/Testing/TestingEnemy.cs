@@ -14,11 +14,13 @@ namespace Bladesmiths.Capstone.Testing
 
         // Keeping update so that parent's update does not run
         public override void Update() { }
-        
+
         /// <summary>
-        /// Subtract damage from the enemy's health and react to damage
+        /// Subtract an amount of damage from the character's health
         /// </summary>
-        /// <param name="damage">The amount of damage to subtract</param>
+        /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
+        /// <param name="damage">The amount of damage to be subtracted</param>
+        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
         public override bool TakeDamage(int damagingID, float damage)
         {
             // Testing Value
