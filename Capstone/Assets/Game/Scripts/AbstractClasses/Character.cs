@@ -19,6 +19,8 @@ namespace Bladesmiths.Capstone
         private bool isAlive;
 
         [Header("Character Fields")]
+        public List<int> damagingIds;
+
         [SerializeField]
         private float maxHealth;
 

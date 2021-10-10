@@ -149,9 +149,8 @@ namespace Bladesmiths.Capstone
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
-        public bool isDamagable;
-        private float damagableTimer;
-        private float invincibleLength = 0.5f;
+        private float idRemovalTimer;
+
 
         #region Testing Fields 
         [Header("Testing Fields")]
@@ -248,6 +247,7 @@ namespace Bladesmiths.Capstone
             // Temporary probably
             currentSword = sword.GetComponent<Sword>();
             currentSwordDamage = currentSword.Damage;
+            damagingIds = new List<int>();
 
         }
 
@@ -392,18 +392,15 @@ namespace Bladesmiths.Capstone
                     damagingTimer = 0.0f;
                     damaging = false;
 
-            // Used to prevent player from taking damage after a block has been detected. 
-            //Basically it should work where this is triggered from however block is detected and it should tell the player to not take damage / not enter damge state
-            // if(isDamagable == false)
-            // {
-            //     damagableTimer -= Time.deltaTime;
 
-            //     if (damagableTimer <= 0)
-            //     {
-            //         isDamagable = true;
-            //         damagableTimer = invincibleLength;
-            //     }
+            // Temp setup for clearing id's from the list
+            // if(idRemovalTimer >= 0.5f)
+            // {
+            //     damagingIds.Clear();
+            //     idRemovalTimer = 0.0f;
             // }
+            // if(damagingIds.Count > 0)
+            //     idRemovalTimer += Time.deltaTime;
         }
 
         private void LateUpdate()
