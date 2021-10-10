@@ -4,6 +4,12 @@ using UnityEngine;
 using System;
 namespace Bladesmiths.Capstone.Enums
 {
+    public enum Team
+    {
+        NeutralObject,
+        Player, 
+        Enemy
+    }
     public enum SwordType
     {
         Base,

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone.Testing
 {
-    public class TestingProjectile : MonoBehaviour
+    public class TestingProjectile : MonoBehaviour, IDamaging
     {
         #region Fields
         // The velocity of the projectile
@@ -15,11 +15,26 @@ namespace Bladesmiths.Capstone.Testing
 
         // The damage the projectile inflicts
         [SerializeField]
-        private float damage; 
+        private float damage;
 
         [Tooltip("How long until the projectile is destroyed")]
         [SerializeField]
         private float timeTillDestruction;
+
+        private int id;
+
+        [SerializeField]
+        private ObjectController objectController;
+
+        // The event to call when damaging is finished
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+        // Testing for damaging system
+        [Header("Damaging Timer Fields (Testing)")]
+        [SerializeField]
+        private float damagingTimerLimit;
+        private float damagingTimer;
+        private bool damaging;
         #endregion
 
         // Gives access to the velocity field
@@ -28,6 +43,9 @@ namespace Bladesmiths.Capstone.Testing
             get { return velocity; }
             set { velocity = value; }
         }
+
+        public int ID { get => id; set => id = value; }
+        public ObjectController ObjectController { get => objectController; set => objectController = value; }
 
         /// <summary>
         /// Sets the projectile to its starting position
@@ -50,6 +68,35 @@ namespace Bladesmiths.Capstone.Testing
             {
                 transform.position = transform.position + velocity;
             }
+
+            // Testing
+            // If the enemy is currently damaging an object
+            if (damaging)
+            {
+                // Update the timer
+                damagingTimer += Time.deltaTime;
+
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
+            }
         }
 
         /// <summary>
@@ -63,7 +110,7 @@ namespace Bladesmiths.Capstone.Testing
             if (col.gameObject.GetComponent<Player>())
             {
                 // Damage the player
-                col.gameObject.GetComponent<Player>().TakeDamage(damage);
+                col.gameObject.GetComponent<Player>().TakeDamage(id, damage);
 
                 // Start a coroutine to change the player's material to show they've been damaged
                 col.gameObject.GetComponent<Player>().StartCoroutine(

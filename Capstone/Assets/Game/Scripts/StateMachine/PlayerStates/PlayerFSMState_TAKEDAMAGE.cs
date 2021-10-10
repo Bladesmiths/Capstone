@@ -30,7 +30,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
-            _player.isDamaged = false;
+            _player.damaged = false;
             timer = 0;
             _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
             _player.inState = true;
