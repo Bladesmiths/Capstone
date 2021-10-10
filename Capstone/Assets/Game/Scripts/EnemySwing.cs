@@ -6,14 +6,14 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class EnemySwing : Character
+    public class EnemySwing : Character, IDamaging
     {
         // Gets a reference to the player
         // Will be used for finding the player in the world
         private Player player;
 
         private float rotate;
-        private float speed = 100;
+        private float speed = 1;
         private bool isBroken = false;
         private float fadeOutTimer = 0f;
         private float fadeOutLength = 1f;
@@ -22,33 +22,48 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject enemyObject;
 
+        // The event to call when damaging is finished
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+        // Testing for damaging system
+        [Header("Damaging Timer Fields (Testing)")]
+        [SerializeField]
+        private float damagingTimerLimit;
+        private float damagingTimer;
+        private bool damaging;
+
         private void Start()
         {
-            rotate = Time.deltaTime * speed;
+            rotate = speed;
 
-        }        
-       
+        }
+
         public virtual void Update()
         {
+            // Rotates downwards 
             if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
             {
-                rotate = Time.deltaTime * speed;
+                rotate = speed;
 
             }
 
+            // Rotates upwards
             else if (transform.parent.eulerAngles.x >= 30 && transform.parent.eulerAngles.x < 180)
             {
-                rotate = -Time.deltaTime * speed;
+                rotate = -speed;
 
             }
 
+            // Checks of the Enemy has detected a block
             if (isBroken == false)
             {
                 transform.parent.Rotate(new Vector3(rotate, 0, 0));
             }
             else
             {
+                // If there is a block then start fading out
                 fadeOutTimer += Time.deltaTime;
+                GetComponent<BoxCollider>().enabled = false;
             }
 
             // When the object should fade out
@@ -68,38 +83,73 @@ namespace Bladesmiths.Capstone
 
             }
 
-        }
-
-        void OnCollisionEnter(Collision collision)
-        {
-            if(collision.collider.GetComponent<Player>() == true)
+            // Testing
+            // If the enemy is currently damaging an object
+            if (damaging)
             {
-                // Damage Player
-                collision.collider.GetComponent<Player>().TakeDamage(1);
+                // Update the timer
+                damagingTimer += Time.deltaTime;
 
-                // Knockback Player
-                // Will likly be a method in the Player class
-                //collision.collider.GetComponent<Player>().Knockback();
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
 
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
             }
 
-            
-
         }
 
+       /// <summary>
+       /// Allows for the player to hit and be hit by the Swinging Enemy
+       /// </summary>
+       /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "PreventDmg")
-            {
-                // Damage Enemy
-                Debug.Log("Block hit!!");
-                isBroken = true;
-            }
+            if(other.GetComponent<Player>() != null)
+            { 
+                // Checks to see if the player is in the blocking state
+                if (other.GetComponent<Player>().GetPlayerFSMState().ID == Enums.PlayerCondition.F_Blocking)
+                {
+                    // Damage Enemy
+                    isBroken = true;
+                }
+                // Otherwise deal damage to the player
+                else if (other.GetComponent<Player>() == true)
+                {
+                    // Damage Player
+                    //other.GetComponent<Player>().TakeDamage(ID, 1);
+                    ObjectController.DamageableObjects[other.GetComponent<Player>().ID].DamageableObject.TakeDamage(ID, 1);
+
+                    damaging = true;
+
+                    // Knockback Player
+                    // Will be a method in the Player class
+                    //other.GetComponent<Player>().Knockback();
+
+                }
+            }          
+
+            
         }
 
         protected override void Attack()
         {
-            //player.TakeDamage(1);
+
         }
         protected override void ActivateAbility()
         {
@@ -125,9 +175,6 @@ namespace Bladesmiths.Capstone
         {
 
         }
-        public override void TakeDamage(float damage)
-        {
-            
-        }
+        
     }
 }

@@ -155,6 +155,7 @@ namespace Bladesmiths.Capstone
 
         private void Awake()
         {
+            Health = 1000;
             animator = GetComponent<Animator>();
             animIDForward = Animator.StringToHash("Forward");
             animBlend = 0;
@@ -387,6 +388,16 @@ namespace Bladesmiths.Capstone
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
             return Grounded;
+        }
+
+        /// <summary>
+        /// Allows for other classes to get a reference to the player's state
+        /// </summary>
+        /// <returns></returns>
+        public PlayerFSMState GetPlayerFSMState()
+        {
+            return (PlayerFSMState)FSM.GetCurrentState();
+
         }
 
         /// <summary>
