@@ -20,6 +20,8 @@ namespace Bladesmiths.Capstone
 
         [Header("Character Fields")]
 
+        public List<int> damagingIds;
+
         [SerializeField]
         private float maxHealth;
 
