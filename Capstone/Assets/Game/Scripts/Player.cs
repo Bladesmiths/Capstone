@@ -57,6 +57,8 @@ namespace Bladesmiths.Capstone
         private PlayerFSMState_BLOCK block;
         private PlayerFSMState_NULL nullState;
 
+        private TargetLock targetLock; 
+
         [Header("State Fields")]
         public bool inState;
         public bool damaged;
@@ -225,6 +227,7 @@ namespace Bladesmiths.Capstone
             // Sets the current state
             FSM.SetCurrentState(idleCombat);
 
+            targetLock = GetComponent<TargetLock>();
         }
 
         /// <summary>
@@ -392,7 +395,7 @@ namespace Bladesmiths.Capstone
         /// <summary>
         /// Allows for the camera to rotate with the player
         /// </summary>
-        private void CameraRotation()
+        public void CameraRotation()
         {
             // if there is an input and camera position is not fixed
             if (inputs.look.sqrMagnitude >= threshold && !LockCameraPosition)
@@ -405,8 +408,12 @@ namespace Bladesmiths.Capstone
             cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
             cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
 
-            // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+            // Don't update the rotation of the camera's target if target lock is active
+            if (!targetLock.Active)
+            {
+                // Cinemachine will follow this target
+                CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+            }
         }
 
         /// <summary>
