@@ -17,12 +17,13 @@ namespace Bladesmiths.Capstone
     /// This is where all of the transitions between states 
     /// are defined and how they are transitioned between
     /// </summary>
-    public class Player : Character
+    public class Player : Character, IDamaging
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
 
         //[SerializeField] private TransitionManager playerTransitionManager;
+        [Header("Player Fields")]
 
         [SerializeField]
         private PlayerInputsScript inputs;
@@ -56,18 +57,26 @@ namespace Bladesmiths.Capstone
         private PlayerFSMState_BLOCK block;
         private PlayerFSMState_NULL nullState;
 
-        public bool isDamaged;
-        public bool inState;
+        private TargetLock targetLock; 
 
+        [Header("State Fields")]
+        public bool inState;
+        public bool damaged;
+        public bool parryEnd;
+        private float dodgeTimer;
+
+        [Header("Cinemachine Target Fields")]
         public float cinemachineTargetYaw;
         public float cinemachineTargetPitch;
         private const float threshold = 0.01f;
-        [SerializeField] public GameObject CinemachineCameraTarget;
+        [SerializeField] 
+        public GameObject CinemachineCameraTarget;
         private float TopClamp = 70.0f;
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
         private bool LockCameraPosition = false;
 
+        [Header("Grounded Fields")]
         public LayerMask GroundLayers;
         public bool Grounded = true;
         public bool isGrounded = true;
@@ -75,8 +84,16 @@ namespace Bladesmiths.Capstone
         public float GroundedRadius = 0.20f;
         [SerializeField] private float landTimeout;
 
+        // Testing for damaging system
+        [Header("Damaging Timer Fields (Testing)")]
+        [SerializeField]
+        private float damagingTimerLimit;
+        private float damagingTimer;
+        private bool damaging;
+
         #region Fields from the Move State and Jump State
 
+        [Header("Move/Jump Fields")]
         public float timer;
 
         private Animator animator;
@@ -108,7 +125,7 @@ namespace Bladesmiths.Capstone
         public float JumpHeight = 1.2f;
         public float Gravity = -15.0f;
 
-        private GameObject camera;
+        private GameObject playerCamera;
 
 
         public float RunSpeed = 10.0f;
@@ -121,8 +138,8 @@ namespace Bladesmiths.Capstone
         private float fallTimeoutDelta;
         #endregion
 
-        public bool parryEnd;
-        private float dodgeTimer;
+        // The event to call when damaging is finished
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         #region Testing Fields 
         [Header("Testing Fields")]
@@ -140,6 +157,7 @@ namespace Bladesmiths.Capstone
 
         private void Awake()
         {
+            Health = 1000;
             animator = GetComponent<Animator>();
             animIDForward = Animator.StringToHash("Forward");
             animBlend = 0;
@@ -149,7 +167,7 @@ namespace Bladesmiths.Capstone
             fallTimeoutDelta = FallTimeout;
 
             controller = GetComponent<CharacterController>();
-            camera = GameObject.FindGameObjectWithTag("MainCamera");
+            playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
             hasAnimator = TryGetComponent(out animator);
             animIDGrounded = Animator.StringToHash("Grounded");
@@ -162,10 +180,12 @@ namespace Bladesmiths.Capstone
             controllerVelocity = Vector2.zero;
 
             Health = MaxHealth;
-            isDamaged = false;
+            damaged = false;
             inState = false;
 
             parryEnd = false;
+
+            sword.GetComponent<Sword>().Player = this;
 
             // Creates the FSM
             FSM = new FiniteStateMachine();
@@ -176,7 +196,7 @@ namespace Bladesmiths.Capstone
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
             parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
-            block = new PlayerFSMState_BLOCK(blockDetector);
+            block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
             //move = new PlayerFSMState_MOVING(this, inputs, animator, GroundLayers);
             idleMovement = new PlayerFSMState_IDLE(animator);
             idleCombat = new PlayerFSMState_IDLE(animator);
@@ -208,6 +228,7 @@ namespace Bladesmiths.Capstone
             // Sets the current state
             FSM.SetCurrentState(idleCombat);
 
+            targetLock = GetComponent<TargetLock>();
         }
 
         /// <summary>
@@ -258,7 +279,7 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsDamaged() => () => isDamaged;
+        public Func<bool> IsDamaged() => () => damaged;
 
         /// <summary>
         /// The condition for having been attacked
@@ -323,6 +344,35 @@ namespace Bladesmiths.Capstone
 
             Jump();
             Move();
+
+            // Testing
+            // If the enemy is currently damaging an object
+            if (damaging)
+            {
+                // Update the timer
+                damagingTimer += Time.deltaTime;
+
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
+            }
         }
 
         private void LateUpdate()
@@ -344,9 +394,18 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// Allows for other classes to get a reference to the player's state
+        /// </summary>
+        /// <returns></returns>
+        public PlayerFSMState GetPlayerFSMState()
+        {
+            return (PlayerFSMState)FSM.GetCurrentState();
+        }
+
+        /// <summary>
         /// Allows for the camera to rotate with the player
         /// </summary>
-        private void CameraRotation()
+        public void CameraRotation()
         {
             // if there is an input and camera position is not fixed
             if (inputs.look.sqrMagnitude >= threshold && !LockCameraPosition)
@@ -359,8 +418,12 @@ namespace Bladesmiths.Capstone
             cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
             cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
 
-            // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+            // Don't update the rotation of the camera's target if target lock is active
+            if (!targetLock.Active)
+            {
+                // Cinemachine will follow this target
+                CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+            }
         }
 
         /// <summary>
@@ -436,7 +499,7 @@ namespace Bladesmiths.Capstone
             // are inputting when dodging or in another state
             if (inputs.move != Vector2.zero && speed != 0)
             {
-                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camera.transform.eulerAngles.y;
+                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
@@ -579,21 +642,50 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
-        /// Allows for the player to take damage
+        /// Attack with the player's sword
         /// </summary>
-        /// <param name="damage"></param>
-        public override void TakeDamage(float damage)
+        /// <param name="targetID">The id of the object to attack</param>
+        /// <param name="damage">The amount of damage to give to the target</param>
+        public void SwordAttack(int targetID, float damage)
         {
+            ObjectController.DamageableObjects[targetID].DamageableObject.TakeDamage(ID, damage);
+
+            // Testing
+            damaging = true;
+        }
+
+        /// <summary>
+        /// Subtract an amount of damage from the character's health
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
+        /// <param name="damage">The amount of damage to be subtracted</param>
+        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
+        public override bool TakeDamage(int damagingID, float damage)
+        {
+            // If the player is not in invincibility frames
+            // They can take damage
             if (dodge.canDmg)
             {
-                base.TakeDamage(damage);
-                isDamaged = true;
+                // The resullt of Character's Take Damage
+                // Was damage taken or not
+                bool damageResult = base.TakeDamage(damagingID, damage);
 
-                // Playtest 1
-                playerHealth.CurrentValue -= damage;
+                // If damage was taken
+                // Update the playerHealth field for analytics
+                if (damageResult)
+                {
+                    // Playtest 1
+                    playerHealth.CurrentValue -= damage;
 
-                // Shouldn't this be going to the Player's TakeDamage State?
+                    damaged = true;
+                }
+
+                // Return whether damage was taken or not
+                return damageResult; 
             }
+
+            // Return false if the player cannot currently be damaged
+            return false; 
         }
     }
 }

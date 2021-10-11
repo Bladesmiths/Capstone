@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
+using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy : Character
+    public class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
@@ -19,6 +20,16 @@ namespace Bladesmiths.Capstone
         private bool damaged = false;
         private float timer = 0f;
         private float attackTimer = 0f;
+
+        // The event to call when damaging is finished
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+        // Testing for damaging system
+        [Header("Damaging Timer Fields (Testing)")]
+        [SerializeField]
+        private float damagingTimerLimit;
+        private float damagingTimer;
+        private bool damaging;
 
         private void Awake()
         {
@@ -35,13 +46,12 @@ namespace Bladesmiths.Capstone
             // Adds all of the possible transitions
             //FSM.AddTransition(seek, idle, IsIdle());
             //FSM.AddTransition(idle, seek, IsClose());
-           
+
             // Sets the current state
             //FSM.SetCurrentState(idle);
 
-
-
-
+            // Sets the team of the enemy
+            DamageableObjectTeam = Team.Enemy;
         }
 
         /// <summary>
@@ -85,11 +95,38 @@ namespace Bladesmiths.Capstone
             //        Attack();
             //        attackTimer = 0f;
             //    }
-                
+
 
             //}
 
+            // Testing
+            // If the enemy is currently damaging an object
+            if (damaging)
+            {
+                // Update the timer
+                damagingTimer += Time.deltaTime;
 
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
+            }
         }
 
         void OnCollisionEnter(Collision collision)
@@ -100,7 +137,7 @@ namespace Bladesmiths.Capstone
 
         protected override void Attack()
         {
-            player.TakeDamage(1);
+            player.TakeDamage(ID, 1);
         }
         protected override void ActivateAbility()
         {
@@ -126,13 +163,30 @@ namespace Bladesmiths.Capstone
         {
 
         }
-        public override void TakeDamage(float damage)
+
+        /// <summary>
+        /// Subtract an amount of damage from the character's health
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
+        /// <param name="damage">The amount of damage to be subtracted</param>
+        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
+        public override bool TakeDamage(int damagingID, float damage)
         {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            // The resullt of Character's Take Damage
+            // Was damage taken or not
+            bool damageResult = base.TakeDamage(damagingID, damage);
 
-            damaged = true;
+            // If damage was taken
+            // Change the object to red and set damaged to true
+            if (damageResult)
+            {
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
-            base.TakeDamage(damage);
+                damaged = true;
+            }
+
+            // Return whether damage was taken or not
+            return damageResult;
         }
     }
 }

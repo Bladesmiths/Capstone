@@ -49,7 +49,7 @@ namespace Bladesmiths.Capstone
             }
 
             //layerMask = ~layerMask;
-            RaycastHit hit;
+            //RaycastHit hit;
 
             //if (Physics.Raycast(_player.transform.position + Vector3.up, _player.transform.TransformDirection(Vector3.forward), out hit, 2f))
             if (_sword.GetComponent<Rigidbody>().detectCollisions)
@@ -58,7 +58,7 @@ namespace Bladesmiths.Capstone
                 //Physics.Raycast(_player.transform.position + Vector3.up, _player.transform.TransformDirection(Vector3.forward), out hit, 2f);
 
                 //Debug.DrawRay(_player.transform.position + Vector3.up, _player.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                Debug.Log("Did Hit");
+                //Debug.Log("Did Hit");
 
                 //if (hit.collider.gameObject.GetComponent<Enemy>())
                 //{
@@ -71,7 +71,7 @@ namespace Bladesmiths.Capstone
             else
             {
                 //Debug.DrawRay(_player.transform.position, _player.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-                Debug.Log("Did not Hit");
+                //Debug.Log("Did not Hit");
 
             }
 
