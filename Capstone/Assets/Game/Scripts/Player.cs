@@ -397,7 +397,6 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState GetPlayerFSMState()
         {
             return (PlayerFSMState)FSM.GetCurrentState();
-
         }
 
         /// <summary>

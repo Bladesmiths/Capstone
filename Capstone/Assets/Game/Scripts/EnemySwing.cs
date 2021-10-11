@@ -36,7 +36,6 @@ namespace Bladesmiths.Capstone
         {
             rotate = speed;
             player = GameObject.Find("Player").GetComponent<Player>();
-
         }
 
         public virtual void Update()
@@ -45,14 +44,12 @@ namespace Bladesmiths.Capstone
             if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
             {
                 rotate = speed;
-
             }
 
             // Rotates upwards
             else if (transform.parent.eulerAngles.x >= 30 && transform.parent.eulerAngles.x < 180)
             {
                 rotate = -speed;
-
             }
 
             // Checks of the Enemy has detected a block
@@ -77,11 +74,12 @@ namespace Bladesmiths.Capstone
                     enemyObject.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
 
                 // After the cubes are shrunk, destroy it
-                if (enemyObject.transform.localScale.x <= 0 && enemyObject.transform.localScale.y <= 0 && enemyObject.transform.localScale.z <= 0)
+                if (enemyObject.transform.localScale.x <= 0 && 
+                    enemyObject.transform.localScale.y <= 0 && 
+                    enemyObject.transform.localScale.z <= 0)
                 {
                     Destroy(enemyObject);
                 }
-
             }
 
             // Testing
@@ -112,13 +110,12 @@ namespace Bladesmiths.Capstone
                     damaging = false;
                 }
             }
-
         }
 
-       /// <summary>
-       /// Allows for the player to hit and be hit by the Swinging Enemy
-       /// </summary>
-       /// <param name="other"></param>
+        /// <summary>
+        /// Allows for the player to hit and be hit by the Swinging Enemy
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
             if(other.GetComponent<Player>() != null || other.GetComponent<Sword>() != null)
@@ -133,19 +130,15 @@ namespace Bladesmiths.Capstone
                 else if (other.GetComponent<Player>() == true)
                 {
                     // Damage Player
-                    //other.GetComponent<Player>().TakeDamage(ID, 1);
-                    ObjectController.DamageableObjects[other.GetComponent<Player>().ID].DamageableObject.TakeDamage(ID, 1);
+                    ObjectController.DamageableObjects[player.ID].DamageableObject.TakeDamage(ID, 1);
 
                     damaging = true;
 
                     // Knockback Player
                     // Will be a method in the Player class
                     //other.GetComponent<Player>().Knockback();
-
                 }
-            }          
-
-            
+            }                        
         }
 
         protected override void Attack()
