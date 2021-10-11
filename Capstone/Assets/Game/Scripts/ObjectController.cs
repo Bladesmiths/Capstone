@@ -26,7 +26,17 @@ namespace Bladesmiths.Capstone
 
         void Start()
         {
+            // We should come up with a way to check the dictionary and
+            // making a unique ID to go with the player
+            currentValidId = 100;
+
+            DamageableTeamPair playerDamageable = new DamageableTeamPair(Team.Player, GameObject.Find("Player").GetComponent<IDamageable>());
+            DamagingTeamPair playerDamaging = new DamagingTeamPair(Team.Player, GameObject.Find("Player").GetComponent<IDamaging>());
+
+            DamageableObjects.Add(currentValidId, playerDamageable);
+            DamagingObjects.Add(currentValidId, playerDamaging);
             VerifyObjects();
+
         }
 
         void Update() { }

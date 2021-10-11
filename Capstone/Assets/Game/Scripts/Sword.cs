@@ -6,7 +6,8 @@ namespace Bladesmiths.Capstone
 {
     public class Sword : MonoBehaviour
     {
-        private float damage;
+        // This is arbitrary and temporary
+        private float damage = 5;
 
         public Player Player { get; set; }
 

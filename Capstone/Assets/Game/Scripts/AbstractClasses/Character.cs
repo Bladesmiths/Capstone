@@ -29,7 +29,7 @@ namespace Bladesmiths.Capstone
         private List<int> damagingObjectIDs = new List<int>();
 
         [SerializeField]
-        private ObjectController objectController; 
+        private ObjectController objectController;
 
         // Properties
         public int ID { get => id; set => id = value; }

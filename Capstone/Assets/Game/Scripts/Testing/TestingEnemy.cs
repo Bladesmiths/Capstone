@@ -10,6 +10,7 @@ namespace Bladesmiths.Capstone.Testing
         void Start() 
         {
             Health = 1000;
+
         }
 
         // Keeping update so that parent's update does not run
@@ -25,7 +26,7 @@ namespace Bladesmiths.Capstone.Testing
         {
             // Testing Value
             // Needs to be changed later so that it reflects the damage of the sword)
-            damage = 5;
+            //damage = 5;
             bool damageResult = base.TakeDamage(damagingID, damage);
 
             if (damageResult)
