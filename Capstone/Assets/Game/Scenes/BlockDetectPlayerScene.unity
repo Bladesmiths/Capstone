@@ -670,7 +670,6 @@ Transform:
   m_Children:
   - {fileID: 1872133808}
   - {fileID: 1749967642}
-  - {fileID: 1781287791}
   m_Father: {fileID: 474504807}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -851,7 +850,7 @@ GameObject:
   - component: {fileID: 528670858}
   - component: {fileID: 528670861}
   - component: {fileID: 528670862}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block Detector
   m_TagString: PreventDmg
   m_Icon: {fileID: 0}
@@ -2571,6 +2570,7 @@ GameObject:
   - component: {fileID: 1554415452}
   - component: {fileID: 1554415451}
   - component: {fileID: 1554415450}
+  - component: {fileID: 1554415458}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2745,15 +2745,20 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  damagingIds: 
+  id: 0
   maxHealth: 10000
+  currentHealth: 0
+  damagingObjectIDs: 
+  objectController: {fileID: 0}
   inputs: {fileID: 1554415452}
   player: {fileID: 1554415449}
   sword: {fileID: 2112138773}
   parryDetector: {fileID: 1749967641}
   blockDetector: {fileID: 528670856}
-  isDamaged: 0
   inState: 0
+  damaged: 0
+  parryEnd: 0
+  chipDamagePercent: 0.2
   cinemachineTargetYaw: 0
   cinemachineTargetPitch: 0
   CinemachineCameraTarget: {fileID: 1459533899}
@@ -2765,6 +2770,8 @@ MonoBehaviour:
   GroundedOffset: -0.1
   GroundedRadius: 0.2
   landTimeout: 0.02
+  currentSwordDamage: 0
+  damagingTimerLimit: 0
   timer: 0
   speed: 0
   SpeedChangeRate: 10
@@ -2777,7 +2784,6 @@ MonoBehaviour:
   WalkSpeed: 4
   MoveSpeedCurrentMax: 10
   JumpTimeout: 0.5
-  parryEnd: 0
   numAttacks: {fileID: 11400000, guid: 08106fba80fc13448af41587dd27028d, type: 2}
   numBlocks: {fileID: 11400000, guid: 52bd98b9acbc38a40be4cb66ae37ee38, type: 2}
   numDodges: {fileID: 11400000, guid: 19c515f1b56511f4c8399fe9a02e4e14, type: 2}
@@ -2980,6 +2986,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1554415458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554415449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dee4f4d25e9a342b76671c7563dbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLockCam: {fileID: 0}
+  targetCanvas: {fileID: 0}
+  playerCamRoot: {fileID: 0}
 --- !u!1 &1568325181
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,131 +3642,6 @@ Transform:
   m_Father: {fileID: 2140044099}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1781287785
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1781287791}
-  - component: {fileID: 1781287790}
-  - component: {fileID: 1781287789}
-  - component: {fileID: 1781287788}
-  - component: {fileID: 1781287787}
-  - component: {fileID: 1781287786}
-  m_Layer: 0
-  m_Name: Block Detector
-  m_TagString: PreventDmg
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1781287786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781287785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd2e1ad8600417488ce9776e83778b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!54 &1781287787
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781287785}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1781287788
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781287785}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1781287789
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781287785}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 57326db2b5f9fc3428c64d827ff2f774, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1781287790
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781287785}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1781287791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781287785}
-  m_LocalRotation: {x: 0.0427059, y: -0.042705905, z: 0.70581603, w: 0.70581603}
-  m_LocalPosition: {x: -0.05, y: -0.17900002, z: 0.38300002}
-  m_LocalScale: {x: 1.69998, y: 1.53127, z: 0.32009003}
-  m_Children: []
-  m_Father: {fileID: 347692712}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 6.925, y: 0, z: 90}
 --- !u!1 &1796448313
 GameObject:
   m_ObjectHideFlags: 0

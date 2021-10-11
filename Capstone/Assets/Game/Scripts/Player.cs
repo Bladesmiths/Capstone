@@ -247,7 +247,6 @@ namespace Bladesmiths.Capstone
             // Temporary probably
             currentSword = sword.GetComponent<Sword>();
             currentSwordDamage = currentSword.Damage;
-            damagingIds = new List<int>();
 
         }
 
@@ -392,15 +391,8 @@ namespace Bladesmiths.Capstone
                     damagingTimer = 0.0f;
                     damaging = false;
 
-
-            // Temp setup for clearing id's from the list
-            // if(idRemovalTimer >= 0.5f)
-            // {
-            //     damagingIds.Clear();
-            //     idRemovalTimer = 0.0f;
-            // }
-            // if(damagingIds.Count > 0)
-            //     idRemovalTimer += Time.deltaTime;
+                }
+            }
         }
 
         private void LateUpdate()

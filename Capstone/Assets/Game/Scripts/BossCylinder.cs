@@ -4,10 +4,26 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
-    public class BossCylinder : MonoBehaviour
+    public class BossCylinder : MonoBehaviour, IDamaging
     {
         [SerializeField] private GameObject well;
-        public int id = -1;
+        [SerializeField] private float speed;
+        private int id = -1;
+        private float damage = 1;
+
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+
+        // Testing for damaging system
+        [Header("Damaging Timer Fields (Testing)")]
+        [SerializeField]
+        private float damagingTimerLimit;
+        private float damagingTimer;
+        private bool damaging;
+
+        public int ID { get => id; set => id = value; }
+        public float Damage => damage;
+        public ObjectController ObjectController { get; set; }
 
         // Start is called before the first frame update
         void Start()
@@ -18,7 +34,37 @@ namespace Bladesmiths.Capstone
         // Update is called once per frame
         void Update()
         {
-            transform.RotateAround(well.transform.position, well.transform.up, 180 * Time.deltaTime);
+            transform.RotateAround(well.transform.position, well.transform.up, speed * Time.deltaTime);
+
+            // Testing
+            // If the enemy is currently damaging an object
+            if (damaging)
+            {
+                // Update the timer
+                damagingTimer += Time.deltaTime;
+
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -29,14 +75,10 @@ namespace Bladesmiths.Capstone
                 // If it hits the player
                 if (other.gameObject.transform.root.CompareTag("Player") == true)
                 {
+                    damaging = true;
                     Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
                     // Check if the player has already been hit by this object
-                    if (player.damagingIds.Contains(id) == false)
-                    {
-                        // If not then take damage and add it's id to the list
-                        player.TakeDamage(1);
-                        player.damagingIds.Add(id);
-                    }
+                    player.TakeDamage(id, damage);
                 }
             }
         }
