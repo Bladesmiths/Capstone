@@ -35,6 +35,7 @@ namespace Bladesmiths.Capstone
         private void Start()
         {
             rotate = speed;
+            player = GameObject.Find("Player").GetComponent<Player>();
 
         }
 
@@ -120,10 +121,10 @@ namespace Bladesmiths.Capstone
        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if(other.GetComponent<Player>() != null)
+            if(other.GetComponent<Player>() != null || other.GetComponent<Sword>() != null)
             { 
                 // Checks to see if the player is in the blocking state
-                if (other.GetComponent<Player>().GetPlayerFSMState().ID == Enums.PlayerCondition.F_Blocking)
+                if (player.GetPlayerFSMState().ID == Enums.PlayerCondition.F_Blocking && other.GetComponent<Sword>() == true)
                 {
                     // Damage Enemy
                     isBroken = true;
