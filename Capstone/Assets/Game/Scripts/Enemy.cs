@@ -21,6 +21,9 @@ namespace Bladesmiths.Capstone
         private float timer = 0f;
         private float attackTimer = 0f;
 
+        [SerializeField]
+        protected float damage;
+        
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
@@ -30,6 +33,8 @@ namespace Bladesmiths.Capstone
         private float damagingTimerLimit;
         private float damagingTimer;
         private bool damaging;
+
+        public float Damage { get => damage; }
 
         private void Awake()
         {

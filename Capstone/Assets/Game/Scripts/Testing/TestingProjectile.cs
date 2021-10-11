@@ -46,6 +46,7 @@ namespace Bladesmiths.Capstone.Testing
 
         public int ID { get => id; set => id = value; }
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
+        public float Damage { get => damage; }
 
         /// <summary>
         /// Sets the projectile to its starting position
