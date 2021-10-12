@@ -419,11 +419,13 @@ namespace Bladesmiths.Capstone
             cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
 
             // Don't update the rotation of the camera's target if target lock is active
-            if (!targetLock.Active)
-            {
-                // Cinemachine will follow this target
-                CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-            }
+            //if (!targetLock.Active)
+            //{
+            //    // Cinemachine will follow this target
+            //    CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+            //}
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+
         }
 
         /// <summary>
