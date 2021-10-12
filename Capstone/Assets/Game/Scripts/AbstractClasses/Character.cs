@@ -93,6 +93,8 @@ namespace Bladesmiths.Capstone
         protected abstract void SwitchWeapon(int weaponSelect);
         protected abstract void Die();
 
+        public abstract void Respawn();
+
         /// <summary>
         /// Remove an id from the damaging id list
         /// </summary>

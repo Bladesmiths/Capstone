@@ -179,6 +179,10 @@ namespace Bladesmiths.Capstone
         {
 
         }
+        public override void Respawn()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
