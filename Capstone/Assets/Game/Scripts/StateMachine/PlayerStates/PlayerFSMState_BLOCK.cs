@@ -44,7 +44,8 @@ namespace Bladesmiths.Capstone
         public override void OnEnter()
         {
             // Turns the block detector box on
-            //playerBlockBox.SetActive(true);
+            playerBlockBox.SetActive(true);
+            playerBlockBox.GetComponent<BlockCollision>().Active = true;
 
             // Assign block paramater id
             _animIDBlock = Animator.StringToHash("Block");
@@ -69,7 +70,8 @@ namespace Bladesmiths.Capstone
         public override void OnExit()
         {
             // Turns the block detector box off
-            //playerBlockBox.SetActive(false);
+            playerBlockBox.SetActive(false);
+            playerBlockBox.GetComponent<BlockCollision>().Active = false;
 
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;

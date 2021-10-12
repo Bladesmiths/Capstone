@@ -11,6 +11,13 @@ namespace Bladesmiths.Capstone.Testing
         [SerializeField]
         private GameObject projectilePrefab;
 
+        [Tooltip("The Location for the projectile enemy to be fired")]
+        [SerializeField]
+        private GameObject projectileSpawn;
+
+        [SerializeField]
+        private GameObject shrinkLocation;
+
         // Coordinates of top left and bottom right
         // To be used for boundaries of random position to shoot from
         [SerializeField]
@@ -23,11 +30,16 @@ namespace Bladesmiths.Capstone.Testing
         private float timerLimit;
 
         // Whether or not the player is in the second area
-        private bool inSecondArea; 
+        private bool inSecondArea = true; 
 
         [Tooltip("How fast should the projectiles be moving")]
         [SerializeField]
-        private Vector3 projectileVelocity; 
+        private Vector3 projectileVelocity;
+
+        private bool isBroken = false;
+        private float fadeOutTimer = 0f;
+        private float fadeOutLength = 1f;
+        private float shrinkSpeed = 1.0f;
         #endregion
 
         /// <summary>
@@ -41,6 +53,35 @@ namespace Bladesmiths.Capstone.Testing
             bottomRight = new Vector3(transform.position.x + transform.localScale.x / 2,
                                       transform.position.y - transform.localScale.y / 2,
                                       transform.position.z + transform.localScale.z / 2);
+
+        }
+
+        private void Update()
+        {
+            if (isBroken)
+            {
+                // If there is a block then start fading out
+                fadeOutTimer += Time.deltaTime;
+                GetComponent<BoxCollider>().enabled = false;
+            }
+
+            // When the object should fade out
+            if (fadeOutTimer >= fadeOutLength)
+            {
+                // Shrink the cubes
+                shrinkLocation.transform.localScale = new Vector3(
+                    shrinkLocation.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
+                    shrinkLocation.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
+                    shrinkLocation.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+
+                // After the cubes are shrunk, destroy it
+                if (shrinkLocation.transform.localScale.x <= 0 &&
+                    shrinkLocation.transform.localScale.y <= 0 &&
+                    shrinkLocation.transform.localScale.z <= 0)
+                {
+                    Destroy(shrinkLocation);
+                }
+            }
         }
 
         /// <summary>
@@ -66,13 +107,7 @@ namespace Bladesmiths.Capstone.Testing
         /// </summary>
         private void FireProjectile()
         {
-            Vector3 randomPosition;
-
-            randomPosition.x = topLeft.x + projectilePrefab.transform.localScale.x;
-            randomPosition.y = Random.Range(topLeft.y, bottomRight.y);
-            randomPosition.z = Random.Range(topLeft.z, bottomRight.z);
-
-            GameObject newProjectile = Instantiate(projectilePrefab, randomPosition, Quaternion.identity);
+            GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawn.transform.position, Quaternion.identity);
 
             newProjectile.GetComponent<TestingProjectile>().Velocity = projectileVelocity; 
         }
@@ -87,6 +122,35 @@ namespace Bladesmiths.Capstone.Testing
             {
                 FireProjectile();
                 yield return new WaitForSeconds(timerLimit);
+            }
+        }
+
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.collider.GetComponent<TestingProjectile>() == true)
+            {
+                isBroken = true;
+            }
+
+            if (collision.collider)
+            {
+                isBroken = true;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<Player>() == true)
+            {
+                PlayerEnterSecondArea();
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.GetComponent<Player>() == true)
+            {
+                PlayerLeaveSecondArea();
             }
         }
     }

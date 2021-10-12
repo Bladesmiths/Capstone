@@ -46,6 +46,7 @@ namespace Bladesmiths.Capstone.Testing
 
         public int ID { get => id; set => id = value; }
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
+        public float Damage { get => damage; }
 
         /// <summary>
         /// Sets the projectile to its starting position
@@ -68,6 +69,8 @@ namespace Bladesmiths.Capstone.Testing
             {
                 transform.position = transform.position + velocity;
             }
+
+            
 
             // Testing
             // If the enemy is currently damaging an object
@@ -106,17 +109,21 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="col">The collision that occurred</param>
         void OnCollisionEnter(Collision col)
         {
-            // Check if the object in the collision is the player
-            if (col.gameObject.GetComponent<Player>())
+            if (col.gameObject.GetComponent<Player>() == true)
             {
-                // Damage the player
-                col.gameObject.GetComponent<Player>().TakeDamage(id, damage);
+                // Check if the object in the collision is the player
+                if ((col.gameObject.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking) ||
+                    (col.gameObject.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt))
+                {
+                    // Damage the player
+                    col.gameObject.GetComponent<Player>().TakeDamage(id, damage);
 
-                // Start a coroutine to change the player's material to show they've been damaged
-                col.gameObject.GetComponent<Player>().StartCoroutine(
-                    Util.DamageMaterialTimer(col.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
+                    // Start a coroutine to change the player's material to show they've been damaged
+                    col.gameObject.GetComponent<Player>().StartCoroutine(
+                        Util.DamageMaterialTimer(col.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
+                }
             }
-
+            
             // Destroy the projectile once it has collided
             Destroy(gameObject); 
         }
@@ -130,10 +137,10 @@ namespace Bladesmiths.Capstone.Testing
             if (other.gameObject.CompareTag("PreventDmg"))
             {
                 // Testing
-                ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
+                //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
 
-                Destroy(gameObject);
-                return;
+                Velocity = -Velocity;
+                
             }
         }
     }

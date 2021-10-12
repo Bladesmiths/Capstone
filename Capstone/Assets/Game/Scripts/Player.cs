@@ -47,7 +47,6 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
-        //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
         private PlayerFSMState_PARRYSUCCESS parrySuccess;
         private PlayerFSMState_IDLE idleMovement;
@@ -69,6 +68,8 @@ namespace Bladesmiths.Capstone
         public bool damaged;
         public bool parryEnd;
         private float dodgeTimer;
+        [SerializeField] [Range(0.0f, 1.0f)]
+        private float chipDamagePercent; 
 
         [Header("Cinemachine Target Fields")]
         public float cinemachineTargetYaw;
@@ -88,6 +89,12 @@ namespace Bladesmiths.Capstone
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
         [SerializeField] private float landTimeout;
+
+        [Header("Sword Fields")]
+        [SerializeField]
+        private float currentSwordDamage;
+        private Sword currentSword; 
+        private List<Sword> swords = new List<Sword>(); 
 
         // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
@@ -174,6 +181,7 @@ namespace Bladesmiths.Capstone
             get { return respawnRotation; }
             set { respawnRotation = value; }
         }
+        public float Damage { get => currentSwordDamage; }
 
         private void Awake()
         {
@@ -217,7 +225,6 @@ namespace Bladesmiths.Capstone
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
             parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
             block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
-            //move = new PlayerFSMState_MOVING(this, inputs, animator, GroundLayers);
             idleMovement = new PlayerFSMState_IDLE(animator);
             idleCombat = new PlayerFSMState_IDLE(animator);
             attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
@@ -249,6 +256,11 @@ namespace Bladesmiths.Capstone
             FSM.SetCurrentState(idleCombat);
 
             targetLock = GetComponent<TargetLock>();
+            blockDetector.GetComponent<BlockCollision>().ChipDamagePercentage = chipDamagePercent;
+
+            // Temporary probably
+            currentSword = sword.GetComponent<Sword>();
+            currentSwordDamage = currentSword.Damage; 
         }
 
         /// <summary>
@@ -446,11 +458,13 @@ namespace Bladesmiths.Capstone
             cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
 
             // Don't update the rotation of the camera's target if target lock is active
-            if (!targetLock.Active)
-            {
-                // Cinemachine will follow this target
-                CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-            }
+            //if (!targetLock.Active)
+            //{
+            //    // Cinemachine will follow this target
+            //    CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+            //}
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
+
         }
 
         /// <summary>
@@ -704,7 +718,10 @@ namespace Bladesmiths.Capstone
                     // Playtest 1
                     playerHealth.CurrentValue -= damage;
 
-                    damaged = true;
+                    // Does not set damaged to true if block has been triggered
+                    // Might need to be changed slightly eventually to better
+                    // account for player taking damage from behind them
+                    damaged = (blockDetector.GetComponent<BlockCollision>().BlockTriggered) ? false : true;
                 }
 
                 // Return whether damage was taken or not
