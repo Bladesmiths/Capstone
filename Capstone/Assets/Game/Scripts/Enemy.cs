@@ -163,6 +163,10 @@ namespace Bladesmiths.Capstone
         {
 
         }
+        public override void Respawn()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Subtract an amount of damage from the character's health
