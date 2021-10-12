@@ -21,12 +21,18 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
-
+            // Once the screen has faded to black
+            if(_player.hasFadedToBlack == true)
+            {
+                // Respawn the player to the most recent respawn point
+                _player.Respawn();
+            }
         }
 
         public override void OnEnter()
         {
             _player.inState = true;
+            _player.justDied = true;
         }
 
         public override void OnExit()

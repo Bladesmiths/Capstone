@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
@@ -38,6 +39,10 @@ namespace Bladesmiths.Capstone
         private GameObject parryDetector;
         [SerializeField]
         private GameObject blockDetector;
+
+        [SerializeField] private Vector3 respawnPoint;
+        [SerializeField] private Vector3 respawnRotation;
+
 
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
@@ -97,6 +102,10 @@ namespace Bladesmiths.Capstone
         private float damagingTimerLimit;
         private float damagingTimer;
         private bool damaging;
+
+        [SerializeField] private GameObject fade;
+        public bool hasFadedToBlack;
+        public bool justDied;
 
         #region Fields from the Move State and Jump State
 
@@ -162,6 +171,16 @@ namespace Bladesmiths.Capstone
         private ReactiveFloat playerHealth;
         #endregion
 
+        public Vector3 RespawnPoint
+        {
+            get { return respawnPoint; }
+            set { respawnPoint = value; }
+        } 
+        public Vector3 RespawnRotation
+        {
+            get { return respawnRotation; }
+            set { respawnRotation = value; }
+        }
         public float Damage { get => currentSwordDamage; }
 
         private void Awake()
@@ -386,6 +405,13 @@ namespace Bladesmiths.Capstone
                     damaging = false;
                 }
             }
+
+            // If the player is dead and just died (fadeToBlack is still occuring)
+            if(FSM.GetCurrentState() == death && justDied)
+            {
+                FadeToBlack();
+            }
+            
         }
 
         private void LateUpdate()
@@ -704,6 +730,65 @@ namespace Bladesmiths.Capstone
 
             // Return false if the player cannot currently be damaged
             return false; 
+        }
+
+        public override void Respawn()
+        {
+            // If the player's health hasn't been reset yet
+            if (Health != MaxHealth)
+            {
+                // Do one time only resets
+                Health = MaxHealth;
+                transform.position = respawnPoint;
+                transform.rotation = Quaternion.Euler(respawnRotation);
+                cinemachineTargetYaw = respawnRotation.y;
+                cinemachineTargetPitch = respawnRotation.z;
+            }
+
+            // Call the fade in method multiple times so it can fade
+            FadeIn();
+
+            // When the fade in is done, change current state
+            if(fade.GetComponent<Image>().color.a <= 0)
+            {
+                FSM.SetCurrentState(idleCombat);
+                FSM.SetCurrentState(idleMovement);
+            }
+        }
+
+        private void FadeToBlack()
+        {
+            // Unhide the fade out image
+            if (fade.activeSelf == false)
+                fade.SetActive(true);
+
+            // If the fade isn't fully opaque
+            if (fade.GetComponent<Image>().color.a < 1)
+                fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a + Time.deltaTime);
+            else
+            {
+                hasFadedToBlack = true;
+                justDied = false;
+                // Set the alpha to 1.5 so it stays at full black for a little longer
+                fade.GetComponent<Image>().color = new Color(0, 0, 0, 1.5f);
+            }
+        }
+
+        private void FadeIn()
+        {
+            // If the fade isn't fully transparent
+            if (fade.GetComponent<Image>().color.a > 0)
+            {
+                fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a - Time.deltaTime);
+            }
+
+            // Needs to be separate from above if so it triggers before state change
+            if(fade.GetComponent<Image>().color.a <= 0)
+            {
+                fade.SetActive(false);
+                hasFadedToBlack = false;
+                fade.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            }
         }
     }
 }
