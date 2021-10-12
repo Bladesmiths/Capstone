@@ -82,7 +82,6 @@ namespace Bladesmiths.Capstone
                 _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
 
             }
-
             
             if (_controller.isGrounded)
             {
@@ -92,13 +91,9 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-
             Vector3 targetDirection = Vector3.zero;
 
-
             float targetSpeed = 5;
-
-            
 
             // a reference to the players current horizontal velocity
             currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -107,27 +102,12 @@ namespace Bladesmiths.Capstone
 
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
-            // accelerate or decelerate to target speed
-            //if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-            //{
-            //    // creates curved result rather than a linear one giving a more organic speed change
-            //    // note T in Lerp is clamped, so we don't need to clamp our speed
-            //    _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
-
-            //    // round speed to 3 decimal places
-            //    _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            //}
-            //else
-            //{
-            //    _speed = targetSpeed;
-            //}
-
+           
             if (hasAnimator)
             {
                 _animator.SetBool(_animIDDodge, true);
                 
             }
-
 
             if (_verticalVelocity < _terminalVelocity)
             {
@@ -136,8 +116,6 @@ namespace Bladesmiths.Capstone
 
             // move the player
             _controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
-
 
         }
 
