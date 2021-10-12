@@ -17,6 +17,9 @@ namespace Bladesmiths.Capstone
         private float attackTimer = 0f;
         private int movePointsIndex;
 
+        [SerializeField]
+        private float damage; 
+
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
@@ -34,7 +37,7 @@ namespace Bladesmiths.Capstone
 
         private BreakableBox thisBox;
 
-       
+       public float Damage { get => damage; }
 
         public void Start()
         {

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MultiSceneSetup_Trent
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/FixLockOnVillageEnvironment.unity
+  - scenePath: Assets/Game/Scenes/EnemySwing.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Game/Scenes/FixLockOnPlayerScene.unity
+  - scenePath: Assets/Game/Scenes/PlayerScene.unity
     isActive: 1
     isLoaded: 1

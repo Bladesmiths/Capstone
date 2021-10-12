@@ -10,7 +10,8 @@ namespace Bladesmiths.Capstone
         private float damage = 5;
 
         public Player Player { get; set; }
-
+        public float Damage { get => damage; }
+        
         void Start()
         {
             

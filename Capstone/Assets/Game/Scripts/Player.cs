@@ -63,6 +63,8 @@ namespace Bladesmiths.Capstone
         public bool damaged;
         public bool parryEnd;
         private float dodgeTimer;
+        [SerializeField] [Range(0.0f, 1.0f)]
+        private float chipDamagePercent; 
 
         [Header("Cinemachine Target Fields")]
         public float cinemachineTargetYaw;
@@ -82,6 +84,12 @@ namespace Bladesmiths.Capstone
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
         [SerializeField] private float landTimeout;
+
+        [Header("Sword Fields")]
+        [SerializeField]
+        private float currentSwordDamage;
+        private Sword currentSword; 
+        private List<Sword> swords = new List<Sword>(); 
 
         // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
@@ -153,6 +161,8 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private ReactiveFloat playerHealth;
         #endregion
+
+        public float Damage { get => currentSwordDamage; }
 
         private void Awake()
         {
@@ -227,6 +237,11 @@ namespace Bladesmiths.Capstone
             FSM.SetCurrentState(idleCombat);
 
             targetLock = GetComponent<TargetLock>();
+            blockDetector.GetComponent<BlockCollision>().ChipDamagePercentage = chipDamagePercent;
+
+            // Temporary probably
+            currentSword = sword.GetComponent<Sword>();
+            currentSwordDamage = currentSword.Damage; 
         }
 
         /// <summary>
@@ -677,7 +692,10 @@ namespace Bladesmiths.Capstone
                     // Playtest 1
                     playerHealth.CurrentValue -= damage;
 
-                    damaged = true;
+                    // Does not set damaged to true if block has been triggered
+                    // Might need to be changed slightly eventually to better
+                    // account for player taking damage from behind them
+                    damaged = (blockDetector.GetComponent<BlockCollision>().BlockTriggered) ? false : true;
                 }
 
                 // Return whether damage was taken or not
