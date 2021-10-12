@@ -14,7 +14,6 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private int id;
-        private Team objectTeam; 
 
         private bool isAlive;
 
@@ -31,9 +30,11 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private ObjectController objectController;
 
+        public event IIdentified.OnDestructionDelegate OnDestruction;
+
         // Properties
         public int ID { get => id; set => id = value; }
-        public Team DamageableObjectTeam { get => objectTeam; set => objectTeam = value; }
+        public Team ObjectTeam { get; set; }
         public bool IsAlive { get => isAlive; set => isAlive = value; }
         public float Health 
         { 
@@ -56,7 +57,7 @@ namespace Bladesmiths.Capstone
             // If the damaging object belongs to the same team as this character
             // Or if the damaging object has already hurt this character recently
             // Don't take any damage
-            if (objectController.DamagingObjects[damagingID].ObjectTeam == objectTeam || 
+            if (objectController.IdentifiedObjects[damagingID].ObjectTeam == ObjectTeam || 
                 DamagingObjectIDs.Contains(damagingID))
             {
                 damage = 0; 
@@ -72,7 +73,7 @@ namespace Bladesmiths.Capstone
             if (damage != 0)
             {
                 damagingObjectIDs.Add(damagingID);
-                objectController.DamagingObjects[damagingID].DamagingObject.DamagingFinished += RemoveDamagingID; 
+                ((IDamaging)objectController.IdentifiedObjects[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID; 
             }
 
             // Log the amount of damage taken
