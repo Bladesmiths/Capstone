@@ -41,6 +41,8 @@ namespace Bladesmiths.Capstone
         private GameObject blockDetector;
 
         [SerializeField] private Vector3 respawnPoint;
+        [SerializeField] private Vector3 respawnRotation;
+
 
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
@@ -166,6 +168,11 @@ namespace Bladesmiths.Capstone
         {
             get { return respawnPoint; }
             set { respawnPoint = value; }
+        } 
+        public Vector3 RespawnRotation
+        {
+            get { return respawnRotation; }
+            set { respawnRotation = value; }
         }
 
         private void Awake()
@@ -716,6 +723,9 @@ namespace Bladesmiths.Capstone
                 // Do one time only resets
                 Health = MaxHealth;
                 transform.position = respawnPoint;
+                transform.rotation = Quaternion.Euler(respawnRotation);
+                cinemachineTargetYaw = respawnRotation.y;
+                cinemachineTargetPitch = respawnRotation.z;
             }
 
             // Call the fade in method multiple times so it can fade
