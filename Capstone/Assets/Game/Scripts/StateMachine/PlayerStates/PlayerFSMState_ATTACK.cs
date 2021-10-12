@@ -16,6 +16,7 @@ namespace Bladesmiths.Capstone
         private PlayerInputsScript _input;
         private Animator _animator;
         private GameObject _sword;
+        private CharacterController _controller;
 
         private int _animIDSpeed;
         private int _animIDAttack;
@@ -23,6 +24,13 @@ namespace Bladesmiths.Capstone
         private bool _hasAnimator;
 
         private float timer;
+        private float currentHorizontalSpeed;
+        private float _verticalVelocity = 0.0f;
+        private float _terminalVelocity = 53.0f;
+        public float Gravity = -15.0f;
+        private Vector3 inputDirection;
+        private float _targetRotation = 0.0f;
+        private GameObject camera;
 
         public float Timer { get { return timer; } }
 
@@ -41,51 +49,28 @@ namespace Bladesmiths.Capstone
             timer += Time.deltaTime;
 
             _sword.GetComponent<Rigidbody>().detectCollisions = true;
-            //int layerMask = 1 << 8;
-            if (_hasAnimator)
+            
+            _input.attack = false;
+
+            if (_controller.isGrounded)
             {
-                //_animator.SetBool(_animIDAttack, false);
-
-            }
-
-            //layerMask = ~layerMask;
-            //RaycastHit hit;
-
-            //if (Physics.Raycast(_player.transform.position + Vector3.up, _player.transform.TransformDirection(Vector3.forward), out hit, 2f))
-            if (_sword.GetComponent<Rigidbody>().detectCollisions)
-            {
-
-                //Physics.Raycast(_player.transform.position + Vector3.up, _player.transform.TransformDirection(Vector3.forward), out hit, 2f);
-
-                //Debug.DrawRay(_player.transform.position + Vector3.up, _player.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                //Debug.Log("Did Hit");
-
-                //if (hit.collider.gameObject.GetComponent<Enemy>())
-                //{
-                //    hit.collider.gameObject.GetComponent<Enemy>().Damaged();
-
-                //}
-
-
-            }
-            else
-            {
-                //Debug.DrawRay(_player.transform.position, _player.transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-                //Debug.Log("Did not Hit");
-
-            }
-
-            if (_input.attack)
-            {
-                if (_hasAnimator)
+                if (_verticalVelocity < 0.0f)
                 {
-                    //_animator.SetBool(_animIDAttack, true);
-
+                    _verticalVelocity = -2f;
                 }
             }
 
-            _input.attack = false;
+            Vector3 targetDirection = Vector3.zero;
 
+            float targetSpeed = 2f;
+
+            if (_verticalVelocity < _terminalVelocity)
+            {
+                _verticalVelocity += Gravity * Time.deltaTime;
+            }
+
+            // move the player
+            _controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
         public override void OnEnter()
@@ -94,7 +79,8 @@ namespace Bladesmiths.Capstone
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDAttack = Animator.StringToHash("Attack");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-
+            _controller = _player.GetComponent<CharacterController>();
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
             if (_animator != null)
             {
                 _hasAnimator = true;
@@ -104,7 +90,11 @@ namespace Bladesmiths.Capstone
                 _hasAnimator = false;
             }
 
-            _animator.SetBool(_animIDAttack, true); 
+            _animator.SetBool(_animIDAttack, true);
+
+            _targetRotation = _player.transform.eulerAngles.y;
+
+            inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
         }
 
         public override void OnExit()
