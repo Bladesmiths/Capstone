@@ -62,7 +62,7 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
-            float targetSpeed = 2f;
+            float targetSpeed = 1.8f;
 
             if (_verticalVelocity < _terminalVelocity)
             {
@@ -70,7 +70,7 @@ namespace Bladesmiths.Capstone
             }
 
             // move the player
-            _controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            //_controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
         public override void OnEnter()
