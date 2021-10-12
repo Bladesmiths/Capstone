@@ -78,6 +78,7 @@ namespace Bladesmiths.Capstone
                     // Debug stuff
                     Debug.Log($"Block Triggered by: {other.gameObject}");
                 }
+
             }
         }
     }

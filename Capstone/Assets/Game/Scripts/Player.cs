@@ -157,6 +157,9 @@ namespace Bladesmiths.Capstone
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
+        private float idRemovalTimer;
+
+
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]
@@ -260,7 +263,8 @@ namespace Bladesmiths.Capstone
 
             // Temporary probably
             currentSword = sword.GetComponent<Sword>();
-            currentSwordDamage = currentSword.Damage; 
+            currentSwordDamage = currentSword.Damage;
+
         }
 
         /// <summary>
@@ -403,6 +407,7 @@ namespace Bladesmiths.Capstone
                     // Reset fields
                     damagingTimer = 0.0f;
                     damaging = false;
+
                 }
             }
 

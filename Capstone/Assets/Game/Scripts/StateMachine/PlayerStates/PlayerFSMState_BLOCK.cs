@@ -64,7 +64,7 @@ namespace Bladesmiths.Capstone
             _animator.SetBool(_animIDBlock, true);
 
             // Set the sword to detect collisions
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
         }
 
         public override void OnExit()
@@ -78,7 +78,7 @@ namespace Bladesmiths.Capstone
 
             // Set the sword to not detect collisions
             // and turn off blocking paramater
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
             _animator.SetBool(_animIDBlock, false);
         }
 
