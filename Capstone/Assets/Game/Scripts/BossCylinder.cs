@@ -62,7 +62,6 @@ namespace Bladesmiths.Capstone
                     // Reset fields
                     damagingTimer = 0.0f;
                     damaging = false;
-
                 }
             }
         }
