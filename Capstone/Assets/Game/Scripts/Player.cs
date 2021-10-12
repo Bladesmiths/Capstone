@@ -42,7 +42,6 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
-        //private PlayerFSMState_MOVING move;
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
         private PlayerFSMState_PARRYSUCCESS parrySuccess;
         private PlayerFSMState_IDLE idleMovement;
@@ -197,7 +196,6 @@ namespace Bladesmiths.Capstone
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
             parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
             block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
-            //move = new PlayerFSMState_MOVING(this, inputs, animator, GroundLayers);
             idleMovement = new PlayerFSMState_IDLE(animator);
             idleCombat = new PlayerFSMState_IDLE(animator);
             attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
