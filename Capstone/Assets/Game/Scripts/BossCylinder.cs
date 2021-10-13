@@ -9,7 +9,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject well;
         [SerializeField] private float speed;
         private int id = -1;
-        private float damage = 20;
+        [SerializeField] private float damage;
 
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
