@@ -56,7 +56,7 @@ namespace Bladesmiths.Capstone
             //FSM.SetCurrentState(idle);
 
             // Sets the team of the enemy
-            DamageableObjectTeam = Team.Enemy;
+            ObjectTeam = Team.Enemy;
         }
 
         /// <summary>

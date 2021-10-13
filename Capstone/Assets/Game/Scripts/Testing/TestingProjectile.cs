@@ -21,13 +21,12 @@ namespace Bladesmiths.Capstone.Testing
         [SerializeField]
         private float timeTillDestruction;
 
-        private int id;
-
         [SerializeField]
         private ObjectController objectController;
 
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+        public event IIdentified.OnDestructionDelegate OnDestruction;
 
         // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
@@ -44,8 +43,9 @@ namespace Bladesmiths.Capstone.Testing
             set { velocity = value; }
         }
 
-        public int ID { get => id; set => id = value; }
+        public int ID { get; set; }
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
+        public Enums.Team ObjectTeam { get; set; }
         public float Damage { get => damage; }
 
         /// <summary>
@@ -116,14 +116,14 @@ namespace Bladesmiths.Capstone.Testing
                     (col.gameObject.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt))
                 {
                     // Damage the player
-                    col.gameObject.GetComponent<Player>().TakeDamage(id, damage);
+                    col.gameObject.GetComponent<Player>().TakeDamage(ID, damage);
 
                     // Start a coroutine to change the player's material to show they've been damaged
                     col.gameObject.GetComponent<Player>().StartCoroutine(
                         Util.DamageMaterialTimer(col.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
                 }
             }
-            
+
             // Destroy the projectile once it has collided
             Destroy(gameObject); 
         }
@@ -141,6 +141,19 @@ namespace Bladesmiths.Capstone.Testing
 
                 Velocity = -Velocity;
                 
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (DamagingFinished != null)
+            {
+                DamagingFinished(ID);
+            }
+
+            if (OnDestruction != null)
+            {
+                OnDestruction(ID);
             }
         }
     }

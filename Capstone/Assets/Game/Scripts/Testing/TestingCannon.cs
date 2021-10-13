@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone.Testing
 {
@@ -35,6 +36,9 @@ namespace Bladesmiths.Capstone.Testing
         [Tooltip("How fast should the projectiles be moving")]
         [SerializeField]
         private Vector3 projectileVelocity;
+
+        [SerializeField] [Required]
+        private ObjectController objectController; 
 
         private bool isBroken = false;
         private float fadeOutTimer = 0f;
@@ -109,7 +113,10 @@ namespace Bladesmiths.Capstone.Testing
         {
             GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawn.transform.position, Quaternion.identity);
 
-            newProjectile.GetComponent<TestingProjectile>().Velocity = projectileVelocity; 
+            TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
+            projectileComponent.Velocity = projectileVelocity;
+
+            objectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
         }
 
         /// <summary>

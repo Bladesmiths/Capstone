@@ -17,26 +17,20 @@ namespace Bladesmiths.Capstone
 
         // Dictionaries of damageable and damaging objects
         [OdinSerialize] [Tooltip("IDs mapped to Damageable Objects and their teams")]
-        private Dictionary<int, DamageableTeamPair> damageableObjects = new Dictionary<int, DamageableTeamPair>();
-        [OdinSerialize] [Tooltip("IDs mapped to Damaging Objects and their teams")]
-        private Dictionary<int, DamagingTeamPair> damagingObjects = new Dictionary<int, DamagingTeamPair>();
+        private Dictionary<int, IdentifiedTeamPair> identifiedObjects = new Dictionary<int, IdentifiedTeamPair>();
 
-        public Dictionary<int, DamageableTeamPair> DamageableObjects { get => damageableObjects; }
-        public Dictionary<int, DamagingTeamPair> DamagingObjects { get => damagingObjects; }
+        public Dictionary<int, IdentifiedTeamPair> IdentifiedObjects { get => identifiedObjects; }
 
         void Start()
         {
             // We should come up with a way to check the dictionary and
             // making a unique ID to go with the player
-            currentValidId = 100;
+            currentValidId = -1;
 
-            DamageableTeamPair playerDamageable = new DamageableTeamPair(Team.Player, GameObject.Find("Player").GetComponent<IDamageable>());
-            DamagingTeamPair playerDamaging = new DamagingTeamPair(Team.Player, GameObject.Find("Player").GetComponent<IDamaging>());
+            IdentifiedTeamPair playerTeamPair = new IdentifiedTeamPair(Team.Player, GameObject.Find("Player").GetComponent<Player>());
 
-            DamageableObjects.Add(currentValidId, playerDamageable);
-            DamagingObjects.Add(currentValidId, playerDamaging);
+            identifiedObjects.Add(GenerateID(), playerTeamPair);
             VerifyObjects();
-
         }
 
         void Update() { }
@@ -50,24 +44,35 @@ namespace Bladesmiths.Capstone
             return currentValidId++;
         }
 
+        public void AddIdentifiedObject(Team objectTeam, IIdentified identifiedObject)
+        {
+            int objectID = GenerateID(); 
+            identifiedObjects.Add(objectID, new IdentifiedTeamPair(objectTeam, identifiedObject));
+
+            identifiedObject.ID = objectID;
+            identifiedObject.ObjectTeam = objectTeam;
+            identifiedObject.ObjectController = this;
+
+            identifiedObject.OnDestruction += RemoveIdentifiedObject;
+        }
+
+        public void RemoveIdentifiedObject(int objectID)
+        {
+            identifiedObjects.Remove(objectID);
+        }
+
         /// <summary>
         /// Verify that all objects in dictionaries have the correct ID
         /// and have a reference to this object
         /// </summary>
         public void VerifyObjects()
         {
-            // Verify damageable objects
-            foreach (KeyValuePair<int, DamageableTeamPair> damageablePair in damageableObjects)
+            // Verify objects
+            foreach (KeyValuePair<int, IdentifiedTeamPair> damageablePair in identifiedObjects)
             {
-                damageablePair.Value.DamageableObject.ID = damageablePair.Key;
-                damageablePair.Value.DamageableObject.ObjectController = this;
-            }
-
-            // Verify damaging objects
-            foreach (KeyValuePair<int, DamagingTeamPair> damagingPair in damagingObjects)
-            {
-                damagingPair.Value.DamagingObject.ID = damagingPair.Key;
-                damagingPair.Value.DamagingObject.ObjectController = this;
+                damageablePair.Value.IdentifiedObject.ID = damageablePair.Key;
+                damageablePair.Value.IdentifiedObject.ObjectTeam = damageablePair.Value.ObjectTeam;
+                damageablePair.Value.IdentifiedObject.ObjectController = this;
             }
         }
     }
@@ -75,40 +80,20 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// Maintains a reference to a damageable object and its team
     /// </summary>
-    public struct DamageableTeamPair
+    public struct IdentifiedTeamPair
     {
         [SerializeField]
         private Team objectTeam;
         [SerializeField]
-        private IDamageable damageableObject;
+        private IIdentified identifiedObject;
 
         public Team ObjectTeam { get => objectTeam; set => objectTeam = value; }
-        public IDamageable DamageableObject { get => damageableObject; }
+        public IIdentified IdentifiedObject { get => identifiedObject; }
 
-        public DamageableTeamPair(Team objectTeam, IDamageable damageableObject)
+        public IdentifiedTeamPair(Team objectTeam, IIdentified identifiedObject)
         {
             this.objectTeam = objectTeam;
-            this.damageableObject = damageableObject;
-        }
-    }
-
-    /// <summary>
-    /// Maintains a reference to a damaging object and its team
-    /// </summary>
-    public struct DamagingTeamPair
-    {
-        [SerializeField]
-        private Team objectTeam;
-        [SerializeField]
-        private IDamaging damagingObject;
-
-        public Team ObjectTeam { get => objectTeam; set => objectTeam = value; }
-        public IDamaging DamagingObject { get => damagingObject; }
-
-        public DamagingTeamPair(Team objectTeam, IDamaging damagingObject)
-        {
-            this.objectTeam = objectTeam;
-            this.damagingObject = damagingObject;
+            this.identifiedObject = identifiedObject;
         }
     }
 }
