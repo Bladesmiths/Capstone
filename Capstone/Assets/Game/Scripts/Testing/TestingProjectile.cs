@@ -17,6 +17,8 @@ namespace Bladesmiths.Capstone.Testing
         [SerializeField]
         private float damage;
 
+        private Player player;
+
         [Tooltip("How long until the projectile is destroyed")]
         [SerializeField]
         private float timeTillDestruction;
@@ -56,6 +58,7 @@ namespace Bladesmiths.Capstone.Testing
         {
             startingPosition = transform.position;
             StartCoroutine(Util.DestroyTimer(timeTillDestruction, gameObject));
+            player = GameObject.Find("Player").GetComponent<Player>();
         }
 
         /// <summary>
@@ -67,7 +70,7 @@ namespace Bladesmiths.Capstone.Testing
             // Move it according to velocity
             if (velocity != Vector3.zero)
             {
-                transform.position = transform.position + velocity;
+                transform.position = transform.position + velocity * Time.deltaTime;
             }
 
             
@@ -112,15 +115,17 @@ namespace Bladesmiths.Capstone.Testing
             if (col.gameObject.GetComponent<Player>() == true)
             {
                 // Check if the object in the collision is the player
-                if ((col.gameObject.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking) ||
-                    (col.gameObject.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt))
+                if ((player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking) ||
+                    (player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt))
                 {
                     // Damage the player
-                    col.gameObject.GetComponent<Player>().TakeDamage(ID, damage);
+                    //player.TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+
 
                     // Start a coroutine to change the player's material to show they've been damaged
-                    col.gameObject.GetComponent<Player>().StartCoroutine(
-                        Util.DamageMaterialTimer(col.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
+                    player.StartCoroutine(
+                        Util.DamageMaterialTimer(player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
                 }
             }
 
@@ -134,13 +139,19 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("PreventDmg"))
+            if (other.gameObject.name == "Parry Detector")
             {
                 // Testing
                 //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
 
                 Velocity = -Velocity;
                 
+            }
+
+            if(other.gameObject.name == "Block Detector")
+            {
+                Destroy(gameObject);
+
             }
         }
 

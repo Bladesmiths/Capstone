@@ -19,12 +19,14 @@ namespace Bladesmiths.Capstone
         private GameObject _playerParryBox;
         private PlayerInputsScript _input;
         private Player _player;
+        private GameObject _sword;
         public PlayerFSMState_PARRYATTEMPT(GameObject playerParryBox, PlayerInputsScript input, Player player)
         {
             _playerParryBox = playerParryBox;
             _input = input;
             _player = player;
             id = PlayerCondition.F_ParryAttempt;
+            _sword = _player.transform.GetComponentInChildren<Sword>().gameObject;
         }
 
         public override void Tick()
@@ -42,6 +44,7 @@ namespace Bladesmiths.Capstone
         {
             timer = 0;
             _playerParryBox.SetActive(true);
+            _sword.GetComponent<Rigidbody>().detectCollisions = false;
         }
 
         public override void OnExit()
@@ -51,6 +54,8 @@ namespace Bladesmiths.Capstone
             _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
             timer = 0;
             _player.parryEnd = false;
+            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+
         }
 
     }

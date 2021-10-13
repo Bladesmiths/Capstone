@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
-    public class BossCylinder : MonoBehaviour, IDamaging
+    public class BossCylinder : Character, IDamaging
     {
         [SerializeField] private GameObject well;
         [SerializeField] private float speed;
         private int id = -1;
-        private float damage = 1;
+        private float damage = 20;
 
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+
+        private Player player;
 
 
         // Testing for damaging system
@@ -28,7 +30,7 @@ namespace Bladesmiths.Capstone
         // Start is called before the first frame update
         void Start()
         {
-
+            player = GameObject.Find("Player").GetComponent<Player>();
         }
 
         // Update is called once per frame
@@ -68,18 +70,56 @@ namespace Bladesmiths.Capstone
 
         private void OnTriggerEnter(Collider other)
         {
-            // If the cylinder hits the block detector, then don't deal any damage
-            if (other.gameObject.CompareTag("PreventDmg") == false)
+            if (other.gameObject.transform.root.CompareTag("Player") == true)
             {
-                // If it hits the player
-                if (other.gameObject.transform.root.CompareTag("Player") == true)
-                {
-                    damaging = true;
-                    Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
-                    // Check if the player has already been hit by this object
-                    player.TakeDamage(id, damage);
-                }
+                damaging = true;
+                Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
+                // Check if the player has already been hit by this object
+                //player.TakeDamage(id, damage);
+                ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+
+            
             }
+        }
+
+        protected override void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void ActivateAbility()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Block()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Parry()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Dodge()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void SwitchWeapon(int weaponSelect)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Die()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Respawn()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

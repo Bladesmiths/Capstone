@@ -13,7 +13,7 @@ namespace Bladesmiths.Capstone
         private Player player;
 
         private float rotate;
-        private float speed = 1;
+        private float speed = 60;
         private bool isBroken = false;
         private float fadeOutTimer = 0f;
         private float fadeOutLength = 1f;
@@ -60,7 +60,7 @@ namespace Bladesmiths.Capstone
             // Checks of the Enemy has detected a block
             if (isBroken == false)
             {
-                transform.parent.Rotate(new Vector3(rotate, 0, 0));
+                transform.parent.Rotate(new Vector3(rotate * Time.deltaTime, 0, 0));
             }
             else
             {
@@ -123,10 +123,10 @@ namespace Bladesmiths.Capstone
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if(other.GetComponent<Player>() != null || other.GetComponent<Sword>() != null)
+            if(other.GetComponent<BlockCollision>() != null /*|| other.GetComponent<Sword>() != null*/)
             { 
                 // Checks to see if the player is in the blocking state
-                if (player.GetPlayerFSMState().ID == Enums.PlayerCondition.F_Blocking && other.GetComponent<Sword>() == true)
+                if (player.GetPlayerFSMState().ID == Enums.PlayerCondition.F_Blocking /*&& other.GetComponent<Sword>() == true*/)
                 {
                     // Damage Enemy
                     isBroken = true;
@@ -135,7 +135,7 @@ namespace Bladesmiths.Capstone
                 else if (other.GetComponent<Player>() == true)
                 {
                     // Damage Player
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, 1);
+                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
 
                     damaging = true;
 

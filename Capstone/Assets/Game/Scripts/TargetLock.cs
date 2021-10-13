@@ -346,7 +346,7 @@ namespace Bladesmiths.Capstone
 
             return (Physics.Linecast(playerCamRoot.position, 
                 enemy.GetComponent<Collider>().bounds.center, out hit, layerMask) && hit.transform == enemy.transform); 
-        }
+           }
 
         private void RepositionTargetCanvas()
         {

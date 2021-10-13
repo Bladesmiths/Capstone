@@ -93,7 +93,7 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
-            float targetSpeed = 5;
+            float targetSpeed = 10;
 
             // a reference to the players current horizontal velocity
             currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;

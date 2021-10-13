@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone.Testing
 {
-    public class TestingCannon : MonoBehaviour
+    public class TestingCannon : MonoBehaviour 
     {
         #region Fields
         [Tooltip("The Prefab for the projectile enemy to be fired")]
@@ -38,7 +38,8 @@ namespace Bladesmiths.Capstone.Testing
         private Vector3 projectileVelocity;
 
         [SerializeField] [Required]
-        private ObjectController objectController; 
+        private ObjectController objectController;
+
 
         private bool isBroken = false;
         private float fadeOutTimer = 0f;
@@ -57,6 +58,7 @@ namespace Bladesmiths.Capstone.Testing
             bottomRight = new Vector3(transform.position.x + transform.localScale.x / 2,
                                       transform.position.y - transform.localScale.y / 2,
                                       transform.position.z + transform.localScale.z / 2);
+            StartCoroutine("CountdownFireTimer");
 
         }
 
@@ -67,6 +69,10 @@ namespace Bladesmiths.Capstone.Testing
                 // If there is a block then start fading out
                 fadeOutTimer += Time.deltaTime;
                 GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+
             }
 
             // When the object should fade out
@@ -111,12 +117,16 @@ namespace Bladesmiths.Capstone.Testing
         /// </summary>
         private void FireProjectile()
         {
-            GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawn.transform.position, Quaternion.identity);
+            if (isBroken != true)
+            {
+                GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawn.transform.position, Quaternion.identity);
+                newProjectile.transform.rotation = Quaternion.Euler(0, transform.parent.eulerAngles.y, 0);
 
-            TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
-            projectileComponent.Velocity = projectileVelocity;
+                TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
+                projectileComponent.Velocity = Quaternion.Euler(0, transform.parent.eulerAngles.y, 0) * projectileVelocity;
 
-            objectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
+                objectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
+            }
         }
 
         /// <summary>
@@ -150,15 +160,17 @@ namespace Bladesmiths.Capstone.Testing
         {
             if (other.GetComponent<Player>() == true)
             {
-                PlayerEnterSecondArea();
+                //PlayerEnterSecondArea();
             }
         }
         private void OnTriggerExit(Collider other)
         {
             if (other.GetComponent<Player>() == true)
             {
-                PlayerLeaveSecondArea();
+                //PlayerLeaveSecondArea();
             }
         }
+
+        
     }
 }
