@@ -1,17 +1,18 @@
+using Bladesmiths.Capstone.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
-    public class BossCylinder : Character, IDamaging
+    public class BossCylinder : MonoBehaviour, IDamaging
     {
         [SerializeField] private GameObject well;
         [SerializeField] private float speed;
-        private int id = -1;
         [SerializeField] private float damage;
 
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+        public event IIdentified.OnDestructionDelegate OnDestruction;
 
         private Player player;
 
@@ -23,9 +24,10 @@ namespace Bladesmiths.Capstone
         private float damagingTimer;
         private bool damaging;
 
-        public int ID { get => id; set => id = value; }
+        public int ID { get; set; }
         public float Damage => damage;
         public ObjectController ObjectController { get; set; }
+        public Team ObjectTeam { get; set; }
 
         // Start is called before the first frame update
         void Start()
@@ -82,46 +84,6 @@ namespace Bladesmiths.Capstone
 
                 damaging = true;
             }
-        }
-
-        protected override void Attack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void ActivateAbility()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Block()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Parry()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Dodge()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void SwitchWeapon(int weaponSelect)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void Die()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Respawn()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
