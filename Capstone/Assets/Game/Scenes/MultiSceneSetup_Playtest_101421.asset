@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: MultiSceneSetup_Playtest_101421
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/RuntimeManagerScene.unity
-    isActive: 0
-    isLoaded: 1
   - scenePath: Assets/Game/Scenes/DamageControllingSystemScene.unity
     isActive: 1
     isLoaded: 1
