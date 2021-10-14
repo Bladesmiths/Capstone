@@ -1251,6 +1251,8 @@ MonoBehaviour:
   healthBarFill: {fileID: 1446302457}
   pointsText: {fileID: 926484292}
   pauseMenu: {fileID: 2091896810}
+  resumeButton: {fileID: 1095095217}
+  isPaused: 0
 --- !u!224 &750602083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3359,7 +3361,6 @@ GameObject:
   - component: {fileID: 1554415453}
   - component: {fileID: 1554415452}
   - component: {fileID: 1554415451}
-  - component: {fileID: 1554415450}
   - component: {fileID: 1554415458}
   m_Layer: 6
   m_Name: Player
@@ -3368,18 +3369,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1554415450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554415449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70abc74e24b26f545972be210b507970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1554415451
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -187,6 +187,16 @@ namespace Bladesmiths.Capstone
             set { respawnRotation = value; }
         }
         public float Damage { get => currentSwordDamage; }
+        
+        public int Points
+        {
+            get => (int)points;
+        }
+
+        public int MaxPoints
+        {
+            get => (int)maxPoints;
+        }
 
         private void Awake()
         {
