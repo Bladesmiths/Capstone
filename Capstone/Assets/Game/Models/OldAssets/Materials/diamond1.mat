@@ -8,15 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: diamond1
-  m_Shader: {fileID: 4800000, guid: ee2ce0be66f45d9449d71ba9b49c2acd, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7252379db4c18b641b517f2c91bb57e1, type: 3}
   m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT
     _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
@@ -97,9 +96,9 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.2012987
+    - _Glossiness: 0.17
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.15
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Opacity: 1
@@ -134,6 +133,7 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UVSec: 0
+    - _UseAoMap: 0
     - _UseColorMap: 0
     - _UseEmissiveMap: 0
     - _UseMetallicMap: 0
@@ -146,10 +146,10 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.32871568, g: 0, b: 0.427548, a: 0.37012988}
+    - _Color: {r: 0.32871565, g: 0, b: 0.42754796, a: 0.43137255}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emissive: {r: 0, g: 0, b: 0, a: 0}
+    - _Emissive: {r: 1.7254902, g: 0.74509805, b: 2, a: 0}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

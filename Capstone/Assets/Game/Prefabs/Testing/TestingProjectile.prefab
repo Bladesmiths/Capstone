@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5937334219449122337}
   - component: {fileID: 5625911631067389373}
   - component: {fileID: -4640485357043464516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestingProjectile
-  m_TagString: Targettable
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  timeTillDestruction: 5
+  timeTillDestruction: 3
+  objectController: {fileID: 0}
+  damagingTimerLimit: 0
 --- !u!54 &-4640485357043464516
 Rigidbody:
   m_ObjectHideFlags: 0

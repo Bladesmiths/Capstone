@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone.Testing
 {
-    public class TestingProjectile : MonoBehaviour
+    public class TestingProjectile : MonoBehaviour, IDamaging
     {
         #region Fields
         // The velocity of the projectile
@@ -15,11 +15,27 @@ namespace Bladesmiths.Capstone.Testing
 
         // The damage the projectile inflicts
         [SerializeField]
-        private float damage; 
+        private float damage;
+
+        private Player player;
 
         [Tooltip("How long until the projectile is destroyed")]
         [SerializeField]
         private float timeTillDestruction;
+
+        [SerializeField]
+        private ObjectController objectController;
+
+        // The event to call when damaging is finished
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+        public event IIdentified.OnDestructionDelegate OnDestruction;
+
+        // Testing for damaging system
+        [Header("Damaging Timer Fields (Testing)")]
+        [SerializeField]
+        private float damagingTimerLimit;
+        private float damagingTimer;
+        private bool damaging;
         #endregion
 
         // Gives access to the velocity field
@@ -29,6 +45,11 @@ namespace Bladesmiths.Capstone.Testing
             set { velocity = value; }
         }
 
+        public int ID { get; set; }
+        public ObjectController ObjectController { get => objectController; set => objectController = value; }
+        public Enums.Team ObjectTeam { get; set; }
+        public float Damage { get => damage; }
+
         /// <summary>
         /// Sets the projectile to its starting position
         /// And starts a coroutine that destroys the projectile after a certain time
@@ -37,6 +58,7 @@ namespace Bladesmiths.Capstone.Testing
         {
             startingPosition = transform.position;
             StartCoroutine(Util.DestroyTimer(timeTillDestruction, gameObject));
+            player = GameObject.Find("Player").GetComponent<Player>();
         }
 
         /// <summary>
@@ -48,7 +70,38 @@ namespace Bladesmiths.Capstone.Testing
             // Move it according to velocity
             if (velocity != Vector3.zero)
             {
-                transform.position = transform.position + velocity;
+                transform.position = transform.position + velocity * Time.deltaTime;
+            }
+
+            
+
+            // Testing
+            // If the enemy is currently damaging an object
+            if (damaging)
+            {
+                // Update the timer
+                damagingTimer += Time.deltaTime;
+
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
             }
         }
 
@@ -59,19 +112,28 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="col">The collision that occurred</param>
         void OnCollisionEnter(Collision col)
         {
-            // Check if the object in the collision is the player
-            if (col.gameObject.GetComponent<Player>())
+            if (col.gameObject.GetComponent<Player>() == true)
             {
-                // Damage the player
-                col.gameObject.GetComponent<Player>().TakeDamage(damage);
+                // Check if the object in the collision is the player
+                if ((player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking) ||
+                    (player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt))
+                {
+                    // Damage the player
+                    //player.TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
 
-                // Start a coroutine to change the player's material to show they've been damaged
-                col.gameObject.GetComponent<Player>().StartCoroutine(
-                    Util.DamageMaterialTimer(col.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
+
+                    // Start a coroutine to change the player's material to show they've been damaged
+                    player.StartCoroutine(
+                        Util.DamageMaterialTimer(player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
+                }
             }
 
-            // Destroy the projectile once it has collided
-            Destroy(gameObject); 
+            if (col.gameObject.tag != "Projectile")
+            {
+                // Destroy the projectile once it has collided
+                Destroy(gameObject);
+            }
         }
 
         /// <summary>
@@ -80,13 +142,32 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("PreventDmg"))
+            if (other.gameObject.name == "Parry Detector")
             {
                 // Testing
-                ((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
+                //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
 
+                Velocity = -Velocity;
+                
+            }
+
+            if(other.gameObject.name == "Block Detector")
+            {
                 Destroy(gameObject);
-                return;
+
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (DamagingFinished != null)
+            {
+                DamagingFinished(ID);
+            }
+
+            if (OnDestruction != null)
+            {
+                OnDestruction(ID);
             }
         }
     }

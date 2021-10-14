@@ -6,8 +6,12 @@ namespace Bladesmiths.Capstone
 {
     public class Sword : MonoBehaviour
     {
-        private float damage; 
+        // This is arbitrary and temporary
+        private float damage = 5;
 
+        public Player Player { get; set; }
+        public float Damage { get => damage; }
+        
         void Start()
         {
             
@@ -23,11 +27,8 @@ namespace Bladesmiths.Capstone
         {
             if (col.gameObject.GetComponent<Enemy>())
             {
-                col.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                Player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID, damage);
             }
-
         }
-
-
     }
 }

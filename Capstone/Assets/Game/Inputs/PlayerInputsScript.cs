@@ -70,6 +70,7 @@ namespace Bladesmiths.Capstone
 		{
 			DodgeInput(value.isPressed);
 		}
+		
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -114,6 +115,7 @@ namespace Bladesmiths.Capstone
 		{
 			dodge = newDodgeRollState;
 		}
+		
 
 #if !UNITY_IOS || !UNITY_ANDROID
 
