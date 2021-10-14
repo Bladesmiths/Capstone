@@ -2,57 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakableBox : MonoBehaviour
+namespace Bladesmiths.Capstone
 {
-    public bool isBroken;
-    private float fadeOutTimer;
-    private float fadeOutLength;
-    private float shrinkSpeed;
-
-    // Start is called before the first frame update
-    void Start()
+    public class BreakableBox : MonoBehaviour
     {
-        isBroken = false;
-        fadeOutTimer = 0;
-        fadeOutLength = 20.5f;
-        shrinkSpeed = 1.0f;
-    }
+        public bool isBroken;
+        private float fadeOutTimer;
+        private float fadeOutLength;
+        private float shrinkSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(isBroken)
+        // Start is called before the first frame update
+        void Start()
         {
-            fadeOutTimer += Time.deltaTime;
+            isBroken = false;
+            fadeOutTimer = 0;
+            fadeOutLength = 20.5f;
+            shrinkSpeed = 1.0f;
         }
 
-        // When the object should fade out
-        if(fadeOutTimer >= fadeOutLength)
+        // Update is called once per frame
+        void Update()
         {
-            // Shrink the cubes
-            transform.localScale = new Vector3(transform.localScale.x - (shrinkSpeed * Time.deltaTime), transform.localScale.y - (shrinkSpeed * Time.deltaTime), transform.localScale.z - (shrinkSpeed * Time.deltaTime));
-            // After the cubes are shrunk, destroy it
-            if(transform.localScale.x <= 0 && transform.localScale.y <= 0 && transform.localScale.z <= 0)
+            if (isBroken)
             {
-                Destroy(gameObject);
+                fadeOutTimer += Time.deltaTime;
             }
-            
-        }
-    }
 
-    // If the box is hit by an attack
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.root.gameObject.CompareTag("Player"))
-        {
-            // Save that the box is broken
-            isBroken = true;
-            // Turn off the parent box collider
-            GetComponent<BoxCollider>().enabled = false;
-            // Loop through all the childen and enable their physics
-            foreach (Rigidbody child in transform.GetComponentsInChildren<Rigidbody>())
+            // When the object should fade out
+            if (fadeOutTimer >= fadeOutLength)
             {
-                child.isKinematic = false;
+                // Shrink the cubes
+                transform.localScale = new Vector3(transform.localScale.x - (shrinkSpeed * Time.deltaTime), transform.localScale.y - (shrinkSpeed * Time.deltaTime), transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+                // After the cubes are shrunk, destroy it
+                if (transform.localScale.x <= 0 && transform.localScale.y <= 0 && transform.localScale.z <= 0)
+                {
+                    Destroy(gameObject);
+                }
+
+            }
+        }
+
+        // If the box is hit by an attack
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.root.gameObject.CompareTag("Player"))
+            {
+                // Save that the box is broken
+                isBroken = true;
+
+                collision.transform.root.gameObject.GetComponent<Player>().AddPoints();
+                // Turn off the parent box collider
+                GetComponent<BoxCollider>().enabled = false;
+                // Loop through all the childen and enable their physics
+                foreach (Rigidbody child in transform.GetComponentsInChildren<Rigidbody>())
+                {
+                    child.isKinematic = false;
+                }
             }
         }
     }

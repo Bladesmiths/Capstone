@@ -102,6 +102,8 @@ namespace Bladesmiths.Capstone
         private float damagingTimerLimit;
         private float damagingTimer;
         private bool damaging;
+        private float points = 0;
+        private float maxPoints = 8;
 
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
@@ -484,6 +486,19 @@ namespace Bladesmiths.Capstone
             if (lfAngle < -360f) lfAngle += 360f;
             if (lfAngle > 360f) lfAngle -= 360f;
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
+        }
+
+        /// <summary>
+        /// Adds points for the second playtest
+        /// </summary>
+        public void AddPoints()
+        {
+            points++;
+
+            if(points >= maxPoints)
+            {
+                Debug.Log("You Win");
+            }
         }
 
         /// <summary>
