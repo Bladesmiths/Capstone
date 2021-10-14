@@ -265,6 +265,11 @@ namespace Bladesmiths.Capstone
                                                     x != targetedObject && filterFunction(x)).ToList();
             }
 
+            if (desireableTargets.Count == 0)
+            {
+                Debug.Log("No other targets");
+                return;
+            }
             // Target the most desireable enemy along the direction to the current target
 
             // Sets the first enemy in the list to the closest first for comparison
