@@ -78,11 +78,11 @@ namespace Bladesmiths.Capstone
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
 
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
 
             // Set the sword to not detect collisions
             // and turn off blocking paramater
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
             _animator.SetBool(_animIDBlock, false);
         }
 

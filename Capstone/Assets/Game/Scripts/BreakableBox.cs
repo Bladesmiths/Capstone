@@ -45,7 +45,7 @@ namespace Bladesmiths.Capstone
         // If the box is hit by an attack
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.root.gameObject.CompareTag("Player"))
+            if (collision.collider.gameObject.GetComponent<Sword>())
             {
                 // Save that the box is broken
                 isBroken = true;

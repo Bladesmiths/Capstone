@@ -74,12 +74,12 @@ namespace Bladesmiths.Capstone
             if (dmgTimer >= 0.3f)
             {
                 canDmg = true;
-                _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
+                //_player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
 
             }
             else
             {
-                _player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+                //_player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
 
             }
             

@@ -44,7 +44,7 @@ namespace Bladesmiths.Capstone
         {
             timer = 0;
             _playerParryBox.SetActive(true);
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
         }
 
         public override void OnExit()
@@ -54,7 +54,7 @@ namespace Bladesmiths.Capstone
             _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
             timer = 0;
             _player.parryEnd = false;
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
 
         }
 
