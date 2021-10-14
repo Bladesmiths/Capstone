@@ -220,7 +220,7 @@ MonoBehaviour:
   objectController: {fileID: 0}
   enemyObject: {fileID: 8904323166291148165}
   damage: 10
-  damagingTimerLimit: 5
+  damagingTimerLimit: 1
 --- !u!54 &8904323166171337859
 Rigidbody:
   m_ObjectHideFlags: 0
