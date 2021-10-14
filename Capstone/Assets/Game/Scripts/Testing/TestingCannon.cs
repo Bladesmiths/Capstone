@@ -148,10 +148,6 @@ namespace Bladesmiths.Capstone.Testing
                 isBroken = true;
             }
 
-            if (collision.collider)
-            {
-                isBroken = true;
-            }
         }
 
         private void OnTriggerEnter(Collider other)
