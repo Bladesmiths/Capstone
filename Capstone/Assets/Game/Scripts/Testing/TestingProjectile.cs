@@ -129,8 +129,11 @@ namespace Bladesmiths.Capstone.Testing
                 }
             }
 
-            // Destroy the projectile once it has collided
-            Destroy(gameObject); 
+            if (col.gameObject.tag != "Projectile")
+            {
+                // Destroy the projectile once it has collided
+                Destroy(gameObject);
+            }
         }
 
         /// <summary>

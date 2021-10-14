@@ -29,6 +29,7 @@ namespace Bladesmiths.Capstone.Testing
         [Tooltip("How often should the cannon fire a projectile")]
         [SerializeField]
         private float timerLimit;
+        private float timerMax;
 
         // Whether or not the player is in the second area
         private bool inSecondArea = true; 
@@ -70,10 +71,7 @@ namespace Bladesmiths.Capstone.Testing
                 fadeOutTimer += Time.deltaTime;
                 GetComponent<BoxCollider>().enabled = false;
             }
-            else
-            {
-
-            }
+            
 
             // When the object should fade out
             if (fadeOutTimer >= fadeOutLength)
