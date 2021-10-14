@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
+using UnityEngine.SceneManagement;
 
 using StarterAssets;
 
@@ -226,6 +227,7 @@ namespace Bladesmiths.Capstone
             damaged = false;
             inState = false;
 
+
             parryEnd = false;
 
             sword.GetComponent<Sword>().Player = this;
@@ -433,7 +435,9 @@ namespace Bladesmiths.Capstone
             {
                 FadeToBlack();
             }
-            
+
+
+
         }
 
         private void LateUpdate()
@@ -512,7 +516,7 @@ namespace Bladesmiths.Capstone
 
             if(points >= maxPoints)
             {
-                Debug.Log("You Win");
+                SceneManager.LoadScene(4);
             }
         }
 
