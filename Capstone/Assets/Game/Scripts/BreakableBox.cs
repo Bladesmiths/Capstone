@@ -16,7 +16,7 @@ namespace Bladesmiths.Capstone
         {
             isBroken = false;
             fadeOutTimer = 0;
-            fadeOutLength = 20.5f;
+            fadeOutLength = 10.5f;
             shrinkSpeed = 1.0f;
         }
 
