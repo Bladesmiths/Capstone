@@ -123,7 +123,7 @@ namespace Bladesmiths.Capstone
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if(other.GetComponent<BlockCollision>() != null /*|| other.GetComponent<Sword>() != null*/)
+            if(other.GetComponent<BlockCollision>() != null || other.GetComponent<Player>() != null)
             { 
                 // Checks to see if the player is in the blocking state
                 if (player.GetPlayerFSMState().ID == Enums.PlayerCondition.F_Blocking /*&& other.GetComponent<Sword>() == true*/)

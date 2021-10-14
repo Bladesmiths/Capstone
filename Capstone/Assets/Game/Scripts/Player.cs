@@ -413,6 +413,11 @@ namespace Bladesmiths.Capstone
                 }
             }
 
+            if(Health <= 0)
+            {
+                FSM.SetCurrentState(death);
+            }
+
             // If the player is dead and just died (fadeToBlack is still occuring)
             if(FSM.GetCurrentState() == death && justDied)
             {
