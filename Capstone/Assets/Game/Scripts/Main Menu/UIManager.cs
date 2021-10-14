@@ -16,6 +16,8 @@ namespace Bladesmiths.Capstone.UI
         
         [TitleGroup("Player")] 
         [SerializeField] private Player player;
+
+        [SerializeField] private PlayerInput playerInput;
         
         [TitleGroup("HUD")]
         [HorizontalGroup("HUD/Split")]
@@ -60,8 +62,12 @@ namespace Bladesmiths.Capstone.UI
             if (isPaused)
             {
                 isPaused = false;
+                playerInput.SwitchCurrentActionMap("Player");
+                Debug.Log("Current Action Map: " + playerInput.currentActionMap);
+
                 pauseMenu.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
+                
                 Time.timeScale = 1;
             }
         }
@@ -72,7 +78,7 @@ namespace Bladesmiths.Capstone.UI
                 Pause();
         }
 
-        public void OnResume(InputValue value)
+        public void OnUnpause(InputValue value)
         {
             if (value.isPressed)
                 Unpause();
@@ -84,9 +90,13 @@ namespace Bladesmiths.Capstone.UI
             if (!isPaused)
             {
                 isPaused = true;
+                playerInput.SwitchCurrentActionMap("UI");
                 EventSystem.current.SetSelectedGameObject(resumeButton);
-                Time.timeScale = 0;
+                Debug.Log("Current Action Map: " + playerInput.currentActionMap);
+                
+                //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
+                
                 pauseMenu.SetActive(true);
             }
         }

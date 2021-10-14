@@ -17,7 +17,6 @@ namespace Bladesmiths.Capstone
 		public bool parry = false;
 		public bool block = false;
 		public bool dodge = false;
-		public bool pause = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -72,11 +71,6 @@ namespace Bladesmiths.Capstone
 			DodgeInput(value.isPressed);
 		}
 		
-		public void OnPause(InputValue value)
-        {
-			PauseInput(value.isPressed);
-			Debug.Log("PAUSEEE");
-        }
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -121,11 +115,7 @@ namespace Bladesmiths.Capstone
 		{
 			dodge = newDodgeRollState;
 		}
-
-		public void PauseInput(bool newPauseState)
-        {
-			pause = newPauseState;
-        }
+		
 
 #if !UNITY_IOS || !UNITY_ANDROID
 

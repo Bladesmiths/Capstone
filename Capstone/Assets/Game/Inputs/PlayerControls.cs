@@ -99,6 +99,14 @@ namespace Bladesmiths.Capstone
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""f93539b1-0f10-4fef-959e-43416d2b3f52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -398,6 +406,28 @@ namespace Bladesmiths.Capstone
                     ""action"": ""Parry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60491d4b-f241-4000-8642-148474e959fb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e31a1679-0b16-4619-b3b6-c87a44fb64e6"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -407,7 +437,7 @@ namespace Bladesmiths.Capstone
             ""actions"": [
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""0f9066b8-943f-45e2-87df-bb8a56fb7859"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -482,6 +512,14 @@ namespace Bladesmiths.Capstone
                     ""type"": ""PassThrough"",
                     ""id"": ""c8fcfef1-5ce5-40eb-a59d-9c58ede527e9"",
                     ""expectedControlType"": ""Quaternion"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Unpause"",
+                    ""type"": ""Button"",
+                    ""id"": ""85fdec00-724b-437f-92b9-754dd7ba13d4"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -904,6 +942,28 @@ namespace Bladesmiths.Capstone
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fb7220c-3210-430f-9650-5f5e3f1a2ed9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Unpause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6a76f38-59e9-4a49-afc0-28dbc4deaa18"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
+                    ""action"": ""Unpause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -970,6 +1030,7 @@ namespace Bladesmiths.Capstone
             m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
             m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
             m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
+            m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -982,6 +1043,7 @@ namespace Bladesmiths.Capstone
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_Unpause = m_UI.FindAction("Unpause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1041,6 +1103,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_MoveTarget;
         private readonly InputAction m_Player_Parry;
         private readonly InputAction m_Player_Block;
+        private readonly InputAction m_Player_Pause;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
@@ -1055,6 +1118,7 @@ namespace Bladesmiths.Capstone
             public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
             public InputAction @Parry => m_Wrapper.m_Player_Parry;
             public InputAction @Block => m_Wrapper.m_Player_Block;
+            public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1094,6 +1158,9 @@ namespace Bladesmiths.Capstone
                     @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                     @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                     @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                    @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1128,6 +1195,9 @@ namespace Bladesmiths.Capstone
                     @Block.started += instance.OnBlock;
                     @Block.performed += instance.OnBlock;
                     @Block.canceled += instance.OnBlock;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }
@@ -1146,6 +1216,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_UI_RightClick;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_Unpause;
         public struct UIActions
         {
             private @PlayerControls m_Wrapper;
@@ -1160,6 +1231,7 @@ namespace Bladesmiths.Capstone
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
             public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            public InputAction @Unpause => m_Wrapper.m_UI_Unpause;
             public InputActionMap Get() { return m_Wrapper.m_UI; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1199,6 +1271,9 @@ namespace Bladesmiths.Capstone
                     @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                    @Unpause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnUnpause;
+                    @Unpause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnUnpause;
+                    @Unpause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnUnpause;
                 }
                 m_Wrapper.m_UIActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1233,6 +1308,9 @@ namespace Bladesmiths.Capstone
                     @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                     @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                    @Unpause.started += instance.OnUnpause;
+                    @Unpause.performed += instance.OnUnpause;
+                    @Unpause.canceled += instance.OnUnpause;
                 }
             }
         }
@@ -1285,6 +1363,7 @@ namespace Bladesmiths.Capstone
             void OnMoveTarget(InputAction.CallbackContext context);
             void OnParry(InputAction.CallbackContext context);
             void OnBlock(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
@@ -1298,6 +1377,7 @@ namespace Bladesmiths.Capstone
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            void OnUnpause(InputAction.CallbackContext context);
         }
     }
 }

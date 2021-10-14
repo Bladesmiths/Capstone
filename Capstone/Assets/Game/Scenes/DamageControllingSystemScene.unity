@@ -817,7 +817,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 750602082}
+      - m_Target: {fileID: 1554415450}
         m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
         m_MethodName: Unpause
         m_Mode: 1
@@ -1226,7 +1226,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 750602083}
-  - component: {fileID: 750602082}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -1234,24 +1233,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &750602082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750602081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ec69abbd86f20409bd8fbe9620f27f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1554415451}
-  healthBarFill: {fileID: 1446302457}
-  pointsText: {fileID: 926484292}
-  pauseMenu: {fileID: 2091896810}
-  resumeButton: {fileID: 1095095217}
-  isPaused: 0
 --- !u!224 &750602083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3365,6 +3346,7 @@ GameObject:
   - component: {fileID: 1554415452}
   - component: {fileID: 1554415451}
   - component: {fileID: 1554415458}
+  - component: {fileID: 1554415450}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3372,6 +3354,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1554415450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554415449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ec69abbd86f20409bd8fbe9620f27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1554415451}
+  playerInput: {fileID: 1554415453}
+  healthBarFill: {fileID: 1446302457}
+  pointsText: {fileID: 926484292}
+  pauseMenu: {fileID: 2091896810}
+  resumeButton: {fileID: 1095095217}
+  isPaused: 0
 --- !u!114 &1554415451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3596,7 +3597,6 @@ MonoBehaviour:
   parry: 0
   block: 0
   dodge: 0
-  pause: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -5522,6 +5522,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_MoveAction
+      value: 
+      objectReference: {fileID: -8687011286236817961, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_PointAction
+      value: 
+      objectReference: {fileID: 5725176057907031469, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_ActionsAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_CancelAction
+      value: 
+      objectReference: {fileID: -1032449967413842797, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: -9031587386823793658, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_LeftClickAction
+      value: 
+      objectReference: {fileID: -4896421497255779491, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_RightClickAction
+      value: 
+      objectReference: {fileID: 2322371448767824909, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_MiddleClickAction
+      value: 
+      objectReference: {fileID: 3190739788648716942, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_ScrollWheelAction
+      value: 
+      objectReference: {fileID: -1306703875488872544, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_DeselectOnBackgroundClick
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_TrackedDevicePositionAction
+      value: 
+      objectReference: {fileID: -5352468926533735079, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
+    - target: {fileID: 8279798545678494202, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_TrackedDeviceOrientationAction
+      value: 
+      objectReference: {fileID: -5552464803899122091, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
 --- !u!1 &2085846067
