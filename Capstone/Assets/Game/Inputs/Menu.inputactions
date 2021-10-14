@@ -41,12 +41,12 @@
         },
         {
             "name": "PauseMenuActions",
-            "id": "f1e3e1a9-20af-4bf9-9b66-6b33768bea91",
+            "id": "216f7cc8-4cfc-418c-a9e5-1e8c9550e24f",
             "actions": [
                 {
                     "name": "Pause",
                     "type": "Button",
-                    "id": "9539610f-abb4-445b-82af-bb225531294c",
+                    "id": "63e56450-0785-4220-a887-3b3516a454a4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -54,7 +54,7 @@
                 {
                     "name": "Resume",
                     "type": "Button",
-                    "id": "ad285bd2-e474-4771-b50c-9802dd7cf8c7",
+                    "id": "1ffcc715-a59b-46dc-af08-23f4cfd4f96e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -63,7 +63,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "cd0976ed-3f50-4238-986f-15e70cfb103b",
+                    "id": "2dfcd264-4971-4721-bfc6-e2355f59cd1b",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
@@ -74,7 +74,7 @@
                 },
                 {
                     "name": "",
-                    "id": "fc7292ed-720d-456a-b104-a540b4b190fa",
+                    "id": "b2c24b2d-7a54-4a57-9c54-59ad4c7ee03a",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
@@ -85,7 +85,7 @@
                 },
                 {
                     "name": "",
-                    "id": "4ecc6a12-78c0-4f1a-a672-2424f3bc3e13",
+                    "id": "e882aa92-2127-4300-8bad-7b851562b7d5",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
@@ -96,7 +96,7 @@
                 },
                 {
                     "name": "",
-                    "id": "48d42a07-b6f1-4312-8932-2c905bc679d5",
+                    "id": "ecfdb55a-54a2-4f98-bf5c-846ab69b7f01",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",

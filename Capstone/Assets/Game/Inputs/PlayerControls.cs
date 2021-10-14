@@ -99,14 +99,6 @@ namespace Bladesmiths.Capstone
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Exit"",
-                    ""type"": ""Button"",
-                    ""id"": ""39add56d-8220-4482-a829-69b26c59377d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -404,17 +396,6 @@ namespace Bladesmiths.Capstone
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Parry"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bfba604f-efbd-4661-a9ca-7201a04a5fff"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -989,7 +970,6 @@ namespace Bladesmiths.Capstone
             m_Player_MoveTarget = m_Player.FindAction("Move Target", throwIfNotFound: true);
             m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
             m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
-            m_Player_Exit = m_Player.FindAction("Exit", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1061,7 +1041,6 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_MoveTarget;
         private readonly InputAction m_Player_Parry;
         private readonly InputAction m_Player_Block;
-        private readonly InputAction m_Player_Exit;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
@@ -1076,7 +1055,6 @@ namespace Bladesmiths.Capstone
             public InputAction @MoveTarget => m_Wrapper.m_Player_MoveTarget;
             public InputAction @Parry => m_Wrapper.m_Player_Parry;
             public InputAction @Block => m_Wrapper.m_Player_Block;
-            public InputAction @Exit => m_Wrapper.m_Player_Exit;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1116,9 +1094,6 @@ namespace Bladesmiths.Capstone
                     @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                     @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                     @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
-                    @Exit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExit;
-                    @Exit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExit;
-                    @Exit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExit;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1153,9 +1128,6 @@ namespace Bladesmiths.Capstone
                     @Block.started += instance.OnBlock;
                     @Block.performed += instance.OnBlock;
                     @Block.canceled += instance.OnBlock;
-                    @Exit.started += instance.OnExit;
-                    @Exit.performed += instance.OnExit;
-                    @Exit.canceled += instance.OnExit;
                 }
             }
         }
@@ -1313,7 +1285,6 @@ namespace Bladesmiths.Capstone
             void OnMoveTarget(InputAction.CallbackContext context);
             void OnParry(InputAction.CallbackContext context);
             void OnBlock(InputAction.CallbackContext context);
-            void OnExit(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

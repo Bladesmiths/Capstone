@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Bladesmiths.Capstone.UI
 {
@@ -28,15 +30,20 @@ namespace Bladesmiths.Capstone.UI
         [TitleGroup("Menus")] 
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject pauseMenu;
+        
+        [BoxGroup("Menus/Pause Menu")]
+        [SerializeField] private GameObject resumeButton;
 
-        private bool isPaused;
+        [BoxGroup("Menus/Pause Menu")]
+        [SerializeField] private bool isPaused;
         
         // Start is called before the first frame update
         void Start()
         {
             // Initialize variables
             isPaused = false;
-            UpdateScore(0);
+            if (player != null)
+                UpdateScore(0, player.MaxPoints);
         }
 
         void LateUpdate()
@@ -44,26 +51,45 @@ namespace Bladesmiths.Capstone.UI
             if (player != null)
             {
                 UpdateHealth(player.Health, player.MaxHealth);
-                // UpdateScore(0);
+                UpdateScore(player.Points, player.MaxPoints);
             }
-        }
-
-        public void Pause()
-        {
-            isPaused = true;
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
         }
 
         public void Unpause()
         {
-            isPaused = false;
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1;
+            if (isPaused)
+            {
+                isPaused = false;
+                pauseMenu.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1;
+            }
+        }
+
+        public void OnPause(InputValue value)
+        {
+            if (value.isPressed)
+                Pause();
+        }
+
+        public void OnResume(InputValue value)
+        {
+            if (value.isPressed)
+                Unpause();
         }
         
-        
         // Private Methods
+        private void Pause()
+        {
+            if (!isPaused)
+            {
+                isPaused = true;
+                EventSystem.current.SetSelectedGameObject(resumeButton);
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                pauseMenu.SetActive(true);
+            }
+        }
         
         private void UpdateHealth(float currentHealth, float maxHealth)
         {
@@ -71,9 +97,10 @@ namespace Bladesmiths.Capstone.UI
             healthBarFill.fillAmount = fillPercentage;
         }
 
-        private void UpdateScore(int currentScore)
+        private void UpdateScore(int currentScore, int maxScore)
         {
-            pointsText.text = currentScore.ToString().Trim();
+            string displayScoreText = currentScore.ToString() + "/" + maxScore.ToString();
+            pointsText.text = displayScoreText.Trim();
         }
 
     }
