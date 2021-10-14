@@ -12,8 +12,8 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class ObjectController : SerializedMonoBehaviour
     {
-        [SerializeField] [Tooltip("The next ID to assign to an object")]
-        private int currentValidId = 1;
+        //[SerializeField] [Tooltip("The next ID to assign to an object")]
+        private int currentValidId = -1;
 
         // Dictionaries of damageable and damaging objects
         [OdinSerialize] [Tooltip("IDs mapped to Damageable Objects and their teams")]
@@ -25,7 +25,7 @@ namespace Bladesmiths.Capstone
         {
             // We should come up with a way to check the dictionary and
             // making a unique ID to go with the player
-            currentValidId = -1;
+            //currentValidId = -1;
 
             IdentifiedTeamPair playerTeamPair = new IdentifiedTeamPair(Team.Player, GameObject.Find("Player").GetComponent<Player>());
 

@@ -70,18 +70,18 @@ namespace Bladesmiths.Capstone
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.transform.root.CompareTag("Player") == true &&
-                other.gameObject.transform.root.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+            if (other.gameObject.transform.root.CompareTag("Player") == true)
             {
-                Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
-                // Check if the player has already been hit by this object
-                //player.TakeDamage(id, damage);
-                ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                if (other.gameObject.transform.root.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                {
+                    Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
+                    // Check if the player has already been hit by this object
+                    //player.TakeDamage(id, damage);
+                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                }
 
-            
+                damaging = true;
             }
-            damaging = true;
-
         }
 
         protected override void Attack()
