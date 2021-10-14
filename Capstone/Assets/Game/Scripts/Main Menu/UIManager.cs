@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -9,6 +10,10 @@ namespace Bladesmiths.Capstone.UI
 {
     public class UIManager : MonoBehaviour
     {
+        // Fields
+        
+        [TitleGroup("Player")] 
+        [SerializeField] private Player player;
         
         [TitleGroup("HUD")]
         [HorizontalGroup("HUD/Split")]
@@ -23,41 +28,54 @@ namespace Bladesmiths.Capstone.UI
         [TitleGroup("Menus")] 
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject pauseMenu;
-    
+
+        private bool isPaused;
+        
         // Start is called before the first frame update
         void Start()
         {
-        
+            // Initialize variables
+            isPaused = false;
+            UpdateScore(0);
         }
 
-        // Update is called once per frame
-        void Update()
+        void LateUpdate()
         {
-        
-        }
-
-        public void UpdateHealth(float currentHealth, float maxHealth)
-        {
-            float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
-            healthBarFill.fillAmount = fillPercentage;
-        }
-
-        public void UpdateScore(int currentScore)
-        {
-            pointsText.text = currentScore.ToString().Trim();
+            if (player != null)
+            {
+                UpdateHealth(player.Health, player.MaxHealth);
+                // UpdateScore(0);
+            }
         }
 
         public void Pause()
         {
+            isPaused = true;
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
 
         public void Unpause()
         {
+            isPaused = false;
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
+        
+        
+        // Private Methods
+        
+        private void UpdateHealth(float currentHealth, float maxHealth)
+        {
+            float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
+            healthBarFill.fillAmount = fillPercentage;
+        }
+
+        private void UpdateScore(int currentScore)
+        {
+            pointsText.text = currentScore.ToString().Trim();
+        }
+
     }
 }
 

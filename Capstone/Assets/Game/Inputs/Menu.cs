@@ -51,6 +51,74 @@ public class @Menu : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PauseMenuActions"",
+            ""id"": ""f1e3e1a9-20af-4bf9-9b66-6b33768bea91"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9539610f-abb4-445b-82af-bb225531294c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Resume"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad285bd2-e474-4771-b50c-9802dd7cf8c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cd0976ed-3f50-4238-986f-15e70cfb103b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc7292ed-720d-456a-b104-a540b4b190fa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ecc6a12-78c0-4f1a-a672-2424f3bc3e13"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48d42a07-b6f1-4312-8932-2c905bc679d5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -58,6 +126,10 @@ public class @Menu : IInputActionCollection, IDisposable
         // MenuActions
         m_MenuActions = asset.FindActionMap("MenuActions", throwIfNotFound: true);
         m_MenuActions_Pause = m_MenuActions.FindAction("Pause", throwIfNotFound: true);
+        // PauseMenuActions
+        m_PauseMenuActions = asset.FindActionMap("PauseMenuActions", throwIfNotFound: true);
+        m_PauseMenuActions_Pause = m_PauseMenuActions.FindAction("Pause", throwIfNotFound: true);
+        m_PauseMenuActions_Resume = m_PauseMenuActions.FindAction("Resume", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -136,8 +208,54 @@ public class @Menu : IInputActionCollection, IDisposable
         }
     }
     public MenuActionsActions @MenuActions => new MenuActionsActions(this);
+
+    // PauseMenuActions
+    private readonly InputActionMap m_PauseMenuActions;
+    private IPauseMenuActionsActions m_PauseMenuActionsActionsCallbackInterface;
+    private readonly InputAction m_PauseMenuActions_Pause;
+    private readonly InputAction m_PauseMenuActions_Resume;
+    public struct PauseMenuActionsActions
+    {
+        private @Menu m_Wrapper;
+        public PauseMenuActionsActions(@Menu wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_PauseMenuActions_Pause;
+        public InputAction @Resume => m_Wrapper.m_PauseMenuActions_Resume;
+        public InputActionMap Get() { return m_Wrapper.m_PauseMenuActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseMenuActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPauseMenuActionsActions instance)
+        {
+            if (m_Wrapper.m_PauseMenuActionsActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_PauseMenuActionsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PauseMenuActionsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PauseMenuActionsActionsCallbackInterface.OnPause;
+                @Resume.started -= m_Wrapper.m_PauseMenuActionsActionsCallbackInterface.OnResume;
+                @Resume.performed -= m_Wrapper.m_PauseMenuActionsActionsCallbackInterface.OnResume;
+                @Resume.canceled -= m_Wrapper.m_PauseMenuActionsActionsCallbackInterface.OnResume;
+            }
+            m_Wrapper.m_PauseMenuActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @Resume.started += instance.OnResume;
+                @Resume.performed += instance.OnResume;
+                @Resume.canceled += instance.OnResume;
+            }
+        }
+    }
+    public PauseMenuActionsActions @PauseMenuActions => new PauseMenuActionsActions(this);
     public interface IMenuActionsActions
     {
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IPauseMenuActionsActions
+    {
+        void OnPause(InputAction.CallbackContext context);
+        void OnResume(InputAction.CallbackContext context);
     }
 }
