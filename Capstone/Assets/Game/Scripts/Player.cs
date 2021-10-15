@@ -803,7 +803,7 @@ namespace Bladesmiths.Capstone
             {
                 if (points >= maxPoints)
                 {
-                    SceneManager.LoadScene(4);
+                    SceneManager.LoadScene("WinScreen");
                 }
                 else
                 {
