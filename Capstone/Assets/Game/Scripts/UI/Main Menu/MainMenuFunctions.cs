@@ -12,19 +12,21 @@ public class MainMenuFunctions : MonoBehaviour
     private GameObject lastselect;
 
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private VideoPlayer videoPlayer;
+    //[SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject continueButton;
 
     [SerializeField] private GameObject blackFade;
 
     private bool fadeToBlack;
 
+    public bool Paused { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
         lastselect = new GameObject();
         // If the video has ended
-        videoPlayer.loopPointReached += EndReached;
+        //videoPlayer.loopPointReached += EndReached;
     }
 
     // Update is called once per frame
@@ -61,7 +63,7 @@ public class MainMenuFunctions : MonoBehaviour
     /// When the video is over, load the main game scene
     /// </summary>
     /// <param name="vp"></param>
-    private void EndReached(VideoPlayer vp)
+    public void EndReached()
     {
         SceneManager.LoadScene("DamageControllingSystemScene");
         SceneManager.LoadSceneAsync("VillagePlaytestGraybox", LoadSceneMode.Additive);
@@ -87,11 +89,13 @@ public class MainMenuFunctions : MonoBehaviour
         // Toggle the pause menu
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
-        // Pause the video if it's playing
-        if (videoPlayer.isPlaying)
-            videoPlayer.Pause();
-        else
-            videoPlayer.Play();
+        //// Pause the video if it's playing
+        //if (videoPlayer.isPlaying)
+        //    videoPlayer.Pause();
+        //else
+        //    videoPlayer.Play();
+
+        Paused = !Paused;
 
         EventSystem.current.SetSelectedGameObject(continueButton);
     }
@@ -126,6 +130,6 @@ public class MainMenuFunctions : MonoBehaviour
     /// </summary>
     public void SkipCutscene()
     {
-        EndReached(null);
+        EndReached();
     }
 }

@@ -25,6 +25,14 @@ public class @Menu : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""AdvanceSlide"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6b9a0eb-acf0-4cd1-9d7f-f5c34f922c5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -47,6 +55,28 @@ public class @Menu : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""799f3411-bab9-4642-973f-429b3d109dec"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdvanceSlide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99ae90b9-f877-454c-9855-b6d2809e11af"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdvanceSlide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -126,6 +156,7 @@ public class @Menu : IInputActionCollection, IDisposable
         // MenuActions
         m_MenuActions = asset.FindActionMap("MenuActions", throwIfNotFound: true);
         m_MenuActions_Pause = m_MenuActions.FindAction("Pause", throwIfNotFound: true);
+        m_MenuActions_AdvanceSlide = m_MenuActions.FindAction("AdvanceSlide", throwIfNotFound: true);
         // PauseMenuActions
         m_PauseMenuActions = asset.FindActionMap("PauseMenuActions", throwIfNotFound: true);
         m_PauseMenuActions_Pause = m_PauseMenuActions.FindAction("Pause", throwIfNotFound: true);
@@ -180,11 +211,13 @@ public class @Menu : IInputActionCollection, IDisposable
     private readonly InputActionMap m_MenuActions;
     private IMenuActionsActions m_MenuActionsActionsCallbackInterface;
     private readonly InputAction m_MenuActions_Pause;
+    private readonly InputAction m_MenuActions_AdvanceSlide;
     public struct MenuActionsActions
     {
         private @Menu m_Wrapper;
         public MenuActionsActions(@Menu wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_MenuActions_Pause;
+        public InputAction @AdvanceSlide => m_Wrapper.m_MenuActions_AdvanceSlide;
         public InputActionMap Get() { return m_Wrapper.m_MenuActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -197,6 +230,9 @@ public class @Menu : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnPause;
+                @AdvanceSlide.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnAdvanceSlide;
+                @AdvanceSlide.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnAdvanceSlide;
+                @AdvanceSlide.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnAdvanceSlide;
             }
             m_Wrapper.m_MenuActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -204,6 +240,9 @@ public class @Menu : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @AdvanceSlide.started += instance.OnAdvanceSlide;
+                @AdvanceSlide.performed += instance.OnAdvanceSlide;
+                @AdvanceSlide.canceled += instance.OnAdvanceSlide;
             }
         }
     }
@@ -252,6 +291,7 @@ public class @Menu : IInputActionCollection, IDisposable
     public interface IMenuActionsActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnAdvanceSlide(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActionsActions
     {
