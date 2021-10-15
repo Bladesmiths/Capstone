@@ -347,7 +347,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         // TODO: Should implement something like when dodging animation stops
-        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 1.1f;
+        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 1.1f/1.5f;
 
         /// <summary>
         /// The condition for having been attacked
