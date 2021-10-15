@@ -299,7 +299,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 1.4/1.5f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 0.9/1.5f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
 
         /// <summary>
         /// The condition for going between the IDLE and BLOCK state
@@ -431,7 +431,7 @@ namespace Bladesmiths.Capstone
             }
 
             // If the player is dead and just died (fadeToBlack is still occuring)
-            if(FSM.GetCurrentState() == death && justDied)
+            if((FSM.GetCurrentState() == death && justDied) || points >= maxPoints)
             {
                 FadeToBlack();
             }
@@ -513,11 +513,6 @@ namespace Bladesmiths.Capstone
         public void AddPoints()
         {
             points++;
-
-            if(points >= maxPoints)
-            {
-                SceneManager.LoadScene(4);
-            }
         }
 
         /// <summary>
@@ -562,7 +557,7 @@ namespace Bladesmiths.Capstone
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
 
-            speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
+            //speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
@@ -806,10 +801,17 @@ namespace Bladesmiths.Capstone
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a + Time.deltaTime);
             else
             {
-                hasFadedToBlack = true;
-                justDied = false;
-                // Set the alpha to 1.5 so it stays at full black for a little longer
-                fade.GetComponent<Image>().color = new Color(0, 0, 0, 1.5f);
+                if (points >= maxPoints)
+                {
+                    SceneManager.LoadScene(4);
+                }
+                else
+                {
+                    hasFadedToBlack = true;
+                    justDied = false;
+                    // Set the alpha to 1.5 so it stays at full black for a little longer
+                    fade.GetComponent<Image>().color = new Color(0, 0, 0, 1.5f);
+                }
             }
         }
 
