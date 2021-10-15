@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  timeTillDestruction: 3
+  timeTillDestruction: 5
   objectController: {fileID: 0}
   damagingTimerLimit: 0
 --- !u!54 &-4640485357043464516
