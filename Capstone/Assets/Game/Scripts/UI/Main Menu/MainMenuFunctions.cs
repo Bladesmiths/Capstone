@@ -66,7 +66,7 @@ public class MainMenuFunctions : MonoBehaviour
     public void EndReached()
     {
         SceneManager.LoadScene("DamageControllingSystemScene");
-        SceneManager.LoadSceneAsync("VillagePlaytestGraybox", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("VillageSignsUpdate", LoadSceneMode.Additive);
     }
 
     /// <summary>
