@@ -1876,34 +1876,42 @@ MonoBehaviour:
   introSlideDataList:
   - fading: 0
     background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: faslfdj  <b>salf</b>  jasklfd
+    slideText: When <b>war</b> threatened to engulf the country, every able-bodied
+      adult left your <b>remote village</b> to join the front lines.
+  - fading: 0
+    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
+    slideText: 'Your <b>mentor</b> was among them. His passion was to record history,
+      and how better to do so than to witness it in the making? '
+  - fading: 1
+    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
+    slideText: You never doubted that he would return unharmed, eager to regale you
+      with all-new chronicles.
+  - fading: 1
+    background: {fileID: 21300000, guid: 451431d540d5a074b9454090a858dca4, type: 3}
+    slideText: But that was <b>years ago.</b>
   - fading: 0
     background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
-    slideText: slide 2
-  - fading: 1
-    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: slide 3
+    slideText: "You\u2019ve grown up quite a bit since then. You\u2019ve had to.
+      Those left here look to you for guidance these days."
   - fading: 1
     background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
-    slideText: slide 4
+    slideText: "Life hasn\u2019t been easy, but it has at least been peaceful. "
   - fading: 1
-    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: slide 5
+    background: {fileID: 21300000, guid: f77f837a3d198b44495a1a0dcdd634c2, type: 3}
+    slideText: 'That is, until a passing traveler warns that a horde of bandits will
+      soon descend upon your village. '
   - fading: 1
-    background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
-    slideText: slide 6
+    background: {fileID: 21300000, guid: a3e4402891c4a624094f0bced0ddc622, type: 3}
+    slideText: 'Determined to defend your home and its people, you remove a dusty
+      hilt from its box within the village shrine. '
   - fading: 1
-    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: slide 7
-  - fading: 0
-    background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
-    slideText: slide 8
+    background: {fileID: 21300000, guid: 4febc48e4d9a78a478196716909531ed, type: 3}
+    slideText: "With your mentor\u2019s quartz in hand, you restore the magical shattering
+      sword to life."
   - fading: 1
-    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: slide 9
-  - fading: 1
-    background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
-    slideText: slide 10
+    background: {fileID: 21300000, guid: 451431d540d5a074b9454090a858dca4, type: 3}
+    slideText: "To save your home, you\u2019ll need to master your weapon, face the
+      bandits, and make history yourself."
   currentSlideIndex: 0
   slideBackground: {fileID: 1973582369}
   slideText: {fileID: 1421736194}
@@ -1911,7 +1919,7 @@ MonoBehaviour:
   fadePause: 0.5
   fadeSpeed: 0.6
   dramaticFadePause: 1
-  whenToDramaticPause: 03000000
+  whenToDramaticPause: 
 --- !u!1 &1973582366
 GameObject:
   m_ObjectHideFlags: 0
