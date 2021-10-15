@@ -86,6 +86,8 @@ public class MainMenuFunctions : MonoBehaviour
     /// </summary>
     public void Pause()
     {
+        if (pauseMenu == null) return;
+        
         // Toggle the pause menu
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 

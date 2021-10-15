@@ -39,7 +39,8 @@ namespace Bladesmiths.Capstone
         [SerializeField] [Tooltip("This list should contain slides that a dramatic pause should happen before")]
         private List<int> whenToDramaticPause = new List<int>();
 
-        private MainMenuFunctions mainMenu; 
+        private MainMenuFunctions mainMenu;
+        private bool isDuringFading = false;
 
         // Start is called before the first frame update
         void Start()
@@ -58,6 +59,8 @@ namespace Bladesmiths.Capstone
             }
 
             UpdateSlideData();
+
+            isDuringFading = false;
         }
 
         // Update is called once per frame
@@ -68,16 +71,15 @@ namespace Bladesmiths.Capstone
 
         public void OnAdvanceSlide(InputValue value)
         {
+            if (isDuringFading) return;
+            
             Debug.Log("Next Slide");
             bool fading = introSlideDataList[currentSlideIndex].fading;
             if (!mainMenu.Paused && currentSlideIndex <= introSlideDataList.Count - 1)
             {
                 if (currentSlideIndex == introSlideDataList.Count - 1)
                 {
-                    if (fading)
-                    {
-                        StartCoroutine(Fade(slideBackground, 0));
-                    }
+                    StartCoroutine(Fade(slideBackground, 0));
                     currentSlideIndex++; 
                     return; 
                 }
@@ -97,6 +99,8 @@ namespace Bladesmiths.Capstone
         // src: https://stackoverflow.com/questions/64510141/using-a-coroutine-in-unity3d-to-fade-a-game-object-out-and-back-in-looping-inf
         IEnumerator FadeInOut()
         {
+            isDuringFading = true;
+
             // fade out
             yield return Fade(slideBackground, 0);
             currentSlideIndex++;
@@ -107,6 +111,8 @@ namespace Bladesmiths.Capstone
             yield return new WaitForSeconds(whenToDramaticPause.Contains(currentSlideIndex) ? dramaticFadePause : fadePause);
             // fade in
             yield return Fade(slideBackground, 1);
+            
+            isDuringFading = false;
         }
 
         IEnumerator Fade(Image image, float targetAlpha)
@@ -120,7 +126,7 @@ namespace Bladesmiths.Capstone
             
             image.color = new Color(image.color.r, image.color.g, image.color.b, targetAlpha);
 
-            if (currentSlideIndex == introSlideDataList.Count)
+            if (currentSlideIndex >= introSlideDataList.Count)
             {
                 mainMenu.EndReached(); 
             }
