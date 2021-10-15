@@ -61,7 +61,7 @@ public class @Menu : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""799f3411-bab9-4642-973f-429b3d109dec"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
