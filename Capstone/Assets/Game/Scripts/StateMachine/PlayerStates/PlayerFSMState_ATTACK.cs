@@ -40,15 +40,16 @@ namespace Bladesmiths.Capstone
             _input = input;
             _animator = animator;
             _sword = sword;
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
             id = PlayerCondition.F_Attacking;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
         }
 
         public override void Tick()
         {
             timer += Time.deltaTime;
 
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
             
             _input.attack = false;
 
@@ -99,7 +100,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
             _animator.SetBool(_animIDAttack, false);
         }
 

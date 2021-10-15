@@ -30,7 +30,7 @@ namespace Bladesmiths.Capstone
             _input = input;
             _animator = animator;
             _sword = sword;
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
 
             playerBlockBox = playerBlockDetector;
             id = PlayerCondition.F_Blocking;
@@ -46,7 +46,7 @@ namespace Bladesmiths.Capstone
             // Turns the block detector box on
             playerBlockBox.SetActive(true);
             playerBlockBox.GetComponent<BlockCollision>().Active = true;
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
 
             // Assign block paramater id
             _animIDBlock = Animator.StringToHash("Block");
@@ -65,7 +65,7 @@ namespace Bladesmiths.Capstone
             _animator.SetBool(_animIDBlock, true);
 
             // Set the sword to detect collisions
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
+            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
         }
 
         public override void OnExit()
