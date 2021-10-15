@@ -51,7 +51,7 @@ namespace Bladesmiths.Capstone
         {
             _input.parry = false;
             _playerParryBox.SetActive(false);
-            _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
+            //_playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
             timer = 0;
             _player.parryEnd = false;
             //_sword.GetComponent<Rigidbody>().detectCollisions = true;
