@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MultiSceneSetup_Playtest_101421
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/DamageControllingSystemScene.unity
+  - scenePath: Assets/Game/Scenes/PlayerScene.unity
     isActive: 1
     isLoaded: 1
-  - scenePath: Assets/Game/Scenes/VillageSignsUpdate.unity
+  - scenePath: Assets/Game/Scenes/VillageScene.unity
     isActive: 0
     isLoaded: 1
