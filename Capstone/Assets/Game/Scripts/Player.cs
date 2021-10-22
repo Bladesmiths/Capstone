@@ -23,6 +23,8 @@ namespace Bladesmiths.Capstone
     {
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
+        [SerializeField]
+        private BalancingData currentBalancingData; 
 
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
@@ -50,7 +52,6 @@ namespace Bladesmiths.Capstone
 
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
         private PlayerFSMState_PARRYSUCCESS parrySuccess;
-        private PlayerFSMState_IDLE idleMovement;
         private PlayerFSMState_IDLE idleCombat;
 
 
@@ -68,6 +69,7 @@ namespace Bladesmiths.Capstone
         public bool inState;
         public bool damaged;
         public bool parryEnd;
+        public bool parrySuccessful;
         private float dodgeTimer;
         [SerializeField] [Range(0.0f, 1.0f)]
         private float chipDamagePercent; 
@@ -177,6 +179,7 @@ namespace Bladesmiths.Capstone
         private ReactiveFloat playerHealth;
         #endregion
 
+        public BalancingData CurrentBalancingData { get => currentBalancingData; }
         public Vector3 RespawnPoint
         {
             get { return respawnPoint; }
@@ -239,10 +242,9 @@ namespace Bladesmiths.Capstone
             FSM.OnStateChange += SpeedUpdate;
 
             // Creates all of the states
-            parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
-            parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
+            parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);
+            parrySuccess = new PlayerFSMState_PARRYSUCCESS(this, inputs, animator, parryDetector);
             block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
-            idleMovement = new PlayerFSMState_IDLE(animator);
             idleCombat = new PlayerFSMState_IDLE(animator);
             attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
             death = new PlayerFSMState_DEATH(this);
@@ -261,7 +263,9 @@ namespace Bladesmiths.Capstone
 
             FSM.AddTransition(idleCombat, block, IsBlockPressed());
             FSM.AddTransition(block, parryAttempt, IsBlockReleased());
-            FSM.AddTransition(parryAttempt, idleCombat, IsParryReleased());
+            FSM.AddTransition(parryAttempt, parrySuccess, IsParrySuccessful());
+            FSM.AddTransition(parrySuccess, idleCombat, IsParryFinished()); 
+            FSM.AddTransition(parryAttempt, idleCombat, IsParryFinished());
 
 
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
@@ -317,7 +321,13 @@ namespace Bladesmiths.Capstone
         /// The condition for going between the PARRY and IDLE state
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsParryReleased() => () => parryEnd == true;
+        public Func<bool> IsParryFinished() => () => parryEnd == true;
+
+        /// <summary>
+        /// The condition for going between the PARRY and IDLE state
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsParrySuccessful() => () => parrySuccessful == true;
 
         /// <summary>
         /// The condition for going between MOVE/IDLE and the ATTACK states
@@ -354,12 +364,6 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> Alive() => () => Health <= 0;
-
-        /// <summary>
-        /// Waits .5 seconds until the parry switches back to the default state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsReleased() => () => parryAttempt.timer >= 0.5;
 
         /// <summary>
         /// Checks if the player is grounded
@@ -786,7 +790,6 @@ namespace Bladesmiths.Capstone
             if(fade.GetComponent<Image>().color.a <= 0)
             {
                 FSM.SetCurrentState(idleCombat);
-                FSM.SetCurrentState(idleMovement);
             }
         }
 

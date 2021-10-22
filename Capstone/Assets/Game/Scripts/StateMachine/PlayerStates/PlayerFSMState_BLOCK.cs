@@ -19,9 +19,8 @@ namespace Bladesmiths.Capstone
 
         // The ID of the block paramater in the Player's animator controller
         private int _animIDBlock;
-        private bool _hasAnimator;
 
-        // The block rectangle that notifies if the player has blocked something
+        // The block object that notifies if the player has blocked something
         private GameObject playerBlockBox;
         public PlayerFSMState_BLOCK(Player player, PlayerInputsScript input, Animator animator, 
             GameObject sword, GameObject playerBlockDetector)
@@ -30,16 +29,12 @@ namespace Bladesmiths.Capstone
             _input = input;
             _animator = animator;
             _sword = sword;
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
 
             playerBlockBox = playerBlockDetector;
             id = PlayerCondition.F_Blocking;
         }
 
-        public override void Tick()
-        {
-            // Not sure what to do here yet, if anything
-        }
+        public override void Tick() { }
 
         public override void OnEnter()
         {
@@ -50,16 +45,6 @@ namespace Bladesmiths.Capstone
 
             // Assign block paramater id
             _animIDBlock = Animator.StringToHash("Block");
-            
-            // Do we need this?
-            if (_animator != null)
-            {
-                _hasAnimator = true;
-            }
-            else
-            {
-                _hasAnimator = false;
-            }
 
             // Set blocking id to true
             _animator.SetBool(_animIDBlock, true);
