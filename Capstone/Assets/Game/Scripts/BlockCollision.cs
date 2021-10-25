@@ -57,7 +57,7 @@ namespace Bladesmiths.Capstone
             {
                 // If the damaging object is not on the same team as the player
                 // And its ID has not already been blocked
-                if (ObjectController.IdentifiedObjects[damagingObject.ID].ObjectTeam != Enums.Team.Player && 
+                if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player && 
                     !blockedObjectIDs.Contains(damagingObject.ID))
                 {
                     // Block has been triggered

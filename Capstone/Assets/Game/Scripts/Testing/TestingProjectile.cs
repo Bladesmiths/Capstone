@@ -120,7 +120,7 @@ namespace Bladesmiths.Capstone.Testing
                 {
                     // Damage the player
                     //player.TakeDamage(ID, damage);
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
 
 
                     // Start a coroutine to change the player's material to show they've been damaged

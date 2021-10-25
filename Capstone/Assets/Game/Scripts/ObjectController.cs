@@ -19,7 +19,11 @@ namespace Bladesmiths.Capstone
         [OdinSerialize] [Tooltip("IDs mapped to Damageable Objects and their teams")]
         private Dictionary<int, IdentifiedTeamPair> identifiedObjects = new Dictionary<int, IdentifiedTeamPair>();
 
-        public Dictionary<int, IdentifiedTeamPair> IdentifiedObjects { get => identifiedObjects; }
+        // Indexer to return an identified pair from an id
+        public IdentifiedTeamPair this[int id]
+        {
+            get { return identifiedObjects[id]; }
+        }
 
         void Start()
         {
