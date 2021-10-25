@@ -4070,6 +4070,7 @@ MonoBehaviour:
   currentHealth: 0
   damagingObjectIDs: 
   objectController: {fileID: 0}
+  currentBalancingData: {fileID: 11400000, guid: 8eb93e4518e70234cb01f744f78ebc97, type: 2}
   inputs: {fileID: 1554415452}
   player: {fileID: 1554415449}
   sword: {fileID: 2112138773}
@@ -4080,6 +4081,7 @@ MonoBehaviour:
   inState: 0
   damaged: 0
   parryEnd: 0
+  parrySuccessful: 0
   chipDamagePercent: 0.4
   cinemachineTargetYaw: 0
   cinemachineTargetPitch: 0
