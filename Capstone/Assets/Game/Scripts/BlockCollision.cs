@@ -7,6 +7,7 @@ namespace Bladesmiths.Capstone
     public class BlockCollision : MonoBehaviour
     {
         private List<int> blockedObjectIDs = new List<int>();
+        private float chipDamageTotal = 0; 
 
         public ObjectController ObjectController { get; set; }
         public bool BlockTriggered { get; private set; }
@@ -73,12 +74,12 @@ namespace Bladesmiths.Capstone
 
                     // Calculate the chip damage and make the Player take that damage
                     float blockedDamage = damagingObject.Damage * ChipDamagePercentage;
+                    chipDamageTotal += blockedDamage;
                     player.TakeDamage(damagingObject.ID, blockedDamage);
 
                     // Debug stuff
                     Debug.Log($"Block Triggered by: {other.gameObject}");
                 }
-
             }
         }
     }
