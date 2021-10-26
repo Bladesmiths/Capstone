@@ -59,6 +59,7 @@ namespace Bladesmiths.Capstone
             playerBlockBox.SetActive(false);
             
             playerBlockBox.GetComponent<BlockCollision>().Active = false;
+            playerBlockBox.GetComponent<BlockCollision>().ResetChipDamage(); 
 
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;

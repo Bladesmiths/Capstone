@@ -6,6 +6,11 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
+        private List<int> blockedObjectIDs = new List<int>();
+
+        public ObjectController ObjectController { get; set; }
+        public float ChipDamageTotal { get; private set; }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -18,14 +23,52 @@ namespace Bladesmiths.Capstone
 
         }
 
+        public void BlockOccured(int id, float newChipDamageTotal)
+        {
+            blockedObjectIDs.Add(id);
+            ChipDamageTotal = newChipDamageTotal; 
+        }
+
+        /// <summary>
+        /// Removes an ID from the list of blocked IDs
+        /// If there are no more blocked IDs, then block is no longer triggered
+        /// </summary>
+        /// <param name="blockedID"></param>
+        public void RemoveBlockedID(int blockedID)
+        {
+            blockedObjectIDs.Remove(blockedID);
+        }
+
+        public void ResetChipDamage()
+        {
+            ChipDamageTotal = 0; 
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<IDamaging>() != null && other.tag != "Player")
+            // Exits the method if the colliding object is in Player or Default
+            // This will probably need to be added to as we go on
+            if ((LayerMask.GetMask("Player", "Default") & 1 << other.gameObject.layer) != 0)
             {
-                Debug.Log("Parry Triggered" + other.gameObject);
-                //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                return;
+            }
 
-                gameObject.GetComponentInParent<Player>().parrySuccessful = true;
+            // Retrieves the IDamaging Object
+            IDamaging damagingObject = other.GetComponent<IDamaging>();
+
+            // If there is a damaging object
+            if (damagingObject != null)
+            {
+                // If the damaging object is not on the same team as the player
+                // And its ID has not already been blocked
+                if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player &&
+                    !blockedObjectIDs.Contains(damagingObject.ID))
+                {
+                    Debug.Log("Parry Triggered" + other.gameObject);
+                    //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+                    gameObject.GetComponentInParent<Player>().parrySuccessful = true;
+                }
             }
         }
     }

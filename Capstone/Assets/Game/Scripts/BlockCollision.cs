@@ -7,12 +7,20 @@ namespace Bladesmiths.Capstone
     public class BlockCollision : MonoBehaviour
     {
         private List<int> blockedObjectIDs = new List<int>();
-        private float chipDamageTotal = 0; 
 
         public ObjectController ObjectController { get; set; }
         public bool BlockTriggered { get; private set; }
         public bool Active { get; set; }
         public float ChipDamagePercentage { get; set; }
+        public float ChipDamageTotal { get; private set; }
+
+
+        public delegate void OnBlockDelegate(int id, float chipDamageTotal);
+        public delegate void OnRemoveBlockIDDelegate(int id); 
+
+        // Event declaration
+        public event OnBlockDelegate OnBlock;
+        public event OnRemoveBlockIDDelegate OnRemoveBlockID; 
 
         // Start is called before the first frame update
         void Start()
@@ -39,6 +47,13 @@ namespace Bladesmiths.Capstone
             {
                 BlockTriggered = false;
             }
+
+            OnRemoveBlockID(blockedID); 
+        }
+
+        public void ResetChipDamage()
+        {
+            ChipDamageTotal = 0;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -74,8 +89,10 @@ namespace Bladesmiths.Capstone
 
                     // Calculate the chip damage and make the Player take that damage
                     float blockedDamage = damagingObject.Damage * ChipDamagePercentage;
-                    chipDamageTotal += blockedDamage;
+                    ChipDamageTotal += blockedDamage;
                     player.TakeDamage(damagingObject.ID, blockedDamage);
+
+                    OnBlock(damagingObject.ID, ChipDamageTotal); 
 
                     // Debug stuff
                     Debug.Log($"Block Triggered by: {other.gameObject}");
