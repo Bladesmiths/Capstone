@@ -727,7 +727,7 @@ namespace Bladesmiths.Capstone
         /// <param name="damage">The amount of damage to give to the target</param>
         public void SwordAttack(int targetID, float damage)
         {
-            ((IDamageable)ObjectController.IdentifiedObjects[targetID].IdentifiedObject).TakeDamage(ID, damage);
+            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, damage);
 
             // Testing
             damaging = true;

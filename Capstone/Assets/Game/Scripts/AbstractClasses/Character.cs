@@ -58,7 +58,7 @@ namespace Bladesmiths.Capstone
             // If the damaging object belongs to the same team as this character
             // Or if the damaging object has already hurt this character recently
             // Don't take any damage
-            if (objectController.IdentifiedObjects[damagingID].ObjectTeam == ObjectTeam || 
+            if (objectController[damagingID].ObjectTeam == ObjectTeam || 
                 DamagingObjectIDs.Contains(damagingID))
             {
                 damage = 0; 
@@ -74,7 +74,7 @@ namespace Bladesmiths.Capstone
             if (damage != 0)
             {
                 damagingObjectIDs.Add(damagingID);
-                ((IDamaging)objectController.IdentifiedObjects[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID; 
+                ((IDamaging)objectController[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID; 
             }
 
             // Log the amount of damage taken

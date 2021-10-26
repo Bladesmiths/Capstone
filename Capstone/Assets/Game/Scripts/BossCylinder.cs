@@ -79,7 +79,7 @@ namespace Bladesmiths.Capstone
                     Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
                     // Check if the player has already been hit by this object
                     //player.TakeDamage(id, damage);
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
                 }
 
                 damaging = true;

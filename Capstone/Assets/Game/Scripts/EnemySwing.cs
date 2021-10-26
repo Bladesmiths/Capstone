@@ -135,7 +135,7 @@ namespace Bladesmiths.Capstone
                 else if (other.GetComponent<Player>() == true)
                 {
                     // Damage Player
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
 
                     damaging = true;
 
