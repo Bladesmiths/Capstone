@@ -43,6 +43,11 @@ namespace Bladesmiths.Capstone
             _input.parry = false;
             _playerParryBox.SetActive(false);
             _player.parryEnd = false;
+
+            // Chip damage is reset regardless because
+            // to exit this state a parry has to be successful or
+            // the parry window has to end
+            _playerParryBox.GetComponent<ParryCollision>().ResetChipDamage();
         }
 
         /// <summary>

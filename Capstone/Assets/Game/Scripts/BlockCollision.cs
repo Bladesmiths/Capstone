@@ -51,6 +51,9 @@ namespace Bladesmiths.Capstone
             OnRemoveBlockID(blockedID); 
         }
 
+        /// <summary>
+        /// Resetting chip damage total to 0
+        /// </summary>
         public void ResetChipDamage()
         {
             ChipDamageTotal = 0;

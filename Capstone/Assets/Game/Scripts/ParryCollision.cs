@@ -67,7 +67,16 @@ namespace Bladesmiths.Capstone
                     Debug.Log("Parry Triggered" + other.gameObject);
                     //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
-                    gameObject.GetComponentInParent<Player>().parrySuccessful = true;
+                    Player player = gameObject.GetComponentInParent<Player>();
+                    player.parrySuccessful = true;
+
+                    // Adding chip damage back to player health
+                    player.Health += ChipDamageTotal;
+
+                    // Resetting chip damage
+                    // This should happen as soon as we exit the parry attempt state anyway
+                    // But just to eliminate possible race conditions
+                    ResetChipDamage(); 
                 }
             }
         }

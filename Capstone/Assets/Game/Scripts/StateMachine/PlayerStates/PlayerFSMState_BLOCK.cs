@@ -58,6 +58,7 @@ namespace Bladesmiths.Capstone
             // Turns the block detector box off
             playerBlockBox.SetActive(false);
             
+            // Turning block collision off and resetting its chip damage
             playerBlockBox.GetComponent<BlockCollision>().Active = false;
             playerBlockBox.GetComponent<BlockCollision>().ResetChipDamage(); 
 

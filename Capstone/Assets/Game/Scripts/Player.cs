@@ -192,6 +192,8 @@ namespace Bladesmiths.Capstone
         }
         public float Damage { get => currentSwordDamage; }
         
+        public float CurrentChipDamage { get => parryDetector.GetComponent<ParryCollision>().ChipDamageTotal; }
+
         public int Points
         {
             get => (int)points;
