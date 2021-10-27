@@ -37,7 +37,8 @@ namespace Bladesmiths.Capstone
 
         private BreakableBox thisBox;
 
-       public float Damage { get => damage; }
+        public float Damage { get => damage; }
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         public void Start()
         {

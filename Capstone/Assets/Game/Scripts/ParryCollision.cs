@@ -6,7 +6,7 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
-        private List<int> blockedObjectIDs = new List<int>();
+        public List<int> blockedObjectIDs = new List<int>();
 
         public ObjectController ObjectController { get; set; }
         public float ChipDamageTotal { get; private set; }
@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
         // Start is called before the first frame update
         void Start()
         {
-
+            ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
         }
 
         // Update is called once per frame
@@ -26,7 +26,8 @@ namespace Bladesmiths.Capstone
         public void BlockOccured(int id, float newChipDamageTotal)
         {
             blockedObjectIDs.Add(id);
-            ChipDamageTotal = newChipDamageTotal; 
+            ChipDamageTotal = newChipDamageTotal;
+            Debug.Log($"Chip Damage Updated: {ChipDamageTotal}");
         }
 
         /// <summary>
@@ -39,9 +40,10 @@ namespace Bladesmiths.Capstone
             blockedObjectIDs.Remove(blockedID);
         }
 
-        public void ResetChipDamage()
+        private void ResetChipDamage()
         {
-            ChipDamageTotal = 0; 
+            ChipDamageTotal = 0;
+            Debug.Log("Chip Damage Reset"); 
         }
 
         private void OnTriggerEnter(Collider other)
@@ -70,8 +72,13 @@ namespace Bladesmiths.Capstone
                     Player player = gameObject.GetComponentInParent<Player>();
                     player.parrySuccessful = true;
 
+                    // Adding the damaging ID 
+                    player.AddDamagingID(damagingObject.ID); 
+
                     // Adding chip damage back to player health
                     player.Health += ChipDamageTotal;
+
+                    Debug.Log($"Player Health Updated from {player.Health - ChipDamageTotal} to {player.Health}");
 
                     // Resetting chip damage
                     // This should happen as soon as we exit the parry attempt state anyway
@@ -79,6 +86,14 @@ namespace Bladesmiths.Capstone
                     ResetChipDamage(); 
                 }
             }
+        }
+
+        /// <summary>
+        /// Resets Chip Damage whenever this scipt is disabled
+        /// </summary>
+        private void OnDisable()
+        {
+            ResetChipDamage(); 
         }
     }
 }

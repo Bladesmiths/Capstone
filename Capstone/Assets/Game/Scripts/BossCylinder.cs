@@ -28,6 +28,7 @@ namespace Bladesmiths.Capstone
         public float Damage => damage;
         public ObjectController ObjectController { get; set; }
         public Team ObjectTeam { get; set; }
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         // Start is called before the first frame update
         void Start()

@@ -2296,6 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0f1e42fd531bf4cb15239ad8ca7ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockedObjectIDs: 
 --- !u!135 &931408999
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2462,8 +2463,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1446302459}
   - {fileID: 1077327152}
+  - {fileID: 1446302459}
   m_Father: {fileID: 647727162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2919,7 +2920,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 968065811}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2939,7 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.3135903, b: 0.3135903, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3710,7 +3711,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 968065811}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3982,7 +3983,7 @@ MonoBehaviour:
   player: {fileID: 1554415451}
   playerInput: {fileID: 1554415453}
   healthBarFill: {fileID: 1446302457}
-  chipDamageFill: {fileID: 0}
+  chipDamageFill: {fileID: 1077327153}
   pointsText: {fileID: 926484292}
   pauseMenu: {fileID: 2091896810}
   resumeButton: {fileID: 1095095217}

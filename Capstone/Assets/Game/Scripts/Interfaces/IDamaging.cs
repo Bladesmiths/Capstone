@@ -12,6 +12,7 @@ namespace Bladesmiths.Capstone
     {
         // Property declaration
         float Damage { get; }
+        bool Damaging { get; set; }
 
         public delegate void OnDamagingFinishedDelegate(int id);
 

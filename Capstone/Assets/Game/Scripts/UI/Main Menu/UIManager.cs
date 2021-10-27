@@ -24,6 +24,7 @@ namespace Bladesmiths.Capstone.UI
         [VerticalGroup("HUD/Split/Left")] [BoxGroup("HUD/Split/Left/Health Bar")]
         [LabelWidth(85)]
         [SerializeField] private Image healthBarFill;
+        [VerticalGroup("HUD/Split/Middle")] [BoxGroup("HUD/Split/Middle/Chip Damage Bar")]
         [LabelWidth(85)]
         [SerializeField] private Image chipDamageFill;
 

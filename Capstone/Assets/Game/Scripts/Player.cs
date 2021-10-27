@@ -204,6 +204,8 @@ namespace Bladesmiths.Capstone
             get => (int)maxPoints;
         }
 
+        public bool Damaging { get => damaging; set => damaging = value; }
+
         private void Awake()
         {
             Health = 1000;
