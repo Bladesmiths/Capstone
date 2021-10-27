@@ -446,7 +446,7 @@ namespace Bladesmiths.Capstone
 
         private void LateUpdate()
         {
-            CameraRotation();
+            //CameraRotation();
         }
 
         /// <summary>
