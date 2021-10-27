@@ -6,7 +6,7 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
-        public List<int> blockedObjectIDs = new List<int>();
+        private List<int> blockedObjectIDs = new List<int>();
 
         public ObjectController ObjectController { get; set; }
         public float ChipDamageTotal { get; private set; }
@@ -23,11 +23,15 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// Method hooked to block event that updates fields when a block occurs
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newChipDamageTotal"></param>
         public void BlockOccured(int id, float newChipDamageTotal)
         {
             blockedObjectIDs.Add(id);
             ChipDamageTotal = newChipDamageTotal;
-            Debug.Log($"Chip Damage Updated: {ChipDamageTotal}");
         }
 
         /// <summary>
@@ -40,10 +44,12 @@ namespace Bladesmiths.Capstone
             blockedObjectIDs.Remove(blockedID);
         }
 
+        /// <summary>
+        /// Resets the chip damage field
+        /// </summary>
         private void ResetChipDamage()
         {
             ChipDamageTotal = 0;
-            Debug.Log("Chip Damage Reset"); 
         }
 
         private void OnTriggerEnter(Collider other)
@@ -66,7 +72,6 @@ namespace Bladesmiths.Capstone
                 if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player &&
                     !blockedObjectIDs.Contains(damagingObject.ID))
                 {
-                    Debug.Log("Parry Triggered" + other.gameObject);
                     //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
                     Player player = gameObject.GetComponentInParent<Player>();
@@ -77,8 +82,6 @@ namespace Bladesmiths.Capstone
 
                     // Adding chip damage back to player health
                     player.Health += ChipDamageTotal;
-
-                    Debug.Log($"Player Health Updated from {player.Health - ChipDamageTotal} to {player.Health}");
 
                     // Resetting chip damage
                     // This should happen as soon as we exit the parry attempt state anyway

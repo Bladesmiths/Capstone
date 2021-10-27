@@ -12,6 +12,9 @@ namespace Bladesmiths.Capstone
     {
         // Property declaration
         float Damage { get; }
+
+        // This should probably get removed as soon as objects call their
+        // Damaging Finished event at the end of an animation or something instead of time-based
         bool Damaging { get; set; }
 
         public delegate void OnDamagingFinishedDelegate(int id);

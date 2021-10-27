@@ -95,6 +95,10 @@ namespace Bladesmiths.Capstone
 
         public abstract void Respawn();
 
+        /// <summary>
+        /// Add a damaging ID to the object and subscribe to that object's damaging event
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object to be added</param>
         public void AddDamagingID(int damagingID)
         {
             damagingObjectIDs.Add(damagingID);
