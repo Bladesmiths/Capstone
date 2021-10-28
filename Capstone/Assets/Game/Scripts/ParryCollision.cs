@@ -6,7 +6,7 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
-        private List<int> blockedObjectIDs = new List<int>();
+        private Player player; 
 
         public ObjectController ObjectController { get; set; }
         public float ChipDamageTotal { get; private set; }
@@ -15,6 +15,7 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
+            player = gameObject.transform.root.gameObject.GetComponent<Player>();
         }
 
         // Update is called once per frame
@@ -28,20 +29,9 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <param name="id"></param>
         /// <param name="newChipDamageTotal"></param>
-        public void BlockOccured(int id, float newChipDamageTotal)
+        public void BlockOccured(float newChipDamageTotal)
         {
-            blockedObjectIDs.Add(id);
             ChipDamageTotal = newChipDamageTotal;
-        }
-
-        /// <summary>
-        /// Removes an ID from the list of blocked IDs
-        /// If there are no more blocked IDs, then block is no longer triggered
-        /// </summary>
-        /// <param name="blockedID"></param>
-        public void RemoveBlockedID(int blockedID)
-        {
-            blockedObjectIDs.Remove(blockedID);
         }
 
         /// <summary>
@@ -70,11 +60,10 @@ namespace Bladesmiths.Capstone
                 // If the damaging object is not on the same team as the player
                 // And its ID has not already been blocked
                 if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player &&
-                    !blockedObjectIDs.Contains(damagingObject.ID))
+                    !player.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
                     //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
-                    Player player = gameObject.GetComponentInParent<Player>();
                     player.parrySuccessful = true;
 
                     // Adding the damaging ID 

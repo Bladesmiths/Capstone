@@ -247,7 +247,6 @@ namespace Bladesmiths.Capstone
 
             // Subscribing parry collision to block collision events to keep those fields updated
             blockDetector.GetComponent<BlockCollision>().OnBlock += parryDetector.GetComponent<ParryCollision>().BlockOccured;
-            blockDetector.GetComponent<BlockCollision>().OnRemoveBlockID += parryDetector.GetComponent<ParryCollision>().RemoveBlockedID;
 
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);

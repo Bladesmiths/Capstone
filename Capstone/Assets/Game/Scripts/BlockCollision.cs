@@ -7,6 +7,7 @@ namespace Bladesmiths.Capstone
     public class BlockCollision : MonoBehaviour
     {
         private List<int> blockedObjectIDs = new List<int>();
+        private Player player; 
 
         public ObjectController ObjectController { get; set; }
         public bool BlockTriggered { get; private set; }
@@ -15,17 +16,16 @@ namespace Bladesmiths.Capstone
         public float ChipDamageTotal { get; private set; }
 
 
-        public delegate void OnBlockDelegate(int id, float chipDamageTotal);
-        public delegate void OnRemoveBlockIDDelegate(int id); 
+        public delegate void OnBlockDelegate(float chipDamageTotal);
 
         // Event declaration
         public event OnBlockDelegate OnBlock;
-        public event OnRemoveBlockIDDelegate OnRemoveBlockID; 
 
         // Start is called before the first frame update
         void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
+            player = gameObject.transform.root.gameObject.GetComponent<Player>();
         }
 
         // Update is called once per frame
@@ -47,8 +47,6 @@ namespace Bladesmiths.Capstone
             {
                 BlockTriggered = false;
             }
-
-            OnRemoveBlockID(blockedID); 
         }
 
         /// <summary>
@@ -77,7 +75,7 @@ namespace Bladesmiths.Capstone
                 // If the damaging object is not on the same team as the player
                 // And its ID has not already been blocked
                 if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player && 
-                    !blockedObjectIDs.Contains(damagingObject.ID))
+                    !player.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
                     // Block has been triggered
                     BlockTriggered = true;
@@ -87,15 +85,12 @@ namespace Bladesmiths.Capstone
                     blockedObjectIDs.Add(damagingObject.ID);
                     damagingObject.DamagingFinished += RemoveBlockedID;
 
-                    // Get a reference to the player
-                    Player player = gameObject.transform.root.gameObject.GetComponent<Player>();
-
                     // Calculate the chip damage and make the Player take that damage
                     float blockedDamage = damagingObject.Damage * ChipDamagePercentage;
                     ChipDamageTotal += blockedDamage;
                     player.TakeDamage(damagingObject.ID, blockedDamage);
 
-                    OnBlock(damagingObject.ID, ChipDamageTotal); 
+                    OnBlock(ChipDamageTotal); 
 
                     // Debug stuff
                     Debug.Log($"Block Triggered by: {other.gameObject}");
