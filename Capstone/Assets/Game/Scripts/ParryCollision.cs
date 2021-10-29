@@ -37,7 +37,7 @@ namespace Bladesmiths.Capstone
         /// <summary>
         /// Resets the chip damage field
         /// </summary>
-        private void ResetChipDamage()
+        public void ResetChipDamage()
         {
             ChipDamageTotal = 0;
         }
