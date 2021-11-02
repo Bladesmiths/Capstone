@@ -75,8 +75,6 @@ namespace Bladesmiths.Capstone
         public bool parryEnd;
         public bool parrySuccessful;
         private float dodgeTimer;
-        [SerializeField] [Range(0.0f, 1.0f)]
-        private float chipDamagePercent;
         #endregion
 
         #region Cinemachine Target Fields
@@ -105,9 +103,8 @@ namespace Bladesmiths.Capstone
         #region Sword Fields
         [Header("Sword Fields")]
         [SerializeField]
-        private float currentSwordDamage;
         private Sword currentSword; 
-        private List<Sword> swords = new List<Sword>();
+        private List<GameObject> swords = new List<GameObject>();
         #endregion
 
         // Testing for damaging system
@@ -200,7 +197,7 @@ namespace Bladesmiths.Capstone
             get { return respawnRotation; }
             set { respawnRotation = value; }
         }
-        public float Damage { get => currentSwordDamage; }
+        public float Damage { get => currentSword.Damage; }
         
         public float CurrentChipDamage { get => parryDetector.GetComponent<ParryCollision>().ChipDamageTotal; }
 
@@ -215,6 +212,8 @@ namespace Bladesmiths.Capstone
         }
 
         public bool Damaging { get => damaging; set => damaging = value; }
+        public Sword CurrentSword { get => currentSword; }
+        public float ChipDamagePercentage { get => currentSword.ChipDamagePercentage; }
 
         private void Awake()
         {
@@ -244,10 +243,7 @@ namespace Bladesmiths.Capstone
             damaged = false;
             inState = false;
 
-
             parryEnd = false;
-
-            sword.GetComponent<Sword>().Player = this;
 
             // Creates the FSM
             FSM = new FiniteStateMachine();
@@ -294,12 +290,9 @@ namespace Bladesmiths.Capstone
             FSM.SetCurrentState(idleCombat);
 
             targetLock = GetComponent<TargetLock>();
-            blockDetector.GetComponent<BlockCollision>().ChipDamagePercentage = chipDamagePercent;
 
             // Temporary probably
             currentSword = sword.GetComponent<Sword>();
-            currentSwordDamage = currentSword.Damage;
-
         }
 
         /// <summary>

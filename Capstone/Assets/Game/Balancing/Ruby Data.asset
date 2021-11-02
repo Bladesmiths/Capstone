@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09effa0193d2c284faaf3ba204f63318, type: 3}
-  m_Name: BalancingData
+  m_Script: {fileID: 11500000, guid: 754d629cf6c847b43b0f9d274a37165b, type: 3}
+  m_Name: Ruby Data
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,6 +21,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  damage: 0
+  chipDamagePercentage: 0.4
+  lifeStealPercentage: 0
+  playerMovementMultiplier: 0.5
+  damageModifier: 0
+  blockedDamageModifier: 0
+  knockboackThreshold: 0
   parryDelay: 0.1
   parryLength: 0.1
   parryCooldown: 0.1
