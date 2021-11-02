@@ -21,6 +21,7 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class Player : Character, IDamaging
     {
+        #region Fields
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
         [SerializeField]
@@ -50,6 +51,7 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
+        #region Player FSM States
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
         private PlayerFSMState_PARRYSUCCESS parrySuccess;
         private PlayerFSMState_IDLE idleCombat;
@@ -62,9 +64,11 @@ namespace Bladesmiths.Capstone
         private PlayerFSMState_JUMP jump;
         private PlayerFSMState_BLOCK block;
         private PlayerFSMState_NULL nullState;
+        #endregion
 
-        private TargetLock targetLock; 
+        private TargetLock targetLock;
 
+        #region State Fields
         [Header("State Fields")]
         public bool inState;
         public bool damaged;
@@ -72,8 +76,10 @@ namespace Bladesmiths.Capstone
         public bool parrySuccessful;
         private float dodgeTimer;
         [SerializeField] [Range(0.0f, 1.0f)]
-        private float chipDamagePercent; 
+        private float chipDamagePercent;
+        #endregion
 
+        #region Cinemachine Target Fields
         [Header("Cinemachine Target Fields")]
         public float cinemachineTargetYaw;
         public float cinemachineTargetPitch;
@@ -84,7 +90,9 @@ namespace Bladesmiths.Capstone
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
         private bool LockCameraPosition = false;
+        #endregion
 
+        #region Grounded Fields
         [Header("Grounded Fields")]
         public LayerMask GroundLayers;
         public bool Grounded = true;
@@ -92,12 +100,15 @@ namespace Bladesmiths.Capstone
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
         [SerializeField] private float landTimeout;
+        #endregion
 
+        #region Sword Fields
         [Header("Sword Fields")]
         [SerializeField]
         private float currentSwordDamage;
         private Sword currentSword; 
-        private List<Sword> swords = new List<Sword>(); 
+        private List<Sword> swords = new List<Sword>();
+        #endregion
 
         // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
@@ -162,9 +173,6 @@ namespace Bladesmiths.Capstone
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
-        private float idRemovalTimer;
-
-
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]
@@ -178,8 +186,10 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private ReactiveFloat playerHealth;
         #endregion
+        #endregion
 
         public BalancingData CurrentBalancingData { get => currentBalancingData; }
+        public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
         public Vector3 RespawnPoint
         {
             get { return respawnPoint; }
@@ -192,6 +202,8 @@ namespace Bladesmiths.Capstone
         }
         public float Damage { get => currentSwordDamage; }
         
+        public float CurrentChipDamage { get => parryDetector.GetComponent<ParryCollision>().ChipDamageTotal; }
+
         public int Points
         {
             get => (int)points;
@@ -201,6 +213,8 @@ namespace Bladesmiths.Capstone
         {
             get => (int)maxPoints;
         }
+
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         private void Awake()
         {
@@ -240,6 +254,9 @@ namespace Bladesmiths.Capstone
 
             // Subscribe to the FSM's OnStateChange event
             FSM.OnStateChange += SpeedUpdate;
+
+            // Subscribing parry collision to block collision events to keep those fields updated
+            blockDetector.GetComponent<BlockCollision>().OnBlock += parryDetector.GetComponent<ParryCollision>().BlockOccured;
 
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);

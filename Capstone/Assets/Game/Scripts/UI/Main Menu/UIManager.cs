@@ -24,7 +24,10 @@ namespace Bladesmiths.Capstone.UI
         [VerticalGroup("HUD/Split/Left")] [BoxGroup("HUD/Split/Left/Health Bar")]
         [LabelWidth(85)]
         [SerializeField] private Image healthBarFill;
-        
+        [VerticalGroup("HUD/Split/Middle")] [BoxGroup("HUD/Split/Middle/Chip Damage Bar")]
+        [LabelWidth(85)]
+        [SerializeField] private Image chipDamageFill;
+
         [VerticalGroup("HUD/Split/Right")] [BoxGroup("HUD/Split/Right/Points UI")]
         [LabelWidth(70)]
         [SerializeField] private TextMeshProUGUI pointsText;
@@ -52,7 +55,7 @@ namespace Bladesmiths.Capstone.UI
         {
             if (player != null)
             {
-                UpdateHealth(player.Health, player.MaxHealth);
+                UpdateHealth(player.Health, player.CurrentChipDamage, player.MaxHealth);
                 UpdateScore(player.Points, player.MaxPoints);
             }
         }
@@ -101,10 +104,13 @@ namespace Bladesmiths.Capstone.UI
             }
         }
         
-        private void UpdateHealth(float currentHealth, float maxHealth)
+        private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
             float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
             healthBarFill.fillAmount = fillPercentage;
+
+            fillPercentage = Mathf.Clamp((currentHealth + currentChipDamage) / maxHealth, 0, 1);
+            chipDamageFill.fillAmount = fillPercentage; 
         }
 
         private void UpdateScore(int currentScore, int maxScore)

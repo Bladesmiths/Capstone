@@ -33,6 +33,7 @@ namespace Bladesmiths.Capstone
         {
             _player.inState = true;
             _player.justDied = true;
+            _player.ParryDetector.ResetChipDamage();
         }
 
         public override void OnExit()

@@ -49,6 +49,7 @@ namespace Bladesmiths.Capstone.Testing
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
         public Enums.Team ObjectTeam { get; set; }
         public float Damage { get => damage; }
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         /// <summary>
         /// Sets the projectile to its starting position

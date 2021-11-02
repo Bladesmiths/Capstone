@@ -36,6 +36,7 @@ namespace Bladesmiths.Capstone
         private bool damaging;
 
         public float Damage { get => damage; }
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         private void Start()
         {

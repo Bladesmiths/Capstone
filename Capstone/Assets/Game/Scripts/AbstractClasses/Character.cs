@@ -73,8 +73,7 @@ namespace Bladesmiths.Capstone
             // Stopping it from hurting this character again right away
             if (damage != 0)
             {
-                damagingObjectIDs.Add(damagingID);
-                ((IDamaging)objectController[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID; 
+                AddDamagingID(damagingID); 
             }
 
             // Log the amount of damage taken
@@ -95,6 +94,17 @@ namespace Bladesmiths.Capstone
         protected abstract void Die();
 
         public abstract void Respawn();
+
+        /// <summary>
+        /// Add a damaging ID to the object and subscribe to that object's damaging event
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object to be added</param>
+        public void AddDamagingID(int damagingID)
+        {
+            damagingObjectIDs.Add(damagingID);
+            ((IDamaging)objectController[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID;
+            ((IDamaging)objectController[damagingID].IdentifiedObject).Damaging = true;
+        }
 
         /// <summary>
         /// Remove an id from the damaging id list
