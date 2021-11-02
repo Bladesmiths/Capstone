@@ -93,7 +93,7 @@ namespace Bladesmiths.Capstone
                     OnBlock(ChipDamageTotal); 
 
                     // Debug stuff
-                    Debug.Log($"Block Triggered by: {other.gameObject}");
+                    //Debug.Log($"Block Triggered by: {other.gameObject}");
                 }
             }
         }
