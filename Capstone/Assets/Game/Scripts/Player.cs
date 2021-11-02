@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 using StarterAssets;
 
@@ -46,6 +47,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private Vector3 respawnPoint;
         [SerializeField] private Vector3 respawnRotation;
 
+        private float camRotation;
 
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
@@ -135,7 +137,7 @@ namespace Bladesmiths.Capstone
         private float verticalVelocity = 0.0f;
         private float terminalVelocity = 53.0f;
         public float SpeedChangeRate = 10.0f;
-        public float RotationSmoothTime = 0.12f;
+        public float RotationSmoothTime = 0.002f;
 
         public float FallTimeout = 0.15f;
         //private float landTimeout;
@@ -210,6 +212,7 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
 
+
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
 
@@ -229,7 +232,6 @@ namespace Bladesmiths.Capstone
             Health = MaxHealth;
             damaged = false;
             inState = false;
-
 
             parryEnd = false;
 
@@ -440,7 +442,7 @@ namespace Bladesmiths.Capstone
                 FadeToBlack();
             }
 
-
+            
 
         }
 
@@ -573,17 +575,38 @@ namespace Bladesmiths.Capstone
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
+            if(inputs.look != Vector2.zero)
+            {
+                camRotation = playerCamera.transform.eulerAngles.y;
+                Debug.Log("Angle Change");
+            }
+
+            if (inputs.look == Vector2.zero && inputs.move != Vector2.zero)
+            {
+                Debug.Log("Recentering");
+                playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+                GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new AxisState.Recentering(true, 1, 0.5f);
+
+                playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+                GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new AxisState.Recentering(true, 1, 0.5f);
+
+            }
+
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
             // are inputting when dodging or in another state
             if (inputs.move != Vector2.zero && speed != 0)
             {
-                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camRotation;
+                //Debug.Log("TargetRotation: " + targetRotation);
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
+                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);
+
                 // rotate to face input direction relative to camera position
-                this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                this.transform.rotation = Quaternion.Euler(0.0f, targetRotation, 0.0f);
                 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
+
             }
 
             if (verticalVelocity < terminalVelocity)
