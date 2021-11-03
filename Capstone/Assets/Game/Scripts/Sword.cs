@@ -48,7 +48,7 @@ namespace Bladesmiths.Capstone
 
         public void TriggerVFX()
         {
-            // TO-DO
+            // TODO: Implement TriggerVFX
         }
 
         void OnCollisionEnter(Collision col)

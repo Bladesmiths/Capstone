@@ -172,10 +172,6 @@ namespace Bladesmiths.Capstone
         {
 
         }
-        protected override void SwitchWeapon(int weaponSelect)
-        {
-
-        }
         protected override void Die()
         {
 

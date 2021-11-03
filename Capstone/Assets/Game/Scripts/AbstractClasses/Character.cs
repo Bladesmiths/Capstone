@@ -90,7 +90,6 @@ namespace Bladesmiths.Capstone
         protected abstract void Block();
         protected abstract void Parry();
         protected abstract void Dodge();
-        protected abstract void SwitchWeapon(int weaponSelect);
         protected abstract void Die();
 
         public abstract void Respawn();
