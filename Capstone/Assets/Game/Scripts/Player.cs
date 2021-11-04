@@ -137,7 +137,7 @@ namespace Bladesmiths.Capstone
         private float verticalVelocity = 0.0f;
         private float terminalVelocity = 53.0f;
         public float SpeedChangeRate = 10.0f;
-        public float RotationSmoothTime = 0.002f;
+        public float RotationSmoothTime = 1000f;
 
         public float FallTimeout = 0.15f;
         //private float landTimeout;
@@ -575,17 +575,15 @@ namespace Bladesmiths.Capstone
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
-            if(inputs.look != Vector2.zero)
-            {
-                camRotation = playerCamera.transform.eulerAngles.y;
-                Debug.Log("Angle Change");
-            }
+            
 
             if (inputs.look == Vector2.zero && inputs.move != Vector2.zero)
             {
                 Debug.Log("Recentering");
                 playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
                 GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new AxisState.Recentering(true, 1, 0.5f);
+
+                //playerCamera.GetComponent<Camera>().
 
                 playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
                 GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new AxisState.Recentering(true, 1, 0.5f);
@@ -597,14 +595,14 @@ namespace Bladesmiths.Capstone
             // are inputting when dodging or in another state
             if (inputs.move != Vector2.zero && speed != 0)
             {
-                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camRotation;
+                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
                 //Debug.Log("TargetRotation: " + targetRotation);
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
                 //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);
 
                 // rotate to face input direction relative to camera position
-                this.transform.rotation = Quaternion.Euler(0.0f, targetRotation, 0.0f);
+                this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
                 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
 
             }
@@ -616,6 +614,7 @@ namespace Bladesmiths.Capstone
 
             // move the player
             controller.Move(targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
+            //transform.position += (targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
             if (hasAnimator)
             {
