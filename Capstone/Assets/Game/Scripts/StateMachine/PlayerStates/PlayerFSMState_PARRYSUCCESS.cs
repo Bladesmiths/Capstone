@@ -66,7 +66,7 @@ namespace Bladesmiths.Capstone
         /// <returns>Coroutine variable</returns>
         private IEnumerator ParryCooldownTimer()
         {
-            yield return new WaitForSeconds(_player.CurrentSword.ParryCooldown);
+            yield return new WaitForSeconds(_player.ParryCooldown);
 
             _player.parryEnd = true;
         }

@@ -15,7 +15,7 @@ namespace Bladesmiths.Capstone
         List<int> DamagingObjectIDs { get; }
 
         // Method declaration
-        bool TakeDamage(int damagingID, float damage);
+        float TakeDamage(int damagingID, float damage);
         void RemoveDamagingID(int damagingID); 
     }
 }

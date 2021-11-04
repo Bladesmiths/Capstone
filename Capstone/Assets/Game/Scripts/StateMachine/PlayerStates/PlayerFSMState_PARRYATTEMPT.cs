@@ -51,7 +51,7 @@ namespace Bladesmiths.Capstone
         /// <returns>Coroutine variable</returns>
         private IEnumerator ParryDelayTimer()
         {
-            yield return new WaitForSeconds(_player.CurrentSword.ParryDelay);
+            yield return new WaitForSeconds(_player.ParryDelay);
 
             _playerParryBox.SetActive(true);
 
@@ -64,7 +64,7 @@ namespace Bladesmiths.Capstone
         /// <returns>Coroutine variable</returns>
         private IEnumerator ParryLengthTimer()
         {
-            yield return new WaitForSeconds(_player.CurrentSword.ParryLength);
+            yield return new WaitForSeconds(_player.ParryLength);
 
             _playerParryBox.SetActive(false);
             _player.StartCoroutine(ParryCooldownTimer());
@@ -77,7 +77,7 @@ namespace Bladesmiths.Capstone
         /// <returns>Coroutine variable</returns>
         private IEnumerator ParryCooldownTimer()
         {
-            yield return new WaitForSeconds(_player.CurrentSword.ParryCooldown);
+            yield return new WaitForSeconds(_player.ParryCooldown);
 
             _player.parryEnd = true;
         }

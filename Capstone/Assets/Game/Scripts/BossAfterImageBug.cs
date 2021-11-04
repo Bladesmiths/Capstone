@@ -6,15 +6,8 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class BossAfterImageBug : Character
+    public class BossAfterImageBug : Enemy
     {
-        // Gets a reference to the player
-        // Will be used for finding the player in the world
-        [SerializeField] private Player player;
-
-        private bool damaged = false;
-        private float timer = 0f;
-        private float attackTimer = 0f;
         private float moveTimer = 0f;
         private int flip = 1;
         private int index;
@@ -24,14 +17,7 @@ namespace Bladesmiths.Capstone
         public List<Vector3> movePoints = new List<Vector3>();
 
         // The event to call when damaging is finished
-        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
-
-        // Testing for damaging system
-        [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
-        private bool damaging;
+        public new event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         public void Start()
         {
@@ -40,8 +26,7 @@ namespace Bladesmiths.Capstone
             player = GameObject.Find("Player").GetComponent<Player>();
         }
 
-
-        private void Update()
+        public override void Update()
         {
             if (index >= movePoints.Count)
             {
@@ -54,13 +39,7 @@ namespace Bladesmiths.Capstone
                 
             }
 
-            
-
             transform.position = Vector3.Lerp(transform.position, movePoints[index], speed);
-
-
-            
-
 
             if (damaged)
             {
@@ -136,30 +115,15 @@ namespace Bladesmiths.Capstone
         {
             player.TakeDamage(ID, 1);
         }
-        protected override void ActivateAbility()
-        {
 
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
-        }
         protected override void Die()
         {
 
         }
+
         public override void Respawn()
         {
             throw new NotImplementedException();
         }
-
     }
 }

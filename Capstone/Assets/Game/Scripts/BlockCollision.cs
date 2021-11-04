@@ -85,7 +85,7 @@ namespace Bladesmiths.Capstone
                     damagingObject.DamagingFinished += RemoveBlockedID;
 
                     // Calculate the chip damage and make the Player take that damage
-                    float blockedDamage = damagingObject.Damage * player.CurrentSword.ChipDamagePercentage;
+                    float blockedDamage = damagingObject.Damage * player.ChipDamagePercentage;
                     ChipDamageTotal += blockedDamage;
                     player.TakeDamage(damagingObject.ID, blockedDamage);
 

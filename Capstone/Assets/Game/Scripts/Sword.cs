@@ -25,8 +25,7 @@ namespace Bladesmiths.Capstone
         public float ChipDamagePercentage { get => BalancingData.SwordData[swordType].ChipDamagePercentage; }
         public float LifeStealPercentage { get => BalancingData.SwordData[swordType].LifeStealPercentage; }
         public float PlayerMovementMultiplier { get => BalancingData.SwordData[swordType].PlayerMovementMultiplier; }
-        public float DamageModifier { get => BalancingData.SwordData[swordType].DamageModifier; }
-        public float BlockedDamageModifier { get => BalancingData.SwordData[swordType].BlockedDamageModifier; }
+        public float DamageTakenModifier { get => BalancingData.SwordData[swordType].DamageTakenModifier; }
         public float KnockbackTreshold { get => BalancingData.SwordData[swordType].KnockbackTreshold; }
         public float ParryDelay { get => BalancingData.SwordData[swordType].ParryDelay; }
         public float ParryLength { get => BalancingData.SwordData[swordType].ParryLength; }
@@ -55,7 +54,7 @@ namespace Bladesmiths.Capstone
         {
             if (col.gameObject.GetComponent<Enemy>())
             {
-                player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID, Damage);
+                player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID);
             }
         }
     }

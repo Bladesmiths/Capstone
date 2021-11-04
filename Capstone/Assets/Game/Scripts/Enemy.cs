@@ -15,11 +15,12 @@ namespace Bladesmiths.Capstone
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
-        [SerializeField] private Player player;
+        [SerializeField] 
+        protected Player player;
 
-        private bool damaged = false;
-        private float timer = 0f;
-        private float attackTimer = 0f;
+        protected bool damaged = false;
+        protected float timer = 0f;
+        protected float attackTimer = 0f;
 
         [SerializeField]
         protected float damage;
@@ -30,9 +31,9 @@ namespace Bladesmiths.Capstone
         // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
         [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
-        private bool damaging;
+        protected float damagingTimerLimit;
+        protected float damagingTimer;
+        protected bool damaging;
 
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
@@ -141,25 +142,9 @@ namespace Bladesmiths.Capstone
 
         }
 
-        protected override void Attack()
+        protected virtual void Attack()
         {
             player.TakeDamage(ID, 1);
-        }
-        protected override void ActivateAbility()
-        {
-
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
         }
 
         protected override void Die()
@@ -177,15 +162,15 @@ namespace Bladesmiths.Capstone
         /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
         /// <param name="damage">The amount of damage to be subtracted</param>
         /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
-        public override bool TakeDamage(int damagingID, float damage)
+        public override float TakeDamage(int damagingID, float damage)
         {
             // The resullt of Character's Take Damage
             // Was damage taken or not
-            bool damageResult = base.TakeDamage(damagingID, damage);
+            float damageResult = base.TakeDamage(damagingID, damage);
 
             // If damage was taken
             // Change the object to red and set damaged to true
-            if (damageResult)
+            if (damageResult > 0)
             {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 

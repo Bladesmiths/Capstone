@@ -202,8 +202,11 @@ namespace Bladesmiths.Capstone
 
         #region Properties from Swords
         public Sword CurrentSword { get => currentSword; }
-        public float ChipDamagePercentage { get => currentSword.ChipDamagePercentage; }
         public float Damage { get => currentSword.Damage; }
+        public float ChipDamagePercentage { get => currentSword.ChipDamagePercentage; }
+        public float ParryDelay { get => currentSword.ParryDelay; }
+        public float ParryLength { get => currentSword.ParryLength; }
+        public float ParryCooldown { get => currentSword.ParryCooldown; }
         #endregion
         #endregion
 
@@ -587,26 +590,6 @@ namespace Bladesmiths.Capstone
             }
         }
 
-        protected override void Attack()
-        {
-            // Physics.Raycast(transform.position + new Vector3(0, 1, 0), transform.TransformDirection(Vector3.forward), 2) && 
-        }
-        protected override void ActivateAbility()
-        {
-
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
-        }
         protected void SwitchSword(Enums.SwordType newSwordType)
         {
             if (newSwordType != currentSword.SwordType)
@@ -628,10 +611,10 @@ namespace Bladesmiths.Capstone
         /// Attack with the player's sword
         /// </summary>
         /// <param name="targetID">The id of the object to attack</param>
-        /// <param name="damage">The amount of damage to give to the target</param>
-        public void SwordAttack(int targetID, float damage)
+        public void SwordAttack(int targetID)
         {
-            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, damage);
+            float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+            Health += damageDealt * currentSword.LifeStealPercentage; 
 
             // Testing
             damaging = true;
@@ -643,25 +626,32 @@ namespace Bladesmiths.Capstone
         /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
         /// <param name="damage">The amount of damage to be subtracted</param>
         /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
-        public override bool TakeDamage(int damagingID, float damage)
+        public override float TakeDamage(int damagingID, float damage)
         {
             // If the player is not in invincibility frames
             // They can take damage
             if (dodge.canDmg)
             {
+                // If the player isn't currently blocking
+                // Apply the damage taken modifier
+                if (GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                {
+                    damage *= currentSword.DamageTakenModifier;
+                }
+
                 // The resullt of Character's Take Damage
                 // Was damage taken or not
-                bool damageResult = base.TakeDamage(damagingID, damage);
+                float damageResult = base.TakeDamage(damagingID, damage);
 
                 // If damage was taken
                 // Update the playerHealth field for analytics
-                if (damageResult)
+                if (damageResult > 0)
                 {
                     // Playtest 1
                     playerHealth.CurrentValue -= damage;
 
                     // Does not set damaged to true if block has been triggered
-                    // Might need to be changed slightly eventually to better
+                    // TODO: Might need to be changed slightly eventually to better
                     // account for player taking damage from behind them
                     damaged = (blockDetector.GetComponent<BlockCollision>().BlockTriggered) ? false : true;
                 }
@@ -670,8 +660,8 @@ namespace Bladesmiths.Capstone
                 return damageResult; 
             }
 
-            // Return false if the player cannot currently be damaged
-            return false; 
+            // Return 0 if the player cannot currently be damaged
+            return 0; 
         }
 
         /// <summary>
