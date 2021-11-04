@@ -87,6 +87,9 @@ namespace Bladesmiths.Capstone
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
         private bool LockCameraPosition = false;
+        [SerializeField]
+        private CinemachineFreeLook recenterCam;
+        private Vector3 baseCamPos;
 
         [Header("Grounded Fields")]
         public LayerMask GroundLayers;
@@ -220,6 +223,7 @@ namespace Bladesmiths.Capstone
 
             controller = GetComponent<CharacterController>();
             playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            baseCamPos = playerCamera.transform.position;
 
             hasAnimator = TryGetComponent(out animator);
             animIDGrounded = Animator.StringToHash("Grounded");
@@ -578,13 +582,43 @@ namespace Bladesmiths.Capstone
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
 
-            if (inputs.look != Vector2.zero)
+            //if (inputs.look != Vector2.zero)
             //{
             //    camRotation = playerCamera.transform.eulerAngles.y;
             //    Debug.Log("Angle Change");
             //}
 
-            //if (inputs.look == Vector2.zero && inputs.move != Vector2.zero)
+            if (inputs.look == Vector2.zero || inputs.move != Vector2.zero)
+            {
+                playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 0;
+                recenterCam.Priority = 1;
+
+                playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.transform.position = baseCamPos;
+
+                //playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+                //GetComponent<CinemachineFreeLook>().m_RecenterToTargetHeading = new AxisState.Recentering(true, 0, 0.01f);
+
+                //playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+                //GetComponent<CinemachineFreeLook>().m_YAxisRecentering = new AxisState.Recentering(true, 0, 0.01f);
+
+                playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 1;
+                recenterCam.Priority = 0;
+                //if (playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.transform.position == baseCamPos)
+                //{
+                //    playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+                //    GetComponent<CinemachineFreeLook>().m_RecenterToTargetHeading.m_enabled = false;
+
+                //    playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+                //    GetComponent<CinemachineFreeLook>().m_YAxisRecentering.m_enabled = false;
+
+                //    playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 1;
+                //    recenterCam.Priority = 0;
+                //    Debug.Log("moved back");
+                //}              
+
+            }
+
+
             //{
             //    Debug.Log("Recentering");
             //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
@@ -604,20 +638,15 @@ namespace Bladesmiths.Capstone
             //    GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new Cinemachine.AxisState.Recentering(false, 0, 0.01f);
             //    isRecentering = false;
             //}
+
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
             // are inputting when dodging or in another state
             if (inputs.move != Vector2.zero && speed != 0)
             {
-                if (isRecentering)
-                {
-                    targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camRotation;
-                }
-                else
-                {
-                    targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
 
-                }
+                
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
                 //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);
