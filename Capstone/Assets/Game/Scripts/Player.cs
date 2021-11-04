@@ -47,6 +47,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private Vector3 respawnPoint;
         [SerializeField] private Vector3 respawnRotation;
 
+        private bool isRecentering;
         private float camRotation;
 
         [OdinSerialize]
@@ -212,6 +213,7 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
 
+            isRecentering = false;
 
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
@@ -305,7 +307,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 0.9/1.5f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
+        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 1.1/1.5f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
 
         /// <summary>
         /// The condition for going between the IDLE and BLOCK state
@@ -575,28 +577,47 @@ namespace Bladesmiths.Capstone
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
-            
 
-            if (inputs.look == Vector2.zero && inputs.move != Vector2.zero)
-            {
-                Debug.Log("Recentering");
-                playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-                GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new AxisState.Recentering(true, 1, 0.5f);
+            if (inputs.look != Vector2.zero)
+            //{
+            //    camRotation = playerCamera.transform.eulerAngles.y;
+            //    Debug.Log("Angle Change");
+            //}
 
-                //playerCamera.GetComponent<Camera>().
+            //if (inputs.look == Vector2.zero && inputs.move != Vector2.zero)
+            //{
+            //    Debug.Log("Recentering");
+            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new Cinemachine.AxisState.Recentering(true, 0, 0.01f);
 
-                playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-                GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new AxisState.Recentering(true, 1, 0.5f);
+            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new Cinemachine.AxisState.Recentering(true, 0, 0.01f);
+            //    isRecentering = true;
+            //}
+            //else
+            //{
+            //    Debug.Log("Not Recentering");
+            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new Cinemachine.AxisState.Recentering(false, 0, 0.01f);
 
-            }
-
+            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
+            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new Cinemachine.AxisState.Recentering(false, 0, 0.01f);
+            //    isRecentering = false;
+            //}
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
             // are inputting when dodging or in another state
             if (inputs.move != Vector2.zero && speed != 0)
             {
-                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
-                //Debug.Log("TargetRotation: " + targetRotation);
+                if (isRecentering)
+                {
+                    targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + camRotation;
+                }
+                else
+                {
+                    targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+
+                }
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
                 //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);

@@ -236,7 +236,7 @@ namespace Bladesmiths.Capstone
                     ""id"": ""d1d171b6-19d8-47a6-ba3a-71b6a8e7b3c0"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=250,y=250)"",
+                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
