@@ -88,8 +88,10 @@ namespace Bladesmiths.Capstone
         private float CameraAngleOverride = 0.0f;
         private bool LockCameraPosition = false;
         [SerializeField]
-        private CinemachineFreeLook recenterCam;
-        private Vector3 baseCamPos;
+        private CinemachineFreeLook freeLookCam;
+        private bool recenter;
+        private float recenterTimer = 0f;
+        private float recenterTimerMax = 2f;
 
         [Header("Grounded Fields")]
         public LayerMask GroundLayers;
@@ -223,7 +225,6 @@ namespace Bladesmiths.Capstone
 
             controller = GetComponent<CharacterController>();
             playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            baseCamPos = playerCamera.transform.position;
 
             hasAnimator = TryGetComponent(out animator);
             animIDGrounded = Animator.StringToHash("Grounded");
@@ -290,6 +291,10 @@ namespace Bladesmiths.Capstone
             // Temporary probably
             currentSword = sword.GetComponent<Sword>();
             currentSwordDamage = currentSword.Damage;
+            //freeLookCam = playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineFreeLook>();
+            freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+            freeLookCam.m_YAxisRecentering.m_enabled = false;
+
 
         }
 
@@ -455,6 +460,7 @@ namespace Bladesmiths.Capstone
         private void LateUpdate()
         {
             //CameraRotation();
+
         }
 
         /// <summary>
@@ -582,62 +588,41 @@ namespace Bladesmiths.Capstone
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
 
-            //if (inputs.look != Vector2.zero)
-            //{
-            //    camRotation = playerCamera.transform.eulerAngles.y;
-            //    Debug.Log("Angle Change");
-            //}
-
-            if (inputs.look == Vector2.zero || inputs.move != Vector2.zero)
+            if(inputs.move == Vector2.zero)
             {
-                playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 0;
-                recenterCam.Priority = 1;
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+                freeLookCam.m_YAxisRecentering.m_enabled = true;
 
-                playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.transform.position = baseCamPos;
+                if(recenter)
+                {
+                    freeLookCam.m_RecenterToTargetHeading.RecenterNow();
+                    freeLookCam.m_YAxisRecentering.RecenterNow();
+                    recenter = false;
 
-                //playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-                //GetComponent<CinemachineFreeLook>().m_RecenterToTargetHeading = new AxisState.Recentering(true, 0, 0.01f);
+                }
 
-                //playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-                //GetComponent<CinemachineFreeLook>().m_YAxisRecentering = new AxisState.Recentering(true, 0, 0.01f);
+                
 
-                playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 1;
-                recenterCam.Priority = 0;
-                //if (playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.transform.position == baseCamPos)
-                //{
-                //    playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-                //    GetComponent<CinemachineFreeLook>().m_RecenterToTargetHeading.m_enabled = false;
-
-                //    playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-                //    GetComponent<CinemachineFreeLook>().m_YAxisRecentering.m_enabled = false;
-
-                //    playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = 1;
-                //    recenterCam.Priority = 0;
-                //    Debug.Log("moved back");
-                //}              
+            }
+            else
+            {
+                freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+                freeLookCam.m_YAxisRecentering.CancelRecentering();
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+                freeLookCam.m_YAxisRecentering.m_enabled = false;
 
             }
 
-
-            //{
-            //    Debug.Log("Recentering");
-            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new Cinemachine.AxisState.Recentering(true, 0, 0.01f);
-
-            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new Cinemachine.AxisState.Recentering(true, 0, 0.01f);
-            //    isRecentering = true;
-            //}
-            //else
-            //{
-            //    Debug.Log("Not Recentering");
-            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_RecenterToTargetHeading = new Cinemachine.AxisState.Recentering(false, 0, 0.01f);
-
-            //    playerCamera.GetComponent<Cinemachine.CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.
-            //    GetComponent<Cinemachine.CinemachineFreeLook>().m_YAxisRecentering = new Cinemachine.AxisState.Recentering(false, 0, 0.01f);
-            //    isRecentering = false;
-            //}
+            if (inputs.look == Vector2.zero)
+            {
+                recenterTimer += Time.deltaTime;
+                if(recenterTimer >= recenterTimerMax)
+                {
+                    recenter = true;
+                    recenterTimer = 0f;
+                }
+            }
+            
 
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
