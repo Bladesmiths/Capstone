@@ -32,6 +32,7 @@ namespace Bladesmiths.Capstone
         public float ParryCooldown { get => BalancingData.SwordData[swordType].ParryCooldown; }
         public bool IsActive { get; set; }
         public Enums.SwordType SwordType { get => swordType; }
+        public Transform Offset { get => offset; }
         private BalancingData BalancingData { get => player.CurrentBalancingData; }
         #endregion
 

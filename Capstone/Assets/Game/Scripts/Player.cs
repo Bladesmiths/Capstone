@@ -286,10 +286,12 @@ namespace Bladesmiths.Capstone
 
             targetLock = GetComponent<TargetLock>();
 
+            inputs.player = this;
+
             // Temporary
             // Should eventually be changed so it sets the player sword to quartz on start
             // from their dictionary of sword types to sword prefabs
-            currentSword = sword.GetComponent<Sword>();
+            currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
         }
 
         private void Update()
@@ -590,18 +592,26 @@ namespace Bladesmiths.Capstone
             }
         }
 
-        protected void SwitchSword(Enums.SwordType newSwordType)
+        public void SwitchSword(SwordType newSwordType)
         {
             if (newSwordType != currentSword.SwordType)
             {
+                swords[CurrentSword.SwordType].SetActive(false);
+                swords[newSwordType].SetActive(true);
+
                 currentSword = swords[newSwordType].GetComponent<Sword>();
 
-                // TODO: Sword Switching
-                // Change sword model
-                // Player sword switching animation
-                // Re-orient sword object according to new sword's offset transform
+                sword.transform.localPosition = currentSword.Offset.position;
+                sword.transform.localRotation = currentSword.Offset.rotation;
+                sword.transform.localScale = CurrentSword.Offset.localScale;
+
+                sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
+                sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
+
+                // TODO: Player sword switching animation
             }
         }
+
         protected override void Die()
         {
 
