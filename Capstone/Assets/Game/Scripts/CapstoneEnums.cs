@@ -12,11 +12,9 @@ namespace Bladesmiths.Capstone.Enums
     }
     public enum SwordType
     {
-        Base,
-        Sword1,
-        Sword2,
-        Sword3,
-        Sword4
+        Quartz, 
+        Ruby, 
+        Sapphire
     }
 
     [Flags]

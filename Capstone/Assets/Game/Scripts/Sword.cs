@@ -6,16 +6,38 @@ namespace Bladesmiths.Capstone
 {
     public class Sword : MonoBehaviour
     {
-        // This is arbitrary and temporary
-        private float damage = 5;
+        #region Fields
+        [SerializeField]
+        private List<AnimationClip> swordSwings = new List<AnimationClip>();
+        [SerializeField]
+        private List<GameObject> vfx = new List<GameObject>();
+        [SerializeField]
+        private GameObject swordModel; 
+        [SerializeField]
+        private Enums.SwordType swordType;
+        [SerializeField]
+        private Transform offset;
+        private Player player;
+        #endregion
 
-        public Player Player { get; set; }
-        public float Damage { get => damage; }
-        
+        #region Properties
+        public float Damage { get => BalancingData.SwordData[swordType].Damage; }
+        public float ChipDamagePercentage { get => BalancingData.SwordData[swordType].ChipDamagePercentage; }
+        public float LifeStealPercentage { get => BalancingData.SwordData[swordType].LifeStealPercentage; }
+        public float PlayerMovementMultiplier { get => BalancingData.SwordData[swordType].PlayerMovementMultiplier; }
+        public float DamageTakenModifier { get => BalancingData.SwordData[swordType].DamageTakenModifier; }
+        public float KnockbackTreshold { get => BalancingData.SwordData[swordType].KnockbackTreshold; }
+        public float ParryDelay { get => BalancingData.SwordData[swordType].ParryDelay; }
+        public float ParryLength { get => BalancingData.SwordData[swordType].ParryLength; }
+        public float ParryCooldown { get => BalancingData.SwordData[swordType].ParryCooldown; }
+        public bool IsActive { get; set; }
+        public Enums.SwordType SwordType { get => swordType; }
+        private BalancingData BalancingData { get => player.CurrentBalancingData; }
+        #endregion
+
         void Start()
         {
-            
-
+            player = gameObject.transform.root.GetComponent<Player>(); 
         }
 
         void Update()
@@ -23,11 +45,16 @@ namespace Bladesmiths.Capstone
 
         }
 
+        public void TriggerVFX()
+        {
+            // TODO: Implement TriggerVFX
+        }
+
         void OnCollisionEnter(Collision col)
         {
             if (col.gameObject.GetComponent<Enemy>())
             {
-                Player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID, damage);
+                player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID);
             }
         }
     }

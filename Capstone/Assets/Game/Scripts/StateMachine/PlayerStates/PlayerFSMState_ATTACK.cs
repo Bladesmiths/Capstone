@@ -63,7 +63,7 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
-            float targetSpeed = 1.8f;
+            //float targetSpeed = 1.8f;
 
             if (_verticalVelocity < _terminalVelocity)
             {

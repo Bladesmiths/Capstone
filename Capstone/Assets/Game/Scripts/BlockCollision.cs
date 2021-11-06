@@ -12,7 +12,6 @@ namespace Bladesmiths.Capstone
         public ObjectController ObjectController { get; set; }
         public bool BlockTriggered { get; private set; }
         public bool Active { get; set; }
-        public float ChipDamagePercentage { get; set; }
         public float ChipDamageTotal { get; private set; }
 
 
@@ -86,7 +85,7 @@ namespace Bladesmiths.Capstone
                     damagingObject.DamagingFinished += RemoveBlockedID;
 
                     // Calculate the chip damage and make the Player take that damage
-                    float blockedDamage = damagingObject.Damage * ChipDamagePercentage;
+                    float blockedDamage = damagingObject.Damage * player.ChipDamagePercentage;
                     ChipDamageTotal += blockedDamage;
                     player.TakeDamage(damagingObject.ID, blockedDamage);
 

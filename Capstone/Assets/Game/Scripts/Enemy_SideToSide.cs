@@ -6,29 +6,12 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy_SideToSide : Character, IDamaging
+    public class Enemy_SideToSide : Enemy, IDamaging
     {
-        // Gets a reference to the player
-        // Will be used for finding the player in the world
-        [SerializeField] private Player player;
-
-        private bool damaged = false;
-        private float timer = 0f;
-        private float attackTimer = 0f;
         private int movePointsIndex;
 
-        [SerializeField]
-        private float damage; 
-
         // The event to call when damaging is finished
-        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
-
-        // Testing for damaging system
-        [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
-        private bool damaging;
+        public new event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         [SerializeField][Range(0, 1)]
         private float speed;
@@ -36,9 +19,6 @@ namespace Bladesmiths.Capstone
         private List<Transform> movePoints = new List<Transform>();
 
         private BreakableBox thisBox;
-
-        public float Damage { get => damage; }
-        public bool Damaging { get => damaging; set => damaging = value; }
 
         public void Start()
         {
@@ -49,8 +29,7 @@ namespace Bladesmiths.Capstone
             FindNextPoint();
         }
 
-
-        private void Update()
+        public override void Update()
         {
             // Checks if the enemy is equal to the position
             if (transform.position == movePoints[movePointsIndex].position)
@@ -156,30 +135,12 @@ namespace Bladesmiths.Capstone
         {
             player.TakeDamage(ID, 1);
         }
-        protected override void ActivateAbility()
-        {
 
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
-        }
-        protected override void SwitchWeapon(int weaponSelect)
-        {
-
-        }
         protected override void Die()
         {
 
         }
+
         public override void Respawn()
         {
             throw new NotImplementedException();
