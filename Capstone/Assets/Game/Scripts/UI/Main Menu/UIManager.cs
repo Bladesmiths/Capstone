@@ -16,6 +16,9 @@ namespace Bladesmiths.Capstone.UI
         
         [TitleGroup("Player")] 
         [SerializeField] private Player player;
+        [SerializeField] private Cinemachine.CinemachineFreeLook camera;
+        private float maxSpeedX;
+        private float maxSpeedY;
 
         [SerializeField] private PlayerInput playerInput;
         
@@ -46,6 +49,9 @@ namespace Bladesmiths.Capstone.UI
             isPaused = false;
             if (player != null)
                 UpdateScore(0, player.MaxPoints);
+
+            maxSpeedX = camera.m_XAxis.m_MaxSpeed;
+            maxSpeedY = camera.m_YAxis.m_MaxSpeed;
         }
 
         void LateUpdate()
@@ -67,7 +73,13 @@ namespace Bladesmiths.Capstone.UI
 
                 pauseMenu.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
-                
+
+                // Allows the camera fto move and recenter
+                camera.m_XAxis.m_MaxSpeed = maxSpeedX;
+                camera.m_YAxis.m_MaxSpeed = maxSpeedY;
+                camera.m_RecenterToTargetHeading.m_enabled = true;
+                camera.m_YAxisRecentering.m_enabled = true;
+
                 Time.timeScale = 1;
             }
         }
@@ -93,7 +105,13 @@ namespace Bladesmiths.Capstone.UI
                 playerInput.SwitchCurrentActionMap("UI");
                 EventSystem.current.SetSelectedGameObject(resumeButton);
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
-                
+
+                // Stops the camera from moving and stops the recentering
+                camera.m_XAxis.m_MaxSpeed = 0f;
+                camera.m_YAxis.m_MaxSpeed = 0f;
+                camera.m_RecenterToTargetHeading.m_enabled = false;
+                camera.m_YAxisRecentering.m_enabled = false;
+
                 //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
                 

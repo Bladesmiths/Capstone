@@ -581,48 +581,68 @@ namespace Bladesmiths.Capstone
             if (inputs.move == Vector2.zero) speed = 0.0f;
 
             // Animator input
-            //animator.SetFloat(animIDForward, speed / targetSpeed);
+            // animator.SetFloat(animIDForward, speed / targetSpeed);
             animBlend = Mathf.Lerp(animBlend, speed, Time.deltaTime * SpeedChangeRate);
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
+            #region Possible Recentering Implementation. Currently not working
+            // Checks to see if the player is moving
+            //if(inputs.move == Vector2.zero)
+            //{
+            //     If they aren't moving start the countdown to recenter
+            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+            //    freeLookCam.m_YAxisRecentering.m_enabled = true;
 
-            if(inputs.move == Vector2.zero)
-            {
-                freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
-                freeLookCam.m_YAxisRecentering.m_enabled = true;
+            //    if(recenter)
+            //    {
+            //         Force recentering if the input 
+            //        recenter = false;
+            //        freeLookCam.m_RecenterToTargetHeading.RecenterNow();
+            //        freeLookCam.m_YAxisRecentering.RecenterNow();
 
-                if(recenter)
-                {
-                    freeLookCam.m_RecenterToTargetHeading.RecenterNow();
-                    freeLookCam.m_YAxisRecentering.RecenterNow();
-                    recenter = false;
+            //    }
 
-                }
 
-                
 
-            }
-            else
-            {
-                freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
-                freeLookCam.m_YAxisRecentering.CancelRecentering();
-                freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
-                freeLookCam.m_YAxisRecentering.m_enabled = false;
+            //}
+            //else
+            //{
+            //     If the player moves stop recentering
+            //    if (recenter == true)
+            //    {
+            //        recenterTimer = 0;
+            //        recenter = false;
+            //    }
+            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
+            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+            //    freeLookCam.m_YAxisRecentering.m_enabled = false;
 
-            }
+            //}
 
-            if (inputs.look == Vector2.zero)
-            {
-                recenterTimer += Time.deltaTime;
-                if(recenterTimer >= recenterTimerMax)
-                {
-                    recenter = true;
-                    recenterTimer = 0f;
-                }
-            }
-            
+            // If the player isn't moving the second stick or mouse
+            //if (inputs.look == Vector2.zero)
+            //{
+            //    recenterTimer += Time.deltaTime;
+            //    Debug.Log(recenter);
+            //    Debug.Log(recenterTimer);
+            //    if(recenterTimer >= recenterTimerMax)
+            //    {
+            //         Start recentering the camera
+            //        recenter = true;
+            //        recenterTimer = 0f;
+            //    }
+            //}
+            //else
+            //{
+            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
+            //    recenterTimer = 0f;
+
+            //}
+            #endregion
 
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they

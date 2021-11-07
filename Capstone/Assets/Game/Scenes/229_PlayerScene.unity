@@ -4452,6 +4452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1554415451}
+  camera: {fileID: 175940133}
   playerInput: {fileID: 1554415453}
   healthBarFill: {fileID: 1446302457}
   pointsText: {fileID: 926484292}
