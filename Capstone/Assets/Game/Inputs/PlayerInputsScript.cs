@@ -99,7 +99,8 @@ namespace Bladesmiths.Capstone
 		
 		public void OnSwitchSwordSpecific(InputValue value)
         {
-			player.SwitchSword((Enums.SwordType)(value.Get<float>() - 1));
+			currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
+			player.SwitchSword(currentSwordType);
         }
         #endregion
 

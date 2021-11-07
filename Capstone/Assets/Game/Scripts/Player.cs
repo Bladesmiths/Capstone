@@ -188,6 +188,7 @@ namespace Bladesmiths.Capstone
         #endregion
 
         #region Properties
+        public PlayerInputsScript Inputs { get => inputs; }
         public BalancingData CurrentBalancingData { get => currentBalancingData; }
 
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
@@ -592,19 +593,29 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        /// <summary>
+        /// Switches the players sword to a new sword
+        /// </summary>
+        /// <param name="newSwordType"></param>
         public void SwitchSword(SwordType newSwordType)
         {
+            // Check to make sure the new sword is not the old sword
+            // because that's a waste of time
             if (newSwordType != currentSword.SwordType)
             {
+                // Set the old sword to inactive and the new to active
                 swords[CurrentSword.SwordType].SetActive(false);
                 swords[newSwordType].SetActive(true);
 
+                // Update the current sword field
                 currentSword = swords[newSwordType].GetComponent<Sword>();
 
+                // Update the position according to offset
                 sword.transform.localPosition = currentSword.Offset.position;
                 sword.transform.localRotation = currentSword.Offset.rotation;
                 sword.transform.localScale = CurrentSword.Offset.localScale;
 
+                // Update the box collider dimensions
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
                 sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
 
@@ -661,7 +672,8 @@ namespace Bladesmiths.Capstone
                     playerHealth.CurrentValue -= damage;
 
                     // Does not set damaged to true if block has been triggered
-                    // TODO: Might need to be changed slightly eventually to better
+                    // TODO: Better implementation of damaged flag
+                    // Might need to be changed slightly eventually to better
                     // account for player taking damage from behind them
                     damaged = (blockDetector.GetComponent<BlockCollision>().BlockTriggered) ? false : true;
                 }

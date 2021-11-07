@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
+    /// <summary>
+    /// Represents the player's sword and its behaviors
+    /// </summary>
     public class Sword : MonoBehaviour
     {
         #region Fields
@@ -41,10 +44,7 @@ namespace Bladesmiths.Capstone
             player = gameObject.transform.root.GetComponent<Player>(); 
         }
 
-        void Update()
-        {
-
-        }
+        void Update() { }
 
         public void TriggerVFX()
         {
