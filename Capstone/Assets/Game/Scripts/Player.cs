@@ -587,6 +587,22 @@ namespace Bladesmiths.Capstone
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
+            if(inputs.move != Vector2.zero)
+            {
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+                freeLookCam.m_YAxisRecentering.m_enabled = false;
+                freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+                freeLookCam.m_YAxisRecentering.CancelRecentering();
+
+            }
+            else
+            {
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+                freeLookCam.m_YAxisRecentering.m_enabled = true;
+            }
+
+
+
             #region Possible Recentering Implementation. Currently not working
             // Checks to see if the player is moving
             //if(inputs.move == Vector2.zero)
