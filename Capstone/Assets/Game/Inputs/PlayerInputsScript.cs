@@ -25,6 +25,9 @@ namespace Bladesmiths.Capstone
 		[Header("Movement Settings")]
 		public bool analogMovement;
 
+		[Header("UI Objects")]
+		public UI.UIManager uiManager; 
+
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
@@ -158,6 +161,7 @@ namespace Bladesmiths.Capstone
 				player.SwitchSword(currentSwordType); 
             }
 
+			uiManager.SetMaskActive(swordSelectActive);
 			playerLookCamera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = !swordSelectActive;
         }
         #endregion

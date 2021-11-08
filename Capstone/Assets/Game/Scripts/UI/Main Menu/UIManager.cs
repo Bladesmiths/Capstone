@@ -51,6 +51,8 @@ namespace Bladesmiths.Capstone.UI
         private Dictionary<Enums.SwordType, Image> gemImages = new Dictionary<Enums.SwordType, Image>();
 
         [SerializeField]
+        private GameObject swordSelectMask; 
+        [SerializeField]
         private Enums.SwordType currentSwordSelect; 
 
         [TitleGroup("Menus")] 
@@ -158,6 +160,10 @@ namespace Bladesmiths.Capstone.UI
             }
         }
 
+        public void SetMaskActive(bool active)
+        {
+            swordSelectMask.SetActive(active);
+        }
     }
 }
 
