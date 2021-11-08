@@ -220,6 +220,8 @@ namespace Bladesmiths.Capstone
         #endregion
         #endregion
 
+        #endregion
+
         private void Awake()
         {
             Health = 1000;
@@ -823,4 +825,4 @@ namespace Bladesmiths.Capstone
             }
         }
     }
-}
+} 

@@ -188,7 +188,7 @@ namespace Bladesmiths.Capstone
                 Player playerComp = playerCamRoot.transform.parent.GetComponent<Player>();
                 playerComp.cinemachineTargetPitch = targetLockCam.transform.rotation.eulerAngles.x;
                 playerComp.cinemachineTargetYaw = targetLockCam.transform.rotation.eulerAngles.y;
-                playerComp.CameraRotation();
+                //playerComp.CameraRotation();
             }
         }
 
