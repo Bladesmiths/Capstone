@@ -14,8 +14,12 @@ namespace Bladesmiths.Capstone
     {
         #region Player Fields
         [Header("Player")]
+        // TODO: Implement Sword Switching Delay
+        [SerializeField] [Tooltip("The time it takes to switch swords")]
+        private float swordSwitchingTime; 
+
         [OdinSerialize] [Tooltip("The player's swords")]
-        private Dictionary<Enums.SwordType, SwordData> swordData = new Dictionary<Enums.SwordType, SwordData>(); 
+        private Dictionary<Enums.SwordType, SwordData> swordData = new Dictionary<Enums.SwordType, SwordData>();
         #endregion
 
         #region Enemy Fields
@@ -27,7 +31,8 @@ namespace Bladesmiths.Capstone
         #endregion
 
         #region Player Properties
-        public Dictionary<Enums.SwordType, SwordData> SwordData { get => swordData; }
+        public float SwordSwitchingTime => SwordSwitchingTime;
+        public Dictionary<Enums.SwordType, SwordData> SwordData => swordData;
         #endregion
     }
 }

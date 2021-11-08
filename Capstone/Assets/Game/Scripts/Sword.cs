@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
+    /// <summary>
+    /// Represents the player's sword and its behaviors
+    /// </summary>
     public class Sword : MonoBehaviour
     {
         #region Fields
@@ -32,6 +35,7 @@ namespace Bladesmiths.Capstone
         public float ParryCooldown { get => BalancingData.SwordData[swordType].ParryCooldown; }
         public bool IsActive { get; set; }
         public Enums.SwordType SwordType { get => swordType; }
+        public Transform Offset { get => offset; }
         private BalancingData BalancingData { get => player.CurrentBalancingData; }
         #endregion
 
@@ -40,10 +44,7 @@ namespace Bladesmiths.Capstone
             player = gameObject.transform.root.GetComponent<Player>(); 
         }
 
-        void Update()
-        {
-
-        }
+        void Update() { }
 
         public void TriggerVFX()
         {

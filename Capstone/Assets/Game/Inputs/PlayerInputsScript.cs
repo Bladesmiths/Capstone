@@ -9,6 +9,7 @@ namespace Bladesmiths.Capstone
 	public class PlayerInputsScript : MonoBehaviour
 	{
 		[Header("Character Input Values")]
+		public Player player; 
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
@@ -17,9 +18,15 @@ namespace Bladesmiths.Capstone
 		public bool parry = false;
 		public bool block = false;
 		public bool dodge = false;
+		public bool swordSelectActive = false;
+		public Enums.SwordType currentSwordType;
+		public GameObject playerLookCamera; 
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
+
+		[Header("UI Objects")]
+		public UI.UIManager uiManager; 
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -27,15 +34,15 @@ namespace Bladesmiths.Capstone
 		public bool cursorInputForLook = true;
 #endif
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnMove(InputValue value)
+        #region On Input Methods
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
 
 		public void OnLook(InputValue value)
 		{
-			if (cursorInputForLook)
+			if (cursorInputForLook && !swordSelectActive)
 			{
 				LookInput(value.Get<Vector2>());
 			}
@@ -70,13 +77,38 @@ namespace Bladesmiths.Capstone
 		{
 			DodgeInput(value.isPressed);
 		}
+
+		public void OnOpenSwordSelector(InputValue value)
+		{
+			OpenSwordSelectInput(value.isPressed);
+		}
+
+		public void OnSwitchSword(InputValue value)
+        {
+			if (swordSelectActive)
+            {
+				currentSwordType += (int)value.Get<float>();
+
+				if (currentSwordType < Enums.SwordType.Quartz)
+                {
+					currentSwordType = Enums.SwordType.Sapphire;
+                }
+				else if (currentSwordType > Enums.SwordType.Sapphire)
+                {
+					currentSwordType = Enums.SwordType.Quartz;
+                }
+			}
+        }
 		
-#else
-	// old input sys if we do decide to have it (most likely wont)...
-#endif
+		public void OnSwitchSwordSpecific(InputValue value)
+        {
+			currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
+			player.SwitchSword(currentSwordType);
+        }
+        #endregion
 
-
-		public void MoveInput(Vector2 newMoveDirection)
+        #region Input Helper Methods
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		}
@@ -115,11 +147,29 @@ namespace Bladesmiths.Capstone
 		{
 			dodge = newDodgeRollState;
 		}
-		
+
+		public void OpenSwordSelectInput(bool newSwordSelectState)
+        {
+			swordSelectActive = newSwordSelectState;
+			
+			if (swordSelectActive)
+            {
+				currentSwordType = player.CurrentSword.SwordType;
+            }
+			else
+            {
+				player.SwitchSword(currentSwordType); 
+            }
+
+			uiManager.SetMaskActive(swordSelectActive);
+			playerLookCamera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = !swordSelectActive;
+        }
+        #endregion
+
 
 #if !UNITY_IOS || !UNITY_ANDROID
 
-		private void OnApplicationFocus(bool hasFocus)
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}
