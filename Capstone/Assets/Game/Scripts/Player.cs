@@ -81,8 +81,6 @@ namespace Bladesmiths.Capstone
         public float cinemachineTargetYaw;
         public float cinemachineTargetPitch;
         private const float threshold = 0.01f;
-        [SerializeField] 
-        public GameObject CinemachineCameraTarget;
         private float TopClamp = 70.0f;
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
@@ -291,11 +289,6 @@ namespace Bladesmiths.Capstone
             // Temporary probably
             currentSword = sword.GetComponent<Sword>();
             currentSwordDamage = currentSword.Damage;
-            //freeLookCam = playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineFreeLook>();
-            //freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
-            //freeLookCam.m_YAxisRecentering.m_enabled = true;
-
-
         }
 
         /// <summary>
@@ -486,32 +479,6 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
-        /// Allows for the camera to rotate with the player
-        /// </summary>
-        public void CameraRotation()
-        {
-            // if there is an input and camera position is not fixed
-            if (inputs.look.sqrMagnitude >= threshold && !LockCameraPosition)
-            {
-                cinemachineTargetYaw += inputs.look.x * Time.deltaTime;
-                cinemachineTargetPitch += inputs.look.y * Time.deltaTime;
-            }
-
-            // clamp our rotations so our values are limited 360 degrees
-            cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
-
-            // Don't update the rotation of the camera's target if target lock is active
-            //if (!targetLock.Active)
-            //{
-            //    // Cinemachine will follow this target
-            //    CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-            //}
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-
-        }
-
-        /// <summary>
         /// Sets the angle for the camera going around the player
         /// </summary>
         /// <param name="lfAngle"></param>
@@ -593,15 +560,12 @@ namespace Bladesmiths.Capstone
                 freeLookCam.m_YAxisRecentering.m_enabled = false;
                 freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
                 freeLookCam.m_YAxisRecentering.CancelRecentering();
-
             }
             else
             {
                 freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
                 freeLookCam.m_YAxisRecentering.m_enabled = true;
             }
-
-
 
             #region Possible Recentering Implementation. Currently not working
             // Checks to see if the player is moving
@@ -619,8 +583,6 @@ namespace Bladesmiths.Capstone
             //        freeLookCam.m_YAxisRecentering.RecenterNow();
 
             //    }
-
-
 
             //}
             //else
@@ -666,7 +628,6 @@ namespace Bladesmiths.Capstone
             if (inputs.move != Vector2.zero && speed != 0)
             {
                 targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
-
                 
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
 
@@ -685,7 +646,6 @@ namespace Bladesmiths.Capstone
 
             // move the player
             controller.Move(targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
-            //transform.position += (targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime);
 
             if (hasAnimator)
             {

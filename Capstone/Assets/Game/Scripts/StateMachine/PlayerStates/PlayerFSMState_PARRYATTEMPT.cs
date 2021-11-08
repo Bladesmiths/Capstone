@@ -15,7 +15,6 @@ namespace Bladesmiths.Capstone
         private Player _player;
         private PlayerInputsScript _input;
         private Animator _animator;
-        
 
         // The block object that notifies if the player has blocked something
         private GameObject _playerParryBox;
@@ -34,8 +33,6 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
-            
-
             // Start the timer to enable the parry system after a set time
             _player.StartCoroutine(ParryDelayTimer()); 
         }

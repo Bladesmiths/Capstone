@@ -117,7 +117,7 @@ namespace Bladesmiths.Capstone.Testing {
             player.GetComponent<CharacterController>().enabled = true;
 
             Player playerComponent = player.GetComponent<Player>();
-            playerComponent.CinemachineCameraTarget.transform.rotation = Quaternion.identity;
+            //playerComponent.CinemachineCameraTarget.transform.rotation = Quaternion.identity;
             playerComponent.cinemachineTargetYaw = 0;
             playerComponent.cinemachineTargetPitch = 0;
 
