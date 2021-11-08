@@ -56,6 +56,7 @@ namespace Bladesmiths.Capstone
             _input.parry = false;
             _playerParryBox.SetActive(false);
             _player.parryEnd = false;
+            _player.parrySuccessful = false;
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Bladesmiths.Capstone
         /// <returns>Coroutine variable</returns>
         private IEnumerator ParryCooldownTimer()
         {
-            yield return new WaitForSeconds(_player.CurrentBalancingData.ParryCooldown);
+            yield return new WaitForSeconds(_player.ParryCooldown);
 
             _player.parryEnd = true;
         }

@@ -36,8 +36,7 @@ namespace Bladesmiths.Capstone
                 {
                     player = other.transform.root.gameObject.GetComponent<Player>();
                     // Set the players respawn point to this if passing through it for the first time
-                    player.RespawnPoint = respawnPoint;
-                    player.RespawnRotation = respawnRotation;
+                    player.SetRespawn(respawnPoint, respawnRotation);
                     hasActivated = true;
                 }
             }

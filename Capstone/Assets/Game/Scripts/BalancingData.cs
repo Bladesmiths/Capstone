@@ -14,14 +14,12 @@ namespace Bladesmiths.Capstone
     {
         #region Player Fields
         [Header("Player")]
-        [SerializeField] [Tooltip("Length of time betwen releasing block and parry becoming active")]
-        private float parryDelay;
+        // TODO: Implement Sword Switching Delay
+        [SerializeField] [Tooltip("The time it takes to switch swords")]
+        private float swordSwitchingTime; 
 
-        [SerializeField] [Tooltip("Length of time parry is active")]
-        private float parryLength;
-
-        [SerializeField] [Tooltip("Length of time after parry ceases to be active that the player cannot act")]
-        private float parryCooldown;
+        [OdinSerialize] [Tooltip("The player's swords")]
+        private Dictionary<Enums.SwordType, SwordData> swordData = new Dictionary<Enums.SwordType, SwordData>();
         #endregion
 
         #region Enemy Fields
@@ -33,9 +31,8 @@ namespace Bladesmiths.Capstone
         #endregion
 
         #region Player Properties
-        public float ParryDelay { get => parryDelay; }
-        public float ParryLength { get => parryLength; }
-        public float ParryCooldown { get => parryCooldown; }
+        public float SwordSwitchingTime => SwordSwitchingTime;
+        public Dictionary<Enums.SwordType, SwordData> SwordData => swordData;
         #endregion
     }
 }

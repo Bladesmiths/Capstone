@@ -6,12 +6,8 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class EnemySwing : Character, IDamaging
+    public class EnemySwing : Enemy, IDamaging
     {
-        // Gets a reference to the player
-        // Will be used for finding the player in the world
-        private Player player;
-
         private float rotate;
         private float speed = 60;
         private bool isBroken = false;
@@ -22,20 +18,8 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject enemyObject;
 
-        [SerializeField]
-        private float damage = 10;
-
         // The event to call when damaging is finished
-        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
-
-        // Testing for damaging system
-        [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
-        private bool damaging;
-
-        public float Damage { get => damage; }
+        public new event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         private void Start()
         {
@@ -43,7 +27,7 @@ namespace Bladesmiths.Capstone
             player = GameObject.Find("Player").GetComponent<Player>();
         }
 
-        public virtual void Update()
+        public override void Update()
         {
             // Rotates downwards 
             if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
@@ -150,26 +134,7 @@ namespace Bladesmiths.Capstone
         {
 
         }
-        protected override void ActivateAbility()
-        {
 
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
-        }
-        protected override void SwitchWeapon(int weaponSelect)
-        {
-
-        }
         protected override void Die()
         {
 
