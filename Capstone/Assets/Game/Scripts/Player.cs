@@ -292,8 +292,8 @@ namespace Bladesmiths.Capstone
             currentSword = sword.GetComponent<Sword>();
             currentSwordDamage = currentSword.Damage;
             //freeLookCam = playerCamera.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineFreeLook>();
-            freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
-            freeLookCam.m_YAxisRecentering.m_enabled = false;
+            //freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+            //freeLookCam.m_YAxisRecentering.m_enabled = true;
 
 
         }
