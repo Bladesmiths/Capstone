@@ -29,7 +29,7 @@ namespace Bladesmiths.Capstone
         private float _terminalVelocity = 53.0f;
         public float Gravity = -15.0f;
         private Vector3 inputDirection;
-        private float _targetRotation = 0.0f;
+        private Quaternion _targetRotation;
         private GameObject camera;
 
         public float Timer { get { return timer; } }
@@ -91,11 +91,28 @@ namespace Bladesmiths.Capstone
                 _hasAnimator = false;
             }
 
+
+
             _animator.SetBool(_animIDAttack, true);
 
-            _targetRotation = _player.transform.eulerAngles.y;
+            if (_input.move == Vector2.zero)
+            {
+                _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
 
-            inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+                inputDirection = _targetRotation * Vector3.forward;
+            }
+            else
+            {
+                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                // rotate to face input direction relative to camera position
+                _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+                    Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+
+                _player.transform.rotation = _targetRotation;
+
+                inputDirection = _targetRotation * Vector3.forward;
+            }
         }
 
         public override void OnExit()

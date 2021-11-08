@@ -16,7 +16,9 @@ namespace Bladesmiths.Capstone
         private PlayerInputsScript _input;
         private Animator _animator;
         private GameObject _sword;
-
+        private Vector3 inputDirection;
+        private Quaternion _targetRotation;
+        private GameObject camera;
         // The ID of the block paramater in the Player's animator controller
         private int _animIDBlock;
 
@@ -38,6 +40,27 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
+
+            if (_input.move == Vector2.zero)
+            {
+                _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+
+                inputDirection = _targetRotation * Vector3.forward;
+            }
+            else
+            {
+                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                // rotate to face input direction relative to camera position
+                _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+                    Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+
+                _player.transform.rotation = _targetRotation;
+
+                inputDirection = _targetRotation * Vector3.forward;
+            }
+
             // Turns the block detector box on
             playerBlockBox.SetActive(true);
             playerBlockBox.GetComponent<BlockCollision>().Active = true;

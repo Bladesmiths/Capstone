@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 using StarterAssets;
 
@@ -44,10 +45,14 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject blockDetector;
 
+        private bool isRecentering;
+        private float camRotation;
+
         [SerializeField]
         private Vector3 respawnPoint;
         [SerializeField]
         private Vector3 respawnRotation;
+
 
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
@@ -83,13 +88,17 @@ namespace Bladesmiths.Capstone
         public float cinemachineTargetYaw;
         public float cinemachineTargetPitch;
         private const float threshold = 0.01f;
-        [SerializeField] 
-        public GameObject CinemachineCameraTarget;
         private float TopClamp = 70.0f;
         private float BottomClamp = -30.0f;
         private float CameraAngleOverride = 0.0f;
         private bool LockCameraPosition = false;
-        #endregion
+
+        [SerializeField]
+        private CinemachineFreeLook freeLookCam;
+        private bool recenter;
+        private float recenterTimer = 0f;
+        private float recenterTimerMax = 2f;
+
 
         #region Grounded Fields
         [Header("Grounded Fields")]
@@ -145,7 +154,7 @@ namespace Bladesmiths.Capstone
         private float verticalVelocity = 0.0f;
         private float terminalVelocity = 53.0f;
         public float SpeedChangeRate = 10.0f;
-        public float RotationSmoothTime = 0.12f;
+        public float RotationSmoothTime = 1000f;
 
         public float FallTimeout = 0.15f;
         //private float landTimeout;
@@ -219,6 +228,8 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
 
+            isRecentering = false;
+
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
 
@@ -287,6 +298,7 @@ namespace Bladesmiths.Capstone
 
             targetLock = GetComponent<TargetLock>();
 
+
             inputs.player = this;
 
             // Temporary
@@ -294,6 +306,7 @@ namespace Bladesmiths.Capstone
             // from their dictionary of sword types to sword prefabs
             currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
         }
+
 
         private void Update()
         {
@@ -342,11 +355,13 @@ namespace Bladesmiths.Capstone
             {
                 FadeToBlack();
             }
+
         }
 
         private void LateUpdate()
         {
             //CameraRotation();
+
         }
 
         /// <summary>
@@ -369,32 +384,6 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState GetPlayerFSMState()
         {
             return (PlayerFSMState)FSM.GetCurrentState();
-        }
-
-        /// <summary>
-        /// Allows for the camera to rotate with the player
-        /// </summary>
-        public void CameraRotation()
-        {
-            // if there is an input and camera position is not fixed
-            if (inputs.look.sqrMagnitude >= threshold && !LockCameraPosition)
-            {
-                cinemachineTargetYaw += inputs.look.x * Time.deltaTime;
-                cinemachineTargetPitch += inputs.look.y * Time.deltaTime;
-            }
-
-            // clamp our rotations so our values are limited 360 degrees
-            cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
-
-            // Don't update the rotation of the camera's target if target lock is active
-            //if (!targetLock.Active)
-            //{
-            //    // Cinemachine will follow this target
-            //    CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-            //}
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-
         }
 
         /// <summary>
@@ -469,11 +458,79 @@ namespace Bladesmiths.Capstone
             if (inputs.move == Vector2.zero) speed = 0.0f;
 
             // Animator input
-            //animator.SetFloat(animIDForward, speed / targetSpeed);
+            // animator.SetFloat(animIDForward, speed / targetSpeed);
             animBlend = Mathf.Lerp(animBlend, speed, Time.deltaTime * SpeedChangeRate);
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
+
+            if(inputs.move != Vector2.zero)
+            {
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+                freeLookCam.m_YAxisRecentering.m_enabled = false;
+                freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+                freeLookCam.m_YAxisRecentering.CancelRecentering();
+            }
+            else
+            {
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+                freeLookCam.m_YAxisRecentering.m_enabled = true;
+            }
+
+            #region Possible Recentering Implementation. Currently not working
+            // Checks to see if the player is moving
+            //if(inputs.move == Vector2.zero)
+            //{
+            //     If they aren't moving start the countdown to recenter
+            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+            //    freeLookCam.m_YAxisRecentering.m_enabled = true;
+
+            //    if(recenter)
+            //    {
+            //         Force recentering if the input 
+            //        recenter = false;
+            //        freeLookCam.m_RecenterToTargetHeading.RecenterNow();
+            //        freeLookCam.m_YAxisRecentering.RecenterNow();
+
+            //    }
+
+            //}
+            //else
+            //{
+            //     If the player moves stop recentering
+            //    if (recenter == true)
+            //    {
+            //        recenterTimer = 0;
+            //        recenter = false;
+            //    }
+            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
+            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+            //    freeLookCam.m_YAxisRecentering.m_enabled = false;
+
+            //}
+
+            // If the player isn't moving the second stick or mouse
+            //if (inputs.look == Vector2.zero)
+            //{
+            //    recenterTimer += Time.deltaTime;
+            //    Debug.Log(recenter);
+            //    Debug.Log(recenterTimer);
+            //    if(recenterTimer >= recenterTimerMax)
+            //    {
+            //         Start recentering the camera
+            //        recenter = true;
+            //        recenterTimer = 0f;
+            //    }
+            //}
+            //else
+            //{
+            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
+            //    recenterTimer = 0f;
+
+            //}
+            #endregion
 
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
@@ -481,11 +538,15 @@ namespace Bladesmiths.Capstone
             if (inputs.move != Vector2.zero && speed != 0)
             {
                 targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+                
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
+
+                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);
 
                 // rotate to face input direction relative to camera position
                 this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
                 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
+
             }
 
             if (verticalVelocity < terminalVelocity)
