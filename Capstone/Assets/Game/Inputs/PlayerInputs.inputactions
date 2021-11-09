@@ -110,6 +110,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "Switch Sword Dpad",
+                    "type": "PassThrough",
+                    "id": "1dd26e8c-6ee1-42d7-9455-c328b17176e9",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
                     "name": "SwitchSwordSpecific",
                     "type": "Button",
                     "id": "1836041b-220a-44a3-983b-08691479a77b",
@@ -495,17 +503,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cf131eb8-1cea-46fe-8190-4eccc2be68b6",
-                    "path": "<Gamepad>/dpad/y",
-                    "interactions": "Press",
-                    "processors": "Invert",
-                    "groups": "Gamepad",
-                    "action": "Switch Sword",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8760313f-168e-495e-bde4-3a500b168399",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -534,6 +531,17 @@
                     "processors": "Clamp(min=3,max=3)",
                     "groups": "",
                     "action": "SwitchSwordSpecific",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "825fb801-9ca5-4e1a-ac14-c89d6950eefe",
+                    "path": "<Gamepad>/dpad/y",
+                    "interactions": "Press",
+                    "processors": "Invert",
+                    "groups": "Gamepad",
+                    "action": "Switch Sword Dpad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

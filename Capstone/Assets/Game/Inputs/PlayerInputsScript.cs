@@ -105,10 +105,39 @@ namespace Bladesmiths.Capstone
 			currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
 			player.SwitchSword(currentSwordType);
         }
-        #endregion
 
-        #region Input Helper Methods
-        public void MoveInput(Vector2 newMoveDirection)
+		public void OnSwitchSwordDpad(InputValue value)
+		{
+			currentSwordType += (int)value.Get<float>();
+
+			if (currentSwordType < Enums.SwordType.Quartz)
+			{
+				currentSwordType = Enums.SwordType.Sapphire;
+			}
+			else if (currentSwordType > Enums.SwordType.Sapphire)
+			{
+				currentSwordType = Enums.SwordType.Quartz;
+			}
+
+			player.SwitchSword(currentSwordType);
+		}
+
+		public void OnPause(InputValue value)
+		{
+			if (value.isPressed)
+				uiManager.Pause();
+		}
+
+		public void OnUnpause(InputValue value)
+		{
+			if (value.isPressed)
+				uiManager.Unpause();
+		}
+
+		#endregion
+
+		#region Input Helper Methods
+		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		}

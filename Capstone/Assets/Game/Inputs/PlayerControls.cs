@@ -125,6 +125,14 @@ namespace Bladesmiths.Capstone
                     ""interactions"": ""Press""
                 },
                 {
+                    ""name"": ""Switch Sword Dpad"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1dd26e8c-6ee1-42d7-9455-c328b17176e9"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
                     ""name"": ""SwitchSwordSpecific"",
                     ""type"": ""Button"",
                     ""id"": ""1836041b-220a-44a3-983b-08691479a77b"",
@@ -510,17 +518,6 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cf131eb8-1cea-46fe-8190-4eccc2be68b6"",
-                    ""path"": ""<Gamepad>/dpad/y"",
-                    ""interactions"": ""Press"",
-                    ""processors"": ""Invert"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Switch Sword"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8760313f-168e-495e-bde4-3a500b168399"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -549,6 +546,17 @@ namespace Bladesmiths.Capstone
                     ""processors"": ""Clamp(min=3,max=3)"",
                     ""groups"": """",
                     ""action"": ""SwitchSwordSpecific"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""825fb801-9ca5-4e1a-ac14-c89d6950eefe"",
+                    ""path"": ""<Gamepad>/dpad/y"",
+                    ""interactions"": ""Press"",
+                    ""processors"": ""Invert"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Switch Sword Dpad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1156,6 +1164,7 @@ namespace Bladesmiths.Capstone
             m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
             m_Player_OpenSwordSelector = m_Player.FindAction("Open Sword Selector", throwIfNotFound: true);
             m_Player_SwitchSword = m_Player.FindAction("Switch Sword", throwIfNotFound: true);
+            m_Player_SwitchSwordDpad = m_Player.FindAction("Switch Sword Dpad", throwIfNotFound: true);
             m_Player_SwitchSwordSpecific = m_Player.FindAction("SwitchSwordSpecific", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1232,6 +1241,7 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Pause;
         private readonly InputAction m_Player_OpenSwordSelector;
         private readonly InputAction m_Player_SwitchSword;
+        private readonly InputAction m_Player_SwitchSwordDpad;
         private readonly InputAction m_Player_SwitchSwordSpecific;
         public struct PlayerActions
         {
@@ -1250,6 +1260,7 @@ namespace Bladesmiths.Capstone
             public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputAction @OpenSwordSelector => m_Wrapper.m_Player_OpenSwordSelector;
             public InputAction @SwitchSword => m_Wrapper.m_Player_SwitchSword;
+            public InputAction @SwitchSwordDpad => m_Wrapper.m_Player_SwitchSwordDpad;
             public InputAction @SwitchSwordSpecific => m_Wrapper.m_Player_SwitchSwordSpecific;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
@@ -1299,6 +1310,9 @@ namespace Bladesmiths.Capstone
                     @SwitchSword.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSword;
                     @SwitchSword.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSword;
                     @SwitchSword.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSword;
+                    @SwitchSwordDpad.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordDpad;
+                    @SwitchSwordDpad.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordDpad;
+                    @SwitchSwordDpad.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordDpad;
                     @SwitchSwordSpecific.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordSpecific;
@@ -1345,6 +1359,9 @@ namespace Bladesmiths.Capstone
                     @SwitchSword.started += instance.OnSwitchSword;
                     @SwitchSword.performed += instance.OnSwitchSword;
                     @SwitchSword.canceled += instance.OnSwitchSword;
+                    @SwitchSwordDpad.started += instance.OnSwitchSwordDpad;
+                    @SwitchSwordDpad.performed += instance.OnSwitchSwordDpad;
+                    @SwitchSwordDpad.canceled += instance.OnSwitchSwordDpad;
                     @SwitchSwordSpecific.started += instance.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.performed += instance.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.canceled += instance.OnSwitchSwordSpecific;
@@ -1516,6 +1533,7 @@ namespace Bladesmiths.Capstone
             void OnPause(InputAction.CallbackContext context);
             void OnOpenSwordSelector(InputAction.CallbackContext context);
             void OnSwitchSword(InputAction.CallbackContext context);
+            void OnSwitchSwordDpad(InputAction.CallbackContext context);
             void OnSwitchSwordSpecific(InputAction.CallbackContext context);
         }
         public interface IUIActions
