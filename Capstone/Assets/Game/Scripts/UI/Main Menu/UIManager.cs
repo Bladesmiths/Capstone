@@ -117,20 +117,10 @@ namespace Bladesmiths.Capstone.UI
             }
         }
 
-        public void OnPause(InputValue value)
-        {
-            if (value.isPressed)
-                Pause();
-        }
 
-        public void OnUnpause(InputValue value)
-        {
-            if (value.isPressed)
-                Unpause();
-        }
         
         // Private Methods
-        private void Pause()
+        public void Pause()
         {
             if (!isPaused)
             {
