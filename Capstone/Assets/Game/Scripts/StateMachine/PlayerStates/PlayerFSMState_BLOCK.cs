@@ -64,7 +64,6 @@ namespace Bladesmiths.Capstone
             // Turns the block detector box on
             playerBlockBox.SetActive(true);
             playerBlockBox.GetComponent<BlockCollision>().Active = true;
-            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
 
             // Assign block paramater id
             _animIDBlock = Animator.StringToHash("Block");
@@ -72,8 +71,7 @@ namespace Bladesmiths.Capstone
             // Set blocking id to true
             _animator.SetBool(_animIDBlock, true);
 
-            // Set the sword to detect collisions
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
+            
         }
 
         public override void OnExit()
@@ -88,11 +86,8 @@ namespace Bladesmiths.Capstone
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
 
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
-
             // Set the sword to not detect collisions
             // and turn off blocking paramater
-            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
             _animator.SetBool(_animIDBlock, false);
         }
 

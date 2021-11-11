@@ -48,8 +48,6 @@ namespace Bladesmiths.Capstone
         public override void Tick()
         {
             timer += Time.deltaTime;
-
-            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
             
             _input.attack = false;
 
@@ -63,15 +61,12 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
-            //float targetSpeed = 1.8f;
 
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
-            // move the player
-            //_controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
         public override void OnEnter()
@@ -117,7 +112,6 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
             _animator.SetBool(_animIDAttack, false);
         }
 
