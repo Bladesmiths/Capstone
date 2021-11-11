@@ -45,9 +45,6 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject blockDetector;
 
-        private bool isRecentering;
-        private float camRotation;
-
         [SerializeField]
         private Vector3 respawnPoint;
         [SerializeField]
@@ -87,18 +84,9 @@ namespace Bladesmiths.Capstone
         [Header("Cinemachine Target Fields")]
         public float cinemachineTargetYaw;
         public float cinemachineTargetPitch;
-        private const float threshold = 0.01f;
-        private float TopClamp = 70.0f;
-        private float BottomClamp = -30.0f;
-        private float CameraAngleOverride = 0.0f;
-        private bool LockCameraPosition = false;
 
         [SerializeField]
         private CinemachineFreeLook freeLookCam;
-        private bool recenter;
-        private float recenterTimer = 0f;
-        private float recenterTimerMax = 2f;
-
 
         #region Grounded Fields
         [Header("Grounded Fields")]
@@ -230,8 +218,6 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
 
-            isRecentering = false;
-
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
 
@@ -360,24 +346,7 @@ namespace Bladesmiths.Capstone
 
         }
 
-        private void LateUpdate()
-        {
-            //CameraRotation();
 
-        }
-
-        /// <summary>
-        /// Checks to see if the Player is on the ground
-        /// </summary>
-        /// <returns></returns>
-        private bool GroundedCheck()
-        {
-            // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(this.transform.position.x, this.transform.position.y - GroundedOffset, this.transform.position.z);
-            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-
-            return Grounded;
-        }
 
         /// <summary>
         /// Allows for other classes to get a reference to the player's state
@@ -454,7 +423,6 @@ namespace Bladesmiths.Capstone
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
 
-            //speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
@@ -479,60 +447,7 @@ namespace Bladesmiths.Capstone
                 freeLookCam.m_YAxisRecentering.m_enabled = true;
             }
 
-            #region Possible Recentering Implementation. Currently not working
-            // Checks to see if the player is moving
-            //if(inputs.move == Vector2.zero)
-            //{
-            //     If they aren't moving start the countdown to recenter
-            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
-            //    freeLookCam.m_YAxisRecentering.m_enabled = true;
-
-            //    if(recenter)
-            //    {
-            //         Force recentering if the input 
-            //        recenter = false;
-            //        freeLookCam.m_RecenterToTargetHeading.RecenterNow();
-            //        freeLookCam.m_YAxisRecentering.RecenterNow();
-
-            //    }
-
-            //}
-            //else
-            //{
-            //     If the player moves stop recentering
-            //    if (recenter == true)
-            //    {
-            //        recenterTimer = 0;
-            //        recenter = false;
-            //    }
-            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
-            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
-            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
-            //    freeLookCam.m_YAxisRecentering.m_enabled = false;
-
-            //}
-
-            // If the player isn't moving the second stick or mouse
-            //if (inputs.look == Vector2.zero)
-            //{
-            //    recenterTimer += Time.deltaTime;
-            //    Debug.Log(recenter);
-            //    Debug.Log(recenterTimer);
-            //    if(recenterTimer >= recenterTimerMax)
-            //    {
-            //         Start recentering the camera
-            //        recenter = true;
-            //        recenterTimer = 0f;
-            //    }
-            //}
-            //else
-            //{
-            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
-            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
-            //    recenterTimer = 0f;
-
-            //}
-            #endregion
+            
 
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
@@ -562,7 +477,6 @@ namespace Bladesmiths.Capstone
             if (hasAnimator)
             {
                 animator.SetFloat(animIDForward, animBlend);
-                //animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
 
