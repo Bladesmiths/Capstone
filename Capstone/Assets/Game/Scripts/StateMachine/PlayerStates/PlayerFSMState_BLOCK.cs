@@ -42,6 +42,7 @@ namespace Bladesmiths.Capstone
         {
             camera = GameObject.FindGameObjectWithTag("MainCamera");
 
+            // Allows for the player to snap to the direction they are inputting
             if (_input.move == Vector2.zero)
             {
                 _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);

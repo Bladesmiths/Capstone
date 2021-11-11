@@ -346,8 +346,6 @@ namespace Bladesmiths.Capstone
 
         }
 
-
-
         /// <summary>
         /// Allows for other classes to get a reference to the player's state
         /// </summary>
@@ -355,20 +353,6 @@ namespace Bladesmiths.Capstone
         public PlayerFSMState GetPlayerFSMState()
         {
             return (PlayerFSMState)FSM.GetCurrentState();
-        }
-
-        /// <summary>
-        /// Sets the angle for the camera going around the player
-        /// </summary>
-        /// <param name="lfAngle"></param>
-        /// <param name="lfMin"></param>
-        /// <param name="lfMax"></param>
-        /// <returns></returns>
-        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-        {
-            if (lfAngle < -360f) lfAngle += 360f;
-            if (lfAngle > 360f) lfAngle -= 360f;
-            return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
         /// <summary>
@@ -434,6 +418,7 @@ namespace Bladesmiths.Capstone
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
+            // Recentering code for the camera
             if(inputs.move != Vector2.zero)
             {
                 freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
@@ -466,6 +451,7 @@ namespace Bladesmiths.Capstone
 
             }
 
+            // Applies gravity
             if (verticalVelocity < terminalVelocity)
             {
                 verticalVelocity += Gravity * Time.deltaTime;
@@ -674,6 +660,9 @@ namespace Bladesmiths.Capstone
             respawnRotation = rotation;
         }
 
+        /// <summary>
+        /// Respawns the player
+        /// </summary>
         public override void Respawn()
         {
             // If the player's health hasn't been reset yet

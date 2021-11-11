@@ -130,6 +130,7 @@ namespace Bladesmiths.Capstone
             _animIDDodge = Animator.StringToHash("Dodge");
             _animIDForward = Animator.StringToHash("Forward");
 
+            // Allows for the player to snap to the direction they are inputting
             if (_input.move == Vector2.zero)
             {
                 _targetRotation = _player.transform.eulerAngles.y;
