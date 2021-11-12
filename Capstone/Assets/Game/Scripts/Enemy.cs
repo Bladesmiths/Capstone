@@ -10,7 +10,7 @@ namespace Bladesmiths.Capstone
     public class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
-        public FiniteStateMachine FSM;
+        protected FiniteStateMachine FSM;
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
