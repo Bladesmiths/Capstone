@@ -10,8 +10,7 @@ namespace Bladesmiths.Capstone
     public class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
-        private FiniteStateMachine FSM;
-        //[SerializeField] private TransitionManager playerTransitionManager;
+        protected FiniteStateMachine FSM;
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
@@ -20,7 +19,6 @@ namespace Bladesmiths.Capstone
 
         protected bool damaged = false;
         protected float timer = 0f;
-        protected float attackTimer = 0f;
 
         [SerializeField]
         protected float damage;
@@ -38,17 +36,23 @@ namespace Bladesmiths.Capstone
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
 
+
+        #region Enemy States
+        EnemyFSMState_SEEK seek;
+        EnemyFSMState_IDLE idle;
+
+
+        #endregion
+
+
         private void Awake()
         {
             // Creates the FSM
             FSM = new FiniteStateMachine();
 
             // Creates all of the states
-            //PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            //PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-
-            EnemyFSMState_SEEK seek = new EnemyFSMState_SEEK(player, this);
-            EnemyFSMState_IDLE idle = new EnemyFSMState_IDLE();
+            seek = new EnemyFSMState_SEEK(player, this);
+            idle = new EnemyFSMState_IDLE();
 
             // Adds all of the possible transitions
             //FSM.AddTransition(seek, idle, IsIdle());
@@ -60,18 +64,6 @@ namespace Bladesmiths.Capstone
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
         }
-
-        /// <summary>
-        /// The condition for going between the IDLE and MOVE states
-        /// </summary>
-        /// <returns></returns>
-        //public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
-
-        /// <summary>
-        /// The condition for going between the MOVE and IDLE states
-        /// </summary>
-        /// <returns></returns>
-        //public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
 
 
         public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
@@ -92,19 +84,6 @@ namespace Bladesmiths.Capstone
                     timer = 0f;
                 }
             }
-
-            //if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
-            //{
-            //    attackTimer += Time.deltaTime;
-
-            //    if ((attackTimer >= 1))
-            //    {
-            //        Attack();
-            //        attackTimer = 0f;
-            //    }
-
-
-            //}
 
             // Testing
             // If the enemy is currently damaging an object
