@@ -10,7 +10,7 @@ namespace Bladesmiths.Capstone
     public class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
-        protected FiniteStateMachine FSM;
+        public FiniteStateMachine FSM;
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
@@ -19,6 +19,9 @@ namespace Bladesmiths.Capstone
 
         protected bool damaged = false;
         protected float timer = 0f;
+
+        protected float moveSpeed;
+        
 
         [SerializeField]
         protected float damage;
@@ -36,42 +39,77 @@ namespace Bladesmiths.Capstone
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
 
-
         #region Enemy States
-        EnemyFSMState_SEEK seek;
-        EnemyFSMState_IDLE idle;
-
+        protected EnemyFSMState_SEEK seek;
+        protected EnemyFSMState_IDLE idle;
+        protected EnemyFSMState_ATTACK attack;
+        protected EnemyFSMState_TAKEDAMAGE takeDamage;
+        protected EnemyFSMState_DEATH death;
+        protected EnemyFSMState_WANDER wander;
+        protected EnemyFSMState_MOVING move;
 
         #endregion
 
-
-        private void Awake()
+        
+        public virtual void Awake()
         {
-            // Creates the FSM
             FSM = new FiniteStateMachine();
+
+        }
+
+        public virtual void Start()
+        {
+            player = GameObject.Find("Player").GetComponent<Player>();
+
+            // Creates the FSM
+            FSM.OnStateChange += FSM_OnStateChange;
+
 
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
             idle = new EnemyFSMState_IDLE();
+            death = new EnemyFSMState_DEATH(this);
 
             // Adds all of the possible transitions
-            //FSM.AddTransition(seek, idle, IsIdle());
-            //FSM.AddTransition(idle, seek, IsClose());
+            FSM.AddTransition(seek, idle, IsIdle());
+            FSM.AddTransition(idle, seek, IsClose());
+
+            FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            //FSM.SetCurrentState(idle);
+            FSM.SetCurrentState(idle);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
         }
 
+        /// <summary>
+        /// Checks to see if the Enemy is dead
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsDead() => () => Health <= 0;
 
+        /// <summary>
+        /// Checks to see if the player is near the Enemy
+        /// </summary>
+        /// <returns></returns>
         public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
+
+        /// <summary>
+        /// If the Player is far away then stop seeking
+        /// </summary>
+        /// <returns></returns>
         public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
-       
+
+        /// <summary>
+        /// Just here to not cause an error
+        /// </summary>
+        private void FSM_OnStateChange() { }
+
+
         public virtual void Update()
         {
-            FSM.Tick();
+            //FSM.Tick();
 
             if (damaged)
             {
