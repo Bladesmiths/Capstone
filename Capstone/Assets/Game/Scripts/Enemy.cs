@@ -7,11 +7,10 @@ using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy : Character, IDamaging
+    public abstract class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
-        private FiniteStateMachine FSM;
-        //[SerializeField] private TransitionManager playerTransitionManager;
+        protected FiniteStateMachine FSM;
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
@@ -20,8 +19,9 @@ namespace Bladesmiths.Capstone
 
         protected bool damaged = false;
         protected float timer = 0f;
-        protected float attackTimer = 0f;
 
+        protected float moveSpeed;
+        
         [SerializeField]
         protected float damage;
         
@@ -38,48 +38,67 @@ namespace Bladesmiths.Capstone
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
 
-        private void Awake()
+        #region Enemy States
+        protected EnemyFSMState_SEEK seek;
+        protected EnemyFSMState_IDLE idle;
+        protected EnemyFSMState_ATTACK attack;
+        protected EnemyFSMState_TAKEDAMAGE takeDamage;
+        protected EnemyFSMState_DEATH death;
+        protected EnemyFSMState_WANDER wander;
+        protected EnemyFSMState_MOVING move;
+        #endregion
+        
+        public virtual void Awake()
         {
             // Creates the FSM
             FSM = new FiniteStateMachine();
 
-            // Creates all of the states
-            //PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            //PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
+        }
 
-            EnemyFSMState_SEEK seek = new EnemyFSMState_SEEK(player, this);
-            EnemyFSMState_IDLE idle = new EnemyFSMState_IDLE();
+        public virtual void Start()
+        {
+            player = GameObject.Find("Player").GetComponent<Player>();
+            
+            // Creates all of the states
+            seek = new EnemyFSMState_SEEK(player, this);
+            idle = new EnemyFSMState_IDLE();
+            death = new EnemyFSMState_DEATH(this);
 
             // Adds all of the possible transitions
-            //FSM.AddTransition(seek, idle, IsIdle());
-            //FSM.AddTransition(idle, seek, IsClose());
+            FSM.AddTransition(seek, idle, IsIdle());
+            FSM.AddTransition(idle, seek, IsClose());
+
+            FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            //FSM.SetCurrentState(idle);
+            FSM.SetCurrentState(idle);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
         }
 
         /// <summary>
-        /// The condition for going between the IDLE and MOVE states
+        /// Checks to see if the Enemy is dead
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
+        public Func<bool> IsDead() => () => Health <= 0;
 
         /// <summary>
-        /// The condition for going between the MOVE and IDLE states
+        /// Checks to see if the player is near the Enemy
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
-
-
         public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
+
+        /// <summary>
+        /// If the Player is far away then stop seeking
+        /// </summary>
+        /// <returns></returns>
         public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
-       
+
+        
         public virtual void Update()
         {
-            FSM.Tick();
+            //FSM.Tick();
 
             if (damaged)
             {
@@ -92,19 +111,6 @@ namespace Bladesmiths.Capstone
                     timer = 0f;
                 }
             }
-
-            //if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
-            //{
-            //    attackTimer += Time.deltaTime;
-
-            //    if ((attackTimer >= 1))
-            //    {
-            //        Attack();
-            //        attackTimer = 0f;
-            //    }
-
-
-            //}
 
             // Testing
             // If the enemy is currently damaging an object
