@@ -15,6 +15,11 @@ namespace Bladesmiths.Capstone
 
         }
 
+        public override void Tick()
+        {
+
+        }
+
         public override void OnExit()
         {
 

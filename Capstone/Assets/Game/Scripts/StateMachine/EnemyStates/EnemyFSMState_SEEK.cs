@@ -22,8 +22,6 @@ namespace Bladesmiths.Capstone
 
             _enemy.gameObject.transform.position += dist.normalized * Time.deltaTime;
 
-
-
         }
 
         public override void OnEnter()

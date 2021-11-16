@@ -10,12 +10,10 @@ namespace Bladesmiths.Capstone
         public EnemyFSMState_IDLE()
         {
 
-
         }
 
         public override void Tick()
         {
-
 
         }
 

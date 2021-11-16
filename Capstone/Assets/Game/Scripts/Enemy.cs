@@ -7,7 +7,7 @@ using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy : Character, IDamaging
+    public abstract class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
         protected FiniteStateMachine FSM;
@@ -22,7 +22,6 @@ namespace Bladesmiths.Capstone
 
         protected float moveSpeed;
         
-
         [SerializeField]
         protected float damage;
         
@@ -47,12 +46,11 @@ namespace Bladesmiths.Capstone
         protected EnemyFSMState_DEATH death;
         protected EnemyFSMState_WANDER wander;
         protected EnemyFSMState_MOVING move;
-
         #endregion
-
         
         public virtual void Awake()
         {
+            // Creates the FSM
             FSM = new FiniteStateMachine();
 
         }
@@ -60,11 +58,7 @@ namespace Bladesmiths.Capstone
         public virtual void Start()
         {
             player = GameObject.Find("Player").GetComponent<Player>();
-
-            // Creates the FSM
-            FSM.OnStateChange += FSM_OnStateChange;
-
-
+            
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
             idle = new EnemyFSMState_IDLE();
@@ -101,12 +95,7 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
 
-        /// <summary>
-        /// Just here to not cause an error
-        /// </summary>
-        private void FSM_OnStateChange() { }
-
-
+        
         public virtual void Update()
         {
             //FSM.Tick();

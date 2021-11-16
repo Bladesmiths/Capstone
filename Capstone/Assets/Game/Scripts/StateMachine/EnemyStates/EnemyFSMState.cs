@@ -9,27 +9,18 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// Base class for possible states
     /// </summary>
-    public class EnemyFSMState : IState
+    public abstract class EnemyFSMState : IState
     {
         protected EnemyCondition id;
 
         public EnemyCondition ID { get; set; }
 
-        public virtual void Tick()
-        {
+        public abstract void Tick();        
 
-        }
+        public abstract void OnEnter();
 
-        public virtual void OnEnter()
-        {
-
-        }
-
-        public virtual void OnExit()
-        {
-
-        }
-
+        public abstract void OnExit();
+        
 
     }    
 }
