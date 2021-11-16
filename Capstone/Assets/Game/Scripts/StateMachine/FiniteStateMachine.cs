@@ -39,7 +39,6 @@ namespace Bladesmiths.Capstone
         public FiniteStateMachine(TransitionManager transitionManager)
         {
             transitionManagerFSM = transitionManager;
-            //filteredPlayerTransitions = transitionManager.conditionsRef;
             SetCurrentState(transitionManager.cState);
 
         }

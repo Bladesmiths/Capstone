@@ -29,7 +29,6 @@ namespace Bladesmiths.Capstone
         public void OnWalkToggle(InputValue value)
         {
             walking = !walking;
-            //Debug.Log(walking);
 
             WalkToggle();
         }

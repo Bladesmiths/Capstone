@@ -130,8 +130,7 @@ namespace Bladesmiths.Capstone
             _animIDDodge = Animator.StringToHash("Dodge");
             _animIDForward = Animator.StringToHash("Forward");
 
-            //inputDirection = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).normalized;
-
+            // Allows for the player to snap to the direction they are inputting
             if (_input.move == Vector2.zero)
             {
                 _targetRotation = _player.transform.eulerAngles.y;
@@ -153,7 +152,6 @@ namespace Bladesmiths.Capstone
             
             }
 
-            //_player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
 
             // Testing
             //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;

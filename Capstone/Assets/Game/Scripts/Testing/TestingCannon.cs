@@ -150,20 +150,7 @@ namespace Bladesmiths.Capstone.Testing
 
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.GetComponent<Player>() == true)
-            {
-                //PlayerEnterSecondArea();
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.GetComponent<Player>() == true)
-            {
-                //PlayerLeaveSecondArea();
-            }
-        }
+       
 
         
     }

@@ -36,17 +36,11 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
-            //// Assign parry success paramater id
-            //_animIDParrySuccess = Animator.StringToHash("Parry Successful");
-
-            //// Set blocking id to true
-            //_animator.SetTrigger(_animIDParrySuccess);
-
             // Start the parry cooldown timer coroutine 
             // Because, to enter this state, parry must be over
             _player.StartCoroutine(ParryCooldownTimer());
 
-            // TUrn off parry object for the same reason
+            // Turn off parry object for the same reason
             _playerParryBox.SetActive(false);
         }
 

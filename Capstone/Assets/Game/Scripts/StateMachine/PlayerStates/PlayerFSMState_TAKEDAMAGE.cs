@@ -32,14 +32,12 @@ namespace Bladesmiths.Capstone
         {
             _player.damaged = false;
             timer = 0;
-            //_player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
             _player.inState = true;
 
         }
 
         public override void OnExit()
         {
-            //_player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
             _player.inState = false;
         }
 

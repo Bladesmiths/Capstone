@@ -18,14 +18,12 @@ namespace Bladesmiths.Capstone
         /// The condition for going between the MOVE and IDLE states
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
         public Func<bool> IsIdle() => () => gameObject.GetComponent<CharacterController>().velocity.magnitude <= 0;
 
         /// <summary>
         /// The condition for going between the MOVE and IDLE states
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
         public Func<bool> IsCombatIdle() => () => (attack.Timer >= 0.9 / 1.5f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
 
         /// <summary>
