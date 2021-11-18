@@ -63,15 +63,16 @@ namespace Bladesmiths.Capstone
             seek = new EnemyFSMState_SEEK(player, this);
             idle = new EnemyFSMState_IDLE();
             death = new EnemyFSMState_DEATH(this);
+            wander = new EnemyFSMState_WANDER(this);
 
             // Adds all of the possible transitions
-            FSM.AddTransition(seek, idle, IsIdle());
-            FSM.AddTransition(idle, seek, IsClose());
+            FSM.AddTransition(seek, wander, IsIdle());
+            FSM.AddTransition(wander, seek, IsClose());
 
             FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            FSM.SetCurrentState(idle);
+            FSM.SetCurrentState(wander);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
