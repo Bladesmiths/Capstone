@@ -5,13 +5,17 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using Cinemachine;
 using System;
+using UnityEngine.UI;
 
 namespace Bladesmiths.Capstone
 {
     public class TargetLock : MonoBehaviour
     {
-                                                                                                    
+
         #region Fields
+        [SerializeField]
+        private LayerMask layersToIgnore; 
+
         // List of enemies in the level
         private List<GameObject> targettableList;
 
@@ -20,6 +24,7 @@ namespace Bladesmiths.Capstone
         private List<GameObject> visibleTargets; 
 
         // The enemy currently being targeted
+        [SerializeField]
         private GameObject targetedObject; 
 
         // Is the target locking system active or not
@@ -30,7 +35,7 @@ namespace Bladesmiths.Capstone
         private CinemachineVirtualCamera targetLockCam;
 
         [SerializeField]
-        private Canvas targetCanvas; 
+        private Image targetImage; 
 
         [SerializeField] 
         private Transform playerCamRoot;
@@ -63,7 +68,7 @@ namespace Bladesmiths.Capstone
             // If target lock is enabled
             if (targetLock)
             {
-                RepositionTargetCanvas();
+                RepositionTargetImage();
 
                 // Check if the targetted enemy is visible
                 if (!IsEnemyVisible(targetedObject))
@@ -85,8 +90,8 @@ namespace Bladesmiths.Capstone
         public void OnTargetLock(InputValue value)
         {
             // Toggles the target lock state to its opposite value
-            targetLock = !targetLock; 
-
+            targetLock = !targetLock;
+            Debug.Log($"Target Lock Enabled: {targetLock}");
             // Runs the LockOnEnemy method no matter what because it serves both purposes
             LockOnEnemy(); 
         }
@@ -173,8 +178,8 @@ namespace Bladesmiths.Capstone
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
 
-                targetCanvas.GetComponent<Canvas>().enabled = true;
-                RepositionTargetCanvas();
+                targetImage.gameObject.SetActive(true);
+                RepositionTargetImage();
             }
             // If the target locking system isn't active
             else
@@ -182,7 +187,7 @@ namespace Bladesmiths.Capstone
                 // Switch back to the other camera having top priority
                 targetLockCam.Priority = 0;
 
-                targetCanvas.GetComponent<Canvas>().enabled = false;
+                targetImage.gameObject.SetActive(false);
 
                 // Update the player follow camera's target so it doesn't move in weird directions
                 Player playerComp = playerCamRoot.transform.parent.GetComponent<Player>();
@@ -314,7 +319,7 @@ namespace Bladesmiths.Capstone
             targetedObject = closestEnemyToTarget;
             targetLockCam.LookAt = targetedObject.transform;
 
-            RepositionTargetCanvas(); 
+            RepositionTargetImage(); 
         }
 
         #region Helper Methods
@@ -343,24 +348,21 @@ namespace Bladesmiths.Capstone
         /// <returns>A boolean indicating whether or not the object is visible</returns>
         private bool IsEnemyVisible(GameObject enemy)
         {
-            // Ignoring the Player Layer
-            int layerMask = 1 << 6;
-            layerMask = ~layerMask;
-
             RaycastHit hit;
 
             return (Physics.Linecast(playerCamRoot.position, 
-                enemy.GetComponent<Collider>().bounds.center, out hit, layerMask) && hit.transform == enemy.transform); 
+                enemy.GetComponent<Collider>().bounds.center, out hit, ~layersToIgnore) && hit.transform == enemy.transform); 
            }
 
-        private void RepositionTargetCanvas()
+        private void RepositionTargetImage()
         {
-            Vector3 vecFromTargetToPlayer = transform.position - targetedObject.transform.position;
-            vecFromTargetToPlayer.Normalize();
-            targetCanvas.transform.position = targetedObject.GetComponent<Collider>().bounds.center
-                + (vecFromTargetToPlayer * 0.15f);
-            targetCanvas.transform.rotation = Quaternion.Euler(targetCanvas.transform.rotation.eulerAngles.x,
-                targetLockCam.transform.rotation.eulerAngles.y, targetCanvas.transform.rotation.eulerAngles.z);
+            targetImage.transform.position = Camera.main.WorldToScreenPoint(targetedObject.transform.position);
+            //Vector3 vecFromTargetToPlayer = transform.position - targetedObject.transform.position;
+            //vecFromTargetToPlayer.Normalize();
+            //targetImage.transform.position = targetedObject.GetComponent<Collider>().bounds.center
+            //    + (vecFromTargetToPlayer * 0.15f);
+            //targetImage.transform.rotation = Quaternion.Euler(targetImage.transform.rotation.eulerAngles.x,
+            //    targetLockCam.transform.rotation.eulerAngles.y, targetImage.transform.rotation.eulerAngles.z);
         }
         #endregion
         
