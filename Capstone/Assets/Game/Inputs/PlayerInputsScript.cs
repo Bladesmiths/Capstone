@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using StarterAssets;
 using UnityEngine.InputSystem;
 
 namespace Bladesmiths.Capstone
@@ -20,7 +19,8 @@ namespace Bladesmiths.Capstone
 		public bool dodge = false;
 		public bool swordSelectActive = false;
 		public Enums.SwordType currentSwordType;
-		public GameObject playerLookCamera; 
+		public GameObject playerLookCamera;
+		public TargetLock targetLockObj; 
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -120,6 +120,47 @@ namespace Bladesmiths.Capstone
 			}
 
 			player.SwitchSword(currentSwordType);
+		}
+
+		/// <summary>
+		/// Input method that runs when the target lock control is hit
+		/// </summary>
+		/// <param name="value">The value of the control</param>
+		public void OnTargetLock(InputValue value)
+		{
+			// Toggles the target lock state to its opposite value
+			targetLockObj.Active = !targetLockObj.Active;
+			Debug.Log($"Target Lock Enabled: {targetLockObj.Active}");
+			// Runs the LockOnEnemy method no matter what because it serves both purposes
+			targetLockObj.LockOnEnemy();
+		}
+
+		/// <summary>
+		/// Input method that runs when the MoveTarget input is used
+		/// </summary>
+		/// <param name="value">The value of the float input</param>
+		public void OnMoveTarget(InputValue value)
+		{
+			// Checks if target lock is active
+			// If not, do nothing
+			if (targetLockObj.Active)
+			{
+				// Converts the input value to a usable float
+				float moveDirection = value.Get<float>();
+
+				// If the value is positive
+				// Move the target to the right
+				if (moveDirection > 0)
+				{
+					targetLockObj.MoveTarget(1);
+				}
+				// If the value is negative
+				// Move the target to the left7
+				else if (moveDirection < 0)
+				{
+					targetLockObj.MoveTarget(-1);
+				}
+			}
 		}
 
 		public void OnPause(InputValue value)
