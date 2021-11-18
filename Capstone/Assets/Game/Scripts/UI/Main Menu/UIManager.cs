@@ -150,14 +150,13 @@ namespace Bladesmiths.Capstone.UI
         
         private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
-            for (int i = (int)maxHealth - 1; i <= currentHealth; i--)
-            {
-                //healthBarObjects[i].GetComponent<SpriteRenderer>().enabled = false;
-            }
+            float currentHealthPercentage = currentHealth / maxHealth;
 
-            if (currentHealth <= 80)
+            int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
+
+            for (int i = healthBarObjects.Count - 1; i >= remainingChunks; i--)
             {
-                healthBarObjects[4].GetComponent<SpriteRenderer>().enabled = false;
+                healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }
             //float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
             //healthBarSprites[currentSwordSelect].fillAmount = fillPercentage;
