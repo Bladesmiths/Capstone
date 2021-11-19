@@ -13,7 +13,7 @@ namespace Bladesmiths.Capstone
     {
 
         #region Fields
-        [SerializeField]
+        [SerializeField] [Tooltip("Which layers should get in the way of a visibility check?")]
         private LayerMask obscuringLayers;
 
         [SerializeField]
@@ -34,10 +34,12 @@ namespace Bladesmiths.Capstone
         [Tooltip("The Cinemachine Virtual Camera used to target enemies")]
         private CinemachineVirtualCamera targetLockCam;
 
+        // The image of the target on the screen
         [SerializeField]
         private Image targetImage; 
 
-        [SerializeField] 
+        [SerializeField] [Tooltip("The transform from which the visibility checking" +
+                                    "raycast to a potential target should begin")]
         private Transform playerCamRoot;
 
         #endregion
@@ -62,6 +64,7 @@ namespace Bladesmiths.Capstone
             // If target lock is enabled
             if (Active)
             {
+                // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
 
                 transform.parent.LookAt(targetedObject.transform);
@@ -310,13 +313,20 @@ namespace Bladesmiths.Capstone
 
             return (Physics.Linecast(playerCamRoot.position, 
                 enemy.GetComponent<Collider>().bounds.center, out hit, obscuringLayers) && hit.transform == enemy.transform); 
-           }
+        }
 
+        /// <summary>
+        /// Reposition the target image to the correct point on the screen
+        /// </summary>
         private void RepositionTargetImage()
         {
             targetImage.transform.position = Camera.main.WorldToScreenPoint(targetedObject.transform.position);
         }
 
+        /// <summary>
+        /// When an object enters the targetting radius, add it to the list of potential targets
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
             if (other.tag != "Targettable")
@@ -327,6 +337,10 @@ namespace Bladesmiths.Capstone
             targettableList.Add(other.gameObject); 
         }
 
+        /// <summary>
+        /// When an object leaves the targetting radius, remove it from the list of potential targets
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerExit(Collider other)
         {
             targettableList.Remove(other.gameObject);
