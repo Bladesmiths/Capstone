@@ -311,6 +311,13 @@ namespace Bladesmiths.Capstone
         {
             RaycastHit hit;
 
+            // Known Weirdness here
+            // If the ray hits a child of the actual thing that could potentially be targetted
+            // There could be problems
+            // To minimize this issue:
+            // Try to keep children centered on the parent
+            // Or make sure that the thing tagged with "Targetable" is the thing that has the collider
+            // May need a better fix in the future
             return (Physics.Linecast(playerCamRoot.position, 
                 enemy.GetComponent<Collider>().bounds.center, out hit, obscuringLayers) && hit.transform == enemy.transform); 
         }

@@ -20,7 +20,7 @@ namespace Bladesmiths.Capstone
 		public bool swordSelectActive = false;
 		public Enums.SwordType currentSwordType;
 		public GameObject playerLookCamera;
-		public TargetLock targetLockObj; 
+		public TargetLock targetLockManager; 
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -129,10 +129,10 @@ namespace Bladesmiths.Capstone
 		public void OnTargetLock(InputValue value)
 		{
 			// Toggles the target lock state to its opposite value
-			targetLockObj.Active = !targetLockObj.Active;
-			Debug.Log($"Target Lock Enabled: {targetLockObj.Active}");
+			targetLockManager.Active = !targetLockManager.Active;
+			Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
 			// Runs the LockOnEnemy method no matter what because it serves both purposes
-			targetLockObj.LockOnEnemy();
+			targetLockManager.LockOnEnemy();
 		}
 
 		/// <summary>
@@ -143,7 +143,7 @@ namespace Bladesmiths.Capstone
 		{
 			// Checks if target lock is active
 			// If not, do nothing
-			if (targetLockObj.Active)
+			if (targetLockManager.Active)
 			{
 				// Converts the input value to a usable float
 				float moveDirection = value.Get<float>();
@@ -152,13 +152,13 @@ namespace Bladesmiths.Capstone
 				// Move the target to the right
 				if (moveDirection > 0)
 				{
-					targetLockObj.MoveTarget(1);
+					targetLockManager.MoveTarget(1);
 				}
 				// If the value is negative
 				// Move the target to the left7
 				else if (moveDirection < 0)
 				{
-					targetLockObj.MoveTarget(-1);
+					targetLockManager.MoveTarget(-1);
 				}
 			}
 		}
