@@ -18,7 +18,7 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
-            Vector3 dist = _player.transform.position + Vector3.up - _enemy.transform.position;
+            Vector3 dist = _player.transform.position - _enemy.transform.position;
 
             _enemy.gameObject.transform.position += dist.normalized * Time.deltaTime;
 
