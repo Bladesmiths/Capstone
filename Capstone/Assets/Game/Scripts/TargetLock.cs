@@ -67,7 +67,7 @@ namespace Bladesmiths.Capstone
                 // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
 
-                transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, 0, targetedObject.transform.position.z));
+                transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, transform.parent.position.y, targetedObject.transform.position.z));
 
                 // Left Over in case we want target lock to turn if
                 // something is obscuring the ray
