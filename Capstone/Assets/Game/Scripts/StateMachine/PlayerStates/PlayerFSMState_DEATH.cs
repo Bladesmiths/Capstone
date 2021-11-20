@@ -15,6 +15,7 @@ namespace Bladesmiths.Capstone
     {
         Player _player;
         private Animator _animator;
+        private int _animIDDamaged;
         private int _animIDDeath;
         private float _animDuration;
         private float _timer; 
@@ -25,7 +26,8 @@ namespace Bladesmiths.Capstone
             id = PlayerCondition.F_Dead;
             _animator = animator;
 
-            // Assign damaged paramater id
+            // Assign damaged & dead paramater ids
+            _animIDDamaged = Animator.StringToHash("Damaged");
             _animIDDeath = Animator.StringToHash("Dead");
             _animDuration = animator.runtimeAnimatorController.animationClips.
                 Where(clip => clip.name == "Dying").ToArray()[0].length;
@@ -56,17 +58,19 @@ namespace Bladesmiths.Capstone
             _player.inState = true;
             _player.justDied = true;
             _player.ParryDetector.ResetChipDamage();
+            _player.damaged = false;
 
-            _animator.SetTrigger(_animIDDeath);
+            _animator.SetBool(_animIDDeath, true);
+            _animator.SetTrigger(_animIDDamaged);
         }
 
         public override void OnExit()
         {
             _player.inState = false;
+            _animator.SetBool(_animIDDeath, false);
 
             _timer = 0; 
         }
-
     }
 
 }

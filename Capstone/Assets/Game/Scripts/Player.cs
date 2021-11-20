@@ -276,9 +276,10 @@ namespace Bladesmiths.Capstone
 
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
+            FSM.AddAnyTransition(death, Dead());
+
             FSM.AddAnyTransition(takeDamage, IsDamaged());
             FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
-            FSM.AddAnyTransition(death, Dead());
 
             // Sets the current state
             FSM.SetCurrentState(idleCombat);
@@ -670,15 +671,12 @@ namespace Bladesmiths.Capstone
                 transform.position = respawnPoint;
                 transform.rotation = Quaternion.Euler(respawnRotation);
             }
+            damaged = false; 
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());
 
-            // When the fade in is done, change current state
-            if(fade.GetComponent<Image>().color.a <= 0)
-            {
-                FSM.SetCurrentState(idleCombat);
-            }
+            FSM.SetCurrentState(idleCombat);
         }
 
         public void FadeToBlack()
@@ -708,19 +706,19 @@ namespace Bladesmiths.Capstone
 
         private IEnumerator FadeIn()
         {
+            // If the fade isn't fully transparent
+            while (fade.GetComponent<Image>().color.a > 0)
+            {
+                fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a - Time.deltaTime);
+                yield return null;
+            }
+
             // Needs to be separate from above if so it triggers before state change
             if (fade.GetComponent<Image>().color.a <= 0)
             {
                 fade.SetActive(false);
                 hasFadedToBlack = false;
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-            }
-
-            // If the fade isn't fully transparent
-            while (fade.GetComponent<Image>().color.a > 0)
-            {
-                fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a - Time.deltaTime);
-                yield return null;
             }
         }
     }
