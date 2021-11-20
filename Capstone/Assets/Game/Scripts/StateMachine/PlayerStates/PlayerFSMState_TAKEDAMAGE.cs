@@ -14,30 +14,38 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
     {
         private Player _player;
-        public float timer;
+        private Animator _animator;
+        private int _animIDDamaged;
 
-        public PlayerFSMState_TAKEDAMAGE(Player player)
+        public float Timer { get; set; }
+
+        public PlayerFSMState_TAKEDAMAGE(Player player, Animator animator)
         {
             _player = player;
             id = PlayerCondition.F_TakingDamage;
+            _animator = animator;
+
+            // Assign damaged paramater id
+            _animIDDamaged = Animator.StringToHash("Damaged");
         }
 
         public override void Tick()
         {
-            timer += Time.deltaTime;
-
+            Timer += Time.deltaTime;
         }
 
         public override void OnEnter()
         {
             _player.damaged = false;
-            timer = 0;
+            Timer = 0;
             _player.inState = true;
 
+            _animator.SetTrigger(_animIDDamaged); 
         }
 
         public override void OnExit()
         {
+            Timer = 0; 
             _player.inState = false;
         }
 

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 254_Setup
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/254_VillageScene.unity
+  - scenePath: Assets/Game/Scenes/VillageScene.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Game/Scenes/254_PlayerScene.unity
+  - scenePath: Assets/Game/Scenes/220_PlayerScene.unity
     isActive: 1
     isLoaded: 1
