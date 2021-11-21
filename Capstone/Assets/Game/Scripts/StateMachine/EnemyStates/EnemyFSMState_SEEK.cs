@@ -17,7 +17,6 @@ namespace Bladesmiths.Capstone
         private float seekAgainTimerMax;
         private CharacterController controller;
         private float speed;
-        private bool sideMove;
         private float dir;
 
         public EnemyFSMState_SEEK(Player player, Enemy enemy)
