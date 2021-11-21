@@ -69,9 +69,7 @@ namespace Bladesmiths.Capstone
                 Vector3 dist = wanderPoint - _self.transform.position;
                 //dist.y = center.y;
                 controller.Move(dist.normalized * speed * Time.deltaTime);
-                //controller.
-                //_self.transform.forward = dist.normalized * speed * Time.deltaTime;
-                // _self.transform.rotation = Quaternion.LookRotation(dist, Vector3.up);
+                
                 Quaternion q = Quaternion.Slerp(_self.transform.rotation, Quaternion.LookRotation(dist, Vector3.up), 0.15f);
                 q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
                 _self.transform.rotation = q;
