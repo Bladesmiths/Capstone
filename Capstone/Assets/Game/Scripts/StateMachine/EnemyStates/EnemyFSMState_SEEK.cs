@@ -23,7 +23,6 @@ namespace Bladesmiths.Capstone
         {
             _player = player;
             _enemy = enemy;
-            sideMove = false;
         }
 
         public override void Tick()
