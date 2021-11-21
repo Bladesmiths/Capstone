@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
@@ -20,21 +21,18 @@ namespace Bladesmiths.Capstone
 
         public override void Tick()
         {
-            Debug.DrawRay(_player.transform.position + Vector3.up, _player.transform.right, Color.blue);
-            Debug.DrawRay(_player.transform.position + Vector3.up, _player.transform.position + _player.transform.forward * 2f, Color.red);
-            Debug.DrawRay(_enemy.transform.position + Vector3.up, _player.transform.position - _enemy.transform.position, Color.yellow);
+            Vector3 dirToEnemy = _player.transform.position - _enemy.transform.position;
 
-            Debug.Log(Vector3.Distance(_enemy.transform.position, _player.transform.position + _player.transform.forward));
+            Debug.Log(Vector3.Distance(_enemy.transform.position, _player.transform.position + _player.transform.rotation * Vector3.forward));//_player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward)));
+            Debug.DrawLine(_enemy.transform.position, _player.transform.position + _player.transform.rotation * Vector3.forward);// _player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward));
 
-            if (Vector3.Distance(_enemy.transform.position, _player.transform.position + _player.transform.forward * 2f) >= 0.01f)
+            //Debug.Log(_player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward));
+
+            if (Vector3.Distance(_enemy.transform.position, _player.transform.rotation * Vector3.forward) >= 1f)
             {
-                Vector3 dirToEnemy = _player.transform.position - _enemy.transform.position;
+                float dir = Vector3.Dot(dirToEnemy, _player.transform.right) < 0 ? -1 : 1;
+                _speed = 20 * Time.deltaTime * dir;
 
-                float dir = Vector3.Dot(dirToEnemy, _player.transform.right) < 0 ? 1 : -1;
-
-                
-
-                _speed = _speed * Time.deltaTime * dir;
                 _enemy.transform.RotateAround(_player.transform.position, Vector3.up, _speed);
 
             }

@@ -22,10 +22,10 @@ namespace Bladesmiths.Capstone
             base.Start();
 
             // Instantiates the surround state for the basic enemy
-            surround = new EnemyFSMState_SURROUND_BASIC(player, this);
+            //surround = new EnemyFSMState_SURROUND_BASIC(player, this);
 
-            FSM.AddTransition(seek, surround, SurroundPlayer());
-            FSM.AddTransition(surround, seek, SeekPlayer());
+            //FSM.AddTransition(seek, surround, SurroundPlayer());
+            //FSM.AddTransition(surround, seek, SeekPlayer());
         }
 
         /// <summary>
