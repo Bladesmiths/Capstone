@@ -255,8 +255,8 @@ namespace Bladesmiths.Capstone
             block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
             idleCombat = new PlayerFSMState_IDLE(animator);
             attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
-            death = new PlayerFSMState_DEATH(this);
-            takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
+            death = new PlayerFSMState_DEATH(this, animator);
+            takeDamage = new PlayerFSMState_TAKEDAMAGE(this, animator);
             dodge = new PlayerFSMState_DODGE(this, inputs, animator, GroundLayers);
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
@@ -264,8 +264,6 @@ namespace Bladesmiths.Capstone
             // Adds all of the possible transitions
             FSM.AddTransition(idleCombat, attack, IsAttacking());
             FSM.AddTransition(attack, idleCombat, IsCombatIdle());
-            FSM.AddTransition(idleCombat, death, Alive());
-            FSM.AddTransition(attack, death, Alive());
             FSM.AddTransition(idleCombat, dodge, IsDodging());
             FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
 
@@ -278,6 +276,8 @@ namespace Bladesmiths.Capstone
 
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
+            FSM.AddAnyTransition(death, Dead());
+
             FSM.AddAnyTransition(takeDamage, IsDamaged());
             FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
 
@@ -285,7 +285,6 @@ namespace Bladesmiths.Capstone
             FSM.SetCurrentState(idleCombat);
 
             targetLock = GetComponent<TargetLock>();
-
 
             inputs.player = this;
 
@@ -333,17 +332,16 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-            if(Health <= 0)
-            {
-                FSM.SetCurrentState(death);
-            }
+            //if(Health <= 0)
+            //{
+            //    FSM.SetCurrentState(death);
+            //}
 
             // If the player is dead and just died (fadeToBlack is still occuring)
-            if((FSM.GetCurrentState() == death && justDied) || points >= maxPoints)
+            if(points >= maxPoints)
             {
                 FadeToBlack();
             }
-
         }
 
         /// <summary>
@@ -672,21 +670,16 @@ namespace Bladesmiths.Capstone
                 Health = MaxHealth;
                 transform.position = respawnPoint;
                 transform.rotation = Quaternion.Euler(respawnRotation);
-                cinemachineTargetYaw = respawnRotation.y;
-                cinemachineTargetPitch = respawnRotation.z;
             }
+            damaged = false; 
 
             // Call the fade in method multiple times so it can fade
-            FadeIn();
+            StartCoroutine(FadeIn());
 
-            // When the fade in is done, change current state
-            if(fade.GetComponent<Image>().color.a <= 0)
-            {
-                FSM.SetCurrentState(idleCombat);
-            }
+            FSM.SetCurrentState(idleCombat);
         }
 
-        private void FadeToBlack()
+        public void FadeToBlack()
         {
             // Unhide the fade out image
             if (fade.activeSelf == false)
@@ -711,16 +704,17 @@ namespace Bladesmiths.Capstone
             }
         }
 
-        private void FadeIn()
+        private IEnumerator FadeIn()
         {
             // If the fade isn't fully transparent
-            if (fade.GetComponent<Image>().color.a > 0)
+            while (fade.GetComponent<Image>().color.a > 0)
             {
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a - Time.deltaTime);
+                yield return null;
             }
 
             // Needs to be separate from above if so it triggers before state change
-            if(fade.GetComponent<Image>().color.a <= 0)
+            if (fade.GetComponent<Image>().color.a <= 0)
             {
                 fade.SetActive(false);
                 hasFadedToBlack = false;

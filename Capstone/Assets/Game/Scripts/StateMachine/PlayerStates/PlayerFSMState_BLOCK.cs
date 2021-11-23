@@ -71,8 +71,6 @@ namespace Bladesmiths.Capstone
 
             // Set blocking id to true
             _animator.SetBool(_animIDBlock, true);
-
-            
         }
 
         public override void OnExit()

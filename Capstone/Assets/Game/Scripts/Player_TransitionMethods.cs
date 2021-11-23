@@ -60,13 +60,13 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsDamaged() => () => damaged;
+        public Func<bool> IsDamaged() => () => damaged && Health > 0;
 
         /// <summary>
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 0.5f;
+        public Func<bool> IsAbleToDamage() => () => takeDamage.Timer >= takeDamage.AnimDuration;
 
         /// <summary>
         /// The condition for going from MOVE to DODGE state
@@ -84,7 +84,7 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> Alive() => () => Health <= 0;
+        public Func<bool> Dead() => () => damaged && Health <= 0;
 
         /// <summary>
         /// Checks if the player is grounded
