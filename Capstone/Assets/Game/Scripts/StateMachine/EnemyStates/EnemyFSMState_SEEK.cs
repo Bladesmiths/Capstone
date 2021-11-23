@@ -18,7 +18,7 @@ namespace Bladesmiths.Capstone
         private CharacterController controller;
         private float speed;
         private float dir;
-        private float viewDistance;
+        private float surroundDistance;
 
         public EnemyFSMState_SEEK(Player player, Enemy enemy)
         {
@@ -40,7 +40,7 @@ namespace Bladesmiths.Capstone
             controller = _enemy.GetComponent<CharacterController>();
             speed = 1.5f;
             dir = Random.Range(-1, 2);
-            viewDistance = 4f;
+            surroundDistance = 2.5f;
         }
 
         public override void OnExit()
@@ -58,7 +58,7 @@ namespace Bladesmiths.Capstone
             Vector3 dist = _player.transform.position - _enemy.transform.position;
 
             // If the Enemy is within X units and the seekAgainTimer isn't started
-            if (dist.magnitude > viewDistance && seekAgainTimer == seekAgainTimerMax)
+            if (dist.magnitude > surroundDistance && seekAgainTimer == seekAgainTimerMax)
             {
                 movementVector = dist.normalized;
 

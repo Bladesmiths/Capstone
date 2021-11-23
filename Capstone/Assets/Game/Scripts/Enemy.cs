@@ -24,6 +24,9 @@ namespace Bladesmiths.Capstone
         
         [SerializeField]
         protected float damage;
+
+        [SerializeField]
+        protected float viewDistance;
         
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -88,13 +91,13 @@ namespace Bladesmiths.Capstone
         /// Checks to see if the player is near the Enemy
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
+        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < viewDistance;
 
         /// <summary>
         /// If the Player is far away then stop seeking
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
+        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
 
         
         public virtual void Update()
