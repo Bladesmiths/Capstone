@@ -107,7 +107,7 @@ namespace Bladesmiths.Capstone
 
                 if (timer >= 1f)
                 {
-                    gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
                     damaged = false;
                     timer = 0f;
                 }
@@ -179,7 +179,7 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
 
                 damaged = true;
             }

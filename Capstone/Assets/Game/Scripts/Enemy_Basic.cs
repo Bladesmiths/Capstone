@@ -22,10 +22,10 @@ namespace Bladesmiths.Capstone
             base.Start();
 
             // Instantiates the surround state for the basic enemy
-            surround = new EnemyFSMState_SURROUND_BASIC();
+            //surround = new EnemyFSMState_SURROUND_BASIC(player, this);
 
-            FSM.AddTransition(seek, surround, SurroundPlayer());
-
+            //FSM.AddTransition(seek, surround, SurroundPlayer());
+            //FSM.AddTransition(surround, seek, SeekPlayer());
         }
 
         /// <summary>
@@ -33,6 +33,13 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> SurroundPlayer() => () => Vector3.Distance(player.transform.position, transform.position) <= 2;
+
+        /// <summary>
+        /// Checks to see if the Enemy should seek the Player
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> SeekPlayer() => () => Vector3.Distance(player.transform.position, transform.position) > 2;
+
 
         public override void Update()
         {

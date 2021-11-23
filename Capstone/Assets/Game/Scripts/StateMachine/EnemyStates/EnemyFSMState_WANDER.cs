@@ -10,6 +10,7 @@ namespace Bladesmiths.Capstone
     public class EnemyFSMState_WANDER : EnemyFSMState
     {
         private Enemy _self;
+        private CharacterController controller;
         
         // The point to head towards
         private Vector3 wanderPoint;
@@ -32,6 +33,8 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
+            controller = _self.GetComponent<CharacterController>();
+
             center = _self.transform.position;
             moveTimer = 0;
             moveTimerMax = 1f;
@@ -64,7 +67,12 @@ namespace Bladesmiths.Capstone
 
                 // Moves the Enemy
                 Vector3 dist = wanderPoint - _self.transform.position;
-                _self.GetComponent<CharacterController>().Move(dist.normalized * speed * Time.deltaTime);
+                //dist.y = center.y;
+                controller.Move(dist.normalized * speed * Time.deltaTime);
+                
+                Quaternion q = Quaternion.Slerp(_self.transform.rotation, Quaternion.LookRotation(dist, Vector3.up), 0.15f);
+                q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+                _self.transform.rotation = q;
                 
             }
             else
