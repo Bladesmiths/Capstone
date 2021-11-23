@@ -66,7 +66,7 @@ namespace Bladesmiths.Capstone
         /// The condition for having been attacked
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsAbleToDamage() => () => takeDamage.Timer >= 0.5f;
+        public Func<bool> IsAbleToDamage() => () => takeDamage.Timer >= takeDamage.AnimDuration;
 
         /// <summary>
         /// The condition for going from MOVE to DODGE state
