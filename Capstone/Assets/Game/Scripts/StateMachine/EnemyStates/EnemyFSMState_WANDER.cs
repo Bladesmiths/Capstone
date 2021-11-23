@@ -73,10 +73,7 @@ namespace Bladesmiths.Capstone
                 Quaternion q = Quaternion.Slerp(_self.transform.rotation, Quaternion.LookRotation(dist, Vector3.up), 0.15f);
                 q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
                 _self.transform.rotation = q;
-                //dist = new Vector3(_self.transform.position.x, dist.y, _self.transform.position.z);
-                //Quaternion.Slerp()
-
-
+                
             }
             else
             {
