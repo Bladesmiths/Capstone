@@ -20,6 +20,7 @@ namespace Bladesmiths.Capstone
         public override void OnEnter()
         {
             // When the enemy is dead destroy it
+            AIDirector.Instance.RemoveFromGroups(_enemy);
             MonoBehaviour.Destroy(_enemy.gameObject);
         }
 

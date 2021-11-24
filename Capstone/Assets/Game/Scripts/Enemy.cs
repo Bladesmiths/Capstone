@@ -12,7 +12,7 @@ namespace Bladesmiths.Capstone
         // Reference to the Finite State Machine
         protected FiniteStateMachine FSM;
 
-        protected AIDirector director;
+        //protected AIDirector director;
         private CharacterController controller;
         private NavMeshAgent agent;
 
@@ -66,6 +66,8 @@ namespace Bladesmiths.Capstone
 
         public virtual void Start()
         {
+            AIDirector.Instance.AddToEnemyGroup(this);
+
             player = GameObject.Find("Player").GetComponent<Player>();
 
             moveVector = Vector3.zero;
@@ -158,8 +160,6 @@ namespace Bladesmiths.Capstone
 
 
             // Movement
-            //controller.Move(moveVector * moveSpeed * Time.deltaTime);
-            //agent.Move(moveVector.normalized * moveSpeed * Time.deltaTime);
             agent.SetDestination(moveVector);
 
             Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector), 0.25f);

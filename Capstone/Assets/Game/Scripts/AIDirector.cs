@@ -7,8 +7,8 @@ namespace Bladesmiths.Capstone
     public class AIDirector : MonoBehaviour
     {
         public GameObject[] enemyPrefabs;
-        private List<Enemy> enemyGroup;
-        private Queue<Enemy> attackQueue;
+        public List<Enemy> enemyGroup;
+        public LinkedList<Enemy> attackQueue;
         private static AIDirector instance;
         private bool enemyAttacking;
 
@@ -24,12 +24,14 @@ namespace Bladesmiths.Capstone
             else
             {
                 instance = this;
+                attackQueue = new LinkedList<Enemy>();
+                enemyGroup = new List<Enemy>();
             }
         }
 
         private void Start()
         {
-
+            
         }
 
         private void Update()
@@ -39,11 +41,26 @@ namespace Bladesmiths.Capstone
 
         public void AddToEnemyGroup(Enemy e)
         {
+            if(e == null)
+            {
+                return;
+            }
+
+            enemyGroup.Add(e);
 
         }
 
-        public void RemoveFromEnemyGroup(Enemy e)
+        public void RemoveFromGroups(Enemy e)
         {
+            if (!enemyGroup.Contains(e))
+            {
+                return;
+            }
+
+            enemyGroup.Remove(e);
+            enemyGroup.Sort();
+
+            attackQueue.Remove(e);
 
         }
 
