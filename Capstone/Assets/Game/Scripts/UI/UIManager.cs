@@ -152,9 +152,11 @@ namespace Bladesmiths.Capstone.UI
         {
             float currentHealthPercentage = currentHealth / maxHealth;
 
+            //Determine how many chunks remain in the health bar after taking damage
             int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
 
-            for (int i = healthBarObjects.Count - 1; i >= remainingChunks; i--)
+            //Shatter any chunks that have an index higher than the remaining chunk count
+            for (int i = 0; i < healthBarObjects.Count - remainingChunks; i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }

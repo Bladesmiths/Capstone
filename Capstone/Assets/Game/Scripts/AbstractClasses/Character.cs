@@ -79,6 +79,8 @@ namespace Bladesmiths.Capstone
             // Log the amount of damage taken
             Debug.Log($"DAMAGE TAKEN: {damage}");
 
+            Debug.Log($"Damaging ID: " + damagingID);
+
             // Return damage
             return damage;
         }
