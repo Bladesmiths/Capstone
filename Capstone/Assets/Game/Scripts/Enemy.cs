@@ -12,6 +12,10 @@ namespace Bladesmiths.Capstone
         // Reference to the Finite State Machine
         protected FiniteStateMachine FSM;
 
+        protected AIDirector director;
+        private CharacterController controller;
+        private NavMeshAgent agent;
+
         // Gets a reference to the player
         // Will be used for finding the player in the world
         [SerializeField] 
@@ -21,6 +25,8 @@ namespace Bladesmiths.Capstone
         protected float timer = 0f;
 
         protected float moveSpeed;
+        public Vector3 moveVector;
+        public Vector3 rotateVector;
         
         [SerializeField]
         protected float damage;
@@ -61,7 +67,12 @@ namespace Bladesmiths.Capstone
         public virtual void Start()
         {
             player = GameObject.Find("Player").GetComponent<Player>();
-            
+
+            moveVector = Vector3.zero;
+            moveSpeed = 5f;
+            controller = GetComponent<CharacterController>();
+            agent = GetComponent<NavMeshAgent>();
+
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
             idle = new EnemyFSMState_IDLE();
@@ -144,6 +155,17 @@ namespace Bladesmiths.Capstone
                     damaging = false;
                 }
             }
+
+
+            // Movement
+            //controller.Move(moveVector * moveSpeed * Time.deltaTime);
+            //agent.Move(moveVector.normalized * moveSpeed * Time.deltaTime);
+            agent.SetDestination(moveVector);
+
+            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector), 0.25f);
+            q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+            transform.rotation = q;
+
         }
 
         void OnCollisionEnter(Collision collision)
