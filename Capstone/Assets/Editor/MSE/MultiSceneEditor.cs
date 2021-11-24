@@ -128,7 +128,7 @@ namespace Bladesmiths.Capstone.Editor
         [FolderPath(RequireExistingPath = true)]
         [TitleGroup("Folder Paths")]
         [BoxGroup("Folder Paths/Multi-Scene Setup Data")]
-        public string PathToSave
+        public string pathToSave
         {
             // Use EditorPrefs to hold persistent user-variables.
             get => EditorPrefs.GetString("MSE.SavePath", "Assets/Game/Scenes/");
@@ -144,7 +144,7 @@ namespace Bladesmiths.Capstone.Editor
         {
             var obj = ScriptableObject.CreateInstance(typeof(MultiSceneSetupData));
 
-            string dest = ConvertRelativePathToAbsolute(PathToSave).TrimEnd('/');
+            string dest = ConvertRelativePathToAbsolute(pathToSave).TrimEnd('/');
 
             if (!Directory.Exists(dest))
             {

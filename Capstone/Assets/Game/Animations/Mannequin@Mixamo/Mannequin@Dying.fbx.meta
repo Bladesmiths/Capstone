@@ -6,9 +6,6 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: Dying
-  - first:
-      74: 8273325049105940540
-    second: Dead
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -41,7 +38,7 @@ ModelImporter:
       name: Dying
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 15
+      firstFrame: 0
       lastFrame: 98
       wrapMode: 0
       orientationOffsetY: 0
@@ -51,41 +48,12 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Dead
-      takeName: mixamo.com
-      internalID: 0
-      firstFrame: 97
-      lastFrame: 98
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

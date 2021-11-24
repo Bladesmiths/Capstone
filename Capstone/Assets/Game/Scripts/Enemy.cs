@@ -24,9 +24,6 @@ namespace Bladesmiths.Capstone
         
         [SerializeField]
         protected float damage;
-
-        [SerializeField]
-        protected float viewDistance;
         
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -66,16 +63,15 @@ namespace Bladesmiths.Capstone
             seek = new EnemyFSMState_SEEK(player, this);
             idle = new EnemyFSMState_IDLE();
             death = new EnemyFSMState_DEATH(this);
-            wander = new EnemyFSMState_WANDER(this);
 
             // Adds all of the possible transitions
-            FSM.AddTransition(seek, wander, IsIdle());
-            FSM.AddTransition(wander, seek, IsClose());
+            FSM.AddTransition(seek, idle, IsIdle());
+            FSM.AddTransition(idle, seek, IsClose());
 
             FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            FSM.SetCurrentState(wander);
+            FSM.SetCurrentState(idle);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
@@ -91,13 +87,13 @@ namespace Bladesmiths.Capstone
         /// Checks to see if the player is near the Enemy
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < viewDistance;
+        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
 
         /// <summary>
         /// If the Player is far away then stop seeking
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
+        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
 
         
         public virtual void Update()
@@ -110,7 +106,7 @@ namespace Bladesmiths.Capstone
 
                 if (timer >= 1f)
                 {
-                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+                    gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
                     damaged = false;
                     timer = 0f;
                 }
@@ -182,7 +178,7 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
                 damaged = true;
             }

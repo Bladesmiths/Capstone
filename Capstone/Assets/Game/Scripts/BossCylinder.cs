@@ -73,7 +73,7 @@ namespace Bladesmiths.Capstone
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<BlockCollision>() != null || other.GetComponent<Player>() != null)
+            if (other.gameObject.transform.root.CompareTag("Player") == true)
             {
                 if (other.gameObject.transform.root.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
                 {

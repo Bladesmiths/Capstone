@@ -4,7 +4,6 @@ using UnityEngine;
 using Bladesmiths.Capstone.Enums;
 using Bladesmiths.Capstone.Testing;
 using StarterAssets;
-using System.Linq;
 
 namespace Bladesmiths.Capstone
 {
@@ -15,41 +14,30 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
     {
         private Player _player;
-        private Animator _animator;
-        private int _animIDDamaged;
+        public float timer;
 
-        public float Timer { get; set; }
-        public float AnimDuration { get; private set; }
-
-        public PlayerFSMState_TAKEDAMAGE(Player player, Animator animator)
+        public PlayerFSMState_TAKEDAMAGE(Player player)
         {
             _player = player;
             id = PlayerCondition.F_TakingDamage;
-            _animator = animator;
-
-            // Assign damaged paramater id
-            _animIDDamaged = Animator.StringToHash("Damaged");
-            AnimDuration = animator.runtimeAnimatorController.animationClips.
-                Where(clip => clip.name == "GettingHit").ToArray()[0].length;
         }
 
         public override void Tick()
         {
-            Timer += Time.deltaTime;
+            timer += Time.deltaTime;
+
         }
 
         public override void OnEnter()
         {
             _player.damaged = false;
-            Timer = 0;
+            timer = 0;
             _player.inState = true;
 
-            _animator.SetTrigger(_animIDDamaged); 
         }
 
         public override void OnExit()
         {
-            Timer = 0; 
             _player.inState = false;
         }
 
