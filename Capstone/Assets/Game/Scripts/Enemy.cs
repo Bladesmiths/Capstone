@@ -158,14 +158,12 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-
             // Movement
             agent.SetDestination(moveVector);
 
             Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector), 0.25f);
             q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
             transform.rotation = q;
-
         }
 
         void OnCollisionEnter(Collision collision)

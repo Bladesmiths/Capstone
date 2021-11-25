@@ -13,7 +13,7 @@ namespace Bladesmiths.Capstone
         private bool enemyAttacking;
 
 
-        public static AIDirector Instance { get { return instance; } }
+        public static AIDirector Instance { get => instance;  }
 
         private void Awake()
         {
@@ -52,16 +52,13 @@ namespace Bladesmiths.Capstone
 
         public void RemoveFromGroups(Enemy e)
         {
-            if (!enemyGroup.Contains(e))
+            if (!enemyGroup.Remove(e))
             {
                 return;
             }
-
-            enemyGroup.Remove(e);
+            
             enemyGroup.Sort();
-
             attackQueue.Remove(e);
-
         }
 
         public void PopulateAttackQueue()

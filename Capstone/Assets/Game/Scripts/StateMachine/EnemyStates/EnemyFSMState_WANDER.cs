@@ -68,11 +68,9 @@ namespace Bladesmiths.Capstone
 
                 // Moves the Enemy
                 Vector3 dist = wanderPoint - _self.transform.position;
-                //dist.y = center.y;
 
                 _self.moveVector = wanderPoint;// dist.normalized;
                 _self.rotateVector = dist.normalized;
-
                 
             }
             else
@@ -111,8 +109,7 @@ namespace Bladesmiths.Capstone
 
             NavMesh.SamplePosition(randDirection, out navHit, randMax, -1);
 
-            return navHit.position;
-                        
+            return navHit.position;                        
         }
     }
 }

@@ -77,7 +77,6 @@ namespace Bladesmiths.Capstone
                 Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
                 movementVector = move + _enemy.transform.position;
 
-
                 seekAgainTimer -= Time.deltaTime;
             }
 
@@ -92,9 +91,6 @@ namespace Bladesmiths.Capstone
             }
 
             Debug.DrawLine(_enemy.transform.position, movementVector, Color.red);
-
-            //movementVector.Normalize();
-            //movementVector.y = _enemy.transform.position.y;
 
             _enemy.moveVector = movementVector;
             _enemy.rotateVector = dist;
