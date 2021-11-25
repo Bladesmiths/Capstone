@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 259Branch
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/PlayerScene.unity
+  - scenePath: Assets/Game/Scenes/259_PlayerScene.unity
     isActive: 1
     isLoaded: 1
   - scenePath: Assets/Game/Scenes/259_VillageScene.unity
