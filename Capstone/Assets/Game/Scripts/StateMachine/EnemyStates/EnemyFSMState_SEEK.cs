@@ -73,7 +73,7 @@ namespace Bladesmiths.Capstone
             if(sideMoveTimer >= sideMoveTimerMax)
             {
                 // Get the perpendicular vector to the distance between the Player and the Enemy
-                dir = dir == 0 ? 1 : -1;
+                //dir = dir == 0 ? 1 : -1;
                 Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
                 movementVector = move + _enemy.transform.position;
 
