@@ -60,8 +60,8 @@ namespace Bladesmiths.Capstone
             // If the Enemy is within X units and the seekAgainTimer isn't started
             if (dist.magnitude > surroundDistance && seekAgainTimer == seekAgainTimerMax)
             {
-                movementVector = dist.normalized;
-
+                //movementVector = dist.normalized;
+                movementVector = _player.transform.position;
             }
             else
             {
@@ -73,8 +73,9 @@ namespace Bladesmiths.Capstone
             if(sideMoveTimer >= sideMoveTimerMax)
             {
                 // Get the perpendicular vector to the distance between the Player and the Enemy
+                //dir = dir == 0 ? 1 : -1;
                 Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
-                movementVector = move.normalized;
+                movementVector = move + _enemy.transform.position;
 
                 seekAgainTimer -= Time.deltaTime;
             }
@@ -89,15 +90,10 @@ namespace Bladesmiths.Capstone
 
             }
 
-            movementVector.Normalize();
+            Debug.DrawLine(_enemy.transform.position, movementVector, Color.red);
 
-            // Move the Enemy
-            controller.Move(movementVector * speed * Time.deltaTime);
-
-            // Rotate the Enemy towards the Player
-            Quaternion q = Quaternion.Slerp(_enemy.transform.rotation, Quaternion.LookRotation(dist, Vector3.up), 0.15f);
-            q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-            _enemy.transform.rotation = q;
+            _enemy.moveVector = movementVector;
+            _enemy.rotateVector = dist;
 
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
@@ -33,7 +34,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnter()
         {
-            controller = _self.GetComponent<CharacterController>();
+            //controller = _self.GetComponent<CharacterController>();
 
             center = _self.transform.position;
             moveTimer = 0;
@@ -60,19 +61,16 @@ namespace Bladesmiths.Capstone
 
             }
 
-            // If the Enemy is within a certain distance of their target point
+            // If the Enemy is a certain distance away from their target point
             if (Vector3.Distance(_self.transform.position, wanderPoint) >= 0.1f)
             {
                 moveTimer += Time.deltaTime;
 
                 // Moves the Enemy
                 Vector3 dist = wanderPoint - _self.transform.position;
-                //dist.y = center.y;
-                controller.Move(dist.normalized * speed * Time.deltaTime);
-                
-                Quaternion q = Quaternion.Slerp(_self.transform.rotation, Quaternion.LookRotation(dist, Vector3.up), 0.15f);
-                q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-                _self.transform.rotation = q;
+
+                _self.moveVector = wanderPoint;// dist.normalized;
+                _self.rotateVector = dist.normalized;
                 
             }
             else
@@ -98,31 +96,20 @@ namespace Bladesmiths.Capstone
         /// <param name="z"></param>
         /// <returns></returns>
         public Vector3 NewWanderPosition()
-        {
-            float x = Random.Range(randMin, randMax) + center.x;
-            float y = center.y;
-            float z = Random.Range(randMin, randMax) + center.z;
-
-            RaycastHit hit;
-            Vector3 pos = new Vector3(x, y, z);
-
+        {            
             moveTimer = 0;
             moveTimerMax = Random.Range(minTime, maxTime);
 
-            // Checks if the Enemy is going to wander into a wall
-            if (Physics.Raycast(_self.transform.position + new Vector3(0, _self.transform.localScale.y / 2, 0), 
-                (pos + new Vector3(0, _self.transform.localScale.y / 2, 0) - _self.transform.position), 
-                out hit, 
-                Vector3.Distance(_self.transform.position, pos + (pos - _self.transform.position).normalized * 0.5f)))
-            {                                                
-                // If the Enemy is going to wander into a wall choose new values and check again
-                return NewWanderPosition();
-            }
-            else
-            {
-                // If the Enemy isn't going to wander into a wall return the current wanderPoint
-                return pos;
-            }                    
+            Vector3 randDirection = Random.insideUnitSphere * randMax;
+            //randDirection.y = center.y;
+
+            randDirection += center;
+
+            NavMeshHit navHit;
+
+            NavMesh.SamplePosition(randDirection, out navHit, randMax, -1);
+
+            return navHit.position;                        
         }
     }
 }
