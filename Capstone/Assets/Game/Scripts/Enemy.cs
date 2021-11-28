@@ -21,12 +21,16 @@ namespace Bladesmiths.Capstone
         [SerializeField] 
         protected Player player;
 
+        [SerializeField]
+        private GameObject sword;
+
         protected bool damaged = false;
         protected float timer = 0f;
 
         protected float moveSpeed;
         public Vector3 moveVector;
         public Vector3 rotateVector;
+        
         
         [SerializeField]
         protected float damage;
@@ -46,6 +50,7 @@ namespace Bladesmiths.Capstone
 
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
+        public bool CanHit { get; set; }
 
         #region Enemy States
         protected EnemyFSMState_SEEK seek;
@@ -80,10 +85,15 @@ namespace Bladesmiths.Capstone
             idle = new EnemyFSMState_IDLE();
             death = new EnemyFSMState_DEATH(this);
             wander = new EnemyFSMState_WANDER(this);
+            attack = new EnemyFSMState_ATTACK(sword, this);
 
             // Adds all of the possible transitions
             FSM.AddTransition(seek, wander, IsIdle());
             FSM.AddTransition(wander, seek, IsClose());
+            FSM.AddTransition(seek, attack, CanAttack());
+            FSM.AddTransition(attack, seek, DoneAttacking());
+
+            CanHit = true;
 
             FSM.AddAnyTransition(death, IsDead());
 
@@ -112,7 +122,21 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
 
-        
+        /// <summary>
+        /// If the Enemy can attack
+        /// Set through the AI Director
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> CanAttack() => () => CanHit;
+
+        /// <summary>
+        /// If the Enemy is finishing attacking
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> DoneAttacking() => () => !CanHit;
+
+
         public virtual void Update()
         {
             //FSM.Tick();

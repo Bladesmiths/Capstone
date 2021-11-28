@@ -45,7 +45,8 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
-
+            _enemy.moveVector = _enemy.transform.position;
+            _enemy.rotateVector = _player.transform.position - _enemy.transform.position;
         }
         
         /// <summary>
