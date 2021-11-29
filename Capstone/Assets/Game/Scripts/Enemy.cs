@@ -30,8 +30,7 @@ namespace Bladesmiths.Capstone
         protected float moveSpeed;
         public Vector3 moveVector;
         public Vector3 rotateVector;
-        
-        
+
         [SerializeField]
         protected float damage;
 
@@ -47,6 +46,10 @@ namespace Bladesmiths.Capstone
         protected float damagingTimerLimit;
         protected float damagingTimer;
         protected bool damaging;
+
+        public float attackTimer;
+        public float attackTimerMax;
+        private bool isBroken;
 
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
@@ -72,13 +75,16 @@ namespace Bladesmiths.Capstone
         public virtual void Start()
         {
             AIDirector.Instance.AddToEnemyGroup(this);
-
+            isBroken = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 
             moveVector = Vector3.zero;
             moveSpeed = 5f;
             controller = GetComponent<CharacterController>();
             agent = GetComponent<NavMeshAgent>();
+            attackTimerMax = 1f;
+            attackTimer = attackTimerMax;
+            damage = 15f;
 
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
@@ -93,7 +99,7 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(seek, attack, CanAttack());
             FSM.AddTransition(attack, seek, DoneAttacking());
 
-            CanHit = true;
+            //CanHit = true;
 
             FSM.AddAnyTransition(death, IsDead());
 
@@ -182,18 +188,24 @@ namespace Bladesmiths.Capstone
                 }
             }
 
+            
             // Movement
             agent.SetDestination(moveVector);
 
             Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector), 0.25f);
             q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
             transform.rotation = q;
+           
+
+            
         }
 
-        void OnCollisionEnter(Collision collision)
+        public void SwordAttack(int targetID)
         {
-            //Attack();
+            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
 
+            // Testing
+            damaging = true;
         }
 
         protected virtual void Attack()

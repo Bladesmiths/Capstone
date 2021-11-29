@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563500564873866625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.709994, y: 1.22, z: -20.279976}
+  m_LocalPosition: {x: -9.790057, y: 1.22, z: -20.222937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1563500564487170078}
@@ -244,6 +244,8 @@ MonoBehaviour:
   damage: 0
   viewDistance: 6
   damagingTimerLimit: 0
+  attackTimer: 0
+  attackTimerMax: 0
 --- !u!136 &9219826958900925806
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -267,6 +269,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977449061654060393}
+  - component: {fileID: 798950236729713099}
+  - component: {fileID: 8553493303418067995}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -281,27 +285,39 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6138350903734346239}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.583, y: -0.079, z: 0.112}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.1572445, z: 0, w: 0.98755974}
+  m_LocalPosition: {x: 0.5961828, y: -0.07754576, z: 0.053468704}
+  m_LocalScale: {x: 5, y: 2, z: 2}
   m_Children:
   - {fileID: 9077452140404944968}
   m_Father: {fileID: 1563500564873866627}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1480738459983360141
+  m_LocalEulerAnglesHint: {x: 0, y: -18.094, z: 0}
+--- !u!65 &798950236729713099
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8552975659897613042}
+  m_GameObject: {fileID: 6138350903734346239}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.22, z: 0.01}
-  m_Center: {x: 0, y: 0.06, z: 0}
+  m_Size: {x: 0.05, y: 0.9, z: 0.1}
+  m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &8553493303418067995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6138350903734346239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b967c2688b697b9479b6677ae88a58c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8823448725089114019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,11 +387,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cca1c5e2dc2c8c4aab4216f8796e84a, type: 3}
---- !u!1 &8552975659897613042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1cca1c5e2dc2c8c4aab4216f8796e84a, type: 3}
-  m_PrefabInstance: {fileID: 8823448725089114019}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9077452140404944968 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1cca1c5e2dc2c8c4aab4216f8796e84a, type: 3}

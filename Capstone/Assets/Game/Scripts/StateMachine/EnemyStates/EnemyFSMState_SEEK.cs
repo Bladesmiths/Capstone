@@ -29,6 +29,20 @@ namespace Bladesmiths.Capstone
         public override void Tick()
         {
             MovementCheck();
+
+            
+
+
+        }
+
+        private void AttackTimer()
+        {
+            _enemy.attackTimer -= Time.deltaTime;
+            if(_enemy.attackTimer <= 0)
+            {
+                AIDirector.Instance.PopulateAttackQueue(_enemy);
+            }
+
         }
 
         public override void OnEnter()
@@ -40,7 +54,7 @@ namespace Bladesmiths.Capstone
             controller = _enemy.GetComponent<CharacterController>();
             speed = 1.5f;
             dir = Random.Range(-1, 2);
-            surroundDistance = 2.5f;
+            surroundDistance = 2f;
         }
 
         public override void OnExit()
@@ -77,7 +91,7 @@ namespace Bladesmiths.Capstone
                 //dir = dir == 0 ? 1 : -1;
                 Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
                 movementVector = move + _enemy.transform.position;
-
+                AttackTimer();
                 seekAgainTimer -= Time.deltaTime;
             }
 

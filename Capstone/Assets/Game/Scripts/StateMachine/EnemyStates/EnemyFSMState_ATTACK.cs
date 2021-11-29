@@ -22,7 +22,7 @@ namespace Bladesmiths.Capstone
             {
                 Attack();
 
-                if (_sword.transform.eulerAngles.x == 90)
+                if (_sword.transform.localEulerAngles.x == 90)
                 {
                     attack = false;
                 }
@@ -31,7 +31,7 @@ namespace Bladesmiths.Capstone
             {
                 StopAttack();
 
-                if (_sword.transform.eulerAngles.x <= 0.1)
+                if (_sword.transform.localEulerAngles.x <= 0.1)
                 {
                     _enemy.CanHit = false;
                 }
@@ -45,18 +45,19 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
-            _sword.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            _enemy.attackTimer = _enemy.attackTimerMax;
         }
 
         public void Attack()
         {
-            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(90f, 0f, 0f), 0.4f);
+            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(90f, _sword.transform.eulerAngles.y, 0f), 0.4f);
 
         }
 
         public void StopAttack()
         {
-            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(0f, 0f, 0f), 0.4f);
+            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f), 0.4f);
 
         }
 
