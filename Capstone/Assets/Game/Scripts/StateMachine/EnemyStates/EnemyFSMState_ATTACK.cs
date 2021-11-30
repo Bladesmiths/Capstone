@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
+    /// <summary>
+    /// The behavior for how the Enemies should attack
+    /// </summary>
     public class EnemyFSMState_ATTACK : EnemyFSMState
     {
         private GameObject _sword;
@@ -57,6 +60,9 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// The method for the Enemy attacking the Player
+        /// </summary>
         public void Attack()
         {
             preAttackTimer += Time.deltaTime;
@@ -70,6 +76,9 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        /// <summary>
+        /// The method for resetting the Enemy's sword
+        /// </summary>
         public void StopAttack()
         {
             _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f), 0.4f);

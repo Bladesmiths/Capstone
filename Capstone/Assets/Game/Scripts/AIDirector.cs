@@ -42,6 +42,9 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        /// <summary>
+        /// Checks to see if there is already an Enemy attacking
+        /// </summary>
         public void CheckForPossibleAttacker()
         {
             if(!EnemyCurrentlyAttacking())
@@ -49,11 +52,13 @@ namespace Bladesmiths.Capstone
                 AttackPlayer(attackQueue.First.Value);
                 attackQueue.RemoveFirst();
             }
-            Debug.Log(attackQueue);
-
-
+            
         }
 
+        /// <summary>
+        /// Adds the Enemy to the enemyGroup
+        /// </summary>
+        /// <param name="e"></param>
         public void AddToEnemyGroup(Enemy e)
         {
             if(e == null)
@@ -65,6 +70,10 @@ namespace Bladesmiths.Capstone
 
         }
 
+        /// <summary>
+        /// Removes the Enemy from the enemyGroup and the attackQueue
+        /// </summary>
+        /// <param name="e"></param>
         public void RemoveFromGroups(Enemy e)
         {
             if (!enemyGroup.Remove(e))
@@ -76,17 +85,29 @@ namespace Bladesmiths.Capstone
             attackQueue.Remove(e);
         }
 
+        /// <summary>
+        /// Adds the Enemy to the attackQueue
+        /// </summary>
+        /// <param name="e"></param>
         public void PopulateAttackQueue(Enemy e)
         {            
             attackQueue.AddLast(e);
 
         }
 
+        /// <summary>
+        /// Allows for the Enemy to attack
+        /// </summary>
+        /// <param name="e"></param>
         public void AttackPlayer(Enemy e)
         {
             e.CanHit = true;
         }
 
+        /// <summary>
+        /// Checks to see if there is currently an Enemy attacking
+        /// </summary>
+        /// <returns></returns>
         public bool EnemyCurrentlyAttacking()
         {
             foreach(Enemy e in enemyGroup)
