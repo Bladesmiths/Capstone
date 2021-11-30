@@ -191,6 +191,13 @@ namespace Bladesmiths.Capstone
                 damaging = false;
             }
         }
+        public void SwordAttack(int targetID)
+        {
+           ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+            
+            // Testing
+            damaging = true;
+        }
 
         protected virtual void Attack()
         {

@@ -637,6 +637,11 @@ namespace Bladesmiths.Capstone
                     // Might need to be changed slightly eventually to better
                     // account for player taking damage from behind them
                     damaged = (blockDetector.GetComponent<BlockCollision>().BlockTriggered) ? false : true;
+                    if(Health <= 0)
+                    {
+                        damaged = true;
+                    }
+                    
                 }
 
                 // Return whether damage was taken or not
