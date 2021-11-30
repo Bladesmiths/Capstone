@@ -47,11 +47,14 @@ namespace Bladesmiths.Capstone
             id = PlayerCondition.F_Attacking;
 
             _animDurations.Add(SwordType.Quartz, animator.runtimeAnimatorController.animationClips.
-                Where(clip => clip.name == "Sword And Shield Slash 2").ToArray()[0].length / 1.5f);
+                Where(clip => clip.name == "Sword And Shield Slash 2").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Quartz]);
             _animDurations.Add(SwordType.Ruby, animator.runtimeAnimatorController.animationClips.
-                Where(clip => clip.name == "Ruby Slash_Colliders").ToArray()[0].length / 1.0f);
+                Where(clip => clip.name == "Ruby Slash_Colliders").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Ruby]);
             _animDurations.Add(SwordType.Sapphire, animator.runtimeAnimatorController.animationClips.
-                Where(clip => clip.name == "Sapphire Inward Slash_Colliders").ToArray()[0].length / 2.0f);
+                Where(clip => clip.name == "Sapphire Inward Slash_Colliders").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Sapphire]);
         }
 
         public override void Tick()
