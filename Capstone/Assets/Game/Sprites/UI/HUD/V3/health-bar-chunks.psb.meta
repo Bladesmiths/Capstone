@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Outline
+  - name: Inline
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -99,7 +99,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 126
       width: 1000
       height: 114
     spriteID: 173e4845bfadadd46bf1dcbb8b06376d
@@ -112,7 +112,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4, y: 2}
+    uvTransform: {x: 4, y: 124}
   - name: healthChunk
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -121,7 +121,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 137
-      y: 189
+      y: 311
       width: 31
       height: 25
     spriteID: b8a37ec44530df745a2f333d5d0c0fc7
@@ -134,7 +134,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -797, y: 145}
+    uvTransform: {x: -797, y: 267}
   - name: healthChunk_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -143,7 +143,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 853
-      y: 189
+      y: 311
       width: 19
       height: 32
     spriteID: 16e1823ba95a74940899d4e8a3277862
@@ -156,7 +156,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -70, y: 144}
+    uvTransform: {x: -70, y: 266}
   - name: healthChunk_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -165,7 +165,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 903
-      y: 241
+      y: 363
       width: 14
       height: 19
     spriteID: a2768021961c1414896242a86cc4491a
@@ -178,7 +178,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -17, y: 202}
+    uvTransform: {x: -17, y: 324}
   - name: healthChunk_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -187,7 +187,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 473
-      y: 241
+      y: 363
       width: 19
       height: 23
     spriteID: 82a63b5aba5c1db4a8c126530ad6002e
@@ -200,7 +200,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -436, y: 183}
+    uvTransform: {x: -436, y: 305}
   - name: healthChunk_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -209,7 +209,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 174
-      y: 241
+      y: 363
       width: 20
       height: 25
     spriteID: d2016002db9b3e541b5c4473bcecc10f
@@ -222,7 +222,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -736, y: 200}
+    uvTransform: {x: -736, y: 322}
   - name: healthChunk_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -231,7 +231,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 735
-      y: 241
+      y: 363
       width: 18
       height: 22
     spriteID: 4858f552f28386a4485bce5957075369
@@ -244,7 +244,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -169, y: 204}
+    uvTransform: {x: -169, y: 326}
   - name: healthChunk_6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -253,7 +253,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 766
-      y: 189
+      y: 311
       width: 22
       height: 29
     spriteID: 326cd6b9e2853424296209c2638c43c0
@@ -266,7 +266,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -124, y: 140}
+    uvTransform: {x: -124, y: 262}
   - name: healthChunk_7
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -275,7 +275,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 420
-      y: 157
+      y: 279
       width: 23
       height: 23
     spriteID: 1f55fe85d2e300f4da9bac15e024efd5
@@ -288,7 +288,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -465, y: 119}
+    uvTransform: {x: -465, y: 241}
   - name: healthChunk_8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -297,7 +297,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 311
-      y: 157
+      y: 279
       width: 30
       height: 18
     spriteID: 73d26db51f90f054caf49ea64463797d
@@ -310,7 +310,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -565, y: 97}
+    uvTransform: {x: -565, y: 219}
   - name: healthChunk_9
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -319,7 +319,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 796
-      y: 189
+      y: 311
       width: 20
       height: 31
     spriteID: eb0720c7789edda428d9a10a84f7e76c
@@ -332,7 +332,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -77, y: 151}
+    uvTransform: {x: -77, y: 273}
   - name: healthChunk_10
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -341,7 +341,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 875
-      y: 241
+      y: 363
       width: 20
       height: 16
     spriteID: ad43aaf9067b7f84b867bd23264e42c0
@@ -354,7 +354,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 14, y: 179}
+    uvTransform: {x: 14, y: 301}
   - name: healthChunk_11
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -363,7 +363,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 679
-      y: 241
+      y: 363
       width: 19
       height: 21
     spriteID: a71942bfbf2518c42a4da8e52d261696
@@ -376,7 +376,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -178, y: 194}
+    uvTransform: {x: -178, y: 316}
   - name: healthChunk_12
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -385,7 +385,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 678
-      y: 157
+      y: 279
       width: 34
       height: 15
     spriteID: 40872064b6a770f4985fa34e47713069
@@ -398,7 +398,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -173, y: 119}
+    uvTransform: {x: -173, y: 241}
   - name: healthChunk_13
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -407,7 +407,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 500
-      y: 241
+      y: 363
       width: 23
       height: 19
     spriteID: b6550a1a57abdb1449a0b586621f221a
@@ -420,7 +420,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -339, y: 189}
+    uvTransform: {x: -339, y: 311}
   - name: healthChunk_14
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -429,7 +429,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 652
-      y: 189
+      y: 311
       width: 33
       height: 20
     spriteID: c4ddec4c0bd743f4182466510549078e
@@ -442,7 +442,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -174, y: 152}
+    uvTransform: {x: -174, y: 274}
   - name: healthChunk_15
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -451,7 +451,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 652
-      y: 217
+      y: 339
       width: 33
       height: 16
     spriteID: 525f6e15d3ea6df46810575c7cd5a358
@@ -464,7 +464,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -177, y: 154}
+    uvTransform: {x: -177, y: 276}
   - name: healthChunk_16
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -473,7 +473,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 288
-      y: 189
+      y: 311
       width: 27
       height: 27
     spriteID: 2a4127cc752a2ba45a2d5c9eca565558
@@ -486,7 +486,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -528, y: 143}
+    uvTransform: {x: -528, y: 265}
   - name: healthChunk_17
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -495,7 +495,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 541
-      y: 157
+      y: 279
       width: 26
       height: 20
     spriteID: 153032d3806a08e40bd59aa6b4fb8f1b
@@ -508,7 +508,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -266, y: 98}
+    uvTransform: {x: -266, y: 220}
   - name: healthChunk_18
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -517,7 +517,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 693
-      y: 189
+      y: 311
       width: 31
       height: 21
     spriteID: b4129b7e73667b548a8a65418a36ae58
@@ -530,7 +530,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -109, y: 153}
+    uvTransform: {x: -109, y: 275}
   - name: healthChunk_19
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -539,7 +539,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 30
-      y: 189
+      y: 311
       width: 28
       height: 28
     spriteID: 6c79e773fb33b0d4085e37bc382f04a1
@@ -552,7 +552,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -762, y: 138}
+    uvTransform: {x: -762, y: 260}
   - name: healthChunk_20
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -561,7 +561,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 506
-      y: 189
+      y: 311
       width: 29
       height: 24
     spriteID: 926a366b29c789e42b0fc371b9d65d73
@@ -574,7 +574,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -279, y: 152}
+    uvTransform: {x: -279, y: 274}
   - name: healthChunk_21
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -583,7 +583,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 543
-      y: 189
+      y: 311
       width: 30
       height: 23
     spriteID: b47193e6ce593e34b909d30f47b43424
@@ -596,7 +596,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -224, y: 140}
+    uvTransform: {x: -224, y: 262}
   - name: healthChunk_22
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -605,7 +605,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 241
-      y: 189
+      y: 311
       width: 39
       height: 19
     spriteID: 58ef372d8ab673041816758749a1deb1
@@ -618,7 +618,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -517, y: 129}
+    uvTransform: {x: -517, y: 251}
   - name: healthChunk_23
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -627,7 +627,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 357
-      y: 189
+      y: 311
       width: 33
       height: 22
     spriteID: 4dd05a719b442294389bb2bfd7658f5d
@@ -640,7 +640,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -401, y: 152}
+    uvTransform: {x: -401, y: 274}
   - name: healthChunk_24
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -649,7 +649,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 241
+      y: 363
       width: 20
       height: 29
     spriteID: bc98734a0e1dbff40839770d4d9e71ee
@@ -662,7 +662,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -748, y: 193}
+    uvTransform: {x: -748, y: 315}
   - name: healthChunk_25
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -671,7 +671,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 216
-      y: 157
+      y: 279
       width: 23
       height: 24
     spriteID: 90279ef16c2d94842bcb1290f99356d2
@@ -684,7 +684,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -527, y: 119}
+    uvTransform: {x: -527, y: 241}
   - name: healthChunk_26
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -693,7 +693,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 751
-      y: 157
+      y: 279
       width: 21
       height: 24
     spriteID: cbaebe374bcb8be43a5695378191c89e
@@ -706,7 +706,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 11, y: 102}
+    uvTransform: {x: 11, y: 224}
   - name: healthChunk_27
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -715,7 +715,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 590
-      y: 241
+      y: 363
       width: 18
       height: 23
     spriteID: ea8fc0d81c5583e479aaa7f273fcde51
@@ -728,7 +728,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -140, y: 196}
+    uvTransform: {x: -140, y: 318}
   - name: healthChunk_28
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -737,7 +737,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 575
-      y: 157
+      y: 279
       width: 26
       height: 20
     spriteID: abdc72e8bf0aa0543bfee054bb26d2e5
@@ -750,7 +750,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -147, y: 120}
+    uvTransform: {x: -147, y: 242}
   - name: healthChunk_29
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -759,7 +759,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 986
-      y: 157
+      y: 279
       width: 24
       height: 20
     spriteID: 9d4bb511c2ad4b044b0a993ed70e063a
@@ -772,7 +772,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 267, y: 98}
+    uvTransform: {x: 267, y: 220}
   - name: healthChunk_30
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -781,7 +781,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 46
-      y: 157
+      y: 279
       width: 24
       height: 24
     spriteID: 86954e6b109eed24082d0eff76a9630f
@@ -794,7 +794,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -663, y: 111}
+    uvTransform: {x: -663, y: 233}
   - name: healthChunk_31
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -803,7 +803,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 819
-      y: 157
+      y: 279
       width: 29
       height: 17
     spriteID: 9256833db044fa945b5c895243f3549e
@@ -816,7 +816,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 122, y: 120}
+    uvTransform: {x: 122, y: 242}
   - name: healthChunk_32
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -825,7 +825,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 558
-      y: 241
+      y: 363
       width: 24
       height: 18
     spriteID: 8d55bb5d1830c0c4796061e13b86de6a
@@ -838,7 +838,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -141, y: 180}
+    uvTransform: {x: -141, y: 302}
   - name: healthChunk_33
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -847,7 +847,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 143
-      y: 157
+      y: 279
       width: 26
       height: 22
     spriteID: ded14f21500b1b249a5fe647e10c66d5
@@ -860,7 +860,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -546, y: 106}
+    uvTransform: {x: -546, y: 228}
   - name: healthChunk_34
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -869,7 +869,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 302
-      y: 241
+      y: 363
       width: 21
       height: 22
     spriteID: 735cba306d963714dac46a10f4a6434e
@@ -882,7 +882,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -384, y: 204}
+    uvTransform: {x: -384, y: 326}
   - name: healthChunk_35
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -891,7 +891,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 360
-      y: 241
+      y: 363
       width: 17
       height: 27
     spriteID: 671e33fc3be53004fb7169d334e03bab
@@ -904,7 +904,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -317, y: 196}
+    uvTransform: {x: -317, y: 318}
   - name: healthChunk_36
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -913,7 +913,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 398
-      y: 219
+      y: 341
       width: 23
       height: 14
     spriteID: 2097cb980265e2746977323cb58d1c45
@@ -926,7 +926,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -281, y: 154}
+    uvTransform: {x: -281, y: 276}
   - name: healthChunk_37
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -935,7 +935,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 848
-      y: 241
+      y: 363
       width: 19
       height: 19
     spriteID: e9aafa64f9eefaa4f9907ad0f0034e1a
@@ -948,7 +948,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 178, y: 204}
+    uvTransform: {x: 178, y: 326}
   - name: healthChunk_38
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -957,7 +957,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 819
-      y: 241
+      y: 363
       width: 21
       height: 18
     spriteID: d0dd030416cbf1647baa4baec465e85f
@@ -970,7 +970,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 156, y: 179}
+    uvTransform: {x: 156, y: 301}
   - name: healthChunk_39
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -979,7 +979,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 732
-      y: 189
+      y: 311
       width: 26
       height: 25
     spriteID: 56a75c6e606a1ec48952984fbd272289
@@ -992,7 +992,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 76, y: 145}
+    uvTransform: {x: 76, y: 267}
   - name: healthChunk_40
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1001,7 +1001,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 780
-      y: 157
+      y: 279
       width: 31
       height: 16
     spriteID: 389fa27f6e331d546bfddbd64942b7ac
@@ -1014,7 +1014,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 138, y: 119}
+    uvTransform: {x: 138, y: 241}
   - name: healthChunk_41
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1023,7 +1023,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 331
-      y: 241
+      y: 363
       width: 21
       height: 22
     spriteID: 9ea584293f322734e896d34a7e4f9774
@@ -1036,7 +1036,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -316, y: 183}
+    uvTransform: {x: -316, y: 305}
   - name: healthChunk_42
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1045,7 +1045,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 920
-      y: 189
+      y: 311
       width: 26
       height: 23
     spriteID: 6cd7121d86d3be34fa55b22b462c934a
@@ -1058,7 +1058,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 286, y: 142}
+    uvTransform: {x: 286, y: 264}
   - name: healthChunk_43
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1067,7 +1067,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 609
-      y: 157
+      y: 279
       width: 26
       height: 20
     spriteID: 819a23642aaf564499bd5f873635b107
@@ -1080,7 +1080,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -14, y: 97}
+    uvTransform: {x: -14, y: 219}
   - name: healthChunk_44
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1089,7 +1089,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 384
-      y: 157
+      y: 279
       width: 28
       height: 19
     spriteID: cfc3c8b5443878a4ba297b395dc17a6b
@@ -1102,7 +1102,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -234, y: 119}
+    uvTransform: {x: -234, y: 241}
   - name: healthChunk_45
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1111,7 +1111,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 102
-      y: 189
+      y: 311
       width: 27
       height: 29
     spriteID: 10391c646d91b104ba8e4ecca245a51e
@@ -1124,7 +1124,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -509, y: 143}
+    uvTransform: {x: -509, y: 265}
   - name: healthChunk_46
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1133,7 +1133,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 893
-      y: 157
+      y: 279
       width: 23
       height: 21
     spriteID: b36f06d907f7ef74e86e809c04c16808
@@ -1146,7 +1146,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 293, y: 120}
+    uvTransform: {x: 293, y: 242}
   - name: healthChunk_47
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1155,7 +1155,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 66
-      y: 189
+      y: 311
       width: 28
       height: 28
     spriteID: 456a165c9872c8e49b64180dcf1a8aaa
@@ -1168,7 +1168,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -530, y: 137}
+    uvTransform: {x: -530, y: 259}
   - name: healthChunk_48
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1177,7 +1177,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 439
-      y: 189
+      y: 311
       width: 23
       height: 31
     spriteID: 12baefe3af872344bb01f8c493fb6955
@@ -1190,7 +1190,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -148, y: 152}
+    uvTransform: {x: -148, y: 274}
   - name: healthChunk_49
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1199,7 +1199,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 349
-      y: 157
+      y: 279
       width: 27
       height: 20
     spriteID: 1f2c64bf55eb0bf4a8196cb373d83ed1
@@ -1212,7 +1212,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -224, y: 97}
+    uvTransform: {x: -224, y: 219}
   - name: healthChunk_50
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1221,7 +1221,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 209
-      y: 189
+      y: 311
       width: 24
       height: 31
     spriteID: e0ca68904085d3f4f878abd25cd25a94
@@ -1234,7 +1234,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -365, y: 151}
+    uvTransform: {x: -365, y: 273}
   - name: healthChunk_51
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1243,7 +1243,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 63
-      y: 241
+      y: 363
       width: 21
       height: 25
     spriteID: 902d50259ffeb41429cf467826ce1747
@@ -1256,7 +1256,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -497, y: 203}
+    uvTransform: {x: -497, y: 325}
   - name: healthChunk_52
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1265,7 +1265,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 988
-      y: 189
+      y: 311
       width: 27
       height: 22
     spriteID: 89206ea60e545404fae69395b6745708
@@ -1278,7 +1278,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 434, y: 131}
+    uvTransform: {x: 434, y: 253}
   - name: healthChunk_53
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1287,7 +1287,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 176
-      y: 189
+      y: 311
       width: 25
       height: 30
     spriteID: 6e618cf2128c38d49b7230edfef2674e
@@ -1300,7 +1300,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -365, y: 145}
+    uvTransform: {x: -365, y: 267}
   - name: healthChunk_54
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1309,7 +1309,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 202
-      y: 241
+      y: 363
       width: 24
       height: 20
     spriteID: 750e49a47b66ee2499cb7ebaede65bf4
@@ -1322,7 +1322,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -333, y: 181}
+    uvTransform: {x: -333, y: 303}
   - name: healthChunk_55
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1331,7 +1331,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 126
+      y: 248
       width: 42
       height: 23
     spriteID: 6f37d07a34fa99645b35a642216cdbec
@@ -1344,7 +1344,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -516, y: 88}
+    uvTransform: {x: -516, y: 210}
   - name: healthChunk_56
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1353,7 +1353,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 398
-      y: 189
+      y: 311
       width: 33
       height: 22
     spriteID: 8b034b84d85ed3f43a33549732a84afd
@@ -1366,7 +1366,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -117, y: 131}
+    uvTransform: {x: -117, y: 253}
   - name: healthChunk_57
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1375,7 +1375,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 824
-      y: 189
+      y: 311
       width: 21
       height: 29
     spriteID: db0b622411bfe3445be6e56e9c157e05
@@ -1388,7 +1388,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 317, y: 142}
+    uvTransform: {x: 317, y: 264}
   - name: healthChunk_58
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1397,7 +1397,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 241
-      y: 216
+      y: 338
       width: 31
       height: 17
     spriteID: 4ca5422d367010d4dabea1c14182a1c9
@@ -1410,7 +1410,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -261, y: 178}
+    uvTransform: {x: -261, y: 300}
   - name: healthChunk_59
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1419,7 +1419,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 880
-      y: 216
+      y: 338
       width: 32
       height: 17
     spriteID: 458a0bc2e4359d14db2febd8bf599778
@@ -1432,7 +1432,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 390, y: 153}
+    uvTransform: {x: 390, y: 275}
   - name: healthChunk_60
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1441,7 +1441,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 443
-      y: 241
+      y: 363
       width: 22
       height: 20
     spriteID: c082aca737d4e9d428e1685ec8908d36
@@ -1454,7 +1454,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -47, y: 203}
+    uvTransform: {x: -47, y: 325}
   - name: healthChunk_61
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1463,7 +1463,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 157
+      y: 279
       width: 34
       height: 24
     spriteID: f1c5d6e09f2067c438fe7ae6ff7d9d75
@@ -1476,7 +1476,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -471, y: 108}
+    uvTransform: {x: -471, y: 230}
   - name: healthChunk_62
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1485,7 +1485,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 177
-      y: 157
+      y: 279
       width: 31
       height: 18
     spriteID: 4d59de57200a7a34f9564a84eaee6bb0
@@ -1498,7 +1498,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -286, y: 119}
+    uvTransform: {x: -286, y: 241}
   - name: healthChunk_63
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1507,7 +1507,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 880
-      y: 189
+      y: 311
       width: 32
       height: 19
     spriteID: cdbffe624817ce043acb71e3af5ca719
@@ -1520,7 +1520,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 419, y: 128}
+    uvTransform: {x: 419, y: 250}
   - name: healthChunk_64
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1529,7 +1529,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 620
-      y: 189
+      y: 311
       width: 24
       height: 28
     spriteID: 24ef17df11e0f994f989e65c2c4d08ab
@@ -1542,7 +1542,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 166, y: 143}
+    uvTransform: {x: 166, y: 265}
   - name: healthChunk_65
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1551,7 +1551,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 924
-      y: 157
+      y: 279
       width: 23
       height: 21
     spriteID: 82911c6bb4ec93c42bb58ec38e58ef38
@@ -1564,7 +1564,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 480, y: 119}
+    uvTransform: {x: 480, y: 241}
   - name: healthChunk_66
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1573,7 +1573,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 647
-      y: 241
+      y: 363
       width: 24
       height: 17
     spriteID: e6303483adc98d542b3ac5a7e414cf75
@@ -1586,7 +1586,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 207, y: 178}
+    uvTransform: {x: 207, y: 300}
   - name: healthChunk_67
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1595,7 +1595,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 451
-      y: 157
+      y: 279
       width: 22
       height: 24
     spriteID: 003b3c0e3daac534e9e5f755b7acfaa1
@@ -1608,7 +1608,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 15, y: 110}
+    uvTransform: {x: 15, y: 232}
   - name: healthChunk_68
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1617,7 +1617,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 234
-      y: 241
+      y: 363
       width: 24
       height: 20
     spriteID: 92719311834bbdd43899031f78118b9d
@@ -1630,7 +1630,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -189, y: 203}
+    uvTransform: {x: -189, y: 325}
   - name: healthChunk_69
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1639,7 +1639,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 121
-      y: 241
+      y: 363
       width: 19
       height: 27
     spriteID: 906d6b63497abfa478a30c5816181966
@@ -1652,7 +1652,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -304, y: 188}
+    uvTransform: {x: -304, y: 310}
   - name: healthChunk_70
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1661,7 +1661,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 247
-      y: 157
+      y: 279
       width: 23
       height: 24
     spriteID: 6dc59537d1b37b748a486ae36550f6c9
@@ -1674,7 +1674,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -164, y: 111}
+    uvTransform: {x: -164, y: 233}
   - name: healthChunk_71
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1683,7 +1683,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 643
-      y: 157
+      y: 279
       width: 27
       height: 19
     spriteID: 9bc77a578152982458334740a98192f4
@@ -1696,7 +1696,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 236, y: 96}
+    uvTransform: {x: 236, y: 218}
   - name: healthChunk_72
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1705,7 +1705,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 856
-      y: 157
+      y: 279
       width: 29
       height: 17
     spriteID: 69025c5e3701afc4abe6685f72bd699a
@@ -1718,7 +1718,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 458, y: 118}
+    uvTransform: {x: 458, y: 240}
   - name: healthChunk_73
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1727,7 +1727,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 92
-      y: 241
+      y: 363
       width: 21
       height: 25
     spriteID: d55099f51f59dc542a1f1a6776673d50
@@ -1740,7 +1740,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -304, y: 194}
+    uvTransform: {x: -304, y: 316}
   - name: healthChunk_74
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1749,7 +1749,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 481
-      y: 157
+      y: 279
       width: 22
       height: 24
     spriteID: 9cd2f4c0bdeb28b4eadccd8db0a90a14
@@ -1762,7 +1762,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 95, y: 118}
+    uvTransform: {x: 95, y: 240}
   - name: healthChunk_75
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1771,7 +1771,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 954
-      y: 189
+      y: 311
       width: 26
       height: 23
     spriteID: 528c15f6493bd1f45b5f65258e41ba72
@@ -1784,7 +1784,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 569, y: 132}
+    uvTransform: {x: 569, y: 254}
   - name: healthChunk_76
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1793,7 +1793,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 148
-      y: 241
+      y: 363
       width: 18
       height: 28
     spriteID: ad499d58fe63daf46acb0f140a46ef04
@@ -1806,7 +1806,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -226, y: 197}
+    uvTransform: {x: -226, y: 319}
   - name: healthChunk_77
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1815,7 +1815,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 531
-      y: 241
+      y: 363
       width: 19
       height: 23
     spriteID: 1607a3577decf2546bd59b9f7ec7099f
@@ -1828,7 +1828,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 162, y: 184}
+    uvTransform: {x: 162, y: 306}
   - name: healthChunk_78
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1837,7 +1837,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 32
-      y: 241
+      y: 363
       width: 23
       height: 25
     spriteID: c7cf7469f57bd7244964e512c6ba630e
@@ -1850,7 +1850,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -334, y: 202}
+    uvTransform: {x: -334, y: 324}
   - name: healthChunk_79
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1859,7 +1859,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 720
-      y: 157
+      y: 279
       width: 23
       height: 22
     spriteID: f6987724a1f957840aff3ebd10bb2a11
@@ -1872,7 +1872,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 368, y: 112}
+    uvTransform: {x: 368, y: 234}
   - name: healthChunk_80
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1881,7 +1881,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 266
-      y: 241
+      y: 363
       width: 28
       height: 17
     spriteID: d9c2498f0fa72024796361272a1ffec8
@@ -1894,7 +1894,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -82, y: 178}
+    uvTransform: {x: -82, y: 300}
   - name: healthChunk_81
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1903,7 +1903,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 616
-      y: 241
+      y: 363
       width: 23
       height: 18
     spriteID: aa9f81dd27c10cb46be92f693383aea5
@@ -1916,7 +1916,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 270, y: 202}
+    uvTransform: {x: 270, y: 324}
   - name: healthChunk_82
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1925,7 +1925,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 581
-      y: 189
+      y: 311
       width: 31
       height: 22
     spriteID: 722b36b049063c44388c602fec4d21da
@@ -1938,7 +1938,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 254, y: 145}
+    uvTransform: {x: 254, y: 267}
   - name: healthChunk_83
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1947,7 +1947,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 693
-      y: 218
+      y: 340
       width: 28
       height: 15
     spriteID: 639486f858c20234bb7741bb0d48188a
@@ -1960,7 +1960,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 363, y: 153}
+    uvTransform: {x: 363, y: 275}
   - name: healthChunk_84
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1969,7 +1969,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 357
-      y: 219
+      y: 341
       width: 28
       height: 14
     spriteID: 09e6445b602eee94fb112caa3909314a
@@ -1982,7 +1982,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 36, y: 180}
+    uvTransform: {x: 36, y: 302}
   - name: healthChunk_85
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1991,7 +1991,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 385
-      y: 241
+      y: 363
       width: 24
       height: 19
     spriteID: 386664a0f8a5ec643bf27676e812120b
@@ -2004,7 +2004,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 74, y: 181}
+    uvTransform: {x: 74, y: 303}
   - name: healthChunk_86
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2013,7 +2013,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 110
-      y: 157
+      y: 279
       width: 25
       height: 23
     spriteID: de33071b0b9630f49ac63febe19d570b
@@ -2026,7 +2026,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -198, y: 108}
+    uvTransform: {x: -198, y: 230}
   - name: healthChunk_87
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2035,7 +2035,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 988
-      y: 219
+      y: 341
       width: 32
       height: 14
     spriteID: 52e7cd788d3f4c34cbe1f4da9bbfa889
@@ -2048,7 +2048,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 690, y: 180}
+    uvTransform: {x: 690, y: 302}
   - name: healthChunk_88
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2057,7 +2057,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 955
-      y: 157
+      y: 279
       width: 23
       height: 21
     spriteID: 0f75fa53db216eb488b55972542555ff
@@ -2070,7 +2070,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 663, y: 99}
+    uvTransform: {x: 663, y: 221}
   - name: healthChunk_89
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2079,7 +2079,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 78
-      y: 157
+      y: 279
       width: 24
       height: 24
     spriteID: e74f258fe889d244b838c2e8c545e666
@@ -2092,7 +2092,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -208, y: 113}
+    uvTransform: {x: -208, y: 235}
   - name: healthChunk_90
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2101,7 +2101,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 761
-      y: 241
+      y: 363
       width: 26
       height: 15
     spriteID: 32f5385d1cd4c804bab1a1d8eaf753b0
@@ -2114,7 +2114,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 487, y: 203}
+    uvTransform: {x: 487, y: 325}
   - name: healthChunk_91
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2123,7 +2123,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 511
-      y: 157
+      y: 279
       width: 22
       height: 24
     spriteID: 8430220d8fc46044ea7fdec2071a7b6c
@@ -2136,7 +2136,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 239, y: 109}
+    uvTransform: {x: 239, y: 231}
   - name: healthChunk_92
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2145,7 +2145,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 581
-      y: 219
+      y: 341
       width: 31
       height: 14
     spriteID: 09e9fb1e61958e0479b078b6075ff077
@@ -2158,7 +2158,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 317, y: 154}
+    uvTransform: {x: 317, y: 276}
   - name: healthChunk_93
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2167,7 +2167,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 278
-      y: 157
+      y: 279
       width: 25
       height: 22
     spriteID: ba58faff404079d488bb98f4c5c7b021
@@ -2180,7 +2180,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 24, y: 118}
+    uvTransform: {x: 24, y: 240}
   - name: healthChunk_94
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2189,7 +2189,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 323
-      y: 189
+      y: 311
       width: 26
       height: 28
     spriteID: 4ace2c5660ed1b344ba019e0bfe8ef63
@@ -2202,7 +2202,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 74, y: 138}
+    uvTransform: {x: 74, y: 260}
   - name: healthChunk_95
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2211,7 +2211,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 795
-      y: 241
+      y: 363
       width: 16
       height: 24
     spriteID: 9db295f8f84dae44caba34088fd36120
@@ -2224,7 +2224,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 553, y: 203}
+    uvTransform: {x: 553, y: 325}
   - name: healthChunk_96
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2233,7 +2233,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 470
-      y: 189
+      y: 311
       width: 28
       height: 25
     spriteID: ece83ef68f699e1448cce885092e25f2
@@ -2246,7 +2246,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 237, y: 135}
+    uvTransform: {x: 237, y: 257}
   - name: healthChunk_97
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2255,7 +2255,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 417
-      y: 241
+      y: 363
       width: 18
       height: 25
     spriteID: 35fd4c01c01f4e0498e09cb1e3a75102
@@ -2268,7 +2268,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 192, y: 187}
+    uvTransform: {x: 192, y: 309}
   - name: healthChunk_98
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2277,7 +2277,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 706
-      y: 241
+      y: 363
       width: 21
       height: 19
     spriteID: a5947349c53a6df489a9ea3fbedb8e46
@@ -2290,7 +2290,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 481, y: 204}
+    uvTransform: {x: 481, y: 326}
   - name: healthChunk_99
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2299,7 +2299,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 189
+      y: 311
       width: 18
       height: 44
     spriteID: 5f6c46210f466164da2deea6a2d03d9a
@@ -2312,7 +2312,29 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -210, y: 152}
+    uvTransform: {x: -210, y: 274}
+  - name: Outline
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1000
+      height: 114
+    spriteID: 1059d212592bf45499036978860977e3
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 2}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -2358,8 +2380,8 @@ ScriptedImporter:
     spriteName: Outline
     isGroup: 0
     parentIndex: -1
-    spriteID: 173e4845bfadadd46bf1dcbb8b06376d
-    layerID: 2
+    spriteID: 1059d212592bf45499036978860977e3
+    layerID: 2545
     mosaicPosition: {x: 4, y: 4}
   - name: healthChunk
     spriteName: healthChunk
@@ -2367,700 +2389,707 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: b8a37ec44530df745a2f333d5d0c0fc7
     layerID: 17
-    mosaicPosition: {x: 137, y: 189}
+    mosaicPosition: {x: 137, y: 311}
   - name: healthChunk
     spriteName: healthChunk_1
     isGroup: 0
     parentIndex: -1
     spriteID: 16e1823ba95a74940899d4e8a3277862
     layerID: 18
-    mosaicPosition: {x: 853, y: 189}
+    mosaicPosition: {x: 853, y: 311}
   - name: healthChunk
     spriteName: healthChunk_2
     isGroup: 0
     parentIndex: -1
     spriteID: a2768021961c1414896242a86cc4491a
     layerID: 19
-    mosaicPosition: {x: 903, y: 241}
+    mosaicPosition: {x: 903, y: 363}
   - name: healthChunk
     spriteName: healthChunk_3
     isGroup: 0
     parentIndex: -1
     spriteID: 82a63b5aba5c1db4a8c126530ad6002e
     layerID: 20
-    mosaicPosition: {x: 473, y: 241}
+    mosaicPosition: {x: 473, y: 363}
   - name: healthChunk
     spriteName: healthChunk_4
     isGroup: 0
     parentIndex: -1
     spriteID: d2016002db9b3e541b5c4473bcecc10f
     layerID: 22
-    mosaicPosition: {x: 174, y: 241}
+    mosaicPosition: {x: 174, y: 363}
   - name: healthChunk
     spriteName: healthChunk_5
     isGroup: 0
     parentIndex: -1
     spriteID: 4858f552f28386a4485bce5957075369
     layerID: 23
-    mosaicPosition: {x: 735, y: 241}
+    mosaicPosition: {x: 735, y: 363}
   - name: healthChunk
     spriteName: healthChunk_6
     isGroup: 0
     parentIndex: -1
     spriteID: 326cd6b9e2853424296209c2638c43c0
     layerID: 24
-    mosaicPosition: {x: 766, y: 189}
+    mosaicPosition: {x: 766, y: 311}
   - name: healthChunk
     spriteName: healthChunk_7
     isGroup: 0
     parentIndex: -1
     spriteID: 1f55fe85d2e300f4da9bac15e024efd5
     layerID: 25
-    mosaicPosition: {x: 420, y: 157}
+    mosaicPosition: {x: 420, y: 279}
   - name: healthChunk
     spriteName: healthChunk_8
     isGroup: 0
     parentIndex: -1
     spriteID: 73d26db51f90f054caf49ea64463797d
     layerID: 27
-    mosaicPosition: {x: 311, y: 157}
+    mosaicPosition: {x: 311, y: 279}
   - name: healthChunk
     spriteName: healthChunk_9
     isGroup: 0
     parentIndex: -1
     spriteID: eb0720c7789edda428d9a10a84f7e76c
     layerID: 28
-    mosaicPosition: {x: 796, y: 189}
+    mosaicPosition: {x: 796, y: 311}
   - name: healthChunk
     spriteName: healthChunk_10
     isGroup: 0
     parentIndex: -1
     spriteID: ad43aaf9067b7f84b867bd23264e42c0
     layerID: 29
-    mosaicPosition: {x: 875, y: 241}
+    mosaicPosition: {x: 875, y: 363}
   - name: healthChunk
     spriteName: healthChunk_11
     isGroup: 0
     parentIndex: -1
     spriteID: a71942bfbf2518c42a4da8e52d261696
     layerID: 30
-    mosaicPosition: {x: 679, y: 241}
+    mosaicPosition: {x: 679, y: 363}
   - name: healthChunk
     spriteName: healthChunk_12
     isGroup: 0
     parentIndex: -1
     spriteID: 40872064b6a770f4985fa34e47713069
     layerID: 31
-    mosaicPosition: {x: 678, y: 157}
+    mosaicPosition: {x: 678, y: 279}
   - name: healthChunk
     spriteName: healthChunk_13
     isGroup: 0
     parentIndex: -1
     spriteID: b6550a1a57abdb1449a0b586621f221a
     layerID: 32
-    mosaicPosition: {x: 500, y: 241}
+    mosaicPosition: {x: 500, y: 363}
   - name: healthChunk
     spriteName: healthChunk_14
     isGroup: 0
     parentIndex: -1
     spriteID: c4ddec4c0bd743f4182466510549078e
     layerID: 34
-    mosaicPosition: {x: 652, y: 189}
+    mosaicPosition: {x: 652, y: 311}
   - name: healthChunk
     spriteName: healthChunk_15
     isGroup: 0
     parentIndex: -1
     spriteID: 525f6e15d3ea6df46810575c7cd5a358
     layerID: 35
-    mosaicPosition: {x: 652, y: 217}
+    mosaicPosition: {x: 652, y: 339}
   - name: healthChunk
     spriteName: healthChunk_16
     isGroup: 0
     parentIndex: -1
     spriteID: 2a4127cc752a2ba45a2d5c9eca565558
     layerID: 36
-    mosaicPosition: {x: 288, y: 189}
+    mosaicPosition: {x: 288, y: 311}
   - name: healthChunk
     spriteName: healthChunk_17
     isGroup: 0
     parentIndex: -1
     spriteID: 153032d3806a08e40bd59aa6b4fb8f1b
     layerID: 37
-    mosaicPosition: {x: 541, y: 157}
+    mosaicPosition: {x: 541, y: 279}
   - name: healthChunk
     spriteName: healthChunk_18
     isGroup: 0
     parentIndex: -1
     spriteID: b4129b7e73667b548a8a65418a36ae58
     layerID: 38
-    mosaicPosition: {x: 693, y: 189}
+    mosaicPosition: {x: 693, y: 311}
   - name: healthChunk
     spriteName: healthChunk_19
     isGroup: 0
     parentIndex: -1
     spriteID: 6c79e773fb33b0d4085e37bc382f04a1
     layerID: 39
-    mosaicPosition: {x: 30, y: 189}
+    mosaicPosition: {x: 30, y: 311}
   - name: healthChunk
     spriteName: healthChunk_20
     isGroup: 0
     parentIndex: -1
     spriteID: 926a366b29c789e42b0fc371b9d65d73
     layerID: 40
-    mosaicPosition: {x: 506, y: 189}
+    mosaicPosition: {x: 506, y: 311}
   - name: healthChunk
     spriteName: healthChunk_21
     isGroup: 0
     parentIndex: -1
     spriteID: b47193e6ce593e34b909d30f47b43424
     layerID: 41
-    mosaicPosition: {x: 543, y: 189}
+    mosaicPosition: {x: 543, y: 311}
   - name: healthChunk
     spriteName: healthChunk_22
     isGroup: 0
     parentIndex: -1
     spriteID: 58ef372d8ab673041816758749a1deb1
     layerID: 42
-    mosaicPosition: {x: 241, y: 189}
+    mosaicPosition: {x: 241, y: 311}
   - name: healthChunk
     spriteName: healthChunk_23
     isGroup: 0
     parentIndex: -1
     spriteID: 4dd05a719b442294389bb2bfd7658f5d
     layerID: 43
-    mosaicPosition: {x: 357, y: 189}
+    mosaicPosition: {x: 357, y: 311}
   - name: healthChunk
     spriteName: healthChunk_24
     isGroup: 0
     parentIndex: -1
     spriteID: bc98734a0e1dbff40839770d4d9e71ee
     layerID: 44
-    mosaicPosition: {x: 4, y: 241}
+    mosaicPosition: {x: 4, y: 363}
   - name: healthChunk
     spriteName: healthChunk_25
     isGroup: 0
     parentIndex: -1
     spriteID: 90279ef16c2d94842bcb1290f99356d2
     layerID: 45
-    mosaicPosition: {x: 216, y: 157}
+    mosaicPosition: {x: 216, y: 279}
   - name: healthChunk
     spriteName: healthChunk_26
     isGroup: 0
     parentIndex: -1
     spriteID: cbaebe374bcb8be43a5695378191c89e
     layerID: 46
-    mosaicPosition: {x: 751, y: 157}
+    mosaicPosition: {x: 751, y: 279}
   - name: healthChunk
     spriteName: healthChunk_27
     isGroup: 0
     parentIndex: -1
     spriteID: ea8fc0d81c5583e479aaa7f273fcde51
     layerID: 47
-    mosaicPosition: {x: 590, y: 241}
+    mosaicPosition: {x: 590, y: 363}
   - name: healthChunk
     spriteName: healthChunk_28
     isGroup: 0
     parentIndex: -1
     spriteID: abdc72e8bf0aa0543bfee054bb26d2e5
     layerID: 48
-    mosaicPosition: {x: 575, y: 157}
+    mosaicPosition: {x: 575, y: 279}
   - name: healthChunk
     spriteName: healthChunk_29
     isGroup: 0
     parentIndex: -1
     spriteID: 9d4bb511c2ad4b044b0a993ed70e063a
     layerID: 49
-    mosaicPosition: {x: 986, y: 157}
+    mosaicPosition: {x: 986, y: 279}
   - name: healthChunk
     spriteName: healthChunk_30
     isGroup: 0
     parentIndex: -1
     spriteID: 86954e6b109eed24082d0eff76a9630f
     layerID: 50
-    mosaicPosition: {x: 46, y: 157}
+    mosaicPosition: {x: 46, y: 279}
   - name: healthChunk
     spriteName: healthChunk_31
     isGroup: 0
     parentIndex: -1
     spriteID: 9256833db044fa945b5c895243f3549e
     layerID: 51
-    mosaicPosition: {x: 819, y: 157}
+    mosaicPosition: {x: 819, y: 279}
   - name: healthChunk
     spriteName: healthChunk_32
     isGroup: 0
     parentIndex: -1
     spriteID: 8d55bb5d1830c0c4796061e13b86de6a
     layerID: 52
-    mosaicPosition: {x: 558, y: 241}
+    mosaicPosition: {x: 558, y: 363}
   - name: healthChunk
     spriteName: healthChunk_33
     isGroup: 0
     parentIndex: -1
     spriteID: ded14f21500b1b249a5fe647e10c66d5
     layerID: 53
-    mosaicPosition: {x: 143, y: 157}
+    mosaicPosition: {x: 143, y: 279}
   - name: healthChunk
     spriteName: healthChunk_34
     isGroup: 0
     parentIndex: -1
     spriteID: 735cba306d963714dac46a10f4a6434e
     layerID: 54
-    mosaicPosition: {x: 302, y: 241}
+    mosaicPosition: {x: 302, y: 363}
   - name: healthChunk
     spriteName: healthChunk_35
     isGroup: 0
     parentIndex: -1
     spriteID: 671e33fc3be53004fb7169d334e03bab
     layerID: 55
-    mosaicPosition: {x: 360, y: 241}
+    mosaicPosition: {x: 360, y: 363}
   - name: healthChunk
     spriteName: healthChunk_36
     isGroup: 0
     parentIndex: -1
     spriteID: 2097cb980265e2746977323cb58d1c45
     layerID: 56
-    mosaicPosition: {x: 398, y: 219}
+    mosaicPosition: {x: 398, y: 341}
   - name: healthChunk
     spriteName: healthChunk_37
     isGroup: 0
     parentIndex: -1
     spriteID: e9aafa64f9eefaa4f9907ad0f0034e1a
     layerID: 57
-    mosaicPosition: {x: 848, y: 241}
+    mosaicPosition: {x: 848, y: 363}
   - name: healthChunk
     spriteName: healthChunk_38
     isGroup: 0
     parentIndex: -1
     spriteID: d0dd030416cbf1647baa4baec465e85f
     layerID: 58
-    mosaicPosition: {x: 819, y: 241}
+    mosaicPosition: {x: 819, y: 363}
   - name: healthChunk
     spriteName: healthChunk_39
     isGroup: 0
     parentIndex: -1
     spriteID: 56a75c6e606a1ec48952984fbd272289
     layerID: 59
-    mosaicPosition: {x: 732, y: 189}
+    mosaicPosition: {x: 732, y: 311}
   - name: healthChunk
     spriteName: healthChunk_40
     isGroup: 0
     parentIndex: -1
     spriteID: 389fa27f6e331d546bfddbd64942b7ac
     layerID: 60
-    mosaicPosition: {x: 780, y: 157}
+    mosaicPosition: {x: 780, y: 279}
   - name: healthChunk
     spriteName: healthChunk_41
     isGroup: 0
     parentIndex: -1
     spriteID: 9ea584293f322734e896d34a7e4f9774
     layerID: 61
-    mosaicPosition: {x: 331, y: 241}
+    mosaicPosition: {x: 331, y: 363}
   - name: healthChunk
     spriteName: healthChunk_42
     isGroup: 0
     parentIndex: -1
     spriteID: 6cd7121d86d3be34fa55b22b462c934a
     layerID: 62
-    mosaicPosition: {x: 920, y: 189}
+    mosaicPosition: {x: 920, y: 311}
   - name: healthChunk
     spriteName: healthChunk_43
     isGroup: 0
     parentIndex: -1
     spriteID: 819a23642aaf564499bd5f873635b107
     layerID: 63
-    mosaicPosition: {x: 609, y: 157}
+    mosaicPosition: {x: 609, y: 279}
   - name: healthChunk
     spriteName: healthChunk_44
     isGroup: 0
     parentIndex: -1
     spriteID: cfc3c8b5443878a4ba297b395dc17a6b
     layerID: 64
-    mosaicPosition: {x: 384, y: 157}
+    mosaicPosition: {x: 384, y: 279}
   - name: healthChunk
     spriteName: healthChunk_45
     isGroup: 0
     parentIndex: -1
     spriteID: 10391c646d91b104ba8e4ecca245a51e
     layerID: 65
-    mosaicPosition: {x: 102, y: 189}
+    mosaicPosition: {x: 102, y: 311}
   - name: healthChunk
     spriteName: healthChunk_46
     isGroup: 0
     parentIndex: -1
     spriteID: b36f06d907f7ef74e86e809c04c16808
     layerID: 66
-    mosaicPosition: {x: 893, y: 157}
+    mosaicPosition: {x: 893, y: 279}
   - name: healthChunk
     spriteName: healthChunk_47
     isGroup: 0
     parentIndex: -1
     spriteID: 456a165c9872c8e49b64180dcf1a8aaa
     layerID: 67
-    mosaicPosition: {x: 66, y: 189}
+    mosaicPosition: {x: 66, y: 311}
   - name: healthChunk
     spriteName: healthChunk_48
     isGroup: 0
     parentIndex: -1
     spriteID: 12baefe3af872344bb01f8c493fb6955
     layerID: 68
-    mosaicPosition: {x: 439, y: 189}
+    mosaicPosition: {x: 439, y: 311}
   - name: healthChunk
     spriteName: healthChunk_49
     isGroup: 0
     parentIndex: -1
     spriteID: 1f2c64bf55eb0bf4a8196cb373d83ed1
     layerID: 69
-    mosaicPosition: {x: 349, y: 157}
+    mosaicPosition: {x: 349, y: 279}
   - name: healthChunk
     spriteName: healthChunk_50
     isGroup: 0
     parentIndex: -1
     spriteID: e0ca68904085d3f4f878abd25cd25a94
     layerID: 70
-    mosaicPosition: {x: 209, y: 189}
+    mosaicPosition: {x: 209, y: 311}
   - name: healthChunk
     spriteName: healthChunk_51
     isGroup: 0
     parentIndex: -1
     spriteID: 902d50259ffeb41429cf467826ce1747
     layerID: 71
-    mosaicPosition: {x: 63, y: 241}
+    mosaicPosition: {x: 63, y: 363}
   - name: healthChunk
     spriteName: healthChunk_52
     isGroup: 0
     parentIndex: -1
     spriteID: 89206ea60e545404fae69395b6745708
     layerID: 72
-    mosaicPosition: {x: 988, y: 189}
+    mosaicPosition: {x: 988, y: 311}
   - name: healthChunk
     spriteName: healthChunk_53
     isGroup: 0
     parentIndex: -1
     spriteID: 6e618cf2128c38d49b7230edfef2674e
     layerID: 73
-    mosaicPosition: {x: 176, y: 189}
+    mosaicPosition: {x: 176, y: 311}
   - name: healthChunk
     spriteName: healthChunk_54
     isGroup: 0
     parentIndex: -1
     spriteID: 750e49a47b66ee2499cb7ebaede65bf4
     layerID: 74
-    mosaicPosition: {x: 202, y: 241}
+    mosaicPosition: {x: 202, y: 363}
   - name: healthChunk
     spriteName: healthChunk_55
     isGroup: 0
     parentIndex: -1
     spriteID: 6f37d07a34fa99645b35a642216cdbec
     layerID: 75
-    mosaicPosition: {x: 4, y: 126}
+    mosaicPosition: {x: 4, y: 248}
   - name: healthChunk
     spriteName: healthChunk_56
     isGroup: 0
     parentIndex: -1
     spriteID: 8b034b84d85ed3f43a33549732a84afd
     layerID: 76
-    mosaicPosition: {x: 398, y: 189}
+    mosaicPosition: {x: 398, y: 311}
   - name: healthChunk
     spriteName: healthChunk_57
     isGroup: 0
     parentIndex: -1
     spriteID: db0b622411bfe3445be6e56e9c157e05
     layerID: 77
-    mosaicPosition: {x: 824, y: 189}
+    mosaicPosition: {x: 824, y: 311}
   - name: healthChunk
     spriteName: healthChunk_58
     isGroup: 0
     parentIndex: -1
     spriteID: 4ca5422d367010d4dabea1c14182a1c9
     layerID: 79
-    mosaicPosition: {x: 241, y: 216}
+    mosaicPosition: {x: 241, y: 338}
   - name: healthChunk
     spriteName: healthChunk_59
     isGroup: 0
     parentIndex: -1
     spriteID: 458a0bc2e4359d14db2febd8bf599778
     layerID: 80
-    mosaicPosition: {x: 880, y: 216}
+    mosaicPosition: {x: 880, y: 338}
   - name: healthChunk
     spriteName: healthChunk_60
     isGroup: 0
     parentIndex: -1
     spriteID: c082aca737d4e9d428e1685ec8908d36
     layerID: 81
-    mosaicPosition: {x: 443, y: 241}
+    mosaicPosition: {x: 443, y: 363}
   - name: healthChunk
     spriteName: healthChunk_61
     isGroup: 0
     parentIndex: -1
     spriteID: f1c5d6e09f2067c438fe7ae6ff7d9d75
     layerID: 82
-    mosaicPosition: {x: 4, y: 157}
+    mosaicPosition: {x: 4, y: 279}
   - name: healthChunk
     spriteName: healthChunk_62
     isGroup: 0
     parentIndex: -1
     spriteID: 4d59de57200a7a34f9564a84eaee6bb0
     layerID: 83
-    mosaicPosition: {x: 177, y: 157}
+    mosaicPosition: {x: 177, y: 279}
   - name: healthChunk
     spriteName: healthChunk_63
     isGroup: 0
     parentIndex: -1
     spriteID: cdbffe624817ce043acb71e3af5ca719
     layerID: 84
-    mosaicPosition: {x: 880, y: 189}
+    mosaicPosition: {x: 880, y: 311}
   - name: healthChunk
     spriteName: healthChunk_64
     isGroup: 0
     parentIndex: -1
     spriteID: 24ef17df11e0f994f989e65c2c4d08ab
     layerID: 85
-    mosaicPosition: {x: 620, y: 189}
+    mosaicPosition: {x: 620, y: 311}
   - name: healthChunk
     spriteName: healthChunk_65
     isGroup: 0
     parentIndex: -1
     spriteID: 82911c6bb4ec93c42bb58ec38e58ef38
     layerID: 86
-    mosaicPosition: {x: 924, y: 157}
+    mosaicPosition: {x: 924, y: 279}
   - name: healthChunk
     spriteName: healthChunk_66
     isGroup: 0
     parentIndex: -1
     spriteID: e6303483adc98d542b3ac5a7e414cf75
     layerID: 87
-    mosaicPosition: {x: 647, y: 241}
+    mosaicPosition: {x: 647, y: 363}
   - name: healthChunk
     spriteName: healthChunk_67
     isGroup: 0
     parentIndex: -1
     spriteID: 003b3c0e3daac534e9e5f755b7acfaa1
     layerID: 89
-    mosaicPosition: {x: 451, y: 157}
+    mosaicPosition: {x: 451, y: 279}
   - name: healthChunk
     spriteName: healthChunk_68
     isGroup: 0
     parentIndex: -1
     spriteID: 92719311834bbdd43899031f78118b9d
     layerID: 90
-    mosaicPosition: {x: 234, y: 241}
+    mosaicPosition: {x: 234, y: 363}
   - name: healthChunk
     spriteName: healthChunk_69
     isGroup: 0
     parentIndex: -1
     spriteID: 906d6b63497abfa478a30c5816181966
     layerID: 91
-    mosaicPosition: {x: 121, y: 241}
+    mosaicPosition: {x: 121, y: 363}
   - name: healthChunk
     spriteName: healthChunk_70
     isGroup: 0
     parentIndex: -1
     spriteID: 6dc59537d1b37b748a486ae36550f6c9
     layerID: 92
-    mosaicPosition: {x: 247, y: 157}
+    mosaicPosition: {x: 247, y: 279}
   - name: healthChunk
     spriteName: healthChunk_71
     isGroup: 0
     parentIndex: -1
     spriteID: 9bc77a578152982458334740a98192f4
     layerID: 93
-    mosaicPosition: {x: 643, y: 157}
+    mosaicPosition: {x: 643, y: 279}
   - name: healthChunk
     spriteName: healthChunk_72
     isGroup: 0
     parentIndex: -1
     spriteID: 69025c5e3701afc4abe6685f72bd699a
     layerID: 94
-    mosaicPosition: {x: 856, y: 157}
+    mosaicPosition: {x: 856, y: 279}
   - name: healthChunk
     spriteName: healthChunk_73
     isGroup: 0
     parentIndex: -1
     spriteID: d55099f51f59dc542a1f1a6776673d50
     layerID: 95
-    mosaicPosition: {x: 92, y: 241}
+    mosaicPosition: {x: 92, y: 363}
   - name: healthChunk
     spriteName: healthChunk_74
     isGroup: 0
     parentIndex: -1
     spriteID: 9cd2f4c0bdeb28b4eadccd8db0a90a14
     layerID: 96
-    mosaicPosition: {x: 481, y: 157}
+    mosaicPosition: {x: 481, y: 279}
   - name: healthChunk
     spriteName: healthChunk_75
     isGroup: 0
     parentIndex: -1
     spriteID: 528c15f6493bd1f45b5f65258e41ba72
     layerID: 97
-    mosaicPosition: {x: 954, y: 189}
+    mosaicPosition: {x: 954, y: 311}
   - name: healthChunk
     spriteName: healthChunk_76
     isGroup: 0
     parentIndex: -1
     spriteID: ad499d58fe63daf46acb0f140a46ef04
     layerID: 98
-    mosaicPosition: {x: 148, y: 241}
+    mosaicPosition: {x: 148, y: 363}
   - name: healthChunk
     spriteName: healthChunk_77
     isGroup: 0
     parentIndex: -1
     spriteID: 1607a3577decf2546bd59b9f7ec7099f
     layerID: 99
-    mosaicPosition: {x: 531, y: 241}
+    mosaicPosition: {x: 531, y: 363}
   - name: healthChunk
     spriteName: healthChunk_78
     isGroup: 0
     parentIndex: -1
     spriteID: c7cf7469f57bd7244964e512c6ba630e
     layerID: 100
-    mosaicPosition: {x: 32, y: 241}
+    mosaicPosition: {x: 32, y: 363}
   - name: healthChunk
     spriteName: healthChunk_79
     isGroup: 0
     parentIndex: -1
     spriteID: f6987724a1f957840aff3ebd10bb2a11
     layerID: 101
-    mosaicPosition: {x: 720, y: 157}
+    mosaicPosition: {x: 720, y: 279}
   - name: healthChunk
     spriteName: healthChunk_80
     isGroup: 0
     parentIndex: -1
     spriteID: d9c2498f0fa72024796361272a1ffec8
     layerID: 102
-    mosaicPosition: {x: 266, y: 241}
+    mosaicPosition: {x: 266, y: 363}
   - name: healthChunk
     spriteName: healthChunk_81
     isGroup: 0
     parentIndex: -1
     spriteID: aa9f81dd27c10cb46be92f693383aea5
     layerID: 103
-    mosaicPosition: {x: 616, y: 241}
+    mosaicPosition: {x: 616, y: 363}
   - name: healthChunk
     spriteName: healthChunk_82
     isGroup: 0
     parentIndex: -1
     spriteID: 722b36b049063c44388c602fec4d21da
     layerID: 104
-    mosaicPosition: {x: 581, y: 189}
+    mosaicPosition: {x: 581, y: 311}
   - name: healthChunk
     spriteName: healthChunk_83
     isGroup: 0
     parentIndex: -1
     spriteID: 639486f858c20234bb7741bb0d48188a
     layerID: 105
-    mosaicPosition: {x: 693, y: 218}
+    mosaicPosition: {x: 693, y: 340}
   - name: healthChunk
     spriteName: healthChunk_84
     isGroup: 0
     parentIndex: -1
     spriteID: 09e6445b602eee94fb112caa3909314a
     layerID: 106
-    mosaicPosition: {x: 357, y: 219}
+    mosaicPosition: {x: 357, y: 341}
   - name: healthChunk
     spriteName: healthChunk_85
     isGroup: 0
     parentIndex: -1
     spriteID: 386664a0f8a5ec643bf27676e812120b
     layerID: 107
-    mosaicPosition: {x: 385, y: 241}
+    mosaicPosition: {x: 385, y: 363}
   - name: healthChunk
     spriteName: healthChunk_86
     isGroup: 0
     parentIndex: -1
     spriteID: de33071b0b9630f49ac63febe19d570b
     layerID: 108
-    mosaicPosition: {x: 110, y: 157}
+    mosaicPosition: {x: 110, y: 279}
   - name: healthChunk
     spriteName: healthChunk_87
     isGroup: 0
     parentIndex: -1
     spriteID: 52e7cd788d3f4c34cbe1f4da9bbfa889
     layerID: 109
-    mosaicPosition: {x: 988, y: 219}
+    mosaicPosition: {x: 988, y: 341}
   - name: healthChunk
     spriteName: healthChunk_88
     isGroup: 0
     parentIndex: -1
     spriteID: 0f75fa53db216eb488b55972542555ff
     layerID: 110
-    mosaicPosition: {x: 955, y: 157}
+    mosaicPosition: {x: 955, y: 279}
   - name: healthChunk
     spriteName: healthChunk_89
     isGroup: 0
     parentIndex: -1
     spriteID: e74f258fe889d244b838c2e8c545e666
     layerID: 111
-    mosaicPosition: {x: 78, y: 157}
+    mosaicPosition: {x: 78, y: 279}
   - name: healthChunk
     spriteName: healthChunk_90
     isGroup: 0
     parentIndex: -1
     spriteID: 32f5385d1cd4c804bab1a1d8eaf753b0
     layerID: 112
-    mosaicPosition: {x: 761, y: 241}
+    mosaicPosition: {x: 761, y: 363}
   - name: healthChunk
     spriteName: healthChunk_91
     isGroup: 0
     parentIndex: -1
     spriteID: 8430220d8fc46044ea7fdec2071a7b6c
     layerID: 113
-    mosaicPosition: {x: 511, y: 157}
+    mosaicPosition: {x: 511, y: 279}
   - name: healthChunk
     spriteName: healthChunk_92
     isGroup: 0
     parentIndex: -1
     spriteID: 09e9fb1e61958e0479b078b6075ff077
     layerID: 114
-    mosaicPosition: {x: 581, y: 219}
+    mosaicPosition: {x: 581, y: 341}
   - name: healthChunk
     spriteName: healthChunk_93
     isGroup: 0
     parentIndex: -1
     spriteID: ba58faff404079d488bb98f4c5c7b021
     layerID: 115
-    mosaicPosition: {x: 278, y: 157}
+    mosaicPosition: {x: 278, y: 279}
   - name: healthChunk
     spriteName: healthChunk_94
     isGroup: 0
     parentIndex: -1
     spriteID: 4ace2c5660ed1b344ba019e0bfe8ef63
     layerID: 116
-    mosaicPosition: {x: 323, y: 189}
+    mosaicPosition: {x: 323, y: 311}
   - name: healthChunk
     spriteName: healthChunk_95
     isGroup: 0
     parentIndex: -1
     spriteID: 9db295f8f84dae44caba34088fd36120
     layerID: 117
-    mosaicPosition: {x: 795, y: 241}
+    mosaicPosition: {x: 795, y: 363}
   - name: healthChunk
     spriteName: healthChunk_96
     isGroup: 0
     parentIndex: -1
     spriteID: ece83ef68f699e1448cce885092e25f2
     layerID: 118
-    mosaicPosition: {x: 470, y: 189}
+    mosaicPosition: {x: 470, y: 311}
   - name: healthChunk
     spriteName: healthChunk_97
     isGroup: 0
     parentIndex: -1
     spriteID: 35fd4c01c01f4e0498e09cb1e3a75102
     layerID: 119
-    mosaicPosition: {x: 417, y: 241}
+    mosaicPosition: {x: 417, y: 363}
   - name: healthChunk
     spriteName: healthChunk_98
     isGroup: 0
     parentIndex: -1
     spriteID: a5947349c53a6df489a9ea3fbedb8e46
     layerID: 120
-    mosaicPosition: {x: 706, y: 241}
+    mosaicPosition: {x: 706, y: 363}
   - name: healthChunk
     spriteName: healthChunk_99
     isGroup: 0
     parentIndex: -1
     spriteID: 5f6c46210f466164da2deea6a2d03d9a
     layerID: 727
-    mosaicPosition: {x: 4, y: 189}
+    mosaicPosition: {x: 4, y: 311}
+  - name: Inline
+    spriteName: Inline
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 173e4845bfadadd46bf1dcbb8b06376d
+    layerID: 2
+    mosaicPosition: {x: 4, y: 126}
   characterData:
     bones: []
     parts: []

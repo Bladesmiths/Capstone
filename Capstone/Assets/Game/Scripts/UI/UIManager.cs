@@ -153,24 +153,40 @@ namespace Bladesmiths.Capstone.UI
         private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
             float currentHealthPercentage = currentHealth / maxHealth;
+            float chipHealthPercentage = currentChipDamage / maxHealth;
 
             //Determine how many chunks remain in the health bar after taking damage
             int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
 
-            //NOT GOOD, MAKE THIS ONLY HAPPEN WHEN RESPAWNING SOMEHOW
-            if (currentHealth == 0)
+            int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count);
+
+            //Reset all chunks when player respawns
+            if (currentHealth == maxHealth)
             {
                 for (int i = 0; i < healthBarObjects.Count; i++)
                 {
-                    healthBarObjects[i].GetComponent<HealthChunk>().FullReset();
+                    if (healthBarObjects[i].GetComponent<HealthChunk>().shattered)
+                    {
+                        healthBarObjects[i].GetComponent<HealthChunk>().FullReset();
+                    }
                 }
             }
 
             //Shatter any chunks that have an index higher than the remaining chunk count
-            for (int i = 0; i < healthBarObjects.Count - remainingChunks; i++)
+            for (int i = 0; i < healthBarObjects.Count - (remainingChunks + chipChunks); i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }
+
+            if (currentChipDamage != 0 || chipHealthPercentage != 0 || chipChunks != 0)
+            {
+                //Chip any chunks that have an index higher than the remaining chunk count
+                for (int i = healthBarObjects.Count - (remainingChunks + chipChunks); i < healthBarObjects.Count - remainingChunks; i++)
+                {
+                    healthBarObjects[i].GetComponent<HealthChunk>().Chip();
+                }
+            }
+            
 
             //float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
             //healthBarSprites[currentSwordSelect].fillAmount = fillPercentage;

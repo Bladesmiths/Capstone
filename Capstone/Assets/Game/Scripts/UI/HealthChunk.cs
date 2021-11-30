@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class HealthChunk : MonoBehaviour
 {
     Rigidbody2D chunkRigidbody;
-    bool shattered = false;
+    Image image;
+    public bool shattered = false;
+    bool chipped = false;
     float shatteredTimer = 0f;
     float shatteredFadeStart = 1f;
     Vector3 originalPosition;
@@ -16,10 +18,14 @@ public class HealthChunk : MonoBehaviour
     void Start()
     {
         chunkRigidbody = GetComponent<Rigidbody2D>();
+        image = GetComponent<Image>();
         originalPosition = transform.position;
     }
 
-    // Update is called once per frame
+
+    /// <summary>
+    /// Continue fading the chunk if it should be fading
+    /// </summary>
     void Update()
     {
         if (shattered && !faded)
@@ -28,7 +34,9 @@ public class HealthChunk : MonoBehaviour
         }
     }
 
-    //Detach from the health bar and fly in a random direction
+    /// <summary>
+    /// Detach from the health bar and fly in a random direction
+    /// </summary>
     public void Shatter()
     {
         if (!shattered)
@@ -49,7 +57,22 @@ public class HealthChunk : MonoBehaviour
         }
     }
 
-    //Fade the chunk's opacity as it flies away after shattering
+    /// <summary>
+    /// Change chunk size and tint when chip damage is taken
+    /// </summary>
+    public void Chip()
+    {
+        if (!chipped)
+        {
+            transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            image.color = new Color(0.6f, 0.6f, 0.6f, 1.0f);
+            chipped = true;
+        }
+    }
+
+    /// <summary>
+    /// Fade the chunk's opacity as it flies away after shattering
+    /// </summary>
     public void Fade()
     {
         shatteredTimer += Time.deltaTime;
@@ -60,29 +83,53 @@ public class HealthChunk : MonoBehaviour
             if (ChangeOpacity(-Time.deltaTime) <= 0)
             {
                 InvisibleReset();
+                faded = true;
             }
         }
     }
 
-    //Reset the hidden chunk to its original position while keeping shattered status
-    public void InvisibleReset()
+    /// <summary>
+    /// Return the chunk to normal size and color
+    /// </summary>
+    public void UnChip()
     {
-        faded = true;
-        transform.position = originalPosition; 
+        if (chipped)
+        {
+            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a);
+        }
     }
 
-    //Reset the chunk to its original position and make it visible / unshattered again
-    public void FullReset()
+    /// <summary>
+    /// Reset a hidden / faded chunk to its original position while keeping shattered status
+    /// </summary>
+    public void InvisibleReset()
     {
         transform.position = originalPosition;
+        chunkRigidbody.gravityScale = 0.0f;
+        chunkRigidbody.velocity = Vector3.zero;
+        chunkRigidbody.angularVelocity = 0.0f;
+        chunkRigidbody.rotation = 0.0f;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        UnChip();
+    }
+
+    /// <summary>
+    /// Reset the chunk to its original position and make it visible / unshattered again
+    /// </summary>
+    public void FullReset()
+    {
+        InvisibleReset();
         ChangeOpacity(1f);
         faded = false;
         shattered = false;
-        chunkRigidbody.gravityScale = 0.0f;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
-    //Add to the opacity of the chunk's UIImage by a specified amount
+    /// <summary>
+    /// Add to the opacity of the chunk's UIImage by a specified amount
+    /// </summary>
+    /// <param name="changeAmount"></param>
+    /// <returns></returns>
     public float ChangeOpacity(float changeAmount)
     {
         Color tempColor = GetComponent<Image>().color;
