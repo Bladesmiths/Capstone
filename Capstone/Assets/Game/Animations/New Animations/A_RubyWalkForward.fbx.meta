@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 26f9aa3e4b7ad7941b4b2041cac14d80
+guid: 23511b29cb3ca7541aa7e3ed347cf62a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: One Hand Sword Combo
+    second: mixamo.com
+  - first:
+      74: 637830141162196283
+    second: Ruby Walk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,23 +38,23 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: One Hand Sword Combo
+      name: Ruby Walk
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 43
+      lastFrame: 41
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
+      keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
