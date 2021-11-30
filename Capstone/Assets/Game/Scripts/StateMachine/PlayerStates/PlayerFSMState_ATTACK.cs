@@ -124,8 +124,7 @@ namespace Bladesmiths.Capstone
         public override void OnExit()
         {
             _animator.SetBool(_animIDAttack, false);
+            _player.ClearDamaging();
         }
-
     }
-
 }
