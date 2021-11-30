@@ -8,7 +8,7 @@ namespace Bladesmiths.Capstone
     {
         Enemy _enemy;
         private float fadeOutTimer = 0f;
-        private float fadeOutLength = 1f;
+        private float fadeOutLength = 2f;
         private float shrinkSpeed = 1.0f;
 
         public EnemyFSMState_DEATH(Enemy enemy)
@@ -19,7 +19,7 @@ namespace Bladesmiths.Capstone
         public override void Tick()
         {
             fadeOutTimer += Time.deltaTime;
-            _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            
 
             // When the object should fade out
             if (fadeOutTimer >= fadeOutLength)
@@ -45,6 +45,14 @@ namespace Bladesmiths.Capstone
         {
             // When the enemy is dead destroy it
             AIDirector.Instance.RemoveFromGroups(_enemy);
+            _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            _enemy.transform.GetChild(1).gameObject.SetActive(true);
+            _enemy.transform.GetChild(0).gameObject.SetActive(false);
+
+            foreach (Rigidbody child in _enemy.transform.GetComponentsInChildren<Rigidbody>())
+            {
+                child.isKinematic = false;
+            }
             //MonoBehaviour.Destroy(_enemy.gameObject);
         }
 

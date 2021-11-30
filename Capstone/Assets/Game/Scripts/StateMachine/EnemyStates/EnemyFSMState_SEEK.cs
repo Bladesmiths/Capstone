@@ -29,10 +29,6 @@ namespace Bladesmiths.Capstone
         public override void Tick()
         {
             MovementCheck();
-
-            
-
-
         }
 
         private void AttackTimer()

@@ -69,6 +69,7 @@ namespace Bladesmiths.Capstone
         {
             // Creates the FSM
             FSM = new FiniteStateMachine();
+            damage = 15f;
 
         }
 
@@ -82,9 +83,8 @@ namespace Bladesmiths.Capstone
             moveSpeed = 5f;
             controller = GetComponent<CharacterController>();
             agent = GetComponent<NavMeshAgent>();
-            attackTimerMax = 1f;
+            attackTimerMax = 0.5f;
             attackTimer = attackTimerMax;
-            damage = 15f;
 
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
@@ -151,7 +151,7 @@ namespace Bladesmiths.Capstone
             {
                 timer += Time.deltaTime;
 
-                if (timer >= 1f)
+                if (timer >= 0.5f)
                 {
                     gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
                     damaged = false;

@@ -25,6 +25,7 @@ namespace Bladesmiths.Capstone
             enemy = gameObject.transform.root.GetComponent<Enemy>();
             ID = enemy.ID;
             ObjectTeam = enemy.ObjectTeam;
+            Damage = enemy.Damage;
 
         }
 
@@ -38,7 +39,8 @@ namespace Bladesmiths.Capstone
         {
             if (other.gameObject.GetComponent<Player>())
             {
-                enemy.SwordAttack(other.gameObject.GetComponent<Player>().ID);
+                //enemy.SwordAttack(other.gameObject.GetComponent<Player>().ID);
+                other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject.GetComponent<Player>().ID, Damage);
             }
         }
     }
