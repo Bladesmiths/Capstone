@@ -155,16 +155,27 @@ namespace Bladesmiths.Capstone.UI
             //Determine how many chunks remain in the health bar after taking damage
             int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
 
+            //NOT GOOD, MAKE THIS ONLY HAPPEN WHEN RESPAWNING SOMEHOW
+            if (currentHealth == 0)
+            {
+                for (int i = 0; i < healthBarObjects.Count; i++)
+                {
+                    healthBarObjects[i].GetComponent<HealthChunk>().FullReset();
+                }
+            }
+
             //Shatter any chunks that have an index higher than the remaining chunk count
             for (int i = 0; i < healthBarObjects.Count - remainingChunks; i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }
+
             //float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
             //healthBarSprites[currentSwordSelect].fillAmount = fillPercentage;
 
             //fillPercentage = Mathf.Clamp((currentHealth + currentChipDamage) / maxHealth, 0, 1);
             //chipDamageFill.fillAmount = fillPercentage; 
+
         }
 
         private void UpdateScore(int currentScore, int maxScore)

@@ -34,6 +34,8 @@ public class HealthChunk : MonoBehaviour
         if (!shattered)
         {
             chunkRigidbody.gravityScale = 1f;
+            chunkRigidbody.drag = 0.5f;
+            chunkRigidbody.angularDrag = 0.5f;
             Vector2 direction = Random.insideUnitCircle;
             float force = Random.Range(300, 500);
 
@@ -76,6 +78,8 @@ public class HealthChunk : MonoBehaviour
         ChangeOpacity(1f);
         faded = false;
         shattered = false;
+        chunkRigidbody.gravityScale = 0.0f;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     //Add to the opacity of the chunk's UIImage by a specified amount

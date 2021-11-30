@@ -10,6 +10,7 @@ using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using Bladesmiths.Capstone.UI;
 
 using StarterAssets;
 
@@ -670,6 +671,7 @@ namespace Bladesmiths.Capstone
             {
                 // Do one time only resets
                 Health = MaxHealth;
+
                 transform.position = respawnPoint;
                 transform.rotation = Quaternion.Euler(respawnRotation);
                 cinemachineTargetYaw = respawnRotation.y;
