@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
-  m_Name: 220_Setup
+  m_Script: {fileID: 11500000, guid: d0e5997dc40a2dc47afc7b9a41a9a862, type: 3}
+  m_Name: Level 01
   m_EditorClassIdentifier: 
-  setupList:
-  - scenePath: Assets/Game/Scenes/VillageScene.unity
-    isActive: 0
-    isLoaded: 1
-  - scenePath: Assets/Game/Scenes/220_PlayerScene.unity
-    isActive: 1
-    isLoaded: 1
+  StartupScenes:
+  - GameLevel

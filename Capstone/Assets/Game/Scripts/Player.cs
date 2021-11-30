@@ -87,6 +87,7 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private CinemachineFreeLook freeLookCam;
+        #endregion
 
         #region Grounded Fields
         [Header("Grounded Fields")]
@@ -104,20 +105,25 @@ namespace Bladesmiths.Capstone
         private Sword currentSword;
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
+        private int animIDSwordChoice;
         #endregion
 
-        // Testing for damaging system
+        #region Damaging System Fields
         [Header("Damaging Timer Fields (Testing)")]
         [SerializeField]
         private float damagingTimerLimit;
         private float damagingTimer;
         private bool damaging;
+        #endregion
+
+        #region UI Fields
         private float points = 0;
         private float maxPoints = 8;
 
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
+        #endregion
 
         #region Fields from the Move State and Jump State
 
@@ -208,8 +214,6 @@ namespace Bladesmiths.Capstone
         #endregion
         #endregion
 
-        #endregion
-
         private void Awake()
         {
             Health = 1000;
@@ -292,6 +296,7 @@ namespace Bladesmiths.Capstone
             // Should eventually be changed so it sets the player sword to quartz on start
             // from their dictionary of sword types to sword prefabs
             currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
+            animIDSwordChoice = Animator.StringToHash("Sword Choice");
         }
 
 
@@ -574,11 +579,14 @@ namespace Bladesmiths.Capstone
                 // Update the position according to offset
                 sword.transform.localPosition = currentSword.Offset.position;
                 sword.transform.localRotation = currentSword.Offset.rotation;
-                sword.transform.localScale = CurrentSword.Offset.localScale;
+                sword.transform.localScale = currentSword.Offset.localScale;
 
                 // Update the box collider dimensions
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
                 sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
+
+                // Set the animation paramater to change the attack animation
+                animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
                 // TODO: Player sword switching animation
             }
