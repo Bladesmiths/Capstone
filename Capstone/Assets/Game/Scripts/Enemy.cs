@@ -202,7 +202,7 @@ namespace Bladesmiths.Capstone
 
         public void SwordAttack(int targetID)
         {
-            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, 80);
+            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
 
             // Testing
             damaging = true;
