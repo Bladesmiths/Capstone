@@ -30,7 +30,7 @@ namespace Bladesmiths.Capstone
             // Assign damaged paramater id
             _animIDDamaged = Animator.StringToHash("Damaged");
             AnimDuration = animator.runtimeAnimatorController.animationClips.
-                Where(clip => clip.name == "GettingHit").ToArray()[0].length;
+                Where(clip => clip.name == "GettingHit").ToArray()[0].length / 1.5f;
         }
 
         public override void Tick()
