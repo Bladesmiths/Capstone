@@ -54,7 +54,7 @@ namespace Bladesmiths.Capstone
             controller = _enemy.GetComponent<CharacterController>();
             speed = 1.5f;
             dir = Random.Range(-1, 2);
-            surroundDistance = 2f;
+            surroundDistance = 2.5f;
         }
 
         public override void OnExit()
