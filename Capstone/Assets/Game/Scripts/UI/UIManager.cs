@@ -39,6 +39,8 @@ namespace Bladesmiths.Capstone.UI
 
         [HorizontalGroup("HUD/FirstRow")]
         [BoxGroup("HUD/FirstRow/Health Bar Objects")]
+
+        //Health chunk objects
         [OdinSerialize]
         private List<GameObject> healthBarObjects = new List<GameObject>();
 
