@@ -10,10 +10,15 @@ namespace Bladesmiths.Capstone
         private Enemy _enemy;
         private bool attack;
 
+        private float preAttackTimer;
+        private float preAttackTimerMax;
+
         public EnemyFSMState_ATTACK(GameObject sword, Enemy enemy)
         {
             _sword = sword;
             _enemy = enemy;
+            preAttackTimer = 0f;
+            preAttackTimerMax = 0.5f;
         }
 
         public override void Tick()
@@ -41,18 +46,28 @@ namespace Bladesmiths.Capstone
         public override void OnEnter()
         {
             attack = true;
+            preAttackTimer = 0f;
         }
 
         public override void OnExit()
         {
             _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
+            _enemy.ClearDamaging();
+
         }
 
         public void Attack()
         {
-            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(90f, _sword.transform.eulerAngles.y, 0f), 0.4f);
-
+            preAttackTimer += Time.deltaTime;
+            if (preAttackTimer <= preAttackTimerMax)
+            {
+                _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(-50f, _sword.transform.eulerAngles.y, 0f), 0.1f);
+            }
+            else
+            {
+                _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(90f, _sword.transform.eulerAngles.y, 0f), 0.6f);
+            }
         }
 
         public void StopAttack()

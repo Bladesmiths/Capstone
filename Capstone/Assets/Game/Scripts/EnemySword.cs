@@ -41,6 +41,7 @@ namespace Bladesmiths.Capstone
             {
                 //enemy.SwordAttack(other.gameObject.GetComponent<Player>().ID);
                 other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject.GetComponent<Player>().ID, Damage);
+                other.gameObject.GetComponent<Player>().Damaging = true;
             }
         }
     }

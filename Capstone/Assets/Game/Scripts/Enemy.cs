@@ -158,54 +158,36 @@ namespace Bladesmiths.Capstone
                     timer = 0f;
                 }
             }
-
-            // Testing
-            // If the enemy is currently damaging an object
-            if (damaging)
-            {
-                // Update the timer
-                damagingTimer += Time.deltaTime;
-
-                // If the timer is equal to or exceeds the limit
-                if (damagingTimer >= damagingTimerLimit)
-                {
-                    // If the damaging finished event has subcribing delegates
-                    // Call it, running all subscribing delegates
-                    if (DamagingFinished != null)
-                    {
-                        DamagingFinished(ID);
-                    }
-                    // If the damaging finished event doesn't have any subscribing events
-                    // Something has gone wrong because damaging shouldn't be true otherwise
-                    else
-                    {
-                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
-                    }
-
-                    // Reset fields
-                    damagingTimer = 0.0f;
-                    damaging = false;
-                }
-            }
-
-            
+                        
             // Movement
             agent.SetDestination(moveVector);
 
             Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector), 0.25f);
             q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-            transform.rotation = q;
-           
-
-            
+            transform.rotation = q;            
         }
 
-        public void SwordAttack(int targetID)
+        public void ClearDamaging()
         {
-            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+            // If the enemy is currently damaging an object
+            if (damaging)
+            {
+                // If the damaging finished event has subcribing delegates
+                // Call it, running all subscribing delegates
+                if (DamagingFinished != null)
+                {
+                    DamagingFinished(ID);
+                }
+                // If the damaging finished event doesn't have any subscribing events
+                // Something has gone wrong because damaging shouldn't be true otherwise
+                else
+                {
+                    Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                }
 
-            // Testing
-            damaging = true;
+                // Reset fields
+                damaging = false;
+            }
         }
 
         protected virtual void Attack()
