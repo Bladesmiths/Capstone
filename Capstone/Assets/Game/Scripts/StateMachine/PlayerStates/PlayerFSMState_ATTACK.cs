@@ -4,6 +4,7 @@ using UnityEngine;
 using Bladesmiths.Capstone.Enums;
 using Bladesmiths.Capstone.Testing;
 using StarterAssets;
+using System.Linq;
 
 namespace Bladesmiths.Capstone
 {
@@ -32,7 +33,10 @@ namespace Bladesmiths.Capstone
         private Quaternion _targetRotation;
         private GameObject camera;
 
+        private Dictionary<SwordType, float> _animDurations = new Dictionary<SwordType, float>(); 
+
         public float Timer { get { return timer; } }
+        public Dictionary<SwordType, float> AnimDurations { get { return _animDurations; } }   
 
         public PlayerFSMState_ATTACK(Player player, PlayerInputsScript input, Animator animator, GameObject sword)
         {
@@ -40,9 +44,17 @@ namespace Bladesmiths.Capstone
             _input = input;
             _animator = animator;
             _sword = sword;
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
             id = PlayerCondition.F_Attacking;
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
+
+            _animDurations.Add(SwordType.Quartz, animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "Sword And Shield Slash 2").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Quartz]);
+            _animDurations.Add(SwordType.Ruby, animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "Ruby Slash_Colliders").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Ruby]);
+            _animDurations.Add(SwordType.Sapphire, animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "Sapphire Inward Slash_Colliders").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Sapphire]);
         }
 
         public override void Tick()
@@ -112,8 +124,7 @@ namespace Bladesmiths.Capstone
         public override void OnExit()
         {
             _animator.SetBool(_animIDAttack, false);
+            _player.ClearDamaging();
         }
-
     }
-
 }

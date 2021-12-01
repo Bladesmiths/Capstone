@@ -87,6 +87,7 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private CinemachineFreeLook freeLookCam;
+        #endregion
 
         #region Grounded Fields
         [Header("Grounded Fields")]
@@ -104,20 +105,22 @@ namespace Bladesmiths.Capstone
         private Sword currentSword;
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
+        private int animIDSwordChoice;
         #endregion
 
-        // Testing for damaging system
+        #region Damaging System Fields
         [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
         private bool damaging;
+        #endregion
+
+        #region UI Fields
         private float points = 0;
         private float maxPoints = 8;
 
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
+        #endregion
 
         #region Fields from the Move State and Jump State
 
@@ -208,8 +211,6 @@ namespace Bladesmiths.Capstone
         #endregion
         #endregion
 
-        #endregion
-
         private void Awake()
         {
             Health = 1000;
@@ -288,10 +289,8 @@ namespace Bladesmiths.Capstone
 
             inputs.player = this;
 
-            // Temporary
-            // Should eventually be changed so it sets the player sword to quartz on start
-            // from their dictionary of sword types to sword prefabs
             currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
+            animIDSwordChoice = Animator.StringToHash("Sword Choice");
         }
 
 
@@ -301,41 +300,6 @@ namespace Bladesmiths.Capstone
 
             Jump();
             Move();
-
-            // Testing
-            // If the enemy is currently damaging an object
-            if (damaging)
-            {
-                // Update the timer
-                damagingTimer += Time.deltaTime;
-
-                // If the timer is equal to or exceeds the limit
-                if (damagingTimer >= damagingTimerLimit)
-                {
-                    // If the damaging finished event has subcribing delegates
-                    // Call it, running all subscribing delegates
-                    if (DamagingFinished != null)
-                    {
-                        DamagingFinished(ID);
-                    }
-                    // If the damaging finished event doesn't have any subscribing events
-                    // Something has gone wrong because damaging shouldn't be true otherwise
-                    else
-                    {
-                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
-                    }
-
-                    // Reset fields
-                    damagingTimer = 0.0f;
-                    damaging = false;
-
-                }
-            }
-
-            //if(Health <= 0)
-            //{
-            //    FSM.SetCurrentState(death);
-            //}
 
             // If the player is dead and just died (fadeToBlack is still occuring)
             if(points >= maxPoints)
@@ -574,11 +538,14 @@ namespace Bladesmiths.Capstone
                 // Update the position according to offset
                 sword.transform.localPosition = currentSword.Offset.position;
                 sword.transform.localRotation = currentSword.Offset.rotation;
-                sword.transform.localScale = CurrentSword.Offset.localScale;
+                sword.transform.localScale = currentSword.Offset.localScale;
 
                 // Update the box collider dimensions
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
                 sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
+
+                // Set the animation paramater to change the attack animation
+                animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
                 // TODO: Player sword switching animation
             }
@@ -596,10 +563,32 @@ namespace Bladesmiths.Capstone
         public void SwordAttack(int targetID)
         {
             float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
-            Health += damageDealt * currentSword.LifeStealPercentage; 
+            Health += damageDealt * currentSword.LifeStealPercentage;
 
-            // Testing
             damaging = true;
+        }
+
+        public void ClearDamaging()
+        {
+            // If the player is currently damaging an object
+            if (damaging)
+            {
+                // If the damaging finished event has subcribing delegates
+                // Call it, running all subscribing delegates
+                if (DamagingFinished != null)
+                {
+                    DamagingFinished(ID);
+                }
+                // If the damaging finished event doesn't have any subscribing events
+                // Something has gone wrong because damaging shouldn't be true otherwise
+                else
+                {
+                    Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                }
+
+                // Reset fields
+                damaging = false;
+            }
         }
 
         /// <summary>

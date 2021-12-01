@@ -20,6 +20,9 @@ namespace Bladesmiths.Capstone
 
         [OdinSerialize] [Tooltip("The player's swords")]
         private Dictionary<Enums.SwordType, SwordData> swordData = new Dictionary<Enums.SwordType, SwordData>();
+
+        [OdinSerialize] [Tooltip("The speed of each sword's attack animation")]
+        private Dictionary<Enums.SwordType, float> attackAnimSpeeds = new Dictionary<Enums.SwordType, float>(); 
         #endregion
 
         #region Enemy Fields
@@ -33,6 +36,7 @@ namespace Bladesmiths.Capstone
         #region Player Properties
         public float SwordSwitchingTime => SwordSwitchingTime;
         public Dictionary<Enums.SwordType, SwordData> SwordData => swordData;
+        public Dictionary <Enums.SwordType, float> AttackAnimSpeeds => attackAnimSpeeds;
         #endregion
     }
 }
