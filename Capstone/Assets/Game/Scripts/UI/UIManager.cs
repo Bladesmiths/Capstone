@@ -178,7 +178,8 @@ namespace Bladesmiths.Capstone.UI
                 healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }
 
-            if (currentChipDamage != 0 || chipHealthPercentage != 0 || chipChunks != 0)
+            //If some amount of chip damage has been taken
+            if (currentChipDamage != 0)
             {
                 //Chip any chunks that have an index higher than the remaining chunk count
                 for (int i = healthBarObjects.Count - (remainingChunks + chipChunks); i < healthBarObjects.Count - remainingChunks; i++)

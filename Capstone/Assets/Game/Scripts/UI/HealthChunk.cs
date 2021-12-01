@@ -95,8 +95,9 @@ public class HealthChunk : MonoBehaviour
     {
         if (chipped)
         {
-            transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            transform.localScale = new Vector3(1.14f, 1.14f, 1.14f); //Original size. Likely to change in future via updating the PSD file.
             image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a);
+            chipped = false;
         }
     }
 
