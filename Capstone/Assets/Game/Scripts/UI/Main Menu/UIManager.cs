@@ -24,17 +24,14 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private PlayerInput playerInput;
         
         [TitleGroup("HUD")]
-        [HorizontalGroup("HUD/Split")]
-        [VerticalGroup("HUD/Split/Left")] [BoxGroup("HUD/Split/Left/Health Bar")]
-        [LabelWidth(85)]
-        [SerializeField] private Image healthBarFill;
-        [VerticalGroup("HUD/Split/Middle")] [BoxGroup("HUD/Split/Middle/Chip Damage Bar")]
-        [LabelWidth(85)]
-        [SerializeField] private Image chipDamageFill;
-
-        [VerticalGroup("HUD/Split/Right")] [BoxGroup("HUD/Split/Right/Points UI")]
-        [LabelWidth(85)]
         [SerializeField] private TextMeshProUGUI pointsText;
+
+        [HorizontalGroup("HUD/FirstRow")]
+        [BoxGroup("HUD/FirstRow/Health Bar Objects")]
+
+        //Health chunk objects
+        [OdinSerialize]
+        private List<GameObject> healthBarObjects = new List<GameObject>();
 
         [HorizontalGroup("HUD/SecondRow")]
         [VerticalGroup("HUD/SecondRow/Left")]
@@ -144,11 +141,41 @@ namespace Bladesmiths.Capstone.UI
         
         private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
-            float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
-            healthBarFill.fillAmount = fillPercentage;
+            float currentHealthPercentage = currentHealth / maxHealth;
+            float chipHealthPercentage = currentChipDamage / maxHealth;
 
-            fillPercentage = Mathf.Clamp((currentHealth + currentChipDamage) / maxHealth, 0, 1);
-            chipDamageFill.fillAmount = fillPercentage; 
+            //Determine how many chunks remain in the health bar after taking damage
+            int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
+
+            int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count);
+
+            //Reset all chunks when player respawns
+            if (currentHealth == maxHealth)
+            {
+                for (int i = 0; i < healthBarObjects.Count; i++)
+                {
+                    if (healthBarObjects[i].GetComponent<HealthChunk>().shattered)
+                    {
+                        healthBarObjects[i].GetComponent<HealthChunk>().FullReset();
+                    }
+                }
+            }
+
+            //Shatter any chunks that have an index higher than the remaining chunk count
+            for (int i = 0; i < healthBarObjects.Count - (remainingChunks + chipChunks); i++)
+            {
+                healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
+            }
+
+            //If some amount of chip damage has been taken
+            if (currentChipDamage != 0)
+            {
+                //Chip any chunks that have an index higher than the remaining chunk count
+                for (int i = healthBarObjects.Count - (remainingChunks + chipChunks); i < healthBarObjects.Count - remainingChunks; i++)
+                {
+                    healthBarObjects[i].GetComponent<HealthChunk>().Chip();
+                }
+            }
         }
 
         private void UpdateScore(int currentScore, int maxScore)
