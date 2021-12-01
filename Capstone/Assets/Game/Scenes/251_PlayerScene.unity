@@ -706,7 +706,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136034365}
-  m_LocalRotation: {x: 0.12008298, y: -0.08148036, z: 0.00988958, w: 0.9893651}
+  m_LocalRotation: {x: 0.12008298, y: -0.08148038, z: 0.009889581, w: 0.9893651}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1399,7 +1399,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.15594238, y: -0.081067346, z: 0.012842822, w: 0.98435014}
+  m_LocalRotation: {x: 0.15594235, y: -0.08106738, z: 0.012842828, w: 0.98435014}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2893,6 +2893,7 @@ MonoBehaviour:
   player: {fileID: 1554415451}
   camera: {fileID: 1802336009}
   playerInput: {fileID: 1554415453}
+  pointsText: {fileID: 926484292}
   activeSize: 140
   inactiveSize: 80
   swordSelectMask: {fileID: 1104749583}
@@ -5549,7 +5550,7 @@ MonoBehaviour:
   GroundedRadius: 0.2
   landTimeout: 0.02
   currentSword: {fileID: 1969483027}
-  damagingTimerLimit: 5
+  damagingTimerLimit: 0
   fade: {fileID: 832112825}
   hasFadedToBlack: 0
   justDied: 0
@@ -5793,7 +5794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLockCam: {fileID: 2107349663}
-  targetCanvas: {fileID: 1903638063}
+  targetCanvas: {fileID: 0}
   playerCamRoot: {fileID: 1459533900}
 --- !u!1 &1573736001
 GameObject:
@@ -6021,7 +6022,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: 0.13801177, y: -0.08128756, z: 0.011366126, w: 0.9870238}
+  m_LocalRotation: {x: 0.13801177, y: -0.081287585, z: 0.011366128, w: 0.9870238}
   m_LocalPosition: {x: -7.7155886, y: 2.8, z: -10.516106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7953,7 +7954,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.13801174, y: -0.081287555, z: 0.011366125, w: 0.9870238}
+  m_LocalRotation: {x: 0.13801174, y: -0.08128758, z: 0.011366128, w: 0.9870238}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

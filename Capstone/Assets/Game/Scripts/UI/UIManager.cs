@@ -24,18 +24,7 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private PlayerInput playerInput;
         
         [TitleGroup("HUD")]
-
-        //[HorizontalGroup("HUD/Split")]
-        //[VerticalGroup("HUD/Split/Left")] [BoxGroup("HUD/Split/Left/Health Bar")]
-        //[LabelWidth(85)]
-        //[SerializeField] private Image healthBarFill;
-        //[VerticalGroup("HUD/Split/Middle")] [BoxGroup("HUD/Split/Middle/Chip Damage Bar")]
-        //[LabelWidth(85)]
-        //[SerializeField] private Image chipDamageFill;
-
-        //[VerticalGroup("HUD/Split/Right")] [BoxGroup("HUD/Split/Right/Points UI")]
-        //[LabelWidth(85)]
-        //[SerializeField] private TextMeshProUGUI pointsText;
+        [SerializeField] private TextMeshProUGUI pointsText;
 
         [HorizontalGroup("HUD/FirstRow")]
         [BoxGroup("HUD/FirstRow/Health Bar Objects")]
@@ -187,20 +176,12 @@ namespace Bladesmiths.Capstone.UI
                     healthBarObjects[i].GetComponent<HealthChunk>().Chip();
                 }
             }
-            
-
-            //float fillPercentage = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
-            //healthBarSprites[currentSwordSelect].fillAmount = fillPercentage;
-
-            //fillPercentage = Mathf.Clamp((currentHealth + currentChipDamage) / maxHealth, 0, 1);
-            //chipDamageFill.fillAmount = fillPercentage; 
-
         }
 
         private void UpdateScore(int currentScore, int maxScore)
         {
             string displayScoreText = currentScore.ToString() + "/" + maxScore.ToString();
-            //pointsText.text = displayScoreText.Trim();
+            pointsText.text = displayScoreText.Trim();
         }
 
         private void UpdateSwordSelect(Enums.SwordType currentSwordType)
