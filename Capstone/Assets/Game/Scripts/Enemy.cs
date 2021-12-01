@@ -98,6 +98,7 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(wander, seek, IsClose());
             FSM.AddTransition(seek, attack, CanAttack());
             FSM.AddTransition(attack, seek, DoneAttacking());
+            agent.updateRotation = false;
 
             //CanHit = true;
 

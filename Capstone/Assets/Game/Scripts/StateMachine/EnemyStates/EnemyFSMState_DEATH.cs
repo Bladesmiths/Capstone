@@ -11,7 +11,7 @@ namespace Bladesmiths.Capstone
     {
         Enemy _enemy;
         private float fadeOutTimer = 0f;
-        private float fadeOutLength = 2f;
+        private float fadeOutLength = 4f;
         private float shrinkSpeed = 1.0f;
 
         public EnemyFSMState_DEATH(Enemy enemy)
