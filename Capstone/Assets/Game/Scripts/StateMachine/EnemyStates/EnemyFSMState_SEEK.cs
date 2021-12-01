@@ -31,6 +31,16 @@ namespace Bladesmiths.Capstone
             MovementCheck();
         }
 
+        private void AttackTimer()
+        {
+            _enemy.attackTimer -= Time.deltaTime;
+            if(_enemy.attackTimer <= 0)
+            {
+                AIDirector.Instance.PopulateAttackQueue(_enemy);
+            }
+
+        }
+
         public override void OnEnter()
         {
             sideMoveTimer = 0;
@@ -45,7 +55,8 @@ namespace Bladesmiths.Capstone
 
         public override void OnExit()
         {
-
+            _enemy.moveVector = _enemy.transform.position;
+            _enemy.rotateVector = _player.transform.position - _enemy.transform.position;
         }
         
         /// <summary>
@@ -73,10 +84,9 @@ namespace Bladesmiths.Capstone
             if(sideMoveTimer >= sideMoveTimerMax)
             {
                 // Get the perpendicular vector to the distance between the Player and the Enemy
-                //dir = dir == 0 ? 1 : -1;
                 Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
                 movementVector = move + _enemy.transform.position;
-
+                AttackTimer();
                 seekAgainTimer -= Time.deltaTime;
             }
 

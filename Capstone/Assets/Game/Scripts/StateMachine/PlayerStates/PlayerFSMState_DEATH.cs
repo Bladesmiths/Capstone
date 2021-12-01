@@ -51,6 +51,8 @@ namespace Bladesmiths.Capstone
                 // Respawn the player to the most recent respawn point
                 _player.Respawn();
             }
+            _player.damaged = false;
+
         }
 
         public override void OnEnter()
@@ -68,6 +70,7 @@ namespace Bladesmiths.Capstone
         {
             _player.inState = false;
             _animator.SetBool(_animIDDeath, false);
+            _player.damaged = false;
 
             _timer = 0; 
         }

@@ -36,13 +36,15 @@ namespace Bladesmiths.Capstone
         public override void Tick()
         {
             Timer += Time.deltaTime;
+            _player.damaged = false;
         }
 
         public override void OnEnter()
         {
-            _player.damaged = false;
+            //_player.damaged = false;
             Timer = 0;
             _player.inState = true;
+            Debug.Log("AnimDuration: " + AnimDuration);
 
             _animator.SetTrigger(_animIDDamaged); 
         }
@@ -51,6 +53,8 @@ namespace Bladesmiths.Capstone
         {
             Timer = 0; 
             _player.inState = false;
+            //_player.damaged = false;
+
         }
 
     }

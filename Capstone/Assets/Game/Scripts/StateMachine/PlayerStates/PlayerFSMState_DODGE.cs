@@ -63,6 +63,7 @@ namespace Bladesmiths.Capstone
             _animator = animator;
             GroundLayers = layers;
             id = PlayerCondition.F_Dodging;
+            canDmg = true;
         }
 
         public override void Tick()
