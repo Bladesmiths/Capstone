@@ -49,6 +49,7 @@ namespace Bladesmiths.Capstone.Testing
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
         public Enums.Team ObjectTeam { get; set; }
         public float Damage { get => damage; }
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         /// <summary>
         /// Sets the projectile to its starting position
@@ -120,7 +121,7 @@ namespace Bladesmiths.Capstone.Testing
                 {
                     // Damage the player
                     //player.TakeDamage(ID, damage);
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
 
 
                     // Start a coroutine to change the player's material to show they've been damaged

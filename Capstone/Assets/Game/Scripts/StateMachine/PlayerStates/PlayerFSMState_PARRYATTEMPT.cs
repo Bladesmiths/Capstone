@@ -12,53 +12,74 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerFSMState_PARRYATTEMPT : PlayerFSMState
     {
-        // MOVE TO A BETTER PLACE FOR BALANCING;
-        private float parryLength = 0.5f;
-
-        public float timer;
-        private GameObject _playerParryBox;
-        private PlayerInputsScript _input;
         private Player _player;
-        private GameObject _sword;
-        public PlayerFSMState_PARRYATTEMPT(GameObject playerParryBox, PlayerInputsScript input, Player player)
+        private PlayerInputsScript _input;
+        private Animator _animator;
+
+        // The block object that notifies if the player has blocked something
+        private GameObject _playerParryBox;
+
+        public PlayerFSMState_PARRYATTEMPT(Player player, PlayerInputsScript input, Animator animator,
+            GameObject playerParryDetector)
         {
-            _playerParryBox = playerParryBox;
-            _input = input;
+            _playerParryBox = playerParryDetector;
             _player = player;
+            _input = input;
+            _animator = animator;
             id = PlayerCondition.F_ParryAttempt;
-            _sword = _player.transform.GetComponentInChildren<Sword>().gameObject;
         }
 
-        public override void Tick()
-        {
-            timer += Time.deltaTime;
-
-            if (timer >= parryLength)
-            {
-                _player.parryEnd = true;
-
-            }
-        }
+        public override void Tick() { }
 
         public override void OnEnter()
         {
-            timer = 0;
-            _playerParryBox.SetActive(true);
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
+            // Start the timer to enable the parry system after a set time
+            _player.StartCoroutine(ParryDelayTimer()); 
         }
 
         public override void OnExit()
         {
+            // Disable everything on exit
             _input.parry = false;
             _playerParryBox.SetActive(false);
-            _playerParryBox.GetComponent<MeshRenderer>().material.color = Color.white;
-            timer = 0;
             _player.parryEnd = false;
-            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
-
         }
 
+        /// <summary>
+        /// Coroutine to enable the parry checking system after a delay
+        /// </summary>
+        /// <returns>Coroutine variable</returns>
+        private IEnumerator ParryDelayTimer()
+        {
+            yield return new WaitForSeconds(_player.ParryDelay);
+
+            _playerParryBox.SetActive(true);
+
+            _player.StartCoroutine(ParryLengthTimer()); 
+        }
+
+        /// <summary>
+        /// Coroutine to disable the parry system after a set amount of time
+        /// </summary>
+        /// <returns>Coroutine variable</returns>
+        private IEnumerator ParryLengthTimer()
+        {
+            yield return new WaitForSeconds(_player.ParryLength);
+
+            _playerParryBox.SetActive(false);
+            _player.StartCoroutine(ParryCooldownTimer());
+        }
+
+        /// <summary>
+        /// Coroutine to notify the player when the parry cooldown is over and the player can do
+        /// other things again
+        /// </summary>
+        /// <returns>Coroutine variable</returns>
+        private IEnumerator ParryCooldownTimer()
+        {
+            yield return new WaitForSeconds(_player.ParryCooldown);
+
+            _player.parryEnd = true;
+        }
     }
-
-
 }

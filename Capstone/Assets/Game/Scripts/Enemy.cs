@@ -7,22 +7,35 @@ using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
-    public class Enemy : Character, IDamaging
+    public abstract class Enemy : Character, IDamaging
     {
         // Reference to the Finite State Machine
-        private FiniteStateMachine FSM;
-        //[SerializeField] private TransitionManager playerTransitionManager;
+        protected FiniteStateMachine FSM;
+
+        //protected AIDirector director;
+        private CharacterController controller;
+        private NavMeshAgent agent;
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
-        [SerializeField] private Player player;
+        [SerializeField] 
+        protected Player player;
 
-        private bool damaged = false;
-        private float timer = 0f;
-        private float attackTimer = 0f;
+        [SerializeField]
+        private GameObject sword;
+
+        protected bool damaged = false;
+        protected float timer = 0f;
+
+        protected float moveSpeed;
+        public Vector3 moveVector;
+        public Vector3 rotateVector;
 
         [SerializeField]
         protected float damage;
+
+        [SerializeField]
+        protected float viewDistance;
         
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -30,140 +43,168 @@ namespace Bladesmiths.Capstone
         // Testing for damaging system
         [Header("Damaging Timer Fields (Testing)")]
         [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
-        private bool damaging;
+        protected float damagingTimerLimit;
+        protected float damagingTimer;
+        protected bool damaging;
+
+        public float attackTimer;
+        public float attackTimerMax;
+        private bool isBroken;
 
         public float Damage { get => damage; }
+        public bool Damaging { get => damaging; set => damaging = value; }
+        public bool CanHit { get; set; }
 
-        private void Awake()
+        #region Enemy States
+        protected EnemyFSMState_SEEK seek;
+        protected EnemyFSMState_IDLE idle;
+        protected EnemyFSMState_ATTACK attack;
+        protected EnemyFSMState_TAKEDAMAGE takeDamage;
+        protected EnemyFSMState_DEATH death;
+        protected EnemyFSMState_WANDER wander;
+        protected EnemyFSMState_MOVING move;
+        #endregion
+        
+        public virtual void Awake()
         {
             // Creates the FSM
             FSM = new FiniteStateMachine();
+            damage = 15f;
+
+        }
+
+        public virtual void Start()
+        {
+            AIDirector.Instance.AddToEnemyGroup(this);
+            isBroken = false;
+            player = GameObject.Find("Player").GetComponent<Player>();
+
+            moveVector = Vector3.zero;
+            moveSpeed = 5f;
+            controller = GetComponent<CharacterController>();
+            agent = GetComponent<NavMeshAgent>();
+            attackTimerMax = 0.5f;
+            attackTimer = attackTimerMax;
 
             // Creates all of the states
-            //PlayerFSMState_MOVING move = new PlayerFSMState_MOVING();
-            //PlayerFSMState_IDLE idle = new PlayerFSMState_IDLE();
-
-            EnemyFSMState_SEEK seek = new EnemyFSMState_SEEK(player, this);
-            EnemyFSMState_IDLE idle = new EnemyFSMState_IDLE();
+            seek = new EnemyFSMState_SEEK(player, this);
+            idle = new EnemyFSMState_IDLE();
+            death = new EnemyFSMState_DEATH(this);
+            wander = new EnemyFSMState_WANDER(this);
+            attack = new EnemyFSMState_ATTACK(sword, this);
 
             // Adds all of the possible transitions
-            //FSM.AddTransition(seek, idle, IsIdle());
-            //FSM.AddTransition(idle, seek, IsClose());
+            FSM.AddTransition(seek, wander, IsIdle());
+            FSM.AddTransition(wander, seek, IsClose());
+            FSM.AddTransition(seek, attack, CanAttack());
+            FSM.AddTransition(attack, seek, DoneAttacking());
+            agent.updateRotation = false;
+
+            //CanHit = true;
+
+            FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            //FSM.SetCurrentState(idle);
+            FSM.SetCurrentState(wander);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
         }
 
         /// <summary>
-        /// The condition for going between the IDLE and MOVE states
+        /// Checks to see if the Enemy is dead
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsMoving() => () => player.GetComponent<CharacterController>().velocity.magnitude != 0;
+        public Func<bool> IsDead() => () => Health <= 0;
 
         /// <summary>
-        /// The condition for going between the MOVE and IDLE states
+        /// Checks to see if the player is near the Enemy
         /// </summary>
         /// <returns></returns>
-        //public Func<bool> IsIdle() => () => player.GetComponent<CharacterController>().velocity.magnitude == 0;
+        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < viewDistance;
+
+        /// <summary>
+        /// If the Player is far away then stop seeking
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
+
+        /// <summary>
+        /// If the Enemy can attack
+        /// Set through the AI Director
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> CanAttack() => () => CanHit;
+
+        /// <summary>
+        /// If the Enemy is finishing attacking
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> DoneAttacking() => () => !CanHit;
 
 
-        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < 4;
-        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= 4;
-       
         public virtual void Update()
         {
-            FSM.Tick();
+            //FSM.Tick();
 
             if (damaged)
             {
                 timer += Time.deltaTime;
 
-                if (timer >= 1f)
+                if (timer >= 0.5f)
                 {
-                    gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
                     damaged = false;
                     timer = 0f;
                 }
             }
+                        
+            // Movement
+            agent.SetDestination(moveVector);
 
-            //if(Vector3.Distance(player.transform.position, this.transform.position) < 2)
-            //{
-            //    attackTimer += Time.deltaTime;
+            Debug.DrawLine(transform.position, rotateVector, Color.red);
 
-            //    if ((attackTimer >= 1))
-            //    {
-            //        Attack();
-            //        attackTimer = 0f;
-            //    }
+            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
+            q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+            transform.rotation = q;            
+        }
 
-
-            //}
-
-            // Testing
+        public void ClearDamaging()
+        {
             // If the enemy is currently damaging an object
             if (damaging)
             {
-                // Update the timer
-                damagingTimer += Time.deltaTime;
-
-                // If the timer is equal to or exceeds the limit
-                if (damagingTimer >= damagingTimerLimit)
+                // If the damaging finished event has subcribing delegates
+                // Call it, running all subscribing delegates
+                if (DamagingFinished != null)
                 {
-                    // If the damaging finished event has subcribing delegates
-                    // Call it, running all subscribing delegates
-                    if (DamagingFinished != null)
-                    {
-                        DamagingFinished(ID);
-                    }
-                    // If the damaging finished event doesn't have any subscribing events
-                    // Something has gone wrong because damaging shouldn't be true otherwise
-                    else
-                    {
-                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
-                    }
-
-                    // Reset fields
-                    damagingTimer = 0.0f;
-                    damaging = false;
+                    DamagingFinished(ID);
                 }
+                // If the damaging finished event doesn't have any subscribing events
+                // Something has gone wrong because damaging shouldn't be true otherwise
+                else
+                {
+                    Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                }
+
+                // Reset fields
+                damaging = false;
             }
         }
-
-        void OnCollisionEnter(Collision collision)
+        public void SwordAttack(int targetID)
         {
-            //Attack();
-
+           ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+            
+            // Testing
+            damaging = true;
         }
 
-        protected override void Attack()
+        protected virtual void Attack()
         {
             player.TakeDamage(ID, 1);
         }
-        protected override void ActivateAbility()
-        {
 
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
-        }
-        protected override void SwitchWeapon(int weaponSelect)
-        {
-
-        }
         protected override void Die()
         {
 
@@ -179,17 +220,17 @@ namespace Bladesmiths.Capstone
         /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
         /// <param name="damage">The amount of damage to be subtracted</param>
         /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
-        public override bool TakeDamage(int damagingID, float damage)
+        public override float TakeDamage(int damagingID, float damage)
         {
             // The resullt of Character's Take Damage
             // Was damage taken or not
-            bool damageResult = base.TakeDamage(damagingID, damage);
+            float damageResult = base.TakeDamage(damagingID, damage);
 
             // If damage was taken
             // Change the object to red and set damaged to true
-            if (damageResult)
+            if (damageResult > 0)
             {
-                gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
 
                 damaged = true;
             }

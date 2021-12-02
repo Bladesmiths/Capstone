@@ -4,6 +4,7 @@ using UnityEngine;
 using Bladesmiths.Capstone.Enums;
 using Bladesmiths.Capstone.Testing;
 using StarterAssets;
+using System.Linq;
 
 namespace Bladesmiths.Capstone
 {
@@ -14,33 +15,46 @@ namespace Bladesmiths.Capstone
     public class PlayerFSMState_TAKEDAMAGE : PlayerFSMState
     {
         private Player _player;
-        public float timer;
+        private Animator _animator;
+        private int _animIDDamaged;
 
-        public PlayerFSMState_TAKEDAMAGE(Player player)
+        public float Timer { get; set; }
+        public float AnimDuration { get; private set; }
+
+        public PlayerFSMState_TAKEDAMAGE(Player player, Animator animator)
         {
             _player = player;
             id = PlayerCondition.F_TakingDamage;
+            _animator = animator;
+
+            // Assign damaged paramater id
+            _animIDDamaged = Animator.StringToHash("Damaged");
+            AnimDuration = animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "GettingHit").ToArray()[0].length / 1.5f;
         }
 
         public override void Tick()
         {
-            timer += Time.deltaTime;
-
+            Timer += Time.deltaTime;
+            _player.damaged = false;
         }
 
         public override void OnEnter()
         {
-            _player.damaged = false;
-            timer = 0;
-            //_player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+            //_player.damaged = false;
+            Timer = 0;
             _player.inState = true;
+            Debug.Log("AnimDuration: " + AnimDuration);
 
+            _animator.SetTrigger(_animIDDamaged); 
         }
 
         public override void OnExit()
         {
-            //_player.GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
+            Timer = 0; 
             _player.inState = false;
+            //_player.damaged = false;
+
         }
 
     }

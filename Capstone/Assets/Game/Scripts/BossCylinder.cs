@@ -28,6 +28,7 @@ namespace Bladesmiths.Capstone
         public float Damage => damage;
         public ObjectController ObjectController { get; set; }
         public Team ObjectTeam { get; set; }
+        public bool Damaging { get => damaging; set => damaging = value; }
 
         // Start is called before the first frame update
         void Start()
@@ -72,14 +73,14 @@ namespace Bladesmiths.Capstone
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.transform.root.CompareTag("Player") == true)
+            if (other.GetComponent<BlockCollision>() != null || other.GetComponent<Player>() != null)
             {
                 if (other.gameObject.transform.root.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
                 {
                     Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
                     // Check if the player has already been hit by this object
                     //player.TakeDamage(id, damage);
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
                 }
 
                 damaging = true;

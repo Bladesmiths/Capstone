@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 using StarterAssets;
 
@@ -19,10 +20,13 @@ namespace Bladesmiths.Capstone
     /// This is where all of the transitions between states 
     /// are defined and how they are transitioned between
     /// </summary>
-    public class Player : Character, IDamaging
+    public partial class Player : Character, IDamaging
     {
+        #region Fields
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
+        [SerializeField]
+        private BalancingData currentBalancingData; 
 
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
@@ -41,16 +45,18 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject blockDetector;
 
-        [SerializeField] private Vector3 respawnPoint;
-        [SerializeField] private Vector3 respawnRotation;
+        [SerializeField]
+        private Vector3 respawnPoint;
+        [SerializeField]
+        private Vector3 respawnRotation;
 
 
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
+        #region Player FSM States
         private PlayerFSMState_PARRYATTEMPT parryAttempt;
         private PlayerFSMState_PARRYSUCCESS parrySuccess;
-        private PlayerFSMState_IDLE idleMovement;
         private PlayerFSMState_IDLE idleCombat;
 
 
@@ -61,28 +67,29 @@ namespace Bladesmiths.Capstone
         private PlayerFSMState_JUMP jump;
         private PlayerFSMState_BLOCK block;
         private PlayerFSMState_NULL nullState;
+        #endregion
 
-        private TargetLock targetLock; 
+        private TargetLock targetLock;
 
+        #region State Fields
         [Header("State Fields")]
         public bool inState;
         public bool damaged;
         public bool parryEnd;
+        public bool parrySuccessful;
         private float dodgeTimer;
-        [SerializeField] [Range(0.0f, 1.0f)]
-        private float chipDamagePercent; 
+        #endregion
 
+        #region Cinemachine Target Fields
         [Header("Cinemachine Target Fields")]
         public float cinemachineTargetYaw;
         public float cinemachineTargetPitch;
-        private const float threshold = 0.01f;
-        [SerializeField] 
-        public GameObject CinemachineCameraTarget;
-        private float TopClamp = 70.0f;
-        private float BottomClamp = -30.0f;
-        private float CameraAngleOverride = 0.0f;
-        private bool LockCameraPosition = false;
 
+        [SerializeField]
+        private CinemachineFreeLook freeLookCam;
+        #endregion
+
+        #region Grounded Fields
         [Header("Grounded Fields")]
         public LayerMask GroundLayers;
         public bool Grounded = true;
@@ -90,25 +97,30 @@ namespace Bladesmiths.Capstone
         public float GroundedOffset = -0.10f;
         public float GroundedRadius = 0.20f;
         [SerializeField] private float landTimeout;
+        #endregion
 
+        #region Sword Fields
         [Header("Sword Fields")]
         [SerializeField]
-        private float currentSwordDamage;
-        private Sword currentSword; 
-        private List<Sword> swords = new List<Sword>(); 
+        private Sword currentSword;
+        [OdinSerialize]
+        private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
+        private int animIDSwordChoice;
+        #endregion
 
-        // Testing for damaging system
+        #region Damaging System Fields
         [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
         private bool damaging;
+        #endregion
+
+        #region UI Fields
         private float points = 0;
         private float maxPoints = 8;
 
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
+        #endregion
 
         #region Fields from the Move State and Jump State
 
@@ -133,7 +145,7 @@ namespace Bladesmiths.Capstone
         private float verticalVelocity = 0.0f;
         private float terminalVelocity = 53.0f;
         public float SpeedChangeRate = 10.0f;
-        public float RotationSmoothTime = 0.12f;
+        public float RotationSmoothTime = 1000f;
 
         public float FallTimeout = 0.15f;
         //private float landTimeout;
@@ -160,9 +172,6 @@ namespace Bladesmiths.Capstone
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
-        private float idRemovalTimer;
-
-
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]
@@ -176,28 +185,31 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private ReactiveFloat playerHealth;
         #endregion
+        #endregion
 
-        public Vector3 RespawnPoint
-        {
-            get { return respawnPoint; }
-            set { respawnPoint = value; }
-        } 
-        public Vector3 RespawnRotation
-        {
-            get { return respawnRotation; }
-            set { respawnRotation = value; }
-        }
-        public float Damage { get => currentSwordDamage; }
+        #region Properties
+        public PlayerInputsScript Inputs { get => inputs; }
+        public BalancingData CurrentBalancingData { get => currentBalancingData; }
+
+        public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
         
-        public int Points
-        {
-            get => (int)points;
-        }
+        public float CurrentChipDamage { get => parryDetector.GetComponent<ParryCollision>().ChipDamageTotal; }
 
-        public int MaxPoints
-        {
-            get => (int)maxPoints;
-        }
+        public int Points { get => (int)points; }
+
+        public int MaxPoints { get => (int)maxPoints; }
+
+        public bool Damaging { get => damaging; set => damaging = value; }
+
+        #region Properties from Swords
+        public Sword CurrentSword { get => currentSword; }
+        public float Damage { get => currentSword.Damage; }
+        public float ChipDamagePercentage { get => currentSword.ChipDamagePercentage; }
+        public float ParryDelay { get => currentSword.ParryDelay; }
+        public float ParryLength { get => currentSword.ParryLength; }
+        public float ParryCooldown { get => currentSword.ParryCooldown; }
+        #endregion
+        #endregion
 
         private void Awake()
         {
@@ -227,10 +239,7 @@ namespace Bladesmiths.Capstone
             damaged = false;
             inState = false;
 
-
             parryEnd = false;
-
-            sword.GetComponent<Sword>().Player = this;
 
             // Creates the FSM
             FSM = new FiniteStateMachine();
@@ -238,15 +247,17 @@ namespace Bladesmiths.Capstone
             // Subscribe to the FSM's OnStateChange event
             FSM.OnStateChange += SpeedUpdate;
 
+            // Subscribing parry collision to block collision events to keep those fields updated
+            blockDetector.GetComponent<BlockCollision>().OnBlock += parryDetector.GetComponent<ParryCollision>().BlockOccured;
+
             // Creates all of the states
-            parryAttempt = new PlayerFSMState_PARRYATTEMPT(parryDetector, inputs, this);
-            parrySuccess = new PlayerFSMState_PARRYSUCCESS(parryDetector, inputs, this);
+            parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);
+            parrySuccess = new PlayerFSMState_PARRYSUCCESS(this, inputs, animator, parryDetector);
             block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
-            idleMovement = new PlayerFSMState_IDLE(animator);
             idleCombat = new PlayerFSMState_IDLE(animator);
             attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
-            death = new PlayerFSMState_DEATH(this);
-            takeDamage = new PlayerFSMState_TAKEDAMAGE(this);
+            death = new PlayerFSMState_DEATH(this, animator);
+            takeDamage = new PlayerFSMState_TAKEDAMAGE(this, animator);
             dodge = new PlayerFSMState_DODGE(this, inputs, animator, GroundLayers);
             jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
             nullState = new PlayerFSMState_NULL();
@@ -254,17 +265,19 @@ namespace Bladesmiths.Capstone
             // Adds all of the possible transitions
             FSM.AddTransition(idleCombat, attack, IsAttacking());
             FSM.AddTransition(attack, idleCombat, IsCombatIdle());
-            FSM.AddTransition(idleCombat, death, Alive());
-            FSM.AddTransition(attack, death, Alive());
             FSM.AddTransition(idleCombat, dodge, IsDodging());
             FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
 
             FSM.AddTransition(idleCombat, block, IsBlockPressed());
             FSM.AddTransition(block, parryAttempt, IsBlockReleased());
-            FSM.AddTransition(parryAttempt, idleCombat, IsParryReleased());
+            FSM.AddTransition(parryAttempt, parrySuccess, IsParrySuccessful());
+            FSM.AddTransition(parrySuccess, idleCombat, IsParryFinished()); 
+            FSM.AddTransition(parryAttempt, idleCombat, IsParryFinished());
 
 
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
+
+            FSM.AddAnyTransition(death, Dead());
 
             FSM.AddAnyTransition(takeDamage, IsDamaged());
             FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
@@ -273,120 +286,13 @@ namespace Bladesmiths.Capstone
             FSM.SetCurrentState(idleCombat);
 
             targetLock = GetComponent<TargetLock>();
-            blockDetector.GetComponent<BlockCollision>().ChipDamagePercentage = chipDamagePercent;
 
-            // Temporary probably
-            currentSword = sword.GetComponent<Sword>();
-            currentSwordDamage = currentSword.Damage;
+            inputs.player = this;
 
+            currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
+            animIDSwordChoice = Animator.StringToHash("Sword Choice");
         }
 
-        /// <summary>
-        /// The condition for going between the IDLE and MOVE states
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsMoving() => () => inputs.move != Vector2.zero;
-
-        /// <summary>
-        /// The condition for going between the MOVE and IDLE states
-        /// </summary>
-        /// <returns></returns>
-        //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsIdle() => () => this.gameObject.GetComponent<CharacterController>().velocity.magnitude <= 0;
-
-        /// <summary>
-        /// The condition for going between the MOVE and IDLE states
-        /// </summary>
-        /// <returns></returns>
-        //public Func<bool> IsIdle() => () => move.timer >= 0.5f;
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 1.4f) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
-
-        /// <summary>
-        /// The condition for going between the IDLE and BLOCK state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsBlockPressed() => () => inputs.block == true;
-
-        /// <summary>
-        /// The condition for going between the BLOCK and PARRY state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsBlockReleased() => () => inputs.block == false;
-
-        /// <summary>
-        /// The condition for going between the PARRY and IDLE state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsParryReleased() => () => parryEnd == true;
-
-        /// <summary>
-        /// The condition for going between MOVE/IDLE and the ATTACK states
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsAttacking() => () => inputs.attack;
-
-        /// <summary>
-        /// The condition for having been attacked
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsDamaged() => () => damaged;
-
-        /// <summary>
-        /// The condition for having been attacked
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsAbleToDamage() => () => takeDamage.timer >= 0.5f;
-
-        /// <summary>
-        /// The condition for going from MOVE to DODGE state
-        /// </summary>
-        public Func<bool> IsDodging() => () => inputs.dodge && controller.isGrounded;
-
-        /// <summary>
-        /// The condition for going from DODGE to MOVE state
-        /// </summary>
-        /// <returns></returns>
-        // TODO: Should implement something like when dodging animation stops
-        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 1.1f;
-
-        /// <summary>
-        /// The condition for having been attacked
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> Alive() => () => Health <= 0;
-
-        /// <summary>
-        /// Waits .5 seconds until the parry switches back to the default state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsReleased() => () => parryAttempt.timer >= 0.5;
-
-        /// <summary>
-        /// Checks if the player is grounded
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsGrounded() => () =>
-        {
-            return gameObject.GetComponent<CharacterController>().isGrounded && jump.LandTimeoutDelta <= 0.0f;
-        };
-
-        /// <summary>
-        /// Checks to see if the jump button has been pressed
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsJumping() => () => inputs.jump;
-
-        /// <summary>
-        /// The condition for going to the NULL state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsNull() => () => inState == true;
-
-        /// <summary>
-        /// The condition for going to the NULL state
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> NotNull() => () => inState == false;
 
         private void Update()
         {
@@ -395,67 +301,11 @@ namespace Bladesmiths.Capstone
             Jump();
             Move();
 
-            // Testing
-            // If the enemy is currently damaging an object
-            if (damaging)
-            {
-                // Update the timer
-                damagingTimer += Time.deltaTime;
-
-                // If the timer is equal to or exceeds the limit
-                if (damagingTimer >= damagingTimerLimit)
-                {
-                    // If the damaging finished event has subcribing delegates
-                    // Call it, running all subscribing delegates
-                    if (DamagingFinished != null)
-                    {
-                        DamagingFinished(ID);
-                    }
-                    // If the damaging finished event doesn't have any subscribing events
-                    // Something has gone wrong because damaging shouldn't be true otherwise
-                    else
-                    {
-                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
-                    }
-
-                    // Reset fields
-                    damagingTimer = 0.0f;
-                    damaging = false;
-
-                }
-            }
-
-            if(Health <= 0)
-            {
-                FSM.SetCurrentState(death);
-            }
-
             // If the player is dead and just died (fadeToBlack is still occuring)
-            if(FSM.GetCurrentState() == death && justDied)
+            if(points >= maxPoints)
             {
                 FadeToBlack();
             }
-
-
-
-        }
-
-        private void LateUpdate()
-        {
-            CameraRotation();
-        }
-
-        /// <summary>
-        /// Checks to see if the Player is on the ground
-        /// </summary>
-        /// <returns></returns>
-        private bool GroundedCheck()
-        {
-            // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(this.transform.position.x, this.transform.position.y - GroundedOffset, this.transform.position.z);
-            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-
-            return Grounded;
         }
 
         /// <summary>
@@ -468,56 +318,11 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
-        /// Allows for the camera to rotate with the player
-        /// </summary>
-        public void CameraRotation()
-        {
-            // if there is an input and camera position is not fixed
-            if (inputs.look.sqrMagnitude >= threshold && !LockCameraPosition)
-            {
-                cinemachineTargetYaw += inputs.look.x * Time.deltaTime;
-                cinemachineTargetPitch += inputs.look.y * Time.deltaTime;
-            }
-
-            // clamp our rotations so our values are limited 360 degrees
-            cinemachineTargetYaw = ClampAngle(cinemachineTargetYaw, float.MinValue, float.MaxValue);
-            cinemachineTargetPitch = ClampAngle(cinemachineTargetPitch, BottomClamp, TopClamp);
-
-            // Don't update the rotation of the camera's target if target lock is active
-            //if (!targetLock.Active)
-            //{
-            //    // Cinemachine will follow this target
-            //    CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-            //}
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch + CameraAngleOverride, cinemachineTargetYaw, 0.0f);
-
-        }
-
-        /// <summary>
-        /// Sets the angle for the camera going around the player
-        /// </summary>
-        /// <param name="lfAngle"></param>
-        /// <param name="lfMin"></param>
-        /// <param name="lfMax"></param>
-        /// <returns></returns>
-        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-        {
-            if (lfAngle < -360f) lfAngle += 360f;
-            if (lfAngle > 360f) lfAngle -= 360f;
-            return Mathf.Clamp(lfAngle, lfMin, lfMax);
-        }
-
-        /// <summary>
         /// Adds points for the second playtest
         /// </summary>
         public void AddPoints()
         {
             points++;
-
-            if(points >= maxPoints)
-            {
-                SceneManager.LoadScene(4);
-            }
         }
 
         /// <summary>
@@ -552,7 +357,9 @@ namespace Bladesmiths.Capstone
             Vector3 inputDirection = Vector3.zero;
             Vector3 targetDirection = Vector3.zero;
 
-            speed = targetSpeed;
+            // Not sure if this is the correct place to add PlayerMovementMultiplier
+            // Because it changes the animation if reduced/increased too much
+            speed = targetSpeed * currentSword.PlayerMovementMultiplier;
 
             // if the input is greater than 1 then set the speed to the max
             if (inputs.move.magnitude <= 1)
@@ -562,17 +369,32 @@ namespace Bladesmiths.Capstone
 
             // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
 
-            speed = Mathf.Clamp(speed, speed > 0 ? WalkSpeed : 0, targetSpeed);
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
 
             // Animator input
-            //animator.SetFloat(animIDForward, speed / targetSpeed);
+            // animator.SetFloat(animIDForward, speed / targetSpeed);
             animBlend = Mathf.Lerp(animBlend, speed, Time.deltaTime * SpeedChangeRate);
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
+
+            // Recentering code for the camera
+            if(inputs.move != Vector2.zero)
+            {
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+                freeLookCam.m_YAxisRecentering.m_enabled = false;
+                freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+                freeLookCam.m_YAxisRecentering.CancelRecentering();
+            }
+            else
+            {
+                freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+                freeLookCam.m_YAxisRecentering.m_enabled = true;
+            }
+
+            
 
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
@@ -580,13 +402,18 @@ namespace Bladesmiths.Capstone
             if (inputs.move != Vector2.zero && speed != 0)
             {
                 targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + playerCamera.transform.eulerAngles.y;
+                
                 float rotation = Mathf.SmoothDampAngle(this.transform.eulerAngles.y, targetRotation, ref rotationVelocity, RotationSmoothTime);
+
+                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);
 
                 // rotate to face input direction relative to camera position
                 this.transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
                 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
+
             }
 
+            // Applies gravity
             if (verticalVelocity < terminalVelocity)
             {
                 verticalVelocity += Gravity * Time.deltaTime;
@@ -598,7 +425,6 @@ namespace Bladesmiths.Capstone
             if (hasAnimator)
             {
                 animator.SetFloat(animIDForward, animBlend);
-                //animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
 
@@ -692,30 +518,39 @@ namespace Bladesmiths.Capstone
             }
         }
 
-        protected override void Attack()
+        /// <summary>
+        /// Switches the players sword to a new sword
+        /// </summary>
+        /// <param name="newSwordType"></param>
+        public void SwitchSword(SwordType newSwordType)
         {
-            // Physics.Raycast(transform.position + new Vector3(0, 1, 0), transform.TransformDirection(Vector3.forward), 2) && 
-        }
-        protected override void ActivateAbility()
-        {
+            // Check to make sure the new sword is not the old sword
+            // because that's a waste of time
+            if (newSwordType != currentSword.SwordType)
+            {
+                // Set the old sword to inactive and the new to active
+                swords[CurrentSword.SwordType].SetActive(false);
+                swords[newSwordType].SetActive(true);
 
-        }
-        protected override void Block()
-        {
+                // Update the current sword field
+                currentSword = swords[newSwordType].GetComponent<Sword>();
 
-        }
-        protected override void Parry()
-        {
+                // Update the position according to offset
+                sword.transform.localPosition = currentSword.Offset.position;
+                sword.transform.localRotation = currentSword.Offset.rotation;
+                sword.transform.localScale = currentSword.Offset.localScale;
 
-        }
-        protected override void Dodge()
-        {
+                // Update the box collider dimensions
+                sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
+                sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
 
-        }
-        protected override void SwitchWeapon(int weaponSelect)
-        {
+                // Set the animation paramater to change the attack animation
+                animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
+                // TODO: Player sword switching animation
+            }
         }
+
         protected override void Die()
         {
 
@@ -725,13 +560,35 @@ namespace Bladesmiths.Capstone
         /// Attack with the player's sword
         /// </summary>
         /// <param name="targetID">The id of the object to attack</param>
-        /// <param name="damage">The amount of damage to give to the target</param>
-        public void SwordAttack(int targetID, float damage)
+        public void SwordAttack(int targetID)
         {
-            ((IDamageable)ObjectController.IdentifiedObjects[targetID].IdentifiedObject).TakeDamage(ID, damage);
+            float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+            Health += damageDealt * currentSword.LifeStealPercentage;
 
-            // Testing
             damaging = true;
+        }
+
+        public void ClearDamaging()
+        {
+            // If the player is currently damaging an object
+            if (damaging)
+            {
+                // If the damaging finished event has subcribing delegates
+                // Call it, running all subscribing delegates
+                if (DamagingFinished != null)
+                {
+                    DamagingFinished(ID);
+                }
+                // If the damaging finished event doesn't have any subscribing events
+                // Something has gone wrong because damaging shouldn't be true otherwise
+                else
+                {
+                    Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                }
+
+                // Reset fields
+                damaging = false;
+            }
         }
 
         /// <summary>
@@ -740,37 +597,64 @@ namespace Bladesmiths.Capstone
         /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
         /// <param name="damage">The amount of damage to be subtracted</param>
         /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
-        public override bool TakeDamage(int damagingID, float damage)
+        public override float TakeDamage(int damagingID, float damage)
         {
             // If the player is not in invincibility frames
             // They can take damage
             if (dodge.canDmg)
             {
+                // If the player isn't currently blocking
+                // Apply the damage taken modifier
+                if (GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                {
+                    damage *= currentSword.DamageTakenModifier;
+                }
+
                 // The resullt of Character's Take Damage
                 // Was damage taken or not
-                bool damageResult = base.TakeDamage(damagingID, damage);
+                float damageResult = base.TakeDamage(damagingID, damage);
 
                 // If damage was taken
                 // Update the playerHealth field for analytics
-                if (damageResult)
+                if (damageResult > 0)
                 {
                     // Playtest 1
                     playerHealth.CurrentValue -= damage;
 
                     // Does not set damaged to true if block has been triggered
+                    // TODO: Better implementation of damaged flag
                     // Might need to be changed slightly eventually to better
                     // account for player taking damage from behind them
                     damaged = (blockDetector.GetComponent<BlockCollision>().BlockTriggered) ? false : true;
+                    if(Health <= 0)
+                    {
+                        damaged = true;
+                    }
+                    
                 }
 
                 // Return whether damage was taken or not
                 return damageResult; 
             }
 
-            // Return false if the player cannot currently be damaged
-            return false; 
+            // Return 0 if the player cannot currently be damaged
+            return 0; 
         }
 
+        /// <summary>
+        /// Sets the player's respawn point and rotation
+        /// </summary>
+        /// <param name="position">The respawn point for the player</param>
+        /// <param name="rotation">The respawn rotation for the player</param>
+        public void SetRespawn(Vector3 position, Vector3 rotation)
+        {
+            respawnPoint = position;
+            respawnRotation = rotation;
+        }
+
+        /// <summary>
+        /// Respawns the player
+        /// </summary>
         public override void Respawn()
         {
             // If the player's health hasn't been reset yet
@@ -780,22 +664,16 @@ namespace Bladesmiths.Capstone
                 Health = MaxHealth;
                 transform.position = respawnPoint;
                 transform.rotation = Quaternion.Euler(respawnRotation);
-                cinemachineTargetYaw = respawnRotation.y;
-                cinemachineTargetPitch = respawnRotation.z;
             }
+            damaged = false; 
 
             // Call the fade in method multiple times so it can fade
-            FadeIn();
+            StartCoroutine(FadeIn());
 
-            // When the fade in is done, change current state
-            if(fade.GetComponent<Image>().color.a <= 0)
-            {
-                FSM.SetCurrentState(idleCombat);
-                FSM.SetCurrentState(idleMovement);
-            }
+            FSM.SetCurrentState(idleCombat);
         }
 
-        private void FadeToBlack()
+        public void FadeToBlack()
         {
             // Unhide the fade out image
             if (fade.activeSelf == false)
@@ -806,23 +684,31 @@ namespace Bladesmiths.Capstone
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a + Time.deltaTime);
             else
             {
-                hasFadedToBlack = true;
-                justDied = false;
-                // Set the alpha to 1.5 so it stays at full black for a little longer
-                fade.GetComponent<Image>().color = new Color(0, 0, 0, 1.5f);
+                if (points >= maxPoints)
+                {
+                    SceneManager.LoadScene("WinScreen");
+                }
+                else
+                {
+                    hasFadedToBlack = true;
+                    justDied = false;
+                    // Set the alpha to 1.5 so it stays at full black for a little longer
+                    fade.GetComponent<Image>().color = new Color(0, 0, 0, 1.5f);
+                }
             }
         }
 
-        private void FadeIn()
+        private IEnumerator FadeIn()
         {
             // If the fade isn't fully transparent
-            if (fade.GetComponent<Image>().color.a > 0)
+            while (fade.GetComponent<Image>().color.a > 0)
             {
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a - Time.deltaTime);
+                yield return null;
             }
 
             // Needs to be separate from above if so it triggers before state change
-            if(fade.GetComponent<Image>().color.a <= 0)
+            if (fade.GetComponent<Image>().color.a <= 0)
             {
                 fade.SetActive(false);
                 hasFadedToBlack = false;
@@ -830,4 +716,4 @@ namespace Bladesmiths.Capstone
             }
         }
     }
-}
+} 

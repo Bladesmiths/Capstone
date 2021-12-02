@@ -4,6 +4,7 @@ using UnityEngine;
 using Bladesmiths.Capstone.Enums;
 using Bladesmiths.Capstone.Testing;
 using StarterAssets;
+using System.Linq;
 
 namespace Bladesmiths.Capstone
 {
@@ -29,10 +30,13 @@ namespace Bladesmiths.Capstone
         private float _terminalVelocity = 53.0f;
         public float Gravity = -15.0f;
         private Vector3 inputDirection;
-        private float _targetRotation = 0.0f;
+        private Quaternion _targetRotation;
         private GameObject camera;
 
+        private Dictionary<SwordType, float> _animDurations = new Dictionary<SwordType, float>(); 
+
         public float Timer { get { return timer; } }
+        public Dictionary<SwordType, float> AnimDurations { get { return _animDurations; } }   
 
         public PlayerFSMState_ATTACK(Player player, PlayerInputsScript input, Animator animator, GameObject sword)
         {
@@ -40,15 +44,22 @@ namespace Bladesmiths.Capstone
             _input = input;
             _animator = animator;
             _sword = sword;
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
             id = PlayerCondition.F_Attacking;
+
+            _animDurations.Add(SwordType.Quartz, animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "Sword And Shield Slash 2").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Quartz]);
+            _animDurations.Add(SwordType.Ruby, animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "Ruby Slash_Colliders").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Ruby]);
+            _animDurations.Add(SwordType.Sapphire, animator.runtimeAnimatorController.animationClips.
+                Where(clip => clip.name == "Sapphire Inward Slash_Colliders").ToArray()[0].
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Sapphire]);
         }
 
         public override void Tick()
         {
             timer += Time.deltaTime;
-
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
             
             _input.attack = false;
 
@@ -62,15 +73,12 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
-            float targetSpeed = 1.8f;
 
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
-            // move the player
-            //_controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
         public override void OnEnter()
@@ -92,17 +100,31 @@ namespace Bladesmiths.Capstone
 
             _animator.SetBool(_animIDAttack, true);
 
-            _targetRotation = _player.transform.eulerAngles.y;
+            // Allows for the player to snap to the direction they are inputting
+            if (_input.move == Vector2.zero)
+            {
+                _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
 
-            inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+                inputDirection = _targetRotation * Vector3.forward;
+            }
+            else
+            {
+                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                // rotate to face input direction relative to camera position
+                _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+                    Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+
+                _player.transform.rotation = _targetRotation;
+
+                inputDirection = _targetRotation * Vector3.forward;
+            }
         }
 
         public override void OnExit()
         {
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
             _animator.SetBool(_animIDAttack, false);
+            _player.ClearDamaging();
         }
-
     }
-
 }

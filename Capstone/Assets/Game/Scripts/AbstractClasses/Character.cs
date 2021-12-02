@@ -52,13 +52,13 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <param name="damagingID">The id of the damaging object that is damaging this character</param>
         /// <param name="damage">The amount of damage to be subtracted</param>
-        /// <returns>Returns a boolean indicating whether damage was taken or not</returns>
-        public virtual bool TakeDamage(int damagingID, float damage)
+        /// <returns>Returns how much damage was taken</returns>
+        public virtual float TakeDamage(int damagingID, float damage)
         {
             // If the damaging object belongs to the same team as this character
             // Or if the damaging object has already hurt this character recently
             // Don't take any damage
-            if (objectController.IdentifiedObjects[damagingID].ObjectTeam == ObjectTeam || 
+            if (objectController[damagingID].ObjectTeam == ObjectTeam || 
                 DamagingObjectIDs.Contains(damagingID))
             {
                 damage = 0; 
@@ -73,28 +73,30 @@ namespace Bladesmiths.Capstone
             // Stopping it from hurting this character again right away
             if (damage != 0)
             {
-                damagingObjectIDs.Add(damagingID);
-                ((IDamaging)objectController.IdentifiedObjects[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID; 
+                AddDamagingID(damagingID); 
             }
 
             // Log the amount of damage taken
             Debug.Log($"DAMAGE TAKEN: {damage}");
 
-            // Return true if damage is greater than 0
-            // Return false if damage is 0 or less
-            return damage > 0;
+            // Return damage
+            return damage;
         }
 
         // Protected Methods
-        protected abstract void Attack();
-        protected abstract void ActivateAbility();
-        protected abstract void Block();
-        protected abstract void Parry();
-        protected abstract void Dodge();
-        protected abstract void SwitchWeapon(int weaponSelect);
         protected abstract void Die();
-
         public abstract void Respawn();
+
+        /// <summary>
+        /// Add a damaging ID to the object and subscribe to that object's damaging event
+        /// </summary>
+        /// <param name="damagingID">The id of the damaging object to be added</param>
+        public void AddDamagingID(int damagingID)
+        {
+            damagingObjectIDs.Add(damagingID);
+            ((IDamaging)objectController[damagingID].IdentifiedObject).DamagingFinished += RemoveDamagingID;
+            ((IDamaging)objectController[damagingID].IdentifiedObject).Damaging = true;
+        }
 
         /// <summary>
         /// Remove an id from the damaging id list

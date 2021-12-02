@@ -16,12 +16,13 @@ namespace Bladesmiths.Capstone
         private PlayerInputsScript _input;
         private Animator _animator;
         private GameObject _sword;
-
+        private Vector3 inputDirection;
+        private Quaternion _targetRotation;
+        private GameObject camera;
         // The ID of the block paramater in the Player's animator controller
         private int _animIDBlock;
-        private bool _hasAnimator;
 
-        // The block rectangle that notifies if the player has blocked something
+        // The block object that notifies if the player has blocked something
         private GameObject playerBlockBox;
         public PlayerFSMState_BLOCK(Player player, PlayerInputsScript input, Animator animator, 
             GameObject sword, GameObject playerBlockDetector)
@@ -30,42 +31,46 @@ namespace Bladesmiths.Capstone
             _input = input;
             _animator = animator;
             _sword = sword;
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
 
             playerBlockBox = playerBlockDetector;
             id = PlayerCondition.F_Blocking;
         }
 
-        public override void Tick()
-        {
-            // Not sure what to do here yet, if anything
-        }
+        public override void Tick() { }
 
         public override void OnEnter()
         {
-            // Turns the block detector box on
-            playerBlockBox.SetActive(true);
-            playerBlockBox.GetComponent<BlockCollision>().Active = true;
-            _sword.GetComponent<Rigidbody>().detectCollisions = true;
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
 
-            // Assign block paramater id
-            _animIDBlock = Animator.StringToHash("Block");
-            
-            // Do we need this?
-            if (_animator != null)
+            // Allows for the player to snap to the direction they are inputting
+            if (_input.move == Vector2.zero)
             {
-                _hasAnimator = true;
+                _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+
+                inputDirection = _targetRotation * Vector3.forward;
             }
             else
             {
-                _hasAnimator = false;
+                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                // rotate to face input direction relative to camera position
+                _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+                    Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+
+                _player.transform.rotation = _targetRotation;
+
+                inputDirection = _targetRotation * Vector3.forward;
             }
+
+            // Turns the block detector box on
+            playerBlockBox.SetActive(true);
+            playerBlockBox.GetComponent<BlockCollision>().Active = true;
+
+            // Assign block paramater id
+            _animIDBlock = Animator.StringToHash("Block");
 
             // Set blocking id to true
             _animator.SetBool(_animIDBlock, true);
-
-            // Set the sword to detect collisions
-            _sword.GetComponent<Rigidbody>().detectCollisions = false;
         }
 
         public override void OnExit()
@@ -73,16 +78,15 @@ namespace Bladesmiths.Capstone
             // Turns the block detector box off
             playerBlockBox.SetActive(false);
             
+            // Turning block collision off and resetting its chip damage
             playerBlockBox.GetComponent<BlockCollision>().Active = false;
+            playerBlockBox.GetComponent<BlockCollision>().ResetChipDamage(); 
 
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
 
-            //_sword.GetComponent<Rigidbody>().detectCollisions = false;
-
             // Set the sword to not detect collisions
             // and turn off blocking paramater
-            //_sword.GetComponent<Rigidbody>().detectCollisions = true;
             _animator.SetBool(_animIDBlock, false);
         }
 

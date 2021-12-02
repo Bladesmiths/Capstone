@@ -14,11 +14,13 @@ namespace Bladesmiths.Capstone.Testing
         /// <returns>Coroutine variable</returns>
         public static IEnumerator DamageMaterialTimer(Renderer renderer)
         {
+            var originalColor = renderer.material.color;
+            
             renderer.material.color = Color.red;
 
             yield return new WaitForSeconds(1);
 
-            renderer.material.color = Color.white;
+            renderer.material.color = originalColor;
         }
 
         /// <summary>

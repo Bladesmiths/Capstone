@@ -6,12 +6,8 @@ using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
-    public class EnemySwing : Character, IDamaging
+    public class EnemySwing : Enemy, IDamaging
     {
-        // Gets a reference to the player
-        // Will be used for finding the player in the world
-        private Player player;
-
         private float rotate;
         private float speed = 60;
         private bool isBroken = false;
@@ -21,46 +17,50 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private GameObject enemyObject;
-
-        [SerializeField]
-        private float damage = 10;
+        private float preAttackTimer;
+        private float preAttackTimerMax;
+        private bool attack;
+        private BoxCollider box;
 
         // The event to call when damaging is finished
-        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
-
-        // Testing for damaging system
-        [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
-        private float damagingTimerLimit;
-        private float damagingTimer;
-        private bool damaging;
-
-        public float Damage { get => damage; }
+        public new event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         private void Start()
         {
             rotate = speed;
             player = GameObject.Find("Player").GetComponent<Player>();
+            attack = true;
+            preAttackTimer = 0f;
+            preAttackTimerMax = 0.5f;
+            box = GetComponent<BoxCollider>();
+            box.enabled = false;
         }
 
-        public virtual void Update()
-        {
-            // Rotates downwards 
-            if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
-            {
-                rotate = speed;
-            }
-
-            // Rotates upwards
-            else if (transform.parent.eulerAngles.x >= 30 && transform.parent.eulerAngles.x < 180)
-            {
-                rotate = -speed;
-            }
-
+        public override void Update()
+        {            
             // Checks of the Enemy has detected a block
             if (isBroken == false)
             {
-                transform.parent.Rotate(new Vector3(rotate * Time.deltaTime, 0, 0));
+                if (attack)
+                {
+                    StartAttack();
+
+                    if (transform.parent.localEulerAngles.x >= 39.9f && transform.parent.localEulerAngles.x <= 40.5f)
+                    {
+                        attack = false;
+                        box.enabled = false;
+                    }
+                }
+                else
+                {
+                    StopAttack();
+
+                    if (transform.parent.localEulerAngles.x <= 330.5f && transform.parent.localEulerAngles.x >= 329.9f)
+                    {
+                        attack = true;
+                        preAttackTimer = 0f;
+                    }
+                }
             }
             else
             {
@@ -118,6 +118,31 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// The method for the Enemy attacking the Player
+        /// </summary>
+        public void StartAttack()
+        {
+            preAttackTimer += Time.deltaTime;
+            if (preAttackTimer <= preAttackTimerMax)
+            {
+                transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.Euler(-70f, transform.parent.eulerAngles.y, 0f), 0.1f);
+            }
+            else
+            {
+                box.enabled = true;
+                transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.Euler(40f, transform.parent.eulerAngles.y, 0f), 0.3f);
+            }
+        }
+
+        /// <summary>
+        /// The method for resetting the Enemy's sword
+        /// </summary>
+        public void StopAttack()
+        {
+            transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.Euler(-30f, transform.parent.eulerAngles.y, 0f), 0.1f);
+        }
+
+        /// <summary>
         /// Allows for the player to hit and be hit by the Swinging Enemy
         /// </summary>
         /// <param name="other"></param>
@@ -135,7 +160,7 @@ namespace Bladesmiths.Capstone
                 else if (other.GetComponent<Player>() == true)
                 {
                     // Damage Player
-                    ((IDamageable)ObjectController.IdentifiedObjects[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
 
                     damaging = true;
 
@@ -150,26 +175,7 @@ namespace Bladesmiths.Capstone
         {
 
         }
-        protected override void ActivateAbility()
-        {
 
-        }
-        protected override void Block()
-        {
-
-        }
-        protected override void Parry()
-        {
-
-        }
-        protected override void Dodge()
-        {
-
-        }
-        protected override void SwitchWeapon(int weaponSelect)
-        {
-
-        }
         protected override void Die()
         {
 

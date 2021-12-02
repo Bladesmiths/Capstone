@@ -5,15 +5,23 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using Cinemachine;
 using System;
+using UnityEngine.UI;
 
 namespace Bladesmiths.Capstone
 {
     public class TargetLock : MonoBehaviour
     {
-                                                                                                    
+
         #region Fields
+        [SerializeField] [Tooltip("Which layers should get in the way of a visibility check?")]
+        private LayerMask obscuringLayers;
+
+        [SerializeField]
+        private SphereCollider targettingSphere;
+
         // List of enemies in the level
-        private List<GameObject> targettableList;
+        [SerializeField]
+        private List<GameObject> targettableList = new List<GameObject>();
 
         // List of enemies that are visible to the player
         // Updated each time the system is re-enabled
@@ -22,30 +30,23 @@ namespace Bladesmiths.Capstone
         // The enemy currently being targeted
         private GameObject targetedObject; 
 
-        // Is the target locking system active or not
-        private bool targetLock;
-
         [SerializeField]
         [Tooltip("The Cinemachine Virtual Camera used to target enemies")]
         private CinemachineVirtualCamera targetLockCam;
 
+        // The image of the target on the screen
         [SerializeField]
-        private Canvas targetCanvas; 
+        private Image targetImage; 
 
-        [SerializeField] 
+        [SerializeField] [Tooltip("The transform from which the visibility checking" +
+                                    "raycast to a potential target should begin")]
         private Transform playerCamRoot;
 
         #endregion
 
-        public bool Active { get => targetLock; }
+        public bool Active { get; set; }
 
-        void Start()
-        {
-            // Finds all enemies in the level
-            // Should probably be updated eventually so it only gets enemies within a radius
-            // And Targettable won't be a useful tag in the future
-            targettableList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Targettable"));
-        }
+        void Start() { }
 
         void Update()
         {
@@ -61,75 +62,41 @@ namespace Bladesmiths.Capstone
             }
 
             // If target lock is enabled
-            if (targetLock)
+            if (Active)
             {
-                RepositionTargetCanvas();
+                // Reposition the target image and make the player look at the target
+                RepositionTargetImage();
 
-                // Check if the targetted enemy is visible
-                if (!IsEnemyVisible(targetedObject))
-                {
-                    // If it is not, run lock on again to check if there are any other visible
-                    // enemies. If not, turn off the target locking system
-                    LockOnEnemy(); 
-                }
+                transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, transform.parent.position.y, targetedObject.transform.position.z));
+
+                // Left Over in case we want target lock to turn if
+                // something is obscuring the ray
+                //// Check if the targetted enemy is visible
+                //if (!IsEnemyVisible(targetedObject))
+                //{
+                //    // Turn off Target Lock
+                //    // Switch back to the other camera having top priority
+                //    targetLockCam.Priority = 0;
+
+                //    targetImage.gameObject.SetActive(false);
+
+                //    // Update the player follow camera's target so it doesn't move in weird directions
+                //    Player playerComp = gameObject.GetComponent<Player>();
+                //}
             }
         }
 
         #region Methods
 
-        #region On Input Methods
-        /// <summary>
-        /// Input method that runs when the target lock control is hit
-        /// </summary>
-        /// <param name="value">The value of the control</param>
-        public void OnTargetLock(InputValue value)
-        {
-            // Toggles the target lock state to its opposite value
-            targetLock = !targetLock; 
-
-            // Runs the LockOnEnemy method no matter what because it serves both purposes
-            LockOnEnemy(); 
-        }
-
-        /// <summary>
-        /// Input method that runs when the MoveTarget input is used
-        /// </summary>
-        /// <param name="value">The value of the float input</param>
-        public void OnMoveTarget(InputValue value)
-        {
-            // Checks if target lock is active
-            // If not, do nothing
-            if (targetLock)
-            {
-                // Converts the input value to a usable float
-                float moveDirection = value.Get<float>();
-                
-                // If the value is positive
-                // Move the target to the right
-                if (moveDirection > 0)
-                {
-                    MoveTarget(1);
-                }
-                // If the value is negative
-                // Move the target to the left7
-                else if (moveDirection < 0)
-                {
-                    MoveTarget(-1); 
-                }
-            }
-        }
-
-        #endregion
-
         /// <summary>
         /// Finds the closest enemy and locks on to them or untargets them depending on whether the
         /// target locking system is active or not
         /// </summary>
-        private void LockOnEnemy()
+        public void LockOnEnemy()
         {
             // If the target lock system is currently active
             // Find all visible enemies and then find the closest
-            if (targetLock)
+            if (Active && targettableList.Count != 0)
             {
                 // Find all visible enemies and place them in a list
                 visibleTargets = FindVisibleEnemies();
@@ -138,7 +105,7 @@ namespace Bladesmiths.Capstone
                 // Turn off the target locking system and disable the target lock camera
                 if (visibleTargets == null)
                 {
-                    targetLock = false;
+                    Active = false;
                     targetLockCam.Priority = 0; 
                     return; 
                 }
@@ -146,24 +113,27 @@ namespace Bladesmiths.Capstone
                 // Sets the currently targeted enemy to the first enemy in the list of visible enemies
                 targetedObject = visibleTargets[0];
 
-                // Calculates the squared distance to that enemy and sets a variable
-                // to that value for use in comparisons with other enemies
-                Vector3 displacementVector = visibleTargets[0].transform.position - transform.position;
-                float closestDist = displacementVector.sqrMagnitude;
-
-                // Loop through all visible enemies
-                foreach (GameObject enemy in visibleTargets)
+                if (visibleTargets.Count > 1)
                 {
-                    // Calculate squared distance to this enemy
-                    displacementVector = enemy.transform.position - transform.position;
-                    float sqMag = displacementVector.sqrMagnitude; 
+                    // Calculates the squared distance to that enemy and sets a variable
+                    // to that value for use in comparisons with other enemies
+                    Vector3 displacementVector = visibleTargets[0].transform.position - transform.position;
+                    float closestDist = displacementVector.sqrMagnitude;
 
-                    // Compare that distance to the current smallest distance
-                    if (sqMag < closestDist)
+                    // Loop through all visible enemies
+                    foreach (GameObject enemy in visibleTargets)
                     {
-                        // If it is smaller update the targeted enemy and the closest distance field
-                        targetedObject = enemy;
-                        closestDist = sqMag; 
+                        // Calculate squared distance to this enemy
+                        displacementVector = enemy.transform.position - transform.position;
+                        float sqMag = displacementVector.sqrMagnitude;
+
+                        // Compare that distance to the current smallest distance
+                        if (sqMag < closestDist)
+                        {
+                            // If it is smaller update the targeted enemy and the closest distance field
+                            targetedObject = enemy;
+                            closestDist = sqMag;
+                        }
                     }
                 }
 
@@ -173,8 +143,8 @@ namespace Bladesmiths.Capstone
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
 
-                targetCanvas.GetComponent<Canvas>().enabled = true;
-                RepositionTargetCanvas();
+                targetImage.gameObject.SetActive(true);
+                RepositionTargetImage();
             }
             // If the target locking system isn't active
             else
@@ -182,13 +152,9 @@ namespace Bladesmiths.Capstone
                 // Switch back to the other camera having top priority
                 targetLockCam.Priority = 0;
 
-                targetCanvas.GetComponent<Canvas>().enabled = false;
+                targetImage.gameObject.SetActive(false);
 
-                // Update the player follow camera's target so it doesn't move in weird directions
-                Player playerComp = playerCamRoot.transform.parent.GetComponent<Player>();
-                playerComp.cinemachineTargetPitch = targetLockCam.transform.rotation.eulerAngles.x;
-                playerComp.cinemachineTargetYaw = targetLockCam.transform.rotation.eulerAngles.y;
-                playerComp.CameraRotation();
+                Active = false; 
             }
         }
 
@@ -196,7 +162,7 @@ namespace Bladesmiths.Capstone
         /// Moves the look at of the targeting camera to a different enemy
         /// </summary>
         /// <param name="xDirection">The direction the targeting system should move</param>
-        private void MoveTarget(float xDirection)
+        public void MoveTarget(float xDirection)
         {
             // A placeholder declaration to use to hold a function to be defined later
             Func<GameObject, bool> filterFunction = x => { return false; };
@@ -314,7 +280,7 @@ namespace Bladesmiths.Capstone
             targetedObject = closestEnemyToTarget;
             targetLockCam.LookAt = targetedObject.transform;
 
-            RepositionTargetCanvas(); 
+            RepositionTargetImage(); 
         }
 
         #region Helper Methods
@@ -343,27 +309,61 @@ namespace Bladesmiths.Capstone
         /// <returns>A boolean indicating whether or not the object is visible</returns>
         private bool IsEnemyVisible(GameObject enemy)
         {
-            // Ignoring the Player Layer
-            int layerMask = 1 << 6;
-            layerMask = ~layerMask;
-
             RaycastHit hit;
 
+            // Known Weirdness here
+            // If the ray hits a child of the actual thing that could potentially be targetted
+            // There could be problems
+            // To minimize this issue:
+            // Try to keep children centered on the parent
+            // Or make sure that the thing tagged with "Targetable" is the thing that has the collider
+            // May need a better fix in the future
             return (Physics.Linecast(playerCamRoot.position, 
-                enemy.GetComponent<Collider>().bounds.center, out hit, layerMask) && hit.transform == enemy.transform); 
-           }
+                enemy.GetComponent<Collider>().bounds.center, out hit, obscuringLayers) && hit.transform == enemy.transform); 
+        }
 
-        private void RepositionTargetCanvas()
+        /// <summary>
+        /// Reposition the target image to the correct point on the screen
+        /// </summary>
+        private void RepositionTargetImage()
         {
-            Vector3 vecFromTargetToPlayer = transform.position - targetedObject.transform.position;
-            vecFromTargetToPlayer.Normalize();
-            targetCanvas.transform.position = targetedObject.GetComponent<Collider>().bounds.center
-                + (vecFromTargetToPlayer * 0.15f);
-            targetCanvas.transform.rotation = Quaternion.Euler(targetCanvas.transform.rotation.eulerAngles.x,
-                targetLockCam.transform.rotation.eulerAngles.y, targetCanvas.transform.rotation.eulerAngles.z);
+            targetImage.transform.position = Camera.main.WorldToScreenPoint(targetedObject.transform.position);
+        }
+
+        /// <summary>
+        /// When an object enters the targetting radius, add it to the list of potential targets
+        /// </summary>
+        /// <param name="other"></param>
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag != "Targettable")
+            {
+                return;
+            }
+
+            targettableList.Add(other.gameObject); 
+        }
+
+        /// <summary>
+        /// When an object leaves the targetting radius, remove it from the list of potential targets
+        /// </summary>
+        /// <param name="other"></param>
+        private void OnTriggerExit(Collider other)
+        {
+            targettableList.Remove(other.gameObject);
+            
+            if (targettableList.Count == 0)
+            {
+                // Switch back to the other camera having top priority
+                targetLockCam.Priority = 0;
+
+                targetImage.gameObject.SetActive(false);
+
+                Active = false;
+            }
         }
         #endregion
-        
+
         #endregion
     }
 }
