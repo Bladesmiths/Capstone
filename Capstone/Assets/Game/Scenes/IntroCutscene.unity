@@ -1431,9 +1431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When <b><color=#01a2e2>war</color></b> threatened to engulf the country,
-    every able-bodied adult left your <b><color=#01a2e2>remote village</color></b>
-    to join the front lines.
+  m_text: Sample Slide Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0aac36cf31039824dabe20b646ef6f4e, type: 2}
   m_sharedMaterial: {fileID: -6047117832491297351, guid: 0aac36cf31039824dabe20b646ef6f4e, type: 2}
@@ -1876,42 +1874,45 @@ MonoBehaviour:
   introSlideDataList:
   - fading: 0
     background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: When <b>war</b> threatened to engulf the country, every able-bodied
-      adult left your <b>remote village</b> to join the front lines.
-  - fading: 0
-    background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: 'Your <b>mentor</b> was among them. His passion was to record history,
-      and how better to do so than to witness it in the making? '
+    slideText: "Years ago, <b>war</b> threatened to engulf the country.\r \nEvery
+      able-bodied adult left your <b>remote village</b> to join the front lines.\r\n"
   - fading: 1
     background: {fileID: 21300000, guid: a245844f687c6334f945faf803c3c80d, type: 3}
-    slideText: You never doubted that he would return unharmed, eager to regale you
-      with all-new chronicles.
-  - fading: 1
-    background: {fileID: 21300000, guid: 451431d540d5a074b9454090a858dca4, type: 3}
-    slideText: But that was <b>years ago.</b>
+    slideText: "Your <b>mentor</b> was among them, despite his age.\r \nTrue to his
+      title of <b>Chronicler</b>, he left willingly to document the brewing conflict.
+      \r\n"
   - fading: 0
     background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
-    slideText: "You\u2019ve grown up quite a bit since then. You\u2019ve had to.
-      Those left here look to you for guidance these days."
+    slideText: "Since then, you\u2019ve grown up on your own."
+  - fading: 0
+    background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
+    slideText: "With knowledge gained from your mentor\u2019s writings, you\u2019ve
+      become a \n<b>reluctant leader</b> to those left here."
   - fading: 1
     background: {fileID: 21300000, guid: c9c182b6b92eea547906dc345a1427cc, type: 3}
     slideText: "Life hasn\u2019t been easy, but it has at least been peaceful. "
-  - fading: 1
+  - fading: 0
     background: {fileID: 21300000, guid: f77f837a3d198b44495a1a0dcdd634c2, type: 3}
-    slideText: 'That is, until a passing traveler warns that a horde of bandits will
-      soon descend upon your village. '
+    slideText: Until that peace is shattered by screams coming from the village entrance.
+  - fading: 0
+    background: {fileID: 21300000, guid: f77f837a3d198b44495a1a0dcdd634c2, type: 3}
+    slideText: Strange creatures begin flooding into town, attacking anyone in their
+      path.
+  - fading: 0
+    background: {fileID: 21300000, guid: a3e4402891c4a624094f0bced0ddc622, type: 3}
+    slideText: "Recognizing this threat from your mentor\u2019s writings, you hurry
+      to the shrine at the center of the village."
   - fading: 1
     background: {fileID: 21300000, guid: a3e4402891c4a624094f0bced0ddc622, type: 3}
-    slideText: 'Determined to defend your home and its people, you remove a dusty
-      hilt from its box within the village shrine. '
+    slideText: Within lies a dusty hilt and a brilliant quartz gemstone.
   - fading: 1
     background: {fileID: 21300000, guid: 4febc48e4d9a78a478196716909531ed, type: 3}
-    slideText: "With your mentor\u2019s quartz in hand, you restore the magical shattering
-      sword to life."
-  - fading: 1
+    slideText: Combining the two, you return the magical <b>Shattering Sword</b>
+      to life.
+  - fading: 0
     background: {fileID: 21300000, guid: 451431d540d5a074b9454090a858dca4, type: 3}
-    slideText: "To save your home, you\u2019ll need to master your weapon, face the
-      bandits, and make history yourself."
+    slideText: Before the creatures reach you, you'll need to learn to use this <b>legendary
+      weapon</b>.
   currentSlideIndex: 0
   slideBackground: {fileID: 1973582369}
   slideText: {fileID: 1421736194}
