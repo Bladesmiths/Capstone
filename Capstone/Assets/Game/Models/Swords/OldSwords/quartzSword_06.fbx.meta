@@ -3,7 +3,22 @@ guid: 2febec9f8400c964cab13fc46316819b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hiltDisc_MAT
+    second: {fileID: 2100000, guid: 4de44f1f6fe87034d8e668f3f072619e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hilt_MAT
+    second: {fileID: 2100000, guid: e8cd0e67df6682546a7588eea51e69fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: quartz_MAT
+    second: {fileID: 2100000, guid: 274e10d084e60ea418a1f73ed30e6ac3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

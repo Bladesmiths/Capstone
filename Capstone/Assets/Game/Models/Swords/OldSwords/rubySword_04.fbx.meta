@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: hiltDisc_MAT
+    second: {fileID: 2100000, guid: d21a1840fb2d19f479529d49c58b7280, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hilt_MAT
+    second: {fileID: 2100000, guid: cd7e7903017e0204e80c8e8d37750905, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: ruby_MAT
     second: {fileID: 2100000, guid: 5fa83c1708a555c49954a9cff341a117, type: 2}
   materials:

@@ -17,6 +17,10 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private GameObject enemyObject;
+        private float preAttackTimer;
+        private float preAttackTimerMax;
+        private bool attack;
+        private BoxCollider box;
 
         // The event to call when damaging is finished
         public new event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -25,26 +29,38 @@ namespace Bladesmiths.Capstone
         {
             rotate = speed;
             player = GameObject.Find("Player").GetComponent<Player>();
+            attack = true;
+            preAttackTimer = 0f;
+            preAttackTimerMax = 0.5f;
+            box = GetComponent<BoxCollider>();
+            box.enabled = false;
         }
 
         public override void Update()
-        {
-            // Rotates downwards 
-            if (transform.parent.eulerAngles.x <= 330 && transform.parent.eulerAngles.x > 180)
-            {
-                rotate = speed;
-            }
-
-            // Rotates upwards
-            else if (transform.parent.eulerAngles.x >= 30 && transform.parent.eulerAngles.x < 180)
-            {
-                rotate = -speed;
-            }
-
+        {            
             // Checks of the Enemy has detected a block
             if (isBroken == false)
             {
-                transform.parent.Rotate(new Vector3(rotate * Time.deltaTime, 0, 0));
+                if (attack)
+                {
+                    StartAttack();
+
+                    if (transform.parent.localEulerAngles.x >= 39.9f && transform.parent.localEulerAngles.x <= 40.5f)
+                    {
+                        attack = false;
+                        box.enabled = false;
+                    }
+                }
+                else
+                {
+                    StopAttack();
+
+                    if (transform.parent.localEulerAngles.x <= 330.5f && transform.parent.localEulerAngles.x >= 329.9f)
+                    {
+                        attack = true;
+                        preAttackTimer = 0f;
+                    }
+                }
             }
             else
             {
@@ -99,6 +115,31 @@ namespace Bladesmiths.Capstone
                     damaging = false;
                 }
             }
+        }
+
+        /// <summary>
+        /// The method for the Enemy attacking the Player
+        /// </summary>
+        public void StartAttack()
+        {
+            preAttackTimer += Time.deltaTime;
+            if (preAttackTimer <= preAttackTimerMax)
+            {
+                transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.Euler(-70f, transform.parent.eulerAngles.y, 0f), 0.1f);
+            }
+            else
+            {
+                box.enabled = true;
+                transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.Euler(40f, transform.parent.eulerAngles.y, 0f), 0.3f);
+            }
+        }
+
+        /// <summary>
+        /// The method for resetting the Enemy's sword
+        /// </summary>
+        public void StopAttack()
+        {
+            transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, Quaternion.Euler(-30f, transform.parent.eulerAngles.y, 0f), 0.1f);
         }
 
         /// <summary>
