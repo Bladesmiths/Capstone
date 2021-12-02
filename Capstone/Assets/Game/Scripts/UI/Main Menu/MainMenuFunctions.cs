@@ -65,8 +65,8 @@ public class MainMenuFunctions : MonoBehaviour
     /// <param name="vp"></param>
     public void EndReached()
     {
-        SceneManager.LoadScene("DamageControllingSystemScene");
-        SceneManager.LoadSceneAsync("VillageSignsUpdate", LoadSceneMode.Additive);
+        SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadSceneAsync("VillageScene", LoadSceneMode.Additive);
     }
 
     /// <summary>

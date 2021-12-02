@@ -835,7 +835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91141bfc535de644fa1690eb3d221429, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7744518786010b49af62cfcb295c921, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1916,7 +1916,7 @@ MonoBehaviour:
   currentSlideIndex: 0
   slideBackground: {fileID: 1973582369}
   slideText: {fileID: 1421736194}
-  boldSlideTextColor: {r: 0.003921569, g: 0.63529414, b: 0.8862746, a: 0}
+  boldSlideTextColor: {r: 0.8301887, g: 0.64667326, b: 0, a: 0}
   fadePause: 0.5
   fadeSpeed: 0.6
   dramaticFadePause: 1
