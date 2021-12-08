@@ -38,9 +38,30 @@ namespace Bladesmiths.Capstone
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<Player>())
+            //if (other.gameObject.name == "Parry Detector")
+            //{
+            //    Player player = other.transform.root.GetComponent<Player>();
+
+            //    if (player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt &&
+            //        player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParrySuccess &&
+            //        player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+            //    {
+            //        enemy.SwordAttack(player.ID);
+
+            //    }
+
+            //}
+
+            if (other.transform.GetComponent<Player>())
             {
-                enemy.SwordAttack(other.gameObject.GetComponent<Player>().ID);
+                Player player = other.transform.GetComponent<Player>();
+                if (player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt &&
+                    player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParrySuccess &&
+                    player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                {
+                    enemy.SwordAttack(player.ID);
+
+                }
                 //other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject.GetComponent<Player>().ID, Damage);
                 //other.gameObject.GetComponent<Player>().Damaging = true;
             }
