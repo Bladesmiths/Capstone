@@ -147,19 +147,7 @@ namespace Bladesmiths.Capstone
         public virtual void Update()
         {
             //FSM.Tick();
-
-            if (damaged)
-            {
-                timer += Time.deltaTime;
-
-                if (timer >= 0.5f)
-                {
-                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-                    damaged = false;
-                    timer = 0f;
-                }
-            }
-                        
+     
             // Movement
             agent.SetDestination(moveVector);
 
@@ -230,7 +218,8 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                // Color changes based off of health
+                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.HSVToRGB(278f/360f, Health/ MaxHealth, 0.5f);
 
                 damaged = true;
             }
