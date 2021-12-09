@@ -12,7 +12,11 @@ public class HealthChunk : MonoBehaviour
     float shatteredTimer = 0f;
     float shatteredFadeStart = 1f;
     Vector3 originalPosition;
+    float originalScale;
     bool faded = false;
+    bool growing = false;
+    float growthSpeed = 0.5f;
+    float fadeSpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,7 @@ public class HealthChunk : MonoBehaviour
         chunkRigidbody = GetComponent<Rigidbody2D>();
         image = GetComponent<Image>();
         originalPosition = transform.position;
+        originalScale = transform.localScale.x;
     }
 
 
@@ -31,6 +36,11 @@ public class HealthChunk : MonoBehaviour
         if (shattered && !faded)
         {
             Fade();
+        }
+
+        if (growing)
+        {
+            Grow();
         }
     }
 
@@ -80,7 +90,7 @@ public class HealthChunk : MonoBehaviour
         if (shatteredTimer >= shatteredFadeStart)
         {
             //Reduce opacity by an amount, then check if opacity is 0
-            if (ChangeOpacity(-Time.deltaTime) <= 0)
+            if (ChangeOpacity(-Time.deltaTime * fadeSpeed) <= 0)
             {
                 InvisibleReset();
                 faded = true;
@@ -89,15 +99,26 @@ public class HealthChunk : MonoBehaviour
     }
 
     /// <summary>
-    /// Return the chunk to normal size and color
+    /// Start the process of returning the chunk to normal size and color
     /// </summary>
     public void UnChip()
     {
         if (chipped)
         {
-            transform.localScale = new Vector3(1.14f, 1.14f, 1.14f); //Original size. Likely to change in future via updating the PSD file.
-            image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a);
+            growing = true;
+            image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
             chipped = false;
+        }
+    }
+
+    /// <summary>
+    /// Fade the chunk's opacity as it flies away after shattering
+    /// </summary>
+    public void Grow()
+    {
+        if (ChangeSize(Time.deltaTime * growthSpeed) >= originalScale)
+        {
+            growing = false;
         }
     }
 
@@ -124,6 +145,7 @@ public class HealthChunk : MonoBehaviour
         ChangeOpacity(1f);
         faded = false;
         shattered = false;
+        growing = false;
     }
 
     /// <summary>
@@ -131,12 +153,28 @@ public class HealthChunk : MonoBehaviour
     /// </summary>
     /// <param name="changeAmount"></param>
     /// <returns></returns>
-    public float ChangeOpacity(float changeAmount)
+    private float ChangeOpacity(float opacityChange)
     {
         Color tempColor = GetComponent<Image>().color;
-        tempColor.a += changeAmount;
+        tempColor.a += opacityChange;
         GetComponent<Image>().color = tempColor;
 
         return tempColor.a;
+    }
+
+    /// <summary>
+    /// Add to all axes of chunk's localScale by a specified amount
+    /// </summary>
+    /// <param name="sizeChange"></param>
+    /// <returns></returns>
+    private float ChangeSize(float sizeChange)
+    {
+        transform.localScale += new Vector3(sizeChange, sizeChange, sizeChange);
+        if (transform.localScale.x > originalScale)
+        {
+            transform.localScale = new Vector3(originalScale, originalScale, originalScale);
+        }
+
+        return transform.localScale.x;
     }
 }
