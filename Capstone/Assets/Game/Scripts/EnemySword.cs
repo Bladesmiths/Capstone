@@ -60,7 +60,6 @@ namespace Bladesmiths.Capstone
                     player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
                 {
                     enemy.SwordAttack(player.ID);
-
                 }
                 //other.gameObject.GetComponent<Player>().TakeDamage(other.gameObject.GetComponent<Player>().ID, Damage);
                 //other.gameObject.GetComponent<Player>().Damaging = true;

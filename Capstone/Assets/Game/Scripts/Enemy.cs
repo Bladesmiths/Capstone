@@ -104,6 +104,8 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(attack, seek, DoneAttacking());
             FSM.AddTransition(attack, stun, Stunned());
             FSM.AddTransition(stun, seek, KeepAttacking());
+            FSM.AddTransition(stun, wander, GoWander());
+
 
             agent.updateRotation = false;
 
@@ -161,6 +163,12 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <returns></returns>
         public Func<bool> KeepAttacking() => () => stun.continueAttacking == true;
+
+        /// <summary>
+        /// If the Enemy is no longer stunned 
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> GoWander() => () => stun.continueAttacking == true && Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
 
         public virtual void Update()
         {
