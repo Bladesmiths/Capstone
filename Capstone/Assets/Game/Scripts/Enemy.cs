@@ -174,19 +174,6 @@ namespace Bladesmiths.Capstone
         {
             //FSM.Tick();
 
-
-            if (damaged)
-            {
-                timer += Time.deltaTime;
-
-                if (timer >= 0.5f)
-                {
-                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-                    damaged = false;
-                    timer = 0f;
-                }
-            }
-
             // If the enemy is currently damaging an object
             if (damaging)
             {
