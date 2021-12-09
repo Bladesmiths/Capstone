@@ -64,6 +64,10 @@ namespace Bladesmiths.Capstone.UI
 
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private bool isPaused;
+
+        //Health chunk counts from last health UI update
+        private int prevHealthChunks = 100;
+        private int prevChipChunks = 0;
         
         // Start is called before the first frame update
         void Start()
@@ -74,13 +78,16 @@ namespace Bladesmiths.Capstone.UI
             {
                 UpdateScore(0, player.MaxPoints);
 
-
                 maxSpeedX = camera.m_XAxis.m_MaxSpeed;
                 maxSpeedY = camera.m_YAxis.m_MaxSpeed;
 
                 UpdateSwordSelect(player.Inputs.currentSwordType);
             }
 
+            //By default, the health bar is 100 objects ordered from tip to base. 
+            //Ex: When the player takes 1 damage, going from 100 to 99 health, the chunk at index 0 shatters.
+            //This is really confusing and should probably be changed in the source PSB file, but for now we reverse the list.
+            healthBarObjects.Reverse();
         }
 
         void LateUpdate()
@@ -114,8 +121,6 @@ namespace Bladesmiths.Capstone.UI
             }
         }
 
-
-        
         // Private Methods
         public void Pause()
         {
@@ -139,15 +144,65 @@ namespace Bladesmiths.Capstone.UI
             }
         }
         
+        /// <summary>
+        /// Update health bar UI to reflect state of player's health
+        /// </summary>
+        /// <param name="currentHealth"></param>
+        /// <param name="currentChipDamage"></param>
+        /// <param name="maxHealth"></param>
         private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
-            float currentHealthPercentage = currentHealth / maxHealth;
-            float chipHealthPercentage = currentChipDamage / maxHealth;
+            //This code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
+            //There are currently some rounding issues where a single chunk will be added to the health bar seemingly at random.
+            //For now the raw health values are being used directly because the player has 100 health and the UI has 100 chunks.
+            //float healthAndChipPercentage = (currentHealth + currentChipDamage) / maxHealth;
+            //float currentHealthPercentage = currentHealth / maxHealth;
+            //float chipHealthPercentage = healthAndChipPercentage - currentHealthPercentage;
 
             //Determine how many chunks remain in the health bar after taking damage
-            int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
+            //int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
+            //int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count); 
 
-            int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count);
+            int remainingChunks = (int)currentHealth;
+            int chipChunks = (int)currentChipDamage;
+
+            //Debug.Log("Player Health: " + remainingChunks);
+            //Debug.Log("Player Chip Health " + chipChunks);
+
+            //Normal health states
+            //Player has the same amount of health as before
+            if (remainingChunks == prevHealthChunks)
+            {
+
+            }
+            //Player has taken damage
+            else if (remainingChunks < prevHealthChunks)
+            {
+                ShatterChunks(remainingChunks, chipChunks);
+            }
+            //Player has healed
+            else
+            {
+                UnChipChunks(remainingChunks, chipChunks);
+            }
+
+            //Chip damage states
+            //Player has the same amount of chip damage as before
+            if (chipChunks == prevChipChunks)
+            {
+
+            }
+            //Player has taken chip damage
+            else if (chipChunks > prevChipChunks)
+            {
+                ChipChunks(remainingChunks, chipChunks);
+            }
+            //Player has less chip damage than before
+            else
+            {
+                ShatterChunks(remainingChunks, chipChunks);
+                UnChipChunks(remainingChunks, chipChunks);
+            }
 
             //Reset all chunks when player respawns
             if (currentHealth == maxHealth)
@@ -161,20 +216,35 @@ namespace Bladesmiths.Capstone.UI
                 }
             }
 
-            //Shatter any chunks that have an index higher than the remaining chunk count
-            for (int i = 0; i < healthBarObjects.Count - (remainingChunks + chipChunks); i++)
+            //Save values for future comparison
+            prevHealthChunks = remainingChunks;
+            prevChipChunks = chipChunks;
+        }
+
+        //Shatter any health chunks that have an index higher than the remaining chunk count
+        private void ShatterChunks(int healthChunks, int chipChunks)
+        {
+            for (int i = healthChunks + chipChunks; i < healthBarObjects.Count; i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }
+        }
 
-            //If some amount of chip damage has been taken
-            if (currentChipDamage != 0)
+        //Chip any health chunks that have an index higher than the remaining chunk count
+        private void ChipChunks(int healthChunks, int chipChunks)
+        {
+            for (int i = healthChunks; i < healthChunks + chipChunks; i++)
             {
-                //Chip any chunks that have an index higher than the remaining chunk count
-                for (int i = healthBarObjects.Count - (remainingChunks + chipChunks); i < healthBarObjects.Count - remainingChunks; i++)
-                {
-                    healthBarObjects[i].GetComponent<HealthChunk>().Chip();
-                }
+                healthBarObjects[i].GetComponent<HealthChunk>().Chip();
+            }
+        }
+
+        //Return chipped health chunks to their normal appearance
+        private void UnChipChunks(int healthChunks, int chipChunks)
+        {
+            for (int i = 0; i < healthChunks; i++)
+            {
+                healthBarObjects[i].GetComponent<HealthChunk>().UnChip();
             }
         }
 
