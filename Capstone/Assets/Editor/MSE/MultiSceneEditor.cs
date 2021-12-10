@@ -56,7 +56,7 @@ namespace Bladesmiths.Capstone.Editor
 
             tree.AddAllAssetsAtPath("Multi-Scene Setup Data", this.settings.pathToLoad,
                     typeof(MultiSceneSetupData),
-                    false, true)
+                    true, true)
                 .AddThumbnailIcons();
 
             return tree;

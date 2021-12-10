@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
-  m_Name: MultiSceneSetup_Playtest_101421
+  m_Name: WinLevel_v0_3_1
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/PlayerScene.unity
+  - scenePath: Assets/Game/Scenes/WinScreen.unity
     isActive: 1
-    isLoaded: 1
-  - scenePath: Assets/Game/Scenes/VillageScene.unity
-    isActive: 0
     isLoaded: 1
