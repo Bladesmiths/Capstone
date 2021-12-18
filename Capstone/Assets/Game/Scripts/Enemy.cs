@@ -50,6 +50,7 @@ namespace Bladesmiths.Capstone
         public float attackTimer;
         public float attackTimerMax;
         private bool isBroken;
+        public bool stunned;
 
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
@@ -63,8 +64,9 @@ namespace Bladesmiths.Capstone
         protected EnemyFSMState_DEATH death;
         protected EnemyFSMState_WANDER wander;
         protected EnemyFSMState_MOVING move;
+        protected EnemyFSMState_STUN stun;
         #endregion
-        
+
         public virtual void Awake()
         {
             // Creates the FSM
@@ -77,6 +79,7 @@ namespace Bladesmiths.Capstone
         {
             AIDirector.Instance.AddToEnemyGroup(this);
             isBroken = false;
+            stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 
             moveVector = Vector3.zero;
@@ -92,12 +95,18 @@ namespace Bladesmiths.Capstone
             death = new EnemyFSMState_DEATH(this);
             wander = new EnemyFSMState_WANDER(this);
             attack = new EnemyFSMState_ATTACK(sword, this);
+            stun = new EnemyFSMState_STUN(sword, this, player);
 
             // Adds all of the possible transitions
             FSM.AddTransition(seek, wander, IsIdle());
             FSM.AddTransition(wander, seek, IsClose());
             FSM.AddTransition(seek, attack, CanAttack());
             FSM.AddTransition(attack, seek, DoneAttacking());
+            FSM.AddTransition(attack, stun, Stunned());
+            FSM.AddTransition(stun, seek, KeepAttacking());
+            FSM.AddTransition(stun, wander, GoWander());
+
+
             agent.updateRotation = false;
 
             //CanHit = true;
@@ -143,23 +152,56 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> DoneAttacking() => () => !CanHit;
 
+        /// <summary>
+        /// If the Enemy has been parried 
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> Stunned() => () => player.parrySuccessful;
+
+        /// <summary>
+        /// If the Enemy is no longer stunned 
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> KeepAttacking() => () => stun.continueAttacking == true;
+
+        /// <summary>
+        /// If the Enemy is no longer stunned 
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> GoWander() => () => stun.continueAttacking == true && Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
 
         public virtual void Update()
         {
             //FSM.Tick();
 
-            if (damaged)
+            // If the enemy is currently damaging an object
+            if (damaging)
             {
-                timer += Time.deltaTime;
+                // Update the timer
+                damagingTimer += Time.deltaTime;
 
-                if (timer >= 0.5f)
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
                 {
-                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-                    damaged = false;
-                    timer = 0f;
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
                 }
             }
-                        
+
             // Movement
             agent.SetDestination(moveVector);
 
@@ -230,7 +272,8 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                // Color changes based off of health
+                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.HSVToRGB(278f/360f, Health/ MaxHealth, 0.5f);
 
                 damaged = true;
             }

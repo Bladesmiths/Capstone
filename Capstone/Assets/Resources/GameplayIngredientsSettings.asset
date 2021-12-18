@@ -18,5 +18,7 @@ MonoBehaviour:
   - VirtualCameraManager
   - GameSaveManager
   - GameManager
+  - RandomManager
+  - LevelStreamingManager
   m_VerboseCalls: 0
   m_AllowUpdateCalls: 0

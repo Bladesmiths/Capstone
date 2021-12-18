@@ -66,6 +66,7 @@ public class MainMenuFunctions : MonoBehaviour
     public void EndReached()
     {
         SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadSceneAsync("EnemyScene", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("VillageScene", LoadSceneMode.Additive);
     }
 

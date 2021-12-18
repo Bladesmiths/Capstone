@@ -563,7 +563,7 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: ef687f77e8468ef4b8179f68f2fa4af6, type: 2}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 3
     m_CycleOffset: 0
     m_DirectBlendParameter: SwordChoice
     m_Mirror: 0
@@ -2008,15 +2008,15 @@ AnimatorStateMachine:
   - first: {fileID: -6200274138629593010}
     second:
     - {fileID: 4560168474364895058}
+  - first: {fileID: 8464860632184180212}
+    second:
+    - {fileID: -480955475765093465}
   - first: {fileID: -4970824541251344839}
     second:
     - {fileID: 3737231457431453582}
   - first: {fileID: 883092058002157934}
     second:
     - {fileID: 1471363316514841431}
-  - first: {fileID: 8464860632184180212}
-    second:
-    - {fileID: -480955475765093465}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 100, y: 40, z: 0}
   m_EntryPosition: {x: 110, y: 160, z: 0}
