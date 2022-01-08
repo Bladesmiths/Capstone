@@ -13,6 +13,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
     [CustomEditor(typeof(RebindActionUI))]
     public class RebindActionUIEditor : UnityEditor.Editor
     {
+        //[SerializeField] private GameObject duplicationText;
         protected void OnEnable()
         {
             m_ActionProperty = serializedObject.FindProperty("m_Action");
@@ -21,6 +22,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             m_BindingTextProperty = serializedObject.FindProperty("m_BindingText");
             m_RebindOverlayProperty = serializedObject.FindProperty("m_RebindOverlay");
             m_RebindTextProperty = serializedObject.FindProperty("m_RebindText");
+            duplicationTextProperty = serializedObject.FindProperty("duplicationText");
             m_UpdateBindingUIEventProperty = serializedObject.FindProperty("m_UpdateBindingUIEvent");
             m_RebindStartEventProperty = serializedObject.FindProperty("m_RebindStartEvent");
             m_RebindStopEventProperty = serializedObject.FindProperty("m_RebindStopEvent");
@@ -62,6 +64,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 EditorGUILayout.PropertyField(m_BindingTextProperty);
                 EditorGUILayout.PropertyField(m_RebindOverlayProperty);
                 EditorGUILayout.PropertyField(m_RebindTextProperty);
+                EditorGUILayout.PropertyField(duplicationTextProperty);
             }
 
             // Events section.
@@ -155,6 +158,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private SerializedProperty m_BindingTextProperty;
         private SerializedProperty m_RebindOverlayProperty;
         private SerializedProperty m_RebindTextProperty;
+        private SerializedProperty duplicationTextProperty;
         private SerializedProperty m_RebindStartEventProperty;
         private SerializedProperty m_RebindStopEventProperty;
         private SerializedProperty m_UpdateBindingUIEventProperty;
