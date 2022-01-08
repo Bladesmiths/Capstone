@@ -68,7 +68,8 @@ namespace Bladesmiths.Capstone.UI
         //Health chunk counts from last health UI update
         private int prevHealthChunks = 100;
         private int prevChipChunks = 0;
-        
+
+
         // Start is called before the first frame update
         void Start()
         {
