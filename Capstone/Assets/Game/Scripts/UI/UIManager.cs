@@ -65,6 +65,8 @@ namespace Bladesmiths.Capstone.UI
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private bool isPaused;
 
+        [SerializeField] private GameObject controlsMenu;
+
         //Health chunk counts from last health UI update
         private int prevHealthChunks = 100;
         private int prevChipChunks = 0;
@@ -106,6 +108,7 @@ namespace Bladesmiths.Capstone.UI
             if (isPaused)
             {
                 isPaused = false;
+                controlsMenu.SetActive(false);
                 playerInput.SwitchCurrentActionMap("Player");
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
@@ -273,6 +276,11 @@ namespace Bladesmiths.Capstone.UI
         {
             swordSelectMask.SetActive(active);
         }
+
+        public void ToggleControlsMenu()
+        {
+            controlsMenu.SetActive(!controlsMenu.activeSelf);
+        }    
     }
 }
 
