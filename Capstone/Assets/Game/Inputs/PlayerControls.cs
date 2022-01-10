@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/PlayerInputs_New.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/PlayerInputs.inputactions'
 
 using System;
 using System.Collections;
@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
         public @PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerInputs_New"",
+    ""name"": ""PlayerInputs"",
     ""maps"": [
         {
             ""name"": ""Player"",
