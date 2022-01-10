@@ -101,6 +101,19 @@ namespace Bladesmiths.Capstone.UI
                 UpdateScore(player.Points, player.MaxPoints);
                 UpdateSwordSelect(player.Inputs.currentSwordType);
             }
+
+            // If the controls menu is open
+            if(controlsMenu.activeSelf == true)
+            {
+                if(playerInput.currentControlScheme == "KeyboardMouse")
+                {
+                    // Display keyboard rebind buttons
+                }
+                else if(playerInput.currentControlScheme == "Gamepad")
+                {
+                    // Display controller rebind buttons
+                }
+            }
         }
 
         public void Unpause()
