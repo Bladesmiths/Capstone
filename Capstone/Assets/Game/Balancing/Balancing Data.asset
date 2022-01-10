@@ -149,3 +149,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   swordSwitchingTime: 0
+  provisionalDamageDecayDelay: 4
+  provisionalDamageDecayTimeLimit: 0.5
+  provisionalDamageDecayRate: 1
