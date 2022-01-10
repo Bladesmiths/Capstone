@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 2091114388
     Data4: 730000461
   Banks:
-  - {fileID: 5601053035973915539}
+  - {fileID: -1841858314510752109}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -27,6 +27,46 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 152727
+--- !u!114 &-1841858314510752109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Capstone_Sound/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637774249268120195
+  FileSizes:
+  - Name: Desktop
+    Value: 1753024
+  Exists: 1
+--- !u!114 &-1699095990552968274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Capstone_Sound/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637774249268130249
+  FileSizes:
+  - Name: Desktop
+    Value: 758
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,54 +80,14 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 7283520734775211512}
-  - {fileID: 5601053035973915539}
+  - {fileID: -1699095990552968274}
+  - {fileID: -1841858314510752109}
   EditorEvents:
   - {fileID: -7665658647581445968}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 5601053035973915539}
+  - {fileID: -1841858314510752109}
   StringsBanks:
-  - {fileID: 7283520734775211512}
-  cacheTime: 637771700012598847
+  - {fileID: -1699095990552968274}
+  cacheTime: 637774249268130249
   cacheVersion: 10
---- !u!114 &5601053035973915539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD/Capstone_Sound/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637771700012578684
-  FileSizes:
-  - Name: Desktop
-    Value: 1753024
-  Exists: 1
---- !u!114 &7283520734775211512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD/Capstone_Sound/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637771700012598847
-  FileSizes:
-  - Name: Desktop
-    Value: 758
-  Exists: 1
