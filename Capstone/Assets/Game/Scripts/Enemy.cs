@@ -49,7 +49,6 @@ namespace Bladesmiths.Capstone
 
         public float attackTimer;
         public float attackTimerMax;
-        private bool isBroken;
         public bool stunned;
 
         public float Damage { get => damage; }
@@ -78,7 +77,6 @@ namespace Bladesmiths.Capstone
         public virtual void Start()
         {
             AIDirector.Instance.AddToEnemyGroup(this);
-            isBroken = false;
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 
