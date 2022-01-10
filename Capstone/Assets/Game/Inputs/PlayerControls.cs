@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/PlayerInputs.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Game/Inputs/PlayerInputs_New.inputactions'
 
 using System;
 using System.Collections;
@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
         public @PlayerControls()
         {
             asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerInputs"",
+    ""name"": ""PlayerInputs_New"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -120,14 +120,6 @@ namespace Bladesmiths.Capstone
                     ""name"": ""Switch Sword"",
                     ""type"": ""PassThrough"",
                     ""id"": ""5b730a8a-7abb-4ad4-adf1-2026cc37fab9"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Switch Sword Dpad"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""1dd26e8c-6ee1-42d7-9455-c328b17176e9"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -277,7 +269,7 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""1bd55a0b-761e-4ae4-89ae-8ec127e08a29"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -332,10 +324,10 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""eeb2e340-a083-40b9-afa1-9323b28549c1"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -464,7 +456,7 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""0ad1cf9a-bed3-4180-b805-8f356d48e64e"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -475,10 +467,10 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""424b9b16-a8d0-45ff-88b3-22585e01c699"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
                     ""action"": ""Open Sword Selector"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -522,7 +514,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=1,max=1)"",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""SwitchSwordSpecific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -533,7 +525,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=2,max=2)"",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""SwitchSwordSpecific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -544,19 +536,41 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=3,max=3)"",
-                    ""groups"": """",
+                    ""groups"": ""KeyboardMouse"",
                     ""action"": ""SwitchSwordSpecific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""825fb801-9ca5-4e1a-ac14-c89d6950eefe"",
-                    ""path"": ""<Gamepad>/dpad/y"",
-                    ""interactions"": ""Press"",
-                    ""processors"": ""Invert"",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Switch Sword Dpad"",
+                    ""id"": ""c1669741-4d3c-46ad-9333-423338fe9272"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=1,max=1)"",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
+                    ""action"": ""SwitchSwordSpecific"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c083a86-16c4-4431-a700-dbe53dcd9568"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=2,max=2)"",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
+                    ""action"": ""SwitchSwordSpecific"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8263842d-70bb-4bd0-adcf-f389738e31a9"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=3,max=3)"",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
+                    ""action"": ""SwitchSwordSpecific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1164,7 +1178,6 @@ namespace Bladesmiths.Capstone
             m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
             m_Player_OpenSwordSelector = m_Player.FindAction("Open Sword Selector", throwIfNotFound: true);
             m_Player_SwitchSword = m_Player.FindAction("Switch Sword", throwIfNotFound: true);
-            m_Player_SwitchSwordDpad = m_Player.FindAction("Switch Sword Dpad", throwIfNotFound: true);
             m_Player_SwitchSwordSpecific = m_Player.FindAction("SwitchSwordSpecific", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1241,7 +1254,6 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Pause;
         private readonly InputAction m_Player_OpenSwordSelector;
         private readonly InputAction m_Player_SwitchSword;
-        private readonly InputAction m_Player_SwitchSwordDpad;
         private readonly InputAction m_Player_SwitchSwordSpecific;
         public struct PlayerActions
         {
@@ -1260,7 +1272,6 @@ namespace Bladesmiths.Capstone
             public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputAction @OpenSwordSelector => m_Wrapper.m_Player_OpenSwordSelector;
             public InputAction @SwitchSword => m_Wrapper.m_Player_SwitchSword;
-            public InputAction @SwitchSwordDpad => m_Wrapper.m_Player_SwitchSwordDpad;
             public InputAction @SwitchSwordSpecific => m_Wrapper.m_Player_SwitchSwordSpecific;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
@@ -1310,9 +1321,6 @@ namespace Bladesmiths.Capstone
                     @SwitchSword.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSword;
                     @SwitchSword.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSword;
                     @SwitchSword.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSword;
-                    @SwitchSwordDpad.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordDpad;
-                    @SwitchSwordDpad.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordDpad;
-                    @SwitchSwordDpad.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordDpad;
                     @SwitchSwordSpecific.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchSwordSpecific;
@@ -1359,9 +1367,6 @@ namespace Bladesmiths.Capstone
                     @SwitchSword.started += instance.OnSwitchSword;
                     @SwitchSword.performed += instance.OnSwitchSword;
                     @SwitchSword.canceled += instance.OnSwitchSword;
-                    @SwitchSwordDpad.started += instance.OnSwitchSwordDpad;
-                    @SwitchSwordDpad.performed += instance.OnSwitchSwordDpad;
-                    @SwitchSwordDpad.canceled += instance.OnSwitchSwordDpad;
                     @SwitchSwordSpecific.started += instance.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.performed += instance.OnSwitchSwordSpecific;
                     @SwitchSwordSpecific.canceled += instance.OnSwitchSwordSpecific;
@@ -1533,7 +1538,6 @@ namespace Bladesmiths.Capstone
             void OnPause(InputAction.CallbackContext context);
             void OnOpenSwordSelector(InputAction.CallbackContext context);
             void OnSwitchSword(InputAction.CallbackContext context);
-            void OnSwitchSwordDpad(InputAction.CallbackContext context);
             void OnSwitchSwordSpecific(InputAction.CallbackContext context);
         }
         public interface IUIActions
