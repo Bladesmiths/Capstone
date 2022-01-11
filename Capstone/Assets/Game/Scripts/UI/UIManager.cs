@@ -66,6 +66,9 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private bool isPaused;
 
         [SerializeField] private GameObject controlsMenu;
+        [SerializeField] private GameObject controlsButton;
+
+        [SerializeField] private GameObject moveRebindButton;
 
         //Health chunk counts from last health UI update
         private int prevHealthChunks = 100;
@@ -156,6 +159,8 @@ namespace Bladesmiths.Capstone.UI
 
                 //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
+
+                EventSystem.current.SetSelectedGameObject(controlsButton);
                 
                 pauseMenu.SetActive(true);
             }
@@ -293,6 +298,8 @@ namespace Bladesmiths.Capstone.UI
         public void ToggleControlsMenu()
         {
             controlsMenu.SetActive(!controlsMenu.activeSelf);
+
+            EventSystem.current.SetSelectedGameObject(moveRebindButton);
         }    
     }
 }
