@@ -156,7 +156,7 @@ namespace Bladesmiths.Capstone
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwitchSwordSpecific"",
+                    ""name"": ""Switch Sword Specific"",
                     ""type"": ""Button"",
                     ""id"": ""1836041b-220a-44a3-983b-08691479a77b"",
                     ""expectedControlType"": ""Button"",
@@ -503,7 +503,7 @@ namespace Bladesmiths.Capstone
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=1,max=1)"",
                     ""groups"": """",
-                    ""action"": ""SwitchSwordSpecific"",
+                    ""action"": ""Switch Sword Specific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -514,7 +514,7 @@ namespace Bladesmiths.Capstone
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=2,max=2)"",
                     ""groups"": """",
-                    ""action"": ""SwitchSwordSpecific"",
+                    ""action"": ""Switch Sword Specific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -525,7 +525,7 @@ namespace Bladesmiths.Capstone
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=3,max=3)"",
                     ""groups"": """",
-                    ""action"": ""SwitchSwordSpecific"",
+                    ""action"": ""Switch Sword Specific"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1156,7 +1156,7 @@ namespace Bladesmiths.Capstone
             m_Player_OpenSwordSelector = m_Player.FindAction("Open Sword Selector", throwIfNotFound: true);
             m_Player_SwitchSword = m_Player.FindAction("Switch Sword", throwIfNotFound: true);
             m_Player_SwitchSwordDpad = m_Player.FindAction("Switch Sword Dpad", throwIfNotFound: true);
-            m_Player_SwitchSwordSpecific = m_Player.FindAction("SwitchSwordSpecific", throwIfNotFound: true);
+            m_Player_SwitchSwordSpecific = m_Player.FindAction("Switch Sword Specific", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);

@@ -132,7 +132,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchSwordSpecific",
+                    "name": "Switch Sword Specific",
                     "type": "Button",
                     "id": "1836041b-220a-44a3-983b-08691479a77b",
                     "expectedControlType": "Button",
@@ -479,7 +479,7 @@
                     "interactions": "",
                     "processors": "Clamp(min=1,max=1)",
                     "groups": "",
-                    "action": "SwitchSwordSpecific",
+                    "action": "Switch Sword Specific",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -490,7 +490,7 @@
                     "interactions": "",
                     "processors": "Clamp(min=2,max=2)",
                     "groups": "",
-                    "action": "SwitchSwordSpecific",
+                    "action": "Switch Sword Specific",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -501,7 +501,7 @@
                     "interactions": "",
                     "processors": "Clamp(min=3,max=3)",
                     "groups": "",
-                    "action": "SwitchSwordSpecific",
+                    "action": "Switch Sword Specific",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
