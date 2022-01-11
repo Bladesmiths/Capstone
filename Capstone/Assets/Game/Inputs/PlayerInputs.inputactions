@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputs_New",
+    "name": "PlayerInputs",
     "maps": [
         {
             "name": "Player",
@@ -123,9 +123,7 @@
                     "initialStateCheck": false
                 },
                 {
-
                     "name": "Switch Sword Specific",
-
                     "type": "Button",
                     "id": "1836041b-220a-44a3-983b-08691479a77b",
                     "expectedControlType": "Button",
@@ -270,7 +268,7 @@
                 {
                     "name": "",
                     "id": "961f1dd1-279f-4b8a-a406-42da42b1bd75",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -358,8 +356,8 @@
                 {
                     "name": "",
                     "id": "f45b3b85-aeb8-4791-a7ca-8763a2090dc2",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "Press(behavior=2)",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Block",
@@ -369,8 +367,8 @@
                 {
                     "name": "",
                     "id": "e7f5aeed-0c8f-4e11-815f-78811c769317",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=1)",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Parry",
@@ -471,10 +469,8 @@
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "Clamp(min=1,max=1)",
-
                     "groups": "KeyboardMouse",
                     "action": "Switch Sword Specific",
-
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -484,10 +480,8 @@
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "Clamp(min=2,max=2)",
-
                     "groups": "KeyboardMouse",
                     "action": "Switch Sword Specific",
-
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -497,10 +491,8 @@
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "Clamp(min=3,max=3)",
-
                     "groups": "KeyboardMouse",
                     "action": "Switch Sword Specific",
-
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

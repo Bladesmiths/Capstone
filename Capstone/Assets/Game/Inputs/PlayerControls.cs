@@ -147,9 +147,7 @@ namespace Bladesmiths.Capstone
                     ""initialStateCheck"": false
                 },
                 {
-
                     ""name"": ""Switch Sword Specific"",
-
                     ""type"": ""Button"",
                     ""id"": ""1836041b-220a-44a3-983b-08691479a77b"",
                     ""expectedControlType"": ""Button"",
@@ -294,7 +292,7 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""961f1dd1-279f-4b8a-a406-42da42b1bd75"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -382,8 +380,8 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""f45b3b85-aeb8-4791-a7ca-8763a2090dc2"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Block"",
@@ -393,8 +391,8 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""e7f5aeed-0c8f-4e11-815f-78811c769317"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Parry"",
@@ -495,10 +493,8 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=1,max=1)"",
-
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Switch Sword Specific"",
-
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -508,10 +504,8 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=2,max=2)"",
-
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Switch Sword Specific"",
-
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -521,10 +515,8 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": ""Clamp(min=3,max=3)"",
-
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Switch Sword Specific"",
-
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1176,9 +1168,7 @@ namespace Bladesmiths.Capstone
             m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
             m_Player_OpenSwordSelector = m_Player.FindAction("Open Sword Selector", throwIfNotFound: true);
             m_Player_SwitchSword = m_Player.FindAction("Switch Sword", throwIfNotFound: true);
-
             m_Player_SwitchSwordSpecific = m_Player.FindAction("Switch Sword Specific", throwIfNotFound: true);
-
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);

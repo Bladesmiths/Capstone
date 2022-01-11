@@ -253,7 +253,7 @@ namespace Bladesmiths.Capstone
 
             // Subscribing parry collision to block collision events to keep those fields updated
             blockDetector.GetComponent<BlockCollision>().OnBlock += parryDetector.GetComponent<ParryCollision>().BlockOccured;
-            parryDetector.GetComponent<ParryCollision>().SetPlayer(this);
+            parryDetector.GetComponent<ParryCollision>().Player = this;
 
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);
@@ -274,7 +274,8 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
 
             FSM.AddTransition(idleCombat, block, IsBlockPressed());
-            FSM.AddTransition(block, parryAttempt, IsBlockReleased());
+            FSM.AddTransition(block, idleCombat, IsBlockReleased());
+            FSM.AddTransition(idleCombat, parryAttempt, IsParryPressed());
             FSM.AddTransition(parryAttempt, parrySuccess, IsParrySuccessful());
             FSM.AddTransition(parrySuccess, idleCombat, IsParryFinished()); 
             FSM.AddTransition(parryAttempt, idleCombat, IsParryFinished());

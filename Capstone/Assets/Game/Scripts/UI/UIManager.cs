@@ -65,16 +65,10 @@ namespace Bladesmiths.Capstone.UI
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private bool isPaused;
 
-        [SerializeField] private GameObject controlsMenu;
-        [SerializeField] private GameObject controlsButton;
-
-        [SerializeField] private GameObject moveRebindButton;
-
         //Health chunk counts from last health UI update
         private int prevHealthChunks = 100;
         private int prevChipChunks = 0;
-
-
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -104,19 +98,6 @@ namespace Bladesmiths.Capstone.UI
                 UpdateScore(player.Points, player.MaxPoints);
                 UpdateSwordSelect(player.Inputs.currentSwordType);
             }
-
-            // If the controls menu is open
-            if(controlsMenu.activeSelf == true)
-            {
-                if(playerInput.currentControlScheme == "KeyboardMouse")
-                {
-                    // Display keyboard rebind buttons
-                }
-                else if(playerInput.currentControlScheme == "Gamepad")
-                {
-                    // Display controller rebind buttons
-                }
-            }
         }
 
         public void Unpause()
@@ -124,7 +105,6 @@ namespace Bladesmiths.Capstone.UI
             if (isPaused)
             {
                 isPaused = false;
-                controlsMenu.SetActive(false);
                 playerInput.SwitchCurrentActionMap("Player");
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
@@ -159,8 +139,6 @@ namespace Bladesmiths.Capstone.UI
 
                 //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
-
-                EventSystem.current.SetSelectedGameObject(controlsButton);
                 
                 pauseMenu.SetActive(true);
             }
@@ -294,13 +272,6 @@ namespace Bladesmiths.Capstone.UI
         {
             swordSelectMask.SetActive(active);
         }
-
-        public void ToggleControlsMenu()
-        {
-            controlsMenu.SetActive(!controlsMenu.activeSelf);
-
-            EventSystem.current.SetSelectedGameObject(moveRebindButton);
-        }    
     }
 }
 

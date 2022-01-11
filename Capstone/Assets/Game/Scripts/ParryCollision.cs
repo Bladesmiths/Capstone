@@ -6,7 +6,7 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
-        private Player player;
+        public Player Player { get; set; }
 
         public ObjectController ObjectController { get; set; }
         public float ChipDamageTotal { get; set; }
@@ -15,20 +15,11 @@ namespace Bladesmiths.Capstone
         public void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
-            //player = gameObject.transform.root.gameObject.GetComponent<Player>();
+            Player = gameObject.transform.root.gameObject.GetComponent<Player>();
         }
 
         // Update is called once per frame
         void Update() { }
-
-        /// <summary>
-        /// Sets the player. Should only be called once
-        /// </summary>
-        /// <param name="p">The active player object</param>
-        public void SetPlayer(Player p)
-        {
-            player = p;
-        }
 
         /// <summary>
         /// Method hooked to block event that updates fields when a block occurs
@@ -38,7 +29,7 @@ namespace Bladesmiths.Capstone
         public void BlockOccured(float newChipDamageTotal)
         {
             ChipDamageTotal = newChipDamageTotal;
-            player.ResetProvisionalDamageTimers();
+            Player.ResetProvisionalDamageTimers();
         }
 
         /// <summary>
@@ -67,17 +58,17 @@ namespace Bladesmiths.Capstone
                 // If the damaging object is not on the same team as the player
                 // And its ID has not already been blocked
                 if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player &&
-                    !player.DamagingObjectIDs.Contains(damagingObject.ID))
+                    !Player.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
                     //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
 
-                    player.parrySuccessful = true;
+                    Player.parrySuccessful = true;
 
                     // Adding the damaging ID 
-                    player.AddDamagingID(damagingObject.ID); 
+                    Player.AddDamagingID(damagingObject.ID); 
 
                     // Adding chip damage back to player health
-                    player.Health += ChipDamageTotal;
+                    Player.Health += ChipDamageTotal;
 
                     // Resetting chip damage
                     // This should happen as soon as we exit the parry attempt state anyway

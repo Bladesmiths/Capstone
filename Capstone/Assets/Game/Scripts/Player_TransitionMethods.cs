@@ -40,6 +40,12 @@ namespace Bladesmiths.Capstone
         public Func<bool> IsBlockReleased() => () => inputs.block == false;
 
         /// <summary>
+        /// The condition for going between the IDLE and BLOCK state
+        /// </summary>
+        /// <returns></returns>
+        public Func<bool> IsParryPressed() => () => inputs.parry == true;
+
+        /// <summary>
         /// The condition for going between the PARRY and IDLE state
         /// </summary>
         /// <returns></returns>
