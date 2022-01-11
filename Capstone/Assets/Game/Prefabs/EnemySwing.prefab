@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 8904323166171337864}
   - component: {fileID: 8904323166171337868}
   - component: {fileID: 8904323166171337859}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: EnemySword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -219,9 +219,17 @@ MonoBehaviour:
   currentHealth: 0
   damagingObjectIDs: 
   objectController: {fileID: 0}
-  enemyObject: {fileID: 8904323166291148165}
+  player: {fileID: 0}
+  sword: {fileID: 0}
+  moveVector: {x: 0, y: 0, z: 0}
+  rotateVector: {x: 0, y: 0, z: 0}
   damage: 10
+  viewDistance: 0
   damagingTimerLimit: 1
+  attackTimer: 0
+  attackTimerMax: 0
+  stunned: 0
+  enemyObject: {fileID: 8904323166291148165}
 --- !u!54 &8904323166171337859
 Rigidbody:
   m_ObjectHideFlags: 0

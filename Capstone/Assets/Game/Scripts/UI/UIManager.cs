@@ -94,7 +94,7 @@ namespace Bladesmiths.Capstone.UI
         {
             if (player != null)
             {
-                UpdateHealth(player.Health, player.CurrentChipDamage, player.MaxHealth);
+                UpdateHealth(player.Health, player.ChipDamageTotal, player.MaxHealth);
                 UpdateScore(player.Points, player.MaxPoints);
                 UpdateSwordSelect(player.Inputs.currentSwordType);
             }

@@ -197,7 +197,7 @@ namespace Bladesmiths.Capstone
 
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
         
-        public float CurrentChipDamage { get => parryDetector.GetComponent<ParryCollision>().ChipDamageTotal; }
+        public float ChipDamageTotal { get; private set; }
 
         public int Points { get => (int)points; }
 
@@ -252,8 +252,8 @@ namespace Bladesmiths.Capstone
             FSM.OnStateChange += SpeedUpdate;
 
             // Subscribing parry collision to block collision events to keep those fields updated
-            blockDetector.GetComponent<BlockCollision>().OnBlock += parryDetector.GetComponent<ParryCollision>().BlockOccured;
-            parryDetector.GetComponent<ParryCollision>().SetPlayer(this);
+            blockDetector.GetComponent<BlockCollision>().OnBlock += BlockOccured;
+            parryDetector.GetComponent<ParryCollision>().Player = this;
 
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);
@@ -297,7 +297,7 @@ namespace Bladesmiths.Capstone
             currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
 
-            ResetProvisionalDamageTimers(); 
+            ResetChipDamageTimers(); 
         }
 
         private void Update()
@@ -617,6 +617,8 @@ namespace Bladesmiths.Capstone
                 if (GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
                 {
                     damage *= currentSword.DamageTakenModifier;
+                    ChipDamageTotal = 0;
+                    ResetChipDamageTimers(); 
                 }
 
                 // The resullt of Character's Take Damage
@@ -651,30 +653,50 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// Method hooked to block event that updates fields when a block occurs
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newChipDamageTotal"></param>
+        public void BlockOccured(float newChipDamage)
+        {
+            ChipDamageTotal += newChipDamage;
+            ResetChipDamageTimers();
+        }
+
+        /// <summary>
+        /// Resets the chip damage field
+        /// </summary>
+        public void ResetChipDamage()
+        {
+            ChipDamageTotal = 0;
+        }
+
+        /// <summary>
         /// Checks and updates provisional damage timers and does provisional 
         /// damage decay if necessary
         /// </summary>
         public void DecayProvisionalDamage()
         {
-            provisionalDamageDecayDelayTimer -= Time.deltaTime;
             if (provisionalDamageDecayDelayTimer <= 0)
             {
                 provisionalDamageDecayTimer -= Time.deltaTime;
+            }
+            else
+            {
+                provisionalDamageDecayDelayTimer -= Time.deltaTime;
             }
 
             if (provisionalDamageDecayDelayTimer <= 0)
             {
                 if (provisionalDamageDecayTimer <= 0)
                 {
-                    if (parryDetector.GetComponent<ParryCollision>().ChipDamageTotal >= 
-                        currentBalancingData.ProvisionalDamageDecayRate)
+                    if (ChipDamageTotal >= currentBalancingData.ProvisionalDamageDecayRate)
                     {
-                        parryDetector.GetComponent<ParryCollision>().ChipDamageTotal -= 
-                            currentBalancingData.ProvisionalDamageDecayRate;
+                        ChipDamageTotal -= currentBalancingData.ProvisionalDamageDecayRate;
                     }
                     else
                     {
-                        parryDetector.GetComponent<ParryCollision>().ChipDamageTotal = 0;
+                        ChipDamageTotal = 0;
                     }
 
                     provisionalDamageDecayTimer = currentBalancingData.ProvisionalDamageDecayTimeLimit;
@@ -685,7 +707,7 @@ namespace Bladesmiths.Capstone
         /// <summary>
         /// Resets the 2 timers related to provisional damage
         /// </summary>
-        public void ResetProvisionalDamageTimers()
+        public void ResetChipDamageTimers()
         {
             provisionalDamageDecayDelayTimer = currentBalancingData.ProvisionalDamageDecayDelay;
             provisionalDamageDecayTimer = currentBalancingData.ProvisionalDamageDecayTimeLimit;

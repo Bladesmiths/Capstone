@@ -50,6 +50,7 @@ namespace Bladesmiths.Capstone
         {
             attack = true;
             preAttackTimer = 0f;
+            _sword.GetComponent<BoxCollider>().enabled = true; 
         }
 
         public override void OnExit()
@@ -57,7 +58,7 @@ namespace Bladesmiths.Capstone
             _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
-
+            _sword.GetComponent<BoxCollider>().enabled = false;
         }
 
         /// <summary>

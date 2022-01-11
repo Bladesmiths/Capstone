@@ -80,7 +80,7 @@ namespace Bladesmiths.Capstone
             
             // Turning block collision off and resetting its chip damage
             playerBlockBox.GetComponent<BlockCollision>().Active = false;
-            playerBlockBox.GetComponent<BlockCollision>().ResetChipDamage(); 
+            //playerBlockBox.GetComponent<BlockCollision>().ResetChipDamage(); 
 
             // Change the color back to white
             playerBlockBox.GetComponent<MeshRenderer>().material.color = Color.white;
@@ -89,7 +89,5 @@ namespace Bladesmiths.Capstone
             // and turn off blocking paramater
             _animator.SetBool(_animIDBlock, false);
         }
-
     }
-
 }

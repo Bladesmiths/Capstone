@@ -59,7 +59,7 @@ namespace Bladesmiths.Capstone
         {
             _player.inState = true;
             _player.justDied = true;
-            _player.ParryDetector.ResetChipDamage();
+            _player.ResetChipDamage();
             _player.damaged = false;
 
             _animator.SetBool(_animIDDeath, true);
