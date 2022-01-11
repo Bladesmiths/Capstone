@@ -7391,7 +7391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
+  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -23688,11 +23688,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1478474225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8384654220190448158, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
-  m_PrefabInstance: {fileID: 1388931345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1481457632
 GameObject:
   m_ObjectHideFlags: 0
@@ -30910,9 +30905,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 524885098}
   resumeButton: {fileID: 1531967054}
   isPaused: 0
-  controlsMenu: {fileID: 1818385394}
-  controlsButton: {fileID: 2059551191}
-  moveRebindButton: {fileID: 1478474225}
 --- !u!114 &1863759867
 MonoBehaviour:
   m_ObjectHideFlags: 0
