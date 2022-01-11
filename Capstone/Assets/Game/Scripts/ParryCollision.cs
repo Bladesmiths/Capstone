@@ -6,22 +6,28 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
-        private Player player; 
+        private Player player;
 
         public ObjectController ObjectController { get; set; }
-        public float ChipDamageTotal { get; private set; }
+        public float ChipDamageTotal { get; set; }
 
         // Start is called before the first frame update
-        void Start()
+        public void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
-            player = gameObject.transform.root.gameObject.GetComponent<Player>();
+            //player = gameObject.transform.root.gameObject.GetComponent<Player>();
         }
 
         // Update is called once per frame
-        void Update()
-        {
+        void Update() { }
 
+        /// <summary>
+        /// Sets the player. Should only be called once
+        /// </summary>
+        /// <param name="p">The active player object</param>
+        public void SetPlayer(Player p)
+        {
+            player = p;
         }
 
         /// <summary>
@@ -32,6 +38,7 @@ namespace Bladesmiths.Capstone
         public void BlockOccured(float newChipDamageTotal)
         {
             ChipDamageTotal = newChipDamageTotal;
+            player.ResetProvisionalDamageTimers();
         }
 
         /// <summary>
@@ -78,14 +85,6 @@ namespace Bladesmiths.Capstone
                     ResetChipDamage(); 
                 }
             }
-        }
-
-        /// <summary>
-        /// Resets Chip Damage whenever this scipt is disabled
-        /// </summary>
-        private void OnDisable()
-        {
-            ResetChipDamage(); 
         }
     }
 }

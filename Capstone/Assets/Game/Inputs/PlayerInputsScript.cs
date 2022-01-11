@@ -106,22 +106,6 @@ namespace Bladesmiths.Capstone
 			player.SwitchSword(currentSwordType);
         }
 
-		public void OnSwitchSwordDpad(InputValue value)
-		{
-			currentSwordType += (int)value.Get<float>();
-
-			if (currentSwordType < Enums.SwordType.Quartz)
-			{
-				currentSwordType = Enums.SwordType.Sapphire;
-			}
-			else if (currentSwordType > Enums.SwordType.Sapphire)
-			{
-				currentSwordType = Enums.SwordType.Quartz;
-			}
-
-			player.SwitchSword(currentSwordType);
-		}
-
 		/// <summary>
 		/// Input method that runs when the target lock control is hit
 		/// </summary>

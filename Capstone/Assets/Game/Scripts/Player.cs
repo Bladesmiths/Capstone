@@ -50,7 +50,6 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private Vector3 respawnRotation;
 
-
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
@@ -106,6 +105,11 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
         private int animIDSwordChoice;
+        #endregion
+
+        #region Health-Related Fields
+        private float provisionalDamageDecayDelayTimer;
+        private float provisionalDamageDecayTimer;
         #endregion
 
         #region Damaging System Fields
@@ -249,6 +253,7 @@ namespace Bladesmiths.Capstone
 
             // Subscribing parry collision to block collision events to keep those fields updated
             blockDetector.GetComponent<BlockCollision>().OnBlock += parryDetector.GetComponent<ParryCollision>().BlockOccured;
+            parryDetector.GetComponent<ParryCollision>().SetPlayer(this);
 
             // Creates all of the states
             parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);
@@ -291,8 +296,9 @@ namespace Bladesmiths.Capstone
 
             currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
-        }
 
+            ResetProvisionalDamageTimers(); 
+        }
 
         private void Update()
         {
@@ -301,11 +307,14 @@ namespace Bladesmiths.Capstone
             Jump();
             Move();
 
+            DecayProvisionalDamage();
+
             // If the player is dead and just died (fadeToBlack is still occuring)
-            if(points >= maxPoints)
+            if (points >= maxPoints)
             {
                 FadeToBlack();
             }
+
         }
 
         /// <summary>
@@ -639,6 +648,47 @@ namespace Bladesmiths.Capstone
 
             // Return 0 if the player cannot currently be damaged
             return 0; 
+        }
+
+        /// <summary>
+        /// Checks and updates provisional damage timers and does provisional 
+        /// damage decay if necessary
+        /// </summary>
+        public void DecayProvisionalDamage()
+        {
+            provisionalDamageDecayDelayTimer -= Time.deltaTime;
+            if (provisionalDamageDecayDelayTimer <= 0)
+            {
+                provisionalDamageDecayTimer -= Time.deltaTime;
+            }
+
+            if (provisionalDamageDecayDelayTimer <= 0)
+            {
+                if (provisionalDamageDecayTimer <= 0)
+                {
+                    if (parryDetector.GetComponent<ParryCollision>().ChipDamageTotal >= 
+                        currentBalancingData.ProvisionalDamageDecayRate)
+                    {
+                        parryDetector.GetComponent<ParryCollision>().ChipDamageTotal -= 
+                            currentBalancingData.ProvisionalDamageDecayRate;
+                    }
+                    else
+                    {
+                        parryDetector.GetComponent<ParryCollision>().ChipDamageTotal = 0;
+                    }
+
+                    provisionalDamageDecayTimer = currentBalancingData.ProvisionalDamageDecayTimeLimit;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Resets the 2 timers related to provisional damage
+        /// </summary>
+        public void ResetProvisionalDamageTimers()
+        {
+            provisionalDamageDecayDelayTimer = currentBalancingData.ProvisionalDamageDecayDelay;
+            provisionalDamageDecayTimer = currentBalancingData.ProvisionalDamageDecayTimeLimit;
         }
 
         /// <summary>

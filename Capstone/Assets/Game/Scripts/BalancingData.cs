@@ -16,7 +16,17 @@ namespace Bladesmiths.Capstone
         [Header("Player")]
         // TODO: Implement Sword Switching Delay
         [SerializeField] [Tooltip("The time it takes to switch swords")]
-        private float swordSwitchingTime; 
+        private float swordSwitchingTime;
+
+        [SerializeField] [Tooltip("The time it takes for provisional damage to " +
+                                "start decaying once block has been released")]
+        private float provisionalDamageDecayDelay;
+
+        [SerializeField] [Tooltip("The time between each decay of provisional damage")]
+        private float provisionalDamageDecayTimeLimit;
+
+        [SerializeField] [Tooltip("The amount of provisional damage that is removed each decay")]
+        private float provisionalDamageDecayRate;
 
         [OdinSerialize] [Tooltip("The player's swords")]
         private Dictionary<Enums.SwordType, SwordData> swordData = new Dictionary<Enums.SwordType, SwordData>();
@@ -34,7 +44,10 @@ namespace Bladesmiths.Capstone
         #endregion
 
         #region Player Properties
-        public float SwordSwitchingTime => SwordSwitchingTime;
+        public float SwordSwitchingTime => swordSwitchingTime;
+        public float ProvisionalDamageDecayDelay => provisionalDamageDecayDelay;
+        public float ProvisionalDamageDecayTimeLimit => provisionalDamageDecayTimeLimit;
+        public float ProvisionalDamageDecayRate => provisionalDamageDecayRate;
         public Dictionary<Enums.SwordType, SwordData> SwordData => swordData;
         public Dictionary <Enums.SwordType, float> AttackAnimSpeeds => attackAnimSpeeds;
         #endregion
