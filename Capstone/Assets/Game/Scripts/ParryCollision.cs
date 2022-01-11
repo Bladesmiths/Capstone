@@ -15,11 +15,20 @@ namespace Bladesmiths.Capstone
         public void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
-            player = gameObject.transform.root.gameObject.GetComponent<Player>();
+            //player = gameObject.transform.root.gameObject.GetComponent<Player>();
         }
 
         // Update is called once per frame
         void Update() { }
+
+        /// <summary>
+        /// Sets the player. Should only be called once
+        /// </summary>
+        /// <param name="p">The active player object</param>
+        public void SetPlayer(Player p)
+        {
+            player = p;
+        }
 
         /// <summary>
         /// Method hooked to block event that updates fields when a block occurs
