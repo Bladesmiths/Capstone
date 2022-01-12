@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: VillageLevel_v0_3_1
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/PlayerScene.unity
+  - scenePath: Assets/Scenes/PlayerScene.unity
     isActive: 1
     isLoaded: 1
-  - scenePath: Assets/Game/Scenes/EnemyScene.unity
+  - scenePath: Assets/Scenes/EnemyScene.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Game/Scenes/VillageScene.unity
+  - scenePath: Assets/Scenes/VillageScene.unity
     isActive: 0
     isLoaded: 1

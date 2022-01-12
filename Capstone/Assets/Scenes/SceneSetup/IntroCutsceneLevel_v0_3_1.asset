@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IntroCutsceneLevel_v0_3_1
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/IntroCutscene.unity
+  - scenePath: Assets/Scenes/IntroCutscene.unity
     isActive: 1
     isLoaded: 1

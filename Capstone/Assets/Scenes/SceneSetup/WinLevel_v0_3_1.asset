@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WinLevel_v0_3_1
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Game/Scenes/WinScreen.unity
+  - scenePath: Assets/Scenes/WinScreen.unity
     isActive: 1
     isLoaded: 1
