@@ -18,7 +18,7 @@ namespace Bladesmiths.Capstone
 
         // Update is called once per frame
         void Update() { }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             // Exits the method if the colliding object is not in the Parryable Layer
@@ -39,7 +39,6 @@ namespace Bladesmiths.Capstone
                     !Player.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
                     Player.parrySuccessful = true;
-
                     // Adding the damaging ID 
                     Player.AddDamagingID(damagingObject.ID);
 

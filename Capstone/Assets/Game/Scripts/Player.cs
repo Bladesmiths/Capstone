@@ -274,7 +274,8 @@ namespace Bladesmiths.Capstone
             FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
 
             FSM.AddTransition(idleCombat, block, IsBlockPressed());
-            FSM.AddTransition(block, parryAttempt, IsBlockReleased());
+            FSM.AddTransition(block, idleCombat, IsBlockReleased());
+            FSM.AddTransition(idleCombat, parryAttempt, IsParryPressed());
             FSM.AddTransition(parryAttempt, parrySuccess, IsParrySuccessful());
             FSM.AddTransition(parrySuccess, idleCombat, IsParryFinished()); 
             FSM.AddTransition(parryAttempt, idleCombat, IsParryFinished());
