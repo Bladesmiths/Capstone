@@ -9,42 +9,20 @@ namespace Bladesmiths.Capstone
         public Player Player { get; set; }
 
         public ObjectController ObjectController { get; set; }
-        public float ChipDamageTotal { get; set; }
 
         // Start is called before the first frame update
         public void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
-            Player = gameObject.transform.root.gameObject.GetComponent<Player>();
         }
 
         // Update is called once per frame
         void Update() { }
-
-        /// <summary>
-        /// Method hooked to block event that updates fields when a block occurs
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="newChipDamageTotal"></param>
-        public void BlockOccured(float newChipDamageTotal)
-        {
-            ChipDamageTotal = newChipDamageTotal;
-            Player.ResetProvisionalDamageTimers();
-        }
-
-        /// <summary>
-        /// Resets the chip damage field
-        /// </summary>
-        public void ResetChipDamage()
-        {
-            ChipDamageTotal = 0;
-        }
-
+        
         private void OnTriggerEnter(Collider other)
         {
-            // Exits the method if the colliding object is in Player or Default
-            // This will probably need to be added to as we go on
-            if ((LayerMask.GetMask("Player", "Default") & 1 << other.gameObject.layer) != 0)
+            // Exits the method if the colliding object is not in the Parryable Layer
+            if (LayerMask.LayerToName(other.gameObject.layer) != "Parryable")
             {
                 return;
             }
@@ -60,20 +38,17 @@ namespace Bladesmiths.Capstone
                 if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player &&
                     !Player.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
-                    //gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-
                     Player.parrySuccessful = true;
-
                     // Adding the damaging ID 
-                    Player.AddDamagingID(damagingObject.ID); 
+                    Player.AddDamagingID(damagingObject.ID);
 
                     // Adding chip damage back to player health
-                    Player.Health += ChipDamageTotal;
+                    Player.Health += Player.ChipDamageTotal;
 
                     // Resetting chip damage
                     // This should happen as soon as we exit the parry attempt state anyway
                     // But just to eliminate possible race conditions
-                    ResetChipDamage(); 
+                    Player.ResetChipDamage(); 
                 }
             }
         }

@@ -12,8 +12,6 @@ namespace Bladesmiths.Capstone
         public ObjectController ObjectController { get; set; }
         public bool BlockTriggered { get; private set; }
         public bool Active { get; set; }
-        public float ChipDamageTotal { get; private set; }
-
 
         public delegate void OnBlockDelegate(float chipDamageTotal);
 
@@ -28,10 +26,7 @@ namespace Bladesmiths.Capstone
         }
 
         // Update is called once per frame
-        void Update()
-        {
-
-        }
+        void Update() { }
 
         /// <summary>
         /// Removes an ID from the list of blocked IDs
@@ -46,14 +41,6 @@ namespace Bladesmiths.Capstone
             {
                 BlockTriggered = false;
             }
-        }
-
-        /// <summary>
-        /// Resetting chip damage total to 0
-        /// </summary>
-        public void ResetChipDamage()
-        {
-            ChipDamageTotal = 0;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -86,10 +73,9 @@ namespace Bladesmiths.Capstone
 
                     // Calculate the chip damage and make the Player take that damage
                     float blockedDamage = damagingObject.Damage * player.ChipDamagePercentage;
-                    ChipDamageTotal += blockedDamage;
                     player.TakeDamage(damagingObject.ID, blockedDamage);
 
-                    OnBlock(ChipDamageTotal); 
+                    OnBlock(blockedDamage); 
 
                     // Debug stuff
                     //Debug.Log($"Block Triggered by: {other.gameObject}");

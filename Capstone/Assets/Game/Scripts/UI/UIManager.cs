@@ -99,7 +99,7 @@ namespace Bladesmiths.Capstone.UI
         {
             if (player != null)
             {
-                UpdateHealth(player.Health, player.CurrentChipDamage, player.MaxHealth);
+                UpdateHealth(player.Health, player.ChipDamageTotal, player.MaxHealth);
                 UpdateScore(player.Points, player.MaxPoints);
                 UpdateSwordSelect(player.Inputs.currentSwordType);
             }
@@ -171,7 +171,7 @@ namespace Bladesmiths.Capstone.UI
             //int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
             //int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count); 
 
-            int remainingChunks = (int)currentHealth;
+            int remainingChunks = (int)currentHealth > 100 ? 100 : (int)currentHealth;
             int chipChunks = (int)currentChipDamage;
 
             //Debug.Log("Player Health: " + remainingChunks);
