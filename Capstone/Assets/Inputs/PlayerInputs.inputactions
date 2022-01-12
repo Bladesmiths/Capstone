@@ -346,7 +346,7 @@
                     "name": "",
                     "id": "07836cb8-9b92-491f-a2ee-0c3623d759ef",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Block",
@@ -422,7 +422,7 @@
                 {
                     "name": "",
                     "id": "424b9b16-a8d0-45ff-88b3-22585e01c699",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Xbox Controller;PS4 Controller",
