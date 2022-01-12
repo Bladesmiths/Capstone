@@ -68,7 +68,12 @@ namespace Bladesmiths.Capstone.UI
         //Health chunk counts from last health UI update
         private int prevHealthChunks = 100;
         private int prevChipChunks = 0;
-        
+
+        [SerializeField] private GameObject controlsMenu;
+        [SerializeField] private GameObject controlsButton;
+
+        [SerializeField] private GameObject moveRebindButton;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -105,6 +110,7 @@ namespace Bladesmiths.Capstone.UI
             if (isPaused)
             {
                 isPaused = false;
+                controlsMenu.SetActive(false);
                 playerInput.SwitchCurrentActionMap("Player");
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
@@ -139,7 +145,9 @@ namespace Bladesmiths.Capstone.UI
 
                 //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
-                
+
+                EventSystem.current.SetSelectedGameObject(controlsButton);
+
                 pauseMenu.SetActive(true);
             }
         }
@@ -271,6 +279,13 @@ namespace Bladesmiths.Capstone.UI
         public void SetMaskActive(bool active)
         {
             swordSelectMask.SetActive(active);
+        }
+
+        public void ToggleControlsMenu()
+        {
+            controlsMenu.SetActive(!controlsMenu.activeSelf);
+
+            EventSystem.current.SetSelectedGameObject(moveRebindButton);
         }
     }
 }

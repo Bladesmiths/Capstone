@@ -23688,6 +23688,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1478474225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8384654220190448158, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
+  m_PrefabInstance: {fileID: 1388931345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1481457632
 GameObject:
   m_ObjectHideFlags: 0
@@ -30905,6 +30910,9 @@ MonoBehaviour:
   pauseMenu: {fileID: 524885098}
   resumeButton: {fileID: 1531967054}
   isPaused: 0
+  controlsMenu: {fileID: 1818385394}
+  controlsButton: {fileID: 2059551191}
+  moveRebindButton: {fileID: 1478474225}
 --- !u!114 &1863759867
 MonoBehaviour:
   m_ObjectHideFlags: 0
