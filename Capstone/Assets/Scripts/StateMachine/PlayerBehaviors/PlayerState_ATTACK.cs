@@ -57,6 +57,35 @@ namespace Bladesmiths.Capstone
         //        length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Sapphire]);
         //}
 
+        public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateMove(animator, stateInfo, layerIndex);
+
+            if (_input.attack)
+            {
+                if (_input.move == Vector2.zero)
+                {
+                    _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+
+                    inputDirection = _targetRotation * Vector3.forward;
+                }
+                else if (_input.move != Vector2.zero)
+                {
+                    Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                    // rotate to face input direction relative to camera position
+                    _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+                        Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+
+                    _player.transform.rotation = _targetRotation;
+
+                    inputDirection = _targetRotation * Vector3.forward;
+                }
+            }
+
+        }
+
+
         public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
         {
             _animDurations.Add(SwordType.Quartz, animator.runtimeAnimatorController.animationClips.
@@ -129,24 +158,24 @@ namespace Bladesmiths.Capstone
             _animator.SetBool(_animIDAttack, true);
 
             // Allows for the player to snap to the direction they are inputting
-            if (_input.move == Vector2.zero)
-            {
-                _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+            //if (_input.move == Vector2.zero)
+            //{
+            //    _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
 
-                inputDirection = _targetRotation * Vector3.forward;
-            }
-            else
-            {
-                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            //    inputDirection = _targetRotation * Vector3.forward;
+            //}
+            //else
+            //{
+            //    Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-                // rotate to face input direction relative to camera position
-                _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
-                    Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+            //    // rotate to face input direction relative to camera position
+            //    _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+            //        Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
 
-                _player.transform.rotation = _targetRotation;
+            //    _player.transform.rotation = _targetRotation;
 
-                inputDirection = _targetRotation * Vector3.forward;
-            }
+            //    inputDirection = _targetRotation * Vector3.forward;
+            //}
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -4,6 +4,7 @@ using UnityEngine;
 using Bladesmiths.Capstone.Enums;
 using Bladesmiths.Capstone.Testing;
 using StarterAssets;
+using System.Linq;
 
 namespace Bladesmiths.Capstone
 {
@@ -56,51 +57,32 @@ namespace Bladesmiths.Capstone
         private Vector3 inputDirection;
         private float rotationVelocity;
 
-
-        //public PlayerState_DODGE(Player player, PlayerInputsScript input, Animator animator, LayerMask layers)
-        //{
-        //    _player = player;
-        //    _input = input;
-        //    _animator = animator;
-        //    GroundLayers = layers;
-        //    id = PlayerCondition.F_Dodging;
-        //    canDmg = true;
-        //}
-
         public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateMove(animator, stateInfo, layerIndex);
 
-
-            if (_input.move == Vector2.zero && _input.dodge)
+            if (_input.dodge)
             {
-                _targetRotation = _player.transform.eulerAngles.y;
+                if (_input.move == Vector2.zero)
+                {
+                    _targetRotation = _player.transform.eulerAngles.y;
 
-                inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.back;
-
-
-            }
-            else if(_input.move != Vector2.zero && _input.dodge)
-            {
-                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
-
-                // rotate to face input direction relative to camera position
-                _targetRotation = Mathf.Atan2(inputMove.x, inputMove.z) * Mathf.Rad2Deg + camera.transform.localEulerAngles.y;
-                //float rotation = Mathf.SmoothDampAngle(animator.transform.eulerAngles.y, _targetRotation, ref rotationVelocity, .01f);
-
-                _player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
-                //animator.transform.eulerAngles = new Vector3(0, _targetRotation, 0.0f);
-                //_controller.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
-                Debug.Log(_targetRotation);
+                    inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.back;
 
 
+                }
+                else if (_input.move != Vector2.zero)
+                {
+                    Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-                //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 0.2f);
+                    // rotate to face input direction relative to camera position
+                    _targetRotation = Mathf.Atan2(inputMove.x, inputMove.z) * Mathf.Rad2Deg + camera.transform.localEulerAngles.y;
 
-                // rotate to face input direction relative to camera position
+                    _player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
+                    
+                    inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
-                inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-
+                }
             }
 
         }

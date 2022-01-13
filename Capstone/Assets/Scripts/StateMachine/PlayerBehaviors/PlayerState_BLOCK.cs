@@ -21,6 +21,7 @@ namespace Bladesmiths.Capstone
         private GameObject camera;
         // The ID of the block paramater in the Player's animator controller
         private int _animIDBlock;
+        private bool entered;
 
         // The block object that notifies if the player has blocked something
         public GameObject playerBlockBox;
@@ -36,6 +37,34 @@ namespace Bladesmiths.Capstone
         //    id = PlayerCondition.F_Blocking;
         //}
 
+        public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            if (entered)
+            {
+                entered = false;
+                // Allows for the player to snap to the direction they are inputting
+                if (_input.move == Vector2.zero)
+                {
+                    _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+
+                    inputDirection = _targetRotation * Vector3.forward;
+                }
+                else if (_input.move != Vector2.zero)
+                {
+                    Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+
+                    // rotate to face input direction relative to camera position
+                    _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+                        Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+
+                    _player.transform.rotation = _targetRotation;
+
+                    inputDirection = _targetRotation * Vector3.forward;
+                }
+            }
+
+        }
+
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) { }
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,30 +77,30 @@ namespace Bladesmiths.Capstone
             //playerBlockBox = _player.transform.GetComponentInChildren<BlockCollision>().gameObject;
             id = PlayerCondition.F_Blocking;
             base.OnStateEnter(animator, stateInfo, layerIndex);
-
+            entered = true;
 
 
             camera = GameObject.FindGameObjectWithTag("MainCamera");
 
-            // Allows for the player to snap to the direction they are inputting
-            if (_input.move == Vector2.zero)
-            {
-                _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+            //// Allows for the player to snap to the direction they are inputting
+            //if (_input.move == Vector2.zero)
+            //{
+            //    _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
 
-                inputDirection = _targetRotation * Vector3.forward;
-            }
-            else
-            {
-                Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+            //    inputDirection = _targetRotation * Vector3.forward;
+            //}
+            //else
+            //{
+            //    Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-                // rotate to face input direction relative to camera position
-                _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
-                    Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+            //    // rotate to face input direction relative to camera position
+            //    _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+            //        Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
 
-                _player.transform.rotation = _targetRotation;
+            //    _player.transform.rotation = _targetRotation;
 
-                inputDirection = _targetRotation * Vector3.forward;
-            }
+            //    inputDirection = _targetRotation * Vector3.forward;
+            //}
 
             // Turns the block detector box on
             playerBlockBox.SetActive(true);
