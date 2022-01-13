@@ -11,6 +11,7 @@ using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
+using Bladesmiths.Capstone.UI;
 using StarterAssets;
 
 namespace Bladesmiths.Capstone
@@ -121,6 +122,7 @@ namespace Bladesmiths.Capstone
         private float points = 0;
         private float maxPoints = 8;
 
+        [SerializeField] private UIManager uiManager;
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
@@ -735,8 +737,10 @@ namespace Bladesmiths.Capstone
             {
                 // Do one time only resets
                 Health = MaxHealth;
+                uiManager.ResetChunks();
                 transform.position = respawnPoint;
                 transform.rotation = Quaternion.Euler(respawnRotation);
+                
             }
             damaged = false; 
 

@@ -8,13 +8,13 @@ public class HealthChunk : MonoBehaviour
     Rigidbody2D chunkRigidbody;
     Image image;
     public bool shattered = false;
-    bool chipped = false;
-    float shatteredTimer = 0f;
+    public bool chipped = false;
+    [SerializeField] float shatteredTimer = 0f;
     float shatteredFadeStart = 1f;
     Vector3 originalPosition;
     float originalScale;
-    bool faded = false;
-    bool growing = false;
+    [SerializeField] bool faded = false;
+    [SerializeField] bool growing = false;
     float growthSpeed = 0.5f;
     float fadeSpeed = 1.0f;
 
@@ -93,7 +93,6 @@ public class HealthChunk : MonoBehaviour
             if (ChangeOpacity(-Time.deltaTime * fadeSpeed) <= 0)
             {
                 InvisibleReset();
-                faded = true;
             }
         }
     }
@@ -112,7 +111,7 @@ public class HealthChunk : MonoBehaviour
     }
 
     /// <summary>
-    /// Fade the chunk's opacity as it flies away after shattering
+    /// Gradually return the chunk to its original size
     /// </summary>
     public void Grow()
     {
@@ -133,7 +132,8 @@ public class HealthChunk : MonoBehaviour
         chunkRigidbody.angularVelocity = 0.0f;
         chunkRigidbody.rotation = 0.0f;
         transform.rotation = Quaternion.Euler(Vector3.zero);
-        UnChip();
+        transform.localScale = new Vector3(originalScale, originalScale, originalScale);
+        SetOpacity(0f);
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ public class HealthChunk : MonoBehaviour
     public void FullReset()
     {
         InvisibleReset();
-        ChangeOpacity(1f);
+        SetOpacity(1f);
         faded = false;
         shattered = false;
         growing = false;
@@ -160,6 +160,17 @@ public class HealthChunk : MonoBehaviour
         GetComponent<Image>().color = tempColor;
 
         return tempColor.a;
+    }
+
+    /// <summary>
+    /// Set the opacity of the chunk's UIImage to a specified value
+    /// </summary>
+    private void SetOpacity(float opacityValue)
+    {
+        Color tempColor = GetComponent<Image>().color;
+        tempColor.a = opacityValue;
+        GetComponent<Image>().color = tempColor;
+
     }
 
     /// <summary>

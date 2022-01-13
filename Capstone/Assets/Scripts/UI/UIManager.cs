@@ -174,55 +174,47 @@ namespace Bladesmiths.Capstone.UI
             int remainingChunks = (int)currentHealth > 100 ? 100 : (int)currentHealth;
             int chipChunks = (int)currentChipDamage;
 
-            //Debug.Log("Player Health: " + remainingChunks);
-            //Debug.Log("Player Chip Health " + chipChunks);
+            Debug.Log("Player Health: " + remainingChunks);
+            Debug.Log("Player Chip Health " + chipChunks);
 
             //Normal health states
             //Player has the same amount of health as before
-            if (remainingChunks == prevHealthChunks)
-            {
+            //if (remainingChunks == prevHealthChunks)
+            //{
 
-            }
-            //Player has taken damage
-            else if (remainingChunks < prevHealthChunks)
-            {
-                ShatterChunks(remainingChunks, chipChunks);
-            }
-            //Player has healed
-            else
-            {
-                UnChipChunks(remainingChunks, chipChunks);
-            }
+            //}
+            ////Player has taken damage
+            //else if (remainingChunks < prevHealthChunks)
+            //{
+            //    ShatterChunks(remainingChunks, chipChunks);
+            //}
+            ////Player has healed
+            //else
+            //{
+            //    UnChipChunks(remainingChunks, chipChunks);
+            //}
 
-            //Chip damage states
-            //Player has the same amount of chip damage as before
-            if (chipChunks == prevChipChunks)
-            {
+            ////Chip damage states
+            ////Player has the same amount of chip damage as before
+            //if (chipChunks == prevChipChunks)
+            //{
 
-            }
-            //Player has taken chip damage
-            else if (chipChunks > prevChipChunks)
-            {
-                ChipChunks(remainingChunks, chipChunks);
-            }
-            //Player has less chip damage than before
-            else
-            {
-                ShatterChunks(remainingChunks, chipChunks);
-                UnChipChunks(remainingChunks, chipChunks);
-            }
+            //}
+            ////Player has taken chip damage
+            //else if (chipChunks > prevChipChunks)
+            //{
+            //    ChipChunks(remainingChunks, chipChunks);
+            //}
+            ////Player has less chip damage than before
+            //else
+            //{
+            //    ShatterChunks(remainingChunks, chipChunks);
+            //    UnChipChunks(remainingChunks, chipChunks);
+            //}
 
-            //Reset all chunks when player respawns
-            if (currentHealth == maxHealth)
-            {
-                for (int i = 0; i < healthBarObjects.Count; i++)
-                {
-                    if (healthBarObjects[i].GetComponent<HealthChunk>().shattered)
-                    {
-                        healthBarObjects[i].GetComponent<HealthChunk>().FullReset();
-                    }
-                }
-            }
+            ShatterChunks(remainingChunks, chipChunks);
+            ChipChunks(remainingChunks, chipChunks);
+            UnChipChunks(remainingChunks, chipChunks);
 
             //Save values for future comparison
             prevHealthChunks = remainingChunks;
@@ -253,6 +245,15 @@ namespace Bladesmiths.Capstone.UI
             for (int i = 0; i < healthChunks; i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().UnChip();
+            }
+        }
+
+        //Reset all chunks to original positions / sizes (usually when player respawns)
+        public void ResetChunks()
+        {
+            foreach (GameObject chunk in healthBarObjects)
+            {
+                chunk.GetComponent<HealthChunk>().FullReset();
             }
         }
 
