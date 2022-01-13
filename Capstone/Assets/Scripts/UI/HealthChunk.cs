@@ -75,7 +75,7 @@ public class HealthChunk : MonoBehaviour
         if (!chipped)
         {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-            image.color = new Color(0.6f, 0.6f, 0.6f, 1.0f);
+            image.color = new Color(0.6f, 0.6f, 0.6f, image.color.a); //Maintain current visibility
             chipped = true;
         }
     }
