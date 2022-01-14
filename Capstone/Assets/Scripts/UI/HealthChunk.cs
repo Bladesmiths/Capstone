@@ -15,7 +15,9 @@ public class HealthChunk : MonoBehaviour
     float originalScale;
     [SerializeField] bool faded = false;
     [SerializeField] bool growing = false;
-    float growthSpeed = 0.5f;
+    [SerializeField] bool healing = false;
+    float growthSpeedChip = 2.5f;
+    float growthSpeedHeal = 2.5f;
     float fadeSpeed = 1.0f;
 
     // Start is called before the first frame update
@@ -25,6 +27,8 @@ public class HealthChunk : MonoBehaviour
         image = GetComponent<Image>();
         originalPosition = transform.position;
         originalScale = transform.localScale.x;
+        image.type = Image.Type.Filled;
+        image.fillMethod = Image.FillMethod.Horizontal;
     }
 
 
@@ -41,6 +45,11 @@ public class HealthChunk : MonoBehaviour
         if (growing)
         {
             Grow();
+        }
+
+        if (healing)
+        {
+            Heal();
         }
     }
 
@@ -104,10 +113,45 @@ public class HealthChunk : MonoBehaviour
     {
         if (chipped)
         {
-            growing = true;
             image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
             chipped = false;
+
+            growing = true;
         }
+    }
+
+    /// <summary>
+    /// Start the process of healing a chunk, transitioning it from invisible to fully visible
+    /// </summary>
+    public void Restore()
+    {
+        if (!chipped)
+        {
+            //VER. 1 - Chunks fill from left to right
+
+            /*
+            InvisibleReset();
+            faded = false;
+            shattered = false;
+            SetOpacity(1f);
+            transform.localScale = new Vector3(originalScale, originalScale, originalScale);
+            image.fillAmount = 0f;
+
+            healing = true;
+            */
+
+            //VER. 2 - Chunks grow from size 0 to full size
+
+
+            InvisibleReset();
+            faded = false;
+            shattered = false;
+            SetOpacity(1f);
+            transform.localScale = new Vector3();
+
+            growing = true;
+        }
+        
     }
 
     /// <summary>
@@ -115,9 +159,20 @@ public class HealthChunk : MonoBehaviour
     /// </summary>
     public void Grow()
     {
-        if (ChangeSize(Time.deltaTime * growthSpeed) >= originalScale)
+        if (ChangeSize(Time.deltaTime * growthSpeedChip) >= originalScale)
         {
             growing = false;
+        }
+    }
+
+    /// <summary>
+    /// Reveal a hidden chunk from left to right. This creates an effect where a healed chunk "grows" from the existing health bar.
+    /// </summary>
+    public void Heal()
+    {
+        if (Fill(Time.deltaTime * growthSpeedHeal) >= 1.0f)
+        {
+            healing = false;
         }
     }
 
@@ -133,6 +188,7 @@ public class HealthChunk : MonoBehaviour
         chunkRigidbody.rotation = 0.0f;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
+        image.fillAmount = 1f;
         SetOpacity(0f);
     }
 
@@ -187,5 +243,16 @@ public class HealthChunk : MonoBehaviour
         }
 
         return transform.localScale.x;
+    }
+
+    /// <summary>
+    /// Add to the chunk's fillAmount to reveal it from left to right
+    /// </summary>
+    /// <returns></returns>
+    private float Fill(float fillChange)
+    {
+        image.fillAmount += fillChange;
+
+        return image.fillAmount;
     }
 }

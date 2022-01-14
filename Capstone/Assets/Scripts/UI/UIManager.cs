@@ -177,44 +177,11 @@ namespace Bladesmiths.Capstone.UI
             Debug.Log("Player Health: " + remainingChunks);
             Debug.Log("Player Chip Health " + chipChunks);
 
-            //Normal health states
-            //Player has the same amount of health as before
-            //if (remainingChunks == prevHealthChunks)
-            //{
-
-            //}
-            ////Player has taken damage
-            //else if (remainingChunks < prevHealthChunks)
-            //{
-            //    ShatterChunks(remainingChunks, chipChunks);
-            //}
-            ////Player has healed
-            //else
-            //{
-            //    UnChipChunks(remainingChunks, chipChunks);
-            //}
-
-            ////Chip damage states
-            ////Player has the same amount of chip damage as before
-            //if (chipChunks == prevChipChunks)
-            //{
-
-            //}
-            ////Player has taken chip damage
-            //else if (chipChunks > prevChipChunks)
-            //{
-            //    ChipChunks(remainingChunks, chipChunks);
-            //}
-            ////Player has less chip damage than before
-            //else
-            //{
-            //    ShatterChunks(remainingChunks, chipChunks);
-            //    UnChipChunks(remainingChunks, chipChunks);
-            //}
-
+            //Modify chunk status (the order of these matters)
             ShatterChunks(remainingChunks, chipChunks);
             ChipChunks(remainingChunks, chipChunks);
             UnChipChunks(remainingChunks, chipChunks);
+            HealChunks(remainingChunks, chipChunks);
 
             //Save values for future comparison
             prevHealthChunks = remainingChunks;
@@ -237,14 +204,26 @@ namespace Bladesmiths.Capstone.UI
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().Chip();
             }
-        }
+        } //BUG HERE when blocking a hit then lifestealing. Health + chipchunks goes over 100? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         //Return chipped health chunks to their normal appearance
+        //This behavior applies when successfully parrying
         private void UnChipChunks(int healthChunks, int chipChunks)
         {
             for (int i = 0; i < healthChunks; i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().UnChip();
+            }
+        }
+
+        //Restore health
+        //This behavior applies when lifestealing
+        //This means invisible chunks need to be made visible
+        private void HealChunks(int healthChunks, int chipChunks)
+        {
+            for (int i = prevHealthChunks; i < healthChunks; i++)
+            {
+                healthBarObjects[i].GetComponent<HealthChunk>().Restore();
             }
         }
 
