@@ -85,19 +85,51 @@ namespace Bladesmiths.Capstone
 
 		public void OnSwitchSword(InputValue value)
         {
+			// Only do things if the radial menu is on
 			if (swordSelectActive)
             {
-				currentSwordType += (int)value.Get<float>();
+				// Get the mouse position from the input
+				Vector2 position = value.Get<Vector2>();
 
-				if (currentSwordType < Enums.SwordType.Quartz)
-                {
-					currentSwordType = Enums.SwordType.Sapphire;
-                }
-				else if (currentSwordType > Enums.SwordType.Sapphire)
-                {
-					currentSwordType = Enums.SwordType.Quartz;
-                }
-			}
+				//Debug.Log(position);
+
+				// Calculate the modified position compared to the center of
+				// the screen and normalize the vector
+				Vector2 positionFromCenter = new Vector2(position.x - (Screen.width / 2.0f),
+					position.y - (Screen.height / 2.0f)).normalized;
+
+				//Debug.Log(positionFromCenter); 
+
+				// Only do this if the input is not zero
+				if (positionFromCenter != Vector2.zero)
+				{
+					// Calculate the angle of input using trig and convert to deg
+					float angle = Mathf.Atan2(positionFromCenter.y, -positionFromCenter.x) * Mathf.Rad2Deg;
+
+					// Move 0 to the space between topaz and sapphire
+					angle += 203.5f;
+
+					// Modify the angle if it isn't in the range (0, 360)
+					if (angle < 0) angle += 360;
+					if (angle > 360) angle -= 360;
+
+					Debug.Log(angle);
+
+					// Update currentSwordType according to angle
+					if (angle > 0 && angle <= 113.5)
+					{
+						currentSwordType = Enums.SwordType.Sapphire;
+					}
+					else if (angle > 113.5 && angle <= 223.5)
+					{
+						currentSwordType = Enums.SwordType.Ruby;
+					}
+					else
+					{
+						currentSwordType = Enums.SwordType.Topaz;
+					}
+				}
+            }
         }
 		
 		public void OnSwitchSwordSpecific(InputValue value)
@@ -205,7 +237,9 @@ namespace Bladesmiths.Capstone
 		public void OpenSwordSelectInput(bool newSwordSelectState)
         {
 			swordSelectActive = newSwordSelectState;
-			
+
+			uiManager.ToggleRadialMenu(swordSelectActive);
+
 			if (swordSelectActive)
             {
 				currentSwordType = player.CurrentSword.SwordType;
@@ -215,7 +249,6 @@ namespace Bladesmiths.Capstone
 				player.SwitchSword(currentSwordType); 
             }
 
-			uiManager.SetMaskActive(swordSelectActive);
 			playerLookCamera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = !swordSelectActive;
         }
         #endregion

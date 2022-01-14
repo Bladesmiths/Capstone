@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 276_Setup
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Scenes/PlayerScene.unity
+  - scenePath: Assets/Scenes/276_PlayerScene.unity
     isActive: 1
     isLoaded: 1
   - scenePath: Assets/Scenes/EnemyScene.unity

@@ -295,7 +295,7 @@ namespace Bladesmiths.Capstone
 
             inputs.player = this;
 
-            currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
+            currentSword = swords[SwordType.Topaz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
 
             ResetChipDamageTimers(); 

@@ -12,7 +12,7 @@ namespace Bladesmiths.Capstone.Enums
     }
     public enum SwordType
     {
-        Quartz, 
+        Topaz, 
         Ruby, 
         Sapphire
     }

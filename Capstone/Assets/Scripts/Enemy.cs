@@ -205,9 +205,13 @@ namespace Bladesmiths.Capstone
 
             Debug.DrawLine(transform.position, rotateVector, Color.red);
 
-            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
-            q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-            transform.rotation = q;            
+            // This is dumb and it probably needs to be changed, but I need to be able to see debug messages
+            if (!float.IsNaN(rotateVector.x)) 
+            {
+                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
+                q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+                transform.rotation = q;
+            }
         }
 
         public void ClearDamaging()
