@@ -479,7 +479,7 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": ""Binding"",
                     ""id"": ""4402bdd2-8d33-47ee-9ee7-efd6ad8711d1"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",

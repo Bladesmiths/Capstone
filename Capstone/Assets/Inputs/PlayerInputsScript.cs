@@ -95,16 +95,17 @@ namespace Bladesmiths.Capstone
 
 				Vector2 positionFromCenter = position; 
 
-				if (uiManager.Inputs.currentControlScheme == "KeyboardMouse")
-				{
-					// Calculate the modified position compared to the center of
-					// the screen and normalize the vector
-					positionFromCenter = new Vector2(position.x - (Screen.width / 2.0f),
-						position.y - (Screen.height / 2.0f)).normalized;
+				// This step doesn't need to happen with controller because we
+				// assume that it's from the center already
+				//if (uiManager.Inputs.currentControlScheme == "KeyboardMouse")
+				//{
+				//	// Calculate the modified position compared to the center of
+				//	// the screen and normalize the vector
+				//	positionFromCenter = new Vector2(position.x - (Screen.width / 2.0f),
+				//		position.y - (Screen.height / 2.0f)).normalized;
 
-					//Debug.Log(positionFromCenter); 
-				}
-
+				//	//Debug.Log(positionFromCenter); 
+				//}
 
 				// Only do this if the input is not zero
 				if (positionFromCenter != Vector2.zero)
