@@ -14,15 +14,15 @@ namespace Bladesmiths.Capstone.UI
     public class UIManager : SerializedMonoBehaviour
     {
         // Fields
-        
-        [TitleGroup("Player")] 
+
+        [TitleGroup("Player")]
         [SerializeField] private Player player;
         [SerializeField] private Cinemachine.CinemachineFreeLook camera;
         private float maxSpeedX;
         private float maxSpeedY;
 
         [SerializeField] private PlayerInput playerInput;
-        
+
         [TitleGroup("HUD")]
         [SerializeField] private TextMeshProUGUI pointsText;
 
@@ -37,7 +37,7 @@ namespace Bladesmiths.Capstone.UI
         [HorizontalGroup("HUD/SecondRow")]
         [BoxGroup("HUD/SecondRow/Sword Select")]
         [SerializeField]
-        private GameObject swordSelectObject; 
+        private GameObject swordSelectObject;
 
         [HorizontalGroup("HUD/SecondRow")]
         [BoxGroup("HUD/SecondRow/Sword Select")]
@@ -66,10 +66,10 @@ namespace Bladesmiths.Capstone.UI
         private Enums.SwordType currentSwordSelect;
         #endregion
 
-        [TitleGroup("Menus")] 
+        [TitleGroup("Menus")]
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject pauseMenu;
-        
+
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject resumeButton;
 
@@ -84,6 +84,8 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject controlsButton;
 
         [SerializeField] private GameObject moveRebindButton;
+
+        public PlayerInput Inputs { get => playerInput; }
 
         // Start is called before the first frame update
         void Start()

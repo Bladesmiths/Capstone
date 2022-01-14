@@ -93,12 +93,18 @@ namespace Bladesmiths.Capstone
 
 				//Debug.Log(position);
 
-				// Calculate the modified position compared to the center of
-				// the screen and normalize the vector
-				Vector2 positionFromCenter = new Vector2(position.x - (Screen.width / 2.0f),
-					position.y - (Screen.height / 2.0f)).normalized;
+				Vector2 positionFromCenter = position; 
 
-				//Debug.Log(positionFromCenter); 
+				if (uiManager.Inputs.currentControlScheme == "KeyboardMouse")
+				{
+					// Calculate the modified position compared to the center of
+					// the screen and normalize the vector
+					positionFromCenter = new Vector2(position.x - (Screen.width / 2.0f),
+						position.y - (Screen.height / 2.0f)).normalized;
+
+					//Debug.Log(positionFromCenter); 
+				}
+
 
 				// Only do this if the input is not zero
 				if (positionFromCenter != Vector2.zero)
@@ -113,7 +119,7 @@ namespace Bladesmiths.Capstone
 					if (angle < 0) angle += 360;
 					if (angle > 360) angle -= 360;
 
-					Debug.Log(angle);
+					//Debug.Log(angle);
 
 					// Update currentSwordType according to angle
 					if (angle > 0 && angle <= 113.5)
