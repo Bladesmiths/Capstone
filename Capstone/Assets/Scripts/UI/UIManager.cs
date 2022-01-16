@@ -78,6 +78,7 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject settingsButton;
 
         [SerializeField] private GameObject graphicsButton;
+        [SerializeField] private GameObject gameplayButton;
         [SerializeField] private GameObject soundButton;
         [SerializeField] private GameObject settingsBackButton;
 
@@ -85,6 +86,9 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject graphicsBackButton;
         [SerializeField] private GameObject soundPanel;
         [SerializeField] private GameObject soundBackButton;
+
+        [SerializeField] private GameObject gameplayPanel;
+        [SerializeField] private GameObject gameplayBackButton;
 
 
         // Start is called before the first frame update
@@ -353,10 +357,23 @@ namespace Bladesmiths.Capstone.UI
             }
         }
 
+        public void ToggleGameplaySettingsMenu()
+        {
+            gameplayPanel.SetActive(!gameplayPanel.activeSelf);
+
+            ToggleSettingsButtons();
+
+            if (gameplayPanel.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(gameplayBackButton);
+            }
+        }
+
         private void ToggleSettingsButtons()
         {
             graphicsButton.SetActive(!graphicsButton.activeSelf);
             soundButton.SetActive(!soundButton.activeSelf);
+            gameplayButton.SetActive(!gameplayButton.activeSelf);
             controlsButton.SetActive(!controlsButton.activeSelf);
             settingsBackButton.SetActive(!settingsBackButton.activeSelf);
 
