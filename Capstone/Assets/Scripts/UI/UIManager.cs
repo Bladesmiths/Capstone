@@ -174,14 +174,23 @@ namespace Bladesmiths.Capstone.UI
             int remainingChunks = (int)currentHealth > 100 ? 100 : (int)currentHealth;
             int chipChunks = (int)currentChipDamage;
 
+            int totalChunks = remainingChunks + chipChunks;
+
+            //In specific situations involving lifesteal + chip damage, health briefly exceeds 100 and causes errors
+            while (totalChunks > 100)
+            {
+                chipChunks -= 1;
+                totalChunks = remainingChunks + chipChunks;
+            }
+
             Debug.Log("Player Health: " + remainingChunks);
             Debug.Log("Player Chip Health " + chipChunks);
 
             //Modify chunk status (the order of these matters)
             ShatterChunks(remainingChunks, chipChunks);
             ChipChunks(remainingChunks, chipChunks);
-            UnChipChunks(remainingChunks, chipChunks);
             HealChunks(remainingChunks, chipChunks);
+            UnChipChunks(remainingChunks, chipChunks);
 
             //Save values for future comparison
             prevHealthChunks = remainingChunks;

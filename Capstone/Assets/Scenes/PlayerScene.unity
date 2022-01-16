@@ -197,6 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &130834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +662,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &14028248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +987,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &51366136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,6 +1263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &69466756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2507,6 +2527,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &111001510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2727,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &121754818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,6 +2931,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &123764398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3074,7 +3109,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770833, y: 1}
+    m_SensorSize: {x: 1.777559, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -3424,6 +3459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &166618661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3803,6 +3843,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &186982518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4062,6 +4107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &192340002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4350,6 +4400,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &196795562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4946,6 +5001,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &278579488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5208,6 +5268,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &307574012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5371,6 +5436,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &319069575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5791,6 +5861,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &338696821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6291,6 +6366,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &359920548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6454,6 +6534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &359934821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6722,6 +6807,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &392015040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6921,6 +7011,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &396032852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7368,7 +7463,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770833, y: 1}
+    m_SensorSize: {x: 1.777559, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -7391,7 +7486,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
+  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7473,6 +7568,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &411386764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7667,6 +7767,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &433384038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7922,6 +8027,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &484373110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8117,6 +8227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &496224003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8280,6 +8395,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &523126325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8519,6 +8639,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &533098161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8964,6 +9089,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &628434734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9127,6 +9257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &629554749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9321,6 +9456,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &642878527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10111,6 +10251,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &673188631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10274,6 +10419,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &673838008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10979,6 +11129,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &707171308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11845,6 +12000,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &747773270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12008,6 +12168,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &755429069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12233,6 +12398,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &766329559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12479,6 +12649,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &777771679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12794,6 +12969,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &807358118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13038,6 +13218,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &822962513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13327,6 +13512,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &832214717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13583,6 +13773,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &850503302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13890,6 +14085,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &887446515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14159,6 +14359,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &899451487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14327,6 +14532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &906411194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14490,6 +14700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &908207514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15112,6 +15327,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &935924203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15398,6 +15618,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &971509776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15968,6 +16193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1016049944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16131,6 +16361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1023606396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16434,6 +16669,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1047834599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16597,6 +16837,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1062123306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17127,6 +17372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1120404347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17295,6 +17545,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1133047203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17458,6 +17713,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1133441355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17749,6 +18009,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1174032826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18370,6 +18635,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1214436598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18564,6 +18834,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1233055018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19024,6 +19299,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1247765458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19819,6 +20099,7 @@ MonoBehaviour:
   GroundedRadius: 0.2
   landTimeout: 0.02
   currentSword: {fileID: 190863860}
+  uiManager: {fileID: 1863759866}
   fade: {fileID: 2083527668}
   hasFadedToBlack: 0
   justDied: 0
@@ -20047,6 +20328,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1279742876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20303,6 +20589,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1306388170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20880,6 +21171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1336688144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21067,6 +21363,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1341945986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21811,6 +22112,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1381065581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22358,6 +22664,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1399392740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22521,6 +22832,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1402293852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22857,6 +23173,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1421635753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23116,6 +23437,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1442983637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23599,6 +23925,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1470407831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23767,6 +24098,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1481457636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23930,6 +24266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1486180832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24098,6 +24439,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1496200150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24331,6 +24677,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1502116097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24822,6 +25173,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1524275208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25205,6 +25561,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1571244890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25693,6 +26054,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1579329056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25856,6 +26222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1583281343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26019,6 +26390,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1588851797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26630,6 +27006,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1626675531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26914,6 +27295,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1659485734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27457,6 +27843,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1683054564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27620,6 +28011,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1694736102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27783,6 +28179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1697392240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27946,6 +28347,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1711375507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28603,7 +29009,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770833, y: 1}
+    m_SensorSize: {x: 1.777559, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -28775,6 +29181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1802402638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28938,6 +29349,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1816755333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29211,6 +29627,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1827014519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29503,6 +29924,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1853534603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29963,6 +30389,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1857337599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30157,6 +30588,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1862349248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31384,6 +31820,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1878865277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32040,6 +32481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1917518550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32617,6 +33063,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1959689890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32780,6 +33231,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1966670737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32943,6 +33399,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &1968240759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33554,6 +34015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2023643947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34336,6 +34802,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2067372021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34792,6 +35263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2070448802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34986,6 +35462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2073317229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35341,6 +35822,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2094772310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35504,6 +35990,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2104691760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35858,7 +36349,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7770833, y: 1}
+    m_SensorSize: {x: 1.777559, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -35963,6 +36454,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2118253673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36156,6 +36652,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shattered: 0
+  chipped: 0
+  shatteredTimer: 0
+  faded: 0
+  growing: 0
+  healing: 0
 --- !u!114 &2133314205
 MonoBehaviour:
   m_ObjectHideFlags: 0
