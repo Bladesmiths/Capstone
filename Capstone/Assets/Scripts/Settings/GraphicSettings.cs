@@ -11,18 +11,6 @@ public class GraphicSettings : MonoBehaviour
 
     [SerializeField] private GameObject resolutionDropdown;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateBrightness()
     {
         brightnessValue.GetComponent<Text>().text = "" + brightnessSlider.GetComponent<Slider>().value;
@@ -34,10 +22,16 @@ public class GraphicSettings : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    public void SetResolution()
+    public void SetQuality(int qualityIndex)
     {
-        string resolution = resolutionDropdown.GetComponent<TMP_Dropdown>().options[resolutionDropdown.GetComponent<TMP_Dropdown>().value].text;
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+    public void SetResolution(int index)
+    {
+        string resolution = resolutionDropdown.GetComponent<TMP_Dropdown>().options[index].text;
         Screen.SetResolution(int.Parse(resolution.Split('x')[0]), int.Parse(resolution.Split('x')[1]), false);
+        Debug.Log(index);
 
     }
 }
