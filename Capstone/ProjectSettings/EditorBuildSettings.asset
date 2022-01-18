@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroCutscene.unity
     guid: 5b666815dba42314b9460d7a25304fa8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerScene.unity
     guid: 47a916cbd84a0ca49859b35dd994a9aa
+  - enabled: 1
+    path: Assets/Scenes/284-PlayerScene.unity
+    guid: fcbbf1401520fbb4c89ad960c642de91
   - enabled: 1
     path: Assets/Scenes/EnemyScene.unity
     guid: a45c850782fe25545b9d3f19256fa8d0
