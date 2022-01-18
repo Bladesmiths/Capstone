@@ -11,6 +11,31 @@ public class GraphicSettings : MonoBehaviour
 
     [SerializeField] private GameObject resolutionDropdown;
 
+    Resolution[] resolutions;
+
+    public void Start()
+    {
+        resolutions = Screen.resolutions;
+
+        resolutionDropdown.GetComponent<TMP_Dropdown>().ClearOptions();
+
+        List<string> options = new List<string>();
+        int currentResIndex = 0;
+        for(int i = 0; i < resolutions.Length; i++)
+        {
+            options.Add(resolutions[i].width + " x " + resolutions[i].height);
+
+            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResIndex = i;
+            }
+        }
+
+        resolutionDropdown.GetComponent<TMP_Dropdown>().AddOptions(options);
+        resolutionDropdown.GetComponent<TMP_Dropdown>().value = currentResIndex;
+        resolutionDropdown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+    }
+
     public void UpdateBrightness()
     {
         brightnessValue.GetComponent<Text>().text = "" + brightnessSlider.GetComponent<Slider>().value;
@@ -29,9 +54,11 @@ public class GraphicSettings : MonoBehaviour
 
     public void SetResolution(int index)
     {
-        string resolution = resolutionDropdown.GetComponent<TMP_Dropdown>().options[index].text;
-        Screen.SetResolution(int.Parse(resolution.Split('x')[0]), int.Parse(resolution.Split('x')[1]), false);
-        Debug.Log(index);
+        Resolution activeResolution = resolutions[index];
+        Screen.SetResolution(activeResolution.width, activeResolution.height, Screen.fullScreen);
+        //string resolution = resolutionDropdown.GetComponent<TMP_Dropdown>().options[index].text;
+        //Screen.SetResolution(int.Parse(resolution.Split('x')[0]), int.Parse(resolution.Split('x')[1]), false);
+        //Debug.Log(index);
 
     }
 }
