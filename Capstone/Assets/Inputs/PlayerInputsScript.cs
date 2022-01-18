@@ -26,7 +26,13 @@ namespace Bladesmiths.Capstone
 		public bool analogMovement;
 
 		[Header("UI Objects")]
-		public UI.UIManager uiManager; 
+		public UI.UIManager uiManager;
+
+		[Header("Animation")]
+		public Animator animator;
+		private int _animIDBlock;
+		private int _animIDDodge;
+		private int _animIDAttack;
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -185,6 +191,9 @@ namespace Bladesmiths.Capstone
 		public void AttackInput(bool newAttackState)
 		{
 			attack = newAttackState;
+			_animIDAttack = Animator.StringToHash("Attack");
+
+			animator.SetBool(_animIDAttack, attack);
 		}
 
 		public void ParryInput(bool newParryState)
@@ -195,11 +204,20 @@ namespace Bladesmiths.Capstone
 		public void BlockInput(bool newBlockState)
         {
 			block = newBlockState;
-        }
+
+			// Assign block paramater id
+			_animIDBlock = Animator.StringToHash("Block");
+
+			animator.SetBool(_animIDBlock, block);
+		}
 
 		public void DodgeInput(bool newDodgeRollState)
 		{
 			dodge = newDodgeRollState;
+
+			_animIDDodge = Animator.StringToHash("Dodge");
+
+			animator.SetBool(_animIDDodge, dodge);
 		}
 
 		public void OpenSwordSelectInput(bool newSwordSelectState)
