@@ -131,6 +131,7 @@ namespace Bladesmiths.Capstone
         private int animIDMotionSpeed;
         private int animIDBlock;
         private int animIDDodge;
+        private int animIDMoving;
 
         private float animBlend;
         private bool hasAnimator;
@@ -218,6 +219,7 @@ namespace Bladesmiths.Capstone
             animIDAttack = Animator.StringToHash("Attack");
             animIDBlock = Animator.StringToHash("Block");
             animIDDodge = Animator.StringToHash("Dodge");
+            animIDMoving = Animator.StringToHash("Moving");
             animBlend = 0;
             dodgeTimer = 0;
             canDmg = true;
@@ -340,6 +342,8 @@ namespace Bladesmiths.Capstone
             animator.SetBool(animIDForward, false);
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
+            animator.SetBool(animIDMoving, false);
+
         }
 
         /// <summary>
@@ -376,6 +380,7 @@ namespace Bladesmiths.Capstone
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
+
 
             // Animator input
             // animator.SetFloat(animIDForward, speed / targetSpeed);

@@ -21,12 +21,14 @@ namespace Bladesmiths.Capstone
         private PlayerInputsScript _input;
         private Animator _animator;
         private bool hasAnimator;
+        private float speed;
 
         private int _animIDSpeed;
         private int _animIDDodge;
         private int _animIDMotionSpeed;
         private int _animIDForward;
         private int _animIDDodgeMove;
+        private int animIDMoving;
         private float animBlend;
         private bool _hasAnimator;
         private CharacterController _controller;
@@ -68,6 +70,9 @@ namespace Bladesmiths.Capstone
                     _targetRotation = _player.transform.eulerAngles.y;
 
                     inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.back;
+                    speed = 0f;
+
+                    animator.SetBool(animIDMoving, false);
 
 
                 }
@@ -77,10 +82,11 @@ namespace Bladesmiths.Capstone
 
                     // rotate to face input direction relative to camera position
                     _targetRotation = Mathf.Atan2(inputMove.x, inputMove.z) * Mathf.Rad2Deg + camera.transform.localEulerAngles.y;
-
+                    speed = 10f;
                     _player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
                     
                     inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+                    animator.SetBool(animIDMoving, false);
 
                 }
             }
@@ -89,7 +95,8 @@ namespace Bladesmiths.Capstone
 
         public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
         {
-            
+            animIDMoving = Animator.StringToHash("Moving");
+
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -114,7 +121,7 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
-            float targetSpeed = 10;
+            float targetSpeed = speed;
 
             // a reference to the players current horizontal velocity
             currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;

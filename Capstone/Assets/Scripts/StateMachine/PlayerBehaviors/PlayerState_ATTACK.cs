@@ -88,9 +88,9 @@ namespace Bladesmiths.Capstone
 
         public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
         {
-            _animDurations.Add(SwordType.Quartz, animator.runtimeAnimatorController.animationClips.
+            _animDurations.Add(SwordType.Topaz, animator.runtimeAnimatorController.animationClips.
                 Where(clip => clip.name == "Sword And Shield Slash 2").ToArray()[0].
-                length / _player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Quartz]);
+                length / _player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Topaz]);
             _animDurations.Add(SwordType.Ruby, animator.runtimeAnimatorController.animationClips.
                 Where(clip => clip.name == "Ruby Slash_Colliders").ToArray()[0].
                 length / _player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Ruby]);
