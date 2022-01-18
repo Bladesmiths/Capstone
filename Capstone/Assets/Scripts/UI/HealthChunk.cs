@@ -102,6 +102,8 @@ public class HealthChunk : MonoBehaviour
             if (ChangeOpacity(-Time.deltaTime * fadeSpeed) <= 0)
             {
                 InvisibleReset();
+                faded = true;
+                shatteredTimer = 0;
             }
         }
     }
@@ -141,8 +143,8 @@ public class HealthChunk : MonoBehaviour
             */
 
             //VER. 2 - Chunks grow from size 0 to full size
-
-
+            //We voted that this one was the better of the two
+            
             InvisibleReset();
             faded = false;
             shattered = false;
@@ -150,6 +152,7 @@ public class HealthChunk : MonoBehaviour
             transform.localScale = new Vector3();
 
             growing = true;
+            
         }
         
     }
@@ -188,6 +191,8 @@ public class HealthChunk : MonoBehaviour
         chunkRigidbody.rotation = 0.0f;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
+        //Unchip here
+        chipped = false;
         image.fillAmount = 1f;
         SetOpacity(0f);
     }
