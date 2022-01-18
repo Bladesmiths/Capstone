@@ -68,7 +68,7 @@ namespace Bladesmiths.Capstone
                 OnStateChange();
             }
 
-            Debug.Log(currentState);
+            //Debug.Log(currentState);
 
             possibleTransitions.TryGetValue(currentState.GetType(), out currentTransitions);
             if (currentTransitions == null)
