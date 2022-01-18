@@ -40,7 +40,8 @@ namespace Bladesmiths.Capstone
         public float Health 
         { 
             get => currentHealth; 
-            set => currentHealth = Mathf.Max(value, 0);
+            //Make sure current health is never below zero or over max health
+            set => currentHealth = Mathf.Min(Mathf.Max(value, 0), MaxHealth);
         }
         public float MaxHealth { get => maxHealth; set => maxHealth = value; }
         public List<int> DamagingObjectIDs { get => damagingObjectIDs; }

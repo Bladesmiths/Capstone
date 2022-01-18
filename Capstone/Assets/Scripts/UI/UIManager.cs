@@ -176,6 +176,8 @@ namespace Bladesmiths.Capstone.UI
 
             int totalChunks = remainingChunks + chipChunks;
 
+            Debug.Log("Health Raw Value: " + currentHealth);
+
             //In specific situations involving lifesteal + chip damage, health briefly exceeds 100 and causes errors
             while (totalChunks > 100)
             {

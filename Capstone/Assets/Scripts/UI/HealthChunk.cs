@@ -193,6 +193,7 @@ public class HealthChunk : MonoBehaviour
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
         //Unchip here
         chipped = false;
+        shattered = false;
         image.fillAmount = 1f;
         SetOpacity(0f);
     }
