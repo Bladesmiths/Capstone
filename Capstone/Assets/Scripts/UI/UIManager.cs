@@ -160,9 +160,9 @@ namespace Bladesmiths.Capstone.UI
         /// <param name="maxHealth"></param>
         private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
-            //This code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
-            //There are currently some rounding issues where a single chunk will be added to the health bar seemingly at random.
+            //This commented out code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
             //For now the raw health values are being used directly because the player has 100 health and the UI has 100 chunks.
+            
             //float healthAndChipPercentage = (currentHealth + currentChipDamage) / maxHealth;
             //float currentHealthPercentage = currentHealth / maxHealth;
             //float chipHealthPercentage = healthAndChipPercentage - currentHealthPercentage;
@@ -179,6 +179,7 @@ namespace Bladesmiths.Capstone.UI
             Debug.Log("Health Raw Value: " + currentHealth);
 
             //In specific situations involving lifesteal + chip damage, health briefly exceeds 100 and causes errors
+            //If this happens, reduce the number of chipped chunks to make an even 100 total
             while (totalChunks > 100)
             {
                 chipChunks -= 1;
@@ -215,7 +216,7 @@ namespace Bladesmiths.Capstone.UI
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().Chip();
             }
-        } //BUG HERE when blocking a hit then lifestealing. Health + chipchunks goes over 100? @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        }
 
         //Return chipped health chunks to their normal appearance
         //This behavior applies when successfully parrying

@@ -7,20 +7,22 @@ public class HealthChunk : MonoBehaviour
 {
     Rigidbody2D chunkRigidbody;
     Image image;
+    Vector3 originalPosition;
+    float originalScale;
+
     public bool shattered = false;
     public bool chipped = false;
     [SerializeField] float shatteredTimer = 0f;
-    float shatteredFadeStart = 1f;
-    Vector3 originalPosition;
-    float originalScale;
     [SerializeField] bool faded = false;
     [SerializeField] bool growing = false;
-    [SerializeField] bool healing = false;
-    float growthSpeedChip = 2.5f;
-    float growthSpeedHeal = 2.5f;
+    float shatteredFadeStart = 1f;  
+    float growthSpeedChip = 0.6f;
+    float growthSpeedFull = 3.0f;
     float fadeSpeed = 1.0f;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Get references to components and save the chunk's original status so it can be reset later
+    /// </summary>
     void Start()
     {
         chunkRigidbody = GetComponent<Rigidbody2D>();
@@ -33,7 +35,7 @@ public class HealthChunk : MonoBehaviour
 
 
     /// <summary>
-    /// Continue fading the chunk if it should be fading
+    /// Continue fading / growing the chunk over time
     /// </summary>
     void Update()
     {
@@ -45,11 +47,6 @@ public class HealthChunk : MonoBehaviour
         if (growing)
         {
             Grow();
-        }
-
-        if (healing)
-        {
-            Heal();
         }
     }
 
@@ -116,8 +113,6 @@ public class HealthChunk : MonoBehaviour
         if (chipped)
         {
             image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
-            chipped = false;
-
             growing = true;
         }
     }
@@ -127,34 +122,16 @@ public class HealthChunk : MonoBehaviour
     /// </summary>
     public void Restore()
     {
-        if (!chipped)
-        {
-            //VER. 1 - Chunks fill from left to right
-
-            /*
-            InvisibleReset();
-            faded = false;
-            shattered = false;
-            SetOpacity(1f);
-            transform.localScale = new Vector3(originalScale, originalScale, originalScale);
-            image.fillAmount = 0f;
-
-            healing = true;
-            */
-
-            //VER. 2 - Chunks grow from size 0 to full size
-            //We voted that this one was the better of the two
-            
+        if (!chipped || shattered)
+        {           
             InvisibleReset();
             faded = false;
             shattered = false;
             SetOpacity(1f);
             transform.localScale = new Vector3();
 
-            growing = true;
-            
-        }
-        
+            growing = true;           
+        }       
     }
 
     /// <summary>
@@ -162,39 +139,44 @@ public class HealthChunk : MonoBehaviour
     /// </summary>
     public void Grow()
     {
-        if (ChangeSize(Time.deltaTime * growthSpeedChip) >= originalScale)
+        float growthSpeed;
+
+        //Chunks grow more quickly if fully regrowing
+        //This results in chip / full regrowth taking roughly equal amounts of time
+        if (chipped)
+        {
+            growthSpeed = growthSpeedChip;
+        }
+        else
+        {
+            growthSpeed = growthSpeedFull;
+        }
+
+        //Once a chunk returns to its original size, stop growing
+        if (ChangeSize(Time.deltaTime * growthSpeed) >= originalScale)
         {
             growing = false;
+            chipped = false;
         }
     }
 
     /// <summary>
-    /// Reveal a hidden chunk from left to right. This creates an effect where a healed chunk "grows" from the existing health bar.
-    /// </summary>
-    public void Heal()
-    {
-        if (Fill(Time.deltaTime * growthSpeedHeal) >= 1.0f)
-        {
-            healing = false;
-        }
-    }
-
-    /// <summary>
-    /// Reset a hidden / faded chunk to its original position while keeping shattered status
+    /// Reset a hidden / faded chunk to its original position while keeping it invisible
     /// </summary>
     public void InvisibleReset()
     {
-        transform.position = originalPosition;
-        chunkRigidbody.gravityScale = 0.0f;
-        chunkRigidbody.velocity = Vector3.zero;
+        //Reset rigidbody
+        chunkRigidbody.velocity = Vector2.zero;
         chunkRigidbody.angularVelocity = 0.0f;
         chunkRigidbody.rotation = 0.0f;
+        chunkRigidbody.gravityScale = 0.0f;
+
+        //Reset chunk location, size, color, etc.
+        transform.position = originalPosition;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
-        //Unchip here
+        image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
         chipped = false;
-        shattered = false;
-        image.fillAmount = 1f;
         SetOpacity(0f);
     }
 
@@ -206,8 +188,8 @@ public class HealthChunk : MonoBehaviour
         InvisibleReset();
         SetOpacity(1f);
         faded = false;
-        shattered = false;
         growing = false;
+        shattered = false;
     }
 
     /// <summary>
@@ -249,16 +231,5 @@ public class HealthChunk : MonoBehaviour
         }
 
         return transform.localScale.x;
-    }
-
-    /// <summary>
-    /// Add to the chunk's fillAmount to reveal it from left to right
-    /// </summary>
-    /// <returns></returns>
-    private float Fill(float fillChange)
-    {
-        image.fillAmount += fillChange;
-
-        return image.fillAmount;
     }
 }
