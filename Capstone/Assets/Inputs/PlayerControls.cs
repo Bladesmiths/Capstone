@@ -514,7 +514,7 @@ namespace Bladesmiths.Capstone
                     ""id"": ""23f037c6-c45a-4afe-998b-2260105be9cb"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": ""StickDeadzone,ScaleVector2(x=10,y=10)"",
                     ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
                     ""action"": ""Switch Sword"",
                     ""isComposite"": false,

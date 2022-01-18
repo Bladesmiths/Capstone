@@ -89,29 +89,15 @@ namespace Bladesmiths.Capstone
 			if (swordSelectActive)
             {
 				// Get the mouse position from the input
-				Vector2 position = value.Get<Vector2>();
-
-				//Debug.Log(position);
-
-				Vector2 positionFromCenter = position; 
-
-				// This step doesn't need to happen with controller because we
-				// assume that it's from the center already
-				//if (uiManager.Inputs.currentControlScheme == "KeyboardMouse")
-				//{
-				//	// Calculate the modified position compared to the center of
-				//	// the screen and normalize the vector
-				//	positionFromCenter = new Vector2(position.x - (Screen.width / 2.0f),
-				//		position.y - (Screen.height / 2.0f)).normalized;
-
-				//	//Debug.Log(positionFromCenter); 
-				//}
+				Vector2 delta = value.Get<Vector2>();
 
 				// Only do this if the input is not zero
-				if (positionFromCenter != Vector2.zero)
+				// And if the magnitude of the vector is larger than a certain
+				// value so that we can verify the delta is purposeful
+				if (delta != Vector2.zero && delta.sqrMagnitude >= 50)
 				{
 					// Calculate the angle of input using trig and convert to deg
-					float angle = Mathf.Atan2(positionFromCenter.y, -positionFromCenter.x) * Mathf.Rad2Deg;
+					float angle = Mathf.Atan2(delta.y, -delta.x) * Mathf.Rad2Deg;
 
 					// Move 0 to the space between topaz and sapphire
 					angle += 203.5f;
