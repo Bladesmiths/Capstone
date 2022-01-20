@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Sirenix.Serialization;
+using UnityEngine.SceneManagement;
 
 namespace Bladesmiths.Capstone.UI
 {
@@ -81,6 +82,7 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject gameplayButton;
         [SerializeField] private GameObject soundButton;
         [SerializeField] private GameObject settingsBackButton;
+        [SerializeField] private GameObject quitToMenuButton;
 
         [SerializeField] private GameObject graphicsPanel;
         [SerializeField] private GameObject graphicsBackButton;
@@ -376,11 +378,17 @@ namespace Bladesmiths.Capstone.UI
             gameplayButton.SetActive(!gameplayButton.activeSelf);
             controlsButton.SetActive(!controlsButton.activeSelf);
             settingsBackButton.SetActive(!settingsBackButton.activeSelf);
+            quitToMenuButton.SetActive(!quitToMenuButton.activeSelf);
 
             if (graphicsButton.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(graphicsButton);
             }
+        }
+
+        public void QuitToMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
