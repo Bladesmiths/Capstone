@@ -46,9 +46,9 @@ namespace Bladesmiths.Capstone
             _sword = sword;
             id = PlayerCondition.F_Attacking;
 
-            _animDurations.Add(SwordType.Quartz, animator.runtimeAnimatorController.animationClips.
+            _animDurations.Add(SwordType.Topaz, animator.runtimeAnimatorController.animationClips.
                 Where(clip => clip.name == "Sword And Shield Slash 2").ToArray()[0].
-                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Quartz]);
+                length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Topaz]);
             _animDurations.Add(SwordType.Ruby, animator.runtimeAnimatorController.animationClips.
                 Where(clip => clip.name == "Ruby Slash_Colliders").ToArray()[0].
                 length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Ruby]);

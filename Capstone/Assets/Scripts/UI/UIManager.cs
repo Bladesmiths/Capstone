@@ -14,15 +14,15 @@ namespace Bladesmiths.Capstone.UI
     public class UIManager : SerializedMonoBehaviour
     {
         // Fields
-        
-        [TitleGroup("Player")] 
+
+        [TitleGroup("Player")]
         [SerializeField] private Player player;
         [SerializeField] private Cinemachine.CinemachineFreeLook camera;
         private float maxSpeedX;
         private float maxSpeedY;
 
         [SerializeField] private PlayerInput playerInput;
-        
+
         [TitleGroup("HUD")]
         [SerializeField] private TextMeshProUGUI pointsText;
 
@@ -33,32 +33,43 @@ namespace Bladesmiths.Capstone.UI
         [OdinSerialize]
         private List<GameObject> healthBarObjects = new List<GameObject>();
 
+        #region Sword Select Fields
         [HorizontalGroup("HUD/SecondRow")]
-        [VerticalGroup("HUD/SecondRow/Left")]
-        [BoxGroup("HUD/SecondRow/Left/Gem Sizes")]
+        [BoxGroup("HUD/SecondRow/Sword Select")]
+        [SerializeField]
+        private GameObject swordSelectObject;
+
+        [HorizontalGroup("HUD/SecondRow")]
+        [BoxGroup("HUD/SecondRow/Sword Select")]
         [SerializeField] private float activeSize;
-        [BoxGroup("HUD/SecondRow/Left/Gem Sizes")]
+        [BoxGroup("HUD/SecondRow/Sword Select")]
         [SerializeField] private float inactiveSize;
 
-        [HorizontalGroup("HUD/ThirdRow")] [BoxGroup("HUD/ThirdRow/Gem Images")] [LabelWidth(70)]
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")] [LabelWidth(70)]
         [OdinSerialize]
         private Dictionary<Enums.SwordType, Sprite> inactiveGemSprites = new Dictionary<Enums.SwordType, Sprite>();
-        [HorizontalGroup("HUD/ThirdRow")] [BoxGroup("HUD/ThirdRow/Gem Images")]
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
         [OdinSerialize]
         private Dictionary<Enums.SwordType, Sprite> activeGemSprites = new Dictionary<Enums.SwordType, Sprite>();
-        [HorizontalGroup("HUD/ThirdRow")] [BoxGroup("HUD/ThirdRow/Gem Images")]
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
         [OdinSerialize]
         private Dictionary<Enums.SwordType, Image> gemImages = new Dictionary<Enums.SwordType, Image>();
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
+        [OdinSerialize]
+        private Dictionary<Enums.SwordType, Color> backgroundColors = new Dictionary<Enums.SwordType, Color>();
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
+        [OdinSerialize]
+        private Dictionary<Enums.SwordType, Image> backgroundImages = new Dictionary<Enums.SwordType, Image>();
 
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
         [SerializeField]
-        private GameObject swordSelectMask; 
-        [SerializeField]
-        private Enums.SwordType currentSwordSelect; 
+        private Enums.SwordType currentSwordSelect;
+        #endregion
 
-        [TitleGroup("Menus")] 
+        [TitleGroup("Menus")]
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject pauseMenu;
-        
+
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject resumeButton;
 
@@ -73,6 +84,8 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject controlsButton;
 
         [SerializeField] private GameObject moveRebindButton;
+
+        public PlayerInput Inputs { get => playerInput; }
 
         // Start is called before the first frame update
         void Start()
@@ -101,7 +114,11 @@ namespace Bladesmiths.Capstone.UI
             {
                 UpdateHealth(player.Health, player.ChipDamageTotal, player.MaxHealth);
                 UpdateScore(player.Points, player.MaxPoints);
-                UpdateSwordSelect(player.Inputs.currentSwordType);
+
+                if (swordSelectObject.activeInHierarchy)
+                {
+                    UpdateSwordSelect(player.Inputs.currentSwordType);
+                }
             }
         }
 
@@ -254,23 +271,58 @@ namespace Bladesmiths.Capstone.UI
             pointsText.text = displayScoreText.Trim();
         }
 
+        /// <summary>
+        /// Update the sword select
+        /// Made to be called every frame it should be open
+        /// </summary>
+        /// <param name="currentSwordType"></param>
         private void UpdateSwordSelect(Enums.SwordType currentSwordType)
         {
+            // Only update if the new sword type isn't the old one
             if (currentSwordSelect != currentSwordType)
             {
-                gemImages[currentSwordSelect].sprite = inactiveGemSprites[currentSwordSelect];
-                gemImages[currentSwordSelect].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
+                // Set the background of the old one to white
+                backgroundImages[currentSwordSelect].color = Color.white;
 
-                gemImages[currentSwordType].sprite = activeGemSprites[currentSwordType];
-                gemImages[currentSwordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize); 
+                // Set the background of the new one to its color
+                backgroundImages[currentSwordType].color = backgroundColors[currentSwordType];
 
+                // Update the field
                 currentSwordSelect = currentSwordType;
             }
         }
 
-        public void SetMaskActive(bool active)
+        /// <summary>
+        /// Toggle the radial menu on or off
+        /// </summary>
+        /// <param name="active">Whether the radial menu should be active or not0</param>
+        public void ToggleRadialMenu(bool active)
         {
-            swordSelectMask.SetActive(active);
+            // Only update appearance of sword select if it should be active
+            if (active)
+            {
+                // Loop through all gem types
+                foreach (Enums.SwordType swordType in gemImages.Keys)
+                {
+                    // If the sword type is the currently selected one
+                    // Set it to the active values
+                    if (swordType == currentSwordSelect)
+                    {
+                        gemImages[swordType].sprite = activeGemSprites[swordType];
+                        gemImages[swordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize);
+                        backgroundImages[swordType].color = backgroundColors[swordType];
+                    }
+                    // Otherwise set it to inactive values
+                    else
+                    {
+                        gemImages[swordType].sprite = inactiveGemSprites[swordType];
+                        gemImages[swordType].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
+                        backgroundImages[swordType].color = Color.white;
+                    }
+                }
+            }
+
+            swordSelectObject.SetActive(active);
         }
 
         public void ToggleControlsMenu()

@@ -20,13 +20,7 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsIdle() => () => gameObject.GetComponent<CharacterController>().velocity.magnitude <= 0;
 
-        /// <summary>
-        /// The condition for going between the MOVE and IDLE states
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsCombatIdle() => () => (attack.Timer >= 
-            attack.AnimDurations[currentSword.SwordType]) && !inputs.parry; // Attack Timer conditional should be compared to length of animation
-
+        
         /// <summary>
         /// The condition for going between the IDLE and BLOCK state
         /// </summary>
@@ -69,23 +63,14 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> IsDamaged() => () => damaged && Health > 0;
 
-        /// <summary>
-        /// The condition for having been attacked
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsAbleToDamage() => () => takeDamage.Timer >= takeDamage.AnimDuration;
+        
 
         /// <summary>
         /// The condition for going from MOVE to DODGE state
         /// </summary>
         public Func<bool> IsDodging() => () => inputs.dodge && controller.isGrounded;
 
-        /// <summary>
-        /// The condition for going from DODGE to MOVE state
-        /// </summary>
-        /// <returns></returns>
-        // TODO: Should implement something like when dodging animation stops
-        public Func<bool> IsDodgingStopped() => () => dodge.timer >= 1.1f / 1.5f;
+        
 
         /// <summary>
         /// The condition for having been attacked
@@ -93,14 +78,7 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public Func<bool> Dead() => () => damaged && Health <= 0;
 
-        /// <summary>
-        /// Checks if the player is grounded
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsGrounded() => () =>
-        {
-            return gameObject.GetComponent<CharacterController>().isGrounded && jump.LandTimeoutDelta <= 0.0f;
-        };
+        
 
         /// <summary>
         /// Checks to see if the jump button has been pressed

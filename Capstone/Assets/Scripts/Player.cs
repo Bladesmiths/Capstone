@@ -51,24 +51,12 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private Vector3 respawnRotation;
 
+        public bool canDmg;
+
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
-        #region Player FSM States
-        private PlayerFSMState_PARRYATTEMPT parryAttempt;
-        private PlayerFSMState_PARRYSUCCESS parrySuccess;
-        private PlayerFSMState_IDLE idleCombat;
-
-
-        private PlayerFSMState_ATTACK attack;
-        private PlayerFSMState_DEATH death;
-        private PlayerFSMState_TAKEDAMAGE takeDamage;
-        private PlayerFSMState_DODGE dodge;
-        private PlayerFSMState_JUMP jump;
-        private PlayerFSMState_BLOCK block;
-        private PlayerFSMState_NULL nullState;
-        #endregion
-
+       
         private TargetLock targetLock;
 
         #region State Fields
@@ -139,6 +127,14 @@ namespace Bladesmiths.Capstone
         private int animIDGrounded;
         private int animIDJump;
         private int animIDFreeFall;
+        private int animIDDamaged;
+        private int animIDSpeed;
+        private int animIDAttack;
+        private int animIDMotionSpeed;
+        private int animIDBlock;
+        private int animIDDodge;
+        private int animIDMoving;
+
         private float animBlend;
         private bool hasAnimator;
         private CharacterController controller;
@@ -222,8 +218,13 @@ namespace Bladesmiths.Capstone
             Health = 1000;
             animator = GetComponent<Animator>();
             animIDForward = Animator.StringToHash("Forward");
+            animIDAttack = Animator.StringToHash("Attack");
+            animIDBlock = Animator.StringToHash("Block");
+            animIDDodge = Animator.StringToHash("Dodge");
+            animIDMoving = Animator.StringToHash("Moving");
             animBlend = 0;
             dodgeTimer = 0;
+            canDmg = true;
 
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
@@ -235,6 +236,8 @@ namespace Bladesmiths.Capstone
             animIDGrounded = Animator.StringToHash("Grounded");
             animIDJump = Animator.StringToHash("Jump");
             animIDFreeFall = Animator.StringToHash("FreeFall");
+            animIDDamaged = Animator.StringToHash("Damaged");
+
 
             LandTimeoutDelta = -1.0f;
 
@@ -251,53 +254,21 @@ namespace Bladesmiths.Capstone
             FSM = new FiniteStateMachine();
 
             // Subscribe to the FSM's OnStateChange event
-            FSM.OnStateChange += SpeedUpdate;
+            //FSM.OnStateChange += SpeedUpdate;
 
             // Subscribing parry collision to block collision events to keep those fields updated
             blockDetector.GetComponent<BlockCollision>().OnBlock += BlockOccured;
             parryDetector.GetComponent<ParryCollision>().Player = this;
 
-            // Creates all of the states
-            parryAttempt = new PlayerFSMState_PARRYATTEMPT(this, inputs, animator, parryDetector);
-            parrySuccess = new PlayerFSMState_PARRYSUCCESS(this, inputs, animator, parryDetector);
-            block = new PlayerFSMState_BLOCK(this, inputs, animator, sword, blockDetector);
-            idleCombat = new PlayerFSMState_IDLE(animator);
-            attack = new PlayerFSMState_ATTACK(this, inputs, animator, sword);
-            death = new PlayerFSMState_DEATH(this, animator);
-            takeDamage = new PlayerFSMState_TAKEDAMAGE(this, animator);
-            dodge = new PlayerFSMState_DODGE(this, inputs, animator, GroundLayers);
-            jump = new PlayerFSMState_JUMP(this, inputs, GroundLayers, landTimeout);
-            nullState = new PlayerFSMState_NULL();
-
-            // Adds all of the possible transitions
-            FSM.AddTransition(idleCombat, attack, IsAttacking());
-            FSM.AddTransition(attack, idleCombat, IsCombatIdle());
-            FSM.AddTransition(idleCombat, dodge, IsDodging());
-            FSM.AddTransition(dodge, idleCombat, IsDodgingStopped());
-
-            FSM.AddTransition(idleCombat, block, IsBlockPressed());
-            FSM.AddTransition(block, idleCombat, IsBlockReleased());
-            FSM.AddTransition(idleCombat, parryAttempt, IsParryPressed());
-            FSM.AddTransition(parryAttempt, parrySuccess, IsParrySuccessful());
-            FSM.AddTransition(parrySuccess, idleCombat, IsParryFinished()); 
-            FSM.AddTransition(parryAttempt, idleCombat, IsParryFinished());
-
 
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
-            FSM.AddAnyTransition(death, Dead());
-
-            FSM.AddAnyTransition(takeDamage, IsDamaged());
-            FSM.AddTransition(takeDamage, idleCombat, IsAbleToDamage());
-
-            // Sets the current state
-            FSM.SetCurrentState(idleCombat);
 
             targetLock = GetComponent<TargetLock>();
 
             inputs.player = this;
 
-            currentSword = swords[SwordType.Quartz].GetComponent<Sword>();
+            currentSword = swords[SwordType.Topaz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
 
             ResetChipDamageTimers(); 
@@ -305,7 +276,7 @@ namespace Bladesmiths.Capstone
 
         private void Update()
         {
-            FSM.Tick();
+            //FSM.Tick();
 
             Jump();
             Move();
@@ -341,13 +312,40 @@ namespace Bladesmiths.Capstone
         /// Runs whenever the state changes in the FSM
         /// Attaches to the Delegate in the class
         /// </summary>
-        private void SpeedUpdate()
-        {
-            // Gets each speed value based off of what state the player is in
-            if (!speedValues.TryGetValue(((PlayerFSMState)FSM.GetCurrentState()).ID, out targetSpeed))
+        public void SpeedUpdate(AnimatorStateInfo stateInfo)
+        {   
+            if (!speedValues.TryGetValue(CheckAnimationBehavior(stateInfo).ID, out targetSpeed))
             {
-                Debug.Log($"Speed Update Failed. Current State is {((PlayerFSMState)FSM.GetCurrentState()).ID}");
+                Debug.Log($"Speed Update Failed. Current State is {CheckAnimationBehavior(stateInfo).ID}");
+            }           
+        }
+
+        /// <summary>
+        /// Checks to see which animation behavior is active
+        /// </summary>
+        /// <param name="stateInfo"></param>
+        /// <returns></returns>
+        public PlayerState_Base CheckAnimationBehavior(AnimatorStateInfo stateInfo)
+        {
+            if (animator.GetBehaviours(stateInfo.fullPathHash, 0).Length != 0)
+            {
+                return (PlayerState_Base)animator.GetBehaviours(stateInfo.fullPathHash, 0)[0];                
             }
+            return null;
+        }
+
+        /// <summary>
+        /// Resets the parameters in the animator
+        /// </summary>
+        public void ResetAnimationParameters()
+        {
+            //animator.SetBool(animIDBlock, false);
+            animator.SetBool(animIDDodge, false);
+            animator.SetBool(animIDForward, false);
+            animator.SetBool(animIDJump, false);
+            animator.SetBool(animIDAttack, false);
+            animator.SetBool(animIDMoving, false);
+
         }
 
         /// <summary>
@@ -384,6 +382,7 @@ namespace Bladesmiths.Capstone
 
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
+
 
             // Animator input
             // animator.SetFloat(animIDForward, speed / targetSpeed);
@@ -613,11 +612,13 @@ namespace Bladesmiths.Capstone
         {
             // If the player is not in invincibility frames
             // They can take damage
-            if (dodge.canDmg)
+            
+
+            if (canDmg)
             {
                 // If the player isn't currently blocking
                 // Apply the damage taken modifier
-                if (GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                if (CheckAnimationBehavior(animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_Blocking)
                 {
                     damage *= currentSword.DamageTakenModifier;
                     ChipDamageTotal = 0;
@@ -747,7 +748,6 @@ namespace Bladesmiths.Capstone
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());
 
-            FSM.SetCurrentState(idleCombat);
         }
 
         public void FadeToBlack()
