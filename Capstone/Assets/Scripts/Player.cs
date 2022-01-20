@@ -121,7 +121,7 @@ namespace Bladesmiths.Capstone
         [Header("Move/Jump Fields")]
         public float timer;
 
-        private Animator animator;
+        public Animator animator;
 
         private int animIDForward;
         private int animIDGrounded;
