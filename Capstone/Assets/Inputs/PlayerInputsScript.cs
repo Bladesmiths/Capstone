@@ -33,6 +33,7 @@ namespace Bladesmiths.Capstone
 		private int _animIDBlock;
 		private int _animIDDodge;
 		private int _animIDAttack;
+		private int _animIDMoving;
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -196,6 +197,11 @@ namespace Bladesmiths.Capstone
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
+
+			_animIDMoving = Animator.StringToHash("Moving");
+
+
+			
 		}
 
 		public void LookInput(Vector2 newLookDirection)
@@ -241,6 +247,15 @@ namespace Bladesmiths.Capstone
 			dodge = newDodgeRollState;
 
 			_animIDDodge = Animator.StringToHash("Dodge");
+			if (move == Vector2.zero)
+			{
+				animator.SetBool(_animIDMoving, false);
+			}
+			else
+			{
+				animator.SetBool(_animIDMoving, true);
+			}
+
 
 			animator.SetBool(_animIDDodge, dodge);
 		}
