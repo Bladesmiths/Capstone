@@ -5,6 +5,7 @@ using Bladesmiths.Capstone.Enums;
 using Bladesmiths.Capstone.Testing;
 using StarterAssets;
 using System.Linq;
+using UnityEditor;
 
 namespace Bladesmiths.Capstone
 {
@@ -14,7 +15,11 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerState_DODGE : PlayerState_Base
     {
+        [SerializeField]
+        private AnimationCurve curve;
+
         public float timer;
+        private float maxTimer;
         public float dmgTimer;
 
         private Player _player;
@@ -54,6 +59,7 @@ namespace Bladesmiths.Capstone
         private GameObject camera;
 
         public bool canDmg = true;
+        private bool backstep = false;
 
         private float currentHorizontalSpeed;
         private Vector3 inputDirection;
@@ -70,7 +76,8 @@ namespace Bladesmiths.Capstone
                     _targetRotation = _player.transform.eulerAngles.y;
 
                     inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.back;
-                    speed = 0f;
+                    speed = 5f;
+                    backstep = true;
 
                     animator.SetBool(animIDMoving, false);
 
@@ -79,14 +86,14 @@ namespace Bladesmiths.Capstone
                 else if (_input.move != Vector2.zero)
                 {
                     Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
-
+                    backstep = false;
                     // rotate to face input direction relative to camera position
                     _targetRotation = Mathf.Atan2(inputMove.x, inputMove.z) * Mathf.Rad2Deg + camera.transform.localEulerAngles.y;
                     speed = 10f;
                     _player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
                     
                     inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-                    animator.SetBool(animIDMoving, false);
+                    animator.SetBool(animIDMoving, true);
 
                 }
             }
@@ -121,6 +128,13 @@ namespace Bladesmiths.Capstone
 
             Vector3 targetDirection = Vector3.zero;
 
+            if(backstep)
+            {
+                speed = speed * curve.Evaluate(timer);
+                
+                Debug.Log(speed);
+            }
+
             float targetSpeed = speed;
 
             // a reference to the players current horizontal velocity
@@ -147,6 +161,8 @@ namespace Bladesmiths.Capstone
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             timer = 0;
+            maxTimer = stateInfo.length;
+            curve.keys[1].time = maxTimer;
             dmgTimer = 0;
             _player.canDmg = false;
             _controller = _player.GetComponent<CharacterController>();

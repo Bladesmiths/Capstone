@@ -201,14 +201,7 @@ namespace Bladesmiths.Capstone
 			_animIDMoving = Animator.StringToHash("Moving");
 
 
-			if (move == Vector2.zero)
-			{
-				animator.SetBool(_animIDMoving, false);
-			}
-			else
-			{
-				animator.SetBool(_animIDMoving, true);
-			}
+			
 		}
 
 		public void LookInput(Vector2 newLookDirection)
@@ -254,7 +247,15 @@ namespace Bladesmiths.Capstone
 			dodge = newDodgeRollState;
 
 			_animIDDodge = Animator.StringToHash("Dodge");
-			
+			if (move == Vector2.zero)
+			{
+				animator.SetBool(_animIDMoving, false);
+			}
+			else
+			{
+				animator.SetBool(_animIDMoving, true);
+			}
+
 
 			animator.SetBool(_animIDDodge, dodge);
 		}
