@@ -55,9 +55,9 @@ namespace Bladesmiths.Capstone
             if (other.transform.GetComponent<Player>())
             {
                 Player player = other.transform.GetComponent<Player>();
-                if (player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt &&
-                    player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParrySuccess &&
-                    player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                if (player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_ParryAttempt &&
+                    player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_ParrySuccess &&
+                    player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_Blocking)
                 {
                     enemy.SwordAttack(player.ID);
                 }

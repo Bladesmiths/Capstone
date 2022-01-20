@@ -177,9 +177,9 @@ namespace Bladesmiths.Capstone.UI
         /// <param name="maxHealth"></param>
         private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
         {
-            //This code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
-            //There are currently some rounding issues where a single chunk will be added to the health bar seemingly at random.
+            //This commented out code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
             //For now the raw health values are being used directly because the player has 100 health and the UI has 100 chunks.
+            
             //float healthAndChipPercentage = (currentHealth + currentChipDamage) / maxHealth;
             //float currentHealthPercentage = currentHealth / maxHealth;
             //float chipHealthPercentage = healthAndChipPercentage - currentHealthPercentage;
@@ -191,55 +191,26 @@ namespace Bladesmiths.Capstone.UI
             int remainingChunks = (int)currentHealth > 100 ? 100 : (int)currentHealth;
             int chipChunks = (int)currentChipDamage;
 
-            //Debug.Log("Player Health: " + remainingChunks);
-            //Debug.Log("Player Chip Health " + chipChunks);
+            int totalChunks = remainingChunks + chipChunks;
 
-            //Normal health states
-            //Player has the same amount of health as before
-            if (remainingChunks == prevHealthChunks)
-            {
+            Debug.Log("Health Raw Value: " + currentHealth);
 
-            }
-            //Player has taken damage
-            else if (remainingChunks < prevHealthChunks)
+            //In specific situations involving lifesteal + chip damage, health briefly exceeds 100 and causes errors
+            //If this happens, reduce the number of chipped chunks to make an even 100 total
+            while (totalChunks > 100)
             {
-                ShatterChunks(remainingChunks, chipChunks);
-            }
-            //Player has healed
-            else
-            {
-                UnChipChunks(remainingChunks, chipChunks);
+                chipChunks -= 1;
+                totalChunks = remainingChunks + chipChunks;
             }
 
-            //Chip damage states
-            //Player has the same amount of chip damage as before
-            if (chipChunks == prevChipChunks)
-            {
+            Debug.Log("Player Health: " + remainingChunks);
+            Debug.Log("Player Chip Health " + chipChunks);
 
-            }
-            //Player has taken chip damage
-            else if (chipChunks > prevChipChunks)
-            {
-                ChipChunks(remainingChunks, chipChunks);
-            }
-            //Player has less chip damage than before
-            else
-            {
-                ShatterChunks(remainingChunks, chipChunks);
-                UnChipChunks(remainingChunks, chipChunks);
-            }
-
-            //Reset all chunks when player respawns
-            if (currentHealth == maxHealth)
-            {
-                for (int i = 0; i < healthBarObjects.Count; i++)
-                {
-                    if (healthBarObjects[i].GetComponent<HealthChunk>().shattered)
-                    {
-                        healthBarObjects[i].GetComponent<HealthChunk>().FullReset();
-                    }
-                }
-            }
+            //Modify chunk status (the order of these matters)
+            ShatterChunks(remainingChunks, chipChunks);
+            ChipChunks(remainingChunks, chipChunks);
+            HealChunks(remainingChunks, chipChunks);
+            UnChipChunks(remainingChunks, chipChunks);
 
             //Save values for future comparison
             prevHealthChunks = remainingChunks;
@@ -265,11 +236,32 @@ namespace Bladesmiths.Capstone.UI
         }
 
         //Return chipped health chunks to their normal appearance
+        //This behavior applies when successfully parrying
         private void UnChipChunks(int healthChunks, int chipChunks)
         {
             for (int i = 0; i < healthChunks; i++)
             {
                 healthBarObjects[i].GetComponent<HealthChunk>().UnChip();
+            }
+        }
+
+        //Restore health
+        //This behavior applies when lifestealing
+        //This means invisible chunks need to be made visible
+        private void HealChunks(int healthChunks, int chipChunks)
+        {
+            for (int i = prevHealthChunks; i < healthChunks; i++)
+            {
+                healthBarObjects[i].GetComponent<HealthChunk>().Restore();
+            }
+        }
+
+        //Reset all chunks to original positions / sizes (usually when player respawns)
+        public void ResetChunks()
+        {
+            foreach (GameObject chunk in healthBarObjects)
+            {
+                chunk.GetComponent<HealthChunk>().FullReset();
             }
         }
 
