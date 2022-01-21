@@ -201,7 +201,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &130834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +665,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &14028248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,7 +989,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &51366136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,7 +1264,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &69466756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,7 +2452,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &111001510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,7 +2651,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &121754818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,7 +2854,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &123764398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3109,7 +3102,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7764298, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -3373,7 +3366,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &166618661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3757,7 +3749,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &186982518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4021,7 +4012,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &192340002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,7 +4304,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &196795562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4877,7 +4866,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &278579488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5144,7 +5132,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &307574012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,7 +5299,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &319069575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,7 +5723,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &338696821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6242,7 +6227,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &359920548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6410,7 +6394,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &359934821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6683,7 +6666,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &392015040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6887,7 +6869,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &396032852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7335,7 +7316,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7764298, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -7358,7 +7339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
+  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7444,7 +7425,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &411386764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7643,7 +7623,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &433384038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7903,7 +7882,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &484373110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8103,7 +8081,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &496224003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8347,7 +8324,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &523126325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8591,7 +8567,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &533098161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9041,7 +9016,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &628434734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9209,7 +9183,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &629554749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9408,7 +9381,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &642878527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10278,7 +10250,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &673188631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10446,7 +10417,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &673838008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11156,7 +11126,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &707171308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11915,7 +11884,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &747773270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12083,7 +12051,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &755429069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12313,7 +12280,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &766329559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12564,7 +12530,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &777771679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12959,7 +12924,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &807358118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13208,7 +13172,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &822962513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13502,7 +13465,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &832214717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13763,7 +13725,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &850503302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14075,7 +14036,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &887446515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14349,7 +14309,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &899451487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14522,7 +14481,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &906411194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14690,7 +14648,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &908207514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15317,7 +15274,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &935924203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15608,7 +15564,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &971509776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16183,7 +16138,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1016049944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16427,7 +16381,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1023606396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16735,7 +16688,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1047834599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16903,7 +16855,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1062123306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17438,7 +17389,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1120404347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17611,7 +17561,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1133047203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17779,7 +17728,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1133441355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18075,7 +18023,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1174032826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18701,7 +18648,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1214436598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18900,7 +18846,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1233055018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19365,7 +19310,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1247765458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20167,6 +20111,7 @@ MonoBehaviour:
   hasFadedToBlack: 0
   justDied: 0
   timer: 0
+  animator: {fileID: 0}
   speed: 0
   SpeedChangeRate: 10
   RotationSmoothTime: 0.12
@@ -20396,7 +20341,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1279742876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20657,7 +20601,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1306388170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21164,7 +21107,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1336688144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21356,7 +21298,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1341945986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22105,7 +22046,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1381065581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22657,7 +22597,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1399392740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22825,7 +22764,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1402293852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23166,7 +23104,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1421635753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23430,7 +23367,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1442983637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23918,7 +23854,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1470407831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24091,7 +24026,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1481457636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24259,7 +24193,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1486180832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24432,7 +24365,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1496200150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24669,7 +24601,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1502116097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25165,7 +25096,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1524275208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25291,6 +25221,140 @@ RectTransform:
   m_AnchoredPosition: {x: 617.64, y: -67.24175}
   m_SizeDelta: {x: 238.19592, y: 100}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!1 &1533535954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533535955}
+  - component: {fileID: 1533535957}
+  - component: {fileID: 1533535956}
+  m_Layer: 5
+  m_Name: InfoText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1533535955
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533535954}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1937754116}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1533535956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533535954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: ' - Sample Info'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 6fd367ed821afe744971b35573b726dd, type: 2}
+  m_sharedMaterial: {fileID: -2674396041870844798, guid: 6fd367ed821afe744971b35573b726dd, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 72
+  m_fontSizeBase: 72
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1533535957
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533535954}
+  m_CullTransparentMesh: 1
 --- !u!1 &1547172002
 GameObject:
   m_ObjectHideFlags: 0
@@ -25553,7 +25617,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1571244890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26046,7 +26109,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1579329056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26214,7 +26276,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1583281343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26382,7 +26443,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1588851797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26998,7 +27058,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1626675531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27287,7 +27346,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1659485734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27835,7 +27893,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1683054564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28003,7 +28060,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1694736102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28171,7 +28227,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1697392240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28339,7 +28394,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1711375507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28997,7 +29051,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7764298, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -29173,7 +29227,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1802402638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29341,7 +29394,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1816755333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29619,7 +29671,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1827014519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29740,6 +29791,96 @@ Transform:
   m_Father: {fileID: 1888372422}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1841720900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1841720901}
+  - component: {fileID: 1841720903}
+  - component: {fileID: 1841720902}
+  - component: {fileID: 1841720904}
+  m_Layer: 5
+  m_Name: InfoImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1841720901
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841720900}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1937754116}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1841720902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841720900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1e6ad998ea6311c448277b35ab9661ac, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1841720903
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841720900}
+  m_CullTransparentMesh: 1
+--- !u!114 &1841720904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841720900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 1
 --- !u!1 &1843642114
 GameObject:
   m_ObjectHideFlags: 0
@@ -29916,7 +30057,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1853534603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30381,7 +30521,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1857337599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30580,7 +30719,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1862349248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31984,7 +32122,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1878865277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32645,7 +32782,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1917518550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33088,6 +33224,125 @@ Transform:
   m_Father: {fileID: 1249268136}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1937754115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937754116}
+  - component: {fileID: 1937754119}
+  - component: {fileID: 1937754118}
+  - component: {fileID: 1937754117}
+  - component: {fileID: 1937754120}
+  m_Layer: 5
+  m_Name: InfoPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1937754116
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937754115}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1841720901}
+  - {fileID: 1533535955}
+  m_Father: {fileID: 2108419662}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -360}
+  m_SizeDelta: {x: -160.00003, y: -880}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1937754117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937754115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &1937754118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937754115}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1937754119
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937754115}
+  m_CullTransparentMesh: 1
+--- !u!114 &1937754120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937754115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbe5d43fbedaff40ade8737c262ff11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoImage: {fileID: 1841720900}
+  infoText: {fileID: 1533535954}
 --- !u!1 &1944676107
 GameObject:
   m_ObjectHideFlags: 0
@@ -33227,7 +33482,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1959689890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33395,7 +33649,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1966670737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33563,7 +33816,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1968240759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34179,7 +34431,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2023643947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34966,7 +35217,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2067372021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35427,7 +35677,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2070448802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35626,7 +35875,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2073317229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35986,7 +36234,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2094772310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36154,7 +36401,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2104691760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36448,6 +36694,7 @@ RectTransform:
   - {fileID: 2083527669}
   - {fileID: 185477264}
   - {fileID: 524885099}
+  - {fileID: 1937754116}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36509,7 +36756,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7764298, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -36618,7 +36865,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2118253673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36892,7 +37138,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2133314205
 MonoBehaviour:
   m_ObjectHideFlags: 0

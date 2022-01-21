@@ -85,6 +85,10 @@ namespace Bladesmiths.Capstone.UI
 
         [SerializeField] private GameObject moveRebindButton;
 
+        //Dictionaries for referring to onboarding UI info
+        Dictionary<int, Image> infoImageDictionary = new Dictionary<int, Image>();
+        Dictionary<int, string> infoTextDictionary = new Dictionary<int, string>();
+
         public PlayerInput Inputs { get => playerInput; }
 
         // Start is called before the first frame update
