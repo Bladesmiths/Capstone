@@ -32,6 +32,7 @@ namespace Bladesmiths.Capstone
 		public Animator animator;
 		private int _animIDBlock;
 		private int _animIDDodge;
+		private int _animIDDash; 
 		private int _animIDAttack;
 		private int _animIDMoving;
 
@@ -41,8 +42,16 @@ namespace Bladesmiths.Capstone
 		public bool cursorInputForLook = true;
 #endif
 
-        #region On Input Methods
-        public void OnMove(InputValue value)
+        private void Start()
+        {
+			_animIDMoving = Animator.StringToHash("Moving");
+			_animIDAttack = Animator.StringToHash("Attack");
+			_animIDBlock = Animator.StringToHash("Block");
+			_animIDDodge = Animator.StringToHash("Dodge");
+			_animIDDash = Animator.StringToHash("Dash");
+		}
+		#region On Input Methods
+		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -197,11 +206,6 @@ namespace Bladesmiths.Capstone
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-
-			_animIDMoving = Animator.StringToHash("Moving");
-
-
-			
 		}
 
 		public void LookInput(Vector2 newLookDirection)
@@ -222,7 +226,6 @@ namespace Bladesmiths.Capstone
 		public void AttackInput(bool newAttackState)
 		{
 			attack = newAttackState;
-			_animIDAttack = Animator.StringToHash("Attack");
 
 			animator.SetBool(_animIDAttack, attack);
 		}
@@ -236,9 +239,6 @@ namespace Bladesmiths.Capstone
         {
 			block = newBlockState;
 
-			// Assign block paramater id
-			_animIDBlock = Animator.StringToHash("Block");
-
 			animator.SetBool(_animIDBlock, block);
 		}
 
@@ -246,18 +246,23 @@ namespace Bladesmiths.Capstone
 		{
 			dodge = newDodgeRollState;
 
-			_animIDDodge = Animator.StringToHash("Dodge");
-			if (move == Vector2.zero)
+			if (currentSwordType == Enums.SwordType.Sapphire)
 			{
-				animator.SetBool(_animIDMoving, false);
+				animator.SetTrigger(_animIDDash);
 			}
 			else
 			{
-				animator.SetBool(_animIDMoving, true);
+				if (move == Vector2.zero)
+				{
+					animator.SetBool(_animIDMoving, false);
+				}
+				else
+				{
+					animator.SetBool(_animIDMoving, true);
+				}
+
+				animator.SetBool(_animIDDodge, dodge);
 			}
-
-
-			animator.SetBool(_animIDDodge, dodge);
 		}
 
 		public void OpenSwordSelectInput(bool newSwordSelectState)
