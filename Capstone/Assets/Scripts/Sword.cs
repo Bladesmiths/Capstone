@@ -21,6 +21,9 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private Transform offset;
         private Player player;
+        [SerializeField]
+        private FMODUnity.EventReference SwordHitEvent;
+        public bool sfxPlay;
         #endregion
 
         #region Properties
@@ -41,7 +44,8 @@ namespace Bladesmiths.Capstone
 
         void Start()
         {
-            player = gameObject.transform.root.GetComponent<Player>(); 
+            player = gameObject.transform.root.GetComponent<Player>();
+            sfxPlay = false;
         }
 
         void Update() { }
@@ -53,6 +57,8 @@ namespace Bladesmiths.Capstone
 
         void OnCollisionEnter(Collision col)
         {
+            FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+
             if (col.gameObject.GetComponent<Enemy>())
             {
                 player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID);

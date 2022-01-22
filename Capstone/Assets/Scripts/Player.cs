@@ -210,6 +210,7 @@ namespace Bladesmiths.Capstone
         public float ParryDelay { get => currentSword.ParryDelay; }
         public float ParryLength { get => currentSword.ParryLength; }
         public float ParryCooldown { get => currentSword.ParryCooldown; }
+        public GameObject Sword { get => sword; }
         #endregion
         #endregion
 
