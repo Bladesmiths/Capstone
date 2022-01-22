@@ -201,7 +201,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &130834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +665,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &14028248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,7 +989,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &51366136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,7 +1264,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &69466756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,7 +2452,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &111001510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,7 +2651,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &121754818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,7 +2854,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &123764398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3109,7 +3102,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7770833, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -3132,7 +3125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136034365}
-  m_LocalRotation: {x: -0.018141463, y: -0, z: 0.0000000037252903, w: 0.99983543}
+  m_LocalRotation: {x: -0.0181396, y: 0.013241024, z: -0.005741177, w: 0.99973136}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3373,7 +3366,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &166618661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3757,7 +3749,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &186982518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4021,7 +4012,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &192340002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,7 +4304,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &196795562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4877,7 +4866,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &278579488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5144,7 +5132,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &307574012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,7 +5299,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &319069575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,7 +5723,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &338696821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6242,7 +6227,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &359920548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6410,7 +6394,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &359934821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6683,7 +6666,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &392015040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6887,7 +6869,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &396032852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7335,7 +7316,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7770833, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -7358,7 +7339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
+  m_LocalRotation: {x: 0.018187555, y: 0.013023757, z: -0.00621838, w: 0.99973047}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7444,7 +7425,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &411386764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7643,7 +7623,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &433384038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7903,7 +7882,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &484373110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8103,7 +8081,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &496224003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8347,7 +8324,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &523126325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8591,7 +8567,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &533098161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9041,7 +9016,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &628434734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9209,7 +9183,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &629554749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9408,7 +9381,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &642878527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9880,7 +9852,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -9.416077
+    Value: -7.7622223
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -10278,7 +10250,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &673188631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10446,7 +10417,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &673838008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11156,7 +11126,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &707171308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11915,7 +11884,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &747773270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12083,7 +12051,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &755429069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12313,7 +12280,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &766329559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12564,7 +12530,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &777771679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12959,7 +12924,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &807358118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13208,7 +13172,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &822962513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13391,7 +13354,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -9.416077
+    Value: -7.7622223
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -13502,7 +13465,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &832214717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13763,7 +13725,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &850503302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14075,7 +14036,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &887446515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14349,7 +14309,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &899451487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14522,7 +14481,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &906411194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14690,7 +14648,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &908207514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15317,7 +15274,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &935924203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15608,7 +15564,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &971509776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16183,7 +16138,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1016049944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16427,7 +16381,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1023606396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16735,7 +16688,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1047834599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16903,7 +16855,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1062123306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17438,7 +17389,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1120404347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17611,7 +17561,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1133047203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17779,7 +17728,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1133441355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18075,7 +18023,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1174032826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18701,7 +18648,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1214436598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18900,7 +18846,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1233055018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19365,7 +19310,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1247765458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20167,6 +20111,7 @@ MonoBehaviour:
   hasFadedToBlack: 0
   justDied: 0
   timer: 0
+  animator: {fileID: 0}
   speed: 0
   SpeedChangeRate: 10
   RotationSmoothTime: 0.12
@@ -20278,7 +20223,7 @@ Animator:
   m_GameObject: {fileID: 1261776968}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5bb7d601d6fc29349b6e20c41e8a3f66, type: 3}
-  m_Controller: {fileID: 9100000, guid: 88c709bc24287604bbcbcb6be7db38c6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4a0e5a620083e7244866f433db4e95ee, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -20396,7 +20341,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1279742876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20657,7 +20601,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1306388170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21164,7 +21107,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1336688144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21356,7 +21298,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1341945986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21994,7 +21935,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -9.416077
+    Value: -7.7622223
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -22105,7 +22046,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1381065581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22657,7 +22597,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1399392740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22825,7 +22764,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1402293852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23166,7 +23104,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1421635753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23430,7 +23367,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1442983637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23918,7 +23854,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1470407831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24091,7 +24026,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1481457636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24259,7 +24193,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1486180832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24432,7 +24365,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1496200150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24669,7 +24601,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1502116097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25165,7 +25096,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1524275208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25553,7 +25483,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1571244890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25870,8 +25799,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: 0.21129666, y: -0.080212474, z: 0.017401598, w: 0.97396964}
-  m_LocalPosition: {x: -7.405589, y: 3.658, z: -10.446105}
+  m_LocalRotation: {x: 0.21152578, y: -0.06614765, z: 0.01435032, w: 0.97502583}
+  m_LocalPosition: {x: 0.5398032, y: 3.35, z: -3.9176574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26046,7 +25975,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1579329056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26214,7 +26142,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1583281343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26382,7 +26309,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1588851797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26998,7 +26924,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1626675531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27287,7 +27212,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1659485734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27835,7 +27759,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1683054564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28003,7 +27926,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1694736102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28171,7 +28093,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1697392240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28339,7 +28260,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1711375507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28997,7 +28917,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7770833, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -29037,7 +28957,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -9.416077
+    Value: -7.7622223
     m_SpeedMode: 1
     m_MaxSpeed: 0.5
     m_AccelTime: 0.1
@@ -29086,7 +29006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802336007}
   m_LocalRotation: {x: 0.21129666, y: -0.080212474, z: 0.017401598, w: 0.97396964}
-  m_LocalPosition: {x: -7.405589, y: 3.658, z: -10.446105}
+  m_LocalPosition: {x: 0.5398032, y: 3.35, z: -3.9176574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409920310}
@@ -29173,7 +29093,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1802402638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29341,7 +29260,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1816755333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29619,7 +29537,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1827014519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29916,7 +29833,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1853534603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30381,7 +30297,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1857337599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30580,7 +30495,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1862349248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31984,7 +31898,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1878865277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32645,7 +32558,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1917518550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33227,7 +33139,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1959689890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33395,7 +33306,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1966670737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33563,7 +33473,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &1968240759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34179,7 +34088,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2023643947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34966,7 +34874,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2067372021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35427,7 +35334,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2070448802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35626,7 +35532,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2073317229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35986,7 +35891,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2094772310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36154,7 +36058,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2104691760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36509,7 +36412,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7771587, y: 1}
+    m_SensorSize: {x: 1.7770833, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -36532,7 +36435,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: -0, y: -0, z: -0.0000000018626454, w: 1}
+  m_LocalRotation: {x: -0.000000014901161, y: 0.013134703, z: -0.0059804562, w: 0.99989593}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -36618,7 +36521,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2118253673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36892,7 +36794,6 @@ MonoBehaviour:
   shatteredTimer: 0
   faded: 0
   growing: 0
-  healing: 0
 --- !u!114 &2133314205
 MonoBehaviour:
   m_ObjectHideFlags: 0

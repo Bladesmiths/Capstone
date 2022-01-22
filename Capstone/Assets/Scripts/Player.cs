@@ -369,7 +369,7 @@ namespace Bladesmiths.Capstone
 
             // Not sure if this is the correct place to add PlayerMovementMultiplier
             // Because it changes the animation if reduced/increased too much
-            speed = targetSpeed * currentSword.PlayerMovementMultiplier;
+            speed = targetSpeed * currentBalancingData.SwordData[currentSword.SwordType].PlayerMovementMultiplier;
 
             // if the input is greater than 1 then set the speed to the max
             if (inputs.move.magnitude <= 1)

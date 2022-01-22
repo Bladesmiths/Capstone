@@ -193,7 +193,7 @@ namespace Bladesmiths.Capstone.UI
 
             int totalChunks = remainingChunks + chipChunks;
 
-            Debug.Log("Health Raw Value: " + currentHealth);
+            //Debug.Log("Health Raw Value: " + currentHealth);
 
             //In specific situations involving lifesteal + chip damage, health briefly exceeds 100 and causes errors
             //If this happens, reduce the number of chipped chunks to make an even 100 total
@@ -203,8 +203,8 @@ namespace Bladesmiths.Capstone.UI
                 totalChunks = remainingChunks + chipChunks;
             }
 
-            Debug.Log("Player Health: " + remainingChunks);
-            Debug.Log("Player Chip Health " + chipChunks);
+            //Debug.Log("Player Health: " + remainingChunks);
+            //Debug.Log("Player Chip Health " + chipChunks);
 
             //Modify chunk status (the order of these matters)
             ShatterChunks(remainingChunks, chipChunks);
