@@ -70,31 +70,8 @@ namespace Bladesmiths.Capstone.UI
         private int prevHealthChunks = 100;
         private int prevChipChunks = 0;
 
-        [SerializeField] private GameObject controlsMenu;
-        [SerializeField] private GameObject controlsButton;
-
-        [SerializeField] private GameObject moveRebindButton;
-
-        [SerializeField] private GameObject settingsPanel;
         [SerializeField] private GameObject settingsButton;
-
-        [SerializeField] private GameObject graphicsButton;
-        [SerializeField] private GameObject gameplayButton;
-        [SerializeField] private GameObject soundButton;
-        [SerializeField] private GameObject settingsBackButton;
-        [SerializeField] private GameObject quitToMenuButton;
-
-        [SerializeField] private GameObject graphicsPanel;
-        [SerializeField] private GameObject graphicsBackButton;
-        [SerializeField] private GameObject soundPanel;
-        [SerializeField] private GameObject soundBackButton;
-
-        [SerializeField] private GameObject gameplayPanel;
-        [SerializeField] private GameObject gameplayBackButton;
-
-        [SerializeField] private GameplaySettings gameplaySettingsScript;
-        [SerializeField] private SoundSettings soundSettingsScript;
-        [SerializeField] private GraphicSettings graphicSettingsScript;
+        [SerializeField] private SettingsManager settingsManager;
 
         public float MaxSpeedX
         {
@@ -106,10 +83,6 @@ namespace Bladesmiths.Capstone.UI
         void Start()
         {
             // Initialize variables
-            gameplaySettingsScript.LoadGameplayPrefs();
-            soundSettingsScript.LoadSoundPrefs();
-            graphicSettingsScript.LoadGraphicPrefs();
-
             isPaused = false;
             if (player != null)
             {
@@ -143,15 +116,8 @@ namespace Bladesmiths.Capstone.UI
             {
                 isPaused = false;
 
-                controlsMenu.SetActive(false);
-                settingsPanel.SetActive(false);
-                graphicsPanel.SetActive(false);
-                soundPanel.SetActive(false);
-                gameplayPanel.SetActive(false);
-                settingsButton.GetComponent<Button>().interactable = true;
+                settingsManager.UnPause();
                 resumeButton.SetActive(true);
-                if (graphicsButton.activeSelf == true)
-                    ToggleSettingsButtons();
 
                 playerInput.SwitchCurrentActionMap("Player");
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
@@ -321,89 +287,6 @@ namespace Bladesmiths.Capstone.UI
         public void SetMaskActive(bool active)
         {
             swordSelectMask.SetActive(active);
-        }
-
-        public void ToggleControlsMenu()
-        {
-            controlsMenu.SetActive(!controlsMenu.activeSelf);
-
-            EventSystem.current.SetSelectedGameObject(moveRebindButton);
-        }
-
-        public void ToggleSettingsMenu()
-        {
-            settingsPanel.SetActive(!settingsPanel.activeSelf);
-
-            if (graphicsButton.activeSelf == false)
-                ToggleSettingsButtons();
-
-            if(settingsPanel.activeSelf)
-            {
-                EventSystem.current.SetSelectedGameObject(graphicsButton);
-                settingsButton.GetComponent<Button>().interactable = false;
-                resumeButton.SetActive(false);
-            }
-            else
-            {
-                settingsButton.GetComponent<Button>().interactable = true;
-                resumeButton.SetActive(true);
-            }
-        }
-
-        public void ToggleGraphicsSettingsMenu()
-        {
-            graphicsPanel.SetActive(!graphicsPanel.activeSelf);
-
-            ToggleSettingsButtons();
-
-            if(graphicsPanel.activeSelf)
-            { 
-                EventSystem.current.SetSelectedGameObject(graphicsBackButton); 
-            }
-        }
-
-        public void ToggleSoundSettingsMenu()
-        {
-            soundPanel.SetActive(!soundPanel.activeSelf);
-
-            ToggleSettingsButtons();
-
-            if (soundPanel.activeSelf)
-            {
-                EventSystem.current.SetSelectedGameObject(soundBackButton);
-            }
-        }
-
-        public void ToggleGameplaySettingsMenu()
-        {
-            gameplayPanel.SetActive(!gameplayPanel.activeSelf);
-
-            ToggleSettingsButtons();
-
-            if (gameplayPanel.activeSelf)
-            {
-                EventSystem.current.SetSelectedGameObject(gameplayBackButton);
-            }
-        }
-
-        private void ToggleSettingsButtons()
-        {
-            graphicsButton.SetActive(!graphicsButton.activeSelf);
-            soundButton.SetActive(!soundButton.activeSelf);
-            gameplayButton.SetActive(!gameplayButton.activeSelf);
-            controlsButton.SetActive(!controlsButton.activeSelf);
-            settingsBackButton.SetActive(!settingsBackButton.activeSelf);
-            quitToMenuButton.SetActive(!quitToMenuButton.activeSelf);
-
-            if (graphicsButton.activeSelf)
-            {
-                EventSystem.current.SetSelectedGameObject(graphicsButton);
-            }
-        }
-
-        public void QuitToMenu()
-        {
-            SceneManager.LoadScene("MainMenu");
         }
     }
 }

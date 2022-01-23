@@ -666,8 +666,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleGameplaySettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -1156,8 +1156,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleGraphicsSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -4234,8 +4234,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -9153,7 +9153,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
+  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11596,8 +11596,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleSoundSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -11770,8 +11770,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: QuitToMenu
         m_Mode: 1
         m_Arguments:
@@ -23340,8 +23340,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleControlsMenu
         m_Mode: 1
         m_Arguments:
@@ -26460,8 +26460,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -33248,8 +33248,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleGraphicsSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -35336,8 +35336,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleSoundSettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -39056,6 +39056,7 @@ GameObject:
   - component: {fileID: 1863759866}
   - component: {fileID: 1863759868}
   - component: {fileID: 1863759867}
+  - component: {fileID: 1863759870}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -39703,25 +39704,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 524885098}
   resumeButton: {fileID: 1531967054}
   isPaused: 0
-  controlsMenu: {fileID: 1818385394}
-  controlsButton: {fileID: 2059551191}
-  moveRebindButton: {fileID: 1478474225}
-  settingsPanel: {fileID: 969253859}
   settingsButton: {fileID: 1332645330}
-  graphicsButton: {fileID: 41766577}
-  gameplayButton: {fileID: 10310267}
-  soundButton: {fileID: 577641159}
-  settingsBackButton: {fileID: 145508140}
-  quitToMenuButton: {fileID: 587692872}
-  graphicsPanel: {fileID: 84331194}
-  graphicsBackButton: {fileID: 1591492838}
-  soundPanel: {fileID: 1143045871}
-  soundBackButton: {fileID: 1686732242}
-  gameplayPanel: {fileID: 1382350876}
-  gameplayBackButton: {fileID: 1899060173}
-  gameplaySettingsScript: {fileID: 1382350880}
-  soundSettingsScript: {fileID: 1143045875}
-  graphicSettingsScript: {fileID: 84331198}
+  settingsManager: {fileID: 1863759870}
 --- !u!114 &1863759867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39767,6 +39751,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1863759870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863759865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020b65c3046ccd74097b9511a8c5661f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlsMenu: {fileID: 1818385394}
+  controlsButton: {fileID: 2059551191}
+  moveRebindButton: {fileID: 1478474225}
+  settingsPanel: {fileID: 969253859}
+  settingsButton: {fileID: 1332645330}
+  graphicsButton: {fileID: 41766577}
+  gameplayButton: {fileID: 10310267}
+  soundButton: {fileID: 577641159}
+  settingsBackButton: {fileID: 145508140}
+  quitToMenuButton: {fileID: 587692872}
+  graphicsPanel: {fileID: 84331194}
+  graphicsBackButton: {fileID: 1591492838}
+  soundPanel: {fileID: 1143045871}
+  soundBackButton: {fileID: 1686732242}
+  gameplayPanel: {fileID: 1382350876}
+  gameplayBackButton: {fileID: 1899060173}
+  gameplaySettingsScript: {fileID: 1382350880}
+  soundSettingsScript: {fileID: 1143045875}
+  graphicSettingsScript: {fileID: 84331198}
 --- !u!1001 &1866124453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40738,8 +40753,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleGameplaySettingsMenu
         m_Mode: 1
         m_Arguments:
@@ -43414,8 +43429,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863759866}
-        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1863759870}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
         m_MethodName: ToggleControlsMenu
         m_Mode: 1
         m_Arguments:
