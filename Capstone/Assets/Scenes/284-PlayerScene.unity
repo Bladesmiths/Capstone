@@ -10921,10 +10921,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1382350880}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.GameplaySettings, Assembly-CSharp
+        m_MethodName: UpdateMouseSensitivity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!1 &533098157
 GameObject:
   m_ObjectHideFlags: 0
@@ -27748,6 +27760,7 @@ GameObject:
   - component: {fileID: 1382350877}
   - component: {fileID: 1382350879}
   - component: {fileID: 1382350878}
+  - component: {fileID: 1382350880}
   m_Layer: 5
   m_Name: GameplayPanel
   m_TagString: Untagged
@@ -27818,6 +27831,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382350876}
   m_CullTransparentMesh: 1
+--- !u!114 &1382350880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382350876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961bea5b38a75d149b2a92737212bdc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeLookCamera: {fileID: 1802336009}
+  uIManager: {fileID: 1863759866}
+  look: {fileID: -3787169064211337688, guid: 13e3554f45f85cf46a9a492afd4bb966, type: 3}
 --- !u!1 &1386802361
 GameObject:
   m_ObjectHideFlags: 0

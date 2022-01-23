@@ -92,6 +92,11 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject gameplayPanel;
         [SerializeField] private GameObject gameplayBackButton;
 
+        public float MaxSpeedX
+        {
+            get { return maxSpeedX; }
+            set { maxSpeedX = value; }
+        }
 
         // Start is called before the first frame update
         void Start()
