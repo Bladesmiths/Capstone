@@ -133,6 +133,8 @@ namespace Bladesmiths.Capstone.UI
                 controlsMenu.SetActive(false);
                 settingsPanel.SetActive(false);
                 graphicsPanel.SetActive(false);
+                soundPanel.SetActive(false);
+                gameplayPanel.SetActive(false);
                 settingsButton.GetComponent<Button>().interactable = true;
                 resumeButton.SetActive(true);
                 if (graphicsButton.activeSelf == true)
