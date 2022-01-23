@@ -7339,7 +7339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
+  m_LocalRotation: {x: 0.01818946, y: 0.000000014901161, z: -0.0000000055879354, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24515,6 +24515,7 @@ RectTransform:
   - {fileID: 767131054}
   - {fileID: 123326016}
   - {fileID: 708433278}
+  - {fileID: 1937754116}
   m_Father: {fileID: 2108419662}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29827,7 +29828,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841720902
 MonoBehaviour:
@@ -30960,6 +30961,37 @@ MonoBehaviour:
     - {fileID: 1022981113}
     - {fileID: 2118302966}
     - {fileID: 513376455}
+    - {fileID: 21300000, guid: f609c9b3b1675f947a865ec558b5ad90, type: 3}
+    - {fileID: 21300000, guid: d08c52c09554ca8418a86627f4bd14e1, type: 3}
+    - {fileID: 21300000, guid: cde7469096582e04897fae80dfc34fbe, type: 3}
+    - {fileID: 21300000, guid: 17fd7d74524d4cc4ea612a100880d012, type: 3}
+    - {fileID: 21300000, guid: d1610599218d48042bffac0712c379a6, type: 3}
+    - {fileID: 21300000, guid: d544feb63b186dd45b32d12cfc6762bf, type: 3}
+    - {fileID: 21300000, guid: 4cc6aa9aa8107734da22c80d289cff98, type: 3}
+    - {fileID: 21300000, guid: 44d8f279ef345c442ae875caa0c26731, type: 3}
+    - {fileID: 21300000, guid: cfa9b832ea5877745a96e61e8ffaeca2, type: 3}
+    - {fileID: 21300000, guid: 139b83464b859cd429d0370dc816028c, type: 3}
+    - {fileID: 21300000, guid: 9c61f7c9d0b7b8b4f9d2350b73289e23, type: 3}
+    - {fileID: 21300000, guid: 672696fcd6aec9d4c84945fa59765f64, type: 3}
+    - {fileID: 21300000, guid: ed60ff0de79971e468ae179e077d66ca, type: 3}
+    - {fileID: 21300000, guid: d29819659aa175a459d7c519a30d70aa, type: 3}
+    - {fileID: 21300000, guid: 0ae60af4bd5e539409acc10ec4300105, type: 3}
+    - {fileID: 21300000, guid: 5c1e24bea89729e4a8ed25e26a432f84, type: 3}
+    - {fileID: 21300000, guid: 4273c283a5e145a468dc60af5dcb46e7, type: 3}
+    - {fileID: 21300000, guid: 014c64fb6c950db49b6f3a3d0adab367, type: 3}
+    - {fileID: 21300000, guid: f5bb1f4bef35d144987dd308376b7ad3, type: 3}
+    - {fileID: 21300000, guid: 4bc4b5cacd96ce74ba95ada219adba33, type: 3}
+    - {fileID: 21300000, guid: 203f3b95094e11f4884507b83d521358, type: 3}
+    - {fileID: 21300000, guid: c7307b3dc059cd246852209f0c40693c, type: 3}
+    - {fileID: 21300000, guid: 3aaf750849721934c978b33469ef426d, type: 3}
+    - {fileID: 21300000, guid: 3553e3809767ce2419a4619e9547c3cb, type: 3}
+    - {fileID: 21300000, guid: c3c7e26e990a5b848bb95df250d47877, type: 3}
+    - {fileID: 21300000, guid: 0d3256fd2ac8af940a30c1b6f2afd436, type: 3}
+    - {fileID: 21300000, guid: 7708dd5154d2c6f4f9b0eeb45f2a82fc, type: 3}
+    - {fileID: 21300000, guid: b5786c95d2d58db4880669290f560d78, type: 3}
+    - {fileID: 21300000, guid: a6d0acbb665210f4a9dab2504e06eb57, type: 3}
+    - {fileID: 21300000, guid: 371ed6a024f883f43a07586b1d413f72, type: 3}
+    - {fileID: 21300000, guid: a1c918876a6b0d64581a00408156a3ce, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31624,6 +31656,430 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 111
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: xboxInputs
+      Entry: 7
+      Data: 11|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 12|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: a
+    - Name: $v
+      Entry: 10
+      Data: 112
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: b
+    - Name: $v
+      Entry: 10
+      Data: 113
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: x
+    - Name: $v
+      Entry: 10
+      Data: 114
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: y
+    - Name: $v
+      Entry: 10
+      Data: 115
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: dpad
+    - Name: $v
+      Entry: 10
+      Data: 116
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: dpadDown
+    - Name: $v
+      Entry: 10
+      Data: 117
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: dpadUp
+    - Name: $v
+      Entry: 10
+      Data: 118
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: dpadLeft
+    - Name: $v
+      Entry: 10
+      Data: 119
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: dpadRight
+    - Name: $v
+      Entry: 10
+      Data: 120
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: leftStick
+    - Name: $v
+      Entry: 10
+      Data: 121
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: rightStick
+    - Name: $v
+      Entry: 10
+      Data: 122
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: leftBumper
+    - Name: $v
+      Entry: 10
+      Data: 123
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: rightBumper
+    - Name: $v
+      Entry: 10
+      Data: 124
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: leftTrigger
+    - Name: $v
+      Entry: 10
+      Data: 125
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: rightTrigger
+    - Name: $v
+      Entry: 10
+      Data: 126
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: start
+    - Name: $v
+      Entry: 10
+      Data: 127
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: back
+    - Name: $v
+      Entry: 10
+      Data: 128
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ps4Inputs
+      Entry: 7
+      Data: 13|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 12
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: kbmInputs
+      Entry: 7
+      Data: 14|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 12
+    - Name: 
+      Entry: 12
+      Data: 14
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: q
+    - Name: $v
+      Entry: 10
+      Data: 129
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: w
+    - Name: $v
+      Entry: 10
+      Data: 130
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: a
+    - Name: $v
+      Entry: 10
+      Data: 131
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: s
+    - Name: $v
+      Entry: 10
+      Data: 132
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: d
+    - Name: $v
+      Entry: 10
+      Data: 133
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: space
+    - Name: $v
+      Entry: 10
+      Data: 134
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: leftClick
+    - Name: $v
+      Entry: 10
+      Data: 135
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: shift
+    - Name: $v
+      Entry: 10
+      Data: 136
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: rightClick
+    - Name: $v
+      Entry: 10
+      Data: 137
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: middleClick
+    - Name: $v
+      Entry: 10
+      Data: 138
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ctrl
+    - Name: $v
+      Entry: 10
+      Data: 139
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 140
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 141
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: 3
+    - Name: $v
+      Entry: 10
+      Data: 142
     - Name: 
       Entry: 8
       Data: 
@@ -33257,8 +33713,8 @@ RectTransform:
   m_Children:
   - {fileID: 1841720901}
   - {fileID: 1533535955}
-  m_Father: {fileID: 2108419662}
-  m_RootOrder: 5
+  m_Father: {fileID: 1501028099}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -33285,7 +33741,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -33341,8 +33797,122 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbe5d43fbedaff40ade8737c262ff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoImage: {fileID: 1841720900}
-  infoText: {fileID: 1533535954}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: infoTextDictionary
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 1
+      Data: Walk
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 1
+      Data: Look Around
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: Attack
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: Block
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: Parry / Deflect
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: Dodge Roll
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 1
+      Data: Change Sword Form
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  infoImage: {fileID: 0}
+  infoText: {fileID: 0}
+  uiManager: {fileID: 1863759866}
 --- !u!1 &1944676107
 GameObject:
   m_ObjectHideFlags: 0
@@ -36694,7 +37264,6 @@ RectTransform:
   - {fileID: 2083527669}
   - {fileID: 185477264}
   - {fileID: 524885099}
-  - {fileID: 1937754116}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

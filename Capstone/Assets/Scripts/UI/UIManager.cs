@@ -85,9 +85,26 @@ namespace Bladesmiths.Capstone.UI
 
         [SerializeField] private GameObject moveRebindButton;
 
+        #region Input Icon Dictionaries
+        [TitleGroup("Input Icons")]
+
         //Dictionaries for referring to onboarding UI info
-        Dictionary<int, Image> infoImageDictionary = new Dictionary<int, Image>();
-        Dictionary<int, string> infoTextDictionary = new Dictionary<int, string>();
+
+        [HorizontalGroup("Input Icons/FirstRow")]
+        [BoxGroup("Input Icons/FirstRow/Xbox Inputs")] [LabelWidth(70)]
+        [OdinSerialize]
+        public Dictionary<string, Sprite> xboxInputs = new Dictionary<string, Sprite>();
+
+        [HorizontalGroup("Input Icons/SecondRow")]
+        [BoxGroup("Input Icons/SecondRow/PS4 Inputs")]
+        [OdinSerialize]
+        public Dictionary<string, Sprite> ps4Inputs = new Dictionary<string, Sprite>();
+
+        [HorizontalGroup("Input Icons/ThirdRow")]
+        [BoxGroup("Input Icons/ThirdRow/KBM Inputs")]
+        [OdinSerialize] 
+        public Dictionary<string, Sprite> kbmInputs = new Dictionary<string, Sprite>();
+        #endregion
 
         public PlayerInput Inputs { get => playerInput; }
 
