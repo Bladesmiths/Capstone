@@ -71,14 +71,19 @@ public class GraphicSettings : MonoBehaviour
         PlayerPrefs.SetInt("Resolution", index);
     }
 
-    private void LoadGraphicPrefs()
+    public void LoadGraphicPrefs()
     {
         // Load Fullscreen
         Screen.fullScreen = PlayerPrefs.GetString("Fullscreen") == "true" ? true : false;
         // Load Quality
-        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
+        if (PlayerPrefs.GetInt("Quality") != 0)
+            QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
         // Load Resolution
-        Resolution activeResolution = resolutions[PlayerPrefs.GetInt("Resolution")];
-        Screen.SetResolution(activeResolution.width, activeResolution.height, Screen.fullScreen);
+        if (PlayerPrefs.GetInt("Resolution") != 0)
+        {
+            resolutions = Screen.resolutions;
+            Resolution activeResolution = resolutions[PlayerPrefs.GetInt("Resolution")];
+            Screen.SetResolution(activeResolution.width, activeResolution.height, Screen.fullScreen);
+        }
     }
 }

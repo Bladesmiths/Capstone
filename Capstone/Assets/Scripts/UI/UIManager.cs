@@ -92,6 +92,10 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject gameplayPanel;
         [SerializeField] private GameObject gameplayBackButton;
 
+        [SerializeField] private GameplaySettings gameplaySettingsScript;
+        [SerializeField] private SoundSettings soundSettingsScript;
+        [SerializeField] private GraphicSettings graphicSettingsScript;
+
         public float MaxSpeedX
         {
             get { return maxSpeedX; }
@@ -102,6 +106,10 @@ namespace Bladesmiths.Capstone.UI
         void Start()
         {
             // Initialize variables
+            gameplaySettingsScript.LoadGameplayPrefs();
+            soundSettingsScript.LoadSoundPrefs();
+            graphicSettingsScript.LoadGraphicPrefs();
+
             isPaused = false;
             if (player != null)
             {

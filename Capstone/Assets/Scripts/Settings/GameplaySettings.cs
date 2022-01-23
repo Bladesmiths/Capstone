@@ -83,13 +83,16 @@ namespace Bladesmiths.Capstone.UI
 
         }
 
-        private void LoadGameplayPrefs()
+        public void LoadGameplayPrefs()
         {
             // Load mouse sensitivity
             // X rotation
-            freeLookCamera.m_XAxis.m_MaxSpeed = PlayerPrefs.GetFloat("MouseSensitivity");
-            uIManager.MaxSpeedX = PlayerPrefs.GetFloat("MouseSensitivity");
-            mouseSensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MouseSensitivity");
+            if (PlayerPrefs.GetFloat("MouseSensitivity") != 0)
+            {
+                freeLookCamera.m_XAxis.m_MaxSpeed = PlayerPrefs.GetFloat("MouseSensitivity");
+                uIManager.MaxSpeedX = PlayerPrefs.GetFloat("MouseSensitivity");
+                mouseSensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MouseSensitivity");
+            }
         }
     }
 }
