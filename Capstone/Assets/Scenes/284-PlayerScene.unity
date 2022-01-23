@@ -1355,7 +1355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &44402690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9153,7 +9153,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
+  m_LocalRotation: {x: 0.01818946, y: 0.000000014901161, z: -0.0000000055879354, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19241,7 +19241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &969253860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27972,6 +27972,7 @@ MonoBehaviour:
   freeLookCamera: {fileID: 1802336009}
   uIManager: {fileID: 1863759866}
   look: {fileID: -3787169064211337688, guid: 13e3554f45f85cf46a9a492afd4bb966, type: 3}
+  mouseSensitivitySlider: {fileID: 529557461}
 --- !u!1 &1386802361
 GameObject:
   m_ObjectHideFlags: 0

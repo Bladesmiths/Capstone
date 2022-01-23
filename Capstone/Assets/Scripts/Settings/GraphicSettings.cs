@@ -32,6 +32,8 @@ public class GraphicSettings : MonoBehaviour
             }
         }
 
+        LoadGraphicPrefs();
+
         resolutionDropdown.GetComponent<TMP_Dropdown>().AddOptions(options);
         resolutionDropdown.GetComponent<TMP_Dropdown>().value = currentResIndex;
         resolutionDropdown.GetComponent<TMP_Dropdown>().RefreshShownValue();
@@ -43,26 +45,40 @@ public class GraphicSettings : MonoBehaviour
     {
         brightnessValue.GetComponent<Text>().text = "" + brightnessSlider.GetComponent<Slider>().value;
         Screen.brightness = brightnessSlider.GetComponent<Slider>().value;
+
+        //PlayerPrefs.SetFloat("Brightness", value);
     }
 
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+
+        PlayerPrefs.SetString("Fullscreen", isFullscreen + "");
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        //QualitySettings.renderPipeline = qul
+
+        PlayerPrefs.SetInt("Quality", qualityIndex);
     }
 
     public void SetResolution(int index)
     {
         Resolution activeResolution = resolutions[index];
         Screen.SetResolution(activeResolution.width, activeResolution.height, Screen.fullScreen);
-        //string resolution = resolutionDropdown.GetComponent<TMP_Dropdown>().options[index].text;
-        //Screen.SetResolution(int.Parse(resolution.Split('x')[0]), int.Parse(resolution.Split('x')[1]), false);
-        //Debug.Log(index);
 
+        PlayerPrefs.SetInt("Resolution", index);
+    }
+
+    private void LoadGraphicPrefs()
+    {
+        // Load Fullscreen
+        Screen.fullScreen = PlayerPrefs.GetString("Fullscreen") == "true" ? true : false;
+        // Load Quality
+        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
+        // Load Resolution
+        Resolution activeResolution = resolutions[PlayerPrefs.GetInt("Resolution")];
+        Screen.SetResolution(activeResolution.width, activeResolution.height, Screen.fullScreen);
     }
 }

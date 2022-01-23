@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Bladesmiths.Capstone.UI
 {
@@ -13,10 +14,12 @@ namespace Bladesmiths.Capstone.UI
 
         [SerializeField] private InputActionReference look;
 
+        [SerializeField] private GameObject mouseSensitivitySlider;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            LoadGameplayPrefs();
         }
 
         // Update is called once per frame
@@ -30,6 +33,8 @@ namespace Bladesmiths.Capstone.UI
             // X rotation
             freeLookCamera.m_XAxis.m_MaxSpeed = value;
             uIManager.MaxSpeedX = value;
+
+            PlayerPrefs.SetFloat("MouseSensitivity", value);
 
             //uIManager.PlayerInput.
 
@@ -76,6 +81,15 @@ namespace Bladesmiths.Capstone.UI
         public void UpdateControllerSensitivity(float value)
         {
 
+        }
+
+        private void LoadGameplayPrefs()
+        {
+            // Load mouse sensitivity
+            // X rotation
+            freeLookCamera.m_XAxis.m_MaxSpeed = PlayerPrefs.GetFloat("MouseSensitivity");
+            uIManager.MaxSpeedX = PlayerPrefs.GetFloat("MouseSensitivity");
+            mouseSensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MouseSensitivity");
         }
     }
 }

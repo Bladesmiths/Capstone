@@ -28,4 +28,9 @@ public class SoundSettings : MonoBehaviour
         float dbVolume = (value * 100f) - 100f;
         //RuntimeManager.GetVCA("vca:/Master").setVolume(value);
     }
+    
+    private void LoadSoundPrefs()
+    {
+
+    }
 }
