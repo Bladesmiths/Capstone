@@ -10,6 +10,7 @@ public class GraphicSettings : MonoBehaviour
     [SerializeField] private GameObject brightnessValue;
 
     [SerializeField] private GameObject resolutionDropdown;
+    [SerializeField] private GameObject qualityDropdown;
 
     Resolution[] resolutions;
 
@@ -34,6 +35,8 @@ public class GraphicSettings : MonoBehaviour
         resolutionDropdown.GetComponent<TMP_Dropdown>().AddOptions(options);
         resolutionDropdown.GetComponent<TMP_Dropdown>().value = currentResIndex;
         resolutionDropdown.GetComponent<TMP_Dropdown>().RefreshShownValue();
+
+        qualityDropdown.GetComponent<TMP_Dropdown>().value = QualitySettings.GetQualityLevel();
     }
 
     public void UpdateBrightness()
@@ -50,6 +53,7 @@ public class GraphicSettings : MonoBehaviour
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        //QualitySettings.renderPipeline = qul
     }
 
     public void SetResolution(int index)
