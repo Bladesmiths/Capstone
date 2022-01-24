@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.6, y: 0.39995}
-  m_SizeDelta: {x: 93.1583, y: 47.669}
+  m_AnchoredPosition: {x: 163.9, y: 0.94245}
+  m_SizeDelta: {x: 85.1214, y: 28.7824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &32726944
 MonoBehaviour:
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.65
+  m_fontSize: 20.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -584,8 +584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00014114, y: 204.696}
-  m_SizeDelta: {x: 1955.842, y: 1364.247}
+  m_AnchoredPosition: {x: -0, y: 180}
+  m_SizeDelta: {x: 1011.4912, y: 705.5395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483921465
 MonoBehaviour:
@@ -661,8 +661,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000076294, y: -535}
-  m_SizeDelta: {x: 855.851, y: 479.652}
+  m_AnchoredPosition: {x: 5.9999847, y: -278.68283}
+  m_SizeDelta: {x: 442.6154, y: 248.0588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529995614
 MonoBehaviour:
@@ -697,6 +697,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1600660397}
     m_Modifications:
+    - target: {fileID: 3754905405871749398, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905405871749398, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSoundSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905405871749398, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905405909786881, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -715,7 +727,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3754905406015987511, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406016767160, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406230880010, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905406230880010, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleGameplaySettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406230880010, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406311679261, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905406311679261, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleControlsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406311679261, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3754905406369693596, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -724,6 +764,18 @@ PrefabInstance:
     - target: {fileID: 3754905406369693596, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406395271661, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905406395271661, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleControlsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406395271661, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3754905406516807141, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.y
@@ -741,6 +793,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905406782620717, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905406782620717, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleGraphicsSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406782620717, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406829150662, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905406933353224, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -753,7 +821,43 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905406989311500, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905406989311500, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSoundSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406989311500, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407003557775, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905407003557775, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407003557775, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407149036077, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407319233147, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905407435384614, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407506763391, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -845,6 +949,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905407527176822, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905407527176822, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleGraphicsSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407527176822, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407550248632, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905407550248632, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleGameplaySettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407550248632, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407681250283, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905407681250283, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSettingsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407681250283, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905407719670382, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -853,11 +993,127 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905407969460254, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407973400246, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94778a56420415642930df99f5e70bad, type: 3}
 --- !u!224 &557806680 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3754905407512972487, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4629801590570850250, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &557806682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3754905407506763387, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557806689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117c48d53e691724097d0522e7663ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &557806683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3754905406414387766, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557806692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e830cb525cabe2341bfb136cb4cf19b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &557806684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3754905406720279781, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557806686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961bea5b38a75d149b2a92737212bdc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &557806685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406230880008, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406720279769, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905405871749399, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406782620707, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905407506763391, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905407003557773, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905407681250281, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406414387754, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905407550248638, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905407527176820, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406536288535, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905407435384614, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406311679250, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &557806698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406015987511, guid: 94778a56420415642930df99f5e70bad, type: 3}
   m_PrefabInstance: {fileID: 557806679}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &632800435
@@ -1031,7 +1287,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 143.806}
+  m_SizeDelta: {x: 0, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691334676
 MonoBehaviour:
@@ -1162,8 +1418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 87.7, y: 0.1925}
-  m_SizeDelta: {x: 94.0148, y: 48.0839}
+  m_AnchoredPosition: {x: 70.2, y: -0.0000019073}
+  m_SizeDelta: {x: 82.4407, y: 30.6673}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751821855
 MonoBehaviour:
@@ -1435,8 +1691,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -84, y: -19}
-  m_SizeDelta: {x: 617.64, y: 134.4835}
+  m_AnchoredPosition: {x: 17.699951, y: -26.599976}
+  m_SizeDelta: {x: 190.2658, y: 46.7921}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &802853282
 MonoBehaviour:
@@ -1548,8 +1804,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.2
-  m_fontSizeBase: 69.2
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1710,8 +1966,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -108.6, y: 0.0000019073}
-  m_SizeDelta: {x: 48.4689, y: 48.4689}
+  m_AnchoredPosition: {x: -120.2934, y: 11.693}
+  m_SizeDelta: {x: 25.0819, y: 25.082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152543853
 MonoBehaviour:
@@ -1844,7 +2100,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 143.806}
+  m_SizeDelta: {x: 0, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1169566949
 MonoBehaviour:
@@ -1977,7 +2233,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 143.806}
+  m_SizeDelta: {x: 0, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234325918
 MonoBehaviour:
@@ -2023,9 +2279,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenuFunctions, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1932125816}
+        m_TargetAssemblyTypeName: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+        m_MethodName: ToggleSettingsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2073,626 +2329,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234325916}
   m_CullTransparentMesh: 1
---- !u!1 &1247375665
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1247375666}
-  - component: {fileID: 1247375669}
-  - component: {fileID: 1247375668}
-  - component: {fileID: 1247375667}
-  m_Layer: 5
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1247375666
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247375665}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 1600660397}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1247375667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247375665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: 13e3554f45f85cf46a9a492afd4bb966, type: 3}
---- !u!114 &1247375668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247375665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f136e0a8ce4b414ab4f319de1161d1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 13e3554f45f85cf46a9a492afd4bb966, type: 3}
---- !u!114 &1247375669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247375665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ec69abbd86f20409bd8fbe9620f27f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 21300000, guid: d79cad3ce7f747d4db85d4903ad4127f, type: 3}
-    - {fileID: 21300000, guid: 6823c94cb3585f44aac466f34646769e, type: 3}
-    - {fileID: 21300000, guid: dba01e06d137bcc4a9b5d50ae344782a, type: 3}
-    - {fileID: 21300000, guid: 0747fc6117d8b534d8423cb5b44b8546, type: 3}
-    - {fileID: 21300000, guid: 37a79983f959b104fa8a28c2a48afdeb, type: 3}
-    - {fileID: 21300000, guid: d89061227a7a94c479d7b4c5dea2107d, type: 3}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: healthBarObjects
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 100
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: inactiveGemSprites
-      Entry: 7
-      Data: 1|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp],[UnityEngine.Sprite, UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: activeGemSprites
-      Entry: 7
-      Data: 3|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp],[UnityEngine.Sprite, UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 4|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: gemImages
-      Entry: 7
-      Data: 5|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp],[UnityEngine.UI.Image, UnityEngine.UI]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  player: {fileID: 0}
-  camera: {fileID: 0}
-  playerInput: {fileID: 0}
-  pointsText: {fileID: 0}
-  activeSize: 140
-  inactiveSize: 80
-  swordSelectMask: {fileID: 0}
-  currentSwordSelect: 0
-  pauseMenu: {fileID: 0}
-  resumeButton: {fileID: 0}
-  isPaused: 0
-  controlsMenu: {fileID: 0}
-  controlsButton: {fileID: 0}
-  moveRebindButton: {fileID: 0}
-  settingsPanel: {fileID: 0}
-  settingsButton: {fileID: 0}
-  graphicsButton: {fileID: 0}
-  gameplayButton: {fileID: 0}
-  soundButton: {fileID: 0}
-  settingsBackButton: {fileID: 0}
-  quitToMenuButton: {fileID: 0}
-  graphicsPanel: {fileID: 0}
-  graphicsBackButton: {fileID: 0}
-  soundPanel: {fileID: 0}
-  soundBackButton: {fileID: 0}
-  gameplayPanel: {fileID: 0}
-  gameplayBackButton: {fileID: 0}
-  gameplaySettingsScript: {fileID: 0}
-  soundSettingsScript: {fileID: 0}
-  graphicSettingsScript: {fileID: 0}
 --- !u!1 &1271757377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,8 +2488,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.2
-  m_fontSizeBase: 69.2
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2936,8 +2572,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3840, y: 2160}
+  m_AnchoredPosition: {x: 6, y: -2}
+  m_SizeDelta: {x: 1985.9097, y: 1117.0742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433186039
 MonoBehaviour:
@@ -3061,8 +2697,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.2
-  m_fontSizeBase: 69.2
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3163,8 +2799,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 3840, y: 2160}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -3203,7 +2839,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1247375666}
+  - {fileID: 1932125817}
   - {fileID: 1433186038}
   - {fileID: 483921464}
   - {fileID: 1681789967}
@@ -3269,8 +2905,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.1287e-10, y: 288}
-  m_SizeDelta: {x: 981.701, y: 439.786}
+  m_AnchoredPosition: {x: 0.00010681152, y: 223.08191}
+  m_SizeDelta: {x: 507.7005, y: 227.4415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681789968
 MonoBehaviour:
@@ -3310,6 +2946,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681789966}
   m_CullTransparentMesh: 1
+--- !u!1 &1932125815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932125817}
+  - component: {fileID: 1932125816}
+  m_Layer: 5
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1932125816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932125815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020b65c3046ccd74097b9511a8c5661f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlsMenu: {fileID: 557806698}
+  controlsButton: {fileID: 557806697}
+  moveRebindButton: {fileID: 557806681}
+  settingsPanel: {fileID: 557806696}
+  settingsButton: {fileID: 557806695}
+  graphicsButton: {fileID: 557806694}
+  gameplayButton: {fileID: 557806693}
+  soundButton: {fileID: 2067834020}
+  settingsBackButton: {fileID: 557806691}
+  quitToMenuButton: {fileID: 557806690}
+  graphicsPanel: {fileID: 557806689}
+  graphicsBackButton: {fileID: 557806688}
+  soundPanel: {fileID: 557806692}
+  soundBackButton: {fileID: 557806687}
+  gameplayPanel: {fileID: 557806686}
+  gameplayBackButton: {fileID: 557806685}
+  gameplaySettingsScript: {fileID: 557806684}
+  soundSettingsScript: {fileID: 557806683}
+  graphicSettingsScript: {fileID: 557806682}
+--- !u!224 &1932125817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932125815}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1600660397}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2049877491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,5 +3047,10 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 238.19592, y: 100}
+  m_SizeDelta: {x: 171.574, y: 72.0306}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!1 &2067834020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3754905406989311490, guid: 94778a56420415642930df99f5e70bad, type: 3}
+  m_PrefabInstance: {fileID: 557806679}
+  m_PrefabAsset: {fileID: 0}
