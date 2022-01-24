@@ -39,6 +39,7 @@ namespace Bladesmiths.Capstone.UI
         // Start is called before the first frame update
         void Start()
         {
+            // Load settings from the manager since the individual panels are default disabled
             gameplaySettingsScript.LoadGameplayPrefs();
             soundSettingsScript.LoadSoundPrefs();
             graphicSettingsScript.LoadGraphicPrefs();
@@ -52,6 +53,7 @@ namespace Bladesmiths.Capstone.UI
 
         public void UnPause()
         {
+            // Hides any open settings when the game is unpaused
             controlsMenu.SetActive(false);
             settingsPanel.SetActive(false);
             graphicsPanel.SetActive(false);
@@ -64,6 +66,7 @@ namespace Bladesmiths.Capstone.UI
 
         }
 
+        // Toggles the control menu and selects the first button
         public void ToggleControlsMenu()
         {
             controlsMenu.SetActive(!controlsMenu.activeSelf);
@@ -71,10 +74,12 @@ namespace Bladesmiths.Capstone.UI
             EventSystem.current.SetSelectedGameObject(moveRebindButton);
         }
 
+        // Toggle the settings menu
         public void ToggleSettingsMenu()
         {
             settingsPanel.SetActive(!settingsPanel.activeSelf);
 
+            // If the settings buttons are hidden, toggle them on
             if (graphicsButton.activeSelf == false)
                 ToggleSettingsButtons();
 
@@ -91,42 +96,49 @@ namespace Bladesmiths.Capstone.UI
             }
         }
 
+        // Toggle the graphics settings menu
         public void ToggleGraphicsSettingsMenu()
         {
             graphicsPanel.SetActive(!graphicsPanel.activeSelf);
 
             ToggleSettingsButtons();
 
+            // Select the back button if the panel was revealed
             if (graphicsPanel.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(graphicsBackButton);
             }
         }
 
+        // Toggle the sound settings menu
         public void ToggleSoundSettingsMenu()
         {
             soundPanel.SetActive(!soundPanel.activeSelf);
 
             ToggleSettingsButtons();
 
+            // Select the back button if the panel was revealed
             if (soundPanel.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(soundBackButton);
             }
         }
 
+        // Toggle the gameplay settings menu
         public void ToggleGameplaySettingsMenu()
         {
             gameplayPanel.SetActive(!gameplayPanel.activeSelf);
 
             ToggleSettingsButtons();
 
+            // Select the back button if the panel was revealed
             if (gameplayPanel.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(gameplayBackButton);
             }
         }
 
+        // Toggles all the individual buttons that you see when you first click on the settings button
         private void ToggleSettingsButtons()
         {
             graphicsButton.SetActive(!graphicsButton.activeSelf);
