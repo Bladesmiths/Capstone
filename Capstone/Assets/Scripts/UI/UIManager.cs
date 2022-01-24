@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Sirenix.Serialization;
+using UnityEngine.SceneManagement;
 
 namespace Bladesmiths.Capstone.UI
 {
@@ -80,10 +81,14 @@ namespace Bladesmiths.Capstone.UI
         private int prevHealthChunks = 100;
         private int prevChipChunks = 0;
 
-        [SerializeField] private GameObject controlsMenu;
-        [SerializeField] private GameObject controlsButton;
+        [SerializeField] private GameObject settingsButton;
+        [SerializeField] private SettingsManager settingsManager;
 
-        [SerializeField] private GameObject moveRebindButton;
+        public float MaxSpeedX
+        {
+            get { return maxSpeedX; }
+            set { maxSpeedX = value; }
+        }
 
         public PlayerInput Inputs { get => playerInput; }
 
@@ -127,7 +132,10 @@ namespace Bladesmiths.Capstone.UI
             if (isPaused)
             {
                 isPaused = false;
-                controlsMenu.SetActive(false);
+
+                settingsManager.UnPause();
+                resumeButton.SetActive(true);
+
                 playerInput.SwitchCurrentActionMap("Player");
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
@@ -151,7 +159,7 @@ namespace Bladesmiths.Capstone.UI
             {
                 isPaused = true;
                 playerInput.SwitchCurrentActionMap("UI");
-                EventSystem.current.SetSelectedGameObject(resumeButton);
+                //EventSystem.current.SetSelectedGameObject(resumeButton);
                 Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
                 // Stops the camera from moving and stops the recentering
@@ -163,7 +171,7 @@ namespace Bladesmiths.Capstone.UI
                 //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
 
-                EventSystem.current.SetSelectedGameObject(controlsButton);
+                EventSystem.current.SetSelectedGameObject(settingsButton);
 
                 pauseMenu.SetActive(true);
             }
@@ -323,13 +331,6 @@ namespace Bladesmiths.Capstone.UI
             }
 
             swordSelectObject.SetActive(active);
-        }
-
-        public void ToggleControlsMenu()
-        {
-            controlsMenu.SetActive(!controlsMenu.activeSelf);
-
-            EventSystem.current.SetSelectedGameObject(moveRebindButton);
         }
     }
 }

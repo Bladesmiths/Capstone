@@ -13,7 +13,7 @@ public class MainMenuFunctions : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenu;
     //[SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private GameObject continueButton;
+    [SerializeField] private GameObject skipCutSceneButton;
 
     [SerializeField] private GameObject blackFade;
 
@@ -65,7 +65,7 @@ public class MainMenuFunctions : MonoBehaviour
     /// <param name="vp"></param>
     public void EndReached()
     {
-        SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadScene("284-PlayerScene");
         SceneManager.LoadSceneAsync("EnemyScene", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("VillageScene", LoadSceneMode.Additive);
     }
@@ -100,7 +100,7 @@ public class MainMenuFunctions : MonoBehaviour
 
         Paused = !Paused;
 
-        EventSystem.current.SetSelectedGameObject(continueButton);
+        EventSystem.current.SetSelectedGameObject(skipCutSceneButton);
     }
 
     /// <summary>
