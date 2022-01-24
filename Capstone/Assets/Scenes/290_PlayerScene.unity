@@ -3102,7 +3102,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7799044, y: 1}
+    m_SensorSize: {x: 1.7780678, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -3877,11 +3877,11 @@ MonoBehaviour:
   offset: {fileID: 0}
   SwordHitEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -162101038
+      Data2: 1174100282
+      Data3: 338509214
+      Data4: -149635798
+    Path: event:/Player SFX/Player Sword General Hit
   sfxPlay: 0
 --- !u!4 &190863861
 Transform:
@@ -7324,7 +7324,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7799044, y: 1}
+    m_SensorSize: {x: 1.7780678, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -7347,7 +7347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.01818946, y: 0.000000014901161, z: -0.0000000055879354, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20263,7 +20263,7 @@ Animator:
   m_GameObject: {fileID: 1261776968}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5bb7d601d6fc29349b6e20c41e8a3f66, type: 3}
-  m_Controller: {fileID: 9100000, guid: 88c709bc24287604bbcbcb6be7db38c6, type: 2}
+  m_Controller: {fileID: 9100000, guid: aeddf975ff34a7b43ac88225de5e0775, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -20284,13 +20284,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8721ebd28c475a24ca19d9b1aa6f3c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneShot:
+  swordMiss:
     Guid:
       Data1: 1805055380
       Data2: 1194416104
       Data3: 661422760
       Data4: 1198791484
     Path: event:/Player SFX/Player Sword Miss
+  footstep:
+    Guid:
+      Data1: 1342178655
+      Data2: 1128716938
+      Data3: 234097798
+      Data4: 938432516
+    Path: event:/Player SFX/Player Footsteps
 --- !u!1 &1262429058
 GameObject:
   m_ObjectHideFlags: 0
@@ -28976,7 +28983,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7799044, y: 1}
+    m_SensorSize: {x: 1.7780678, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -36471,7 +36478,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7799044, y: 1}
+    m_SensorSize: {x: 1.7780678, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16

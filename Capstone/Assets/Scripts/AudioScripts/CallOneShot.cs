@@ -2,13 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CallOneShot : MonoBehaviour
+namespace Bladesmiths.Capstone
 {
-    public FMODUnity.EventReference oneShot;
-
-    public void OneShot_SwordMiss()
+    public class CallOneShot : MonoBehaviour
     {
-        FMODUnity.RuntimeManager.PlayOneShot(oneShot);
+        public FMODUnity.EventReference swordMiss;
+        public FMODUnity.EventReference footstep;
 
+
+        public void OneShot_SwordMiss()
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(swordMiss);
+
+        }
+
+        public void OneShot_Footstep()
+        {
+            if (gameObject.GetComponent<Player>().Inputs.move != Vector2.zero)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(footstep);
+            }
+        }
     }
 }
