@@ -7,6 +7,7 @@ namespace Bladesmiths.Capstone
     public class LastBreakableBox : MonoBehaviour
     {
         public bool isBroken;
+        public bool boxActive = false;
         private float fadeOutTimer;
         private float fadeOutLength;
         private float shrinkSpeed;
@@ -48,6 +49,8 @@ namespace Bladesmiths.Capstone
         {
             if(AIDirector.Instance.enemyGroup.Count == 0)
             {
+                //The box is now active and breakable
+                boxActive = true;
                 foreach (MeshRenderer renderer in transform.GetComponentsInChildren<MeshRenderer>())
                 {
                     if (renderer.material.name == "Mat_Gem_Cluster_Center 1 (Instance)")

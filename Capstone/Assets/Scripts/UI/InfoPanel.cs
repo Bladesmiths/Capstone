@@ -22,6 +22,9 @@ public class InfoPanel : SerializedMonoBehaviour
     public TextMeshProUGUI infoTextPlusL;
     public TextMeshProUGUI infoTextPlusR;
 
+    [SerializeField] BreakableBox firstCluster;
+    [SerializeField] LastBreakableBox finalCluster;
+
     [TitleGroup("Tutorial Text")]
     [HorizontalGroup("Tutorial Text/FirstRow")]
     [BoxGroup("Tutorial Text/FirstRow/Tutorial Text")] [LabelWidth(70)]
@@ -42,6 +45,9 @@ public class InfoPanel : SerializedMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        firstCluster = GameObject.Find("Breakable Gem Cluster").GetComponent<BreakableBox>();
+        finalCluster = GameObject.Find("Breakable Gem Cluster (7)").GetComponent<LastBreakableBox>();
+
         playerInputs = uiManager.Inputs;
         xboxInputs = uiManager.xboxInputs;
         kbmInputs = uiManager.kbmInputs;
@@ -151,6 +157,19 @@ public class InfoPanel : SerializedMonoBehaviour
         //Set text
         //Determined entirely by an index value attached to the zone the player has entered
         infoText.text = " - " + infoTextDictionary[textIndex];
+
+        //Specific case for final cluster message
+        //Hide text when enemies are defeated / cluster is active
+        if(textIndex == 8 && finalCluster.boxActive)
+        {
+            infoText.enabled = false;
+        }
+        //Display new message after breaking first cluster
+        else if (textIndex == 2 && firstCluster.isBroken)
+        {
+            infoText.text = " - " + infoTextDictionary[7];
+            infoImage.enabled = false;
+        }
 
         currentInputGamepad = gamepadIconIndex;
         currentInputKBM = kbmIconIndex;
