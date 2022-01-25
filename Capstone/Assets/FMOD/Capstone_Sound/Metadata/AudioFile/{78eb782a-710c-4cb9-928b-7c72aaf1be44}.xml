@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{78eb782a-710c-4cb9-928b-7c72aaf1be44}">
+		<property name="assetPath">
+			<value>EnemySFX_SwordHitGeneral_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.29544217687074831</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{25d4c4a8-bc18-445b-9930-d9288a29a9c3}</destination>
+		</relationship>
+	</object>
+</objects>

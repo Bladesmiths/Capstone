@@ -8,6 +8,8 @@ namespace Bladesmiths.Capstone
     public class EnemySword : MonoBehaviour, IDamaging
     {
         private Enemy enemy;
+        [SerializeField]
+        private FMODUnity.EventReference enemyHit;
 
         #region IDamaging Necessaries
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -54,6 +56,7 @@ namespace Bladesmiths.Capstone
 
             if (other.transform.GetComponent<Player>())
             {
+                FMODUnity.RuntimeManager.PlayOneShot(enemyHit);
                 Player player = other.transform.GetComponent<Player>();
                 if (player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_ParryAttempt &&
                     player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_ParrySuccess &&

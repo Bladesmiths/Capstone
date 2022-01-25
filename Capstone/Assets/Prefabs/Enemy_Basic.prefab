@@ -2492,6 +2492,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b967c2688b697b9479b6677ae88a58c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHit:
+    Guid:
+      Data1: -2012402423
+      Data2: 1326388927
+      Data3: -954713957
+      Data4: 1280365890
+    Path: event:/Enemy SFX/Enemy Sword Hit
 --- !u!54 &7746510249767180176
 Rigidbody:
   m_ObjectHideFlags: 0

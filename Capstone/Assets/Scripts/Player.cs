@@ -210,6 +210,7 @@ namespace Bladesmiths.Capstone
         public float ParryDelay { get => currentSword.ParryDelay; }
         public float ParryLength { get => currentSword.ParryLength; }
         public float ParryCooldown { get => currentSword.ParryCooldown; }
+        public GameObject Sword { get => sword; }
         #endregion
         #endregion
 
@@ -295,9 +296,9 @@ namespace Bladesmiths.Capstone
         /// Allows for other classes to get a reference to the player's state
         /// </summary>
         /// <returns></returns>
-        public PlayerFSMState GetPlayerFSMState()
+        public PlayerCondition GetPlayerFSMState()
         {
-            return (PlayerFSMState)FSM.GetCurrentState();
+            return CheckAnimationBehavior(animator.GetCurrentAnimatorStateInfo(0)).ID;
         }
 
         /// <summary>
@@ -369,7 +370,7 @@ namespace Bladesmiths.Capstone
 
             // Not sure if this is the correct place to add PlayerMovementMultiplier
             // Because it changes the animation if reduced/increased too much
-            speed = targetSpeed * currentSword.PlayerMovementMultiplier;
+            speed = targetSpeed * currentBalancingData.SwordData[currentSword.SwordType].PlayerMovementMultiplier;
 
             // if the input is greater than 1 then set the speed to the max
             if (inputs.move.magnitude <= 1)
@@ -549,7 +550,7 @@ namespace Bladesmiths.Capstone
                 // Update the position according to offset
                 sword.transform.localPosition = currentSword.Offset.position;
                 sword.transform.localRotation = currentSword.Offset.rotation;
-                sword.transform.localScale = currentSword.Offset.localScale;
+                //sword.transform.localScale = currentSword.Offset.localScale;
 
                 // Update the box collider dimensions
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
@@ -612,13 +613,11 @@ namespace Bladesmiths.Capstone
         {
             // If the player is not in invincibility frames
             // They can take damage
-            
-
             if (canDmg)
             {
                 // If the player isn't currently blocking
                 // Apply the damage taken modifier
-                if (CheckAnimationBehavior(animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_Blocking)
+                if (GetPlayerFSMState() != Enums.PlayerCondition.F_Blocking)
                 {
                     damage *= currentSword.DamageTakenModifier;
                     ChipDamageTotal = 0;

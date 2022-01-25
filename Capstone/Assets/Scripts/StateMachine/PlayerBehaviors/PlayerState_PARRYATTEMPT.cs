@@ -19,6 +19,8 @@ namespace Bladesmiths.Capstone
         // The block object that notifies if the player has blocked something
         public GameObject _playerParryBox;
 
+        private int _animIDParry;
+
         //public PlayerState_PARRYATTEMPT(Player player, PlayerInputsScript input, Animator animator,
         //    GameObject playerParryDetector)
         //{
@@ -37,9 +39,9 @@ namespace Bladesmiths.Capstone
             _player = animator.GetComponent<Player>();
             _input = _player.GetComponent<PlayerInputsScript>();
             _animator = animator;
+            _animIDParry = Animator.StringToHash("Parry");
             id = PlayerCondition.F_ParryAttempt;
             base.OnStateEnter(animator, stateInfo, layerIndex);
-
 
             // Start the timer to enable the parry system after a set time
             _player.StartCoroutine(ParryDelayTimer());
@@ -76,6 +78,8 @@ namespace Bladesmiths.Capstone
 
             _playerParryBox.SetActive(false);
             _player.StartCoroutine(ParryCooldownTimer());
+
+            _animator.SetBool(_animIDParry, false);
         }
 
         /// <summary>

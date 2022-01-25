@@ -32,6 +32,10 @@ namespace Bladesmiths.Capstone
         private Vector3 inputDirection;
         private Quaternion _targetRotation;
         private GameObject camera;
+        private bool playSound;
+
+        [SerializeField]
+        private FMODUnity.EventReference SwordMissEvent;
 
         private Dictionary<SwordType, float> _animDurations = new Dictionary<SwordType, float>(); 
 
@@ -135,8 +139,7 @@ namespace Bladesmiths.Capstone
             id = PlayerCondition.F_Attacking;
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
-
-
+            playSound = true;
 
 
 

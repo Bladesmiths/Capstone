@@ -10,13 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
-  m_Name: 276_Setup
+<<<<<<< HEAD:Capstone/Assets/Scenes/SceneSetup/289_Setup.asset
+  m_Name: 289_Setup
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Scenes/276_PlayerScene.unity
+  - scenePath: Assets/Scenes/289_PlayerScene.unity
+=======
+  m_Name: 290_Setup
+  m_EditorClassIdentifier: 
+  setupList:
+  - scenePath: Assets/Scenes/290_PlayerScene.unity
+>>>>>>> 290-implement-temp-sfx:Capstone/Assets/Scenes/SceneSetup/290_Setup.asset
     isActive: 1
     isLoaded: 1
-  - scenePath: Assets/Scenes/EnemyScene.unity
+  - scenePath: Assets/Scenes/290_EnemyScene.unity
     isActive: 0
     isLoaded: 1
   - scenePath: Assets/Scenes/VillageScene.unity

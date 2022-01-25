@@ -885,6 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
   m_PointAction: {fileID: 5725176057907031469, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
   m_MoveAction: {fileID: -8687011286236817961, guid: 27f54322e986eb341bf9e300c5d0db7e, type: 3}
@@ -1277,7 +1278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 350, y: -88.459}
+  m_AnchoredPosition: {x: 350, y: -176.918}
   m_SizeDelta: {x: 700, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1376485777
@@ -1826,8 +1827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5013294a563f1d47bb1cb8e52df56b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  continueButton: {fileID: 0}
+  pauseMenu: {fileID: 96650886}
+  skipCutSceneButton: {fileID: 1376485775}
   blackFade: {fileID: 244663530}
 --- !u!114 &1600660399
 MonoBehaviour:
