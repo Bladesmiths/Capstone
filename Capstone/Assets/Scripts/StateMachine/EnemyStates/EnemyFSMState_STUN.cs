@@ -28,7 +28,7 @@ namespace Bladesmiths.Capstone
             continueAttacking = false;
             _enemy.stunned = false;
             defaultSword = _sword.transform.eulerAngles.y;
-            _player.parrySuccessful = false;
+            //_player.parrySuccessful = false;
         }
 
         public override void Tick()

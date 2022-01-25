@@ -6,6 +6,8 @@ namespace Bladesmiths.Capstone
 {
     public class ParryCollision : MonoBehaviour
     {
+        private int _animIDParrySuccess;
+
         public Player Player { get; set; }
 
         public ObjectController ObjectController { get; set; }
@@ -14,6 +16,7 @@ namespace Bladesmiths.Capstone
         public void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
+            _animIDParrySuccess = Animator.StringToHash("Parry Successful");
         }
 
         // Update is called once per frame
@@ -38,7 +41,9 @@ namespace Bladesmiths.Capstone
                 if (ObjectController[damagingObject.ID].ObjectTeam != Enums.Team.Player &&
                     !Player.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
-                    Player.parrySuccessful = true;
+                    //Player.parrySuccessful = true;
+                    Player.animator.SetTrigger(_animIDParrySuccess);
+
                     // Adding the damaging ID 
                     Player.AddDamagingID(damagingObject.ID);
 

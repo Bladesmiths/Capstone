@@ -116,8 +116,8 @@ namespace Bladesmiths.Capstone.Testing
             if (col.gameObject.GetComponent<Player>() == true)
             {
                 // Check if the object in the collision is the player
-                if ((player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking) ||
-                    (player.GetPlayerFSMState().ID != Enums.PlayerCondition.F_ParryAttempt))
+                if ((player.GetPlayerFSMState() != Enums.PlayerCondition.F_Blocking) ||
+                    (player.GetPlayerFSMState() != Enums.PlayerCondition.F_ParryAttempt))
                 {
                     // Damage the player
                     //player.TakeDamage(ID, damage);

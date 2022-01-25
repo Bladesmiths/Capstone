@@ -59,7 +59,7 @@ namespace Bladesmiths.Capstone
             _input.parry = false;
             _playerParryBox.SetActive(false);
             _player.parryEnd = false;
-            _player.parrySuccessful = false;
+            //_player.parrySuccessful = false;
         }
 
         /// <summary>
