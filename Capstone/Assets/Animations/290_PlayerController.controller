@@ -936,11 +936,11 @@ MonoBehaviour:
   Gravity: 0
   SwordMissEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1805055380
+      Data2: 1194416104
+      Data3: 661422760
+      Data4: 1198791484
+    Path: event:/Player SFX/Player Sword Miss
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
