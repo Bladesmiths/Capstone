@@ -31,6 +31,7 @@ namespace Bladesmiths.Capstone
 		[Header("Animation")]
 		public Animator animator;
 		private int _animIDBlock;
+		private int _animIDParry;
 		private int _animIDDodge;
 		private int _animIDDash; 
 		private int _animIDAttack;
@@ -49,6 +50,7 @@ namespace Bladesmiths.Capstone
 			_animIDBlock = Animator.StringToHash("Block");
 			_animIDDodge = Animator.StringToHash("Dodge");
 			_animIDDash = Animator.StringToHash("Dash");
+			_animIDParry = Animator.StringToHash("Parry");
 		}
 		#region On Input Methods
 		public void OnMove(InputValue value)
@@ -233,6 +235,8 @@ namespace Bladesmiths.Capstone
 		public void ParryInput(bool newParryState)
 		{
 			parry = newParryState;
+
+			animator.SetBool(_animIDParry, parry);
 		}
 
 		public void BlockInput(bool newBlockState)
