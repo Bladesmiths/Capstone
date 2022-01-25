@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Trigger areas that display a tutorial UI panel while the player is present
 public class InfoZone : MonoBehaviour
 {
-    public int actionIndex;
+    public string gamepadIndex;
+    public string kbmIndex;
     public int textIndex;
 
     public InfoPanel infoPanel;
@@ -27,7 +29,7 @@ public class InfoZone : MonoBehaviour
         // If the object collided with is the player
         if (other.transform.root.gameObject.CompareTag("Player"))
         {
-            infoPanel.SetInfoUI(actionIndex, textIndex);
+            infoPanel.SetInfoUI(gamepadIndex, kbmIndex, textIndex);
         }
     }
 
