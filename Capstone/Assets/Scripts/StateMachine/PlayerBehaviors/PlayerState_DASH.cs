@@ -50,7 +50,7 @@ namespace Bladesmiths.Capstone
         {
             base.OnStateMove(animator, stateInfo, layerIndex);
 
-            speed = 35f;
+            speed = 40f;
 
             if (_input.dodge)
             {
@@ -106,7 +106,7 @@ namespace Bladesmiths.Capstone
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
-            Debug.Log(inputDirection.normalized);
+            //Debug.Log(inputDirection.normalized);
 
             // move the player
             _controller.Move(inputDirection.normalized * (targetSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);

@@ -255,6 +255,7 @@ namespace Bladesmiths.Capstone
 				if (player.GetPlayerFSMState() != Enums.PlayerCondition.F_Dashing)
                 {
 					animator.SetTrigger(_animIDDash);
+					Debug.Log("Dashing");
 				}
 			}
 			else
