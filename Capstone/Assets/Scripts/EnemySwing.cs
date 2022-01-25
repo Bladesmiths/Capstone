@@ -151,7 +151,7 @@ namespace Bladesmiths.Capstone
             if(other.GetComponent<BlockCollision>() != null || other.GetComponent<Player>() != null)
             { 
                 // Checks to see if the player is in the blocking state
-                if (player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID == Enums.PlayerCondition.F_Blocking /*&& other.GetComponent<Sword>() == true*/)
+                if (player.GetPlayerFSMState() == Enums.PlayerCondition.F_Blocking /*&& other.GetComponent<Sword>() == true*/)
                 {
                     // Damage Enemy
                     isBroken = true;

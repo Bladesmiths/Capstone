@@ -75,7 +75,7 @@ namespace Bladesmiths.Capstone
         {
             if (other.GetComponent<BlockCollision>() != null || other.GetComponent<Player>() != null)
             {
-                if (other.gameObject.transform.root.GetComponent<Player>().GetPlayerFSMState().ID != Enums.PlayerCondition.F_Blocking)
+                if (other.gameObject.transform.root.GetComponent<Player>().GetPlayerFSMState() != Enums.PlayerCondition.F_Blocking)
                 {
                     Player player = other.gameObject.transform.root.gameObject.GetComponent<Player>();
                     // Check if the player has already been hit by this object

@@ -248,7 +248,10 @@ namespace Bladesmiths.Capstone
 
 			if (currentSwordType == Enums.SwordType.Sapphire)
 			{
-				animator.SetTrigger(_animIDDash);
+				if (player.GetPlayerFSMState() != Enums.PlayerCondition.F_Dashing)
+                {
+					animator.SetTrigger(_animIDDash);
+				}
 			}
 			else
 			{

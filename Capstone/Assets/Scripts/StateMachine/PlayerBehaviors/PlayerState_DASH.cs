@@ -17,7 +17,6 @@ namespace Bladesmiths.Capstone
     {
         public float timer;
         private float maxTimer;
-        public float dmgTimer;
 
         private Player _player;
         private PlayerInputsScript _input;
@@ -51,7 +50,7 @@ namespace Bladesmiths.Capstone
         {
             base.OnStateMove(animator, stateInfo, layerIndex);
 
-            speed = 30f;
+            speed = 35f;
 
             if (_input.dodge)
             {
@@ -86,12 +85,6 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
             _input.dodge = false;
-
-            dmgTimer += Time.deltaTime;
-            if (dmgTimer >= 0.3f)
-            {
-                _player.canDmg = true;
-            }
 
             if (_controller.isGrounded)
             {
@@ -129,15 +122,16 @@ namespace Bladesmiths.Capstone
 
             timer = 0;
             maxTimer = stateInfo.length;
-            dmgTimer = 0;
-            _player.canDmg = false;
             _controller = _player.GetComponent<CharacterController>();
             camera = Camera.main.gameObject;
+
+            _player.gameObject.layer = LayerMask.NameToLayer("IgnoreEnemies");
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _controller.SimpleMove(Vector3.zero);
+            _player.gameObject.layer = LayerMask.NameToLayer("Player");
         }
     }
 }
