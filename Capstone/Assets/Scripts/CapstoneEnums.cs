@@ -32,7 +32,8 @@ namespace Bladesmiths.Capstone.Enums
         F_SwitchingWeapon = 512,
         F_Dead = 1024,
         F_ParrySuccess = 2048,
-        F_Dashing = 4096
+        F_Dashing = 4096, 
+        F_Dying = 8192
     }
 
     [Flags]

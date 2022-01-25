@@ -128,6 +128,7 @@ namespace Bladesmiths.Capstone
         private int animIDJump;
         private int animIDFreeFall;
         private int animIDDamaged;
+        private int animIDDead; 
         private int animIDSpeed;
         private int animIDAttack;
         private int animIDMotionSpeed;
@@ -159,7 +160,6 @@ namespace Bladesmiths.Capstone
         public float Gravity = -15.0f;
 
         private GameObject playerCamera;
-
 
         public float RunSpeed = 10.0f;
         public float WalkSpeed = 4.0f;
@@ -223,6 +223,8 @@ namespace Bladesmiths.Capstone
             animIDBlock = Animator.StringToHash("Block");
             animIDDodge = Animator.StringToHash("Dodge");
             animIDMoving = Animator.StringToHash("Moving");
+            animIDDamaged = Animator.StringToHash("Damaaged");
+            animIDDead = Animator.StringToHash("Dead");
             animBlend = 0;
             dodgeTimer = 0;
             canDmg = true;
@@ -643,8 +645,13 @@ namespace Bladesmiths.Capstone
                     if(Health <= 0)
                     {
                         damaged = true;
+                        animator.SetBool(animIDDead, true);
                     }
-                    
+
+                    if (damaged)
+                    {
+                        animator.SetTrigger(animIDDamaged);
+                    }
                 }
 
                 // Return whether damage was taken or not
@@ -740,25 +747,28 @@ namespace Bladesmiths.Capstone
                 uiManager.ResetChunks();
                 transform.position = respawnPoint;
                 transform.rotation = Quaternion.Euler(respawnRotation);
-                
+                animator.SetBool(animIDDead, false);
             }
             damaged = false; 
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());
-
         }
 
-        public void FadeToBlack()
+        public IEnumerator FadeToBlack()
         {
             // Unhide the fade out image
             if (fade.activeSelf == false)
                 fade.SetActive(true);
 
             // If the fade isn't fully opaque
-            if (fade.GetComponent<Image>().color.a < 1)
+            while (fade.GetComponent<Image>().color.a < 1)
+            {
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a + Time.deltaTime);
-            else
+                yield return new WaitForSeconds(0.25f);
+            }
+            
+            if (fade.GetComponent<Image>().color.a >= 1)
             {
                 if (points >= maxPoints)
                 {
@@ -780,7 +790,7 @@ namespace Bladesmiths.Capstone
             while (fade.GetComponent<Image>().color.a > 0)
             {
                 fade.GetComponent<Image>().color = new Color(0, 0, 0, fade.GetComponent<Image>().color.a - Time.deltaTime);
-                yield return null;
+                yield return new WaitForSeconds(0.25f);
             }
 
             // Needs to be separate from above if so it triggers before state change

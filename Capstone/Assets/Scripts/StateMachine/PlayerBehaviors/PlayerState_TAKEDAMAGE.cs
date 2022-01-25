@@ -66,7 +66,7 @@ namespace Bladesmiths.Capstone
             //_player.damaged = false;
             Timer = 0;
             //_player.inState = true;
-            Debug.Log("AnimDuration: " + AnimDuration);
+            //Debug.Log("AnimDuration: " + AnimDuration);
 
             //w_animator.SetTrigger(_animIDDamaged); 
         }

@@ -21,20 +21,6 @@ namespace Bladesmiths.Capstone
         private float _animDuration;
         private float _timer;
 
-        //public PlayerState_DEATH(Player player, Animator animator)
-        //{
-        //    _player = player;
-        //    id = PlayerCondition.F_Dead;
-        //    _animator = animator;
-
-        //    // Assign damaged & dead paramater ids
-        //    _animIDDamaged = Animator.StringToHash("Damaged");
-        //    _animIDDeath = Animator.StringToHash("Dead");
-        //    _animDuration = animator.runtimeAnimatorController.animationClips.
-        //        Where(clip => clip.name == "Dying").ToArray()[0].length;
-        //}
-
-
         private void OnEnable()
         {
             
@@ -43,13 +29,16 @@ namespace Bladesmiths.Capstone
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             // If the player is dead and just died (fadeToBlack is still occuring)
-            if (_timer >= _animDuration)
+            if (id == PlayerCondition.F_Dying)
             {
-                _player.FadeToBlack();
-            }
-            else
-            {
-                _timer += Time.deltaTime;
+                if (_timer >= _animDuration)
+                {
+                    _player.StartCoroutine(_player.FadeToBlack());
+                }
+                else
+                {
+                    _timer += Time.deltaTime;
+                }
             }
 
             // Once the screen has faded to black
@@ -59,13 +48,12 @@ namespace Bladesmiths.Capstone
                 _player.Respawn();
             }
             _player.damaged = false;
-
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _player = _player = animator.GetComponent<Player>();
-            id = PlayerCondition.F_Dead;
+            _player = animator.GetComponent<Player>();
+            //id = PlayerCondition.F_Dead;
             _animator = animator;
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
@@ -73,24 +61,28 @@ namespace Bladesmiths.Capstone
             _animIDDamaged = Animator.StringToHash("Damaged");
             _animIDDeath = Animator.StringToHash("Dead");
             _animDuration = animator.runtimeAnimatorController.animationClips.
-                Where(clip => clip.name == "Dying").ToArray()[0].length;
-
-
+                Where(clip => clip.name == "Dying").ToArray()[0].length - 0.75f;
 
             _player.inState = true;
             _player.justDied = true;
+            _player.canDmg = false;
             _player.ResetChipDamage();
             _player.damaged = false;
 
-            _animator.SetBool(_animIDDeath, true);
-            _animator.SetTrigger(_animIDDamaged);
+            //_animator.SetBool(_animIDDeath, false);
+            //_animator.SetTrigger(_animIDDamaged);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _player.inState = false;
-            _animator.SetBool(_animIDDeath, false);
-            _player.damaged = false;
+
+            if (id == PlayerCondition.F_Dead)
+            {
+                _animator.SetBool(_animIDDeath, false);
+                _player.damaged = false;
+                _player.canDmg = true;
+            }
 
             _timer = 0;
         }
