@@ -57,6 +57,11 @@ namespace Bladesmiths.Capstone
 
         void OnCollisionEnter(Collision col)
         {
+            if(col.gameObject.GetComponent<BreakableBox>())
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+            }
+
             if (col.gameObject.GetComponent<Enemy>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);

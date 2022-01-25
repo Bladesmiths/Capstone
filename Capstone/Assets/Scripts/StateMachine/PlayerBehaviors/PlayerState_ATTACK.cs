@@ -117,13 +117,6 @@ namespace Bladesmiths.Capstone
                     _verticalVelocity = -2f;
                 }
             }
-            Debug.Log(_player.Sword.GetComponent<Sword>().sfxPlay);
-
-            if(_player.Sword.GetComponent<Sword>().sfxPlay/* && playSound*/)
-            {
-                FMODUnity.RuntimeManager.PlayOneShot(SwordMissEvent);
-                playSound = false;
-            }
 
             Vector3 targetDirection = Vector3.zero;
 
