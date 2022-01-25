@@ -1861,7 +1861,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.6703297, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5162,6 +5162,14 @@ MonoBehaviour:
   swordModel: {fileID: 0}
   swordType: 0
   offset: {fileID: 0}
+  SwordHitEvent:
+    Guid:
+      Data1: -162101038
+      Data2: 1174100282
+      Data3: 338509214
+      Data4: -149635798
+    Path: event:/Player SFX/Player Sword General Hit
+  sfxPlay: 0
 --- !u!65 &398969401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5308,7 +5316,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.6703297, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5331,7 +5339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
+  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12870,6 +12878,14 @@ MonoBehaviour:
   swordModel: {fileID: 0}
   swordType: 2
   offset: {fileID: 6693677303595215301, guid: c1e9ad033834b6042bd8175e683db9ce, type: 3}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
 --- !u!54 &1017220719
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13708,6 +13724,14 @@ MonoBehaviour:
   swordModel: {fileID: 0}
   swordType: 0
   offset: {fileID: 6693677303595215301, guid: e129d40e2e27bbe4badd698ada26ed07, type: 3}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
 --- !u!54 &1087900538
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15708,6 +15732,7 @@ GameObject:
   - component: {fileID: 1261776969}
   - component: {fileID: 1261776972}
   - component: {fileID: 1261776970}
+  - component: {fileID: 1261776976}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -16193,6 +16218,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1261776976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261776968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8721ebd28c475a24ca19d9b1aa6f3c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordMiss:
+    Guid:
+      Data1: 1805055380
+      Data2: 1194416104
+      Data3: 661422760
+      Data4: 1198791484
+    Path: event:/Player SFX/Player Sword Miss
+  footstep:
+    Guid:
+      Data1: 1342178655
+      Data2: 1128716938
+      Data3: 234097798
+      Data4: 938432516
+    Path: event:/Player SFX/Player Footsteps
 --- !u!1 &1269473016
 GameObject:
   m_ObjectHideFlags: 0
@@ -19021,6 +19072,14 @@ MonoBehaviour:
   swordModel: {fileID: 0}
   swordType: 1
   offset: {fileID: 6693677303595215301, guid: 9e35dc870aea93747a9b4c801527f3a9, type: 3}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
 --- !u!54 &1480974496
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23195,7 +23254,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.6703297, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -27989,7 +28048,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.777941, y: 1}
+    m_SensorSize: {x: 1.6703297, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -28208,7 +28267,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.6703297, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
