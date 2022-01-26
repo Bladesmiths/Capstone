@@ -27,6 +27,7 @@ namespace Bladesmiths.Capstone
 
 		[Header("UI Objects")]
 		public UI.UIManager uiManager;
+		public InfoPanel infoPanel;
 
 		[Header("Animation")]
 		public Animator animator;
@@ -201,6 +202,11 @@ namespace Bladesmiths.Capstone
 			if (value.isPressed)
 				uiManager.Unpause();
 		}
+
+		public void OnControlsChanged()
+        {
+			infoPanel.ChooseControlSchemeIcons();
+        }
 
 		#endregion
 
