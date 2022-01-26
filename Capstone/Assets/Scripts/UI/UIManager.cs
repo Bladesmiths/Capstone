@@ -90,6 +90,27 @@ namespace Bladesmiths.Capstone.UI
             set { maxSpeedX = value; }
         }
 
+        #region Input Icon Dictionaries
+        [TitleGroup("Input Icons")]
+
+        //Dictionaries for referring to onboarding UI info
+
+        [HorizontalGroup("Input Icons/FirstRow")]
+        [BoxGroup("Input Icons/FirstRow/Xbox Inputs")] [LabelWidth(70)]
+        [OdinSerialize]
+        public Dictionary<string, Sprite> xboxInputs = new Dictionary<string, Sprite>();
+
+        [HorizontalGroup("Input Icons/SecondRow")]
+        [BoxGroup("Input Icons/SecondRow/PS4 Inputs")]
+        [OdinSerialize]
+        public Dictionary<string, Sprite> ps4Inputs = new Dictionary<string, Sprite>();
+
+        [HorizontalGroup("Input Icons/ThirdRow")]
+        [BoxGroup("Input Icons/ThirdRow/KBM Inputs")]
+        [OdinSerialize] 
+        public Dictionary<string, Sprite> kbmInputs = new Dictionary<string, Sprite>();
+        #endregion
+
         public PlayerInput Inputs { get => playerInput; }
 
         // Start is called before the first frame update
@@ -201,8 +222,6 @@ namespace Bladesmiths.Capstone.UI
 
             int totalChunks = remainingChunks + chipChunks;
 
-            //Debug.Log("Health Raw Value: " + currentHealth);
-
             //In specific situations involving lifesteal + chip damage, health briefly exceeds 100 and causes errors
             //If this happens, reduce the number of chipped chunks to make an even 100 total
             while (totalChunks > 100)
@@ -210,9 +229,6 @@ namespace Bladesmiths.Capstone.UI
                 chipChunks -= 1;
                 totalChunks = remainingChunks + chipChunks;
             }
-
-            //Debug.Log("Player Health: " + remainingChunks);
-            //Debug.Log("Player Chip Health " + chipChunks);
 
             //Modify chunk status (the order of these matters)
             ShatterChunks(remainingChunks, chipChunks);
