@@ -1813,7 +1813,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 9
+      Data: 10
     - Name: 
       Entry: 7
       Data: 
@@ -1919,6 +1919,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 1
       Data: Defeat both enemies! -
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 1
+      Data: Open the Menu
     - Name: 
       Entry: 8
       Data: 
@@ -2132,7 +2144,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7790055, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5587,7 +5599,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7790055, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5610,7 +5622,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189475, y: -0, z: 0.0000000037252903, w: 0.9998346}
+  m_LocalRotation: {x: 0.01818946, y: -0.000000022351742, z: 0.000000011175871, w: 0.99983466}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5821,7 +5833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.663, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -6232,7 +6244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.663, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -10360,7 +10372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.663, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -22522,7 +22534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.663, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -24270,7 +24282,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7790055, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -25575,6 +25587,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 371ed6a024f883f43a07586b1d413f72, type: 3}
     - {fileID: 21300000, guid: a1c918876a6b0d64581a00408156a3ce, type: 3}
     - {fileID: 21300000, guid: 0d19343f1292b1c489bebdd00a37e454, type: 3}
+    - {fileID: 21300000, guid: 981cc7a625157df46a0ae41226e85c23, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26509,7 +26522,7 @@ MonoBehaviour:
       Data: 12
     - Name: 
       Entry: 12
-      Data: 16
+      Data: 17
     - Name: 
       Entry: 7
       Data: 
@@ -26699,6 +26712,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 6
       Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: escape
+    - Name: $v
+      Entry: 10
+      Data: 138
     - Name: 
       Entry: 8
       Data: 
@@ -29769,7 +29794,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7790055, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
