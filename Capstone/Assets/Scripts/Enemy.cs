@@ -35,6 +35,11 @@ namespace Bladesmiths.Capstone
         protected float damage;
 
         [SerializeField]
+        private float shrinkSpeed;
+        private float fadeOutTimer;
+        private float fadeOutLength;
+
+        [SerializeField]
         protected float viewDistance;
         
         // The event to call when damaging is finished
@@ -86,6 +91,8 @@ namespace Bladesmiths.Capstone
             agent = GetComponent<NavMeshAgent>();
             attackTimerMax = 0.5f;
             attackTimer = attackTimerMax;
+            fadeOutTimer = 0f;
+            fadeOutLength = 3f;
 
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
@@ -257,6 +264,40 @@ namespace Bladesmiths.Capstone
         {
             throw new NotImplementedException();
         }
+        public void RemoveRandomChunk()
+        {
+            GameObject removedChunck = transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
+            removedChunck.transform.parent = null;
+            //removedChunck.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            removedChunck.AddComponent<Rigidbody>();
+            removedChunck.AddComponent<EnemyChunk>();          
+
+        }
+
+        public IEnumerable FadeCorutine(GameObject removedChunck)
+        {
+            while(fadeOutTimer < fadeOutLength)
+            {
+                fadeOutTimer += Time.deltaTime;
+                removedChunck.transform.localScale = new Vector3(
+                   removedChunck.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
+                   removedChunck.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
+                   removedChunck.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+
+            }
+
+            if (removedChunck.transform.localScale.x <= 0 &&
+                    removedChunck.transform.localScale.y <= 0 &&
+                    removedChunck.transform.localScale.z <= 0)
+            {
+                MonoBehaviour.Destroy(removedChunck.gameObject);
+                yield return null;
+            }
+
+            
+            
+
+        }
 
         /// <summary>
         /// Subtract an amount of damage from the character's health
@@ -275,7 +316,8 @@ namespace Bladesmiths.Capstone
             if (damageResult > 0)
             {
                 // Color changes based off of health
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.HSVToRGB(278f/360f, Health/ MaxHealth, 0.5f);
+                //gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.HSVToRGB(278f/360f, Health/ MaxHealth, 0.5f);
+                RemoveRandomChunk();
 
                 damaged = true;
             }
@@ -284,4 +326,6 @@ namespace Bladesmiths.Capstone
             return damageResult;
         }
     }
+
+    
 }
