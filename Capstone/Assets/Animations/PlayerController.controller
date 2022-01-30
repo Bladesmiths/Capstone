@@ -2214,6 +2214,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &6439714454681793461
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9be0fa0c5cf3f9459ddcaf161d787a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  playerBlockBox: {fileID: 0}
 --- !u!1101 &6629883467783471986
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
