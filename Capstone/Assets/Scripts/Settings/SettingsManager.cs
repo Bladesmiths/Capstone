@@ -36,6 +36,9 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private SoundSettings soundSettingsScript;
         [SerializeField] private GraphicSettings graphicSettingsScript;
 
+        [SerializeField] private GameObject moveTargetKeyboardButton;
+        [SerializeField] private Scrollbar rebindScrollbar;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -48,7 +51,10 @@ namespace Bladesmiths.Capstone.UI
         // Update is called once per frame
         void Update()
         {
-
+            if(EventSystem.current.currentSelectedGameObject == moveTargetKeyboardButton)
+            {
+                rebindScrollbar.value = 0.3f;
+            }
         }
 
         public void UnPause()
