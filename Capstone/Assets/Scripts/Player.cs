@@ -564,11 +564,6 @@ namespace Bladesmiths.Capstone
             }
         }
 
-        protected override void Die()
-        {
-
-        }
-
         /// <summary>
         /// Attack with the player's sword
         /// </summary>

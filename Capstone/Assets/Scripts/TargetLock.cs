@@ -139,7 +139,10 @@ namespace Bladesmiths.Capstone
 
                 // Set the target cam's look at to the closest enemy
                 targetLockCam.LookAt = targetedObject.transform;
-             
+
+                // Subscribe to OnDestruction Event
+                targetedObject.GetComponent<IIdentified>().OnDestruction += DisableTargetLock;
+
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
 
@@ -149,12 +152,9 @@ namespace Bladesmiths.Capstone
             // If the target locking system isn't active
             else
             {
-                // Switch back to the other camera having top priority
-                targetLockCam.Priority = 0;
-
-                targetImage.gameObject.SetActive(false);
-
-                Active = false; 
+                // Number here doesn't matter
+                // It's just because the event this method gets subscribed to requires an integer
+                DisableTargetLock(0);
             }
         }
 
@@ -277,8 +277,14 @@ namespace Bladesmiths.Capstone
                 }
             }
 
+            // Unsubscribe to OnDestruction Event
+            targetedObject.GetComponent<IIdentified>().OnDestruction -= DisableTargetLock;
+
             targetedObject = closestEnemyToTarget;
             targetLockCam.LookAt = targetedObject.transform;
+
+            // Subscribe to OnDestruction Event
+            targetedObject.GetComponent<IIdentified>().OnDestruction += DisableTargetLock;
 
             RepositionTargetImage(); 
         }
@@ -328,6 +334,16 @@ namespace Bladesmiths.Capstone
         private void RepositionTargetImage()
         {
             targetImage.transform.position = Camera.main.WorldToScreenPoint(targetedObject.transform.position);
+        }
+
+        private void DisableTargetLock(int id)
+        {
+            Active = false;
+
+            // Switch back to the other camera having top priority
+            targetLockCam.Priority = 0;
+
+            targetImage.gameObject.SetActive(false);
         }
 
         /// <summary>

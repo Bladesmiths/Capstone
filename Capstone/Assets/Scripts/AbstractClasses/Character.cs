@@ -68,13 +68,20 @@ namespace Bladesmiths.Capstone
             // Subtract damage from health
             Health -= damage;
 
-            // If damage was taken
-            // Add the damaging object's id to the damaging id list
-            // And subscribe to that object's DamagingFinished event
-            // Stopping it from hurting this character again right away
-            if (damage != 0)
+            if (Health <= 0)
             {
-                AddDamagingID(damagingID); 
+                Die();
+            }
+            else
+            {
+                // If damage was taken
+                // Add the damaging object's id to the damaging id list
+                // And subscribe to that object's DamagingFinished event
+                // Stopping it from hurting this character again right away
+                if (damage != 0)
+                {
+                    AddDamagingID(damagingID);
+                }
             }
 
             // Log the amount of damage taken
@@ -85,7 +92,15 @@ namespace Bladesmiths.Capstone
         }
 
         // Protected Methods
-        protected abstract void Die();
+        protected virtual void Die()
+        {
+            if (OnDestruction != null)
+            {
+                OnDestruction(id);
+            }
+
+            isAlive = false;
+        }
         public abstract void Respawn();
 
         /// <summary>
