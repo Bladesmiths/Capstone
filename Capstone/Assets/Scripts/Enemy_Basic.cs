@@ -46,7 +46,7 @@ namespace Bladesmiths.Capstone
             base.Update();
 
             // Activate the FSM
-            FSM.Tick();
+            //FSM.Tick();
 
         }
 

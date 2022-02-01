@@ -61,6 +61,7 @@ namespace Bladesmiths.Capstone
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
         public bool CanHit { get; set; }
+        public GameObject Sword { get => sword; }
 
         #region Enemy States
         protected EnemyFSMState_SEEK seek;

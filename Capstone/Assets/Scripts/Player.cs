@@ -27,10 +27,12 @@ namespace Bladesmiths.Capstone
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
         [SerializeField]
-        private BalancingData currentBalancingData; 
+        private BalancingData currentBalancingData;
 
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
+
+        //public static Player instance;
 
         [SerializeField]
         private PlayerInputsScript inputs;
@@ -228,6 +230,11 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
             canDmg = true;
+
+            //if(instance == null)
+            //{
+            //    instance = this;
+            //}
 
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
