@@ -29,7 +29,7 @@ namespace Bladesmiths.Capstone
         private List<int> damagingObjectIDs = new List<int>();
 
         [SerializeField]
-        private ObjectController objectController;
+        protected ObjectController objectController;
 
         public event IIdentified.OnDestructionDelegate OnDestruction;
 
@@ -46,7 +46,7 @@ namespace Bladesmiths.Capstone
         }
         public float MaxHealth { get => maxHealth; set => maxHealth = value; }
         public List<int> DamagingObjectIDs { get => damagingObjectIDs; }
-        public ObjectController ObjectController { get => objectController; set => objectController = value; }
+        public virtual ObjectController ObjectController { get => objectController; set => objectController = value; }
 
         // Public Methods
         public void Start()

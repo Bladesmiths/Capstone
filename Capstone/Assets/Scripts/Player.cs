@@ -192,7 +192,15 @@ namespace Bladesmiths.Capstone
         #region Properties
         public PlayerInputsScript Inputs { get => inputs; }
         public BalancingData CurrentBalancingData { get => currentBalancingData; }
-
+        public override ObjectController ObjectController 
+        { 
+            get => objectController; 
+            set
+            {
+                objectController = value;
+                targetLock.ObjectController = value;
+            }
+        }
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
         
         public float ChipDamageTotal { get; private set; }
@@ -267,7 +275,6 @@ namespace Bladesmiths.Capstone
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
             targetLock = GameObject.Find("TargetLockManager").GetComponent<TargetLock>();
-            targetLock.ObjectController = ObjectController;
 
             inputs.player = this;
 
