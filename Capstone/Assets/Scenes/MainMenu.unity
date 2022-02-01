@@ -858,6 +858,10 @@ PrefabInstance:
       value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3754905407149036077, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_Text
+      value: Rebind
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407149036077, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 80
       objectReference: {fileID: 0}
@@ -1121,10 +1125,18 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 4402bdd2-8d33-47ee-9ee7-efd6ad8711d1
       objectReference: {fileID: 0}
+    - target: {fileID: 7541612201247444365, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7541612201252828784, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
       objectReference: {fileID: -3787169064211337688, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
+    - target: {fileID: 7541612201252828796, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7541612201262007433, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: Dodge
@@ -1168,6 +1180,10 @@ PrefabInstance:
     - target: {fileID: 7541612201724096382, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: Switch Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541612201766561126, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7541612201766561130, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
@@ -1217,6 +1233,10 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 0d082d1f-331c-4f79-9ad0-310c2dc21714
       objectReference: {fileID: 0}
+    - target: {fileID: 7541612202056484806, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7541612202056484810, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
@@ -1261,6 +1281,10 @@ PrefabInstance:
       propertyPath: m_Action
       value: 
       objectReference: {fileID: -3552364970006637457, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
+    - target: {fileID: 7541612202576760719, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7541612202580692067, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 

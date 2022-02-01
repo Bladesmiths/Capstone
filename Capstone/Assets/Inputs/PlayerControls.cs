@@ -57,15 +57,6 @@ namespace Bladesmiths.Capstone
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Walk Toggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""04dcdcd8-8953-4ec2-85db-449954e643f9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""5fda3d27-9275-4dbe-b399-17b5ecd33a12"",
@@ -264,17 +255,6 @@ namespace Bladesmiths.Capstone
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2e47ad5b-5ef6-4b74-a256-63aa91796547"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Walk Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1191,7 +1171,6 @@ namespace Bladesmiths.Capstone
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-            m_Player_WalkToggle = m_Player.FindAction("Walk Toggle", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
             m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
@@ -1277,7 +1256,6 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Jump;
-        private readonly InputAction m_Player_WalkToggle;
         private readonly InputAction m_Player_Attack;
         private readonly InputAction m_Player_Dodge;
         private readonly InputAction m_Player_TargetLock;
@@ -1295,7 +1273,6 @@ namespace Bladesmiths.Capstone
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
-            public InputAction @WalkToggle => m_Wrapper.m_Player_WalkToggle;
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
             public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
@@ -1324,9 +1301,6 @@ namespace Bladesmiths.Capstone
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                    @WalkToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @WalkToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @WalkToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
                     @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                     @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                     @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
@@ -1370,9 +1344,6 @@ namespace Bladesmiths.Capstone
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
-                    @WalkToggle.started += instance.OnWalkToggle;
-                    @WalkToggle.performed += instance.OnWalkToggle;
-                    @WalkToggle.canceled += instance.OnWalkToggle;
                     @Attack.started += instance.OnAttack;
                     @Attack.performed += instance.OnAttack;
                     @Attack.canceled += instance.OnAttack;
@@ -1561,7 +1532,6 @@ namespace Bladesmiths.Capstone
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnWalkToggle(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
             void OnDodge(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);

@@ -1,5 +1,5 @@
 {
-    "name": "276_PlayerInputs",
+    "name": "PlayerInputs",
     "maps": [
         {
             "name": "Player",
@@ -27,15 +27,6 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Walk Toggle",
-                    "type": "Button",
-                    "id": "04dcdcd8-8953-4ec2-85db-449954e643f9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -240,17 +231,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2e47ad5b-5ef6-4b74-a256-63aa91796547",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Walk Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
