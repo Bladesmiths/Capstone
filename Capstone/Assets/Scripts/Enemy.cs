@@ -269,15 +269,15 @@ namespace Bladesmiths.Capstone
         }
         public void RemoveRandomChunk()
         {
-            GameObject removedChunck = transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
-            removedChunck.transform.parent = null;
+            GameObject removedChunk = transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
+            removedChunk.transform.parent = null;
             //removedChunck.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            removedChunck.AddComponent<Rigidbody>();
-            removedChunck.AddComponent<EnemyChunk>();          
+            removedChunk.AddComponent<Rigidbody>();
+            removedChunk.AddComponent<EnemyChunk>();          
 
         }
 
-        public int NumChuncks()
+        public int NumChunks()
         {
             return chunksRemoved * (int)(player.CurrentSword.Damage / 5);            
         }
@@ -301,7 +301,7 @@ namespace Bladesmiths.Capstone
             {
                 if (transform.GetChild(1).childCount > 30)
                 {
-                    for (int i = 0; i < NumChuncks(); i++)
+                    for (int i = 0; i < NumChunks(); i++)
                     {                    
                         RemoveRandomChunk();
                     }

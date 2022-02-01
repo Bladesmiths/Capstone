@@ -6,18 +6,9 @@ namespace Bladesmiths.Capstone
 {
     public class EnemyChunk : MonoBehaviour
     {
-        public bool fade;
-
         private float fadeOutTimer = 0f;
         private float fadeOutLength = 4f;
         private float shrinkSpeed = 20.0f;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            fade = false;
-
-        }
 
         // Update is called once per frame
         void Update()

@@ -51,8 +51,6 @@ namespace Bladesmiths.Capstone
 
             // Allows for the destruction of Enemy's
             _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
-            //_enemy.transform.GetChild(1).gameObject.SetActive(true);
-            //_enemy.transform.GetChild(0).gameObject.SetActive(false);
 
             for(int i = 0; i < _enemy.transform.GetChild(1).childCount; i++)
             {
