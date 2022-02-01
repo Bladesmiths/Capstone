@@ -51,14 +51,21 @@ namespace Bladesmiths.Capstone
 
             // Allows for the destruction of Enemy's
             _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
-            _enemy.transform.GetChild(1).gameObject.SetActive(true);
-            _enemy.transform.GetChild(0).gameObject.SetActive(false);
 
-            // Turns on all of the physics on the Enemy
-            foreach (Rigidbody child in _enemy.transform.GetComponentsInChildren<Rigidbody>())
+            for(int i = 0; i < _enemy.transform.GetChild(1).childCount; i++)
             {
-                child.isKinematic = false;
+                _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<Rigidbody>();
+                _enemy.transform.GetChild(1).GetChild(i).GetComponent<Rigidbody>().isKinematic = false;
             }
+
+            _enemy.transform.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
+            _enemy.transform.GetChild(3).GetComponent<Rigidbody>().isKinematic = false;
+            _enemy.transform.GetChild(4).GetComponent<Rigidbody>().isKinematic = false;
+            // Turns on all of the physics on the Enemy
+            //foreach (Rigidbody child in _enemy.transform.GetComponentsInChildren<Rigidbody>())
+            //{
+            //    child.isKinematic = false;
+            //}
         }
 
         public override void OnExit()
