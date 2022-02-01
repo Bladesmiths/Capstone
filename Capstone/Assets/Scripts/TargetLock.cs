@@ -13,6 +13,8 @@ namespace Bladesmiths.Capstone
     {
 
         #region Fields
+        private bool active;
+
         [SerializeField] [Tooltip("Which layers should get in the way of a visibility check?")]
         private LayerMask obscuringLayers;
 
@@ -44,7 +46,23 @@ namespace Bladesmiths.Capstone
 
         #endregion
 
-        public bool Active { get; set; }
+        public bool Active 
+        { 
+            get => active; 
+            set
+            {
+                if (targettableList.Count > 0)
+                {
+                    active = value;
+                }
+                else
+                {
+                    active = false;
+                }
+            }
+        }
+
+        public ObjectController ObjectController { get; set; }
 
         void Start() { }
 
@@ -62,7 +80,7 @@ namespace Bladesmiths.Capstone
             }
 
             // If target lock is enabled
-            if (Active)
+            if (Active && targettableList.Count != 0)
             {
                 // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
@@ -83,6 +101,10 @@ namespace Bladesmiths.Capstone
                 //    // Update the player follow camera's target so it doesn't move in weird directions
                 //    Player playerComp = gameObject.GetComponent<Player>();
                 //}
+            }
+            else
+            {
+                DisableTargetLock();
             }
         }
 
@@ -141,7 +163,7 @@ namespace Bladesmiths.Capstone
                 targetLockCam.LookAt = targetedObject.transform;
 
                 // Subscribe to OnDestruction Event
-                targetedObject.GetComponent<IIdentified>().OnDestruction += DisableTargetLock;
+                targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
 
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
@@ -152,9 +174,7 @@ namespace Bladesmiths.Capstone
             // If the target locking system isn't active
             else
             {
-                // Number here doesn't matter
-                // It's just because the event this method gets subscribed to requires an integer
-                DisableTargetLock(0);
+                DisableTargetLock();
             }
         }
 
@@ -278,13 +298,13 @@ namespace Bladesmiths.Capstone
             }
 
             // Unsubscribe to OnDestruction Event
-            targetedObject.GetComponent<IIdentified>().OnDestruction -= DisableTargetLock;
+            targetedObject.GetComponent<IIdentified>().OnDestruction -= RemoveTargetedEnemy;
 
             targetedObject = closestEnemyToTarget;
             targetLockCam.LookAt = targetedObject.transform;
 
             // Subscribe to OnDestruction Event
-            targetedObject.GetComponent<IIdentified>().OnDestruction += DisableTargetLock;
+            targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
 
             RepositionTargetImage(); 
         }
@@ -333,10 +353,19 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void RepositionTargetImage()
         {
-            targetImage.transform.position = Camera.main.WorldToScreenPoint(targetedObject.transform.position);
+            if (targetedObject != null)
+            {
+                targetImage.transform.position = Camera.main.WorldToScreenPoint(targetedObject.transform.position);
+            }
         }
 
-        private void DisableTargetLock(int id)
+        private void RemoveTargetedEnemy(int id)
+        {
+            targettableList.Remove(ObjectController[id].IdentifiedObject.GameObject);
+            DisableTargetLock();
+        }
+
+        private void DisableTargetLock()
         {
             Active = false;
 

@@ -216,6 +216,8 @@ namespace Bladesmiths.Capstone
 
         private void Awake()
         {
+            base.Start();
+
             Health = 1000;
             animator = GetComponent<Animator>();
             animIDForward = Animator.StringToHash("Forward");
@@ -241,7 +243,6 @@ namespace Bladesmiths.Capstone
             animIDFreeFall = Animator.StringToHash("FreeFall");
             animIDDamaged = Animator.StringToHash("Damaged");
 
-
             LandTimeoutDelta = -1.0f;
 
             isGrounded = false;
@@ -263,11 +264,10 @@ namespace Bladesmiths.Capstone
             blockDetector.GetComponent<BlockCollision>().OnBlock += BlockOccured;
             parryDetector.GetComponent<ParryCollision>().Player = this;
 
-
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
-
-            targetLock = GetComponent<TargetLock>();
+            targetLock = GameObject.Find("TargetLockManager").GetComponent<TargetLock>();
+            targetLock.ObjectController = ObjectController;
 
             inputs.player = this;
 
