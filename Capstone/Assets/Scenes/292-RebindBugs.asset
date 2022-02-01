@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
   m_Name: 292-RebindBugs
   m_EditorClassIdentifier: 
-  setupList: []
+  setupList:
+  - scenePath: Assets/Scenes/292-PlayerScene.unity
+    isActive: 1
+    isLoaded: 1
+  - scenePath: Assets/Scenes/EnemyScene.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/VillageScene.unity
+    isActive: 0
+    isLoaded: 1
