@@ -24,6 +24,8 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject sword;
 
+        [SerializeField]
+        protected int chunksRemoved;
         protected bool damaged = false;
         protected float timer = 0f;
 
@@ -93,6 +95,7 @@ namespace Bladesmiths.Capstone
             attackTimer = attackTimerMax;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
+            chunksRemoved = 3;
 
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
@@ -274,31 +277,12 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public IEnumerable FadeCorutine(GameObject removedChunck)
+        public int NumChuncks()
         {
-            while(fadeOutTimer < fadeOutLength)
-            {
-                fadeOutTimer += Time.deltaTime;
-                removedChunck.transform.localScale = new Vector3(
-                   removedChunck.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
-                   removedChunck.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
-                   removedChunck.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
-
-            }
-
-            if (removedChunck.transform.localScale.x <= 0 &&
-                    removedChunck.transform.localScale.y <= 0 &&
-                    removedChunck.transform.localScale.z <= 0)
-            {
-                MonoBehaviour.Destroy(removedChunck.gameObject);
-                yield return null;
-            }
-
-            
-            
-
+            return chunksRemoved * (int)(player.CurrentSword.Damage / 5);            
         }
 
+        
         /// <summary>
         /// Subtract an amount of damage from the character's health
         /// </summary>
@@ -315,10 +299,13 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                // Color changes based off of health
-                //gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.HSVToRGB(278f/360f, Health/ MaxHealth, 0.5f);
-                RemoveRandomChunk();
-
+                if (transform.GetChild(1).childCount > 30)
+                {
+                    for (int i = 0; i < NumChuncks(); i++)
+                    {                    
+                        RemoveRandomChunk();
+                    }
+                }
                 damaged = true;
             }
 
