@@ -359,12 +359,19 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        /// <summary>
+        /// Removes a Targeted Enemy from the targetted list and disables Target Lock
+        /// </summary>
+        /// <param name="id">The id of the enemy that should be removed</param>
         private void RemoveTargetedEnemy(int id)
         {
             targettableList.Remove(ObjectController[id].IdentifiedObject.GameObject);
             DisableTargetLock();
         }
 
+        /// <summary>
+        /// Disables target lock and resets to the free look camera
+        /// </summary>
         private void DisableTargetLock()
         {
             Active = false;

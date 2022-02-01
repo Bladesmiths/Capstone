@@ -202,13 +202,9 @@ namespace Bladesmiths.Capstone
             }
         }
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
-        
         public float ChipDamageTotal { get; private set; }
-
         public int Points { get => (int)points; }
-
         public int MaxPoints { get => (int)maxPoints; }
-
         public bool Damaging { get => damaging; set => damaging = value; }
 
         #region Properties from Swords
