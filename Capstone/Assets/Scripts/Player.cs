@@ -347,7 +347,7 @@ namespace Bladesmiths.Capstone
         {
             //animator.SetBool(animIDBlock, false);
             animator.SetBool(animIDDodge, false);
-            animator.SetBool(animIDForward, false);
+            animator.SetFloat(animIDForward, 0);
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
             animator.SetBool(animIDMoving, false);

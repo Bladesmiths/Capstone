@@ -120,6 +120,9 @@ namespace Bladesmiths.Capstone
             id = PlayerCondition.F_Dashing;
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            animIDMoving = Animator.StringToHash("Moving");
+            _animIDDodge = Animator.StringToHash("Dodging");
+
             timer = 0;
             maxTimer = stateInfo.length;
             _controller = _player.GetComponent<CharacterController>();

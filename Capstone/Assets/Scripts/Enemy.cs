@@ -37,9 +37,9 @@ namespace Bladesmiths.Capstone
         protected float damage;
 
         [SerializeField]
-        private float shrinkSpeed;
-        private float fadeOutTimer;
-        private float fadeOutLength;
+        protected float shrinkSpeed;
+        protected float fadeOutTimer;
+        protected float fadeOutLength;
 
         [SerializeField]
         protected float viewDistance;

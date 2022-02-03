@@ -11,9 +11,6 @@ namespace Bladesmiths.Capstone
         private float rotate;
         private float speed = 60;
         private bool isBroken = false;
-        private float fadeOutTimer = 0f;
-        private float fadeOutLength = 1f;
-        private float shrinkSpeed = 1.0f;
 
         [SerializeField]
         private GameObject enemyObject;
