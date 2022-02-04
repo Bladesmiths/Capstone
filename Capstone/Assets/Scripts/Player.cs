@@ -32,7 +32,7 @@ namespace Bladesmiths.Capstone
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
 
-        //public static Player instance;
+        public static Player instance;
 
         [SerializeField]
         private PlayerInputsScript inputs;
@@ -231,10 +231,10 @@ namespace Bladesmiths.Capstone
             dodgeTimer = 0;
             canDmg = true;
 
-            //if(instance == null)
-            //{
-            //    instance = this;
-            //}
+            if (instance == null)
+            {
+                instance = this;
+            }
 
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;

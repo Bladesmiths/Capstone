@@ -11,7 +11,7 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class EnemyDEATH : Action
     {
-        Enemy _enemy;
+        private Enemy _enemy;
         private float fadeOutTimer = 0f;
         private float fadeOutLength = 4f;
         private float shrinkSpeed = 1.0f;

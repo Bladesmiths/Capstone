@@ -8,14 +8,14 @@ namespace Bladesmiths.Capstone
 {
     public class WithinDistance : Conditional
     {
-        public SharedTransform player;
+        private Transform player;
         public float fieldOfView;
         public float distance;
 
 
         public override void OnAwake()
         {
-            //player.Value = Player.instance.transform;
+            player = Player.instance.transform;
         }
 
         public override TaskStatus OnUpdate()
@@ -24,7 +24,7 @@ namespace Bladesmiths.Capstone
             {
                 fieldOfView = 360;
             }
-            if (InSight(player.Value, fieldOfView) && Vector3.Distance(player.Value.position, transform.position) <= distance)
+            if (InSight(player, fieldOfView) && Vector3.Distance(player.position, transform.position) <= distance)
             {
                 return TaskStatus.Success;
             }

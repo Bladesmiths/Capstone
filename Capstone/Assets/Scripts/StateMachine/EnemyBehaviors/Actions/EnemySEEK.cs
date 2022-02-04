@@ -11,7 +11,7 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class EnemySEEK : Action
     {
-        public SharedTransform player;
+        private Transform player;
         private Enemy _enemy;
         private float sideMoveTimer;
         private float sideMoveTimerMax;
@@ -56,7 +56,7 @@ namespace Bladesmiths.Capstone
             speed = 1.5f;
             dir = Random.Range(-1, 2);
             surroundDistance = 2.5f;
-            //player.Value = Player.instance.transform;
+            player = Player.instance.transform;
             _enemy = gameObject.GetComponent<Enemy>();
             controller = _enemy.GetComponent<CharacterController>();
             _enemy.InCombat = true;
@@ -66,7 +66,7 @@ namespace Bladesmiths.Capstone
         public override void OnEnd()
         { 
             _enemy.moveVector = transform.position;
-            _enemy.rotateVector = player.Value.position - transform.position;
+            _enemy.rotateVector = player.position - transform.position;
         }
         
         /// <summary>
@@ -76,13 +76,13 @@ namespace Bladesmiths.Capstone
         {
             Vector3 movementVector = Vector3.zero;
 
-            Vector3 dist = player.Value.position - _enemy.transform.position;
+            Vector3 dist = player.position - _enemy.transform.position;
 
             // If the Enemy is within X units and the seekAgainTimer isn't started
             if (dist.magnitude > surroundDistance && seekAgainTimer == seekAgainTimerMax)
             {
                 //movementVector = dist.normalized;
-                movementVector = player.Value.position;
+                movementVector = player.position;
             }
             else
             {
