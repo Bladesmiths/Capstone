@@ -53,8 +53,11 @@ namespace Bladesmiths.Capstone.UI
         {
             if(EventSystem.current.currentSelectedGameObject == moveTargetKeyboardButton)
             {
-                rebindScrollbar.value = 0.3f;
+                //rebindScrollbar.value = 0.3f;
             }
+
+            Debug.Log(1 - (Mathf.Abs(EventSystem.current.currentSelectedGameObject.transform.parent.localPosition.y) / 1800));
+            rebindScrollbar.value = (1 - (Mathf.Abs(EventSystem.current.currentSelectedGameObject.transform.parent.localPosition.y) / 1800)) + 0.084f;
         }
 
         public void UnPause()
