@@ -20,17 +20,17 @@ namespace Bladesmiths.Capstone
 
         public override TaskStatus OnUpdate()
         {
-            Debug.Log(Vector3.Distance(player.position, transform.position));
             //if (Vector3.Distance(player.Value.position, transform.position) <= distance)
             //{
             //    return TaskStatus.Failure;
             //}
-            if(GetComponent<Enemy>().InCombat)
+            float newFOV = fieldOfView;
+            if (GetComponent<Enemy>().InCombat)
             {
-                fieldOfView = 360;
+                newFOV = 360;
             }
 
-            if (InSight(player, fieldOfView) && Vector3.Distance(player.position, transform.position) <= distance)
+            if (InSight(player, newFOV) && Vector3.Distance(player.position, transform.position) <= distance)
             {
                 return TaskStatus.Failure;
             }            

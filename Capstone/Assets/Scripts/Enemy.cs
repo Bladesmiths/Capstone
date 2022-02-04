@@ -185,6 +185,7 @@ namespace Bladesmiths.Capstone
         public virtual void Update()
         {
             //FSM.Tick();
+            Debug.Log(InCombat);
 
             // If the enemy is currently damaging an object
             if (damaging)
@@ -313,6 +314,7 @@ namespace Bladesmiths.Capstone
                         RemoveRandomChunk();
                     }
                 }
+                inCombat = true;
                 damaged = true;
             }
 
