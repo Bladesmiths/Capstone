@@ -25,7 +25,12 @@ namespace Bladesmiths.Capstone
             //{
             //    return TaskStatus.Failure;
             //}
-            if(InSight(player.Value, fieldOfView) && Vector3.Distance(player.Value.position, transform.position) <= distance)
+            if(GetComponent<Enemy>().InCombat)
+            {
+                fieldOfView = 360;
+            }
+
+            if (InSight(player.Value, fieldOfView) && Vector3.Distance(player.Value.position, transform.position) <= distance)
             {
                 return TaskStatus.Failure;
             }            

@@ -57,6 +57,7 @@ namespace Bladesmiths.Capstone
             //player.Value = Player.instance.transform;
             _enemy = gameObject.GetComponent<Enemy>();
             controller = _enemy.GetComponent<CharacterController>();
+            _enemy.InCombat = true;
 
         }
 
@@ -81,7 +82,17 @@ namespace Bladesmiths.Capstone
             movementVector = move + _enemy.transform.position;
             AttackTimer();
             seekAgainTimer -= Time.deltaTime;
-            
+
+            // When the seekAgainTimer is finished
+            if (seekAgainTimer <= 0)
+            {
+                // Rest everything
+                seekAgainTimer = seekAgainTimerMax;
+                sideMoveTimer = 0;
+                dir = Random.Range(-1, 2);
+
+            }
+
             Debug.DrawLine(_enemy.transform.position, movementVector, Color.red);
 
             _enemy.moveVector = movementVector;

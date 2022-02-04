@@ -56,6 +56,9 @@ namespace Bladesmiths.Capstone
             float z = Random.Range(randMin, randMax) + center.z;
 
             wanderPoint = new Vector3(x, y, z);
+
+            _self.InCombat = false;
+
         }
 
         public override TaskStatus OnUpdate()

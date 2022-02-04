@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 
 namespace Bladesmiths.Capstone
 {
     /// <summary>
     /// The behavior for when the Enemies die
     /// </summary>
-    public class EnemyDEATH : EnemyFSMState
+    public class EnemyDEATH : Action
     {
         Enemy _enemy;
         private float fadeOutTimer = 0f;
@@ -19,7 +21,12 @@ namespace Bladesmiths.Capstone
             _enemy = enemy;
         }
 
-        public override void Tick()
+        public EnemyDEATH()
+        {
+
+        }
+
+        public override TaskStatus OnUpdate()
         {
             fadeOutTimer += Time.deltaTime;
             
@@ -39,13 +46,16 @@ namespace Bladesmiths.Capstone
                     _enemy.transform.localScale.z <= 0)
                 {
                     MonoBehaviour.Destroy(_enemy.gameObject);
+                    return TaskStatus.Success;
                 }
             }
+            return TaskStatus.Running;
 
         }
 
-        public override void OnEnter()
+        public override void OnStart()
         {
+            _enemy = GetComponent<Enemy>();
             // Removes the Enemy from its group and the attack queue
             AIDirector.Instance.RemoveFromGroups(_enemy);
 
@@ -68,7 +78,7 @@ namespace Bladesmiths.Capstone
             //}
         }
 
-        public override void OnExit()
+        public override void OnEnd()
         {
 
         }

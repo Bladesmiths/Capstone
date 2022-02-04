@@ -59,6 +59,7 @@ namespace Bladesmiths.Capstone
             //player.Value = Player.instance.transform;
             _enemy = gameObject.GetComponent<Enemy>();
             controller = _enemy.GetComponent<CharacterController>();
+            _enemy.InCombat = true;
 
         }
 
@@ -86,28 +87,28 @@ namespace Bladesmiths.Capstone
             else
             {
                 // Starts the first timer
-                sideMoveTimer += Time.deltaTime;
+                //sideMoveTimer += Time.deltaTime;
             }
 
             // When the sideMoveTimer is finished 
-            if(sideMoveTimer >= sideMoveTimerMax)
-            {
-                // Get the perpendicular vector to the distance between the Player and the Enemy
-                Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
-                movementVector = move + _enemy.transform.position;
-                AttackTimer();
-                seekAgainTimer -= Time.deltaTime;
-            }
+            //if(sideMoveTimer >= sideMoveTimerMax)
+            //{
+            //    // Get the perpendicular vector to the distance between the Player and the Enemy
+            //    Vector3 move = Vector3.Cross(Vector3.up, dist) * dir;
+            //    movementVector = move + _enemy.transform.position;
+            //    AttackTimer();
+            //    seekAgainTimer -= Time.deltaTime;
+            //}
 
-            // When the seekAgainTimer is finished
-            if(seekAgainTimer <= 0)
-            {
-                // Rest everything
-                seekAgainTimer = seekAgainTimerMax;
-                sideMoveTimer = 0;
-                dir = Random.Range(-1, 2);
+            //// When the seekAgainTimer is finished
+            //if(seekAgainTimer <= 0)
+            //{
+            //    // Rest everything
+            //    seekAgainTimer = seekAgainTimerMax;
+            //    sideMoveTimer = 0;
+            //    dir = Random.Range(-1, 2);
 
-            }
+            //}
 
             Debug.DrawLine(_enemy.transform.position, movementVector, Color.red);
 

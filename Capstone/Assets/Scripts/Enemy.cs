@@ -58,10 +58,13 @@ namespace Bladesmiths.Capstone
         public float attackTimerMax;
         public bool stunned;
 
+        private bool inCombat;
+
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
         public bool CanHit { get; set; }
         public GameObject Sword { get => sword; }
+        public bool InCombat { get => inCombat; set => inCombat = value; }
 
         #region Enemy States
         protected EnemyFSMState_SEEK seek;
@@ -107,23 +110,23 @@ namespace Bladesmiths.Capstone
             stun = new EnemyFSMState_STUN(sword, this, player);
 
             // Adds all of the possible transitions
-            FSM.AddTransition(seek, wander, IsIdle());
-            FSM.AddTransition(wander, seek, IsClose());
-            FSM.AddTransition(seek, attack, CanAttack());
-            FSM.AddTransition(attack, seek, DoneAttacking());
-            FSM.AddTransition(attack, stun, Stunned());
-            FSM.AddTransition(stun, seek, KeepAttacking());
-            FSM.AddTransition(stun, wander, GoWander());
+            //FSM.AddTransition(seek, wander, IsIdle());
+            //FSM.AddTransition(wander, seek, IsClose());
+            //FSM.AddTransition(seek, attack, CanAttack());
+            //FSM.AddTransition(attack, seek, DoneAttacking());
+            //FSM.AddTransition(attack, stun, Stunned());
+            //FSM.AddTransition(stun, seek, KeepAttacking());
+            //FSM.AddTransition(stun, wander, GoWander());
 
 
             agent.updateRotation = false;
 
             //CanHit = true;
 
-            FSM.AddAnyTransition(death, IsDead());
+            //FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            FSM.SetCurrentState(wander);
+            //FSM.SetCurrentState(wander);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
@@ -217,12 +220,15 @@ namespace Bladesmiths.Capstone
             Debug.DrawLine(transform.position, rotateVector, Color.red);
 
             // This is dumb and it probably needs to be changed, but I need to be able to see debug messages
-            if (!float.IsNaN(rotateVector.x)) 
-            {
-                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
-                q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-                transform.rotation = q;
-            }
+            //if (!float.IsNaN(rotateVector.x)) 
+            //{
+            //    Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
+            //    q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+            //    transform.rotation = q;
+            //}
+            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
+            q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+            transform.rotation = q;
         }
 
         public void ClearDamaging()
