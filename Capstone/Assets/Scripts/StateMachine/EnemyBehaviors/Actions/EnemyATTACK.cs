@@ -11,9 +11,13 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class EnemyATTACK : Action
     {
+        [SerializeField]
+        private AnimationCurve curve;
         private GameObject _sword;
         private Enemy _enemy;
         private bool attack;
+        private float timer;
+        private float timerMax;
 
         private float preAttackTimer;
         private float preAttackTimerMax;
@@ -33,24 +37,36 @@ namespace Bladesmiths.Capstone
 
         public override TaskStatus OnUpdate()
         {
-            if (attack)
-            {
-                Attack();
+            timer += Time.deltaTime;
+            float val = curve.Evaluate(timer);
+            _sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
+            Debug.Log(timer);
 
-                if (_sword.transform.localEulerAngles.x == 90)
-                {
-                    attack = false;
-                }
-            }
-            else
+            if(timer >= timerMax)
             {
-                StopAttack();
-
-                if (_sword.transform.localEulerAngles.x <= 0.1)
-                {
-                    _enemy.CanHit = false;
-                }
+                _enemy.CanHit = false;
+                return TaskStatus.Success;
             }
+
+
+            //if (attack)
+            //{
+            //    Attack();
+
+            //    if (_sword.transform.localEulerAngles.x == 90)
+            //    {
+            //        attack = false;
+            //    }
+            //}
+            //else
+            //{
+            //    StopAttack();
+
+            //    if (_sword.transform.localEulerAngles.x <= 0.1)
+            //    {
+            //        _enemy.CanHit = false;
+            //    }
+            //}
             return TaskStatus.Running;
         }
 
@@ -61,7 +77,10 @@ namespace Bladesmiths.Capstone
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
-            _sword.GetComponent<BoxCollider>().enabled = true; 
+            _sword.GetComponent<BoxCollider>().enabled = true;
+            timer = 0f;
+            timerMax = 1f;
+            _enemy.attackTimerMax = Random.Range(0.75f, 3f);
         }
 
         public override void OnEnd()

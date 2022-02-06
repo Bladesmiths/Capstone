@@ -51,8 +51,10 @@ namespace Bladesmiths.Capstone
             sideMoveTimerMax = 1f;
             seekAgainTimerMax = 1f;
             seekAgainTimer = seekAgainTimerMax;
-            speed = 1.5f;
+            speed = 1f;
             dir = Random.Range(-1, 2);
+            //dir = 1;
+
             surroundDistance = 2.5f;
             player = Player.instance.transform;
             _enemy = gameObject.GetComponent<Enemy>();
@@ -88,12 +90,11 @@ namespace Bladesmiths.Capstone
             {
                 // Rest everything
                 seekAgainTimer = seekAgainTimerMax;
-                sideMoveTimer = 0;
                 dir = Random.Range(-1, 2);
-
+                
             }
 
-            Debug.DrawLine(_enemy.transform.position, movementVector, Color.red);
+            Debug.DrawLine(_enemy.transform.position, movementVector * 2, Color.red);
 
             _enemy.moveVector = movementVector;
             _enemy.rotateVector = dist;

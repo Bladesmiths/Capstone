@@ -95,8 +95,8 @@ namespace Bladesmiths.Capstone
             moveSpeed = 5f;
             controller = GetComponent<CharacterController>();
             agent = GetComponent<NavMeshAgent>();
-            attackTimerMax = 0.5f;
-            attackTimer = attackTimerMax;
+            attackTimerMax = 1f;
+            attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
             chunksRemoved = 3;
@@ -218,7 +218,7 @@ namespace Bladesmiths.Capstone
             // Movement
             agent.SetDestination(moveVector);
 
-            Debug.DrawLine(transform.position, rotateVector, Color.red);
+            //Debug.DrawLine(transform.position, rotateVector, Color.red);
 
             // This is dumb and it probably needs to be changed, but I need to be able to see debug messages
             //if (!float.IsNaN(rotateVector.x)) 
@@ -227,8 +227,8 @@ namespace Bladesmiths.Capstone
             //    q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
             //    transform.rotation = q;
             //}
-            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
-            q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+
+            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(rotateVector.x, 0f, rotateVector.z)), Time.deltaTime * 5f);
             transform.rotation = q;
         }
 
