@@ -39,6 +39,10 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject moveTargetKeyboardButton;
         [SerializeField] private Scrollbar rebindScrollbar;
 
+        [SerializeField] private Canvas canvas;
+        [SerializeField] private GameObject rebindBackButton, rebindResetAllButton;
+        private GameObject lastSelectedButton;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -51,13 +55,15 @@ namespace Bladesmiths.Capstone.UI
         // Update is called once per frame
         void Update()
         {
-            if(EventSystem.current.currentSelectedGameObject == moveTargetKeyboardButton)
+            // If the rebind menu is active, the back and reset all buttons aren't selected, AND this button was just selected
+            if (controlsMenu.activeSelf && EventSystem.current.currentSelectedGameObject != rebindBackButton && EventSystem.current.currentSelectedGameObject != rebindResetAllButton && lastSelectedButton != EventSystem.current.currentSelectedGameObject)
             {
-                //rebindScrollbar.value = 0.3f;
+                // Move the scrollbar to where the button is
+                rebindScrollbar.value = (1 - (Mathf.Abs(EventSystem.current.currentSelectedGameObject.transform.parent.localPosition.y) / 1800)) + 0.084f;
             }
 
-            Debug.Log(1 - (Mathf.Abs(EventSystem.current.currentSelectedGameObject.transform.parent.localPosition.y) / 1800));
-            rebindScrollbar.value = (1 - (Mathf.Abs(EventSystem.current.currentSelectedGameObject.transform.parent.localPosition.y) / 1800)) + 0.084f;
+            // Save what button was last selected
+            lastSelectedButton = EventSystem.current.currentSelectedGameObject;
         }
 
         public void UnPause()
