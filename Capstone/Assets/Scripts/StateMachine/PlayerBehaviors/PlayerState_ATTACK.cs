@@ -13,8 +13,10 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerState_ATTACK : PlayerState_Base
     {
-        [SerializeField]
-        private AnimationCurve topazSpeedCurve;
+        [SerializeField] private AnimationCurve topazSpeedCurve;
+        [SerializeField] private AnimationCurve rubySpeedCurve;
+        [SerializeField] private AnimationCurve sapphireSpeedCurve;
+        private AnimationCurve activeCurve;
 
         private Player _player;
         private PlayerInputsScript _input;
@@ -130,8 +132,7 @@ namespace Bladesmiths.Capstone
             }
 
             //Change attack animation speed according to animation curve
-            animator.speed = topazSpeedCurve.Evaluate(timer);
-            Debug.Log(topazSpeedCurve.Evaluate(timer));
+            animator.speed = activeCurve.Evaluate(timer);
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -147,7 +148,25 @@ namespace Bladesmiths.Capstone
 
             playSound = true;
 
-
+            //Choose animation curve based on current sword form
+            switch (animator.GetFloat("Sword Choice"))
+            {
+                //Topaz
+                case 0:
+                    activeCurve = topazSpeedCurve;
+                    break;
+                //Ruby
+                case 1:
+                    activeCurve = rubySpeedCurve;
+                    break;
+                //Sapphire
+                case 2:
+                    activeCurve = sapphireSpeedCurve;
+                    break;
+                default:
+                    activeCurve = topazSpeedCurve;
+                    break;
+            }
 
             timer = 0;
             _animIDSpeed = Animator.StringToHash("Speed");
@@ -191,6 +210,8 @@ namespace Bladesmiths.Capstone
         {
             _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
+
+            //Reset animator speed when leaving attack state
             animator.speed = 1;
         }
     }
