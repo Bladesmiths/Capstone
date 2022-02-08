@@ -26,11 +26,14 @@ namespace Bladesmiths.Capstone.UI
 
         [SerializeField] private GameObject graphicsPanel;
         [SerializeField] private GameObject graphicsBackButton;
+        [SerializeField] private GameObject graphicsPanelFirstButton;
         [SerializeField] private GameObject soundPanel;
         [SerializeField] private GameObject soundBackButton;
+        [SerializeField] private GameObject soundPanelFirstButton;
 
         [SerializeField] private GameObject gameplayPanel;
         [SerializeField] private GameObject gameplayBackButton;
+        [SerializeField] private GameObject gameplayPanelFirstButton;
 
         [SerializeField] private GameplaySettings gameplaySettingsScript;
         [SerializeField] private SoundSettings soundSettingsScript;
@@ -39,7 +42,6 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject moveTargetKeyboardButton;
         [SerializeField] private Scrollbar rebindScrollbar;
 
-        [SerializeField] private Canvas canvas;
         [SerializeField] private GameObject rebindBackButton, rebindResetAllButton;
         private GameObject lastSelectedButton;
 
@@ -86,7 +88,13 @@ namespace Bladesmiths.Capstone.UI
         {
             controlsMenu.SetActive(!controlsMenu.activeSelf);
 
-            EventSystem.current.SetSelectedGameObject(moveRebindButton);
+            ToggleSettingsButtons();
+
+            // Select the first button if the panel was revealed
+            if (controlsMenu.activeSelf)
+            {
+                EventSystem.current.SetSelectedGameObject(moveRebindButton);
+            }
         }
 
         // Toggle the settings menu
@@ -121,7 +129,7 @@ namespace Bladesmiths.Capstone.UI
             // Select the back button if the panel was revealed
             if (graphicsPanel.activeSelf)
             {
-                EventSystem.current.SetSelectedGameObject(graphicsBackButton);
+                EventSystem.current.SetSelectedGameObject(graphicsPanelFirstButton);
             }
         }
 
@@ -135,7 +143,7 @@ namespace Bladesmiths.Capstone.UI
             // Select the back button if the panel was revealed
             if (soundPanel.activeSelf)
             {
-                EventSystem.current.SetSelectedGameObject(soundBackButton);
+                EventSystem.current.SetSelectedGameObject(soundPanelFirstButton);
             }
         }
 
@@ -149,7 +157,7 @@ namespace Bladesmiths.Capstone.UI
             // Select the back button if the panel was revealed
             if (gameplayPanel.activeSelf)
             {
-                EventSystem.current.SetSelectedGameObject(gameplayBackButton);
+                EventSystem.current.SetSelectedGameObject(gameplayPanelFirstButton);
             }
         }
 
