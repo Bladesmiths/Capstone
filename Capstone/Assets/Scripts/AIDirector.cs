@@ -85,6 +85,14 @@ namespace Bladesmiths.Capstone
             attackQueue.Remove(e);
         }
 
+        public void ResetBlocks()
+        {
+            foreach(Enemy e in enemyGroup)
+            {
+                e.blocked = false;
+            }
+        }
+
         /// <summary>
         /// Adds the Enemy to the attackQueue
         /// </summary>

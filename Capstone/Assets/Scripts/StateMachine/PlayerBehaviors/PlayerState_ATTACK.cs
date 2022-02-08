@@ -185,6 +185,7 @@ namespace Bladesmiths.Capstone
         {
             _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
+            AIDirector.Instance.ResetBlocks();
         }
     }
 }

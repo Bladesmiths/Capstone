@@ -23,6 +23,7 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private GameObject sword;
+        public bool blocked = false;
 
         [SerializeField]
         protected int chunksRemoved;
@@ -185,7 +186,7 @@ namespace Bladesmiths.Capstone
         public virtual void Update()
         {
             //FSM.Tick();
-            Debug.Log(InCombat);
+            //Debug.Log(InCombat);
 
             // If the enemy is currently damaging an object
             if (damaging)
@@ -316,6 +317,7 @@ namespace Bladesmiths.Capstone
                 }
                 inCombat = true;
                 damaged = true;
+                //damaged = true;
             }
 
             // Return whether damage was taken or not

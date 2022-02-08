@@ -9,12 +9,15 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// The behavior for how the Enemies should attack
     /// </summary>
-    public class EnemyATTACK : Action
+    public class EnemyATTACK_SHIELD : Action
     {
         [SerializeField]
         private AnimationCurve curve;
+        [SerializeField]
+        private AnimationCurve shieldCurve;
         private GameObject _sword;
-        private Enemy _enemy;
+        private GameObject _shield;
+        private Enemy_Shield _enemy;
         private bool attack;
         private float timer;
         private float timerMax;
@@ -22,15 +25,15 @@ namespace Bladesmiths.Capstone
         private float preAttackTimer;
         private float preAttackTimerMax;
 
-        public EnemyATTACK(GameObject sword, Enemy enemy)
+        public EnemyATTACK_SHIELD(GameObject sword, Enemy enemy)
         {
             _sword = sword;
-            _enemy = enemy;
+            //_enemy = enemy;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
         }
 
-        public EnemyATTACK()
+        public EnemyATTACK_SHIELD()
         {
 
         }
@@ -39,7 +42,10 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
             float val = curve.Evaluate(timer);
+            float shieldVal = shieldCurve.Evaluate(timer);
             _sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
+            _shield.transform.localRotation = Quaternion.Euler(0f, shieldVal, 0f);
+
             //Debug.Log(timer);
 
             if(timer >= timerMax)
@@ -72,8 +78,9 @@ namespace Bladesmiths.Capstone
 
         public override void OnStart()
         {
-            _enemy = gameObject.GetComponent<Enemy>();
+            _enemy = gameObject.GetComponent<Enemy_Shield>();
             _sword = _enemy.Sword;
+            _shield = _enemy.shield;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
@@ -86,6 +93,7 @@ namespace Bladesmiths.Capstone
         public override void OnEnd()
         {
             _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            _shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;
