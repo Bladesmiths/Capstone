@@ -13,6 +13,9 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerState_ATTACK : PlayerState_Base
     {
+        [SerializeField]
+        private AnimationCurve topazSpeedCurve;
+
         private Player _player;
         private PlayerInputsScript _input;
         private Animator _animator;
@@ -126,6 +129,9 @@ namespace Bladesmiths.Capstone
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
+            //Change attack animation speed according to animation curve
+            animator.speed = topazSpeedCurve.Evaluate(timer);
+            Debug.Log(topazSpeedCurve.Evaluate(timer));
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -185,6 +191,7 @@ namespace Bladesmiths.Capstone
         {
             _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
+            animator.speed = 1;
         }
     }
 }

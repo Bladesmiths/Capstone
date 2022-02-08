@@ -1014,6 +1014,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
+  topazSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.39586258
+      inSlope: 0.5280199
+      outSlope: 0.5280199
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26866955
+      value: 0.53772545
+      inSlope: 2.5031433
+      outSlope: 2.5031433
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.447287
+      value: 1.5015869
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5865409
+      value: 1.4968262
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.65066975
+      value: 0.5936279
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   Gravity: 0
   SwordMissEvent:
     Guid:
@@ -1932,7 +1983,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 518687635281031567}
-    m_Threshold: 2
+    m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -2487,6 +2538,9 @@ AnimatorStateMachine:
   - first: {fileID: -6200274138629593010}
     second:
     - {fileID: 4560168474364895058}
+  - first: {fileID: 8464860632184180212}
+    second:
+    - {fileID: -480955475765093465}
   - first: {fileID: -4970824541251344839}
     second:
     - {fileID: 3737231457431453582}
@@ -2496,9 +2550,6 @@ AnimatorStateMachine:
   - first: {fileID: 7787112969373104522}
     second:
     - {fileID: 9160066569895818234}
-  - first: {fileID: 8464860632184180212}
-    second:
-    - {fileID: -480955475765093465}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 100, y: 40, z: 0}
   m_EntryPosition: {x: 110, y: 160, z: 0}
