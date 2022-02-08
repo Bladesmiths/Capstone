@@ -24,6 +24,8 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject sword;
 
+        [SerializeField]
+        protected int chunksRemoved;
         protected bool damaged = false;
         protected float timer = 0f;
 
@@ -33,6 +35,11 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         protected float damage;
+
+        [SerializeField]
+        protected float shrinkSpeed;
+        protected float fadeOutTimer;
+        protected float fadeOutLength;
 
         [SerializeField]
         protected float viewDistance;
@@ -76,6 +83,8 @@ namespace Bladesmiths.Capstone
 
         public virtual void Start()
         {
+            base.Start();
+
             AIDirector.Instance.AddToEnemyGroup(this);
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
@@ -86,6 +95,9 @@ namespace Bladesmiths.Capstone
             agent = GetComponent<NavMeshAgent>();
             attackTimerMax = 0.5f;
             attackTimer = attackTimerMax;
+            fadeOutTimer = 0f;
+            fadeOutLength = 3f;
+            chunksRemoved = 3;
 
             // Creates all of the states
             seek = new EnemyFSMState_SEEK(player, this);
@@ -249,15 +261,26 @@ namespace Bladesmiths.Capstone
             player.TakeDamage(ID, 1);
         }
 
-        protected override void Die()
-        {
-
-        }
         public override void Respawn()
         {
             throw new NotImplementedException();
         }
+        public void RemoveRandomChunk()
+        {
+            GameObject removedChunk = transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
+            removedChunk.transform.parent = null;
+            //removedChunck.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            removedChunk.AddComponent<Rigidbody>();
+            removedChunk.AddComponent<EnemyChunk>();          
 
+        }
+
+        public int NumChunks()
+        {
+            return chunksRemoved * (int)(player.CurrentSword.Damage / 5);            
+        }
+
+        
         /// <summary>
         /// Subtract an amount of damage from the character's health
         /// </summary>
@@ -274,9 +297,13 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                // Color changes based off of health
-                gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.HSVToRGB(278f/360f, Health/ MaxHealth, 0.5f);
-
+                if (transform.GetChild(1).childCount > 30)
+                {
+                    for (int i = 0; i < NumChunks(); i++)
+                    {                    
+                        RemoveRandomChunk();
+                    }
+                }
                 damaged = true;
             }
 
@@ -284,4 +311,6 @@ namespace Bladesmiths.Capstone
             return damageResult;
         }
     }
+
+    
 }

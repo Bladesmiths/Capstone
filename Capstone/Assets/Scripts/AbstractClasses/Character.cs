@@ -29,11 +29,12 @@ namespace Bladesmiths.Capstone
         private List<int> damagingObjectIDs = new List<int>();
 
         [SerializeField]
-        private ObjectController objectController;
+        protected ObjectController objectController;
 
         public event IIdentified.OnDestructionDelegate OnDestruction;
 
         // Properties
+        public GameObject GameObject { get; set; }
         public int ID { get => id; set => id = value; }
         public Team ObjectTeam { get; set; }
         public bool IsAlive { get => isAlive; set => isAlive = value; }
@@ -45,9 +46,14 @@ namespace Bladesmiths.Capstone
         }
         public float MaxHealth { get => maxHealth; set => maxHealth = value; }
         public List<int> DamagingObjectIDs { get => damagingObjectIDs; }
-        public ObjectController ObjectController { get => objectController; set => objectController = value; }
+        public virtual ObjectController ObjectController { get => objectController; set => objectController = value; }
 
         // Public Methods
+        public void Start()
+        {
+            GameObject = gameObject;
+        }
+
         /// <summary>
         /// Subtract an amount of damage from the character's health
         /// </summary>
@@ -68,13 +74,20 @@ namespace Bladesmiths.Capstone
             // Subtract damage from health
             Health -= damage;
 
-            // If damage was taken
-            // Add the damaging object's id to the damaging id list
-            // And subscribe to that object's DamagingFinished event
-            // Stopping it from hurting this character again right away
-            if (damage != 0)
+            if (Health <= 0)
             {
-                AddDamagingID(damagingID); 
+                Die();
+            }
+            else
+            {
+                // If damage was taken
+                // Add the damaging object's id to the damaging id list
+                // And subscribe to that object's DamagingFinished event
+                // Stopping it from hurting this character again right away
+                if (damage != 0)
+                {
+                    AddDamagingID(damagingID);
+                }
             }
 
             // Log the amount of damage taken
@@ -85,7 +98,15 @@ namespace Bladesmiths.Capstone
         }
 
         // Protected Methods
-        protected abstract void Die();
+        protected virtual void Die()
+        {
+            if (OnDestruction != null)
+            {
+                OnDestruction(id);
+            }
+
+            isAlive = false;
+        }
         public abstract void Respawn();
 
         /// <summary>

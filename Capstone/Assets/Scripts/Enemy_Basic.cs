@@ -55,10 +55,6 @@ namespace Bladesmiths.Capstone
 
         }       
 
-        protected override void Die()
-        {
-
-        }
         public override void Respawn()
         {
 

@@ -192,15 +192,19 @@ namespace Bladesmiths.Capstone
         #region Properties
         public PlayerInputsScript Inputs { get => inputs; }
         public BalancingData CurrentBalancingData { get => currentBalancingData; }
-
+        public override ObjectController ObjectController 
+        { 
+            get => objectController; 
+            set
+            {
+                objectController = value;
+                targetLock.ObjectController = value;
+            }
+        }
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
-        
         public float ChipDamageTotal { get; private set; }
-
         public int Points { get => (int)points; }
-
         public int MaxPoints { get => (int)maxPoints; }
-
         public bool Damaging { get => damaging; set => damaging = value; }
 
         #region Properties from Swords
@@ -216,6 +220,8 @@ namespace Bladesmiths.Capstone
 
         private void Awake()
         {
+            base.Start();
+
             Health = 1000;
             animator = GetComponent<Animator>();
             animIDForward = Animator.StringToHash("Forward");
@@ -241,7 +247,6 @@ namespace Bladesmiths.Capstone
             animIDFreeFall = Animator.StringToHash("FreeFall");
             animIDDamaged = Animator.StringToHash("Damaged");
 
-
             LandTimeoutDelta = -1.0f;
 
             isGrounded = false;
@@ -263,11 +268,9 @@ namespace Bladesmiths.Capstone
             blockDetector.GetComponent<BlockCollision>().OnBlock += BlockOccured;
             parryDetector.GetComponent<ParryCollision>().Player = this;
 
-
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
-
-            targetLock = GetComponent<TargetLock>();
+            targetLock = GameObject.Find("TargetLockManager").GetComponent<TargetLock>();
 
             inputs.player = this;
 
@@ -344,7 +347,7 @@ namespace Bladesmiths.Capstone
         {
             //animator.SetBool(animIDBlock, false);
             animator.SetBool(animIDDodge, false);
-            animator.SetBool(animIDForward, false);
+            animator.SetFloat(animIDForward, 0);
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
             animator.SetBool(animIDMoving, false);
@@ -562,11 +565,6 @@ namespace Bladesmiths.Capstone
 
                 // TODO: Player sword switching animation
             }
-        }
-
-        protected override void Die()
-        {
-
         }
 
         /// <summary>
