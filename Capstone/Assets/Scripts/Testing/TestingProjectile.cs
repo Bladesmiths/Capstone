@@ -130,11 +130,11 @@ namespace Bladesmiths.Capstone.Testing
                 }
             }
 
-            if (col.gameObject.tag != "Projectile")
-            {
-                // Destroy the projectile once it has collided
-                Destroy(gameObject);
-            }
+            //if (col.gameObject.tag != "Projectile")
+            //{
+            //    // Destroy the projectile once it has collided
+            //    Destroy(gameObject);
+            //}
         }
 
         /// <summary>
@@ -152,11 +152,11 @@ namespace Bladesmiths.Capstone.Testing
                 
             }
 
-            if(other.gameObject.name == "Block Detector")
-            {
-                Destroy(gameObject);
+            //if(other.gameObject.name == "Block Detector")
+            //{
+            //    Destroy(gameObject);
 
-            }
+            //}
         }
 
         private void OnDestroy()

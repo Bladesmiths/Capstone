@@ -103,12 +103,12 @@ namespace Bladesmiths.Capstone
             chunksRemoved = 3;
 
             // Creates all of the states
-            seek = new EnemyFSMState_SEEK(player, this);
-            idle = new EnemyFSMState_IDLE();
-            death = new EnemyFSMState_DEATH(this);
-            wander = new EnemyFSMState_WANDER(this);
-            attack = new EnemyFSMState_ATTACK(sword, this);
-            stun = new EnemyFSMState_STUN(sword, this, player);
+            //seek = new EnemyFSMState_SEEK(player, this);
+            //idle = new EnemyFSMState_IDLE();
+            //death = new EnemyFSMState_DEATH(this);
+            //wander = new EnemyFSMState_WANDER(this);
+            //attack = new EnemyFSMState_ATTACK(sword, this);
+            //stun = new EnemyFSMState_STUN(sword, this, player);
 
             // Adds all of the possible transitions
             //FSM.AddTransition(seek, wander, IsIdle());
