@@ -45,6 +45,8 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject rebindBackButton, rebindResetAllButton;
         private GameObject lastSelectedButton;
 
+        public bool onPauseScreenOnly;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -66,6 +68,8 @@ namespace Bladesmiths.Capstone.UI
 
             // Save what button was last selected
             lastSelectedButton = EventSystem.current.currentSelectedGameObject;
+
+            Debug.Log(onPauseScreenOnly);
         }
 
         public void UnPause()
@@ -94,7 +98,9 @@ namespace Bladesmiths.Capstone.UI
             if (controlsMenu.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(moveRebindButton);
+                onPauseScreenOnly = false;
             }
+
         }
 
         // Toggle the settings menu
@@ -108,6 +114,7 @@ namespace Bladesmiths.Capstone.UI
 
             if (settingsPanel.activeSelf)
             {
+                onPauseScreenOnly = false;
                 EventSystem.current.SetSelectedGameObject(graphicsButton);
                 settingsButton.GetComponent<Button>().interactable = false;
                 //resumeButton.SetActive(false);
@@ -115,6 +122,7 @@ namespace Bladesmiths.Capstone.UI
             else
             {
                 settingsButton.GetComponent<Button>().interactable = true;
+                onPauseScreenOnly = true;
                 //resumeButton.SetActive(true);
             }
         }
@@ -130,6 +138,7 @@ namespace Bladesmiths.Capstone.UI
             if (graphicsPanel.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(graphicsPanelFirstButton);
+                onPauseScreenOnly = false;
             }
         }
 
@@ -144,6 +153,7 @@ namespace Bladesmiths.Capstone.UI
             if (soundPanel.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(soundPanelFirstButton);
+                onPauseScreenOnly = false;
             }
         }
 
@@ -158,6 +168,7 @@ namespace Bladesmiths.Capstone.UI
             if (gameplayPanel.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(gameplayPanelFirstButton);
+                onPauseScreenOnly = false;
             }
         }
 
@@ -174,7 +185,36 @@ namespace Bladesmiths.Capstone.UI
             if (graphicsButton.activeSelf)
             {
                 EventSystem.current.SetSelectedGameObject(graphicsButton);
+                onPauseScreenOnly = false;
             }
+        }
+
+        public void CloseActiveSettingsPanel()
+        {
+            if (graphicsPanel.activeSelf)
+            {
+                ToggleGraphicsSettingsMenu();
+            }
+            else if(soundPanel.activeSelf)
+            {
+                ToggleSoundSettingsMenu();
+            }
+            else if(controlsMenu.activeSelf)
+            {
+                ToggleControlsMenu();
+            }
+            else if(gameplayPanel.activeSelf)
+            {
+                ToggleGameplaySettingsMenu();
+            }
+            // If no other panel is open, then only the settings buttons should be left
+            else
+            {
+                ToggleSettingsMenu();
+            }
+
+
+            //onPauseScreenOnly = true;
         }
 
         public void QuitToMenu()
