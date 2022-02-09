@@ -119,4 +119,44 @@ namespace Bladesmiths.Capstone.Editor
         public static string Italic(this string str) => "<i>" + str + "</i>";
         public static string Size(this string str, int size) => string.Format("<size={0}>{1}</size>", size, str);
     }
+    
+    static class Styles
+    {
+        public static GUIStyle buttonLeft;
+        public static GUIStyle buttonMid;
+        public static GUIStyle buttonRight;
+        public static GUIStyle title;
+        public static GUIStyle body;
+
+        public static GUIStyle centeredTitle;
+        public static GUIStyle centeredBody;
+        public static GUIStyle helpBox;
+
+        static Styles()
+        {
+            buttonLeft = new GUIStyle(EditorStyles.miniButtonLeft);
+            buttonMid = new GUIStyle(EditorStyles.miniButtonMid);
+            buttonRight = new GUIStyle(EditorStyles.miniButtonRight);
+            buttonLeft.fontSize = 12;
+            buttonMid.fontSize = 12;
+            buttonRight.fontSize = 12;
+
+            title = new GUIStyle(EditorStyles.label);
+            title.fontSize = 22;
+
+            centeredTitle = new GUIStyle(title);
+            centeredTitle.alignment = TextAnchor.UpperCenter;
+
+            body = new GUIStyle(EditorStyles.label);
+            body.fontSize = 12;
+            body.wordWrap = true;
+            body.richText = true;
+
+            centeredBody = new GUIStyle(body);
+            centeredBody.alignment = TextAnchor.UpperCenter;
+
+            helpBox = new GUIStyle(EditorStyles.helpBox);
+            helpBox.padding = new RectOffset(12, 12, 12, 12);
+        }
+    }
 }

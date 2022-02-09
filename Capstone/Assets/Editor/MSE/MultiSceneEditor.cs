@@ -1,3 +1,5 @@
+using UnityEditor.Graphs;
+
 #if UNITY_EDITOR
 namespace Bladesmiths.Capstone.Editor
 {
@@ -13,24 +15,81 @@ namespace Bladesmiths.Capstone.Editor
     using Sirenix.Serialization;
     using UnityEditor;
     using Sirenix.Utilities;
-    using GameplayIngredients;
 
     public class MultiSceneEditor : OdinMenuEditorWindow
     {
+        // Fields
+        const string kShowOnStartupPreference = "MSE.ShowAtStartup";
+        const int WindowWidth = 800;
+        const int WindowHeight = 600;
+
+        [SerializeField] private AboutPage aboutPage = new AboutPage();
+        [SerializeField] private LoadSaveSettings settings = new LoadSaveSettings();
+
+        // Properties
+        static bool showOnStartup
+        {
+            get { return EditorPrefs.GetBool(kShowOnStartupPreference, true); }
+            set
+            {
+                if (value != showOnStartup) EditorPrefs.SetBool(kShowOnStartupPreference, value);
+            }
+        }
+
+        // Static Methods
+        public static void Reload()
+        {
+            EditorApplication.update -= ShowAtStartup;
+            InitShowAtStartup();
+        }
+
+        [InitializeOnLoadMethod]
+        static void InitShowAtStartup()
+        {
+            if (showOnStartup)
+                EditorApplication.update += ShowAtStartup;
+
+            EditorApplication.quitting += EditorApplication_quitting;
+        }
+
+        const string kShowNextPreference = "MSE.ShowNextTime";
+
+        private static void EditorApplication_quitting()
+        {
+            EditorPrefs.SetBool(kShowNextPreference, true);
+        }
+
+        static void ShowAtStartup()
+        {
+            if (!Application.isPlaying && EditorPrefs.GetBool(kShowNextPreference, true))
+            {
+                OpenWindow();
+                EditorPrefs.SetBool(kShowNextPreference, false);
+            }
+
+            EditorApplication.update -= ShowAtStartup;
+        }
+
+        // Editor Window Methods
         [MenuItem("Tools/MSE")]
         private static void OpenWindow()
         {
             var window = GetWindow<MultiSceneEditor>();
-            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(800, 600);
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(WindowWidth, WindowHeight);
             window.titleContent = new GUIContent("Multi-Scene Editor (MSE)", EditorIcons.PacmanGhost.Raw);
         }
 
-        [SerializeField] private GeneralSettings settings = new GeneralSettings();
+        private void OnDestroy()
+        {
+            EditorApplication.update -= ShowAtStartup;
+        }
+
 
         protected override OdinMenuTree BuildMenuTree()
         {
             var tree = new OdinMenuTree(supportsMultiSelect: true)
             {
+                { "About", null, EditorIcons.Info },
                 { "Load & Save", this.settings, EditorIcons.SettingsCog },
                 { "Multi-Scene Setup Data", null, EditorIcons.List },
             };
@@ -77,11 +136,16 @@ namespace Bladesmiths.Capstone.Editor
                     GUILayout.Label(selected.Name);
                 }
 
-                // if (SirenixEditorGUI.ToolbarButton(new GUIContent("Save Current Scene Setup")))
-                // {
-                // }
+                if (selected is { FlatTreeIndex: 0 })
+                {
+                    using (new GUILayout.HorizontalScope())
+                    {
+                        GUILayout.FlexibleSpace();
+                        showOnStartup = GUILayout.Toggle(showOnStartup, " Show MSE on Startup");
+                    }
+                }
 
-                if (selected is { Name: "General Settings" })
+                if (selected is { FlatTreeIndex: 1 })
                 {
                     if (SirenixEditorGUI.ToolbarButton(new GUIContent("Reload Setup Data List")))
                     {
@@ -89,7 +153,7 @@ namespace Bladesmiths.Capstone.Editor
                     }
                 }
 
-                if (selected is { Parent: { FlatTreeIndex: 1 } })
+                if (selected is { Parent: { FlatTreeIndex: 2 } })
                 {
                     if (SirenixEditorGUI.ToolbarButton((new GUIContent("Show Build Settings"))))
                     {
@@ -98,11 +162,41 @@ namespace Bladesmiths.Capstone.Editor
                 }
             }
             SirenixEditorGUI.EndHorizontalToolbar();
+
+            if (selected is { FlatTreeIndex: 0 })
+            {
+                using (new GUILayout.VerticalScope())
+                {
+                    GUILayout.Label("Multi-Scene Editor", Styles.centeredTitle);
+                    GUILayout.Label(@"(or MSE)
+
+The editor allows developers to manipulate Unity hierarchy setup with multiple scenes.
+The purposes are to allow to create large streaming worlds and to improve the workflow when collaborating on scene editing.
+
+<b>This editor makes use of the following third party component(s):</b>
+- <i>Odin Inspector</i> by Sirenix (https://odininspector.com/) 
+", Styles.centeredBody);
+
+                    using (new GUILayout.HorizontalScope())
+                    {
+                        GUILayout.FlexibleSpace();
+                        GUILayout.Label(@"Copyright @ 2022 Bladesmiths", Styles.centeredBody);
+
+                        GUILayout.FlexibleSpace();
+                    }
+                    
+                    GUILayout.FlexibleSpace();
+                }
+            }
         }
     }
 
+    public class AboutPage
+    {
+    }
+
     [Serializable]
-    public class GeneralSettings
+    public class LoadSaveSettings
     {
         [ShowInInspector]
         [FolderPath(RequireExistingPath = true)]
