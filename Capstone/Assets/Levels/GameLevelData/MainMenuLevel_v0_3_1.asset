@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
+  m_Script: {fileID: 11500000, guid: d0e5997dc40a2dc47afc7b9a41a9a862, type: 3}
   m_Name: MainMenuLevel_v0_3_1
   m_EditorClassIdentifier: 
-  setupList:
-  - scenePath: Assets/Scenes/MainMenu.unity
-    isActive: 1
-    isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 5ee2e9887bb6a7a42b936088d76404b3, type: 2}
+  StartupScenes: []
