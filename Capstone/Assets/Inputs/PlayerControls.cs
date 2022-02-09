@@ -951,10 +951,10 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""da9b5f15-a1b9-4a21-aac7-aee019ad4b0c"",
-                    ""path"": ""*/{Cancel}"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1104,7 +1104,7 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e6a76f38-59e9-4a49-afc0-28dbc4deaa18"",
+                    ""id"": ""cc125a53-a08e-48b4-b296-b6d8350c1065"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",

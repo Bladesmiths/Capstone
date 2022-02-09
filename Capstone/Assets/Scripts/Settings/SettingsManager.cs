@@ -42,6 +42,8 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject moveTargetKeyboardButton;
         [SerializeField] private Scrollbar rebindScrollbar;
 
+        [SerializeField] private GameObject playButton;
+
         [SerializeField] private GameObject rebindBackButton, rebindResetAllButton;
         private GameObject lastSelectedButton;
 
@@ -54,6 +56,8 @@ namespace Bladesmiths.Capstone.UI
             gameplaySettingsScript.LoadGameplayPrefs();
             soundSettingsScript.LoadSoundPrefs();
             graphicSettingsScript.LoadGraphicPrefs();
+
+            //onPauseScreenOnly = true;
         }
 
         // Update is called once per frame
@@ -117,13 +121,17 @@ namespace Bladesmiths.Capstone.UI
                 onPauseScreenOnly = false;
                 EventSystem.current.SetSelectedGameObject(graphicsButton);
                 settingsButton.GetComponent<Button>().interactable = false;
-                //resumeButton.SetActive(false);
             }
             else
             {
+                // If on the main menu
+                if(SceneManager.GetActiveScene().name == "MainMenu")
+                {
+                    // Select the Play button
+                    EventSystem.current.SetSelectedGameObject(playButton);
+                }
                 settingsButton.GetComponent<Button>().interactable = true;
                 onPauseScreenOnly = true;
-                //resumeButton.SetActive(true);
             }
         }
 
