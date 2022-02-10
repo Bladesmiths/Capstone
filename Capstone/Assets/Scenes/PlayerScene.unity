@@ -2167,7 +2167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136034365}
-  m_LocalRotation: {x: -0.011693464, y: -0.70144707, z: 0.30414066, w: 0.644464}
+  m_LocalRotation: {x: -0.011693479, y: -0.70144707, z: 0.30414063, w: 0.644464}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16834,7 +16834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261776968}
   m_LocalRotation: {x: -0, y: -0.08207837, z: -0, w: 0.99662596}
-  m_LocalPosition: {x: -23.23, y: 0.308, z: -25.93}
+  m_LocalPosition: {x: -95.1, y: 0.308, z: -62.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 293306416}
@@ -16874,6 +16874,7 @@ MonoBehaviour:
   analogMovement: 0
   uiManager: {fileID: 1863759866}
   infoPanel: {fileID: 125179844}
+  settingsManager: {fileID: 0}
   animator: {fileID: 1261776975}
   cursorLocked: 1
   cursorInputForLook: 1
@@ -21452,7 +21453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
   m_LocalRotation: {x: 0.21129663, y: -0.08021247, z: 0.017401598, w: 0.97396964}
-  m_LocalPosition: {x: -22.575588, y: 3.658, z: -29.876106}
+  m_LocalPosition: {x: -94.44559, y: 3.658, z: -66.446106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24371,7 +24372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802336007}
   m_LocalRotation: {x: 0.14949982, y: 0.6929413, z: -0.15032929, w: 0.6891177}
-  m_LocalPosition: {x: -22.575588, y: 3.658, z: -29.876106}
+  m_LocalPosition: {x: -94.44559, y: 3.658, z: -66.446106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409920310}
@@ -26821,13 +26822,22 @@ MonoBehaviour:
   quitToMenuButton: {fileID: 1189557437}
   graphicsPanel: {fileID: 1189557436}
   graphicsBackButton: {fileID: 1189557435}
+  graphicsPanelFirstButton: {fileID: 0}
   soundPanel: {fileID: 1189557434}
   soundBackButton: {fileID: 1189557433}
+  soundPanelFirstButton: {fileID: 0}
   gameplayPanel: {fileID: 1189557444}
   gameplayBackButton: {fileID: 1189557430}
+  gameplayPanelFirstButton: {fileID: 0}
   gameplaySettingsScript: {fileID: 1189557429}
   soundSettingsScript: {fileID: 1189557432}
   graphicSettingsScript: {fileID: 1189557431}
+  moveTargetKeyboardButton: {fileID: 0}
+  rebindScrollbar: {fileID: 0}
+  playButton: {fileID: 0}
+  rebindBackButton: {fileID: 0}
+  rebindResetAllButton: {fileID: 0}
+  onPauseScreenOnly: 0
 --- !u!1 &1878865273
 GameObject:
   m_ObjectHideFlags: 0
