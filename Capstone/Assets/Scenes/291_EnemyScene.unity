@@ -1183,7 +1183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
@@ -1873,13 +1873,17 @@ PrefabInstance:
         Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":18,"Name":"In
         Combat","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND_BASIC","NodeData":{"Offset":"(186.50174,190.301086)"},"ID":19,"Name":"Enemy
         SURROUND   BASIC","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(567.272644,214.545929)"},"ID":20,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-99.72943,184.582275)"},"ID":21,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(40,183.043579)"},"ID":22,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10},{"Type":"Bladesmiths.Capstone.EnemySEEK","NodeData":{"Offset":"(166.956421,180)"},"ID":23,"Name":"Enemy
-        SEEK","Instant":true}]}]}]}]}]}]}]}}'
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":0.5},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(40,183.043579)"},"ID":22,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(194.823,179.198486)"},"ID":23,"Name":"Enemy
+        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
     - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6249444677277582342, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsTrigger
@@ -3619,6 +3623,10 @@ PrefabInstance:
     - target: {fileID: 8906441549651155363, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
       propertyPath: m_Name
       value: Enemy_Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155363, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
