@@ -50,7 +50,7 @@ namespace Bladesmiths.Capstone
         {
             base.OnStateMove(animator, stateInfo, layerIndex);
 
-            speed = 40f;
+            speed = 25f;
 
             if (_input.dodge)
             {
