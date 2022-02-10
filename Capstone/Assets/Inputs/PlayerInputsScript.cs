@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Bladesmiths.Capstone
 {
@@ -28,6 +29,7 @@ namespace Bladesmiths.Capstone
 		[Header("UI Objects")]
 		public UI.UIManager uiManager;
 		public InfoPanel infoPanel;
+		public UI.SettingsManager settingsManager;
 
 		[Header("Animation")]
 		public Animator animator;
