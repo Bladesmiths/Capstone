@@ -15,14 +15,23 @@ MonoBehaviour:
   setupList:
   - scenePath: Assets/Scenes/PlayerScene.unity
     isActive: 0
-    isLoaded: 0
+    isLoaded: 1
   - scenePath: Assets/Scenes/EnemyScene.unity
     isActive: 0
-    isLoaded: 0
-  - scenePath: Assets/Scenes/NewVillageScene.unity
-    isActive: 1
     isLoaded: 1
-  - scenePath: Assets/Scenes/VillageScene.unity
+  - scenePath: Assets/Scenes/Village_Persistent.unity
     isActive: 0
     isLoaded: 0
+  - scenePath: Assets/Scenes/Village_Audio.unity
+    isActive: 0
+    isLoaded: 0
+  - scenePath: Assets/Scenes/Village_Gameplay.unity
+    isActive: 0
+    isLoaded: 0
+  - scenePath: Assets/Scenes/Village_Geo.unity
+    isActive: 1
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Lighting.unity
+    isActive: 0
+    isLoaded: 1
   gameLevelData: {fileID: 11400000, guid: 5510f252e8dffc44d94a0b9b4bd600fe, type: 2}

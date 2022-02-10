@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Codice.Client.BaseCommands;
 using GameplayIngredients;
 using UnityEngine;
@@ -120,7 +121,7 @@ namespace Bladesmiths.Capstone.Editor
         public static string Size(this string str, int size) => string.Format("<size={0}>{1}</size>", size, str);
     }
     
-    static class Styles
+    public static class Styles
     {
         public static GUIStyle buttonLeft;
         public static GUIStyle buttonMid;
@@ -157,6 +158,26 @@ namespace Bladesmiths.Capstone.Editor
 
             helpBox = new GUIStyle(EditorStyles.helpBox);
             helpBox.padding = new RectOffset(12, 12, 12, 12);
+        }
+    }
+    
+    [InitializeOnLoadAttribute]
+    public static class HierarchyMonitor
+    {
+        public static bool IsHierarchyDirty = false;
+        
+        static HierarchyMonitor()
+        {
+            EditorApplication.hierarchyChanged += OnHierarchyChanged;
+        }
+
+        static void OnHierarchyChanged()
+        {
+            IsHierarchyDirty = true;
+            // var all = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+            // var numberVisible =
+            //     all.Where(obj => (obj.hideFlags & HideFlags.HideInHierarchy) != HideFlags.HideInHierarchy).Count();
+            // Debug.LogFormat("There are currently {0} GameObjects visible in the hierarchy.", numberVisible);
         }
     }
 }

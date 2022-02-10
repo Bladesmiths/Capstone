@@ -13,13 +13,15 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using FilePath = Sirenix.OdinInspector.FilePathAttribute;
 
-namespace Bladesmiths.Capstone.ScriptableObjects
+#if UNITY_EDITOR
+namespace Bladesmiths.Capstone.Editor
 {
     [CreateAssetMenu(fileName = "MultiSceneSetupData", menuName = "ScriptableObjects/MSE/Multi-scene Setup Data")]
     public class MultiSceneSetupData : ScriptableObject
     {
         // Fields
-        [TableList(ShowIndexLabels = true)] public List<SceneSetupData> setupList;
+        [TableList(ShowIndexLabels = true)] 
+        public List<SceneSetupData> setupList;
 
         [ReadOnly] [LabelText("Corresponding GameLevel Data File")]
         public GameLevel gameLevelData;
@@ -59,6 +61,22 @@ namespace Bladesmiths.Capstone.ScriptableObjects
         {
             if (ValidateSetupData())
             {
+                if (HierarchyMonitor.IsHierarchyDirty)
+                {
+                    if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                    {
+                        // "Save" button
+                        EditorLogUtils.Success("Modified scenes saved!");
+                    }
+                    else
+                    {
+                        // "Cancel" button
+                        EditorLogUtils.Info("Modified scenes unsaved!");
+                    }
+
+                    HierarchyMonitor.IsHierarchyDirty = false;
+                }
+                
                 EditorSceneManager.RestoreSceneManagerSetup(GetSetup());
                 EditorLogUtils.Success("Scene setup is successfully loaded!");
             }
@@ -210,3 +228,4 @@ namespace Bladesmiths.Capstone.ScriptableObjects
         public bool isLoaded;
     }
 }
+#endif
