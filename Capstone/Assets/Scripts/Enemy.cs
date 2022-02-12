@@ -44,6 +44,8 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         protected float viewDistance;
+
+        public bool surrounding;
         
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -58,6 +60,7 @@ namespace Bladesmiths.Capstone
         public float attackTimer;
         public float attackTimerMax;
         public bool stunned;
+        public bool canMove;
 
         private bool inCombat;
 
@@ -83,7 +86,7 @@ namespace Bladesmiths.Capstone
             // Creates the FSM
             FSM = new FiniteStateMachine();
             damage = 15f;
-
+            surrounding = false;
         }
 
         public virtual void Start()
@@ -101,7 +104,7 @@ namespace Bladesmiths.Capstone
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
             chunksRemoved = 3;
-
+            canMove = false;
             // Creates all of the states
             //seek = new EnemyFSMState_SEEK(player, this);
             //idle = new EnemyFSMState_IDLE();
@@ -217,7 +220,10 @@ namespace Bladesmiths.Capstone
             }
 
             // Movement
-            agent.SetDestination(moveVector);
+            if (canMove)
+            {
+                agent.SetDestination(moveVector);
+            }
 
             //Debug.DrawLine(transform.position, rotateVector, Color.red);
 

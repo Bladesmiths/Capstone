@@ -21,6 +21,7 @@ namespace Bladesmiths.Capstone
         private float speed;
         private float dir;
         private float surroundDistance;
+        public Vector3 moveVec;
 
         public EnemySEEK(Player player, Enemy enemy)
         {
@@ -60,15 +61,18 @@ namespace Bladesmiths.Capstone
             _enemy = gameObject.GetComponent<Enemy>();
             controller = _enemy.GetComponent<CharacterController>();
             _enemy.InCombat = true;
+            _enemy.canMove = true;
 
         }
 
         public override void OnEnd()
-        { 
-            _enemy.moveVector = transform.position;
-            _enemy.rotateVector = player.position - transform.position;
+        {
+            //_enemy.moveVector = transform.position;
+            //_enemy.rotateVector = player.position - transform.position;
+            _enemy.canMove = false;
+
         }
-        
+
         /// <summary>
         /// Runs the movement code for seeking the player
         /// </summary>
@@ -78,17 +82,18 @@ namespace Bladesmiths.Capstone
 
             Vector3 dist = player.position - _enemy.transform.position;
 
+            movementVector = player.position;
+
             // If the Enemy is within X units and the seekAgainTimer isn't started
             if (dist.magnitude > surroundDistance && seekAgainTimer == seekAgainTimerMax)
             {
                 //movementVector = dist.normalized;
-                movementVector = player.position;
             }            
 
             Debug.DrawLine(_enemy.transform.position, movementVector, Color.red);
-
+            moveVec = movementVector;
             _enemy.moveVector = movementVector;
-            _enemy.rotateVector = dist;
+            //_enemy.rotateVector = dist;
 
         }
 

@@ -56,7 +56,7 @@ namespace Bladesmiths.Capstone
             float z = Random.Range(randMin, randMax) + center.z;
 
             wanderPoint = new Vector3(x, y, z);
-
+            _self.canMove = true;
             _self.InCombat = false;
 
         }
@@ -96,7 +96,10 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public override void OnEnd() { }
+        public override void OnEnd()
+        {
+            _self.canMove = false;
+        }
 
         /// <summary>
         /// Checks to see if the enemy is heading into/through a wall

@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 1e2d78a4a85f6414a92d0a5b963236d8, type: 2}
 --- !u!1 &130830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &125179843
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2144,7 +2144,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7748344, y: 1}
+    m_SensorSize: {x: 1.7784616, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5599,7 +5599,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7748344, y: 1}
+    m_SensorSize: {x: 1.7784616, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5831,9 +5831,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 878.41064, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -6242,9 +6242,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 878.41064, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -8877,9 +8877,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 100.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699135390
@@ -10370,9 +10370,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 878.41064, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -22532,9 +22532,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 878.41064, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -23895,9 +23895,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 100.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748537599
@@ -24282,7 +24282,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7748344, y: 1}
+    m_SensorSize: {x: 1.7784616, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -29800,7 +29800,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7748344, y: 1}
+    m_SensorSize: {x: 1.7784616, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -29863,9 +29863,9 @@ RectTransform:
   m_Father: {fileID: 125179843}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880.3692, y: -100}
   m_SizeDelta: {x: 0, y: 100.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110583665

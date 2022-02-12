@@ -11,6 +11,7 @@ namespace Bladesmiths.Capstone
         private Transform player;
         public float fieldOfView;
         public float distance;
+        public float distVec;
 
 
         public override void OnAwake()
@@ -25,12 +26,20 @@ namespace Bladesmiths.Capstone
             {
                 newFOV = 360;
             }
-            
-            if (InSight(player, newFOV) && Vector3.Distance(player.position, transform.position) <= distance)
+
+            distVec = Vector3.Distance(player.position, transform.position);
+
+            if (InSight(player, newFOV) && (distVec <= distance))
             {
+                distVec = 10000;
                 return TaskStatus.Success;
             }
             return TaskStatus.Failure;
+        }
+
+        public override void OnEnd()
+        {
+            base.OnEnd();
         }
 
         public bool InSight(Transform target, float fov)

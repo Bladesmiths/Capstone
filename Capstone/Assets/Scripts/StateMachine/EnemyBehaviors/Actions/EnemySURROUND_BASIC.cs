@@ -60,6 +60,7 @@ namespace Bladesmiths.Capstone
             _enemy = gameObject.GetComponent<Enemy>();
             controller = _enemy.GetComponent<CharacterController>();
             _enemy.InCombat = true;
+            _enemy.canMove = true;
 
         }
 
@@ -67,6 +68,8 @@ namespace Bladesmiths.Capstone
         {
             _enemy.moveVector = transform.position;
             _enemy.rotateVector = player.position - transform.position;
+            _enemy.canMove = false;
+
         }
 
         /// <summary>

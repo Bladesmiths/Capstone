@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 1e2d78a4a85f6414a92d0a5b963236d8, type: 2}
 --- !u!1 &5716208
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813445692137997980, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4813445692137997980, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
       propertyPath: m_TagString
@@ -504,6 +504,10 @@ PrefabInstance:
     - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
       propertyPath: m_Name
       value: EnemySwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
       propertyPath: m_TagString
@@ -666,6 +670,10 @@ PrefabInstance:
     - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
       propertyPath: m_Name
       value: EnemySwing (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
       propertyPath: m_TagString
@@ -894,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813445692137997980, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4813445692137997980, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
       propertyPath: m_TagString
@@ -1184,6 +1192,10 @@ PrefabInstance:
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
@@ -1866,16 +1878,20 @@ PrefabInstance:
       value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
         Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
         DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
         WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,220.716827)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-66.66675,153.888885)"},"ID":14,"Name":"Can
         Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK","NodeData":{"Offset":"(53.077198,160)"},"ID":15,"Name":"Enemy
-        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0.550059259,0.550059259],[0.5,-50,0,0],[0.6,90,0,0],[0.75,90,0,0],[1,0,-221.163132,-221.163132]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(47.27275,204.545914)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":17,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":18,"Name":"In
-        Combat","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND_BASIC","NodeData":{"Offset":"(186.50174,190.301086)"},"ID":19,"Name":"Enemy
-        SURROUND   BASIC","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(567.272644,214.545929)"},"ID":20,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-99.72943,184.582275)"},"ID":21,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":0.5},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(40,183.043579)"},"ID":22,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(194.823,179.198486)"},"ID":23,"Name":"Enemy
-        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8}]}]}]}]}]}]}]}}'
+        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0.550059259,0.550059259],[0.5,-50,0,0],[0.6,90,0,0],[0.75,90,0,0],[1,0,-221.163132,-221.163132]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(43.4636078,238.355423)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-4.49142838,184.582291)"},"ID":17,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(135.238,183.043579)"},"ID":18,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(260.725861,185.6397)"},"ID":19,"Name":"Is
+        Surrounding","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(394.533569,183.968384)"},"ID":20,"Name":"Enemy
+        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"},{"Type":"Bladesmiths.Capstone.EnemySEEK","NodeData":{"Offset":"(489.206635,410.997467)"},"ID":21,"Name":"Enemy
+        SEEK","Instant":true,"Disabled":true,"Vector3moveVec":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(726.759338,204.545914)"},"ID":22,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":23,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":24,"Name":"In
+        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(204.891479,201.591675)"},"ID":25,"Name":"Enemy
+        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(399.657867,175.3846)"},"ID":26,"Name":"Enemy
+        Movement","Instant":false,"Disabled":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"},{"Type":"Bladesmiths.Capstone.EnemySURROUND_BASIC","NodeData":{"Offset":"(511.28772,331.32663)"},"ID":27,"Name":"Enemy
+        SURROUND   BASIC","Instant":true,"Disabled":true}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
     - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
@@ -2648,6 +2664,10 @@ PrefabInstance:
       value: EnemySwing (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904323166291148165, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
       propertyPath: m_TagString
       value: Targettable
       objectReference: {fileID: 0}
@@ -2778,7 +2798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4813445692137997980, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4813445692137997980, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
       propertyPath: m_TagString
@@ -2883,7 +2903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: sword
@@ -3179,19 +3199,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: mBehaviorSource.mTaskData.JSONSerialization
-      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-7.27238464,141.8183)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
         Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
         DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
         WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,220.716827)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-66.66675,153.888885)"},"ID":14,"Name":"Can
         Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK","NodeData":{"Offset":"(53.077198,160)"},"ID":15,"Name":"Enemy
-        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0,0],[0.5,-50,1.05544508,1.05544508],[0.6,90,0,0],[0.75,90,0,0],[1,0,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(47.27275,204.545914)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":17,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":3},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,195.8366)"},"ID":18,"Name":"In
-        Combat","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND_BASIC","NodeData":{"Offset":"(186.50174,190.301086)"},"ID":19,"Name":"Enemy
-        SURROUND   BASIC","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(567.272644,214.545929)"},"ID":20,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-99.72943,184.582275)"},"ID":21,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":3},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(40,183.043579)"},"ID":22,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10},{"Type":"Bladesmiths.Capstone.EnemySEEK","NodeData":{"Offset":"(166.956421,180)"},"ID":23,"Name":"Enemy
-        SEEK","Instant":true}]}]}]}]}]}]}]}}'
+        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0.550059259,0.550059259],[0.5,-50,0,0],[0.6,90,0,0],[0.75,90,0,0],[1,0,-221.163132,-221.163132]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(43.4636078,238.355423)"},"ID":16,"Name":"Sequence","Instant":true,"Disabled":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-4.49142838,184.582291)"},"ID":17,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(135.238,183.043579)"},"ID":18,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(260.725861,185.6397)"},"ID":19,"Name":"Is
+        Surrounding","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySEEK","NodeData":{"Offset":"(378.095673,188.775528)"},"ID":20,"Name":"Enemy
+        SEEK","Instant":true,"Vector3moveVec":"(0,0,0)"},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(450.08905,322.8571)"},"ID":21,"Name":"Enemy
+        Movement","Instant":true,"Disabled":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Single[]intrest":[],"Single[]danger":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(726.759338,204.545914)"},"ID":22,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":23,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":24,"Name":"In
+        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(177.435928,175.3846)"},"ID":25,"Name":"Enemy
+        Movement","Instant":false,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"},{"Type":"Bladesmiths.Capstone.EnemySURROUND_BASIC","NodeData":{"Offset":"(289.0658,331.32663)"},"ID":26,"Name":"Enemy
+        SURROUND   BASIC","Instant":true,"Disabled":true}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
     - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
