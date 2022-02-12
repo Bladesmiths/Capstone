@@ -175,7 +175,7 @@ MonoBehaviour:
         pinFixedRotationValue: {x: 0, y: 0, z: 0}
         pinFixedScale: 0
         pinFixedScaleValue: {x: 1, y: 1, z: 1}
-        placeEulerAngles: {x: 0, y: 0, z: 0}
+        placeEulerAngles: {x: 0, y: 285, z: 0}
         placeScale: 1
         multibrushEnabled: 0
         multibrushSlots:
@@ -307,7 +307,7 @@ MonoBehaviour:
         pinFixedRotationValue: {x: 0, y: 0, z: 0}
         pinFixedScale: 0
         pinFixedScaleValue: {x: 1, y: 1, z: 1}
-        placeEulerAngles: {x: 0, y: 0, z: 0}
+        placeEulerAngles: {x: 0, y: 255, z: 0}
         placeScale: 1
         multibrushEnabled: 0
         multibrushSlots:
@@ -439,7 +439,7 @@ MonoBehaviour:
         pinFixedRotationValue: {x: 0, y: 0, z: 0}
         pinFixedScale: 0
         pinFixedScaleValue: {x: 1, y: 1, z: 1}
-        placeEulerAngles: {x: 0, y: 0, z: 0}
+        placeEulerAngles: {x: 0, y: 165, z: 0}
         placeScale: 1
         multibrushEnabled: 0
         multibrushSlots:
@@ -1611,11 +1611,11 @@ MonoBehaviour:
     levelsInWhite: 255
     levelsOutBlack: 0
     levelsOutWhite: 255
-  - name: Trees
+  - name: Forest
     brushes:
-    - name: IL3DN_Tree_Beech_01_OneMesh
+    - name: Trees
       settings:
-        brushRadius: 1.68
+        brushRadius: 3.68
         brushSpacing: 3.93
         brushOverlapCheckMode: 1
         brushOverlapDistance: 6
@@ -1743,9 +1743,9 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 0
+      selected: 1
       colorTag: 0
-    - name: IL3DN_Plant_Grass_02
+    - name: Branches
       settings:
         brushRadius: 12.84
         brushSpacing: 1.48
@@ -1877,9 +1877,9 @@ MonoBehaviour:
       selectedSlot: 5
       selected: 0
       colorTag: 0
-    - name: IL3DN_Plant_Grass_04
+    - name: Grass
       settings:
-        brushRadius: 8.98
+        brushRadius: 5.64
         brushSpacing: 1.22
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -1897,8 +1897,8 @@ MonoBehaviour:
         randomizeOrientationZ: 0
         scaleTransformMode: 0
         scaleMode: 0
-        scaleUniformMin: 0.6
-        scaleUniformMax: 1.6
+        scaleUniformMin: 0.2
+        scaleUniformMax: 0.9
         scalePerAxisMin: {x: 1, y: 1, z: 1}
         scalePerAxisMax: {x: 1, y: 1, z: 1}
         pinFixedRotation: 0
@@ -2007,14 +2007,14 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 1
+      selected: 0
       colorTag: 0
     levelsGamma: 1
     levelsInBlack: 0
     levelsInWhite: 255
     levelsOutBlack: 0
     levelsOutWhite: 255
-  activeTab: 0
+  activeTab: 2
   paintOnSelected: 1
   paintLayers:
     serializedVersion: 2
