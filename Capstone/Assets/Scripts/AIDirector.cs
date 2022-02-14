@@ -113,7 +113,7 @@ namespace Bladesmiths.Capstone
                 return;
             }
             
-            enemyGroup.Sort();
+            //enemyGroup.Sort();
             attackQueue.Remove(e);
         }
 

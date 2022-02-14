@@ -120,7 +120,7 @@ namespace Bladesmiths.Capstone
 
             seekAgainTimer -= Time.deltaTime;
             //}
-            Debug.Log(seekAgainTimer);
+            //Debug.Log(seekAgainTimer);
             AttackTimer();
 
 
@@ -260,30 +260,31 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public override void OnDrawGizmos()
         {
-            if (allDirections == null ||
-                intrest == null ||
-                danger == null || 
-                allDirections[0] == null)
-            {
-                return;
-            }
+            //Debug.Log(allDirections);
+            //if (allDirections == null ||
+            //    intrest == null ||
+            //    danger == null || 
+            //    allDirections[0] == null)
+            //{
+            //    return;
+            //}
 
-            for (int i = 0; i <= numRays - 1; i++)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
-                Gizmos.color = Color.green;
-                Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);               
+            //for (int i = 0; i <= numRays - 1; i++)
+            //{
+            //    Gizmos.color = Color.red;
+            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
+            //    Gizmos.color = Color.green;
+            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);               
 
-            }
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(transform.position, chosenDir * 2f);
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(chosenDir + transform.position, .3f);
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(seekList[0], .3f);
-            Gizmos.color = Color.gray;
-            DrawCircle();
+            //}
+            //Gizmos.color = Color.blue;
+            //Gizmos.DrawRay(transform.position, chosenDir * 2f);
+            //Gizmos.color = Color.cyan;
+            //Gizmos.DrawSphere(chosenDir + transform.position, .3f);
+            //Gizmos.color = Color.magenta;
+            //Gizmos.DrawSphere(seekList[0], .3f);
+            //Gizmos.color = Color.gray;
+            //DrawCircle();
         }
 
         public void DrawCircle()

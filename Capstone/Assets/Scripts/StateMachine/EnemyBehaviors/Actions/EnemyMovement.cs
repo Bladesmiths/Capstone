@@ -85,7 +85,6 @@ namespace Bladesmiths.Capstone
             enemyPos = transform.position;
             Vector3 movePos = chosenDir + transform.position;
             //Debug.Log("Move Position: " + movePos);
-            Debug.Log("Chosen Direction: " + chosenDir);
             movemntPos = (desiredPos - enemyPos).normalized;
 
             //transform.position += chosenDir * Time.deltaTime;
