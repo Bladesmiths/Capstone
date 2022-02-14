@@ -52,6 +52,7 @@ namespace Bladesmiths.Capstone
         public int ID { get; set; }
         public Team ObjectTeam { get; set; }
         public ObjectController ObjectController { get; set; }
+        public GameObject GameObject { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         #endregion
 
         void Start()
