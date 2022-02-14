@@ -38,9 +38,9 @@ namespace Bladesmiths.Capstone
         protected float damage;
 
         [SerializeField]
-        private float shrinkSpeed;
-        private float fadeOutTimer;
-        private float fadeOutLength;
+        protected float shrinkSpeed;
+        protected float fadeOutTimer;
+        protected float fadeOutLength;
 
         [SerializeField]
         protected float viewDistance;
@@ -91,6 +91,8 @@ namespace Bladesmiths.Capstone
 
         public virtual void Start()
         {
+            base.Start();
+
             AIDirector.Instance.AddToEnemyGroup(this);
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
@@ -274,10 +276,6 @@ namespace Bladesmiths.Capstone
             player.TakeDamage(ID, 1);
         }
 
-        protected override void Die()
-        {
-
-        }
         public override void Respawn()
         {
             throw new NotImplementedException();

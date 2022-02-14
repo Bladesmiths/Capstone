@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Bladesmiths.Capstone.Enums;
+using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
@@ -9,6 +10,7 @@ namespace Bladesmiths.Capstone
     public interface IIdentified
     {
         // Property declaration
+        GameObject GameObject { get; set; }
         int ID { get; set; }
         Team ObjectTeam { get; set; }
 

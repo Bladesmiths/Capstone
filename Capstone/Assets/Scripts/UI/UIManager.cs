@@ -152,24 +152,31 @@ namespace Bladesmiths.Capstone.UI
         {
             if (isPaused)
             {
-                isPaused = false;
+                if (settingsManager.onPauseScreenOnly)
+                {
+                    isPaused = false;
 
-                settingsManager.UnPause();
-                resumeButton.SetActive(true);
+                    settingsManager.UnPause();
+                    resumeButton.SetActive(true);
 
-                playerInput.SwitchCurrentActionMap("Player");
-                Debug.Log("Current Action Map: " + playerInput.currentActionMap);
+                    playerInput.SwitchCurrentActionMap("Player");
+                    Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
-                pauseMenu.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
+                    pauseMenu.SetActive(false);
+                    Cursor.lockState = CursorLockMode.Locked;
 
-                // Allows the camera fto move and recenter
-                camera.m_XAxis.m_MaxSpeed = maxSpeedX;
-                camera.m_YAxis.m_MaxSpeed = maxSpeedY;
-                camera.m_RecenterToTargetHeading.m_enabled = true;
-                camera.m_YAxisRecentering.m_enabled = true;
+                    // Allows the camera fto move and recenter
+                    camera.m_XAxis.m_MaxSpeed = maxSpeedX;
+                    camera.m_YAxis.m_MaxSpeed = maxSpeedY;
+                    camera.m_RecenterToTargetHeading.m_enabled = true;
+                    camera.m_YAxisRecentering.m_enabled = true;
 
-                Time.timeScale = 1;
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    settingsManager.CloseActiveSettingsPanel();
+                }
             }
         }
 
@@ -181,7 +188,7 @@ namespace Bladesmiths.Capstone.UI
                 isPaused = true;
                 playerInput.SwitchCurrentActionMap("UI");
                 //EventSystem.current.SetSelectedGameObject(resumeButton);
-                Debug.Log("Current Action Map: " + playerInput.currentActionMap);
+                //Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
                 // Stops the camera from moving and stops the recentering
                 camera.m_XAxis.m_MaxSpeed = 0f;
@@ -192,9 +199,10 @@ namespace Bladesmiths.Capstone.UI
                 //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
 
-                EventSystem.current.SetSelectedGameObject(settingsButton);
-
                 pauseMenu.SetActive(true);
+
+                EventSystem.current.SetSelectedGameObject(settingsButton);
+                settingsManager.onPauseScreenOnly = true;
             }
         }
         

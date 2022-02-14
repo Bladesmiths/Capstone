@@ -50,7 +50,7 @@ namespace Bladesmiths.Capstone
         {
             base.OnStateMove(animator, stateInfo, layerIndex);
 
-            speed = 40f;
+            speed = 25f;
 
             if (_input.dodge)
             {
@@ -119,6 +119,9 @@ namespace Bladesmiths.Capstone
             _animator = animator;
             id = PlayerCondition.F_Dashing;
             base.OnStateEnter(animator, stateInfo, layerIndex);
+
+            animIDMoving = Animator.StringToHash("Moving");
+            _animIDDodge = Animator.StringToHash("Dodging");
 
             timer = 0;
             maxTimer = stateInfo.length;
