@@ -69,6 +69,7 @@ namespace Bladesmiths.Capstone
             enemy.canMove = true;
             enemy.moveVector = Vector3.zero;
             dir = Random.Range(-1, 2);
+            Debug.Log("1: "+dir);
 
             //Vector3 dist = player.transform.position - transform.position;
 
@@ -78,7 +79,7 @@ namespace Bladesmiths.Capstone
 
             //desiredPos = player.transform.position;
 
-            foreach(Enemy element in AIDirector.Instance.GetEnemyGroup(enemy))
+            foreach (Enemy element in AIDirector.Instance.GetEnemyGroup(enemy))
             {
                 if(element != enemy)
                 {
@@ -87,7 +88,18 @@ namespace Bladesmiths.Capstone
             }
 
             seekList.Add(desiredPos);
-            seekList.Add(player.transform.position);
+            //seekList.Add(player.transform.position);
+
+        }
+
+        private void AttackTimer()
+        {
+            enemy.attackTimer -= Time.deltaTime;
+            if (enemy.attackTimer <= 0)
+            {
+                AIDirector.Instance.PopulateAttackQueue(enemy);
+                enemy.attackTimer = enemy.attackTimerMax;
+            }
 
         }
 
@@ -100,25 +112,30 @@ namespace Bladesmiths.Capstone
             seekList[0] = (Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position;
             PopulateAll();
 
-            if ((seekList[0] - transform.position).magnitude <= 0.5f)
-            {
-                // Rest everything
-                seekAgainTimer -= Time.deltaTime;
-                
+            //if ((seekList[0] - transform.position).magnitude <= 0.5f)
+            //{
+            //    // Rest everything
+            //    seekAgainTimer -= Time.deltaTime;
+            //    Debug.Log("2: " + dir);
 
-            }
+            seekAgainTimer -= Time.deltaTime;
+            //}
+            Debug.Log(seekAgainTimer);
+            AttackTimer();
 
-            if(seekAgainTimer >= seekAgainTimerMax)
+
+            if (seekAgainTimer <= 0)
             {
                 seekAgainTimer = seekAgainTimerMax;
 
                 dir = Random.Range(-1, 2);
+                Debug.Log("3: " + dir);
 
             }
 
             Vector3 movePos = chosenDir + transform.position;
 
-            if(dir == 0)
+            if (dir == 0)
             {
                 movePos = transform.position;
             }
@@ -245,7 +262,8 @@ namespace Bladesmiths.Capstone
         {
             if (allDirections == null ||
                 intrest == null ||
-                danger == null)
+                danger == null || 
+                allDirections[0] == null)
             {
                 return;
             }
