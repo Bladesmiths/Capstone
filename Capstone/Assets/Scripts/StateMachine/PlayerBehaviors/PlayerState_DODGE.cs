@@ -131,8 +131,6 @@ namespace Bladesmiths.Capstone
             if(backstep)
             {
                 speed = speed * curve.Evaluate(timer);
-                
-                Debug.Log(speed);
             }
 
             float targetSpeed = speed;

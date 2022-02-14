@@ -62,10 +62,11 @@ namespace Bladesmiths.Capstone
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
             }
 
-            if (col.gameObject.GetComponent<Enemy>())
+            // Checks if the object being hit can be damaged
+            if (col.gameObject.GetComponent<IDamageable>() != null)
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID);
+                player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
             }
         }
     }
