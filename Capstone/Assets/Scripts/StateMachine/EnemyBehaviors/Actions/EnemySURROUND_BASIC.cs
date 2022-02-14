@@ -41,6 +41,8 @@ namespace Bladesmiths.Capstone
             if (_enemy.attackTimer <= 0)
             {
                 AIDirector.Instance.PopulateAttackQueue(_enemy);
+                _enemy.attackTimer = _enemy.attackTimerMax;
+
             }
 
         }

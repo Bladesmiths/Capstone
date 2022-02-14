@@ -128,13 +128,19 @@ namespace Bladesmiths.Capstone.Testing
                     player.StartCoroutine(
                         Util.DamageMaterialTimer(player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
                 }
+                Destroy(gameObject, 2f);
             }
 
-            //if (col.gameObject.tag != "Projectile")
-            //{
-            //    // Destroy the projectile once it has collided
-            //    Destroy(gameObject);
-            //}
+            else if (col.gameObject.tag == "Untagged")
+            {
+                // Destroy the projectile once it has collided
+                Destroy(gameObject);
+            }
+
+            else
+            {
+                Destroy(gameObject, 15f);
+            }
         }
 
         /// <summary>

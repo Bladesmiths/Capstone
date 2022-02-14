@@ -87,7 +87,7 @@ namespace Bladesmiths.Capstone
             }
 
             seekList.Add(desiredPos);
-            //seekList.Add(player.transform.position);
+            seekList.Add(player.transform.position);
 
         }
 
@@ -97,17 +97,25 @@ namespace Bladesmiths.Capstone
             Vector3 dist = player.transform.position - transform.position;
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
-            seekList[0] = (Vector3.Cross(Vector3.up, dist) * dir) + transform.position;
-            seekAgainTimer -= Time.deltaTime;
+            seekList[0] = (Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position;
             PopulateAll();
 
-            if ((seekList[0] - transform.position).magnitude <= 0.1f)
+            if ((seekList[0] - transform.position).magnitude <= 0.5f)
             {
                 // Rest everything
+                seekAgainTimer -= Time.deltaTime;
+                
+
+            }
+
+            if(seekAgainTimer >= seekAgainTimerMax)
+            {
                 seekAgainTimer = seekAgainTimerMax;
+
                 dir = Random.Range(-1, 2);
 
             }
+
             Vector3 movePos = chosenDir + transform.position;
 
             if(dir == 0)
@@ -160,6 +168,7 @@ namespace Bladesmiths.Capstone
             foreach (Vector3 vec in seekList)
             {
                 mag = (vec - transform.position).magnitude;
+                mag = 1 / mag;
                 pathDir += (vec - transform.position) * mag;
             }
 
