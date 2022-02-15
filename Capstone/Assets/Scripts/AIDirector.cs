@@ -8,6 +8,7 @@ namespace Bladesmiths.Capstone
     {
         public GameObject[] enemyPrefabs;
         public List<Enemy> enemyGroup;
+        public List<List<Enemy>> allEnemyGroups;
         public LinkedList<Enemy> attackQueue;
         private static AIDirector instance;
         private bool enemyAttacking;
@@ -26,12 +27,13 @@ namespace Bladesmiths.Capstone
                 instance = this;
                 attackQueue = new LinkedList<Enemy>();
                 enemyGroup = new List<Enemy>();
+                allEnemyGroups = new List<List<Enemy>>();
             }
         }
 
         private void Start()
         {
-            
+            allEnemyGroups.Add(enemyGroup);
         }
 
         private void Update()
@@ -53,6 +55,36 @@ namespace Bladesmiths.Capstone
                 attackQueue.RemoveFirst();
             }
             
+        }
+
+        public bool CheckEnemyGroup(Enemy e)
+        {
+            foreach (List<Enemy> group in allEnemyGroups)
+            {
+                if (group.Contains(e))
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        /// <summary>
+        /// Gets the Enemy group that the parameter is in
+        /// </summary>
+        /// <param name="e">The Enemy we are checking</param>
+        /// <returns></returns>
+        public List<Enemy> GetEnemyGroup(Enemy e)
+        {
+            foreach (List<Enemy> group in allEnemyGroups)
+            {
+                if (group.Contains(e))
+                {
+                    return group;
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -81,8 +113,16 @@ namespace Bladesmiths.Capstone
                 return;
             }
             
-            enemyGroup.Sort();
+            //enemyGroup.Sort();
             attackQueue.Remove(e);
+        }
+
+        public void ResetBlocks()
+        {
+            foreach(Enemy e in enemyGroup)
+            {
+                e.blocked = false;
+            }
         }
 
         /// <summary>
