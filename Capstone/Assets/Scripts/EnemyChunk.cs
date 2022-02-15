@@ -23,7 +23,9 @@ namespace Bladesmiths.Capstone
                     transform.localScale.x - (shrinkSpeed * Time.deltaTime),
                     transform.localScale.y - (shrinkSpeed * Time.deltaTime),
                     transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+
                 //Debug.Log(transform.localScale);
+
                 // After the cubes are shrunk, destroy it
                 if (transform.localScale.x <= 0 &&
                     transform.localScale.y <= 0 &&

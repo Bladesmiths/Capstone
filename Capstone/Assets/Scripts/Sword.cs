@@ -1,3 +1,4 @@
+using Bladesmiths.Capstone.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// Represents the player's sword and its behaviors
     /// </summary>
-    public class Sword : MonoBehaviour
+    public class Sword : MonoBehaviour, IDamaging
     {
         #region Fields
         [SerializeField]
@@ -24,6 +25,13 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private FMODUnity.EventReference SwordHitEvent;
         public bool sfxPlay;
+
+        private bool damaging;
+        private float damagingTimerLimit = 1f;
+        private float damagingTimer;
+
+        public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
+        public event IIdentified.OnDestructionDelegate OnDestruction;
         #endregion
 
         #region Properties
@@ -40,6 +48,11 @@ namespace Bladesmiths.Capstone
         public Enums.SwordType SwordType { get => swordType; }
         public Transform Offset { get => offset; }
         private BalancingData BalancingData { get => player.CurrentBalancingData; }
+        public bool Damaging { get; set; }
+        public int ID { get; set; }
+        public Team ObjectTeam { get; set; }
+        public ObjectController ObjectController { get; set; }
+        public GameObject GameObject { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         #endregion
 
         void Start()
@@ -48,7 +61,36 @@ namespace Bladesmiths.Capstone
             sfxPlay = false;
         }
 
-        void Update() { }
+        void Update() 
+        {
+            if (damaging)
+            {
+                // Update the timer
+                damagingTimer += Time.deltaTime;
+
+                // If the timer is equal to or exceeds the limit
+                if (damagingTimer >= damagingTimerLimit)
+                {
+                    // If the damaging finished event has subcribing delegates
+                    // Call it, running all subscribing delegates
+                    if (DamagingFinished != null)
+                    {
+                        DamagingFinished(ID);
+                    }
+                    // If the damaging finished event doesn't have any subscribing events
+                    // Something has gone wrong because damaging shouldn't be true otherwise
+                    else
+                    {
+                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                    }
+
+                    // Reset fields
+                    damagingTimer = 0.0f;
+                    damaging = false;
+                }
+            }
+
+        }
 
         public void TriggerVFX()
         {
@@ -62,11 +104,17 @@ namespace Bladesmiths.Capstone
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
             }
 
-            // Checks if the object being hit can be damaged
-            if (col.gameObject.GetComponent<IDamageable>() != null)
+            if(col.gameObject.GetComponent<Shield>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+            }
+            else if (col.gameObject.GetComponent<IDamageable>() != null)
+            {
+                if (!col.gameObject.GetComponent<Enemy>() || !col.gameObject.GetComponent<Enemy>().blocked)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                }
             }
         }
     }

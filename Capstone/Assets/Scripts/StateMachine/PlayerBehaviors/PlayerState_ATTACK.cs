@@ -211,8 +211,11 @@ namespace Bladesmiths.Capstone
             _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
 
+            AIDirector.Instance.ResetBlocks();
+
             //Reset animator speed when leaving attack state
             animator.speed = 1;
+
         }
     }
 }
