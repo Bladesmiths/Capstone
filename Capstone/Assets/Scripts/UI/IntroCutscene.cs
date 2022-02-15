@@ -117,7 +117,7 @@ namespace Bladesmiths.Capstone
 
         IEnumerator Fade(Image image, float targetAlpha)
         {
-            while (Math.Abs(image.color.a - targetAlpha) > Mathf.Epsilon)
+            while (Mathf.Abs(image.color.a - targetAlpha) > Mathf.Epsilon)
             {
                 var newAlpha = Mathf.MoveTowards(image.color.a, targetAlpha, fadeSpeed * Time.deltaTime);
                 image.color = new Color(image.color.r, image.color.g, image.color.b, newAlpha);
