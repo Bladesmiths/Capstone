@@ -284,8 +284,8 @@ namespace Bladesmiths.Capstone
         {
             //FSM.Tick();
 
-            Jump();
             Move();
+            Jump();
 
             DecayProvisionalDamage();
 
@@ -552,9 +552,24 @@ namespace Bladesmiths.Capstone
                 currentSword = swords[newSwordType].GetComponent<Sword>();
 
                 // Update the position according to offset
-                sword.transform.localPosition = currentSword.Offset.position;
-                sword.transform.localRotation = currentSword.Offset.rotation;
+                //sword.transform.localPosition = currentSword.Offset.position;
+                //sword.transform.localRotation = currentSword.Offset.rotation;
                 //sword.transform.localScale = currentSword.Offset.localScale;
+
+                // This doesn't work apparently, but I'm leaving the code here as a record
+                // of the transforms that we need for the swords to look correct
+                //if (newSwordType == SwordType.Ruby)
+                //{
+                //    sword.transform.Find("SwordHilt").position = new Vector3(0.094f, 0.008f, 0);
+                //    sword.transform.position = new Vector3(0.029f, 0.08f, 0.0174f);
+                //    sword.transform.rotation = Quaternion.Euler(70.354f, -15.63f, -26.015f); 
+                //}
+                //else
+                //{
+                //    sword.transform.Find("SwordHilt").position = Vector3.zero;
+                //    sword.transform.position = new Vector3(-0.007f, 0.074f, 0.022f);
+                //    sword.transform.rotation = Quaternion.identity;
+                //}
 
                 // Update the box collider dimensions
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
