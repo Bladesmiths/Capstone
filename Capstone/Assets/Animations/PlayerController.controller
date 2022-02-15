@@ -959,7 +959,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 80bc08f90fc398945ab4db9f68581a34, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
+    m_TimeScale: 1.1
     m_CycleOffset: 0
     m_DirectBlendParameter: Forward
     m_Mirror: 0
@@ -1297,7 +1297,7 @@ BlendTree:
   m_Name: Idle Blend
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -3100369314251171874, guid: 12e52e465ed793a4d801955e9f964a82, type: 3}
+    m_Motion: {fileID: -8128279465539539053, guid: f93f539838f549f409c9f407984817d4, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1305,7 +1305,7 @@ BlendTree:
     m_DirectBlendParameter: Forward
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1306109601541071418, guid: d8244dded6f081342aa4510db892886c, type: 3}
+    m_Motion: {fileID: -3419824417197625143, guid: 01ae53712427ec042999f28010b16d57, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1313,7 +1313,7 @@ BlendTree:
     m_DirectBlendParameter: Forward
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -3100369314251171874, guid: 12e52e465ed793a4d801955e9f964a82, type: 3}
+    m_Motion: {fileID: 6529350428149692003, guid: 7685848a4acaf4b47be30ce800674f94, type: 3}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -2075,7 +2075,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -346327688718278460}
-    m_Threshold: 8.5
+    m_Threshold: 8
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -2084,7 +2084,7 @@ BlendTree:
   m_BlendParameter: Forward
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 8.5
+  m_MaxThreshold: 8
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -2593,6 +2593,9 @@ AnimatorStateMachine:
   - first: {fileID: -6200274138629593010}
     second:
     - {fileID: 4560168474364895058}
+  - first: {fileID: 8464860632184180212}
+    second:
+    - {fileID: -480955475765093465}
   - first: {fileID: -4970824541251344839}
     second:
     - {fileID: 3737231457431453582}
@@ -2602,9 +2605,6 @@ AnimatorStateMachine:
   - first: {fileID: 7787112969373104522}
     second:
     - {fileID: 9160066569895818234}
-  - first: {fileID: 8464860632184180212}
-    second:
-    - {fileID: -480955475765093465}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 100, y: 40, z: 0}
   m_EntryPosition: {x: 110, y: 160, z: 0}
