@@ -91,8 +91,6 @@ namespace Bladesmiths.Capstone
 
         public virtual void Start()
         {
-            base.Start();
-
             AIDirector.Instance.AddToEnemyGroup(this);
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();

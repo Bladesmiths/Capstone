@@ -222,8 +222,6 @@ namespace Bladesmiths.Capstone
 
         private void Awake()
         {
-            base.Start();
-
             Health = 1000;
             animator = GetComponent<Animator>();
             animIDForward = Animator.StringToHash("Forward");

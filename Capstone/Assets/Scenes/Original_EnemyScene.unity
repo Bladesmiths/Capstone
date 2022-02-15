@@ -755,16 +755,16 @@ PrefabInstance:
         Attack","Instant":true,"GameObjectsword":5,"TransformoriginalSwordTransform":6,"SinglenodeDuration":5,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(376.957245,209.313019)"},"ID":30,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"DisableCollider","NodeData":{"Offset":"(500.763275,213.638031)","Comment":"Ruby
         Blade"},"ID":31,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":7},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(638.148254,212.093872)"},"ID":32,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.9},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.ResetSword","NodeData":{"Offset":"(754.7336,208.680023)"},"ID":33,"Name":"Reset
         Sword","Instant":true,"GameObjectsword":8,"GameObjectswordBlade":9,"TransformoriginalBladeTransform":10,"SinglenodeDuration":1,"GameObjectshockwave":11}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-0.877502441,268.530151)"},"ID":34,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"FacePlayerLastPosition","NodeData":{"Offset":"(375.56427,262.5807)"},"ID":35,"Name":"Face
-        Player Last Position","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SingleturnSpeed":5},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(1015.09192,440.673218)","Comment":"Slam
+        Player Last Position","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SingleturnSpeed":5},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(1020,440)","Comment":"Slam
         Attack"},"ID":36,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-170.919739,177.079712)"},"ID":37,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-96.35898,174.641022)"},"ID":38,"Name":"Inverter","Instant":true,"Children":[{"Type":"DistanceFromPlayer","NodeData":{"Offset":"(7.62939453E-06,133)"},"ID":39,"Name":"Distance
         From Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"OperatorifOperator":"GreaterThanEqualTo","Singledistance":15}]},{"Type":"SeekPlayer","NodeData":{"Offset":"(97.17949,173.076935)"},"ID":40,"Name":"Seek
         Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SinglemoveSpeed":8,"SingleturnSpeed":200,"SinglestoppingDistance":10}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(2.76456261,143.932434)"},"ID":41,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"FacePlayer","NodeData":{"Offset":"(120.829155,179.646576)"},"ID":42,"Name":"Face
         Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SingleturnSpeed":5},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(234.377869,175.775726)"},"ID":43,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform.Rotate","NodeData":{"Offset":"(344.503418,183.970459)"},"ID":44,"Name":"Rotate","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":12},"SharedVector3eulerAngles":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(-20,0,0)"},"SpacerelativeTo":"Self"},{"Type":"GrowSword","NodeData":{"Offset":"(450.073181,180.055023)"},"ID":45,"Name":"Grow
         Sword","Instant":true,"GameObjectswordBlade":13,"TransformswordBladeEndTransform":14,"SinglenodeDuration":1},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(562.580566,180)"},"ID":46,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"ActivateCollider","NodeData":{"Offset":"(683.685669,176.842041)","Comment":"Ruby
         Blade"},"ID":47,"Name":"Activate Collider","Instant":true,"GameObjectcolliderParent":15},{"Type":"SlamAttack","NodeData":{"Offset":"(804.6063,179.17511)"},"ID":48,"Name":"Slam
-        Attack","Instant":true,"GameObjectsword":16,"SinglenodeDuration":0.2,"GameObjectshockwave":17},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(905.573853,179.17511)"},"ID":49,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.ResetSword","NodeData":{"Offset":"(1022.62012,184.048828)"},"ID":50,"Name":"Reset
-        Sword","Instant":true,"GameObjectsword":18,"GameObjectswordBlade":19,"TransformoriginalBladeTransform":20,"SinglenodeDuration":1,"GameObjectshockwave":21},{"Type":"DisableCollider","NodeData":{"Offset":"(1140.0011,175.788513)","Comment":"Ruby
-        Blade"},"ID":51,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":22}]}]}]}]}]}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform.Rotate","NodeData":{"Offset":"(3695.517,2170)"},"ID":52,"Name":"Rotate","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":23},"SharedVector3eulerAngles":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(-20,0,0)"},"SpacerelativeTo":"Self"},{"Type":"ActivateCollider","NodeData":{"Offset":"(3897.58545,2144.483)","Comment":"Ruby
+        Attack","Instant":true,"GameObjectsword":16,"SinglenodeDuration":0.2,"GameObjectshockwave":17},{"Type":"DisableCollider","NodeData":{"Offset":"(919.4126,175.788513)","Comment":"Ruby
+        Blade"},"ID":49,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":18},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(1037.92676,179.17511)"},"ID":50,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.ResetSword","NodeData":{"Offset":"(1154.97351,184.048828)"},"ID":51,"Name":"Reset
+        Sword","Instant":true,"GameObjectsword":19,"GameObjectswordBlade":20,"TransformoriginalBladeTransform":21,"SinglenodeDuration":1,"GameObjectshockwave":22}]}]}]}]}]}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform.Rotate","NodeData":{"Offset":"(3695.517,2170)"},"ID":52,"Name":"Rotate","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":23},"SharedVector3eulerAngles":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(-20,0,0)"},"SpacerelativeTo":"Self"},{"Type":"ActivateCollider","NodeData":{"Offset":"(3897.58545,2144.483)","Comment":"Ruby
         Blade"},"ID":53,"Name":"Activate Collider","Instant":true,"GameObjectcolliderParent":24},{"Type":"SlamAttack","NodeData":{"Offset":"(4086.55249,2156.20728)"},"ID":54,"Name":"Slam
         Attack","Instant":true,"GameObjectsword":25,"SinglenodeDuration":0.2,"GameObjectshockwave":26},{"Type":"DisableCollider","NodeData":{"Offset":"(4550,2160)","Comment":"Ruby
         Blade"},"ID":55,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":27},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject.Instantiate","NodeData":{"Offset":"(4073.461,2047.22559)"},"ID":56,"Name":"Instantiate","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null},"SharedVector3position":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(0,0,0)"},"SharedQuaternionrotation":{"Type":"BehaviorDesigner.Runtime.SharedQuaternion","Name":null,"QuaternionmValue":"(0,0,0,1)"},"SharedGameObjectstoreResult":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"IsShared":true}},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(4170,1450)","Comment":"Crystal
@@ -841,29 +841,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[16]
+      value: 
+      objectReference: {fileID: 1737866518}
+    - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[17]
       value: 
       objectReference: {fileID: 1165427946}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[18]
       value: 
-      objectReference: {fileID: 1737866518}
+      objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[19]
       value: 
-      objectReference: {fileID: 1483988583}
+      objectReference: {fileID: 1737866518}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[20]
       value: 
-      objectReference: {fileID: 1523715347}
+      objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[21]
       value: 
-      objectReference: {fileID: 1165427946}
+      objectReference: {fileID: 1523715347}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[22]
       value: 
-      objectReference: {fileID: 1483988583}
+      objectReference: {fileID: 1165427946}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[23]
       value: 
@@ -988,7 +992,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2971076747683075390, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+    - {fileID: 2971076747683075377, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+    - {fileID: 1384341076124135920, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
 --- !u!1 &1024689971
 GameObject:
@@ -1100,7 +1107,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -0.1, y: 0.29, z: 1.2872574}
+  m_Size: {x: 0.25, y: 0.29, z: 1.2872574}
   m_Center: {x: 0.000012263935, y: -0.0000018766318, z: 0.6546329}
 --- !u!1 &1505799130 stripped
 GameObject:

@@ -10,7 +10,7 @@ namespace Bladesmiths.Capstone
     public interface IIdentified
     {
         // Property declaration
-        GameObject GameObject { get; set; }
+        GameObject GameObject { get; }
         int ID { get; set; }
         Team ObjectTeam { get; set; }
 

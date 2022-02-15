@@ -22,6 +22,7 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             timer = 0;
+            shockwave.GetComponent<BossSword>().ClearDamaging();
         }
 
         public override TaskStatus OnUpdate()
@@ -29,7 +30,6 @@ namespace Bladesmiths.Capstone
             // Reset the shockwave
             shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
             shockwave.SetActive(false);
-            shockwave.GetComponent<BossSword>().ClearDamaging();
             // When the node isn't finished
             if (timer < nodeDuration)
             {

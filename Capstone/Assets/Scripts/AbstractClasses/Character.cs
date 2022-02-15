@@ -34,7 +34,7 @@ namespace Bladesmiths.Capstone
         public event IIdentified.OnDestructionDelegate OnDestruction;
 
         // Properties
-        public GameObject GameObject { get; set; }
+        public GameObject GameObject { get => gameObject; }
         public int ID { get => id; set => id = value; }
         public Team ObjectTeam { get; set; }
         public bool IsAlive { get => isAlive; set => isAlive = value; }
@@ -47,12 +47,6 @@ namespace Bladesmiths.Capstone
         public float MaxHealth { get => maxHealth; set => maxHealth = value; }
         public List<int> DamagingObjectIDs { get => damagingObjectIDs; }
         public virtual ObjectController ObjectController { get => objectController; set => objectController = value; }
-
-        // Public Methods
-        public void Start()
-        {
-            GameObject = gameObject;
-        }
 
         /// <summary>
         /// Subtract an amount of damage from the character's health
