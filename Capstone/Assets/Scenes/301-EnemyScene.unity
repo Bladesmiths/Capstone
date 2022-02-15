@@ -538,6 +538,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ea6cc34b50bfc408a7c0d61ee18b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &451462233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451462234}
+  m_Layer: 7
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &451462234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451462233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.484, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1266266659}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563537281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6138350903734346239, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
@@ -702,11 +732,21 @@ PrefabInstance:
         Blade"},"ID":47,"Name":"Activate Collider","Instant":true,"GameObjectcolliderParent":15},{"Type":"SlamAttack","NodeData":{"Offset":"(804.6063,179.17511)"},"ID":48,"Name":"Slam
         Attack","Instant":true,"GameObjectsword":16,"SinglenodeDuration":0.2,"GameObjectshockwave":17},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(905.573853,179.17511)"},"ID":49,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.ResetSword","NodeData":{"Offset":"(1022.62012,184.048828)"},"ID":50,"Name":"Reset
         Sword","Instant":true,"GameObjectsword":18,"GameObjectswordBlade":19,"TransformoriginalBladeTransform":20,"SinglenodeDuration":1,"GameObjectshockwave":21},{"Type":"DisableCollider","NodeData":{"Offset":"(1140.0011,175.788513)","Comment":"Ruby
-        Blade"},"ID":51,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":22}]}]}]}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Boss","IsShared":true,"GameObjectmValue":23}]}'
+        Blade"},"ID":51,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":22}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(2596.96558,494.643555)","Comment":"Crystal
+        Shot"},"ID":52,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-170,180)"},"ID":53,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-100,170)"},"ID":54,"Name":"Inverter","Instant":true,"Children":[{"Type":"DistanceFromPlayer","NodeData":{"Offset":"(0,130)"},"ID":55,"Name":"Distance
+        From Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"OperatorifOperator":"GreaterThanEqualTo","Singledistance":15}]},{"Type":"SeekPlayer","NodeData":{"Offset":"(100,170)"},"ID":56,"Name":"Seek
+        Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SinglemoveSpeed":8,"SingleturnSpeed":200,"SinglestoppingDistance":10}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(0,140)"},"ID":57,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"FacePlayer","NodeData":{"Offset":"(120,180)"},"ID":58,"Name":"Face
+        Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SingleturnSpeed":5},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(230,180)"},"ID":59,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"GrowSword","NodeData":{"Offset":"(381.034424,180)"},"ID":60,"Name":"Grow
+        Sword","Instant":true,"GameObjectswordBlade":23,"TransformswordBladeEndTransform":24,"SinglenodeDuration":1},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(525.5172,180)"},"ID":61,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.Testing.SpawnProjectiles","NodeData":{"Offset":"(720.168945,188.462967)"},"ID":62,"Name":"Spawn
+        Projectiles","Instant":true,"TransformprojectileSpawnPoint":25,"GameObjectprojectile":26,"SinglemaxLifeTime":2,"List`1activeProjectiles":[]},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(910,180)"},"ID":63,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.ResetSword","NodeData":{"Offset":"(1073.32764,176.666977)"},"ID":64,"Name":"Reset
+        Sword","Instant":true,"GameObjectsword":27,"GameObjectswordBlade":28,"TransformoriginalBladeTransform":29,"SinglenodeDuration":1,"GameObjectshockwave":30}]}]}]}]}]}]},"DetachedTasks":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform.Rotate","NodeData":{"Offset":"(3695.517,2170)"},"ID":65,"Name":"Rotate","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":31},"SharedVector3eulerAngles":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(-20,0,0)"},"SpacerelativeTo":"Self"},{"Type":"ActivateCollider","NodeData":{"Offset":"(3897.58545,2144.483)","Comment":"Ruby
+        Blade"},"ID":66,"Name":"Activate Collider","Instant":true,"GameObjectcolliderParent":32},{"Type":"SlamAttack","NodeData":{"Offset":"(4086.55249,2156.20728)"},"ID":67,"Name":"Slam
+        Attack","Instant":true,"GameObjectsword":33,"SinglenodeDuration":0.2,"GameObjectshockwave":34},{"Type":"DisableCollider","NodeData":{"Offset":"(4550,2160)","Comment":"Ruby
+        Blade"},"ID":68,"Name":"Disable Collider","Instant":true,"GameObjectcolliderParent":35},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject.Instantiate","NodeData":{"Offset":"(4073.461,2047.22559)"},"ID":69,"Name":"Instantiate","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null},"SharedVector3position":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":null,"Vector3mValue":"(0,0,0)"},"SharedQuaternionrotation":{"Type":"BehaviorDesigner.Runtime.SharedQuaternion","Name":null,"QuaternionmValue":"(0,0,0,1)"},"SharedGameObjectstoreResult":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"IsShared":true}}],"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Boss","IsShared":true,"GameObjectmValue":36}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
-      value: 24
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
@@ -795,55 +835,55 @@ PrefabInstance:
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[23]
       value: 
-      objectReference: {fileID: 1266266657}
+      objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[24]
       value: 
-      objectReference: {fileID: 1737866518}
+      objectReference: {fileID: 1601474181}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[25]
       value: 
-      objectReference: {fileID: 1483988583}
+      objectReference: {fileID: 451462234}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[26]
       value: 
-      objectReference: {fileID: 1601474181}
+      objectReference: {fileID: 3861298083143071199, guid: 256621dc7ce67774e80bc89d472430e6, type: 3}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[27]
       value: 
-      objectReference: {fileID: 1987458885}
+      objectReference: {fileID: 1737866518}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[28]
       value: 
-      objectReference: {fileID: 1737866518}
+      objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[29]
       value: 
-      objectReference: {fileID: 1165427946}
+      objectReference: {fileID: 1523715347}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[30]
       value: 
-      objectReference: {fileID: 1737866518}
+      objectReference: {fileID: 1165427946}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[31]
       value: 
-      objectReference: {fileID: 1483988583}
+      objectReference: {fileID: 1737866518}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[32]
       value: 
-      objectReference: {fileID: 1523715347}
+      objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[33]
       value: 
-      objectReference: {fileID: 1165427946}
+      objectReference: {fileID: 1737866518}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[34]
       value: 
-      objectReference: {fileID: 1987458885}
+      objectReference: {fileID: 1165427946}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[35]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1483988583}
     - target: {fileID: 610162655, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[36]
       value: 
@@ -863,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
     - target: {fileID: 6505281561402771304, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -992,6 +1032,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1afe9324b20bd40bd3b71ab2fe3e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1266266659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9068361453717190943, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+  m_PrefabInstance: {fileID: 964104599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1483988583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3222642215498987421, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
@@ -3119,11 +3164,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
---- !u!1 &1987458885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2971076747683075388, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
-  m_PrefabInstance: {fileID: 964104599}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2033416595
 PrefabInstance:
   m_ObjectHideFlags: 0
