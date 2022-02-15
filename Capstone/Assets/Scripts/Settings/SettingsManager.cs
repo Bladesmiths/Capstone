@@ -72,8 +72,6 @@ namespace Bladesmiths.Capstone.UI
 
             // Save what button was last selected
             lastSelectedButton = EventSystem.current.currentSelectedGameObject;
-
-            //Debug.Log(onPauseScreenOnly);
         }
 
         public void UnPause()
@@ -220,9 +218,6 @@ namespace Bladesmiths.Capstone.UI
             {
                 ToggleSettingsMenu();
             }
-
-
-            //onPauseScreenOnly = true;
         }
 
         public void QuitToMenu()

@@ -23,6 +23,7 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         private GameObject sword;
+        public bool blocked = false;
 
         [SerializeField]
         protected int chunksRemoved;
@@ -43,6 +44,8 @@ namespace Bladesmiths.Capstone
 
         [SerializeField]
         protected float viewDistance;
+
+        public bool surrounding;
         
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -57,10 +60,15 @@ namespace Bladesmiths.Capstone
         public float attackTimer;
         public float attackTimerMax;
         public bool stunned;
+        public bool canMove;
+
+        private bool inCombat;
 
         public float Damage { get => damage; }
         public bool Damaging { get => damaging; set => damaging = value; }
         public bool CanHit { get; set; }
+        public GameObject Sword { get => sword; }
+        public bool InCombat { get => inCombat; set => inCombat = value; }
 
         #region Enemy States
         protected EnemyFSMState_SEEK seek;
@@ -78,7 +86,7 @@ namespace Bladesmiths.Capstone
             // Creates the FSM
             FSM = new FiniteStateMachine();
             damage = 15f;
-
+            surrounding = false;
         }
 
         public virtual void Start()
@@ -93,38 +101,38 @@ namespace Bladesmiths.Capstone
             moveSpeed = 5f;
             controller = GetComponent<CharacterController>();
             agent = GetComponent<NavMeshAgent>();
-            attackTimerMax = 0.5f;
-            attackTimer = attackTimerMax;
+            attackTimerMax = 1f;
+            attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
             chunksRemoved = 3;
-
+            canMove = false;
             // Creates all of the states
-            seek = new EnemyFSMState_SEEK(player, this);
-            idle = new EnemyFSMState_IDLE();
-            death = new EnemyFSMState_DEATH(this);
-            wander = new EnemyFSMState_WANDER(this);
-            attack = new EnemyFSMState_ATTACK(sword, this);
-            stun = new EnemyFSMState_STUN(sword, this, player);
+            //seek = new EnemyFSMState_SEEK(player, this);
+            //idle = new EnemyFSMState_IDLE();
+            //death = new EnemyFSMState_DEATH(this);
+            //wander = new EnemyFSMState_WANDER(this);
+            //attack = new EnemyFSMState_ATTACK(sword, this);
+            //stun = new EnemyFSMState_STUN(sword, this, player);
 
             // Adds all of the possible transitions
-            FSM.AddTransition(seek, wander, IsIdle());
-            FSM.AddTransition(wander, seek, IsClose());
-            FSM.AddTransition(seek, attack, CanAttack());
-            FSM.AddTransition(attack, seek, DoneAttacking());
-            FSM.AddTransition(attack, stun, Stunned());
-            FSM.AddTransition(stun, seek, KeepAttacking());
-            FSM.AddTransition(stun, wander, GoWander());
+            //FSM.AddTransition(seek, wander, IsIdle());
+            //FSM.AddTransition(wander, seek, IsClose());
+            //FSM.AddTransition(seek, attack, CanAttack());
+            //FSM.AddTransition(attack, seek, DoneAttacking());
+            //FSM.AddTransition(attack, stun, Stunned());
+            //FSM.AddTransition(stun, seek, KeepAttacking());
+            //FSM.AddTransition(stun, wander, GoWander());
 
 
             agent.updateRotation = false;
 
             //CanHit = true;
 
-            FSM.AddAnyTransition(death, IsDead());
+            //FSM.AddAnyTransition(death, IsDead());
 
             // Sets the current state
-            FSM.SetCurrentState(wander);
+            //FSM.SetCurrentState(wander);
 
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
@@ -183,6 +191,7 @@ namespace Bladesmiths.Capstone
         public virtual void Update()
         {
             //FSM.Tick();
+            //Debug.Log(InCombat);
 
             // If the enemy is currently damaging an object
             if (damaging)
@@ -213,17 +222,23 @@ namespace Bladesmiths.Capstone
             }
 
             // Movement
-            agent.SetDestination(moveVector);
+            if (canMove)
+            {
+                agent.SetDestination(moveVector);
+            }
 
-            Debug.DrawLine(transform.position, rotateVector, Color.red);
+            //Debug.DrawLine(transform.position, rotateVector, Color.red);
 
             // This is dumb and it probably needs to be changed, but I need to be able to see debug messages
-            if (!float.IsNaN(rotateVector.x)) 
-            {
-                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
-                q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-                transform.rotation = q;
-            }
+            //if (!float.IsNaN(rotateVector.x)) 
+            //{
+            //    Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
+            //    q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
+            //    transform.rotation = q;
+            //}
+
+            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(rotateVector.x, 0f, rotateVector.z)), Time.deltaTime * 5f);
+            transform.rotation = q;
         }
 
         public void ClearDamaging()
@@ -304,7 +319,9 @@ namespace Bladesmiths.Capstone
                         RemoveRandomChunk();
                     }
                 }
+                inCombat = true;
                 damaged = true;
+                //damaged = true;
             }
 
             // Return whether damage was taken or not

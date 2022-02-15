@@ -538,11 +538,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ea6cc34b50bfc408a7c0d61ee18b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &484546363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+  m_PrefabInstance: {fileID: 2847295578743705027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ae4f6a8fa5903408d065a09a30efc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &563537281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6138350903734346239, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_PrefabInstance: {fileID: 2033416595}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &596691283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6022847457494820146, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 143075690287136887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &596691289
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596691283}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &886345397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,16 +1193,12 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-      propertyPath: m_TagString
-      value: Targettable
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-      propertyPath: sword
-      value: 
-      objectReference: {fileID: 2092288349}
-    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-      propertyPath: objectController
-      value: 
+    - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
@@ -1182,7 +1210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.44
+      value: -7.381164
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1190,23 +1218,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.6
+      value: -31.713726
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9153134
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.40274218
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1214,7 +1242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -47.499
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1508,6 +1536,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 3589308107389774404, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3654933582915410820, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1768,6 +1800,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 5577952648635107006, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5613700757865687707, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -1847,6 +1883,31 @@ PrefabInstance:
     - target: {fileID: 6220330521640493952, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
+        Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
+        DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
+        WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,220.716827)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-66.66675,153.888885)"},"ID":14,"Name":"Can
+        Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK","NodeData":{"Offset":"(53.077198,160)"},"ID":15,"Name":"Enemy
+        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0.550059259,0.550059259],[0.5,-50,0,0],[0.6,90,0,0],[0.75,90,0,0],[1,0,-221.163132,-221.163132]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(43.4636078,238.355423)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-4.49142838,184.582291)"},"ID":17,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(135.238,183.043579)"},"ID":18,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(260.725861,185.6397)"},"ID":19,"Name":"Is
+        Surrounding","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(394.533569,183.968384)"},"ID":20,"Name":"Enemy
+        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(726.759338,204.545914)"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":22,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":23,"Name":"In
+        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(204.891479,201.591675)"},"ID":24,"Name":"Enemy
+        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6249444677277582342, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsTrigger
@@ -2168,6 +2229,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9219826958900925806, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219826958900925806, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4456975203532966520, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 4678931025154133978, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
@@ -2318,8 +2387,10 @@ MonoBehaviour:
     - {fileID: 5716213}
     - {fileID: 124367134}
     - {fileID: 1711528084}
-    - {fileID: 15844916}
     - {fileID: 1505799133}
+    - {fileID: 15844916}
+    - {fileID: 4133358771362095753}
+    - {fileID: 484546363}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -2338,7 +2409,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 8
     - Name: 
       Entry: 7
       Data: 
@@ -2459,6 +2530,48 @@ MonoBehaviour:
     - Name: identifiedObject
       Entry: 10
       Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -8
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -9
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -2823,8 +2936,8 @@ PrefabInstance:
       value: Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-      propertyPath: m_TagString
-      value: Targettable
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: sword
@@ -2833,6 +2946,10 @@ PrefabInstance:
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: objectController
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: damagingTimerLimit
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
@@ -2990,6 +3107,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 3589308107389774404, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3702219656888229753, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -3086,6 +3207,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 5577952648635107006, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5613700757865687707, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -3113,6 +3238,28 @@ PrefabInstance:
     - target: {fileID: 6174428900412241060, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
+        Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
+        DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
+        WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,220.716827)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-66.66675,153.888885)"},"ID":14,"Name":"Can
+        Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK","NodeData":{"Offset":"(53.077198,160)"},"ID":15,"Name":"Enemy
+        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0.550059259,0.550059259],[0.5,-50,0,0],[0.6,90,0,0],[0.75,90,0,0],[1,0,-221.163132,-221.163132]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(43.4636078,238.355423)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-4.49142838,184.582291)"},"ID":17,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(135.238,183.043579)"},"ID":18,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(260.725861,185.6397)"},"ID":19,"Name":"Is
+        Surrounding","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(406.61084,192.422455)"},"ID":20,"Name":"Enemy
+        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(726.759338,204.545914)"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":22,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":23,"Name":"In
+        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(163.043457,185.6521)"},"ID":24,"Name":"Enemy
+        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"},{"Type":"Bladesmiths.Capstone.EnemySURROUND_BASIC","NodeData":{"Offset":"(289.0658,331.32663)"},"ID":25,"Name":"Enemy
+        SURROUND   BASIC","Instant":true}]}]}]}]}]}]}]}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6373690312049006797, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_Constraints
@@ -3316,24 +3463,311 @@ PrefabInstance:
     - {fileID: 4843468235911302062, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 2729791319487344119, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
---- !u!1 &2092288349 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6138350903734346239, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 1606798932}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1563500564669471569
-Rigidbody:
+--- !u!1001 &143075690287136887
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 15844913}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2079975541201380666, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: damagingTimerLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+    - target: {fileID: 3438007643091742614, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Size.y
+      value: 0.99999964
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438007643091742614, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Size.z
+      value: 4.5388923
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438007643091742614, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000013153838
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438007643091742614, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Center.z
+      value: -1.7694441
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438007643091742614, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751065522048027756, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.79804146
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751065522048027756, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751065522048027756, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15949
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751065522048027756, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -29.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9153134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.40274218
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -47.499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755645, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755647, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080522337349755647, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972091748836874768, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972091748836874768, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022847457494820146, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022847457494820146, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_TagString
+      value: PreventDmg
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952036554012543424, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882804409190398619, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: mBehaviorSource.behaviorName
+      value: Enemy_Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882804409190398619, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: mBehaviorSource.behaviorDescription
+      value: The behavior for how the Shield Enemy works.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882804409190398619, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
+        Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
+        DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
+        WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,243.444077)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-134.8485,153.888885)"},"ID":14,"Name":"Can
+        Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK_SHIELD","NodeData":{"Offset":"(29.36351,146.744)"},"ID":15,"Name":"Enemy
+        ATTACK   SHIELD","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.4,-50,1.3731575,1.3731575],[0.5,-50,1.25573492,1.25573492],[0.6,90,1.49416029,1.49416029],[0.7,90,1.49764144,1.49764144],[1,0,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"AnimationCurveshieldCurve":{"Keys":[[0,0,0,0],[0.6,-90,1.3653295,1.3653295],[1,0,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(25.000021,262.5001)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(6.10351563E-05,177.500122)"},"ID":17,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(140,177.500122)"},"ID":18,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(260,187.500122)"},"ID":19,"Name":"Is
+        Surrounding","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(410,187.500122)"},"ID":20,"Name":"Enemy
+        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(715,222.5001)"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,187.500122)"},"ID":22,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(30,177.500122)"},"ID":23,"Name":"In
+        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
+        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+--- !u!1 &2054995744176658462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4253490984041174493, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+  m_PrefabInstance: {fileID: 2847295578743705027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2847295578743705027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 188621770609522703, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.829
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540167066267759260, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070387203978215879, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: mBehaviorSource.behaviorName
+      value: Ranged Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070387203978215879, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: mBehaviorSource.behaviorDescription
+      value: The behavior for how the Ranged Enemy works.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070387203978215879, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-7.27238464,141.8183)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
+        Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
+        DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":15,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
+        WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,220.716827)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-101.14949,188.371613)"},"ID":14,"Name":"Can
+        Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK_RANGED","NodeData":{"Offset":"(48.4135742,185.15625)"},"ID":15,"Name":"Enemy
+        ATTACK   RANGED","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"SinglefireTimerLimit":0,"SinglefireTimer":0}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(99.99988,255)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-0.000122070313,180)"},"ID":17,"Name":"Outside
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(139.999878,180)"},"ID":18,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":15,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(259.999878,190)"},"ID":19,"Name":"Is
+        Surrounding","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(409.999878,190)"},"ID":20,"Name":"Enemy
+        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(789.999756,215)"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100.000122,190)"},"ID":22,"Name":"Within
+        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(29.9998779,180.000122)"},"ID":23,"Name":"In
+        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(159.999756,190)"},"ID":24,"Name":"Enemy
+        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253490984041174493, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173712477577914676, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910609425673018982, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 2054995744176658462}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: timerLimit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: objectController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 3861298083143071199, guid: 40705d8999592c042bd81ccf366286cc, type: 3}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: PlayerLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: damagingTimerLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: projectileVelocity.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -43.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155363, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906441549651155363, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
+--- !u!114 &4133358771362095753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 143075690287136887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
