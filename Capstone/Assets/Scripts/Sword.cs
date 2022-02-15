@@ -104,20 +104,17 @@ namespace Bladesmiths.Capstone
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
             }
 
-
             if(col.gameObject.GetComponent<Shield>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-
             }
-            else if (col.gameObject.GetComponent<Enemy>())
+            else if (col.gameObject.GetComponent<IDamageable>() != null)
             {
-                if (!col.gameObject.GetComponent<Enemy>().blocked)
+                if (!col.gameObject.GetComponent<Enemy>() || !col.gameObject.GetComponent<Enemy>().blocked)
                 {
                     FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                    player.SwordAttack(col.gameObject.GetComponent<Enemy>().ID);
+                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
                 }
-                
             }
         }
     }
