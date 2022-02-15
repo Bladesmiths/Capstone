@@ -68,6 +68,14 @@ MonoBehaviour:
   swordModel: {fileID: 0}
   swordType: 0
   offset: {fileID: 0}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
 --- !u!65 &4879856067732279094
 BoxCollider:
   m_ObjectHideFlags: 0
