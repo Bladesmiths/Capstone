@@ -64,6 +64,7 @@ namespace Bladesmiths.Capstone
 
             for(int i = 0; i < _enemy.transform.GetChild(1).childCount; i++)
             {
+                _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<BoxCollider>();
                 _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<Rigidbody>();
                 _enemy.transform.GetChild(1).GetChild(i).GetComponent<Rigidbody>().isKinematic = false;
             }

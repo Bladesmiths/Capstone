@@ -100,13 +100,13 @@ namespace Bladesmiths.Capstone
         {
             base.OnEnd();
             enemy.surrounding = false;
-            desiredPos = Vector3.zero;
-            movemntPos = Vector3.zero;
-            chosenDir = Vector3.zero;
-            enemyPos = Vector3.zero;
-            allDirections = null;
-            intrest = null;
-            danger = null;
+            //desiredPos = Vector3.zero;
+            //movemntPos = Vector3.zero;
+            //chosenDir = Vector3.zero;
+            //enemyPos = Vector3.zero;
+            //allDirections = null;
+            //intrest = null;
+            //danger = null;
             enemy.canMove = false;
 
         }
@@ -156,11 +156,18 @@ namespace Bladesmiths.Capstone
 
             for (int i = 0; i < numRays; i++)
             {
-                Vector3 direction = Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized;
+                if (pathDir == Vector3.zero)
+                {
+                    danger[i] = 0;
+                }
+                else
+                {
+                    Vector3 direction = Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized;
 
-                // Gets the Dot Product between the possible directions
-                float d = Vector3.Dot(direction, pathDir);
-                danger[i] = Mathf.Max(0, d) * mag;
+                    // Gets the Dot Product between the possible directions
+                    float d = Vector3.Dot(direction, pathDir);
+                    danger[i] = Mathf.Max(0, d) * mag;
+                }
             }
         }
 

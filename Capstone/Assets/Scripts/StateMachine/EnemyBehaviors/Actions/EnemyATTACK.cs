@@ -48,6 +48,9 @@ namespace Bladesmiths.Capstone
                 return TaskStatus.Success;
             }
 
+            _enemy.moveVector = transform.position;
+            _enemy.rotateVector = Player.instance.transform.position - transform.position;
+
 
             //if (attack)
             //{
@@ -81,6 +84,7 @@ namespace Bladesmiths.Capstone
             timer = 0f;
             timerMax = 1f;
             _enemy.attackTimerMax = Random.Range(0.75f, 3f);
+            _enemy.canMove = true;
         }
 
         public override void OnEnd()
@@ -89,6 +93,8 @@ namespace Bladesmiths.Capstone
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;
+            _enemy.canMove = false;
+
         }
 
         /// <summary>

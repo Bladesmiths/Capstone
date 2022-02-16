@@ -26,14 +26,12 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             // Gets all of the info from the Enemy class
-            if (gameObject.transform.root.GetComponent<Enemy>())
-            {
-                enemy = gameObject.transform.root.GetComponent<Enemy>();
-                ID = enemy.ID;
-                ObjectTeam = enemy.ObjectTeam;
-                Damage = enemy.Damage;
-                GameObject = gameObject;
-            }
+            enemy = gameObject.transform.parent.GetComponent<Enemy>();
+            ID = enemy.ID;
+            ObjectTeam = enemy.ObjectTeam;
+            Damage = enemy.Damage;
+            GameObject = gameObject;
+            
         }
 
         // Update is called once per frame

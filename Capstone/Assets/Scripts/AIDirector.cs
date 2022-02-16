@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
@@ -11,10 +12,12 @@ namespace Bladesmiths.Capstone
 
     }
 
-    public class AIDirector : MonoBehaviour
+    public class AIDirector : SerializedMonoBehaviour
     {
         public GameObject[] enemyPrefabs;
-        public List<Enemy> enemyGroup;
+        public List<GameObject> enemyGroups;
+        private GameObject currentGroup;
+        private int groupCount;
         public LinkedList<EnemyList> allEnemyGroups;
         public LinkedList<Enemy> attackQueue;
         private static AIDirector instance;
@@ -33,7 +36,7 @@ namespace Bladesmiths.Capstone
             {
                 instance = this;
                 attackQueue = new LinkedList<Enemy>();
-                enemyGroup = new List<Enemy>();
+                //enemyGroups = new List<GameObject>();
                 allEnemyGroups = new LinkedList<EnemyList>();
             }
         }
@@ -41,6 +44,7 @@ namespace Bladesmiths.Capstone
         private void Start()
         {
             //allEnemyGroups.Add(enemyGroup);
+            currentGroup = enemyGroups[0];
         }
 
         private void Update()
@@ -48,7 +52,23 @@ namespace Bladesmiths.Capstone
             if(attackQueue.Count > 0)
             {
                 CheckForPossibleAttacker();
-            }            
+            }
+
+            if(allEnemyGroups.First.Value.enemies.Count == 0)
+            {
+                groupCount++;
+                if (groupCount != enemyGroups.Count)
+                {                    
+                    currentGroup.SetActive(false);
+                    currentGroup = enemyGroups[groupCount];
+                    currentGroup.SetActive(true);
+                    allEnemyGroups.RemoveFirst();                    
+                }
+                else if(groupCount == enemyGroups.Count)
+                {
+                    currentGroup.SetActive(false);
+                }
+            }
         }
 
         /// <summary>
@@ -120,6 +140,7 @@ namespace Bladesmiths.Capstone
             {
                 EnemyList eList = new EnemyList();
                 eList.enemies = new List<Enemy>();
+                eList.enemies.Add(e);
                 eList.groupNumber = groupNum;
                 allEnemyGroups.AddLast(eList);
             }         
@@ -132,21 +153,28 @@ namespace Bladesmiths.Capstone
         /// <param name="e"></param>
         public void RemoveFromGroups(Enemy e)
         {
-            if (!enemyGroup.Remove(e))
+            foreach (EnemyList list in allEnemyGroups)
             {
-                return;
+                if (list.enemies.Contains(e))
+                {
+                    list.enemies.Remove(e);
+                }
             }
-            
+                        
             //enemyGroup.Sort();
             attackQueue.Remove(e);
         }
 
         public void ResetBlocks()
         {
-            foreach(Enemy e in enemyGroup)
+            foreach (EnemyList list in allEnemyGroups)
             {
-                e.blocked = false;
-            }
+                foreach(Enemy e in list.enemies)
+                {
+                    e.blocked = false;
+
+                }
+            }            
         }
 
         /// <summary>
@@ -174,12 +202,15 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public bool EnemyCurrentlyAttacking()
         {
-            foreach(Enemy e in enemyGroup)
+            foreach(EnemyList list in allEnemyGroups)
             {
-                if(e.CanHit)
+                foreach(Enemy e in list.enemies)
                 {
-                    return true; 
-                }
+                    if (e.CanHit)
+                    {
+                        return true;
+                    }
+                }                
             }
 
             return false;

@@ -226,6 +226,8 @@ namespace Bladesmiths.Capstone
             if (canMove && agent != null)
             {
                 agent.SetDestination(moveVector);
+                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(rotateVector.x, 0f, rotateVector.z)), Time.deltaTime * 5f);
+                transform.rotation = q;
             }
 
             //Debug.DrawLine(transform.position, rotateVector, Color.red);
@@ -238,8 +240,7 @@ namespace Bladesmiths.Capstone
             //    transform.rotation = q;
             //}
 
-            Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(rotateVector.x, 0f, rotateVector.z)), Time.deltaTime * 5f);
-            transform.rotation = q;
+            
         }
 
         public void ClearDamaging()
@@ -286,6 +287,7 @@ namespace Bladesmiths.Capstone
             GameObject removedChunk = transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
             removedChunk.transform.parent = null;
             //removedChunck.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            removedChunk.AddComponent<BoxCollider>();
             removedChunk.AddComponent<Rigidbody>();
             removedChunk.AddComponent<EnemyChunk>();          
 
