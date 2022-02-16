@@ -62,6 +62,8 @@ namespace Bladesmiths.Capstone
         public bool stunned;
         public bool canMove;
 
+        public int enemyGroupNumber;
+
         private bool inCombat;
 
         public float Damage { get => damage; }
@@ -91,7 +93,7 @@ namespace Bladesmiths.Capstone
 
         public virtual void Start()
         {
-            AIDirector.Instance.AddToEnemyGroup(this);
+            AIDirector.Instance.AddToEnemyGroup(this, enemyGroupNumber);
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 
@@ -122,9 +124,10 @@ namespace Bladesmiths.Capstone
             //FSM.AddTransition(stun, seek, KeepAttacking());
             //FSM.AddTransition(stun, wander, GoWander());
 
-
-            agent.updateRotation = false;
-
+            if (agent != null)
+            {
+                agent.updateRotation = false;
+            }
             //CanHit = true;
 
             //FSM.AddAnyTransition(death, IsDead());
@@ -220,7 +223,7 @@ namespace Bladesmiths.Capstone
             }
 
             // Movement
-            if (canMove)
+            if (canMove && agent != null)
             {
                 agent.SetDestination(moveVector);
             }
