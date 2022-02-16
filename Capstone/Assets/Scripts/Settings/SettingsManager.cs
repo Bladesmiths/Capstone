@@ -118,7 +118,7 @@ namespace Bladesmiths.Capstone.UI
             {
                 onPauseScreenOnly = false;
                 EventSystem.current.SetSelectedGameObject(graphicsButton);
-                settingsButton.GetComponent<Button>().interactable = false;
+                //settingsButton.GetComponent<Button>().interactable = false;
             }
             else
             {
@@ -128,7 +128,8 @@ namespace Bladesmiths.Capstone.UI
                     // Select the Play button
                     EventSystem.current.SetSelectedGameObject(playButton);
                 }
-                settingsButton.GetComponent<Button>().interactable = true;
+                //settingsButton.GetComponent<Button>().interactable = true;
+                EventSystem.current.SetSelectedGameObject(settingsButton);
                 onPauseScreenOnly = true;
             }
         }
