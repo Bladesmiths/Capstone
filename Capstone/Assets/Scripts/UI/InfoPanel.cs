@@ -22,9 +22,6 @@ public class InfoPanel : SerializedMonoBehaviour
     public TextMeshProUGUI infoTextPlusL;
     public TextMeshProUGUI infoTextPlusR;
 
-    [SerializeField] BreakableBox firstCluster;
-    [SerializeField] LastBreakableBox finalCluster;
-
     [TitleGroup("Tutorial Text")]
     [HorizontalGroup("Tutorial Text/FirstRow")]
     [BoxGroup("Tutorial Text/FirstRow/Tutorial Text")] [LabelWidth(70)]
@@ -45,8 +42,8 @@ public class InfoPanel : SerializedMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        firstCluster = GameObject.Find("Breakable Gem Cluster").GetComponent<BreakableBox>();
-        finalCluster = GameObject.Find("Breakable Gem Cluster (7)").GetComponent<LastBreakableBox>();
+        //firstCluster = GameObject.Find("Breakable Gem Cluster").GetComponent<BreakableBox>();
+        //finalCluster = GameObject.Find("Breakable Gem Cluster (7)").GetComponent<LastBreakableBox>();
 
         playerInputs = uiManager.Inputs;
         xboxInputs = uiManager.xboxInputs;
@@ -85,73 +82,77 @@ public class InfoPanel : SerializedMonoBehaviour
         infoImageR.enabled = false;
         infoImageU.enabled = false;
 
-        //Set image based on current input device
-        switch (playerInputs.currentControlScheme)
+        //Only show a control icon if there's an icon to show
+        if (gamepadIconIndex != "none" && kbmIconIndex != "none")
         {
-            case "KeyboardMouse":
-                infoImage.sprite = kbmInputs[kbmIconIndex];
+            //Set image based on current input device
+            switch (playerInputs.currentControlScheme)
+            {
+                case "KeyboardMouse":
+                    infoImage.sprite = kbmInputs[kbmIconIndex];
 
-                //Display WASD
-                if (kbmIconIndex == "s" || kbmIconIndex == "space")
-                {
-                    infoImageL.enabled = true;
-                    infoImageL.sprite = kbmInputs["a"];
+                    //Display WASD
+                    if (kbmIconIndex == "s" || kbmIconIndex == "space")
+                    {
+                        infoImageL.enabled = true;
+                        infoImageL.sprite = kbmInputs["a"];
 
-                    infoImageR.enabled = true;
-                    infoImageR.sprite = kbmInputs["d"];
+                        infoImageR.enabled = true;
+                        infoImageR.sprite = kbmInputs["d"];
 
-                    infoImageU.enabled = true;
-                    infoImageU.sprite = kbmInputs["w"];
-                }
-                
-                //Display key + WASD
-                if (kbmIconIndex == "space")
-                {
-                    infoImageLL.enabled = true;
-                    infoImageLL.sprite = kbmInputs["space"];
+                        infoImageU.enabled = true;
+                        infoImageU.sprite = kbmInputs["w"];
+                    }
 
-                    infoTextPlusL.enabled = true;
+                    //Display key + WASD
+                    if (kbmIconIndex == "space")
+                    {
+                        infoImageLL.enabled = true;
+                        infoImageLL.sprite = kbmInputs["space"];
 
-                    infoImage.sprite = kbmInputs["s"];
-                }
+                        infoTextPlusL.enabled = true;
 
-                //Display key + move mouse
-                else if (kbmIconIndex == "shift")
-                {
-                    infoTextPlusR.enabled = true;
+                        infoImage.sprite = kbmInputs["s"];
+                    }
 
-                    infoImageR.enabled = true;
-                    infoImageR.sprite = kbmInputs["moveMouse"];
-                }
-                break;
+                    //Display key + move mouse
+                    else if (kbmIconIndex == "shift")
+                    {
+                        infoTextPlusR.enabled = true;
 
-            case "Gamepad":
-                infoImage.sprite = xboxInputs[gamepadIconIndex];
+                        infoImageR.enabled = true;
+                        infoImageR.sprite = kbmInputs["moveMouse"];
+                    }
+                    break;
 
-                //Display button + left stick
-                if (gamepadIconIndex == "b")
-                {
-                    infoImageLL.enabled = true;
-                    infoImageLL.sprite = xboxInputs["b"];
+                case "Gamepad":
+                    infoImage.sprite = xboxInputs[gamepadIconIndex];
 
-                    infoTextPlusL.enabled = true;
+                    //Display button + left stick
+                    if (gamepadIconIndex == "b")
+                    {
+                        infoImageLL.enabled = true;
+                        infoImageLL.sprite = xboxInputs["b"];
 
-                    infoImage.sprite = xboxInputs["leftStick"];
-                }
+                        infoTextPlusL.enabled = true;
 
-                //Display button + right stick
-                else if (gamepadIconIndex == "rightTrigger")
-                {
-                    infoTextPlusR.enabled = true;
+                        infoImage.sprite = xboxInputs["leftStick"];
+                    }
 
-                    infoImageR.enabled = true;
-                    infoImageR.sprite = xboxInputs["rightStick"];
-                }
-                break;
+                    //Display button + right stick
+                    else if (gamepadIconIndex == "rightTrigger")
+                    {
+                        infoTextPlusR.enabled = true;
 
-            default:
-                infoImage.sprite = xboxInputs[gamepadIconIndex];
-                break;
+                        infoImageR.enabled = true;
+                        infoImageR.sprite = xboxInputs["rightStick"];
+                    }
+                    break;
+
+                default:
+                    infoImage.sprite = xboxInputs[gamepadIconIndex];
+                    break;
+            }
         }
 
         //Set text
@@ -160,16 +161,16 @@ public class InfoPanel : SerializedMonoBehaviour
 
         //Specific case for final cluster message
         //Hide text when enemies are defeated / cluster is active
-        if(textIndex == 8 && finalCluster.boxActive)
-        {
-            infoText.enabled = false;
-        }
-        //Display new message after breaking first cluster
-        else if (textIndex == 2 && firstCluster.isBroken)
-        {
-            infoText.text = " - " + infoTextDictionary[7];
-            infoImage.enabled = false;
-        }
+        //if(textIndex == 8 && finalCluster.boxActive)
+        //{
+        //    infoText.enabled = false;
+        //}
+        ////Display new message after breaking first cluster
+        //else if (textIndex == 2 && firstCluster.isBroken)
+        //{
+        //    infoText.text = " - " + infoTextDictionary[7];
+        //    infoImage.enabled = false;
+        //}
 
         currentInputGamepad = gamepadIconIndex;
         currentInputKBM = kbmIconIndex;
