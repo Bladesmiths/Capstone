@@ -1629,7 +1629,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 10
+      Data: 11
     - Name: 
       Entry: 7
       Data: 
@@ -1751,6 +1751,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 1
+      Data: In <color=#FFFF00>Topaz</color> form, your sword drains life from enemies.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -1764,10 +1776,8 @@ MonoBehaviour:
   infoText: {fileID: 699135390}
   infoTextPlusL: {fileID: 1748537599}
   infoTextPlusR: {fileID: 2110583665}
-  firstCluster: {fileID: 0}
-  finalCluster: {fileID: 0}
   uiManager: {fileID: 1863759866}
-  playerInputs: {fileID: 0}
+  playerInputs: {fileID: 1261776969}
 --- !u!114 &125179845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,7 +1970,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7785088, y: 1}
+    m_SensorSize: {x: 1.7775229, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4615,7 +4625,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7785088, y: 1}
+    m_SensorSize: {x: 1.7775229, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4849,7 +4859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.3947, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -5106,7 +5116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.3947, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -8512,7 +8522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.3947, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -17945,7 +17955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.3947, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -19422,7 +19432,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7785088, y: 1}
+    m_SensorSize: {x: 1.7775229, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24370,7 +24380,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7785088, y: 1}
+    m_SensorSize: {x: 1.7775229, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
