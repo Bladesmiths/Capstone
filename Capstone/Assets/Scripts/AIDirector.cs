@@ -4,11 +4,18 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
+    public struct EnemyList
+    {
+        public int groupNumber;
+        public List<Enemy> enemies;
+
+    }
+
     public class AIDirector : MonoBehaviour
     {
         public GameObject[] enemyPrefabs;
         public List<Enemy> enemyGroup;
-        public List<List<Enemy>> allEnemyGroups;
+        public LinkedList<EnemyList> allEnemyGroups;
         public LinkedList<Enemy> attackQueue;
         private static AIDirector instance;
         private bool enemyAttacking;
@@ -27,13 +34,13 @@ namespace Bladesmiths.Capstone
                 instance = this;
                 attackQueue = new LinkedList<Enemy>();
                 enemyGroup = new List<Enemy>();
-                allEnemyGroups = new List<List<Enemy>>();
+                allEnemyGroups = new LinkedList<EnemyList>();
             }
         }
 
         private void Start()
         {
-            allEnemyGroups.Add(enemyGroup);
+            //allEnemyGroups.Add(enemyGroup);
         }
 
         private void Update()
@@ -41,7 +48,7 @@ namespace Bladesmiths.Capstone
             if(attackQueue.Count > 0)
             {
                 CheckForPossibleAttacker();
-            }
+            }            
         }
 
         /// <summary>
@@ -59,9 +66,9 @@ namespace Bladesmiths.Capstone
 
         public bool CheckEnemyGroup(Enemy e)
         {
-            foreach (List<Enemy> group in allEnemyGroups)
+            foreach (EnemyList group in allEnemyGroups)
             {
-                if (group.Contains(e))
+                if (group.enemies.Contains(e))
                 {
                     return true;
                 }
@@ -77,11 +84,11 @@ namespace Bladesmiths.Capstone
         /// <returns></returns>
         public List<Enemy> GetEnemyGroup(Enemy e)
         {
-            foreach (List<Enemy> group in allEnemyGroups)
+            foreach (EnemyList group in allEnemyGroups)
             {
-                if (group.Contains(e))
+                if (group.enemies.Contains(e))
                 {
-                    return group;
+                    return group.enemies;
                 }
             }
             return null;
@@ -91,14 +98,31 @@ namespace Bladesmiths.Capstone
         /// Adds the Enemy to the enemyGroup
         /// </summary>
         /// <param name="e"></param>
-        public void AddToEnemyGroup(Enemy e)
+        public void AddToEnemyGroup(Enemy e, int groupNum)
         {
+            bool check = false;
+
             if(e == null)
             {
                 return;
             }
 
-            enemyGroup.Add(e);
+            foreach(EnemyList list in allEnemyGroups)
+            {
+                if(list.groupNumber == groupNum)
+                {
+                    list.enemies.Add(e);
+                    check = true;
+                }
+            }
+
+            if(!check)
+            {
+                EnemyList eList = new EnemyList();
+                eList.enemies = new List<Enemy>();
+                eList.groupNumber = groupNum;
+                allEnemyGroups.AddLast(eList);
+            }         
 
         }
 
