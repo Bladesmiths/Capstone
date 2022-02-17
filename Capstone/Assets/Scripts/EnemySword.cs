@@ -16,6 +16,7 @@ namespace Bladesmiths.Capstone
         public event IIdentified.OnDestructionDelegate OnDestruction;
         public float Damage { get; set; }
         public bool Damaging { get; set; }
+        public GameObject GameObject { get; set; }
         public int ID { get; set; }
         public Team ObjectTeam { get; set; }
         public ObjectController ObjectController { get; set; }
@@ -25,11 +26,12 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             // Gets all of the info from the Enemy class
-            enemy = gameObject.transform.root.GetComponent<Enemy>();
+            enemy = gameObject.transform.parent.GetComponent<Enemy>();
             ID = enemy.ID;
             ObjectTeam = enemy.ObjectTeam;
             Damage = enemy.Damage;
-
+            GameObject = gameObject;
+            
         }
 
         // Update is called once per frame

@@ -24,6 +24,7 @@ namespace Bladesmiths.Capstone
         private float damagingTimer;
         private bool damaging;
 
+        public GameObject GameObject { get; set; }
         public int ID { get; set; }
         public float Damage => damage;
         public ObjectController ObjectController { get; set; }
@@ -34,6 +35,7 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             player = GameObject.Find("Player").GetComponent<Player>();
+            GameObject = gameObject;
         }
 
         // Update is called once per frame

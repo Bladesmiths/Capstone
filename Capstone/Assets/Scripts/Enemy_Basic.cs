@@ -46,7 +46,7 @@ namespace Bladesmiths.Capstone
             base.Update();
 
             // Activate the FSM
-            FSM.Tick();
+            //FSM.Tick();
 
         }
 
@@ -55,10 +55,6 @@ namespace Bladesmiths.Capstone
 
         }       
 
-        protected override void Die()
-        {
-
-        }
         public override void Respawn()
         {
 

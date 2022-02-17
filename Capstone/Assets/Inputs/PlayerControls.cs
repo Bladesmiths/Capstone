@@ -57,15 +57,6 @@ namespace Bladesmiths.Capstone
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Walk Toggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""04dcdcd8-8953-4ec2-85db-449954e643f9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""5fda3d27-9275-4dbe-b399-17b5ecd33a12"",
@@ -264,17 +255,6 @@ namespace Bladesmiths.Capstone
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2e47ad5b-5ef6-4b74-a256-63aa91796547"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Walk Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -875,7 +855,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -897,7 +877,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -908,7 +888,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -919,7 +899,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -930,7 +910,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -941,7 +921,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -952,7 +932,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -971,10 +951,10 @@ namespace Bladesmiths.Capstone
                 {
                     ""name"": """",
                     ""id"": ""da9b5f15-a1b9-4a21-aac7-aee019ad4b0c"",
-                    ""path"": ""*/{Cancel}"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -985,7 +965,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1018,7 +998,7 @@ namespace Bladesmiths.Capstone
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;KeyboardMouse"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1124,12 +1104,40 @@ namespace Bladesmiths.Capstone
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e6a76f38-59e9-4a49-afc0-28dbc4deaa18"",
+                    ""id"": ""cc125a53-a08e-48b4-b296-b6d8350c1065"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad;Xbox Controller;PS4 Controller"",
                     ""action"": ""Unpause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Exit"",
+            ""id"": ""fa96b479-29a4-4795-b0dd-7a322007b756"",
+            ""actions"": [
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4beb6b9-5907-449c-b5bd-4819cd353fa8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a3ae5fea-e260-4065-a54f-56509296d019"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1191,7 +1199,6 @@ namespace Bladesmiths.Capstone
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-            m_Player_WalkToggle = m_Player.FindAction("Walk Toggle", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
             m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
             m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
@@ -1215,6 +1222,9 @@ namespace Bladesmiths.Capstone
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
             m_UI_Unpause = m_UI.FindAction("Unpause", throwIfNotFound: true);
+            // Exit
+            m_Exit = asset.FindActionMap("Exit", throwIfNotFound: true);
+            m_Exit_Exit = m_Exit.FindAction("Exit", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1277,7 +1287,6 @@ namespace Bladesmiths.Capstone
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Jump;
-        private readonly InputAction m_Player_WalkToggle;
         private readonly InputAction m_Player_Attack;
         private readonly InputAction m_Player_Dodge;
         private readonly InputAction m_Player_TargetLock;
@@ -1295,7 +1304,6 @@ namespace Bladesmiths.Capstone
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
-            public InputAction @WalkToggle => m_Wrapper.m_Player_WalkToggle;
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
             public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
             public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
@@ -1324,9 +1332,6 @@ namespace Bladesmiths.Capstone
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                    @WalkToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @WalkToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
-                    @WalkToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkToggle;
                     @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                     @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                     @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
@@ -1370,9 +1375,6 @@ namespace Bladesmiths.Capstone
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
-                    @WalkToggle.started += instance.OnWalkToggle;
-                    @WalkToggle.performed += instance.OnWalkToggle;
-                    @WalkToggle.canceled += instance.OnWalkToggle;
                     @Attack.started += instance.OnAttack;
                     @Attack.performed += instance.OnAttack;
                     @Attack.canceled += instance.OnAttack;
@@ -1520,6 +1522,39 @@ namespace Bladesmiths.Capstone
             }
         }
         public UIActions @UI => new UIActions(this);
+
+        // Exit
+        private readonly InputActionMap m_Exit;
+        private IExitActions m_ExitActionsCallbackInterface;
+        private readonly InputAction m_Exit_Exit;
+        public struct ExitActions
+        {
+            private @PlayerControls m_Wrapper;
+            public ExitActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Exit => m_Wrapper.m_Exit_Exit;
+            public InputActionMap Get() { return m_Wrapper.m_Exit; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ExitActions set) { return set.Get(); }
+            public void SetCallbacks(IExitActions instance)
+            {
+                if (m_Wrapper.m_ExitActionsCallbackInterface != null)
+                {
+                    @Exit.started -= m_Wrapper.m_ExitActionsCallbackInterface.OnExit;
+                    @Exit.performed -= m_Wrapper.m_ExitActionsCallbackInterface.OnExit;
+                    @Exit.canceled -= m_Wrapper.m_ExitActionsCallbackInterface.OnExit;
+                }
+                m_Wrapper.m_ExitActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Exit.started += instance.OnExit;
+                    @Exit.performed += instance.OnExit;
+                    @Exit.canceled += instance.OnExit;
+                }
+            }
+        }
+        public ExitActions @Exit => new ExitActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -1561,7 +1596,6 @@ namespace Bladesmiths.Capstone
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnWalkToggle(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
             void OnDodge(InputAction.CallbackContext context);
             void OnTargetLock(InputAction.CallbackContext context);
@@ -1586,6 +1620,10 @@ namespace Bladesmiths.Capstone
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
             void OnUnpause(InputAction.CallbackContext context);
+        }
+        public interface IExitActions
+        {
+            void OnExit(InputAction.CallbackContext context);
         }
     }
 }

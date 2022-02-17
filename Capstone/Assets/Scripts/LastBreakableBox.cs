@@ -47,7 +47,7 @@ namespace Bladesmiths.Capstone
         // Update is called once per frame
         void Update()
         {
-            if(AIDirector.Instance.enemyGroup.Count == 0)
+            if(AIDirector.Instance.enemyGroups.Count == 0)
             {
                 //The box is now active and breakable
                 boxActive = true;
@@ -88,7 +88,7 @@ namespace Bladesmiths.Capstone
         // If the box is hit by an attack
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.gameObject.GetComponent<Sword>() && AIDirector.Instance.enemyGroup.Count == 0)
+            if (collision.collider.gameObject.GetComponent<Sword>() && AIDirector.Instance.enemyGroups.Count == 0)
             {
                 // Save that the box is broken
                 isBroken = true;

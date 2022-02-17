@@ -45,6 +45,7 @@ namespace Bladesmiths.Capstone.Testing
             set { velocity = value; }
         }
 
+        public GameObject GameObject { get; set; }
         public int ID { get; set; }
         public ObjectController ObjectController { get => objectController; set => objectController = value; }
         public Enums.Team ObjectTeam { get; set; }
@@ -60,6 +61,7 @@ namespace Bladesmiths.Capstone.Testing
             startingPosition = transform.position;
             StartCoroutine(Util.DestroyTimer(timeTillDestruction, gameObject));
             player = GameObject.Find("Player").GetComponent<Player>();
+            GameObject = gameObject;
         }
 
         /// <summary>
@@ -128,12 +130,18 @@ namespace Bladesmiths.Capstone.Testing
                     player.StartCoroutine(
                         Util.DamageMaterialTimer(player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
                 }
+                Destroy(gameObject, 2f);
             }
 
-            if (col.gameObject.tag != "Projectile")
+            else if (col.gameObject.tag == "Untagged")
             {
                 // Destroy the projectile once it has collided
                 Destroy(gameObject);
+            }
+
+            else
+            {
+                Destroy(gameObject, 15f);
             }
         }
 
@@ -152,11 +160,11 @@ namespace Bladesmiths.Capstone.Testing
                 
             }
 
-            if(other.gameObject.name == "Block Detector")
-            {
-                Destroy(gameObject);
+            //if(other.gameObject.name == "Block Detector")
+            //{
+            //    Destroy(gameObject);
 
-            }
+            //}
         }
 
         private void OnDestroy()

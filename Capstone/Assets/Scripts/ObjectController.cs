@@ -30,10 +30,13 @@ namespace Bladesmiths.Capstone
             // We should come up with a way to check the dictionary and
             // making a unique ID to go with the player
             //currentValidId = -1;
-
-            IdentifiedTeamPair playerTeamPair = new IdentifiedTeamPair(Team.Player, GameObject.Find("Player").GetComponent<Player>());
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            IdentifiedTeamPair playerTeamPair = new IdentifiedTeamPair(Team.Player, player);
+            IdentifiedTeamPair playerSwordPair = new IdentifiedTeamPair(Team.Player, player.Sword.GetComponent<Sword>());
 
             identifiedObjects.Add(GenerateID(), playerTeamPair);
+            identifiedObjects.Add(GenerateID(), playerSwordPair);
+
             VerifyObjects();
         }
 

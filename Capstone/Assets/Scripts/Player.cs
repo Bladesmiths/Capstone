@@ -27,10 +27,12 @@ namespace Bladesmiths.Capstone
         // Reference to the Finite State Machine
         private FiniteStateMachine FSM;
         [SerializeField]
-        private BalancingData currentBalancingData; 
+        private BalancingData currentBalancingData;
 
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
+
+        public static Player instance;
 
         [SerializeField]
         private PlayerInputsScript inputs;
@@ -89,8 +91,7 @@ namespace Bladesmiths.Capstone
 
         #region Sword Fields
         [Header("Sword Fields")]
-        [SerializeField]
-        private Sword currentSword;
+        public Sword currentSword;
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
         private int animIDSwordChoice;
@@ -192,15 +193,19 @@ namespace Bladesmiths.Capstone
         #region Properties
         public PlayerInputsScript Inputs { get => inputs; }
         public BalancingData CurrentBalancingData { get => currentBalancingData; }
-
+        public override ObjectController ObjectController 
+        { 
+            get => objectController; 
+            set
+            {
+                objectController = value;
+                targetLock.ObjectController = value;
+            }
+        }
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
-        
         public float ChipDamageTotal { get; private set; }
-
         public int Points { get => (int)points; }
-
         public int MaxPoints { get => (int)maxPoints; }
-
         public bool Damaging { get => damaging; set => damaging = value; }
 
         #region Properties from Swords
@@ -229,6 +234,11 @@ namespace Bladesmiths.Capstone
             dodgeTimer = 0;
             canDmg = true;
 
+            if (instance == null)
+            {
+                instance = this;
+            }
+
             jumpTimeoutDelta = JumpTimeout;
             fallTimeoutDelta = FallTimeout;
 
@@ -240,7 +250,6 @@ namespace Bladesmiths.Capstone
             animIDJump = Animator.StringToHash("Jump");
             animIDFreeFall = Animator.StringToHash("FreeFall");
             animIDDamaged = Animator.StringToHash("Damaged");
-
 
             LandTimeoutDelta = -1.0f;
 
@@ -263,11 +272,9 @@ namespace Bladesmiths.Capstone
             blockDetector.GetComponent<BlockCollision>().OnBlock += BlockOccured;
             parryDetector.GetComponent<ParryCollision>().Player = this;
 
-
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
-
-            targetLock = GetComponent<TargetLock>();
+            targetLock = GameObject.Find("TargetLockManager").GetComponent<TargetLock>();
 
             inputs.player = this;
 
@@ -281,15 +288,15 @@ namespace Bladesmiths.Capstone
         {
             //FSM.Tick();
 
-            Jump();
             Move();
+            Jump();
 
             DecayProvisionalDamage();
 
             // If the player is dead and just died (fadeToBlack is still occuring)
             if (points >= maxPoints)
             {
-                FadeToBlack();
+                StartCoroutine(FadeToBlack());
             }
 
         }
@@ -309,6 +316,11 @@ namespace Bladesmiths.Capstone
         public void AddPoints()
         {
             points++;
+        }
+
+        public void AddToMaxPoints()
+        {
+            points = maxPoints;
         }
 
         /// <summary>
@@ -344,7 +356,7 @@ namespace Bladesmiths.Capstone
         {
             //animator.SetBool(animIDBlock, false);
             animator.SetBool(animIDDodge, false);
-            animator.SetBool(animIDForward, false);
+            animator.SetFloat(animIDForward, 0);
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
             animator.SetBool(animIDMoving, false);
@@ -549,9 +561,24 @@ namespace Bladesmiths.Capstone
                 currentSword = swords[newSwordType].GetComponent<Sword>();
 
                 // Update the position according to offset
-                sword.transform.localPosition = currentSword.Offset.position;
-                sword.transform.localRotation = currentSword.Offset.rotation;
+                //sword.transform.localPosition = currentSword.Offset.position;
+                //sword.transform.localRotation = currentSword.Offset.rotation;
                 //sword.transform.localScale = currentSword.Offset.localScale;
+
+                // This doesn't work apparently, but I'm leaving the code here as a record
+                // of the transforms that we need for the swords to look correct
+                //if (newSwordType == SwordType.Ruby)
+                //{
+                //    sword.transform.Find("SwordHilt").position = new Vector3(0.094f, 0.008f, 0);
+                //    sword.transform.position = new Vector3(0.029f, 0.08f, 0.0174f);
+                //    sword.transform.rotation = Quaternion.Euler(70.354f, -15.63f, -26.015f); 
+                //}
+                //else
+                //{
+                //    sword.transform.Find("SwordHilt").position = Vector3.zero;
+                //    sword.transform.position = new Vector3(-0.007f, 0.074f, 0.022f);
+                //    sword.transform.rotation = Quaternion.identity;
+                //}
 
                 // Update the box collider dimensions
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
@@ -562,11 +589,6 @@ namespace Bladesmiths.Capstone
 
                 // TODO: Player sword switching animation
             }
-        }
-
-        protected override void Die()
-        {
-
         }
 
         /// <summary>
@@ -769,6 +791,8 @@ namespace Bladesmiths.Capstone
             
             if (fade.GetComponent<Image>().color.a >= 1)
             {
+                Debug.Log("Loading winscreen");
+
                 if (points >= maxPoints)
                 {
                     SceneManager.LoadScene("WinScreen");

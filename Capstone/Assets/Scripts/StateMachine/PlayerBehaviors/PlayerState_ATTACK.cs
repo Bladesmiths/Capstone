@@ -13,6 +13,11 @@ namespace Bladesmiths.Capstone
     /// </summary>
     public class PlayerState_ATTACK : PlayerState_Base
     {
+        [SerializeField] private AnimationCurve topazSpeedCurve;
+        [SerializeField] private AnimationCurve rubySpeedCurve;
+        [SerializeField] private AnimationCurve sapphireSpeedCurve;
+        private AnimationCurve activeCurve;
+
         private Player _player;
         private PlayerInputsScript _input;
         private Animator _animator;
@@ -126,6 +131,8 @@ namespace Bladesmiths.Capstone
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
 
+            //Change attack animation speed according to animation curve
+            animator.speed = activeCurve.Evaluate(timer);
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -141,7 +148,25 @@ namespace Bladesmiths.Capstone
 
             playSound = true;
 
-
+            //Choose animation curve based on current sword form
+            switch (animator.GetFloat("Sword Choice"))
+            {
+                //Topaz
+                case 0:
+                    activeCurve = topazSpeedCurve;
+                    break;
+                //Ruby
+                case 1:
+                    activeCurve = rubySpeedCurve;
+                    break;
+                //Sapphire
+                case 2:
+                    activeCurve = sapphireSpeedCurve;
+                    break;
+                default:
+                    activeCurve = topazSpeedCurve;
+                    break;
+            }
 
             timer = 0;
             _animIDSpeed = Animator.StringToHash("Speed");
@@ -159,7 +184,10 @@ namespace Bladesmiths.Capstone
             }
 
             _animator.SetBool(_animIDAttack, true);
-
+            
+            // Toggle trail VFX ON
+            _player.currentSword.ToggleTrailVFX(true);
+            
             // Allows for the player to snap to the direction they are inputting
             //if (_input.move == Vector2.zero)
             //{
@@ -183,8 +211,17 @@ namespace Bladesmiths.Capstone
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            // Toggle trail VFX OFF
+            _player.currentSword.ToggleTrailVFX(false);
+
             _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
+
+            AIDirector.Instance.ResetBlocks();
+
+            //Reset animator speed when leaving attack state
+            animator.speed = 1;
+
         }
     }
 }

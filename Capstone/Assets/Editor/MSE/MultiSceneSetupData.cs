@@ -1,23 +1,114 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Bladesmiths.Capstone.Editor;
+using GameplayIngredients;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using FilePath = Sirenix.OdinInspector.FilePathAttribute;
 
-namespace Bladesmiths.Capstone.ScriptableObjects
+#if UNITY_EDITOR
+namespace Bladesmiths.Capstone.Editor
 {
     [CreateAssetMenu(fileName = "MultiSceneSetupData", menuName = "ScriptableObjects/MSE/Multi-scene Setup Data")]
     public class MultiSceneSetupData : ScriptableObject
     {
         // Fields
-        [TableList(ShowIndexLabels = true)] public List<SceneSetupData> setupList;
+        [TableList(ShowIndexLabels = true)] 
+        public List<SceneSetupData> setupList;
+
+        [ReadOnly] [LabelText("Corresponding GameLevel Data File")]
+        public GameLevel gameLevelData;
 
         private static uint _activeSceneCount = 0;
+        private ScriptableObject obj;
+
+        // Unity Public Methods
+        public void OnEnable()
+        {
+            CreateGameLevelData();
+        }
+
+        public void OnValidate()
+        {
+            if (!gameLevelData)
+            {
+                CreateGameLevelData();
+            }
+
+            // Update StartupScenes array
+            gameLevelData.StartupScenes = (from SceneSetupData ssd in setupList
+                select Path.GetFileNameWithoutExtension(ssd.scenePath)).ToArray();
+        }
+
+        public void OnDestroy()
+        {
+            UnityEngine.Object.DestroyImmediate(obj);
+            EditorLogUtils.Info(name +
+                                " has been destroyed along with its corresponding GameLevel data!");
+        }
+
+        // Public Methods (Buttons)
+        [TitleGroup("Actions")]
+        [ButtonGroup("Actions/Buttons")]
+        public void LoadCurrentSetup()
+        {
+            if (ValidateSetupData())
+            {
+                if (HierarchyMonitor.IsHierarchyDirty)
+                {
+                    if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                    {
+                        // "Save" button
+                        EditorLogUtils.Success("Modified scenes saved!");
+                    }
+                    else
+                    {
+                        // "Cancel" button
+                        EditorLogUtils.Info("Modified scenes unsaved!");
+                    }
+
+                    HierarchyMonitor.IsHierarchyDirty = false;
+                }
+                
+                EditorSceneManager.RestoreSceneManagerSetup(GetSetup());
+                EditorLogUtils.Success("Scene setup is successfully loaded!");
+            }
+        }
+        
+        [ButtonGroup("Actions/Buttons")]
+        public void AddAllScenesToBuildSettings()
+        {
+            // Find valid Scene paths and make a list of EditorBuildSettingsScene
+            var editorBuildSettingsScenes = EditorBuildSettings.scenes.ToList();
+            foreach (var ssd in setupList)
+            {
+                if (!File.Exists(EditorUtils.ConvertRelativePathToAbsolute(ssd.scenePath)))
+                {
+                    EditorLogUtils.Info(EditorUtils.ConvertRelativePathToAbsolute(ssd.scenePath));
+                    EditorLogUtils.Error("Scene path not valid.");
+                    return;
+                }
+                
+                SceneAsset sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(ssd.scenePath);;
+                
+                string scenePath = AssetDatabase.GetAssetPath(sceneAsset);
+                if (!string.IsNullOrEmpty(scenePath))
+                    editorBuildSettingsScenes.Add(new EditorBuildSettingsScene(scenePath, true));
+            }
+
+            // Set the Build Settings window Scene list
+            EditorBuildSettings.scenes = editorBuildSettingsScenes.ToArray();
+            
+            EditorLogUtils.Success("All scenes have been added to the Build Settings!");
+        }
+
 
         // Public Methods
         public SceneSetup[] GetSetup()
@@ -25,7 +116,7 @@ namespace Bladesmiths.Capstone.ScriptableObjects
             return setupList.Select(ConvertToSceneSetup).ToArray();
         }
 
-        public bool ValidateSetupData()
+        private bool ValidateSetupData()
         {
             _activeSceneCount = 0;
 
@@ -33,7 +124,7 @@ namespace Bladesmiths.Capstone.ScriptableObjects
             {
                 if (data.scenePath == string.Empty)
                 {
-                    Debug.Log("<color=red>Error: </color>Scene path not valid.");
+                    EditorLogUtils.Error("Scene path cannot be empty.");
                     return false;
                 }
 
@@ -41,17 +132,24 @@ namespace Bladesmiths.Capstone.ScriptableObjects
                 {
                     if (!data.isLoaded)
                     {
-                        Debug.Log("<color=red>Error: </color>The active scene must be loaded.");
+                        EditorLogUtils.Error("The active scene must be loaded.");
                         return false;
                     }
 
                     _activeSceneCount++;
                 }
+                
+                if (!File.Exists(EditorUtils.ConvertRelativePathToAbsolute(data.scenePath)))
+                {
+                    EditorLogUtils.Info(EditorUtils.ConvertRelativePathToAbsolute(data.scenePath));
+                    EditorLogUtils.Error("Scene path not valid.");
+                    return false;
+                }
             }
 
             if (_activeSceneCount != 1)
             {
-                Debug.Log("<color=red>Error: </color>There has to be 1 active scene.");
+                EditorLogUtils.Error("There has to be 1 active scene.");
                 return false;
             }
 
@@ -87,6 +185,33 @@ namespace Bladesmiths.Capstone.ScriptableObjects
             return ss;
         }
 
+        private void CreateGameLevelData()
+        {
+            // Use this to update corresponding GameLevel object
+            string gameLevelDataPath = EditorUtils.ConvertRelativePathToAbsolute("Assets/Levels/GameLevelData/") +
+                                       this.name + ".asset";
+
+            if (!EditorUtils.GetGameLevelData(this.name, "Assets/Levels/GameLevelData", ref gameLevelData))
+            {
+                // Create the GameLevel file
+                obj = ScriptableObject.CreateInstance(typeof(GameLevel));
+
+                if (!string.IsNullOrEmpty(gameLevelDataPath) &&
+                    PathUtilities.TryMakeRelative(Path.GetDirectoryName(Application.dataPath), gameLevelDataPath,
+                        out gameLevelDataPath))
+                {
+                    AssetDatabase.CreateAsset(obj, gameLevelDataPath);
+                    AssetDatabase.Refresh();
+                }
+                else
+                {
+                    UnityEngine.Object.DestroyImmediate(obj);
+                }
+
+                EditorUtils.GetGameLevelData(this.name, "Assets/Levels/GameLevelData", ref gameLevelData);
+            }
+        }
+
         #endregion
     }
 
@@ -103,3 +228,4 @@ namespace Bladesmiths.Capstone.ScriptableObjects
         public bool isLoaded;
     }
 }
+#endif
