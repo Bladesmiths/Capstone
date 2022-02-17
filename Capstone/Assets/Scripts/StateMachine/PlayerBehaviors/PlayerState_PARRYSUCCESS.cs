@@ -36,8 +36,8 @@ namespace Bladesmiths.Capstone
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //_playerParryBox = playerParryDetector;
             _player = animator.GetComponent<Player>();
+            _playerParryBox = _player.ParryDetectorObject;
             _input = _player.GetComponent<PlayerInputsScript>();
             _animator = animator;
             id = PlayerCondition.F_ParrySuccess;
