@@ -123,13 +123,16 @@ namespace Bladesmiths.Capstone.UI
             else
             {
                 // If on the main menu
-                if(SceneManager.GetActiveScene().name == "MainMenu")
+                if (SceneManager.GetActiveScene().name == "MainMenu")
                 {
                     // Select the Play button
                     EventSystem.current.SetSelectedGameObject(playButton);
                 }
-                //settingsButton.GetComponent<Button>().interactable = true;
-                EventSystem.current.SetSelectedGameObject(settingsButton);
+                else
+                {
+                    //settingsButton.GetComponent<Button>().interactable = true;
+                    EventSystem.current.SetSelectedGameObject(settingsButton);
+                }
                 onPauseScreenOnly = true;
             }
         }
