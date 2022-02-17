@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 7147680233522254804}
   - component: {fileID: 373840093599938792}
   - component: {fileID: 2293004106978555524}
+  - component: {fileID: 5716420576540722052}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.026
   m_TagString: Untagged
@@ -266,6 +267,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5716420576540722052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65974241717583695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0008257687, y: 0.00068653084, z: 0.0012910173}
+  m_Center: {x: 0.00003971503, y: -0.00014899179, z: 0.00012468337}
 --- !u!1 &121392724890714162
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +382,7 @@ GameObject:
   - component: {fileID: 7416425529625280704}
   - component: {fileID: 3870884924049373676}
   - component: {fileID: 1696596426523715209}
+  - component: {fileID: 1327018977678984692}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.006
   m_TagString: Untagged
@@ -438,6 +453,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1327018977678984692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152549801915483939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00004370159, y: 0.0000055886467, z: 0.0000875579}
+  m_Center: {x: -0.000007011677, y: 0.0000005269221, z: 0.0000010252386}
 --- !u!1 &158713813375190169
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +508,7 @@ GameObject:
   - component: {fileID: 7052140222720179531}
   - component: {fileID: 6535287578675122576}
   - component: {fileID: 231183196897834035}
+  - component: {fileID: 2493438918772291363}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.014
   m_TagString: Untagged
@@ -550,6 +579,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2493438918772291363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162813655246364807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0019750358, y: 0.0012393222, z: 0.0021832697}
+  m_Center: {x: 0.00003904343, y: 0.00002990709, z: 0.00009021633}
 --- !u!1 &166075092139097332
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +603,7 @@ GameObject:
   - component: {fileID: 7355986809448729603}
   - component: {fileID: 7266162105655308221}
   - component: {fileID: 6143259917612619184}
+  - component: {fileID: 8694045682752786071}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.006
   m_TagString: Untagged
@@ -631,6 +674,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8694045682752786071
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166075092139097332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0000981006, y: 0.00006400664, z: 0.0001079554}
+  m_Center: {x: -0.0000020185562, y: 0.0000006254776, z: 0.0000021210085}
 --- !u!1 &202714371464520613
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +791,7 @@ GameObject:
   - component: {fileID: 5333262167658064118}
   - component: {fileID: 5556754450803991470}
   - component: {fileID: 2893851450343615863}
+  - component: {fileID: 226973692061454685}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.007
   m_TagString: Untagged
@@ -805,6 +862,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &226973692061454685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211035976096261338}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00010360846, y: 0.00006247188, z: 0.00006276536}
+  m_Center: {x: -0.0000092334885, y: 0.00000713503, z: -0.0000016072432}
 --- !u!1 &232223771800327476
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +916,7 @@ GameObject:
   - component: {fileID: 6564358283435482095}
   - component: {fileID: 7555453445859910645}
   - component: {fileID: 1432494816177241646}
+  - component: {fileID: 1450396577886504388}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.005
   m_TagString: Untagged
@@ -916,6 +987,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1450396577886504388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243383704488242125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0014351405, y: 0.0009998842, z: 0.0020856585}
+  m_Center: {x: -0.00025545765, y: 0.000077951234, z: -0.00043009326}
 --- !u!1 &244509804946988481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1101,7 @@ GameObject:
   - component: {fileID: 2119336241719930440}
   - component: {fileID: 753927100019521881}
   - component: {fileID: 1256265745574926176}
+  - component: {fileID: 5877137188382545650}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.007
   m_TagString: Untagged
@@ -1087,6 +1172,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5877137188382545650
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289848832185452422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0009912308, y: 0.001002486, z: 0.0013371727}
+  m_Center: {x: -0.00011078558, y: -0.000113637994, z: 0.000014662449}
 --- !u!1 &294409855828760982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,6 +1290,7 @@ GameObject:
   - component: {fileID: 6620830654422164872}
   - component: {fileID: 1268076819798885224}
   - component: {fileID: 702131776022425749}
+  - component: {fileID: 7267020659473122426}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.020_cell.003
   m_TagString: Untagged
@@ -1262,6 +1361,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7267020659473122426
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378864451629477763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00028823095, y: 0.00014014688, z: 0.00009903932}
+  m_Center: {x: 0.000052787746, y: -0.000008451543, z: 0.000002013841}
 --- !u!1 &390854422824326994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,6 +1416,7 @@ GameObject:
   - component: {fileID: 1734958065922695243}
   - component: {fileID: 1777969347448176821}
   - component: {fileID: 4068134324351551332}
+  - component: {fileID: 3569671497548676299}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell
   m_TagString: Untagged
@@ -1374,6 +1487,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3569671497548676299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395090453945347369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00015709209, y: 0.00007768655, z: 0.00015238742}
+  m_Center: {x: 0.0000018765822, y: -0.0000048545708, z: -0.000019050303}
 --- !u!1 &396633489072578174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1572,7 @@ GameObject:
   - component: {fileID: 317332753753152486}
   - component: {fileID: 3359073251702352877}
   - component: {fileID: 6771332832201216869}
+  - component: {fileID: 8594605662035925844}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.069
   m_TagString: Untagged
@@ -1516,6 +1643,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8594605662035925844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418271956055807813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015075896, y: 0.0007445105, z: 0.0014718531}
+  m_Center: {x: -0.00006102078, y: -0.00010732565, z: -0.0003739213}
 --- !u!1 &419250285167733113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1801,7 @@ GameObject:
   - component: {fileID: 7299382126425020179}
   - component: {fileID: 5047774630049831890}
   - component: {fileID: 9207957782729208882}
+  - component: {fileID: 1476526976087598818}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.008_cell.004
   m_TagString: Untagged
@@ -1731,6 +1872,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1476526976087598818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429056243674909923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00023135736, y: 0.0004643159, z: 0.00032515364}
+  m_Center: {x: -0.0000040973173, y: 0.0000018990319, z: 0.0000027158017}
 --- !u!1 &436425235227289790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +1927,7 @@ GameObject:
   - component: {fileID: 7223396834285246212}
   - component: {fileID: 6242495021900820247}
   - component: {fileID: 4568785848928186815}
+  - component: {fileID: 6742336185714831317}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.001
   m_TagString: Untagged
@@ -1843,6 +1998,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6742336185714831317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473538971058790502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00018633335, y: 0.00024881586, z: 0.00021031755}
+  m_Center: {x: 0.00000025380723, y: 0.000014012728, z: -0.000019710238}
 --- !u!1 &475261073680735243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,6 +2328,7 @@ GameObject:
   - component: {fileID: 6217704144219205557}
   - component: {fileID: 6260605068258378819}
   - component: {fileID: 2338856878428480992}
+  - component: {fileID: 8966855191251564970}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.005
   m_TagString: Untagged
@@ -2230,6 +2399,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8966855191251564970
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603451875701591092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012788398, y: 0.0012914991, z: 0.0010972414}
+  m_Center: {x: 0.000024388282, y: -0.000080017184, z: 0.000039072467}
 --- !u!1 &623754870853869555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,6 +2454,7 @@ GameObject:
   - component: {fileID: 4112397889823013805}
   - component: {fileID: 7618931000937195917}
   - component: {fileID: 8754161646461109456}
+  - component: {fileID: 2194099580049863316}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.013
   m_TagString: Untagged
@@ -2342,6 +2525,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2194099580049863316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625362727293228635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0016785909, y: 0.0019239829, z: 0.0017703227}
+  m_Center: {x: 0.00022047063, y: -0.00022696254, z: 0.00032681657}
 --- !u!1 &631594617748485114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2549,7 @@ GameObject:
   - component: {fileID: 7176249071089992677}
   - component: {fileID: 5684281969386699361}
   - component: {fileID: 228761804160094309}
+  - component: {fileID: 2551468038406476398}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.012
   m_TagString: Untagged
@@ -2423,6 +2620,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2551468038406476398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631594617748485114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00085410575, y: 0.0012150846, z: 0.0009570395}
+  m_Center: {x: 0.000022872002, y: -0.000042364692, z: 0.00003089691}
 --- !u!1 &638264229158185444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,6 +2705,7 @@ GameObject:
   - component: {fileID: 1130340731401008974}
   - component: {fileID: 923904274747542492}
   - component: {fileID: 7143553809039756543}
+  - component: {fileID: 3181048936010613455}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.007
   m_TagString: Untagged
@@ -2565,6 +2776,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3181048936010613455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721328585173082120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00038809207, y: 0.00028277896, z: 0.00024821903}
+  m_Center: {x: 0.000010991236, y: -0.000058013236, z: -0.000012220915}
 --- !u!1 &728028481717754161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,6 +2800,7 @@ GameObject:
   - component: {fileID: 5211388380742252291}
   - component: {fileID: 5802421840837123366}
   - component: {fileID: 5094009595563714858}
+  - component: {fileID: 8691291670146936857}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.002
   m_TagString: Untagged
@@ -2646,6 +2871,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8691291670146936857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728028481717754161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00019698605, y: 0.00016194947, z: 0.00034415015}
+  m_Center: {x: -0.000009869167, y: 0.00001687415, z: 0.000022010016}
 --- !u!1 &732761115951509373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,6 +2957,7 @@ GameObject:
   - component: {fileID: 6954657876553292155}
   - component: {fileID: 2374733487244768258}
   - component: {fileID: 1227375436265411504}
+  - component: {fileID: 1311899324982607742}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.008
   m_TagString: Untagged
@@ -2789,6 +3028,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1311899324982607742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782816770539523418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017594763, y: 0.0016266119, z: 0.0018291909}
+  m_Center: {x: -0.0001322341, y: -0.00018911372, z: 0.00019922192}
 --- !u!1 &787055564960869767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,6 +3085,7 @@ GameObject:
   - component: {fileID: 5274803344655116405}
   - component: {fileID: 8962956151271946109}
   - component: {fileID: 3944272760808879074}
+  - component: {fileID: 6420056986252585211}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell.006
   m_TagString: Untagged
@@ -2903,6 +3156,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6420056986252585211
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790306938058057696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &793471665324621612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,6 +3425,7 @@ GameObject:
   - component: {fileID: 8099837549265493319}
   - component: {fileID: 3371379868589490270}
   - component: {fileID: 4525060465486327354}
+  - component: {fileID: 2037288242367557907}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.045
   m_TagString: Untagged
@@ -3229,6 +3496,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2037288242367557907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852607630860062226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0008812868, y: 0.0009986025, z: 0.0012148081}
+  m_Center: {x: -0.000038673883, y: 0.00008216327, z: 0.000060417737}
 --- !u!1 &867930127504254677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,6 +3767,7 @@ GameObject:
   - component: {fileID: 8071743226955501500}
   - component: {fileID: 8282775600673163755}
   - component: {fileID: 2533347831594417588}
+  - component: {fileID: 1441678822770519613}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.007
   m_TagString: Untagged
@@ -3557,6 +3838,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1441678822770519613
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977239037467409972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00033564103, y: 0.0003460615, z: 0.00025697594}
+  m_Center: {x: 0.000006691851, y: 0.000026577787, z: -0.000011069993}
 --- !u!1 &984069809095181055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3689,6 +3983,7 @@ GameObject:
   - component: {fileID: 8961302410311327503}
   - component: {fileID: 1637167402223313584}
   - component: {fileID: 209987149605159776}
+  - component: {fileID: 5870193763249867979}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell
   m_TagString: Untagged
@@ -3759,6 +4054,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5870193763249867979
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995086193899699274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0006489885, y: 0.0013706889, z: 0.0014847053}
+  m_Center: {x: 0.000052219126, y: 0.000044730747, z: 0.000002262182}
 --- !u!1 &1003285278997533511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,6 +4108,7 @@ GameObject:
   - component: {fileID: 8516161400972271586}
   - component: {fileID: 305670060333847159}
   - component: {fileID: 6209981283388451334}
+  - component: {fileID: 8321649652148517339}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.075
   m_TagString: Untagged
@@ -3870,6 +4179,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8321649652148517339
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005089079881987655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015783848, y: 0.0012278169, z: 0.0012132468}
+  m_Center: {x: 0.00010030239, y: -0.0000790202, z: -0.00021322319}
 --- !u!1 &1022419442643635895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,6 +4238,7 @@ GameObject:
   - component: {fileID: 5653694493824571669}
   - component: {fileID: 3165742897916500930}
   - component: {fileID: 5838443701260466245}
+  - component: {fileID: 328021503813643272}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.074
   m_TagString: Untagged
@@ -3986,6 +4309,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &328021503813643272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025746681545555872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00084124564, y: 0.0015283906, z: 0.001973777}
+  m_Center: {x: 0.00009041325, y: -0.00005683488, z: -0.00033687166}
 --- !u!1 &1040198165475088449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,6 +4578,7 @@ GameObject:
   - component: {fileID: 922367644624156309}
   - component: {fileID: 9069630066084122426}
   - component: {fileID: 7966047687599365902}
+  - component: {fileID: 7375559627110430580}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell.001
   m_TagString: Untagged
@@ -4312,6 +4649,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7375559627110430580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143654391561480925}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1145059795237124922
 GameObject:
   m_ObjectHideFlags: 0
@@ -4705,6 +5055,7 @@ GameObject:
   - component: {fileID: 2566705427332978240}
   - component: {fileID: 5683326730476193156}
   - component: {fileID: 4715533172299614827}
+  - component: {fileID: 6152772340041632994}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.044
   m_TagString: Untagged
@@ -4775,6 +5126,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6152772340041632994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276938636355817914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0009503737, y: 0.00092733715, z: 0.001513317}
+  m_Center: {x: -0.00001718098, y: 0.000054106615, z: -0.00025093887}
 --- !u!1 &1279358446833913159
 GameObject:
   m_ObjectHideFlags: 0
@@ -4877,6 +5241,7 @@ GameObject:
   - component: {fileID: 966396476281352447}
   - component: {fileID: 4519416123318472854}
   - component: {fileID: 52330022498635424}
+  - component: {fileID: 3345359520566026307}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell
   m_TagString: Untagged
@@ -4947,6 +5312,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3345359520566026307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311406284718378813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00035973813, y: 0.0002899283, z: 0.00050614995}
+  m_Center: {x: -0.00001102886, y: 0.000017456357, z: 0.000048755617}
 --- !u!1 &1312451099112686864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4989,6 +5367,7 @@ GameObject:
   - component: {fileID: 953109817448264435}
   - component: {fileID: 5404066028174961517}
   - component: {fileID: 3905397733657358154}
+  - component: {fileID: 9068545785665583092}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.012
   m_TagString: Untagged
@@ -5059,6 +5438,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9068545785665583092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319448534600092331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0021567992, y: 0.0010460177, z: 0.0035295158}
+  m_Center: {x: -0.00002681563, y: 0.0000028272912, z: 0.00010411148}
 --- !u!1 &1331300825095136713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,6 +5647,7 @@ GameObject:
   - component: {fileID: 2898535637444980957}
   - component: {fileID: 1765979433354136859}
   - component: {fileID: 4552901687570869984}
+  - component: {fileID: 7952705573648130202}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.010
   m_TagString: Untagged
@@ -5325,6 +5718,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7952705573648130202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369394000938020372}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013621161, y: 0.0020241956, z: 0.0014344737}
+  m_Center: {x: -0.00007870217, y: -0.00015761552, z: -0.000015910362}
 --- !u!1 &1378271451679292177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,6 +5838,7 @@ GameObject:
   - component: {fileID: 5634027436436135037}
   - component: {fileID: 3678984695302217492}
   - component: {fileID: 311940238306761290}
+  - component: {fileID: 3419891757160657448}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.050
   m_TagString: Untagged
@@ -5502,6 +5909,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3419891757160657448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400910994087459856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00092407124, y: 0.0006343625, z: 0.0014580176}
+  m_Center: {x: 0.000023823464, y: -0.00008906787, z: 0.0000073727265}
 --- !u!1 &1407184972643979474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,6 +6086,7 @@ GameObject:
   - component: {fileID: 2141929176932860533}
   - component: {fileID: 5964762612368857734}
   - component: {fileID: 2892953940848062667}
+  - component: {fileID: 4493400712960978375}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.020_cell.005
   m_TagString: Untagged
@@ -5736,6 +6157,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4493400712960978375
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481338099881659036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000117305404, y: 0.00008299571, z: 0.00009589706}
+  m_Center: {x: -0.000021986103, y: -0.0000037995226, z: 0.0000063705834}
 --- !u!1 &1486039540619669713
 GameObject:
   m_ObjectHideFlags: 0
@@ -5747,6 +6181,7 @@ GameObject:
   - component: {fileID: 3350598994616210952}
   - component: {fileID: 2008133489924932395}
   - component: {fileID: 4620214359085296731}
+  - component: {fileID: 4504711798221427507}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.065
   m_TagString: Untagged
@@ -5817,6 +6252,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4504711798221427507
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486039540619669713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0006907234, y: 0.00083244295, z: 0.00062151474}
+  m_Center: {x: 0.000015652317, y: 0.000011161026, z: -0.000049272763}
 --- !u!1 &1490133058103912657
 GameObject:
   m_ObjectHideFlags: 0
@@ -5921,6 +6369,7 @@ GameObject:
   - component: {fileID: 5515928195692569531}
   - component: {fileID: 5679136983095471269}
   - component: {fileID: 3045413683352268229}
+  - component: {fileID: 577267828878005707}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.027
   m_TagString: Untagged
@@ -5991,6 +6440,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &577267828878005707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512430313331586709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017248596, y: 0.001980024, z: 0.0025489875}
+  m_Center: {x: -0.00013597851, y: 0.00019661491, z: -0.00019326751}
 --- !u!1 &1530398581118443902
 GameObject:
   m_ObjectHideFlags: 0
@@ -6032,6 +6494,7 @@ GameObject:
   - component: {fileID: 7695170804526975446}
   - component: {fileID: 4584140841172065475}
   - component: {fileID: 8415454211766103653}
+  - component: {fileID: 6628806544894312343}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.022_cell.002
   m_TagString: Untagged
@@ -6102,6 +6565,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6628806544894312343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531878539844843700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000040163955, y: 0.000058419042, z: 0.00013392144}
+  m_Center: {x: -0.000013835915, y: -0.000015743828, z: -0.00006388808}
 --- !u!1 &1531928314853688184
 GameObject:
   m_ObjectHideFlags: 0
@@ -6398,6 +6874,7 @@ GameObject:
   - component: {fileID: 7941571971358775215}
   - component: {fileID: 311514490500390441}
   - component: {fileID: 1640649585780292933}
+  - component: {fileID: 1384531298021035460}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.023
   m_TagString: Untagged
@@ -6468,6 +6945,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1384531298021035460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603239614974374825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0020285738, y: 0.001699655, z: 0.0013840585}
+  m_Center: {x: -0.00016137649, y: -0.00008274354, z: -0.00028805825}
 --- !u!1 &1608442399543870507
 GameObject:
   m_ObjectHideFlags: 0
@@ -6479,6 +6969,7 @@ GameObject:
   - component: {fileID: 5114645039618070501}
   - component: {fileID: 6874452643567554062}
   - component: {fileID: 8045466860765495177}
+  - component: {fileID: 8222998946634550670}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.008
   m_TagString: Untagged
@@ -6549,6 +7040,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8222998946634550670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608442399543870507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0008611914, y: 0.00084536575, z: 0.0008752568}
+  m_Center: {x: 0.000112006746, y: 0.0000030119695, z: 0.000025076322}
 --- !u!1 &1611428673988804690
 GameObject:
   m_ObjectHideFlags: 0
@@ -6560,6 +7064,7 @@ GameObject:
   - component: {fileID: 5439308698991950361}
   - component: {fileID: 8233865965254580357}
   - component: {fileID: 9075334732094047384}
+  - component: {fileID: 3858122787728871315}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.001
   m_TagString: Untagged
@@ -6630,6 +7135,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3858122787728871315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611428673988804690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0007537843, y: 0.0002065215, z: 0.0011616957}
+  m_Center: {x: 0.0000846918, y: 0.000010996055, z: -0.00003569744}
 --- !u!1 &1632555407803598578
 GameObject:
   m_ObjectHideFlags: 0
@@ -6641,6 +7159,7 @@ GameObject:
   - component: {fileID: 3475947047952288094}
   - component: {fileID: 1322598104836423552}
   - component: {fileID: 6993417267253341906}
+  - component: {fileID: 4894758399157291043}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.055
   m_TagString: Untagged
@@ -6711,6 +7230,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4894758399157291043
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632555407803598578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012577474, y: 0.0012827616, z: 0.0013951252}
+  m_Center: {x: -0.00012524839, y: 0.000020180243, z: 0.000074152325}
 --- !u!1 &1638313125834351838
 GameObject:
   m_ObjectHideFlags: 0
@@ -6722,6 +7254,7 @@ GameObject:
   - component: {fileID: 6645327674465668620}
   - component: {fileID: 1851686758879687766}
   - component: {fileID: 6003339828411311765}
+  - component: {fileID: 4003626962037777875}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.008_cell.005
   m_TagString: Untagged
@@ -6792,6 +7325,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4003626962037777875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638313125834351838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00033583204, y: 0.00028451352, z: 0.00031807783}
+  m_Center: {x: -0.000020596737, y: -0.000016042159, z: 0.00004016511}
 --- !u!1 &1652157175952682416
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,6 +7409,7 @@ GameObject:
   - component: {fileID: 2616404457112283862}
   - component: {fileID: 2142767630868550111}
   - component: {fileID: 2248535896149513267}
+  - component: {fileID: 8297480607197824094}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.018
   m_TagString: Untagged
@@ -6933,6 +7480,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8297480607197824094
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729743967283447447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013478643, y: 0.0013221481, z: 0.0010314808}
+  m_Center: {x: 0.000066625915, y: 0.0000033439712, z: 0.0000524635}
 --- !u!1 &1748536101901583537
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,6 +7504,7 @@ GameObject:
   - component: {fileID: 815687324221897294}
   - component: {fileID: 2423979913460715363}
   - component: {fileID: 1580470861738424894}
+  - component: {fileID: 8729336419120773836}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell.005
   m_TagString: Untagged
@@ -7014,6 +7575,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8729336419120773836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748536101901583537}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1753597728414739234
 GameObject:
   m_ObjectHideFlags: 0
@@ -7056,6 +7630,7 @@ GameObject:
   - component: {fileID: 2211054938616280537}
   - component: {fileID: 9219346442328626220}
   - component: {fileID: 5819250405893379562}
+  - component: {fileID: 7920580903422510303}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.070
   m_TagString: Untagged
@@ -7126,6 +7701,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7920580903422510303
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771838387157621299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013632206, y: 0.0010131224, z: 0.0011427372}
+  m_Center: {x: -0.000096210046, y: -0.000010691814, z: -0.000088722314}
 --- !u!1 &1794669203953999495
 GameObject:
   m_ObjectHideFlags: 0
@@ -7198,6 +7786,7 @@ GameObject:
   - component: {fileID: 8292451920023836912}
   - component: {fileID: 3782020895029263750}
   - component: {fileID: 7943102307760199308}
+  - component: {fileID: 8689315170598963372}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.007
   m_TagString: Untagged
@@ -7268,6 +7857,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8689315170598963372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823651856318041813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00027854415, y: 0.0001382748, z: 0.00026031455}
+  m_Center: {x: 0.000011729513, y: 0.000001019085, z: 0.000035872166}
 --- !u!1 &1837604827046731758
 GameObject:
   m_ObjectHideFlags: 0
@@ -7309,6 +7911,7 @@ GameObject:
   - component: {fileID: 3520098896044120861}
   - component: {fileID: 1977779113096656594}
   - component: {fileID: 5891539184619676193}
+  - component: {fileID: 3732952955626154098}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.053
   m_TagString: Untagged
@@ -7379,6 +7982,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3732952955626154098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847483512608286091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017882182, y: 0.0021850837, z: 0.0013499975}
+  m_Center: {x: 0.0004413181, y: -0.0002210239, z: 0.00025034192}
 --- !u!1 &1864652295775068105
 GameObject:
   m_ObjectHideFlags: 0
@@ -7421,6 +8037,7 @@ GameObject:
   - component: {fileID: 1324428482054113944}
   - component: {fileID: 6242126944257789800}
   - component: {fileID: 423633586011766880}
+  - component: {fileID: 4977361434532376927}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.054
   m_TagString: Untagged
@@ -7491,6 +8108,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4977361434532376927
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896121207880280645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001622414, y: 0.0014075646, z: 0.0017616661}
+  m_Center: {x: -0.00010983177, y: 0.0003374031, z: 0.000049188668}
 --- !u!1 &1900938327988778149
 GameObject:
   m_ObjectHideFlags: 0
@@ -7563,6 +8193,7 @@ GameObject:
   - component: {fileID: 610070707247634161}
   - component: {fileID: 7585343776110610717}
   - component: {fileID: 7259346312129467886}
+  - component: {fileID: 3142693873867017786}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.076
   m_TagString: Untagged
@@ -7633,6 +8264,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3142693873867017786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901779920094749267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00046212488, y: 0.00033413814, z: 0.0006674713}
+  m_Center: {x: 0.000009151125, y: -0.000002146247, z: -0.00007274588}
 --- !u!1 &1912842939499816923
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,6 +8442,7 @@ GameObject:
   - component: {fileID: 3740629303919835779}
   - component: {fileID: 4790256172795060313}
   - component: {fileID: 382217997337328382}
+  - component: {fileID: 5954477296028606344}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.010
   m_TagString: Untagged
@@ -7868,6 +8513,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5954477296028606344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980223131158005007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00093466893, y: 0.00013094982, z: 0.00074880786}
+  m_Center: {x: 0.000069514674, y: -0.00001663456, z: 0.000056641777}
 --- !u!1 &1988969739611694440
 GameObject:
   m_ObjectHideFlags: 0
@@ -7972,6 +8630,7 @@ GameObject:
   - component: {fileID: 8715541233464178012}
   - component: {fileID: 6550529063942209097}
   - component: {fileID: 7785311594397991225}
+  - component: {fileID: 6407017012213396745}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.003
   m_TagString: Untagged
@@ -8042,6 +8701,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6407017012213396745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011766081428392047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00036777195, y: 0.0004374802, z: 0.00036968203}
+  m_Center: {x: 0.000012109755, y: 0.000012511728, z: 0.000023863951}
 --- !u!1 &2035207117188710926
 GameObject:
   m_ObjectHideFlags: 0
@@ -8116,6 +8788,7 @@ GameObject:
   - component: {fileID: 5975310646037451083}
   - component: {fileID: 1782549331097387859}
   - component: {fileID: 3706675206364657589}
+  - component: {fileID: 9035992366071155506}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.048
   m_TagString: Untagged
@@ -8186,6 +8859,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9035992366071155506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048903905488554692}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013095237, y: 0.0016311979, z: 0.001555532}
+  m_Center: {x: -0.0001431019, y: -0.000028470293, z: -0.00016853676}
 --- !u!1 &2068197647336601663
 GameObject:
   m_ObjectHideFlags: 0
@@ -8318,6 +9004,7 @@ GameObject:
   - component: {fileID: 2488420620572140530}
   - component: {fileID: 5138152492041378532}
   - component: {fileID: 8930197850146335017}
+  - component: {fileID: 1734949449029802613}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.014
   m_TagString: Untagged
@@ -8388,6 +9075,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1734949449029802613
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108726392619177032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015966946, y: 0.00059602794, z: 0.0017247439}
+  m_Center: {x: -0.00004022679, y: 0.000002678105, z: 0.00003584823}
 --- !u!1 &2116405792814113965
 GameObject:
   m_ObjectHideFlags: 0
@@ -8588,6 +9288,7 @@ GameObject:
   - component: {fileID: 4775402206919975382}
   - component: {fileID: 2738728687213025081}
   - component: {fileID: 2631469965193477708}
+  - component: {fileID: 1243177460341003148}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.009
   m_TagString: Untagged
@@ -8658,6 +9359,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1243177460341003148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185076844744253639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0025794702, y: 0.0021922244, z: 0.0018908804}
+  m_Center: {x: 0.00009258621, y: -0.00026257592, z: -0.000412877}
 --- !u!1 &2186519630187083443
 GameObject:
   m_ObjectHideFlags: 0
@@ -8669,6 +9383,7 @@ GameObject:
   - component: {fileID: 4641283579460539724}
   - component: {fileID: 172372025704875081}
   - component: {fileID: 2417771994799696742}
+  - component: {fileID: 7525090350079980802}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.036
   m_TagString: Untagged
@@ -8739,6 +9454,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7525090350079980802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186519630187083443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011967502, y: 0.0011829486, z: 0.0015138015}
+  m_Center: {x: -0.000038806145, y: -0.00024043368, z: -0.000074267344}
 --- !u!1 &2196872112939146173
 GameObject:
   m_ObjectHideFlags: 0
@@ -8904,6 +9632,7 @@ GameObject:
   - component: {fileID: 1464228375192564584}
   - component: {fileID: 2174826098908573177}
   - component: {fileID: 3591238756312179107}
+  - component: {fileID: 5879286706947903965}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.006
   m_TagString: Untagged
@@ -8974,6 +9703,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5879286706947903965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346692406995669290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00035913062, y: 0.00024999783, z: 0.00017794655}
+  m_Center: {x: -0.0000064586566, y: 0.000010781625, z: 0.000017499988}
 --- !u!1 &2363841258024070586
 GameObject:
   m_ObjectHideFlags: 0
@@ -9107,6 +9849,7 @@ GameObject:
   - component: {fileID: 8412369732114360562}
   - component: {fileID: 187246886162987568}
   - component: {fileID: 1651116096560303522}
+  - component: {fileID: 72252547436348845}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.003
   m_TagString: Untagged
@@ -9177,6 +9920,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &72252547436348845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2425461566272958072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011378741, y: 0.0012442372, z: 0.00154033}
+  m_Center: {x: -0.000006561546, y: -0.00032571415, z: 0.000019594558}
 --- !u!1 &2431926861241817869
 GameObject:
   m_ObjectHideFlags: 0
@@ -9311,6 +10067,7 @@ GameObject:
   - component: {fileID: 8746533062396972621}
   - component: {fileID: 7450064615186059874}
   - component: {fileID: 4102982131194011895}
+  - component: {fileID: 5147796267967068630}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.056
   m_TagString: Untagged
@@ -9381,6 +10138,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5147796267967068630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448271890114862972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0029910295, y: 0.0017901406, z: 0.0026846565}
+  m_Center: {x: -0.000084298255, y: 0.00034881503, z: -0.00018388292}
 --- !u!1 &2454631149442021368
 GameObject:
   m_ObjectHideFlags: 0
@@ -9424,6 +10194,7 @@ GameObject:
   - component: {fileID: 2558558959339107769}
   - component: {fileID: 1585459508367553455}
   - component: {fileID: 4925762643714881793}
+  - component: {fileID: 1752103467652357750}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.020_cell.007
   m_TagString: Untagged
@@ -9494,6 +10265,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1752103467652357750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480324634034763078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0001194097, y: 0.00009636539, z: 0.00007583789}
+  m_Center: {x: 0.000002228806, y: 0.000014005619, z: 0.000015034653}
 --- !u!1 &2563643614081877224
 GameObject:
   m_ObjectHideFlags: 0
@@ -9657,6 +10441,7 @@ GameObject:
   - component: {fileID: 7152865379055832276}
   - component: {fileID: 3693911012751860164}
   - component: {fileID: 4674828833083588571}
+  - component: {fileID: 6502401156243228809}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.003
   m_TagString: Untagged
@@ -9727,6 +10512,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6502401156243228809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646023975916740248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00028896696, y: 0.0001950892, z: 0.0002740741}
+  m_Center: {x: 0.000001915003, y: -0.000010691298, z: 0.0000071330855}
 --- !u!1 &2646762135959385983
 GameObject:
   m_ObjectHideFlags: 0
@@ -9830,6 +10628,7 @@ GameObject:
   - component: {fileID: 2798555478029681645}
   - component: {fileID: 4821004366755719396}
   - component: {fileID: 6559422715804599565}
+  - component: {fileID: 1813009720763111733}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.006
   m_TagString: Untagged
@@ -9900,6 +10699,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1813009720763111733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2729605324368026859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00020052544, y: 0.00024950583, z: 0.00024961832}
+  m_Center: {x: 0.000017401173, y: -0.000009104415, z: -0.000022737448}
 --- !u!1 &2742453257748199506
 GameObject:
   m_ObjectHideFlags: 0
@@ -9941,6 +10753,7 @@ GameObject:
   - component: {fileID: 654520005521622320}
   - component: {fileID: 6493789914965719065}
   - component: {fileID: 2669350681781793596}
+  - component: {fileID: 3087832159076828710}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.016
   m_TagString: Untagged
@@ -10011,6 +10824,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3087832159076828710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776539004707882852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0003892368, y: 0.00058720366, z: 0.0005198113}
+  m_Center: {x: 0.00000035385892, y: 0.00007973495, z: -0.000056881163}
 --- !u!1 &2786355841329999144
 GameObject:
   m_ObjectHideFlags: 0
@@ -10205,6 +11031,7 @@ GameObject:
   - component: {fileID: 2800150025515276980}
   - component: {fileID: 1572418822151872448}
   - component: {fileID: 4970552596068196179}
+  - component: {fileID: 8463369290307057817}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.003
   m_TagString: Untagged
@@ -10275,6 +11102,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8463369290307057817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925767189577975298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000110316425, y: 0.00011518505, z: 0.00020874412}
+  m_Center: {x: -0.0000015587175, y: 0.0000013103252, z: 0.000008495701}
 --- !u!1 &2933954811411290072
 GameObject:
   m_ObjectHideFlags: 0
@@ -10317,6 +11157,7 @@ GameObject:
   - component: {fileID: 7341843291041154553}
   - component: {fileID: 6605757644028982332}
   - component: {fileID: 8870431629931783676}
+  - component: {fileID: 1575038941515048214}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.006
   m_TagString: Untagged
@@ -10387,6 +11228,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1575038941515048214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949969784921317394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00034798012, y: 0.0003792342, z: 0.0003129614}
+  m_Center: {x: 0.00003667181, y: 0.000028964083, z: 0.000005457273}
 --- !u!1 &2955945011580029702
 GameObject:
   m_ObjectHideFlags: 0
@@ -10398,6 +11252,7 @@ GameObject:
   - component: {fileID: 1142954897229758250}
   - component: {fileID: 3226154207573253447}
   - component: {fileID: 3813628038256069116}
+  - component: {fileID: 6106032779377685824}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.004
   m_TagString: Untagged
@@ -10468,6 +11323,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6106032779377685824
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955945011580029702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00034709205, y: 0.00029746135, z: 0.00045860515}
+  m_Center: {x: -0.000029359573, y: 0.000031786767, z: -0.000036353063}
 --- !u!1 &2986601258441548130
 GameObject:
   m_ObjectHideFlags: 0
@@ -10479,6 +11347,7 @@ GameObject:
   - component: {fileID: 3348481013062049474}
   - component: {fileID: 6595506951522727725}
   - component: {fileID: 8137089545627287133}
+  - component: {fileID: 2429837602876903114}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.022_cell.004
   m_TagString: Untagged
@@ -10549,6 +11418,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2429837602876903114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986601258441548130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2996477659062618475
 GameObject:
   m_ObjectHideFlags: 0
@@ -10821,6 +11703,7 @@ GameObject:
   - component: {fileID: 289855425024106361}
   - component: {fileID: 5347987874035363007}
   - component: {fileID: 6338447062252329095}
+  - component: {fileID: 4889635049317405114}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.041
   m_TagString: Untagged
@@ -10891,6 +11774,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4889635049317405114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167441313503635495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012711517, y: 0.0014760112, z: 0.0013847677}
+  m_Center: {x: 0.00013024491, y: -0.0000027956844, z: -0.00028094428}
 --- !u!1 &3168856559594920458
 GameObject:
   m_ObjectHideFlags: 0
@@ -10933,6 +11829,7 @@ GameObject:
   - component: {fileID: 5420980752625953403}
   - component: {fileID: 7597359008495766228}
   - component: {fileID: 1394248337943378691}
+  - component: {fileID: 8882242006088686877}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.017
   m_TagString: Untagged
@@ -11003,6 +11900,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8882242006088686877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186662286365551101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013010048, y: 0.0017866767, z: 0.0023496924}
+  m_Center: {x: -0.00009623164, y: -0.00028244872, z: 0.00044970072}
 --- !u!1 &3187618622263434091
 GameObject:
   m_ObjectHideFlags: 0
@@ -11136,6 +12046,7 @@ GameObject:
   - component: {fileID: 2383013194179231975}
   - component: {fileID: 7380953887657584346}
   - component: {fileID: 5548610860226859099}
+  - component: {fileID: 9204376130865390071}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell
   m_TagString: Untagged
@@ -11206,6 +12117,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9204376130865390071
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278796391147141406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3285666071953414489
 GameObject:
   m_ObjectHideFlags: 0
@@ -11279,6 +12203,7 @@ GameObject:
   - component: {fileID: 2914300944975679950}
   - component: {fileID: 8432984583784218233}
   - component: {fileID: 4736396687016813204}
+  - component: {fileID: 1358858060336020876}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell.003
   m_TagString: Untagged
@@ -11349,6 +12274,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1358858060336020876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360567142504661086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3378332177307365534
 GameObject:
   m_ObjectHideFlags: 0
@@ -11577,6 +12515,7 @@ GameObject:
   - component: {fileID: 6379343190448845079}
   - component: {fileID: 1707377147216565197}
   - component: {fileID: 6663992379940733403}
+  - component: {fileID: 8150977335251127160}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.004
   m_TagString: Untagged
@@ -11647,6 +12586,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8150977335251127160
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456778048443612928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0002112485, y: 0.00024049719, z: 0.0002327514}
+  m_Center: {x: 0.0000035046469, y: 0.000037984955, z: 0.000010229187}
 --- !u!1 &3457009652510357498
 GameObject:
   m_ObjectHideFlags: 0
@@ -11719,6 +12671,7 @@ GameObject:
   - component: {fileID: 7830924347314113831}
   - component: {fileID: 1672032623835888593}
   - component: {fileID: 1586425168085039792}
+  - component: {fileID: 2698393023672799946}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.001
   m_TagString: Untagged
@@ -11789,6 +12742,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2698393023672799946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472519116810951923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00023826995, y: 0.000290528, z: 0.00023128503}
+  m_Center: {x: -0.00001772544, y: 0.000042578962, z: -0.00000522175}
 --- !u!1 &3474036344493006039
 GameObject:
   m_ObjectHideFlags: 0
@@ -11862,6 +12828,7 @@ GameObject:
   - component: {fileID: 1633841766436506190}
   - component: {fileID: 1564069190336972372}
   - component: {fileID: 2495025170399787331}
+  - component: {fileID: 8027907000587943195}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.066
   m_TagString: Untagged
@@ -11932,6 +12899,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8027907000587943195
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513136457974274123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0019469322, y: 0.0013156926, z: 0.002099334}
+  m_Center: {x: -0.000017103273, y: -0.00038770481, z: -0.00022029142}
 --- !u!1 &3519903445645549627
 GameObject:
   m_ObjectHideFlags: 0
@@ -12008,6 +12988,7 @@ GameObject:
   - component: {fileID: 5004800863697076608}
   - component: {fileID: 3236240196383334097}
   - component: {fileID: 3319111442261200586}
+  - component: {fileID: 9126089146040219544}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell
   m_TagString: Untagged
@@ -12078,6 +13059,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9126089146040219544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534258648542442978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00088072964, y: 0.0013660365, z: 0.0016227355}
+  m_Center: {x: 0.00006780056, y: -0.000038213817, z: 0.00002143392}
 --- !u!1 &3567991385955026684
 GameObject:
   m_ObjectHideFlags: 0
@@ -12089,6 +13083,7 @@ GameObject:
   - component: {fileID: 3016404792953621921}
   - component: {fileID: 5359913909148047618}
   - component: {fileID: 8124359257863201574}
+  - component: {fileID: 5272509078534741634}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.004
   m_TagString: Untagged
@@ -12159,6 +13154,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5272509078534741634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567991385955026684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001290373, y: 0.0010415611, z: 0.0010808513}
+  m_Center: {x: -0.00010217892, y: -0.000047926507, z: 0.000010010173}
 --- !u!1 &3574626175542609015
 GameObject:
   m_ObjectHideFlags: 0
@@ -12355,6 +13363,7 @@ GameObject:
   - component: {fileID: 8244462858060741197}
   - component: {fileID: 6505464471441877056}
   - component: {fileID: 3994226504684596327}
+  - component: {fileID: 4979759420043301268}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.061
   m_TagString: Untagged
@@ -12425,6 +13434,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4979759420043301268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3616653252208064266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015324792, y: 0.00088757393, z: 0.0009814124}
+  m_Center: {x: -0.00023473997, y: 0.00002494748, z: -0.000040733714}
 --- !u!1 &3647208289254127454
 GameObject:
   m_ObjectHideFlags: 0
@@ -12618,6 +13640,7 @@ GameObject:
   - component: {fileID: 3601155507300708820}
   - component: {fileID: 4785271989428651957}
   - component: {fileID: 9030457908006482996}
+  - component: {fileID: 8010743050616274908}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.021
   m_TagString: Untagged
@@ -12688,6 +13711,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8010743050616274908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712093029610535952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011949213, y: 0.0012052883, z: 0.001254939}
+  m_Center: {x: 0.0000048490474, y: -0.000041670624, z: 0.000017245267}
 --- !u!1 &3723462662676192804
 GameObject:
   m_ObjectHideFlags: 0
@@ -12888,6 +13924,7 @@ GameObject:
   - component: {fileID: 630575992662258724}
   - component: {fileID: 637815110105250575}
   - component: {fileID: 1812496828691778483}
+  - component: {fileID: 1941566112311971890}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.011
   m_TagString: Untagged
@@ -12958,6 +13995,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1941566112311971890
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786847943843702161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017180312, y: 0.0012199281, z: 0.00077881024}
+  m_Center: {x: 0.00006875981, y: -0.000079362755, z: 0.000022801698}
 --- !u!1 &3788733659858999150
 GameObject:
   m_ObjectHideFlags: 0
@@ -12969,6 +14019,7 @@ GameObject:
   - component: {fileID: 7787058983453664393}
   - component: {fileID: 1634842196836160495}
   - component: {fileID: 714501903245124233}
+  - component: {fileID: 7214037215729207880}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.001
   m_TagString: Untagged
@@ -13039,6 +14090,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7214037215729207880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788733659858999150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0010371065, y: 0.0011636934, z: 0.0014387472}
+  m_Center: {x: 0.00007908144, y: -0.000088525514, z: 0.00012815668}
 --- !u!1 &3819199218406604420
 GameObject:
   m_ObjectHideFlags: 0
@@ -13050,6 +14114,7 @@ GameObject:
   - component: {fileID: 4483247483690906657}
   - component: {fileID: 665809067408194996}
   - component: {fileID: 5674442332186707170}
+  - component: {fileID: 7953928651215574460}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.016
   m_TagString: Untagged
@@ -13120,6 +14185,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7953928651215574460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819199218406604420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011127396, y: 0.0012360105, z: 0.0014755321}
+  m_Center: {x: -0.000029087154, y: 0.0000039748256, z: -0.00020803766}
 --- !u!1 &3819352901959534494
 GameObject:
   m_ObjectHideFlags: 0
@@ -13162,6 +14240,7 @@ GameObject:
   - component: {fileID: 3708743225705337619}
   - component: {fileID: 7522786312877780860}
   - component: {fileID: 5037253481297642381}
+  - component: {fileID: 2348537441221709229}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.072
   m_TagString: Untagged
@@ -13232,6 +14311,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2348537441221709229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830081354097980742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0020674975, y: 0.0017526043, z: 0.0017420064}
+  m_Center: {x: 0.00016017252, y: -0.000072533425, z: -0.00002895816}
 --- !u!1 &3850563791738739163
 GameObject:
   m_ObjectHideFlags: 0
@@ -13274,6 +14366,7 @@ GameObject:
   - component: {fileID: 325513193999649184}
   - component: {fileID: 1560559836994762029}
   - component: {fileID: 3288695448274647605}
+  - component: {fileID: 2268834928159009635}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.013
   m_TagString: Untagged
@@ -13344,6 +14437,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2268834928159009635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3861390475044644199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0009681424, y: 0.00012832333, z: 0.00073585985}
+  m_Center: {x: 0.00010735051, y: 0.00001818208, z: 0.000013384485}
 --- !u!1 &3866724586148850021
 GameObject:
   m_ObjectHideFlags: 0
@@ -13516,6 +14622,7 @@ GameObject:
   - component: {fileID: 2267277061940680272}
   - component: {fileID: 3070675247680544712}
   - component: {fileID: 6748695378156814058}
+  - component: {fileID: 5640059769150726270}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.005
   m_TagString: Untagged
@@ -13586,6 +14693,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5640059769150726270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951223275001048544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012495522, y: 0.00033325626, z: 0.0016256559}
+  m_Center: {x: 0.00018620261, y: 0.00000093170803, z: -0.00009507687}
 --- !u!1 &3962714499870039278
 GameObject:
   m_ObjectHideFlags: 0
@@ -13597,6 +14717,7 @@ GameObject:
   - component: {fileID: 8643581670015556165}
   - component: {fileID: 1462013337764148360}
   - component: {fileID: 9174675630823457909}
+  - component: {fileID: 3603794459309275263}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.004
   m_TagString: Untagged
@@ -13667,6 +14788,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3603794459309275263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962714499870039278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00021896872, y: 0.0001062389, z: 0.0002431129}
+  m_Center: {x: 0.0000069498565, y: 0.0000023042353, z: 0.000012460861}
 --- !u!1 &3990848904628471555
 GameObject:
   m_ObjectHideFlags: 0
@@ -13678,6 +14812,7 @@ GameObject:
   - component: {fileID: 7828082324279484902}
   - component: {fileID: 6305406429976729487}
   - component: {fileID: 4878462143595726531}
+  - component: {fileID: 705658267881034555}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.060
   m_TagString: Untagged
@@ -13748,6 +14883,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &705658267881034555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990848904628471555}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0018997206, y: 0.0012614413, z: 0.0020428135}
+  m_Center: {x: 0.000026410562, y: -0.00031701982, z: 0.000109391935}
 --- !u!1 &4010000573286124461
 GameObject:
   m_ObjectHideFlags: 0
@@ -13819,6 +14967,7 @@ GameObject:
   - component: {fileID: 5558971227786625859}
   - component: {fileID: 426599593967765743}
   - component: {fileID: 4838132752516829238}
+  - component: {fileID: 2390923304087910280}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.068
   m_TagString: Untagged
@@ -13889,6 +15038,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2390923304087910280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055023457801731287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0014170757, y: 0.002279769, z: 0.0015292021}
+  m_Center: {x: 0.00013915522, y: -0.0001325352, z: 0.000069968184}
 --- !u!1 &4079161036690757027
 GameObject:
   m_ObjectHideFlags: 0
@@ -13930,6 +15092,7 @@ GameObject:
   - component: {fileID: 2870962129408203010}
   - component: {fileID: 8046634355891714956}
   - component: {fileID: 8723058094476165302}
+  - component: {fileID: 8473027954994770185}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.001
   m_TagString: Untagged
@@ -14000,6 +15163,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8473027954994770185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087935165497789714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00014453239, y: 0.00012209562, z: 0.000116615054}
+  m_Center: {x: 0.000004814301, y: -0.000007046922, z: -0.0000034300676}
 --- !u!1 &4094866107371403544
 GameObject:
   m_ObjectHideFlags: 0
@@ -14011,6 +15187,7 @@ GameObject:
   - component: {fileID: 8442750083760691973}
   - component: {fileID: 3532760379422155066}
   - component: {fileID: 8636246462216378679}
+  - component: {fileID: 7832390842953057062}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.005
   m_TagString: Untagged
@@ -14081,6 +15258,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7832390842953057062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094866107371403544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00026997275, y: 0.00030945032, z: 0.0003771606}
+  m_Center: {x: -0.00000561247, y: 0.000013486931, z: 0.000054176515}
 --- !u!1 &4118067639089323046
 GameObject:
   m_ObjectHideFlags: 0
@@ -14122,6 +15312,7 @@ GameObject:
   - component: {fileID: 6725346666599326311}
   - component: {fileID: 1572172807377025861}
   - component: {fileID: 7328285770577690723}
+  - component: {fileID: 5750544090365341037}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.006
   m_TagString: Untagged
@@ -14192,6 +15383,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5750544090365341037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122946332443096857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00031063022, y: 0.00026887815, z: 0.00038983178}
+  m_Center: {x: 0.000015795013, y: 0.000005499721, z: -0.000013322989}
 --- !u!1 &4123276418950939892
 GameObject:
   m_ObjectHideFlags: 0
@@ -14203,6 +15407,7 @@ GameObject:
   - component: {fileID: 2038624142668458256}
   - component: {fileID: 5657639444495162870}
   - component: {fileID: 4132672166283445293}
+  - component: {fileID: 6386852408556588522}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.001
   m_TagString: Untagged
@@ -14273,6 +15478,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6386852408556588522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123276418950939892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0022705558, y: 0.0020170386, z: 0.0012519961}
+  m_Center: {x: -0.00020399169, y: -0.000029068435, z: -0.00018532424}
 --- !u!1 &4130469728748985154
 GameObject:
   m_ObjectHideFlags: 0
@@ -14321,6 +15539,7 @@ GameObject:
   - component: {fileID: 6867321618670888067}
   - component: {fileID: 3941487490585140639}
   - component: {fileID: 2750877561472620327}
+  - component: {fileID: 4038378889045278051}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.022_cell
   m_TagString: Untagged
@@ -14391,6 +15610,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4038378889045278051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139343768920439150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4142287793255151638
 GameObject:
   m_ObjectHideFlags: 0
@@ -14433,6 +15665,7 @@ GameObject:
   - component: {fileID: 7317695582340830910}
   - component: {fileID: 5259144374360615068}
   - component: {fileID: 3470653840366819078}
+  - component: {fileID: 2235132731868119263}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.002
   m_TagString: Untagged
@@ -14503,6 +15736,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2235132731868119263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165158112545943443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00069767376, y: 0.00074952294, z: 0.001986172}
+  m_Center: {x: 0.000104840736, y: 0.000060595314, z: 0.00033078814}
 --- !u!1 &4165764567294797546
 GameObject:
   m_ObjectHideFlags: 0
@@ -14575,6 +15821,7 @@ GameObject:
   - component: {fileID: 1210745212277043042}
   - component: {fileID: 2367123561440049668}
   - component: {fileID: 4069278846821925571}
+  - component: {fileID: 1213069592998250849}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.063
   m_TagString: Untagged
@@ -14645,6 +15892,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1213069592998250849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204025703292113794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012315006, y: 0.0011568635, z: 0.0011146623}
+  m_Center: {x: 0.000009567855, y: 0.00007864357, z: 0.00004452047}
 --- !u!1 &4211682693931644132
 GameObject:
   m_ObjectHideFlags: 0
@@ -14912,6 +16172,7 @@ GameObject:
   - component: {fileID: 7104963671937814134}
   - component: {fileID: 8967542809666941101}
   - component: {fileID: 5451289981077799836}
+  - component: {fileID: 190348440423086138}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.035
   m_TagString: Untagged
@@ -14982,6 +16243,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &190348440423086138
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347616455073370443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.002648922, y: 0.001686244, z: 0.00245999}
+  m_Center: {x: -0.00011486397, y: 0.000043577682, z: -0.00022584487}
 --- !u!1 &4369782308003395630
 GameObject:
   m_ObjectHideFlags: 0
@@ -15057,6 +16331,7 @@ GameObject:
   - component: {fileID: 3015218625088032222}
   - component: {fileID: 2255095920984249694}
   - component: {fileID: 4305888983132343751}
+  - component: {fileID: 1711903818734813108}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.011
   m_TagString: Untagged
@@ -15127,6 +16402,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1711903818734813108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404221842900102615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011648219, y: 0.0017636374, z: 0.0013271975}
+  m_Center: {x: 0.000055731012, y: 0.000088089015, z: -0.0002749237}
 --- !u!1 &4417196133070192507
 GameObject:
   m_ObjectHideFlags: 0
@@ -15235,6 +16523,7 @@ GameObject:
   - component: {fileID: 3353278045824423670}
   - component: {fileID: 4488926816250929848}
   - component: {fileID: 6428629140687321763}
+  - component: {fileID: 7299612179367681417}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.077
   m_TagString: Untagged
@@ -15305,6 +16594,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7299612179367681417
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480025862607254676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00024892009, y: 0.00030614174, z: 0.00020513644}
+  m_Center: {x: 0.000007398281, y: 0.000017577939, z: -0.000042629028}
 --- !u!1 &4480101005824879138
 GameObject:
   m_ObjectHideFlags: 0
@@ -15316,6 +16618,7 @@ GameObject:
   - component: {fileID: 361566445345617995}
   - component: {fileID: 1499112297934234562}
   - component: {fileID: 7164222172732209998}
+  - component: {fileID: 99825251196796780}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.018
   m_TagString: Untagged
@@ -15386,6 +16689,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &99825251196796780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480101005824879138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0008371019, y: 0.0013670636, z: 0.001972157}
+  m_Center: {x: -0.0000536351, y: -0.000046249297, z: 0.00029816822}
 --- !u!1 &4485098226793926030
 GameObject:
   m_ObjectHideFlags: 0
@@ -15462,6 +16778,7 @@ GameObject:
   - component: {fileID: 3811660565667726990}
   - component: {fileID: 3520669335414009888}
   - component: {fileID: 6753481222498503939}
+  - component: {fileID: 1510809482420786402}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell
   m_TagString: Untagged
@@ -15532,6 +16849,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1510809482420786402
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495551518583502935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012009058, y: 0.0006269401, z: 0.00055348343}
+  m_Center: {x: -0.00010735492, y: -0.00019494054, z: -0.00007075788}
 --- !u!1 &4519271438207800251
 GameObject:
   m_ObjectHideFlags: 0
@@ -15636,6 +16966,7 @@ GameObject:
   - component: {fileID: 1605680070123716401}
   - component: {fileID: 2932797349449381481}
   - component: {fileID: 4087717875607290281}
+  - component: {fileID: 5327476164584845616}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.007
   m_TagString: Untagged
@@ -15706,6 +17037,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5327476164584845616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533320077089463209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00039426325, y: 0.00023669284, z: 0.00021710694}
+  m_Center: {x: -0.000009340132, y: 0.000015990958, z: -0.000007763951}
 --- !u!1 &4539379241045353491
 GameObject:
   m_ObjectHideFlags: 0
@@ -15840,6 +17184,7 @@ GameObject:
   - component: {fileID: 7962852682656427711}
   - component: {fileID: 566044483084771926}
   - component: {fileID: 4563996444317171071}
+  - component: {fileID: 4739172188183997921}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.028
   m_TagString: Untagged
@@ -15910,6 +17255,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4739172188183997921
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605712723058616411}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017957991, y: 0.0009486513, z: 0.0010122024}
+  m_Center: {x: 0.000020259875, y: 0.0000299849, z: -0.00019211089}
 --- !u!1 &4625593855138085698
 GameObject:
   m_ObjectHideFlags: 0
@@ -16044,6 +17402,7 @@ GameObject:
   - component: {fileID: 287965811831279080}
   - component: {fileID: 8718701773502249105}
   - component: {fileID: 2876086450004240266}
+  - component: {fileID: 3763164021801247292}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.022_cell.005
   m_TagString: Untagged
@@ -16114,6 +17473,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3763164021801247292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692555336139337243}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000055120705, y: 0.00009848071, z: 0.0001722502}
+  m_Center: {x: -0.0000029490857, y: -0.0000056964336, z: 0.000003774315}
 --- !u!1 &4711424585198153008
 GameObject:
   m_ObjectHideFlags: 0
@@ -16125,6 +17497,7 @@ GameObject:
   - component: {fileID: 53294423247484350}
   - component: {fileID: 2863424045799053477}
   - component: {fileID: 7314738227473552221}
+  - component: {fileID: 5565437117896977786}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.049
   m_TagString: Untagged
@@ -16195,6 +17568,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5565437117896977786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711424585198153008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0010613322, y: 0.0006197284, z: 0.00073051004}
+  m_Center: {x: 0.00006000421, y: 0.00018000929, z: -0.000047279835}
 --- !u!1 &4723133935693740374
 GameObject:
   m_ObjectHideFlags: 0
@@ -16206,6 +17592,7 @@ GameObject:
   - component: {fileID: 7651207587319697626}
   - component: {fileID: 3574891441187304663}
   - component: {fileID: 8320185034221436442}
+  - component: {fileID: 5236126500750186565}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.020
   m_TagString: Untagged
@@ -16276,6 +17663,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5236126500750186565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723133935693740374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001487057, y: 0.0014737536, z: 0.0018056527}
+  m_Center: {x: -0.00005290695, y: -0.00008490989, z: 0.000326284}
 --- !u!1 &4741181249886446350
 GameObject:
   m_ObjectHideFlags: 0
@@ -16442,6 +17842,7 @@ GameObject:
   - component: {fileID: 163545773589609977}
   - component: {fileID: 6180812109443725635}
   - component: {fileID: 7800577216759488695}
+  - component: {fileID: 2506728658667739523}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.004
   m_TagString: Untagged
@@ -16512,6 +17913,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2506728658667739523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789888358011243424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0016567402, y: 0.0021146042, z: 0.0023693268}
+  m_Center: {x: 0.00006309859, y: -0.00043011663, z: 0.00017664963}
 --- !u!1 &4798585861299022302
 GameObject:
   m_ObjectHideFlags: 0
@@ -16583,6 +17997,7 @@ GameObject:
   - component: {fileID: 5150678221597800617}
   - component: {fileID: 7433256320093451593}
   - component: {fileID: 7672107801066342065}
+  - component: {fileID: 721998633337856144}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.046
   m_TagString: Untagged
@@ -16653,6 +18068,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &721998633337856144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4804816607947492216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0016808325, y: 0.0012756123, z: 0.0019721445}
+  m_Center: {x: 0.00006581412, y: 0.00026298393, z: 0.00010669366}
 --- !u!1 &4817454239601999596
 GameObject:
   m_ObjectHideFlags: 0
@@ -16695,6 +18123,7 @@ GameObject:
   - component: {fileID: 4020728862326370815}
   - component: {fileID: 6314010455157534006}
   - component: {fileID: 1549649010766899060}
+  - component: {fileID: 1802595710549121070}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.022_cell.003
   m_TagString: Untagged
@@ -16765,6 +18194,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1802595710549121070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884671880332289390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4886652924341371774
 GameObject:
   m_ObjectHideFlags: 0
@@ -16776,6 +18218,7 @@ GameObject:
   - component: {fileID: 8134141886046681755}
   - component: {fileID: 4191721793383619006}
   - component: {fileID: 2310590945272821792}
+  - component: {fileID: 3119954757384116115}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.016
   m_TagString: Untagged
@@ -16846,6 +18289,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3119954757384116115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886652924341371774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011002116, y: 0.0020509285, z: 0.0011995782}
+  m_Center: {x: -0.00003171747, y: -0.00015712852, z: -0.00005709443}
 --- !u!1 &4919911372218599053
 GameObject:
   m_ObjectHideFlags: 0
@@ -16888,6 +18344,7 @@ GameObject:
   - component: {fileID: 7554727107196189852}
   - component: {fileID: 7251311412654547119}
   - component: {fileID: 4946105732513362069}
+  - component: {fileID: 6244867869464298742}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.007
   m_TagString: Untagged
@@ -16958,6 +18415,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6244867869464298742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930816075795984384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00008127204, y: 0.00007198581, z: 0.00013074027}
+  m_Center: {x: 0.0000008995503, y: -0.0000060839993, z: -0.000024550343}
 --- !u!1 &4936494951502124099
 GameObject:
   m_ObjectHideFlags: 0
@@ -17182,6 +18652,7 @@ GameObject:
   - component: {fileID: 3311047067077756832}
   - component: {fileID: 225840484904694833}
   - component: {fileID: 2190405134161118077}
+  - component: {fileID: 5916756847645132780}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell.002
   m_TagString: Untagged
@@ -17252,6 +18723,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5916756847645132780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008437179442006182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5012352871418803961
 GameObject:
   m_ObjectHideFlags: 0
@@ -17325,6 +18809,7 @@ GameObject:
   - component: {fileID: 6222653306325494246}
   - component: {fileID: 2551838086594163198}
   - component: {fileID: 7690375028559049232}
+  - component: {fileID: 2152535098921010000}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.071
   m_TagString: Untagged
@@ -17395,6 +18880,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2152535098921010000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023638996544844672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00046096515, y: 0.00046882135, z: 0.0010535845}
+  m_Center: {x: -0.00008510752, y: 0.000039562467, z: 0.0000024004544}
 --- !u!1 &5027337993904826722
 GameObject:
   m_ObjectHideFlags: 0
@@ -17468,6 +18966,7 @@ GameObject:
   - component: {fileID: 2402304621778086529}
   - component: {fileID: 6467636538675737927}
   - component: {fileID: 358146292724078261}
+  - component: {fileID: 4011517355345463112}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.047
   m_TagString: Untagged
@@ -17538,6 +19037,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4011517355345463112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5040511332482373529}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.002267878, y: 0.002227604, z: 0.0021021059}
+  m_Center: {x: -0.00026224388, y: -0.00038246234, z: 0.00017346392}
 --- !u!1 &5042792024363826124
 GameObject:
   m_ObjectHideFlags: 0
@@ -17581,6 +19093,7 @@ GameObject:
   - component: {fileID: 6347178074810876278}
   - component: {fileID: 6709635854233864334}
   - component: {fileID: 8844693583810148203}
+  - component: {fileID: 5985135548150332483}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.062
   m_TagString: Untagged
@@ -17651,6 +19164,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5985135548150332483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044840440395338684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017832385, y: 0.0021883342, z: 0.0016851132}
+  m_Center: {x: 0.00012048174, y: -0.0002633747, z: 0.0001471029}
 --- !u!1 &5059226911347350798
 GameObject:
   m_ObjectHideFlags: 0
@@ -17784,6 +19310,7 @@ GameObject:
   - component: {fileID: 5154175991680655082}
   - component: {fileID: 264704548462419188}
   - component: {fileID: 5178671957682930372}
+  - component: {fileID: 7526183154092800508}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.029
   m_TagString: Untagged
@@ -17854,6 +19381,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7526183154092800508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5153625987956085469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015631784, y: 0.0016813491, z: 0.0019287373}
+  m_Center: {x: -0.00018156072, y: 0.0001512698, z: 0.00038548262}
 --- !u!1 &5157058694911140709
 GameObject:
   m_ObjectHideFlags: 0
@@ -17990,6 +19530,7 @@ GameObject:
   - component: {fileID: 2039412153468258479}
   - component: {fileID: 6550763961350426823}
   - component: {fileID: 8192375339552344385}
+  - component: {fileID: 4443230057387848956}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.002
   m_TagString: Untagged
@@ -18060,6 +19601,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4443230057387848956
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197404123910410589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00030237844, y: 0.00049182243, z: 0.00050821353}
+  m_Center: {x: -0.00001536365, y: -0.000032498065, z: 0.000039985083}
 --- !u!1 &5203121140876375570
 GameObject:
   m_ObjectHideFlags: 0
@@ -18071,6 +19625,7 @@ GameObject:
   - component: {fileID: 1306316299943696140}
   - component: {fileID: 4804781592570564416}
   - component: {fileID: 1314527744127403775}
+  - component: {fileID: 4663666857454419953}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell
   m_TagString: Untagged
@@ -18141,6 +19696,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4663666857454419953
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203121140876375570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000170694, y: 0.00008297911, z: 0.00012302774}
+  m_Center: {x: -0.0000015538935, y: -0.000002647042, z: -0.000012781137}
 --- !u!1 &5213728674784283617
 GameObject:
   m_ObjectHideFlags: 0
@@ -18152,6 +19720,7 @@ GameObject:
   - component: {fileID: 7845822675226596084}
   - component: {fileID: 1084306383229339132}
   - component: {fileID: 4163418671022181947}
+  - component: {fileID: 8328696104179846730}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.011
   m_TagString: Untagged
@@ -18222,6 +19791,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8328696104179846730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5213728674784283617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0021410235, y: 0.0005998382, z: 0.0018389203}
+  m_Center: {x: 0.00012061751, y: -0.000000681306, z: 0.000093980125}
 --- !u!1 &5231693703893727638
 GameObject:
   m_ObjectHideFlags: 0
@@ -18449,6 +20031,7 @@ GameObject:
   - component: {fileID: 3580514966923456491}
   - component: {fileID: 1675609478953243088}
   - component: {fileID: 5171416407630246434}
+  - component: {fileID: 3796048642720142690}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.005
   m_TagString: Untagged
@@ -18519,6 +20102,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3796048642720142690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357242895100801034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0002382895, y: 0.00019200079, z: 0.00024101163}
+  m_Center: {x: -0.0000054241937, y: 0.000017345246, z: -0.0000029608668}
 --- !u!1 &5365075052566900617
 GameObject:
   m_ObjectHideFlags: 0
@@ -18689,6 +20285,7 @@ GameObject:
   - component: {fileID: 1494162993614757357}
   - component: {fileID: 1911691600898791922}
   - component: {fileID: 8723720231066229419}
+  - component: {fileID: 7151547880850994397}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.037
   m_TagString: Untagged
@@ -18759,6 +20356,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7151547880850994397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5392942002437762666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013792077, y: 0.0006376909, z: 0.0010133621}
+  m_Center: {x: 0.000056574034, y: 0.00003458297, z: -0.000004861212}
 --- !u!1 &5399283220642061470
 GameObject:
   m_ObjectHideFlags: 0
@@ -18893,6 +20503,7 @@ GameObject:
   - component: {fileID: 365538363461998838}
   - component: {fileID: 264107240837557786}
   - component: {fileID: 2258382514440659427}
+  - component: {fileID: 2144942398745125602}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.031
   m_TagString: Untagged
@@ -18963,6 +20574,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2144942398745125602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413183129763555475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0019219576, y: 0.0011942289, z: 0.0017677908}
+  m_Center: {x: 0.0000718096, y: 0.000091061534, z: -0.0000010048095}
 --- !u!1 &5424168594684263965
 GameObject:
   m_ObjectHideFlags: 0
@@ -18974,6 +20598,7 @@ GameObject:
   - component: {fileID: 1219269687535866783}
   - component: {fileID: 5318654083257683125}
   - component: {fileID: 3723966063596301504}
+  - component: {fileID: 1832337016208731783}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.007
   m_TagString: Untagged
@@ -19044,6 +20669,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1832337016208731783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424168594684263965}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00095808867, y: 0.0013290821, z: 0.0013567604}
+  m_Center: {x: -0.000036033613, y: -0.000101569705, z: 0.00005140329}
 --- !u!1 &5440634035347358213
 GameObject:
   m_ObjectHideFlags: 0
@@ -19274,6 +20912,7 @@ GameObject:
   - component: {fileID: 7708817073239196044}
   - component: {fileID: 2564755226600020068}
   - component: {fileID: 5947094015347402721}
+  - component: {fileID: 1694291332183180509}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.015
   m_TagString: Untagged
@@ -19344,6 +20983,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1694291332183180509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5473859906292719296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011938701, y: 0.000624729, z: 0.0015520419}
+  m_Center: {x: 0.000084473344, y: -0.000002852917, z: 0.0001583196}
 --- !u!1 &5475137306824234001
 GameObject:
   m_ObjectHideFlags: 0
@@ -19355,6 +21007,7 @@ GameObject:
   - component: {fileID: 5681993104895368059}
   - component: {fileID: 1600104294117506440}
   - component: {fileID: 5358426757277339695}
+  - component: {fileID: 1707474668013068780}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.032
   m_TagString: Untagged
@@ -19425,6 +21078,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1707474668013068780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475137306824234001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012844462, y: 0.0013919321, z: 0.0017806772}
+  m_Center: {x: 0.00017267537, y: -0.000012500006, z: 0.00013903592}
 --- !u!1 &5481398358068084937
 GameObject:
   m_ObjectHideFlags: 0
@@ -19746,6 +21412,7 @@ GameObject:
   - component: {fileID: 8307874874248585442}
   - component: {fileID: 8439226348097967670}
   - component: {fileID: 286695030283455120}
+  - component: {fileID: 2302413456354462579}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.008_cell.003
   m_TagString: Untagged
@@ -19816,6 +21483,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2302413456354462579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535749339720885174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00033033962, y: 0.00042214297, z: 0.00041520325}
+  m_Center: {x: 0.000012226446, y: 0.000026675576, z: 0.000041192063}
 --- !u!1 &5553624087172393722
 GameObject:
   m_ObjectHideFlags: 0
@@ -19919,6 +21599,7 @@ GameObject:
   - component: {fileID: 2119651698999454949}
   - component: {fileID: 6763835501652976920}
   - component: {fileID: 4852215593450390017}
+  - component: {fileID: 2787303319149732636}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.018
   m_TagString: Untagged
@@ -19989,6 +21670,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2787303319149732636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644035257819849229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0013368092, y: 0.0012464592, z: 0.0016614345}
+  m_Center: {x: -0.00013684333, y: 0.00007340887, z: -0.000095102514}
 --- !u!1 &5652264150314277238
 GameObject:
   m_ObjectHideFlags: 0
@@ -20152,6 +21846,7 @@ GameObject:
   - component: {fileID: 3059014753568898018}
   - component: {fileID: 1941905660951141168}
   - component: {fileID: 5044464612787811824}
+  - component: {fileID: 1095335263490088374}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.008_cell.002
   m_TagString: Untagged
@@ -20222,6 +21917,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1095335263490088374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5723511192153019167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00020418788, y: 0.00018617001, z: 0.00032830855}
+  m_Center: {x: 0.000006472459, y: -0.000013474987, z: 0.00004309724}
 --- !u!1 &5723694121418967797
 GameObject:
   m_ObjectHideFlags: 0
@@ -20423,6 +22131,7 @@ GameObject:
   - component: {fileID: 1889199472925889298}
   - component: {fileID: 5223599152605095034}
   - component: {fileID: 6934228070782802233}
+  - component: {fileID: 1142007899324241809}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.003
   m_TagString: Untagged
@@ -20493,6 +22202,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1142007899324241809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796775195335747616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00011623866, y: 0.000085625885, z: 0.00012652797}
+  m_Center: {x: 0.0000008434454, y: -0.0000026494595, z: -0.000009269008}
 --- !u!1 &5797634539588568357
 GameObject:
   m_ObjectHideFlags: 0
@@ -20504,6 +22226,7 @@ GameObject:
   - component: {fileID: 417896071641143877}
   - component: {fileID: 1671984335738779376}
   - component: {fileID: 245466471460188538}
+  - component: {fileID: 693825816183622910}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.034
   m_TagString: Untagged
@@ -20574,6 +22297,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &693825816183622910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797634539588568357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0020686737, y: 0.0026598983, z: 0.0017470845}
+  m_Center: {x: -0.00021732977, y: -0.00032442645, z: 0.000054879452}
 --- !u!1 &5836734438289079471
 GameObject:
   m_ObjectHideFlags: 0
@@ -20673,6 +22409,7 @@ GameObject:
   - component: {fileID: 8386221089488181514}
   - component: {fileID: 4945341673247542391}
   - component: {fileID: 434153072735076747}
+  - component: {fileID: 2735378455441396687}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.051
   m_TagString: Untagged
@@ -20743,6 +22480,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2735378455441396687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882093964515610566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015467007, y: 0.0013793334, z: 0.0013864945}
+  m_Center: {x: -0.00014345325, y: 0.00013245773, z: -0.000059595728}
 --- !u!1 &5902301102115581720
 GameObject:
   m_ObjectHideFlags: 0
@@ -20823,6 +22573,7 @@ GameObject:
   - component: {fileID: 5038348866015275485}
   - component: {fileID: 6337945461654192794}
   - component: {fileID: 5109171179411682286}
+  - component: {fileID: 167914177526509628}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.067
   m_TagString: Untagged
@@ -20893,6 +22644,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &167914177526509628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915278958981171433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011972252, y: 0.0014114727, z: 0.0017262669}
+  m_Center: {x: -0.00030253155, y: 0.000027127704, z: -0.000037881713}
 --- !u!1 &5920945804047158775
 GameObject:
   m_ObjectHideFlags: 0
@@ -21388,6 +23152,7 @@ GameObject:
   - component: {fileID: 1014419395276310949}
   - component: {fileID: 4736498792530362561}
   - component: {fileID: 581901167998825488}
+  - component: {fileID: 4334208465925813468}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.003
   m_TagString: Untagged
@@ -21458,6 +23223,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4334208465925813468
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195377636954447561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00040795573, y: 0.0003264252, z: 0.00039096957}
+  m_Center: {x: 0.000027818496, y: 0.000043808075, z: -0.0000045617553}
 --- !u!1 &6203124890514854792
 GameObject:
   m_ObjectHideFlags: 0
@@ -21530,6 +23308,7 @@ GameObject:
   - component: {fileID: 6448713293636449370}
   - component: {fileID: 2534698932166638403}
   - component: {fileID: 4843292619271190979}
+  - component: {fileID: 1153208561878526360}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.022_cell.001
   m_TagString: Untagged
@@ -21600,6 +23379,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1153208561878526360
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250149516712826911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6261534462978877724
 GameObject:
   m_ObjectHideFlags: 0
@@ -21702,6 +23494,7 @@ GameObject:
   - component: {fileID: 130960796776713557}
   - component: {fileID: 6594162027207746126}
   - component: {fileID: 7469922453696878333}
+  - component: {fileID: 2156025411123185164}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.039
   m_TagString: Untagged
@@ -21772,6 +23565,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2156025411123185164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289748447625347143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0011008033, y: 0.0005776647, z: 0.000655666}
+  m_Center: {x: 0.0000023392204, y: -0.00017004917, z: 0.000033834825}
 --- !u!1 &6305178959612197414
 GameObject:
   m_ObjectHideFlags: 0
@@ -21845,6 +23651,7 @@ GameObject:
   - component: {fileID: 6786716652525659118}
   - component: {fileID: 1854473961470152782}
   - component: {fileID: 8306619377666095204}
+  - component: {fileID: 7347942734075969336}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.043
   m_TagString: Untagged
@@ -21915,6 +23722,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7347942734075969336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319321331432426250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0010890043, y: 0.0008112969, z: 0.0011329885}
+  m_Center: {x: 0.00015633916, y: -0.0001850485, z: -0.00010381903}
 --- !u!1 &6322320720626550002
 GameObject:
   m_ObjectHideFlags: 0
@@ -22140,6 +23960,7 @@ GameObject:
   - component: {fileID: 4587065484559298820}
   - component: {fileID: 2388529596425952628}
   - component: {fileID: 6996199173918015237}
+  - component: {fileID: 2282750049522965591}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell
   m_TagString: Untagged
@@ -22210,6 +24031,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2282750049522965591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372935928281436310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00020708212, y: 0.0001355841, z: 0.00030424993}
+  m_Center: {x: -0.000012770652, y: 0.0000033506033, z: 0.000023910932}
 --- !u!1 &6375660219481439710
 GameObject:
   m_ObjectHideFlags: 0
@@ -22437,6 +24271,7 @@ GameObject:
   - component: {fileID: 8940727801747448841}
   - component: {fileID: 2527535116769583391}
   - component: {fileID: 5452814734532589423}
+  - component: {fileID: 571670270148240259}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.059
   m_TagString: Untagged
@@ -22507,6 +24342,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &571670270148240259
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506844008964365621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0018372935, y: 0.0019738686, z: 0.0019694152}
+  m_Center: {x: 0.000067582296, y: -0.0004967209, z: -0.0002008398}
 --- !u!1 &6510320892574328401
 GameObject:
   m_ObjectHideFlags: 0
@@ -22609,6 +24457,7 @@ GameObject:
   - component: {fileID: 4954172718959291290}
   - component: {fileID: 8861475334849495779}
   - component: {fileID: 8775099843122914546}
+  - component: {fileID: 5686880895678404752}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.002
   m_TagString: Untagged
@@ -22679,6 +24528,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5686880895678404752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524271282326541902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0001841824, y: 0.0002125989, z: 0.00017189755}
+  m_Center: {x: 0.000016586298, y: 0.000030279518, z: -0.0000055110168}
 --- !u!1 &6531930089438156268
 GameObject:
   m_ObjectHideFlags: 0
@@ -22720,6 +24582,7 @@ GameObject:
   - component: {fileID: 6208058007945879958}
   - component: {fileID: 8582090997669116770}
   - component: {fileID: 135655469978007276}
+  - component: {fileID: 2959808855001639155}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.025
   m_TagString: Untagged
@@ -22790,6 +24653,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2959808855001639155
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540920451194999961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00093581446, y: 0.0006347563, z: 0.000952083}
+  m_Center: {x: -0.000026775218, y: 0.00003602163, z: -0.0001664762}
 --- !u!1 &6583078309256548840
 GameObject:
   m_ObjectHideFlags: 0
@@ -22895,6 +24771,7 @@ GameObject:
   - component: {fileID: 3421880034233024449}
   - component: {fileID: 2154862671729333836}
   - component: {fileID: 5585563820178752167}
+  - component: {fileID: 8652335650106872895}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.012
   m_TagString: Untagged
@@ -22965,6 +24842,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8652335650106872895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661258245634340929}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0014159591, y: 0.00068101776, z: 0.0012242597}
+  m_Center: {x: -0.00026139742, y: -0.000054511333, z: -0.000056038076}
 --- !u!1 &6672881076432794971
 GameObject:
   m_ObjectHideFlags: 0
@@ -23036,6 +24926,7 @@ GameObject:
   - component: {fileID: 5768824724654842130}
   - component: {fileID: 904742428211824640}
   - component: {fileID: 1679863742598028654}
+  - component: {fileID: 364543015444416526}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.058
   m_TagString: Untagged
@@ -23106,6 +24997,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &364543015444416526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683214881428631491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017275435, y: 0.0015113336, z: 0.0016717821}
+  m_Center: {x: -0.00011119104, y: 0.000035958357, z: -0.00046890942}
 --- !u!1 &6708845188218467113
 GameObject:
   m_ObjectHideFlags: 0
@@ -23117,6 +25021,7 @@ GameObject:
   - component: {fileID: 7387720387822738130}
   - component: {fileID: 8351989998196227784}
   - component: {fileID: 4501274373346814937}
+  - component: {fileID: 1398679536150455404}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.020_cell
   m_TagString: Untagged
@@ -23187,6 +25092,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1398679536150455404
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708845188218467113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00012835138, y: 0.000074424985, z: 0.000051133797}
+  m_Center: {x: -0.0000018796745, y: -0.000010846236, z: 0.00000054751933}
 --- !u!1 &6711922164505206920
 GameObject:
   m_ObjectHideFlags: 0
@@ -23229,6 +25147,7 @@ GameObject:
   - component: {fileID: 6742032849016560094}
   - component: {fileID: 211831608331448192}
   - component: {fileID: 2423757300690355595}
+  - component: {fileID: 5772000776872201681}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.024
   m_TagString: Untagged
@@ -23299,6 +25218,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5772000776872201681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6720107472207484182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00090061687, y: 0.0010496145, z: 0.002107757}
+  m_Center: {x: -0.000039091276, y: -0.00030746163, z: 0.00014296279}
 --- !u!1 &6722895996603230364
 GameObject:
   m_ObjectHideFlags: 0
@@ -23433,6 +25365,7 @@ GameObject:
   - component: {fileID: 4167467953307740102}
   - component: {fileID: 7581413883184481835}
   - component: {fileID: 7968145814631398908}
+  - component: {fileID: 1472308851793756103}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.014
   m_TagString: Untagged
@@ -23503,6 +25436,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1472308851793756103
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756705895496234635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.003904442, y: 0.001965764, z: 0.002867096}
+  m_Center: {x: 0.000026778667, y: 0.00042647566, z: 0.00021181362}
 --- !u!1 &6757396640021429755
 GameObject:
   m_ObjectHideFlags: 0
@@ -23514,6 +25460,7 @@ GameObject:
   - component: {fileID: 3317990609927056805}
   - component: {fileID: 5241516756825071574}
   - component: {fileID: 4116535060569919775}
+  - component: {fileID: 924263655473754556}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.003
   m_TagString: Untagged
@@ -23584,6 +25531,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &924263655473754556
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757396640021429755}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00081065693, y: 0.0010876049, z: 0.00092910003}
+  m_Center: {x: -0.000057973186, y: -0.000038995284, z: -0.0000115464045}
 --- !u!1 &6758413043959316936
 GameObject:
   m_ObjectHideFlags: 0
@@ -24308,6 +26268,7 @@ GameObject:
   - component: {fileID: 5115883725292169663}
   - component: {fileID: 8737368486542724831}
   - component: {fileID: 3935310066715608224}
+  - component: {fileID: 9018462574542412601}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.017
   m_TagString: Untagged
@@ -24378,6 +26339,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9018462574542412601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7146639336345509904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0005407851, y: 0.0002792313, z: 0.0010419299}
+  m_Center: {x: -0.0000139944605, y: 0.000028736109, z: -0.000105671956}
 --- !u!1 &7147855832387940649
 GameObject:
   m_ObjectHideFlags: 0
@@ -24389,6 +26363,7 @@ GameObject:
   - component: {fileID: 4106702098373377309}
   - component: {fileID: 6482910084723788332}
   - component: {fileID: 9086979249839215167}
+  - component: {fileID: 5719199439291720747}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.003
   m_TagString: Untagged
@@ -24459,6 +26434,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5719199439291720747
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147855832387940649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00018796766, y: 0.00015667858, z: 0.00014457146}
+  m_Center: {x: -0.0000131614215, y: 0.000025746229, z: -0.0000047522544}
 --- !u!1 &7162534388884722523
 GameObject:
   m_ObjectHideFlags: 0
@@ -24940,6 +26928,7 @@ GameObject:
   - component: {fileID: 8755508116322027890}
   - component: {fileID: 4852907267754269185}
   - component: {fileID: 2785368919657486055}
+  - component: {fileID: 6494656080409088709}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.040
   m_TagString: Untagged
@@ -25010,6 +26999,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6494656080409088709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346330520691208821}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00056095055, y: 0.00078973395, z: 0.0009547415}
+  m_Center: {x: 0.000073232026, y: 0.000018424686, z: 0.000027583586}
 --- !u!1 &7364680213257234637
 GameObject:
   m_ObjectHideFlags: 0
@@ -25112,6 +27114,7 @@ GameObject:
   - component: {fileID: 162250558436477489}
   - component: {fileID: 8284914303664149166}
   - component: {fileID: 8192946299217180313}
+  - component: {fileID: 5076457048406589268}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.033
   m_TagString: Untagged
@@ -25182,6 +27185,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5076457048406589268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454720403278485635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0018369744, y: 0.0024187055, z: 0.0024442936}
+  m_Center: {x: 0.00008732497, y: -0.00040537692, z: -0.00007830198}
 --- !u!1 &7461620212862307525
 GameObject:
   m_ObjectHideFlags: 0
@@ -25224,6 +27240,7 @@ GameObject:
   - component: {fileID: 1643915267374447427}
   - component: {fileID: 3340174765356132168}
   - component: {fileID: 984590543857267557}
+  - component: {fileID: 6973676544135864578}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.030
   m_TagString: Untagged
@@ -25294,6 +27311,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6973676544135864578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483610342157805034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0016655324, y: 0.00055216736, z: 0.001594062}
+  m_Center: {x: -0.000053766213, y: -0.000015470603, z: -0.00024265733}
 --- !u!1 &7485448014884854697
 GameObject:
   m_ObjectHideFlags: 0
@@ -25459,6 +27489,7 @@ GameObject:
   - component: {fileID: 3660589114682072999}
   - component: {fileID: 6460589883127692502}
   - component: {fileID: 5472559217609202930}
+  - component: {fileID: 9169890044636963269}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.003
   m_TagString: Untagged
@@ -25529,6 +27560,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9169890044636963269
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553711477460626175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0015719191, y: 0.0004012345, z: 0.0010937633}
+  m_Center: {x: -0.00013397241, y: 0.000007555775, z: -0.000043494678}
 --- !u!1 &7565990019962121620
 GameObject:
   m_ObjectHideFlags: 0
@@ -25601,6 +27645,7 @@ GameObject:
   - component: {fileID: 3445731158529995592}
   - component: {fileID: 3037586014427945349}
   - component: {fileID: 6760761688732858767}
+  - component: {fileID: 1747534559208109408}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.017
   m_TagString: Untagged
@@ -25671,6 +27716,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1747534559208109408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7593896920891700185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000819839, y: 0.00079273223, z: 0.0012783809}
+  m_Center: {x: 0.00003667627, y: -0.00005916914, z: -0.00008577392}
 --- !u!1 &7597438712014463716
 GameObject:
   m_ObjectHideFlags: 0
@@ -25682,6 +27740,7 @@ GameObject:
   - component: {fileID: 429533720664721486}
   - component: {fileID: 4742363930088608254}
   - component: {fileID: 3487188778365878711}
+  - component: {fileID: 8979964448755698641}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell
   m_TagString: Untagged
@@ -25752,6 +27811,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8979964448755698641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597438712014463716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0003035366, y: 0.00023994253, z: 0.00034547952}
+  m_Center: {x: -0.000016479426, y: 0.00003710094, z: 0.00000655763}
 --- !u!1 &7597666004167270186
 GameObject:
   m_ObjectHideFlags: 0
@@ -25763,6 +27835,7 @@ GameObject:
   - component: {fileID: 208975766296334944}
   - component: {fileID: 8272783567081248159}
   - component: {fileID: 2520819417860021906}
+  - component: {fileID: 8110606146507614833}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.010
   m_TagString: Untagged
@@ -25833,6 +27906,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8110606146507614833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7597666004167270186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0014989256, y: 0.00053599256, z: 0.0009953298}
+  m_Center: {x: -0.000051273557, y: 0.000017380644, z: 0.0000020660223}
 --- !u!1 &7618471598835501779
 GameObject:
   m_ObjectHideFlags: 0
@@ -25909,6 +27995,7 @@ GameObject:
   - component: {fileID: 4328783058579111524}
   - component: {fileID: 5685421556493725663}
   - component: {fileID: 1579168210576786331}
+  - component: {fileID: 4076777440963102177}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.005
   m_TagString: Untagged
@@ -25979,6 +28066,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4076777440963102177
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705060786332138300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0001742075, y: 0.0001735759, z: 0.0002486636}
+  m_Center: {x: 0.000015082493, y: -0.00002620005, z: -0.000020996304}
 --- !u!1 &7709692467831522163
 GameObject:
   m_ObjectHideFlags: 0
@@ -26052,6 +28152,7 @@ GameObject:
   - component: {fileID: 6325818317623070154}
   - component: {fileID: 8441209368576550241}
   - component: {fileID: 9176437519967310761}
+  - component: {fileID: 1996856906164346004}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.020_cell.001
   m_TagString: Untagged
@@ -26122,6 +28223,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1996856906164346004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776950641106430829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00015518762, y: 0.00011384265, z: 0.00008837311}
+  m_Center: {x: 0.000012907829, y: 0.0000037453367, z: 0.000008768229}
 --- !u!1 &7798485117112640831
 GameObject:
   m_ObjectHideFlags: 0
@@ -26168,6 +28282,7 @@ GameObject:
   - component: {fileID: 8576776512883981524}
   - component: {fileID: 6161665749877518817}
   - component: {fileID: 5115947455360994305}
+  - component: {fileID: 1192182442525112678}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.002
   m_TagString: Untagged
@@ -26238,6 +28353,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1192182442525112678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878004625528211655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00044798135, y: 0.00048289503, z: 0.00048542416}
+  m_Center: {x: 0.000068724796, y: 0.000018848605, z: 0.000043608183}
 --- !u!1 &7886831915944581314
 GameObject:
   m_ObjectHideFlags: 0
@@ -26249,6 +28377,7 @@ GameObject:
   - component: {fileID: 4269594315888418222}
   - component: {fileID: 6998935276576211457}
   - component: {fileID: 3762952323025580246}
+  - component: {fileID: 2578774845093024721}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.038
   m_TagString: Untagged
@@ -26319,6 +28448,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2578774845093024721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886831915944581314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0014212634, y: 0.0012324164, z: 0.0017201089}
+  m_Center: {x: -0.00003132134, y: 0.00038512988, z: -0.00009833493}
 --- !u!1 &7890727744981216742
 GameObject:
   m_ObjectHideFlags: 0
@@ -26420,6 +28562,7 @@ GameObject:
   - component: {fileID: 2209062348030033959}
   - component: {fileID: 6937495843682355171}
   - component: {fileID: 8462061042492207195}
+  - component: {fileID: 49667388848570820}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.019
   m_TagString: Untagged
@@ -26490,6 +28633,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &49667388848570820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928094687444230983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017115003, y: 0.0022534581, z: 0.0017563618}
+  m_Center: {x: 0.000015157741, y: 0.0000050511435, z: 0.00009627837}
 --- !u!1 &7971488316100533391
 GameObject:
   m_ObjectHideFlags: 0
@@ -26532,6 +28688,7 @@ GameObject:
   - component: {fileID: 2267182580001900609}
   - component: {fileID: 1585080436516021762}
   - component: {fileID: 9064826466532657554}
+  - component: {fileID: 4888860660238525295}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.006
   m_TagString: Untagged
@@ -26602,6 +28759,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4888860660238525295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977913867848069185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00072535087, y: 0.00033032082, z: 0.0011695102}
+  m_Center: {x: -0.00010806124, y: 0.0000026669, z: 0.000006956309}
 --- !u!1 &8000097784327432634
 GameObject:
   m_ObjectHideFlags: 0
@@ -26644,6 +28814,7 @@ GameObject:
   - component: {fileID: 4604670706139410260}
   - component: {fileID: 8031901835920398536}
   - component: {fileID: 989439798087951120}
+  - component: {fileID: 7008056345094937140}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.008_cell
   m_TagString: Untagged
@@ -26714,6 +28885,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7008056345094937140
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8006637264598251497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00023817577, y: 0.0001954918, z: 0.00012784751}
+  m_Center: {x: 0.000011631739, y: -0.000017552502, z: 0.000012426168}
 --- !u!1 &8060432280474451998
 GameObject:
   m_ObjectHideFlags: 0
@@ -26755,6 +28939,7 @@ GameObject:
   - component: {fileID: 588818597893957036}
   - component: {fileID: 4242702410545495875}
   - component: {fileID: 7744644927811219758}
+  - component: {fileID: 6262168449550027689}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.057
   m_TagString: Untagged
@@ -26825,6 +29010,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6262168449550027689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083084953855130795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00047156337, y: 0.00049697974, z: 0.0009301735}
+  m_Center: {x: -0.00003253531, y: 0.00011784674, z: 0.00006706324}
 --- !u!1 &8100140180080522453
 GameObject:
   m_ObjectHideFlags: 0
@@ -26836,6 +29034,7 @@ GameObject:
   - component: {fileID: 5963352073778644257}
   - component: {fileID: 2560187186691628716}
   - component: {fileID: 1911797744104301692}
+  - component: {fileID: 761710686927189216}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.064
   m_TagString: Untagged
@@ -26906,6 +29105,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &761710686927189216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8100140180080522453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0010724999, y: 0.0009691974, z: 0.0010351033}
+  m_Center: {x: -0.000023302942, y: -0.000029884259, z: -0.00008506377}
 --- !u!1 &8100993614361428140
 GameObject:
   m_ObjectHideFlags: 0
@@ -26947,6 +29159,7 @@ GameObject:
   - component: {fileID: 1746378480406414722}
   - component: {fileID: 7266191246769057814}
   - component: {fileID: 2307875387681845720}
+  - component: {fileID: 2041980809410287940}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.005
   m_TagString: Untagged
@@ -27017,6 +29230,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2041980809410287940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123174303931114153}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00029663337, y: 0.00022028775, z: 0.00027215347}
+  m_Center: {x: -0.0000048406655, y: -0.000013180231, z: -0.000005391411}
 --- !u!1 &8132051244449269561
 GameObject:
   m_ObjectHideFlags: 0
@@ -27089,6 +29315,7 @@ GameObject:
   - component: {fileID: 4463070858118380368}
   - component: {fileID: 6630628672131168028}
   - component: {fileID: 2328204532562936680}
+  - component: {fileID: 1325021381928485198}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.004
   m_TagString: Untagged
@@ -27159,6 +29386,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1325021381928485198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150889637349733642}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00025702678, y: 0.00011673105, z: 0.00024078875}
+  m_Center: {x: 0.000012865799, y: 0.000015068253, z: 0.000006585093}
 --- !u!1 &8152249822835197204
 GameObject:
   m_ObjectHideFlags: 0
@@ -27262,6 +29502,7 @@ GameObject:
   - component: {fileID: 3482026367375135299}
   - component: {fileID: 7299908646992839318}
   - component: {fileID: 5129457909112812191}
+  - component: {fileID: 1482226843400736344}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.042
   m_TagString: Untagged
@@ -27332,6 +29573,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1482226843400736344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183633683739471764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0018194906, y: 0.0019514902, z: 0.0022447547}
+  m_Center: {x: -0.0002798938, y: -0.000034184275, z: -0.00035291637}
 --- !u!1 &8200991713984289675
 GameObject:
   m_ObjectHideFlags: 0
@@ -27433,6 +29687,7 @@ GameObject:
   - component: {fileID: 4641163488765817679}
   - component: {fileID: 7200027039466175473}
   - component: {fileID: 9164412623425675502}
+  - component: {fileID: 2384516625823224813}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.019_cell.001
   m_TagString: Untagged
@@ -27503,6 +29758,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2384516625823224813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234955192977732455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000054306904, y: 0.00009769172, z: 0.000091146605}
+  m_Center: {x: 0.0000011453367, y: 0.0000031508202, z: -0.0000051102206}
 --- !u!1 &8236806587245432111
 GameObject:
   m_ObjectHideFlags: 0
@@ -27639,6 +29907,7 @@ GameObject:
   - component: {fileID: 1522496371093020594}
   - component: {fileID: 7424312376780642249}
   - component: {fileID: 775962420343048930}
+  - component: {fileID: 5297677576523235177}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.005
   m_TagString: Untagged
@@ -27709,6 +29978,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5297677576523235177
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8306964296198700041}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00011757601, y: 0.00011574932, z: 0.00015430512}
+  m_Center: {x: 0.0000006627615, y: -0.000010941625, z: 0.000015487345}
 --- !u!1 &8325968723533437593
 GameObject:
   m_ObjectHideFlags: 0
@@ -27720,6 +30002,7 @@ GameObject:
   - component: {fileID: 8470709764635566750}
   - component: {fileID: 387554042456454098}
   - component: {fileID: 3022738128183791464}
+  - component: {fileID: 8645945357087413711}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.015_cell.005
   m_TagString: Untagged
@@ -27790,6 +30073,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8645945357087413711
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325968723533437593}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00020756898, y: 0.00018628206, z: 0.00018454858}
+  m_Center: {x: -0.0000059350205, y: 0.0000068561662, z: -0.000007984005}
 --- !u!1 &8336367622884161434
 GameObject:
   m_ObjectHideFlags: 0
@@ -27923,6 +30219,7 @@ GameObject:
   - component: {fileID: 8243310179259190044}
   - component: {fileID: 8595509946951432896}
   - component: {fileID: 4417742347424182673}
+  - component: {fileID: 392483060663184088}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.022
   m_TagString: Untagged
@@ -27993,6 +30290,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &392483060663184088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385145939492474957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0020622206, y: 0.0014376086, z: 0.0018388935}
+  m_Center: {x: 0.000058139383, y: -0.00015450915, z: 0.00006412015}
 --- !u!1 &8426162539352104812
 GameObject:
   m_ObjectHideFlags: 0
@@ -28065,6 +30375,7 @@ GameObject:
   - component: {fileID: 1843268429934270607}
   - component: {fileID: 2636705335008155708}
   - component: {fileID: 5731118736480263465}
+  - component: {fileID: 3476281429556590271}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.013
   m_TagString: Untagged
@@ -28135,6 +30446,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3476281429556590271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493125066225657723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0016708156, y: 0.0012415632, z: 0.00081142364}
+  m_Center: {x: -0.000035095378, y: -0.000011651775, z: -0.000017418071}
 --- !u!1 &8503825729548174989
 GameObject:
   m_ObjectHideFlags: 0
@@ -28146,6 +30470,7 @@ GameObject:
   - component: {fileID: 2811488878915217548}
   - component: {fileID: 2508231822842747560}
   - component: {fileID: 5927821059618211777}
+  - component: {fileID: 722705776389809690}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.004
   m_TagString: Untagged
@@ -28216,6 +30541,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &722705776389809690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8503825729548174989}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0001399634, y: 0.00011111628, z: 0.00021686648}
+  m_Center: {x: 0.0000026908565, y: -0.0000021503106, z: -0.0000026444172}
 --- !u!1 &8506893239518650506
 GameObject:
   m_ObjectHideFlags: 0
@@ -28441,6 +30779,7 @@ GameObject:
   - component: {fileID: 3556850161578591389}
   - component: {fileID: 6230051415347255503}
   - component: {fileID: 8235907144913917143}
+  - component: {fileID: 8771615011997506425}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell
   m_TagString: Untagged
@@ -28511,6 +30850,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8771615011997506425
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643429560696943457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00039697246, y: 0.00037093033, z: 0.00037762447}
+  m_Center: {x: 0.000008199146, y: -0.000028881297, z: -0.000033907774}
 --- !u!1 &8676488030409165942
 GameObject:
   m_ObjectHideFlags: 0
@@ -28522,6 +30874,7 @@ GameObject:
   - component: {fileID: 3353003214136570014}
   - component: {fileID: 1934477056508579997}
   - component: {fileID: 5970594154755063298}
+  - component: {fileID: 2845041762416585093}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.006
   m_TagString: Untagged
@@ -28592,6 +30945,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2845041762416585093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676488030409165942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00080872653, y: 0.0012078513, z: 0.0010283416}
+  m_Center: {x: -0.000012539487, y: -0.000022341872, z: -0.0001459115}
 --- !u!1 &8695996383542221391
 GameObject:
   m_ObjectHideFlags: 0
@@ -28603,6 +30969,7 @@ GameObject:
   - component: {fileID: 6349752134722344882}
   - component: {fileID: 7850877753148764243}
   - component: {fileID: 7285614069595708898}
+  - component: {fileID: 7560775450043584589}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.002
   m_TagString: Untagged
@@ -28673,6 +31040,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7560775450043584589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695996383542221391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0019311474, y: 0.00178816, z: 0.0020031938}
+  m_Center: {x: 0.00025302672, y: 0.00010335452, z: 0.0003065158}
 --- !u!1 &8704880030326792814
 GameObject:
   m_ObjectHideFlags: 0
@@ -28714,6 +31094,7 @@ GameObject:
   - component: {fileID: 1293341164349167800}
   - component: {fileID: 8045563989660825515}
   - component: {fileID: 4016124960786608004}
+  - component: {fileID: 7640811309164690364}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.052
   m_TagString: Untagged
@@ -28784,6 +31165,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7640811309164690364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718901190936262472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0017002947, y: 0.0014304733, z: 0.0018777152}
+  m_Center: {x: 0.00006717289, y: 0.0002704198, z: -0.00003646913}
 --- !u!1 &8736099832997877437
 GameObject:
   m_ObjectHideFlags: 0
@@ -28856,6 +31250,7 @@ GameObject:
   - component: {fileID: 7567385973281373614}
   - component: {fileID: 8384344049067266662}
   - component: {fileID: 8813276001888961696}
+  - component: {fileID: 1489524283625563083}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.002
   m_TagString: Untagged
@@ -28926,6 +31321,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1489524283625563083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738625846610633184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.000116278374, y: 0.00012129326, z: 0.00013577254}
+  m_Center: {x: -0.0000018570263, y: 0.000008865187, z: 0.000004932607}
 --- !u!1 &8748674345508713452
 GameObject:
   m_ObjectHideFlags: 0
@@ -29029,6 +31437,7 @@ GameObject:
   - component: {fileID: 81659390743854554}
   - component: {fileID: 1030220830854457026}
   - component: {fileID: 375382164962250150}
+  - component: {fileID: 7365074451291947219}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.078
   m_TagString: Untagged
@@ -29099,6 +31508,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7365074451291947219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788024691476604659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00047225325, y: 0.00050035864, z: 0.00047074872}
+  m_Center: {x: -0.00007534873, y: -0.000000569038, z: -0.00007040424}
 --- !u!1 &8790894580369214768
 GameObject:
   m_ObjectHideFlags: 0
@@ -29171,6 +31593,7 @@ GameObject:
   - component: {fileID: 1752010556337513888}
   - component: {fileID: 7816620789910548109}
   - component: {fileID: 5687644876291243573}
+  - component: {fileID: 1742498768330008806}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.015
   m_TagString: Untagged
@@ -29241,6 +31664,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1742498768330008806
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828689932526093711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0020580245, y: 0.0026093805, z: 0.0018135945}
+  m_Center: {x: 0.0005007825, y: -0.00034394383, z: 0.00008966615}
 --- !u!1 &8848855949248836705
 GameObject:
   m_ObjectHideFlags: 0
@@ -29312,6 +31748,7 @@ GameObject:
   - component: {fileID: 3825591790418274130}
   - component: {fileID: 2325652078925096776}
   - component: {fileID: 1655565010768344432}
+  - component: {fileID: 7869053845062196438}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.002_cell.001
   m_TagString: Untagged
@@ -29382,6 +31819,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7869053845062196438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858467545207809103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00030046143, y: 0.0001232024, z: 0.00019271564}
+  m_Center: {x: 0.000055367193, y: -0.000017473662, z: 0.0000029670987}
 --- !u!1 &8865056374887184458
 GameObject:
   m_ObjectHideFlags: 0
@@ -29550,6 +32000,7 @@ GameObject:
   - component: {fileID: 3737380301550722712}
   - component: {fileID: 7058237832342799321}
   - component: {fileID: 6352115389906925133}
+  - component: {fileID: 2126147951875125132}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.009_cell.004
   m_TagString: Untagged
@@ -29620,6 +32071,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2126147951875125132
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907666736310628888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00013423746, y: 0.00009321628, z: 0.00021513859}
+  m_Center: {x: 0.000002270568, y: -0.000009913872, z: -0.0000014572358}
 --- !u!1 &8912917366587353601
 GameObject:
   m_ObjectHideFlags: 0
@@ -29631,6 +32095,7 @@ GameObject:
   - component: {fileID: 3645133775448624648}
   - component: {fileID: 3647525112345800069}
   - component: {fileID: 2412113548003539258}
+  - component: {fileID: 7238375723510074331}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.021_cell.004
   m_TagString: Untagged
@@ -29701,6 +32166,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7238375723510074331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912917366587353601}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8916299969493461280
 GameObject:
   m_ObjectHideFlags: 0
@@ -29808,6 +32286,7 @@ GameObject:
   - component: {fileID: 2852093887423210972}
   - component: {fileID: 1704480518073794542}
   - component: {fileID: 450015546076650482}
+  - component: {fileID: 7677701762916517733}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.004
   m_TagString: Untagged
@@ -29878,6 +32357,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7677701762916517733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981650336032503268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00083538325, y: 0.00078834116, z: 0.00090259936}
+  m_Center: {x: -0.000016270234, y: 0.00009566161, z: -0.000034328397}
 --- !u!1 &8983646338772509190
 GameObject:
   m_ObjectHideFlags: 0
@@ -29950,6 +32442,7 @@ GameObject:
   - component: {fileID: 9007173004746570265}
   - component: {fileID: 4129894862686753681}
   - component: {fileID: 2420417243941071768}
+  - component: {fileID: 2549628365661646335}
   m_Layer: 0
   m_Name: BasicEnemy_arm_GEO_cell.007
   m_TagString: Untagged
@@ -30020,6 +32513,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2549628365661646335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008955866679987884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012336951, y: 0.00059880945, z: 0.0015586582}
+  m_Center: {x: -0.00009947005, y: 0.0000026046032, z: -0.00011261876}
 --- !u!1 &9012602845353447519
 GameObject:
   m_ObjectHideFlags: 0
@@ -30128,6 +32634,7 @@ GameObject:
   - component: {fileID: 4133485784367624734}
   - component: {fileID: 3057405227871227104}
   - component: {fileID: 9080251658341080878}
+  - component: {fileID: 1449284147860482176}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.006_cell.001
   m_TagString: Untagged
@@ -30198,6 +32705,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1449284147860482176
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029617634661566434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00037202102, y: 0.0003179982, z: 0.0003072756}
+  m_Center: {x: -0.00003885926, y: -0.0000031497761, z: -0.000045955825}
 --- !u!1 &9040709751725870678
 GameObject:
   m_ObjectHideFlags: 0
@@ -30300,6 +32820,7 @@ GameObject:
   - component: {fileID: 664415283139349635}
   - component: {fileID: 724130612408883134}
   - component: {fileID: 7932354778624152934}
+  - component: {fileID: 6638751651330178018}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.009_cell.002
   m_TagString: Untagged
@@ -30370,6 +32891,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6638751651330178018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089342601382213041}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00036592467, y: 0.00025632494, z: 0.0003339587}
+  m_Center: {x: -0.0000069905145, y: -0.000016932896, z: -0.000038966202}
 --- !u!1 &9095266551429947856
 GameObject:
   m_ObjectHideFlags: 0
@@ -30381,6 +32915,7 @@ GameObject:
   - component: {fileID: 6233351832391548733}
   - component: {fileID: 8091314586123072150}
   - component: {fileID: 4884465925610070596}
+  - component: {fileID: 8231345545951962621}
   m_Layer: 0
   m_Name: BasicEnemy_pelvis_GEO_04_cell.073
   m_TagString: Untagged
@@ -30451,6 +32986,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8231345545951962621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095266551429947856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00044605805, y: 0.00048421507, z: 0.0007623414}
+  m_Center: {x: -0.000031974814, y: 0.000011122689, z: -0.000033626995}
 --- !u!1 &9114654726240053172
 GameObject:
   m_ObjectHideFlags: 0
@@ -30586,6 +33134,7 @@ GameObject:
   - component: {fileID: 3543106052368607894}
   - component: {fileID: 4554965992484807683}
   - component: {fileID: 6053818059619523485}
+  - component: {fileID: 6985847903699841704}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.008_cell.001
   m_TagString: Untagged
@@ -30656,6 +33205,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6985847903699841704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9167997956840407619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0002903209, y: 0.00032176753, z: 0.00032241695}
+  m_Center: {x: 0.000020543092, y: -0.000040617986, z: 0.00002437738}
 --- !u!1 &9175883127771523172
 GameObject:
   m_ObjectHideFlags: 0
@@ -30697,6 +33259,7 @@ GameObject:
   - component: {fileID: 3204840450193228853}
   - component: {fileID: 8942349765383057117}
   - component: {fileID: 6799012944162130627}
+  - component: {fileID: 7028075542960352860}
   m_Layer: 0
   m_Name: BasicEnemy_head_GEO_cell.019
   m_TagString: Untagged
@@ -30767,6 +33330,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7028075542960352860
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185821378964962293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0012714502, y: 0.001513727, z: 0.0014782883}
+  m_Center: {x: 0.000021266897, y: 0.00005189081, z: 0.00001990821}
 --- !u!1 &9204245903012057226
 GameObject:
   m_ObjectHideFlags: 0
