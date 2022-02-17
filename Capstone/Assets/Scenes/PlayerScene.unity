@@ -12322,7 +12322,7 @@ PrefabInstance:
     - target: {fileID: 3754905406720279781, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: freeLookCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1802336009}
     - target: {fileID: 3754905406757503262, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16872,7 +16872,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: -0.08096096, y: 0.90320605, z: -0.19594494, w: -0.3731886}
+  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
   m_LocalPosition: {x: -100.613556, y: 10.347, z: -53.966595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -24342,7 +24342,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.000000018626451, y: 0.8395486, z: -0.38226062, w: 0.3860505}
+  m_LocalRotation: {x: 0.000000022351742, y: 0.8395486, z: -0.38226062, w: 0.3860505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

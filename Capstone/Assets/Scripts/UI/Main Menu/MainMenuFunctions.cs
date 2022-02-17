@@ -66,8 +66,12 @@ public class MainMenuFunctions : MonoBehaviour
     public void EndReached()
     {
         SceneManager.LoadScene("PlayerScene");
-        SceneManager.LoadSceneAsync("EnemyScene", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("VillageScene", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Original_EnemyScene", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Persistent", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Audio", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Gameplay", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Geo", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Lighting", LoadSceneMode.Additive);
     }
 
     /// <summary>
