@@ -15,11 +15,32 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/EnemyScene.unity
-    guid: a45c850782fe25545b9d3f19256fa8d0
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/VillageScene.unity
     guid: 017dd704c9d681e4da896a0bc75e1d97
+  - enabled: 1
+    path: Assets/Scenes/PlayerScene.unity
+    guid: 6f1d69806e6d0b3468441267d5e29cd2
+  - enabled: 1
+    path: Assets/Scenes/Original_EnemyScene.unity
+    guid: 0f5ceda1a21c1134c8cf30dbcd852311
+  - enabled: 1
+    path: Assets/Scenes/Village_Audio.unity
+    guid: d2fd4a180d6490948a9800526555b144
+  - enabled: 1
+    path: Assets/Scenes/Village_Gameplay.unity
+    guid: cf8c5adb9f181fc48b71bb7be07c1f51
+  - enabled: 1
+    path: Assets/Scenes/Village_Persistent.unity
+    guid: 95916e39bc327a64fa077779f923f093
+  - enabled: 1
+    path: Assets/Scenes/Village_Geo.unity
+    guid: 6aa7f19054ff5af42b6a64e5b616bf29
+  - enabled: 1
+    path: Assets/Scenes/Village_Lighting.unity
+    guid: b127da1c2d029774385e5fe0dfced803
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: f2953db07961b734d8b26eaaf95c836d

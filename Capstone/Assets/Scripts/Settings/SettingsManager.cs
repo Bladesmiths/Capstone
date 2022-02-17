@@ -9,6 +9,7 @@ namespace Bladesmiths.Capstone.UI
 {
     public class SettingsManager : MonoBehaviour
     {
+        [SerializeField] private GameObject mainMenuVFX;
 
         [SerializeField] private GameObject controlsMenu;
         [SerializeField] private GameObject controlsButton;
@@ -86,7 +87,6 @@ namespace Bladesmiths.Capstone.UI
             settingsButton.GetComponent<Button>().interactable = true;
             if (graphicsButton.activeSelf == true)
                 ToggleSettingsButtons();
-
         }
 
         // Toggles the control menu and selects the first button
@@ -127,6 +127,9 @@ namespace Bladesmiths.Capstone.UI
                 {
                     // Select the Play button
                     EventSystem.current.SetSelectedGameObject(playButton);
+
+                    if (mainMenuVFX != null)
+                        mainMenuVFX.SetActive(true);
                 }
                 else
                 {
@@ -222,6 +225,12 @@ namespace Bladesmiths.Capstone.UI
             {
                 ToggleSettingsMenu();
             }
+        }
+
+        public void HideMainMenuVFX()
+        {
+            if (mainMenuVFX != null)
+                mainMenuVFX.SetActive(false);
         }
 
         public void QuitToMenu()
