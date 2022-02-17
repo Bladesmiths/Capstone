@@ -21867,6 +21867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020b65c3046ccd74097b9511a8c5661f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuVFX: {fileID: 0}
   controlsMenu: {fileID: 1189557428}
   controlsButton: {fileID: 1189557443}
   moveRebindButton: {fileID: 1189557427}
