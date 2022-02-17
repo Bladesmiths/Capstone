@@ -247,6 +247,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &73330564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 1018638914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &124367134 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8904323166171337868, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
@@ -2424,6 +2435,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &642582606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 1647151353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &688146472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5347,6 +5369,17 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &773488901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+  m_PrefabInstance: {fileID: 773488894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773488896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &886345397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5476,6 +5509,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
+--- !u!114 &947127419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 440528674}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &964104599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9479,6 +9523,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
+--- !u!114 &1584640254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 455743630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1601474181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2608894922558131929, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
@@ -10456,6 +10511,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: gizmoViewMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: showBehaviorDesignerGizmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: mBehaviorSource.mTaskData.JSONSerialization
       value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
         Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
@@ -11192,6 +11255,13 @@ MonoBehaviour:
     - {fileID: 688146479}
     - {fileID: 1064772059}
     - {fileID: 1746625717}
+    - {fileID: 73330564}
+    - {fileID: 2107466368}
+    - {fileID: 947127419}
+    - {fileID: 642582606}
+    - {fileID: 773488901}
+    - {fileID: 1584640254}
+    - {fileID: 1890996644}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -11210,7 +11280,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 15
+      Data: 22
     - Name: 
       Entry: 7
       Data: 
@@ -11519,7 +11589,154 @@ MonoBehaviour:
       Data: 2
     - Name: identifiedObject
       Entry: 10
-      Data: 6
+      Data: 14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -17
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -18
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -19
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -20
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -21
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -22
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -23
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -13022,6 +13239,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1890996644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+  m_PrefabInstance: {fileID: 1250523363}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1912313076
@@ -15361,6 +15589,17 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2107466368 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+  m_PrefabInstance: {fileID: 2107466361}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107466363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &143075690287136887
 PrefabInstance:
   m_ObjectHideFlags: 0
