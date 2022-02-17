@@ -72,6 +72,8 @@ namespace Bladesmiths.Capstone
             _player = animator.GetComponent<Player>();
             _input = _player.GetComponent<PlayerInputsScript>();
             _animator = animator;
+            playerBlockBox = _player.BlockDetector;
+
             //_sword = sword;
 
             //playerBlockBox = _player.transform.GetComponentInChildren<BlockCollision>().gameObject;

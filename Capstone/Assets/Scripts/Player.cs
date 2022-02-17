@@ -203,6 +203,14 @@ namespace Bladesmiths.Capstone
             }
         }
         public ParryCollision ParryDetector { get => parryDetector.GetComponent<ParryCollision>(); }
+        public GameObject ParryDetectorObject
+        {
+            get => parryDetector.gameObject;
+        }
+        public GameObject BlockDetector
+        {
+            get => blockDetector.gameObject;
+        }
         public float ChipDamageTotal { get; private set; }
         public int Points { get => (int)points; }
         public int MaxPoints { get => (int)maxPoints; }
