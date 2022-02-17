@@ -2708,13 +2708,17 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: id
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3874,6 +3878,17 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &688146479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+  m_PrefabInstance: {fileID: 688146472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688146474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &773488894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6335,13 +6350,17 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: id
+      value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7509,6 +7528,17 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1064772059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+  m_PrefabInstance: {fileID: 1064772052}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064772054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165427946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1774450610, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
@@ -11115,6 +11145,9 @@ MonoBehaviour:
     - {fileID: 1266266658}
     - {fileID: 1483988587}
     - {fileID: 1165427951}
+    - {fileID: 688146479}
+    - {fileID: 1064772059}
+    - {fileID: 1746625717}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -11133,7 +11166,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 11
+      Data: 15
     - Name: 
       Entry: 7
       Data: 
@@ -11359,6 +11392,90 @@ MonoBehaviour:
     - Name: identifiedObject
       Entry: 10
       Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -13
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -14
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -15
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: -16
+    - Name: $v
+      Entry: 7
+      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
+    - Name: objectTeam
+      Entry: 3
+      Data: 2
+    - Name: identifiedObject
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -11674,13 +11791,17 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: id
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -12848,6 +12969,17 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1746625717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+  m_PrefabInstance: {fileID: 1746625710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746625712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1912313076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15201,6 +15333,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      propertyPath: id
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
@@ -15211,7 +15347,7 @@ PrefabInstance:
     - target: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3438007643091742614, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
       propertyPath: m_Size.y
       value: 0.99999964

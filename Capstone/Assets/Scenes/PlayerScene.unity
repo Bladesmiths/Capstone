@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6711.543, g: 7982.758, b: 9438.266, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1970,7 +1970,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775229, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4625,7 +4625,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775229, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -13520,8 +13520,8 @@ MonoBehaviour:
   GroundedRadius: 0.2
   landTimeout: 0.02
   currentSword: {fileID: 0}
-  uiManager: {fileID: 0}
-  fade: {fileID: 0}
+  uiManager: {fileID: 1863759866}
+  fade: {fileID: 2083527668}
   hasFadedToBlack: 0
   justDied: 0
   timer: 0
@@ -16933,7 +16933,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: -0.08096096, y: 0.90320605, z: -0.19594494, w: -0.3731886}
+  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
   m_LocalPosition: {x: -100.613556, y: 10.347, z: -53.966595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -19432,7 +19432,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775229, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24380,7 +24380,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775229, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24403,7 +24403,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.000000018626451, y: 0.8395486, z: -0.38226062, w: 0.3860505}
+  m_LocalRotation: {x: 0.000000022351742, y: 0.8395486, z: -0.38226062, w: 0.3860505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
