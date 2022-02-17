@@ -11,15 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroCutscene.unity
     guid: 5b666815dba42314b9460d7a25304fa8
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/VillageScene.unity
-    guid: 017dd704c9d681e4da896a0bc75e1d97
   - enabled: 1
     path: Assets/Scenes/PlayerScene.unity
     guid: 6f1d69806e6d0b3468441267d5e29cd2
@@ -32,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village_Gameplay.unity
     guid: cf8c5adb9f181fc48b71bb7be07c1f51
-  - enabled: 1
-    path: Assets/Scenes/Village_Persistent.unity
-    guid: 95916e39bc327a64fa077779f923f093
   - enabled: 1
     path: Assets/Scenes/Village_Geo.unity
     guid: 6aa7f19054ff5af42b6a64e5b616bf29

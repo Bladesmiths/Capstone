@@ -184,7 +184,10 @@ namespace Bladesmiths.Capstone
             }
 
             _animator.SetBool(_animIDAttack, true);
-
+            
+            // Toggle trail VFX ON
+            _player.currentSword.ToggleTrailVFX(true);
+            
             // Allows for the player to snap to the direction they are inputting
             //if (_input.move == Vector2.zero)
             //{
@@ -208,6 +211,9 @@ namespace Bladesmiths.Capstone
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            // Toggle trail VFX OFF
+            _player.currentSword.ToggleTrailVFX(false);
+
             _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
 

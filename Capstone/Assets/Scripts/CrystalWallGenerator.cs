@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
+#if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
+#endif
 using UnityEngine.UIElements;
 
 namespace Bladesmiths.Capstone
@@ -10,6 +12,7 @@ namespace Bladesmiths.Capstone
     using System.Collections.Generic;
     using UnityEngine;
     using Bladesmiths.Capstone.Math;
+
 
     [RequireComponent(typeof(BoxCollider))]
     public class CrystalWallGenerator : SerializedMonoBehaviour

@@ -12,12 +12,15 @@ public class MainMenuFunctions : MonoBehaviour
     private GameObject lastselect;
 
     [SerializeField] private GameObject pauseMenu;
+
     //[SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject skipCutSceneButton;
 
     [SerializeField] private GameObject blackFade;
 
     private bool fadeToBlack;
+
+    private bool loadGame = false;
 
     public bool Paused { get; private set; }
 
@@ -43,12 +46,14 @@ public class MainMenuFunctions : MonoBehaviour
         }
 
         // If the screen is set to fade to black
-        if(fadeToBlack)
+        if (fadeToBlack)
         {
             // Enable the black background
             blackFade.SetActive(true);
             // Slowly up the alpha
-            blackFade.GetComponent<Image>().color = new Color(blackFade.GetComponent<Image>().color.r, blackFade.GetComponent<Image>().color.g, blackFade.GetComponent<Image>().color.b, blackFade.GetComponent<Image>().color.a + Time.deltaTime);
+            blackFade.GetComponent<Image>().color = new Color(blackFade.GetComponent<Image>().color.r,
+                blackFade.GetComponent<Image>().color.g, blackFade.GetComponent<Image>().color.b,
+                blackFade.GetComponent<Image>().color.a + Time.deltaTime);
             // If the black background is fully opaque
             if (blackFade.GetComponent<Image>().color.a >= 1)
             {
@@ -57,6 +62,21 @@ public class MainMenuFunctions : MonoBehaviour
             }
         }
 
+        if (loadGame)
+        {
+            // Enable the black background
+            blackFade.SetActive(true);
+            
+            // Slowly up the alpha
+            blackFade.GetComponent<Image>().color = new Color(blackFade.GetComponent<Image>().color.r,
+                blackFade.GetComponent<Image>().color.g, blackFade.GetComponent<Image>().color.b,
+                blackFade.GetComponent<Image>().color.a + Time.deltaTime);
+            // If the black background is fully opaque
+            if (blackFade.GetComponent<Image>().color.a >= 1)
+            {
+                LoadGame();
+            }
+        }
     }
 
     /// <summary>
@@ -65,13 +85,9 @@ public class MainMenuFunctions : MonoBehaviour
     /// <param name="vp"></param>
     public void EndReached()
     {
-        SceneManager.LoadScene("PlayerScene");
-        SceneManager.LoadSceneAsync("Original_EnemyScene", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("Village_Persistent", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("Village_Audio", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("Village_Gameplay", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("Village_Geo", LoadSceneMode.Additive);
-        SceneManager.LoadSceneAsync("Village_Lighting", LoadSceneMode.Additive);
+        loadGame = true;
+        
+        blackFade.GetComponent<Image>().color = new Color(0, 0, 0, 0);
     }
 
     /// <summary>
@@ -80,7 +96,7 @@ public class MainMenuFunctions : MonoBehaviour
     /// <param name="value"></param>
     public void OnPause(InputValue value)
     {
-        if(value.isPressed)
+        if (value.isPressed)
         {
             Pause();
         }
@@ -92,7 +108,7 @@ public class MainMenuFunctions : MonoBehaviour
     public void Pause()
     {
         if (pauseMenu == null) return;
-        
+
         // Toggle the pause menu
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
@@ -131,12 +147,23 @@ public class MainMenuFunctions : MonoBehaviour
         // Toggle the pause menu
         Pause();
     }
-    
+
     /// <summary>
     /// When the skip cutscene button is pressed, do the same code as reaching the end of the video
     /// </summary>
     public void SkipCutscene()
     {
         EndReached();
+    }
+
+    private void LoadGame()
+    {
+        SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadSceneAsync("Original_EnemyScene", LoadSceneMode.Additive);
+        //SceneManager.LoadSceneAsync("Village_Persistent", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Audio", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Gameplay", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Geo", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Lighting", LoadSceneMode.Additive);
     }
 }

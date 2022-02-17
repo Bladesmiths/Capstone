@@ -1090,6 +1090,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Exit",
+            "id": "fa96b479-29a4-4795-b0dd-7a322007b756",
+            "actions": [
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "c4beb6b9-5907-449c-b5bd-4819cd353fa8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a3ae5fea-e260-4065-a54f-56509296d019",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

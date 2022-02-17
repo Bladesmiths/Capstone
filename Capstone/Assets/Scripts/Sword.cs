@@ -92,9 +92,24 @@ namespace Bladesmiths.Capstone
 
         }
 
-        public void TriggerVFX()
+        public void ToggleTrailVFX(bool isEnabled)
         {
             // TODO: Implement TriggerVFX
+            if (vfx.Count > 0)
+            {
+                if (isEnabled)
+                {
+                    vfx[1].GetComponent<VFXManager>().DisableVFX();
+                    vfx[2].GetComponent<VFXManager>().DisableVFX();
+                    vfx[0].GetComponent<VFXManager>().EnableVFX();
+                }
+                else
+                {
+                    vfx[0].GetComponent<VFXManager>().DisableVFX();
+                    vfx[1].GetComponent<VFXManager>().DisableVFX();
+                    vfx[2].GetComponent<VFXManager>().DisableVFX();
+                }
+            }
         }
 
         void OnCollisionEnter(Collision col)

@@ -91,8 +91,7 @@ namespace Bladesmiths.Capstone
 
         #region Sword Fields
         [Header("Sword Fields")]
-        [SerializeField]
-        private Sword currentSword;
+        public Sword currentSword;
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
         private int animIDSwordChoice;
@@ -297,7 +296,7 @@ namespace Bladesmiths.Capstone
             // If the player is dead and just died (fadeToBlack is still occuring)
             if (points >= maxPoints)
             {
-                FadeToBlack();
+                StartCoroutine(FadeToBlack());
             }
 
         }
@@ -317,6 +316,11 @@ namespace Bladesmiths.Capstone
         public void AddPoints()
         {
             points++;
+        }
+
+        public void AddToMaxPoints()
+        {
+            points = maxPoints;
         }
 
         /// <summary>
@@ -787,6 +791,8 @@ namespace Bladesmiths.Capstone
             
             if (fade.GetComponent<Image>().color.a >= 1)
             {
+                Debug.Log("Loading winscreen");
+
                 if (points >= maxPoints)
                 {
                     SceneManager.LoadScene("WinScreen");

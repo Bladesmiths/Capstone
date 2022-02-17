@@ -1114,6 +1114,34 @@ namespace Bladesmiths.Capstone
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Exit"",
+            ""id"": ""fa96b479-29a4-4795-b0dd-7a322007b756"",
+            ""actions"": [
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4beb6b9-5907-449c-b5bd-4819cd353fa8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a3ae5fea-e260-4065-a54f-56509296d019"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1194,6 +1222,9 @@ namespace Bladesmiths.Capstone
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
             m_UI_Unpause = m_UI.FindAction("Unpause", throwIfNotFound: true);
+            // Exit
+            m_Exit = asset.FindActionMap("Exit", throwIfNotFound: true);
+            m_Exit_Exit = m_Exit.FindAction("Exit", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1491,6 +1522,39 @@ namespace Bladesmiths.Capstone
             }
         }
         public UIActions @UI => new UIActions(this);
+
+        // Exit
+        private readonly InputActionMap m_Exit;
+        private IExitActions m_ExitActionsCallbackInterface;
+        private readonly InputAction m_Exit_Exit;
+        public struct ExitActions
+        {
+            private @PlayerControls m_Wrapper;
+            public ExitActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Exit => m_Wrapper.m_Exit_Exit;
+            public InputActionMap Get() { return m_Wrapper.m_Exit; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ExitActions set) { return set.Get(); }
+            public void SetCallbacks(IExitActions instance)
+            {
+                if (m_Wrapper.m_ExitActionsCallbackInterface != null)
+                {
+                    @Exit.started -= m_Wrapper.m_ExitActionsCallbackInterface.OnExit;
+                    @Exit.performed -= m_Wrapper.m_ExitActionsCallbackInterface.OnExit;
+                    @Exit.canceled -= m_Wrapper.m_ExitActionsCallbackInterface.OnExit;
+                }
+                m_Wrapper.m_ExitActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Exit.started += instance.OnExit;
+                    @Exit.performed += instance.OnExit;
+                    @Exit.canceled += instance.OnExit;
+                }
+            }
+        }
+        public ExitActions @Exit => new ExitActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -1556,6 +1620,10 @@ namespace Bladesmiths.Capstone
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
             void OnUnpause(InputAction.CallbackContext context);
+        }
+        public interface IExitActions
+        {
+            void OnExit(InputAction.CallbackContext context);
         }
     }
 }

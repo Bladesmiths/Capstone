@@ -260,6 +260,11 @@ namespace Bladesmiths.Capstone
 
         protected override void Die()
         {
+            if (player != null)
+            {
+                player.GetComponent<Player>().AddToMaxPoints();
+            }
+            
             gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
             gameObject.SetActive(false);
         }

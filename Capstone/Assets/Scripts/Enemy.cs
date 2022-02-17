@@ -18,15 +18,12 @@ namespace Bladesmiths.Capstone
 
         // Gets a reference to the player
         // Will be used for finding the player in the world
-        [SerializeField] 
-        protected Player player;
+        [SerializeField] protected Player player;
 
-        [SerializeField]
-        private GameObject sword;
+        [SerializeField] private GameObject sword;
         public bool blocked = false;
 
-        [SerializeField]
-        protected int chunksRemoved;
+        [SerializeField] protected int chunksRemoved;
         protected bool damaged = false;
         protected float timer = 0f;
 
@@ -34,26 +31,23 @@ namespace Bladesmiths.Capstone
         public Vector3 moveVector;
         public Vector3 rotateVector;
 
-        [SerializeField]
-        protected float damage;
+        [SerializeField] protected float damage;
 
-        [SerializeField]
-        protected float shrinkSpeed;
+        [SerializeField] protected float shrinkSpeed;
         protected float fadeOutTimer;
         protected float fadeOutLength;
 
-        [SerializeField]
-        protected float viewDistance;
+        [SerializeField] protected float viewDistance;
 
         public bool surrounding;
-        
+
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
         // Testing for damaging system
-        [Header("Damaging Timer Fields (Testing)")]
-        [SerializeField]
+        [Header("Damaging Timer Fields (Testing)")] [SerializeField]
         protected float damagingTimerLimit;
+
         protected float damagingTimer;
         protected bool damaging;
 
@@ -66,13 +60,32 @@ namespace Bladesmiths.Capstone
 
         private bool inCombat;
 
-        public float Damage { get => damage; }
-        public bool Damaging { get => damaging; set => damaging = value; }
+        public float Damage
+        {
+            get => damage;
+        }
+
+        public bool Damaging
+        {
+            get => damaging;
+            set => damaging = value;
+        }
+
         public bool CanHit { get; set; }
-        public GameObject Sword { get => sword; }
-        public bool InCombat { get => inCombat; set => inCombat = value; }
+
+        public GameObject Sword
+        {
+            get => sword;
+        }
+
+        public bool InCombat
+        {
+            get => inCombat;
+            set => inCombat = value;
+        }
 
         #region Enemy States
+
         protected EnemyFSMState_SEEK seek;
         protected EnemyFSMState_IDLE idle;
         protected EnemyFSMState_ATTACK attack;
@@ -81,6 +94,7 @@ namespace Bladesmiths.Capstone
         protected EnemyFSMState_WANDER wander;
         protected EnemyFSMState_MOVING move;
         protected EnemyFSMState_STUN stun;
+
         #endregion
 
         public virtual void Awake()
@@ -149,13 +163,15 @@ namespace Bladesmiths.Capstone
         /// Checks to see if the player is near the Enemy
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsClose() => () => Vector3.Distance(player.transform.position, transform.position) < viewDistance;
+        public Func<bool> IsClose() =>
+            () => Vector3.Distance(player.transform.position, transform.position) < viewDistance;
 
         /// <summary>
         /// If the Player is far away then stop seeking
         /// </summary>
         /// <returns></returns>
-        public Func<bool> IsIdle() => () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
+        public Func<bool> IsIdle() =>
+            () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
 
         /// <summary>
         /// If the Enemy can attack
@@ -187,7 +203,9 @@ namespace Bladesmiths.Capstone
         /// If the Enemy is no longer stunned 
         /// </summary>
         /// <returns></returns>
-        public Func<bool> GoWander() => () => stun.continueAttacking == true && Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
+        public Func<bool> GoWander() => () =>
+            stun.continueAttacking == true &&
+            Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
 
         public virtual void Update()
         {
@@ -226,8 +244,14 @@ namespace Bladesmiths.Capstone
             if (canMove && agent != null)
             {
                 agent.SetDestination(moveVector);
-                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(rotateVector.x, 0f, rotateVector.z)), Time.deltaTime * 5f);
-                transform.rotation = q;
+                
+                var lookRotVec = new Vector3(rotateVector.x + 0.001f, 0f, rotateVector.z);
+                if (lookRotVec.magnitude > Mathf.Epsilon)
+                {
+                    Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+                        Time.deltaTime * 5f);
+                    transform.rotation = q;
+                }
             }
 
             //Debug.DrawLine(transform.position, rotateVector, Color.red);
@@ -239,8 +263,6 @@ namespace Bladesmiths.Capstone
             //    q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
             //    transform.rotation = q;
             //}
-
-            
         }
 
         public void ClearDamaging()
@@ -265,10 +287,11 @@ namespace Bladesmiths.Capstone
                 damaging = false;
             }
         }
+
         public void SwordAttack(int targetID)
         {
-           ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
-            
+            ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+
             // Testing
             damaging = true;
         }
@@ -282,23 +305,24 @@ namespace Bladesmiths.Capstone
         {
             throw new NotImplementedException();
         }
+
         public void RemoveRandomChunk()
         {
-            GameObject removedChunk = transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
+            GameObject removedChunk = transform.GetChild(1)
+                .GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
             removedChunk.transform.parent = null;
             //removedChunck.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             removedChunk.AddComponent<BoxCollider>();
             removedChunk.AddComponent<Rigidbody>();
-            removedChunk.AddComponent<EnemyChunk>();          
-
+            removedChunk.AddComponent<EnemyChunk>();
         }
 
         public int NumChunks()
         {
-            return chunksRemoved * (int)(player.CurrentSword.Damage / 5);            
+            return chunksRemoved * (int)(player.CurrentSword.Damage / 5);
         }
 
-        
+
         /// <summary>
         /// Subtract an amount of damage from the character's health
         /// </summary>
@@ -318,10 +342,11 @@ namespace Bladesmiths.Capstone
                 if (transform.GetChild(1).childCount > 30)
                 {
                     for (int i = 0; i < NumChunks(); i++)
-                    {                    
+                    {
                         RemoveRandomChunk();
                     }
                 }
+
                 inCombat = true;
                 damaged = true;
                 //damaged = true;
@@ -331,6 +356,4 @@ namespace Bladesmiths.Capstone
             return damageResult;
         }
     }
-
-    
 }

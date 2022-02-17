@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setupList:
   - scenePath: Assets/Scenes/WinScreen.unity
-    isActive: 0
+    isActive: 1
     isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 0e6dde3719c8d5a459160a4a88226cc9, type: 2}
+  gameLevelData: {fileID: 11400000, guid: c8f8e9586f2569348b64c93b72ff39ec, type: 2}
