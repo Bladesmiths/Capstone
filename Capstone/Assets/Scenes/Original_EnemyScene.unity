@@ -2730,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 57326db2b5f9fc3428c64d827ff2f774, type: 2}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_Name
-      value: Enemy (4)
+      value: Enemy A
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsActive
@@ -3911,6 +3911,17 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &688146476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+  m_PrefabInstance: {fileID: 688146472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688146474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &773488894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8165,7 +8176,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 57326db2b5f9fc3428c64d827ff2f774, type: 2}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_Name
-      value: Enemy (5)
+      value: Enemy Start
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_IsActive
@@ -11263,7 +11274,7 @@ MonoBehaviour:
     - {fileID: 1266266658}
     - {fileID: 1483988587}
     - {fileID: 1165427951}
-    - {fileID: 333083458}
+    - {fileID: 688146476}
     - {fileID: 1064772059}
     - {fileID: 1746625717}
     - {fileID: 73330564}
@@ -11273,6 +11284,7 @@ MonoBehaviour:
     - {fileID: 773488901}
     - {fileID: 1584640254}
     - {fileID: 1890996644}
+    - {fileID: 333083458}
     - {fileID: 1267446936}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -11769,7 +11781,7 @@ MonoBehaviour:
       Data: 2
     - Name: identifiedObject
       Entry: 10
-      Data: 11
+      Data: 21
     - Name: 
       Entry: 8
       Data: 
@@ -11790,7 +11802,7 @@ MonoBehaviour:
       Data: 2
     - Name: identifiedObject
       Entry: 10
-      Data: 21
+      Data: 22
     - Name: 
       Entry: 8
       Data: 
