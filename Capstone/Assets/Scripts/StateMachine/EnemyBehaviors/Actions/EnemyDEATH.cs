@@ -58,20 +58,31 @@ namespace Bladesmiths.Capstone
             _enemy = GetComponent<Enemy>();
             // Removes the Enemy from its group and the attack queue
             AIDirector.Instance.RemoveFromGroups(_enemy);
+            GameObject arm = _enemy.armChunks;
+            GameObject head = _enemy.headChunks;
+            GameObject body = _enemy.bodyChunks;
+            GameObject[] list = { arm, head, body };
 
             // Allows for the destruction of Enemy's
             _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            for(int i = 0; i < _enemy.transform.GetChild(1).childCount; i++)
+            for (int j = 0; j < 3; j++)
             {
-                _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<BoxCollider>();
-                _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<Rigidbody>();
-                _enemy.transform.GetChild(1).GetChild(i).GetComponent<Rigidbody>().isKinematic = false;
+                GameObject current = list[j];
+
+                for (int i = 0; i < current.transform.childCount; i++)
+                {
+                    current.transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+                    current.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+                    current.transform.GetChild(i).GetComponent<Rigidbody>().isKinematic = false;
+                }
             }
 
-            _enemy.transform.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
-            _enemy.transform.GetChild(3).GetComponent<Rigidbody>().isKinematic = false;
-            _enemy.transform.GetChild(4).GetComponent<Rigidbody>().isKinematic = false;
+            _enemy.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
+            _enemy.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
+
+            //_enemy.transform.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
+
             // Turns on all of the physics on the Enemy
             //foreach (Rigidbody child in _enemy.transform.GetComponentsInChildren<Rigidbody>())
             //{

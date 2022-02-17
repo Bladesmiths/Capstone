@@ -60,6 +60,13 @@ namespace Bladesmiths.Capstone
 
         private bool inCombat;
 
+        [SerializeField]
+        public GameObject headChunks;
+        [SerializeField]
+        public GameObject bodyChunks;
+        [SerializeField]
+        public GameObject armChunks;
+
         public float Damage
         {
             get => damage;
@@ -308,8 +315,22 @@ namespace Bladesmiths.Capstone
 
         public void RemoveRandomChunk()
         {
-            GameObject removedChunk = transform.GetChild(1)
-                .GetChild(UnityEngine.Random.Range(0, transform.GetChild(1).childCount)).gameObject;
+            if (headChunks.transform.childCount <= 10 &&
+                bodyChunks.transform.childCount <= 10)
+            {
+                return;    
+            }
+        
+            GameObject remover = UnityEngine.Random.Range(0, 2) == 0 ? headChunks : bodyChunks;
+            if (remover.transform.childCount <= 10)
+            {
+                remover = remover.Equals(headChunks) ? bodyChunks : headChunks;
+            }
+
+            Debug.Log("Remover: " + remover);
+
+            GameObject removedChunk = remover.transform.GetChild(UnityEngine.Random.Range(0, remover.transform.childCount)).gameObject;
+            Debug.Log("ChildCount: " + remover.transform.childCount);
             removedChunk.transform.parent = null;
             //removedChunck.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             removedChunk.AddComponent<BoxCollider>();
@@ -339,12 +360,9 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                if (transform.GetChild(1).childCount > 30)
+                for (int i = 0; i < NumChunks(); i++)
                 {
-                    for (int i = 0; i < NumChunks(); i++)
-                    {
-                        RemoveRandomChunk();
-                    }
+                    RemoveRandomChunk();
                 }
 
                 inCombat = true;
