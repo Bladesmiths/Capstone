@@ -28,27 +28,27 @@ namespace Bladesmiths.Capstone
 
         public override TaskStatus OnUpdate()
         {
-            fadeOutTimer += Time.deltaTime;
+            //fadeOutTimer += Time.deltaTime;
             
 
-            // When the object should fade out
-            if (fadeOutTimer >= fadeOutLength)
-            {
-                // Shrink the cubes
-                _enemy.transform.localScale = new Vector3(
-                    _enemy.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
-                    _enemy.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
-                    _enemy.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+            //// When the object should fade out
+            //if (fadeOutTimer >= fadeOutLength)
+            //{
+            //    // Shrink the cubes
+            //    _enemy.transform.localScale = new Vector3(
+            //        _enemy.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
+            //        _enemy.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
+            //        _enemy.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
 
-                // After the cubes are shrunk, destroy it
-                if (_enemy.transform.localScale.x <= 0 &&
-                    _enemy.transform.localScale.y <= 0 &&
-                    _enemy.transform.localScale.z <= 0)
-                {
-                    MonoBehaviour.Destroy(_enemy.gameObject);
-                    return TaskStatus.Success;
-                }
-            }
+            //    // After the cubes are shrunk, destroy it
+            //    if (_enemy.transform.localScale.x <= 0 &&
+            //        _enemy.transform.localScale.y <= 0 &&
+            //        _enemy.transform.localScale.z <= 0)
+            //    {
+            //        MonoBehaviour.Destroy(_enemy.gameObject);
+            //        return TaskStatus.Success;
+            //    }
+            //}
             return TaskStatus.Running;
 
         }
@@ -58,28 +58,48 @@ namespace Bladesmiths.Capstone
             _enemy = GetComponent<Enemy>();
             // Removes the Enemy from its group and the attack queue
             AIDirector.Instance.RemoveFromGroups(_enemy);
-            GameObject arm = _enemy.armChunks;
-            GameObject head = _enemy.headChunks;
+            
             GameObject body = _enemy.bodyChunks;
-            GameObject[] list = { arm, head, body };
 
             // Allows for the destruction of Enemy's
             _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            for (int j = 0; j < 3; j++)
+            int count = body.transform.childCount;
+            for (int i = 0; i < count; i++)
             {
-                GameObject current = list[j];
-
-                for (int i = 0; i < current.transform.childCount; i++)
-                {
-                    //current.transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
-                    current.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
-                    current.transform.GetChild(i).GetComponent<Rigidbody>().isKinematic = false;
-                }
+                body.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
+                body.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+                body.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                body.transform.GetChild(0).parent = null;
             }
 
+            count = _enemy.spine.transform.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                _enemy.spine.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
+                _enemy.spine.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+                _enemy.spine.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                _enemy.spine.transform.GetChild(0).parent = null;
+            }
+                        
+            count = _enemy.geo.transform.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                GameObject gO = _enemy.geo.transform.GetChild(0).gameObject;
+                gO.AddComponent<BoxCollider>();
+                gO.AddComponent<Rigidbody>();
+                gO.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+
+                gO.transform.parent = null;
+
+            }
+
+            _enemy.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
+            _enemy.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+            _enemy.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+
             _enemy.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
-            _enemy.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
+            //_enemy.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
 
             //_enemy.transform.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
 
@@ -88,6 +108,7 @@ namespace Bladesmiths.Capstone
             //{
             //    child.isKinematic = false;
             //}
+            _enemy.gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 2f;
         }
 
         public override void OnEnd()

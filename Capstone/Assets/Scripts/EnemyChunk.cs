@@ -8,7 +8,7 @@ namespace Bladesmiths.Capstone
     {
         private float fadeOutTimer = 0f;
         private float fadeOutLength = 4f;
-        private float shrinkSpeed = 20.0f;
+        public float shrinkSpeed = 20.0f;
 
         // Update is called once per frame
         void Update()
