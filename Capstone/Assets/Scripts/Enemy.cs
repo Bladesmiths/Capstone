@@ -60,8 +60,11 @@ namespace Bladesmiths.Capstone
 
         private bool inCombat;
 
+        [SerializeField]
         public GameObject geo;
+        [SerializeField]
         public GameObject bodyChunks;
+        [SerializeField]
         public GameObject spine;
 
         public float Damage

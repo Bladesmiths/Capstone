@@ -4589,10 +4589,9 @@ MonoBehaviour:
   stunned: 0
   canMove: 0
   enemyGroupNumber: 0
-  bodyChunks: {fileID: 7202129141814913666}
   geo: {fileID: 3042260066338696020}
+  bodyChunks: {fileID: 7202129141814913666}
   spine: {fileID: 8047826465572479356}
-  animator: {fileID: 0}
 --- !u!136 &9219826958900925806
 CapsuleCollider:
   m_ObjectHideFlags: 0
