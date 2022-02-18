@@ -236,7 +236,6 @@ namespace Bladesmiths.Capstone
             animIDBlock = Animator.StringToHash("Block");
             animIDDodge = Animator.StringToHash("Dodge");
             animIDMoving = Animator.StringToHash("Moving");
-            animIDDamaged = Animator.StringToHash("Damaaged");
             animIDDead = Animator.StringToHash("Dead");
             animBlend = 0;
             dodgeTimer = 0;
