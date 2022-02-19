@@ -7335,6 +7335,79 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 140, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &708863165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708863166}
+  - component: {fileID: 708863168}
+  - component: {fileID: 708863167}
+  m_Layer: 0
+  m_Name: SapphireSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708863166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708863165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8372137393549723559}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708863167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708863165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40fb61d93dba19448f0217e3627fbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordSwings: []
+  vfx:
+  - {fileID: 1367378248}
+  - {fileID: 1152717627}
+  - {fileID: 33038434}
+  swordModel: {fileID: 0}
+  swordType: 2
+  offset: {fileID: 6693677303595215301, guid: c1e9ad033834b6042bd8175e683db9ce, type: 3}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
+--- !u!65 &708863168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708863165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2645364, y: 0.5, z: 0.5}
+  m_Center: {x: -0.53226817, y: -0.047306627, z: -0.021598952}
 --- !u!1001 &742316254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13012,6 +13085,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 1902602802}
+    - {fileID: 1383281542}
+    - {fileID: 708863165}
     - {fileID: 6318953244586518413}
     - {fileID: 5846498886889251706}
     - {fileID: 5040008817425853434}
@@ -13231,6 +13307,68 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: swordsGeo
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -14501,6 +14639,79 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1383281542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383281543}
+  - component: {fileID: 1383281545}
+  - component: {fileID: 1383281544}
+  m_Layer: 0
+  m_Name: RubySword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1383281543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383281542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8372137393549723559}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1383281544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383281542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40fb61d93dba19448f0217e3627fbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordSwings: []
+  vfx:
+  - {fileID: 33038434}
+  - {fileID: 1152717627}
+  - {fileID: 1367378248}
+  swordModel: {fileID: 0}
+  swordType: 1
+  offset: {fileID: 6693677303595215301, guid: 9e35dc870aea93747a9b4c801527f3a9, type: 3}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
+--- !u!65 &1383281545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383281542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1076827, y: 0.65, z: 0.65}
+  m_Center: {x: -0.95384145, y: -0.03231755, z: -0.005765005}
 --- !u!1 &1399392736
 GameObject:
   m_ObjectHideFlags: 0
@@ -16750,7 +16961,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: -0.08096096, y: 0.90320605, z: -0.19594494, w: -0.3731886}
+  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
   m_LocalPosition: {x: -100.613556, y: 10.347, z: -53.966595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -21782,6 +21993,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f8f8ee7d183ac48a362362dedcb1d6, type: 3}
+--- !u!1 &1902602802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1902602803}
+  - component: {fileID: 1902602805}
+  - component: {fileID: 1902602804}
+  m_Layer: 0
+  m_Name: TopazSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1902602803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902602802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8372137393549723559}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902602804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902602802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40fb61d93dba19448f0217e3627fbf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordSwings: []
+  vfx:
+  - {fileID: 1152717627}
+  - {fileID: 33038434}
+  - {fileID: 1367378248}
+  swordModel: {fileID: 0}
+  swordType: 0
+  offset: {fileID: 6693677303595215301, guid: e129d40e2e27bbe4badd698ada26ed07, type: 3}
+  SwordHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sfxPlay: 0
+--- !u!65 &1902602805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902602802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4184812, y: 0.65, z: 0.65}
+  m_Center: {x: -0.6592404, y: -0.030721875, z: 0.00000035063414}
 --- !u!1001 &1911598416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24062,7 +24346,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.000000018626451, y: 0.8395486, z: -0.38226062, w: 0.3860505}
+  m_LocalRotation: {x: 0.000000022351742, y: 0.8395486, z: -0.38226062, w: 0.3860505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -27222,27 +27506,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4422467682403470909}
   - component: {fileID: 5040008817425853436}
-  - component: {fileID: 5040008817425853435}
   m_Layer: 0
   m_Name: sapphire_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &5040008817425853435
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5040008817425853434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.5, z: 0.5}
-  m_Center: {x: -0.5, y: -0.04730662, z: -0.021599406}
+  m_IsActive: 1
 --- !u!114 &5040008817425853436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27250,7 +27520,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5040008817425853434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40fb61d93dba19448f0217e3627fbf9, type: 3}
   m_Name: 
@@ -27832,7 +28102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6958657721436040635}
   - component: {fileID: 5846498886889251708}
-  - component: {fileID: 5846498886889251707}
   m_Layer: 0
   m_Name: ruby_GEO
   m_TagString: Untagged
@@ -27840,19 +28109,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!65 &5846498886889251707
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5846498886889251706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.65, z: 0.65}
-  m_Center: {x: -0.9, y: -0.032317616, z: -0.005765748}
 --- !u!114 &5846498886889251708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27860,7 +28116,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5846498886889251706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40fb61d93dba19448f0217e3627fbf9, type: 3}
   m_Name: 
@@ -28088,27 +28344,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7781826857221560333}
   - component: {fileID: 6318953244586518415}
-  - component: {fileID: 6318953244586518414}
   m_Layer: 0
   m_Name: topaz_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &6318953244586518414
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6318953244586518413}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.3, y: 0.65, z: 0.65}
-  m_Center: {x: -0.6, y: -0.030721871, z: -0.00000023504458}
+  m_IsActive: 0
 --- !u!114 &6318953244586518415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28116,7 +28358,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318953244586518413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40fb61d93dba19448f0217e3627fbf9, type: 3}
   m_Name: 
@@ -29316,6 +29558,9 @@ Transform:
   - {fileID: 1152717628}
   - {fileID: 1367378249}
   - {fileID: 33038435}
+  - {fileID: 1902602803}
+  - {fileID: 1383281543}
+  - {fileID: 708863166}
   m_Father: {fileID: 1641078085436969861}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 70.354, y: -15.63, z: -26.015}

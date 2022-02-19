@@ -94,6 +94,8 @@ namespace Bladesmiths.Capstone
         public Sword currentSword;
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
+        [OdinSerialize]
+        private Dictionary<SwordType, GameObject> swordsGeo = new Dictionary<SwordType, GameObject>();
         private int animIDSwordChoice;
         #endregion
 
@@ -560,9 +562,11 @@ namespace Bladesmiths.Capstone
             // because that's a waste of time
             if (newSwordType != currentSword.SwordType)
             {
-                // Set the old sword to inactive and the new to active
+                // Set the old sword data and model to inactive and the new to active
                 swords[CurrentSword.SwordType].SetActive(false);
                 swords[newSwordType].SetActive(true);
+                swordsGeo[CurrentSword.SwordType].SetActive(false);
+                swordsGeo[newSwordType].SetActive(true);
 
                 // Update the current sword field
                 currentSword = swords[newSwordType].GetComponent<Sword>();
