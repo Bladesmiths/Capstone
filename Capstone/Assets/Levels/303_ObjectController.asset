@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
-  m_Name: ShatteringEnemies
+  m_Name: 303_ObjectController
   m_EditorClassIdentifier: 
   setupList:
   - scenePath: Assets/Scenes/PlayerScene.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Scenes/EnemyModel_Original_EnemyScene.unity
+  - scenePath: Assets/Scenes/ObjectController_Original_EnemyScene.unity
     isActive: 0
     isLoaded: 1
   - scenePath: Assets/Scenes/Village_Audio.unity
@@ -31,4 +31,4 @@ MonoBehaviour:
   - scenePath: Assets/Scenes/Village_Lighting.unity
     isActive: 0
     isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 5510f252e8dffc44d94a0b9b4bd600fe, type: 2}
+  gameLevelData: {fileID: 11400000, guid: 90b0ebaa68bf6b64e83025ca055bdfa8, type: 2}
