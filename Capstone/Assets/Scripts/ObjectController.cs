@@ -15,6 +15,8 @@ namespace Bladesmiths.Capstone
         //[SerializeField] [Tooltip("The next ID to assign to an object")]
         private int currentValidId = -1;
 
+        private static ObjectController instance;
+
         // Dictionaries of damageable and damaging objects
         [OdinSerialize] [Tooltip("IDs mapped to Damageable Objects and their teams")]
         private Dictionary<int, IdentifiedTeamPair> identifiedObjects = new Dictionary<int, IdentifiedTeamPair>();
@@ -25,12 +27,26 @@ namespace Bladesmiths.Capstone
             get { return identifiedObjects[id]; }
         }
 
+        public static ObjectController Instance
+        {
+            get { return instance; }
+        }
+
         void Start()
         {
+            if (instance != null && instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
+
             // We should come up with a way to check the dictionary and
             // making a unique ID to go with the player
             //currentValidId = -1;
-            Player player = GameObject.Find("Player").GetComponent<Player>();
+            Player player = Player.instance;
             IdentifiedTeamPair playerTeamPair = new IdentifiedTeamPair(Team.Player, player);
             IdentifiedTeamPair playerSwordPair = new IdentifiedTeamPair(Team.Player, player.Sword.GetComponent<Sword>());
 

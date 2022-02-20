@@ -608,10 +608,17 @@ namespace Bladesmiths.Capstone
         /// <param name="targetID">The id of the object to attack</param>
         public void SwordAttack(int targetID)
         {
-            float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
-            Health += damageDealt * currentSword.LifeStealPercentage;
+            try
+            {
+                float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(ID, Damage);
+                Health += damageDealt * currentSword.LifeStealPercentage;
 
-            damaging = true;
+                damaging = true;
+            }
+            catch(Exception e)
+            {
+                Debug.Log("ID: " + targetID);
+            }
         }
 
         public void ClearDamaging()
