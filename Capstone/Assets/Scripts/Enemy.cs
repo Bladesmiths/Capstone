@@ -114,7 +114,10 @@ namespace Bladesmiths.Capstone
 
         public virtual void Start()
         {
+            // Sets the team of the enemy
+            ObjectTeam = Team.Enemy;
             AIDirector.Instance.AddToEnemyGroup(this, enemyGroupNumber);
+            ObjectController.Instance.AddIdentifiedObject(ObjectTeam, this);
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 
@@ -128,92 +131,16 @@ namespace Bladesmiths.Capstone
             fadeOutLength = 3f;
             chunksRemoved = 3;
             canMove = false;
-            // Creates all of the states
-            //seek = new EnemyFSMState_SEEK(player, this);
-            //idle = new EnemyFSMState_IDLE();
-            //death = new EnemyFSMState_DEATH(this);
-            //wander = new EnemyFSMState_WANDER(this);
-            //attack = new EnemyFSMState_ATTACK(sword, this);
-            //stun = new EnemyFSMState_STUN(sword, this, player);
-
-            // Adds all of the possible transitions
-            //FSM.AddTransition(seek, wander, IsIdle());
-            //FSM.AddTransition(wander, seek, IsClose());
-            //FSM.AddTransition(seek, attack, CanAttack());
-            //FSM.AddTransition(attack, seek, DoneAttacking());
-            //FSM.AddTransition(attack, stun, Stunned());
-            //FSM.AddTransition(stun, seek, KeepAttacking());
-            //FSM.AddTransition(stun, wander, GoWander());
+            
 
             if (agent != null)
             {
                 agent.updateRotation = false;
             }
-            //CanHit = true;
-
-            //FSM.AddAnyTransition(death, IsDead());
-
-            // Sets the current state
-            //FSM.SetCurrentState(wander);
-
-            // Sets the team of the enemy
-            ObjectTeam = Team.Enemy;
+            //CanHit = true;            
         }
 
-        /// <summary>
-        /// Checks to see if the Enemy is dead
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsDead() => () => Health <= 0;
-
-        /// <summary>
-        /// Checks to see if the player is near the Enemy
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsClose() =>
-            () => Vector3.Distance(player.transform.position, transform.position) < viewDistance;
-
-        /// <summary>
-        /// If the Player is far away then stop seeking
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> IsIdle() =>
-            () => Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
-
-        /// <summary>
-        /// If the Enemy can attack
-        /// Set through the AI Director
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> CanAttack() => () => CanHit;
-
-        /// <summary>
-        /// If the Enemy is finishing attacking
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> DoneAttacking() => () => !CanHit;
-
-        /// <summary>
-        /// If the Enemy has been parried 
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> Stunned() => () => player.parrySuccessful;
-
-        /// <summary>
-        /// If the Enemy is no longer stunned 
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> KeepAttacking() => () => stun.continueAttacking == true;
-
-        /// <summary>
-        /// If the Enemy is no longer stunned 
-        /// </summary>
-        /// <returns></returns>
-        public Func<bool> GoWander() => () =>
-            stun.continueAttacking == true &&
-            Vector3.Distance(player.transform.position, transform.position) >= viewDistance;
-
+        
         public virtual void Update()
         {
             //FSM.Tick();

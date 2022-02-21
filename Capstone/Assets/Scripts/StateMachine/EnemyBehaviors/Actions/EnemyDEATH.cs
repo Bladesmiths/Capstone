@@ -98,16 +98,13 @@ namespace Bladesmiths.Capstone
             _enemy.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
             _enemy.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
 
-            _enemy.transform.GetChild(1).GetComponent<BoxCollider>().enabled = true;
-            //_enemy.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
+            _enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().enabled = true;
+            _enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().isTrigger = false;
+            _enemy.transform.GetChild(1).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+            _enemy.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            _enemy.transform.GetChild(1).parent = null;
 
-            //_enemy.transform.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
 
-            // Turns on all of the physics on the Enemy
-            //foreach (Rigidbody child in _enemy.transform.GetComponentsInChildren<Rigidbody>())
-            //{
-            //    child.isKinematic = false;
-            //}
             _enemy.gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 2f;
         }
 
