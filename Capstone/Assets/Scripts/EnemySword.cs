@@ -55,6 +55,10 @@ namespace Bladesmiths.Capstone
             //    }
 
             //}
+            if (other == null)
+            {
+                return;
+            }
 
             if (other.transform.GetComponent<Player>())
             {

@@ -35,7 +35,6 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private Player player;
         private Enemy enemy;
-        private NavMeshPath currentPath;
 
         private Vector3 target;
         public Vector3 desiredPos;
@@ -49,6 +48,7 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             enemy = GetComponent<Enemy>();
+            agent = GetComponent<NavMeshAgent>();
             enemy.surrounding = true;
             player = Player.instance;
             allDirections = new Vector3[numRays];
@@ -129,8 +129,6 @@ namespace Bladesmiths.Capstone
                 seekAgainTimer = seekAgainTimerMax;
 
                 dir = Random.Range(-1, 2);
-                Debug.Log("3: " + dir);
-
             }
 
             Vector3 movePos = chosenDir + transform.position;
@@ -141,8 +139,25 @@ namespace Bladesmiths.Capstone
             }
             //Debug.Log("Move Position: " + movePos);
 
-            enemy.moveVector = movePos;
-            enemy.rotateVector = dist;
+            if (agent != null)
+            {
+                agent.SetDestination(movePos);
+                //transform.Translate(movePos);
+
+            }
+
+            dist.Normalize();
+            Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
+            if (lookRotVec.magnitude > Mathf.Epsilon)
+            {
+                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+                    Time.deltaTime * 5f);
+                transform.rotation = q;
+            }
+            
+
+            //enemy.moveVector = movePos;
+            //enemy.rotateVector = dist;
 
             return TaskStatus.Running;
 
