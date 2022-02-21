@@ -125,7 +125,7 @@ namespace Bladesmiths.Capstone
             }
             else if (col.gameObject.GetComponent<IDamageable>() != null)
             {
-                if (col.gameObject.GetComponent<Enemy>()/* || !col.gameObject.GetComponent<Enemy>().blocked*/)
+                if (col.gameObject.GetComponent<Enemy>() || col.gameObject.GetComponent<Boss>())
                 {
                     FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
                     Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);

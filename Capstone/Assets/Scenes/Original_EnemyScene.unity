@@ -236,39 +236,6 @@ MonoBehaviour:
   speed: -120
   damage: 100
   damagingTimerLimit: 0.5
---- !u!114 &15844916 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 1606798932}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &73330564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
-  m_PrefabInstance: {fileID: 1018638914}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &124367134 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8904323166171337868, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
-  m_PrefabInstance: {fileID: 1912313076}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ea6cc34b50bfc408a7c0d61ee18b40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &133713675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1973,28 +1940,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &333083458 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 333083454}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333083456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &354116695 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8904323166171337868, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
-  m_PrefabInstance: {fileID: 229983227}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ea6cc34b50bfc408a7c0d61ee18b40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &440528674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2409,17 +2354,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &484546363 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7421969406757469069, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
-  m_PrefabInstance: {fileID: 2847295578743705027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ae4f6a8fa5903408d065a09a30efc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &563537281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6138350903734346239, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
@@ -2446,17 +2380,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &642582606 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
-  m_PrefabInstance: {fileID: 1647151353}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &688146472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3911,17 +3834,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &688146476 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 688146472}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688146474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &773488894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5380,17 +5292,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &773488901 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 773488894}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773488896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &886345397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5520,17 +5421,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
---- !u!114 &947127419 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
-  m_PrefabInstance: {fileID: 440528674}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &964104599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7627,33 +7517,11 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1064772059 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 1064772052}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064772054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1165427946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1774450610, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
   m_PrefabInstance: {fileID: 964104599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1165427951 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7701234746644393709, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
-  m_PrefabInstance: {fileID: 964104599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165427946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38884fdcd160cb46a1ab26459113434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1192109835
 GameObject:
   m_ObjectHideFlags: 0
@@ -7887,17 +7755,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6505281561402771304, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
   m_PrefabInstance: {fileID: 964104599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1266266658 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
-  m_PrefabInstance: {fileID: 964104599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266266657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd1afe9324b20bd40bd3b71ab2fe3e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1266266659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9068361453717190943, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
@@ -9329,33 +9186,11 @@ PrefabInstance:
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 3782197337816835738, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
---- !u!114 &1267446936 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 1267446935}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1483988583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3222642215498987421, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
   m_PrefabInstance: {fileID: 964104599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1483988587 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1483988587, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
-  m_PrefabInstance: {fileID: 964104599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483988583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38884fdcd160cb46a1ab26459113434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1483988588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9396,17 +9231,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1505799133 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 2033416595}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505799130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1523715347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 877886854049055291, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
@@ -9545,17 +9369,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62fbcd286f10b414789d8feaf92fbf6c, type: 3}
---- !u!114 &1584640254 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
-  m_PrefabInstance: {fileID: 455743630}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1601474181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2608894922558131929, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
@@ -11219,17 +11032,6 @@ Transform:
   m_Father: {fileID: 973370367}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1711528084 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8904323166171337868, guid: 4b41e562ac87675499e7094bb89a35f8, type: 3}
-  m_PrefabInstance: {fileID: 886345397}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ea6cc34b50bfc408a7c0d61ee18b40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1732141280
 GameObject:
   m_ObjectHideFlags: 0
@@ -11262,30 +11064,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 354116695}
-    - {fileID: 5716213}
-    - {fileID: 124367134}
-    - {fileID: 1711528084}
-    - {fileID: 1505799133}
-    - {fileID: 15844916}
-    - {fileID: 4133358771362095753}
-    - {fileID: 484546363}
-    - {fileID: 1266266658}
-    - {fileID: 1483988587}
-    - {fileID: 1165427951}
-    - {fileID: 688146476}
-    - {fileID: 1064772059}
-    - {fileID: 1746625717}
-    - {fileID: 73330564}
-    - {fileID: 2107466368}
-    - {fileID: 947127419}
-    - {fileID: 642582606}
-    - {fileID: 773488901}
-    - {fileID: 1584640254}
-    - {fileID: 1890996644}
-    - {fileID: 333083458}
-    - {fileID: 1267446936}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -11304,511 +11083,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 24
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -3
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -2
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -4
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -5
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -6
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -7
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -8
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -9
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -10
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 8
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -11
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 9
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -12
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -13
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 11
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -14
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 12
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -15
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 13
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -16
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 14
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -17
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 15
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -18
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 16
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -19
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 17
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -20
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 18
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -21
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 19
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -22
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 20
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -23
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -24
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 21
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: -25
-    - Name: $v
-      Entry: 7
-      Data: Bladesmiths.Capstone.IdentifiedTeamPair, Assembly-CSharp
-    - Name: objectTeam
-      Entry: 3
-      Data: 2
-    - Name: identifiedObject
-      Entry: 10
-      Data: 22
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -13296,28 +12571,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1746625717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 1746625710}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746625712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1890996644 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
-  m_PrefabInstance: {fileID: 1250523363}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1912313076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15655,17 +14908,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2107466368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-  m_PrefabInstance: {fileID: 2107466361}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107466363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6867c49498dc0ba4db6e0f9c3f1d4dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &143075690287136887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16001,14 +15243,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8906441549651155361, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
   m_PrefabInstance: {fileID: 2847295578743705027}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4133358771362095753 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2577363342451621882, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
-  m_PrefabInstance: {fileID: 143075690287136887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b53bf9334a3804cbe33a776595deaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
