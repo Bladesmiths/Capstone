@@ -21,13 +21,18 @@ namespace Bladesmiths.Capstone
         [SerializeField] private int damagingID;
         private float timer;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-            ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
-            Damage = 20;
+            ObjectController = ObjectController.Instance;
             ObjectTeam = Team.Enemy;
-            ID = damagingID;
+            ObjectController.Instance.AddIdentifiedObject(ObjectTeam, this);
+        }
+
+        // Start is called before the first frame update
+        void Start()        {
+            
+            Damage = 20;
+            //ID = damagingID;
         }
 
         // Update is called once per frame

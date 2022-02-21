@@ -47,6 +47,7 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             player = GameObject.Find("Player");
+            ObjectController.Instance.AddIdentifiedObject(Team.Enemy, this);
 
             GetComponent<BehaviorTree>().SetVariableValue("Player", player);
 

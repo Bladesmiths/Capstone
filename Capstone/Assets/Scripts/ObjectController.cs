@@ -32,7 +32,7 @@ namespace Bladesmiths.Capstone
             get { return instance; }
         }
 
-        void Start()
+        private void Awake()
         {
             if (instance != null && instance != this)
             {
@@ -42,7 +42,10 @@ namespace Bladesmiths.Capstone
             {
                 instance = this;
             }
+        }
 
+        void Start()
+        {
             // We should come up with a way to check the dictionary and
             // making a unique ID to go with the player
             //currentValidId = -1;
