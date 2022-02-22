@@ -219,7 +219,7 @@ Material:
     - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
-    - _EmissiveIntensity: 0.71
+    - _EmissiveIntensity: 1.52
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
@@ -319,7 +319,7 @@ Material:
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _COAT_COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.62264144, g: 0.62264144, b: 0.31425765, a: 1}
-    - _CrystalColor: {r: 0.8867924, g: 0.8176371, b: 0.35555357, a: 1}
+    - _CrystalColor: {r: 0.3679245, g: 0.33066925, b: 0.08851013, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}
