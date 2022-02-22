@@ -54,21 +54,21 @@ namespace Bladesmiths.Capstone
                 CheckForPossibleAttacker();
             }
 
-            if(allEnemyGroups.First.Value.enemies.Count == 0)
-            {
-                groupCount++;
-                if (groupCount != enemyGroups.Count)
-                {                    
-                    currentGroup.SetActive(false);
-                    currentGroup = enemyGroups[groupCount];
-                    currentGroup.SetActive(true);
-                    allEnemyGroups.RemoveFirst();                    
-                }
-                else if(groupCount == enemyGroups.Count)
-                {
-                    currentGroup.SetActive(false);
-                }
-            }
+            //if(allEnemyGroups.First.Value.enemies.Count == 0)
+            //{
+            //    groupCount++;
+            //    if (groupCount != enemyGroups.Count)
+            //    {                    
+            //        currentGroup.SetActive(false);
+            //        currentGroup = enemyGroups[groupCount];
+            //        currentGroup.SetActive(true);
+            //        allEnemyGroups.RemoveFirst();                    
+            //    }
+            //    else if(groupCount == enemyGroups.Count)
+            //    {
+            //        currentGroup.SetActive(false);
+            //    }
+            //}
         }
 
         /// <summary>

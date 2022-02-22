@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.AI;
 using Bladesmiths.Capstone.Enums;
+using BehaviorDesigner.Runtime;
 
 namespace Bladesmiths.Capstone
 {
@@ -19,6 +20,8 @@ namespace Bladesmiths.Capstone
         // Gets a reference to the player
         // Will be used for finding the player in the world
         [SerializeField] protected Player player;
+        private BehaviorTree behaviorTree;
+        public ExternalBehavior externalBehaviorTree;
 
         [SerializeField] private GameObject sword;
         public bool blocked = false;
@@ -116,8 +119,15 @@ namespace Bladesmiths.Capstone
         {
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
+            behaviorTree = GetComponent<BehaviorTree>();
             AIDirector.Instance.AddToEnemyGroup(this, enemyGroupNumber);
             ObjectController.Instance.AddIdentifiedObject(ObjectTeam, this);
+            //ExternalBehavior behavior = Instantiate(externalBehaviorTree);
+            externalBehaviorTree.Init();
+
+            behaviorTree.ExternalBehavior = externalBehaviorTree;
+
+
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 
@@ -174,19 +184,19 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-            // Movement
-            if (canMove && agent != null)
-            {
-                agent.SetDestination(moveVector);
+            //// Movement
+            //if (canMove && agent != null)
+            //{
+            //    agent.SetDestination(moveVector);
                 
-                var lookRotVec = new Vector3(rotateVector.x + 0.001f, 0f, rotateVector.z);
-                if (lookRotVec.magnitude > Mathf.Epsilon)
-                {
-                    Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
-                        Time.deltaTime * 5f);
-                    transform.rotation = q;
-                }
-            }
+            //    var lookRotVec = new Vector3(rotateVector.x + 0.001f, 0f, rotateVector.z);
+            //    if (lookRotVec.magnitude > Mathf.Epsilon)
+            //    {
+            //        Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+            //            Time.deltaTime * 5f);
+            //        transform.rotation = q;
+            //    }
+            //}
 
             //Debug.DrawLine(transform.position, rotateVector, Color.red);
 

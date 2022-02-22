@@ -21845,7 +21845,7 @@ MonoBehaviour:
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 1
-  externalBehavior: {fileID: 0}
+  externalBehavior: {fileID: 11400000, guid: ef4e07a017352ae4da1b69829449e0f5, type: 2}
   mBehaviorSource:
     behaviorName: Enemy
     behaviorDescription: The behavior for how the Enemy works.
@@ -21927,6 +21927,7 @@ MonoBehaviour:
   damagingObjectIDs: 
   objectController: {fileID: 0}
   player: {fileID: 0}
+  externalBehaviorTree: {fileID: 11400000, guid: ef4e07a017352ae4da1b69829449e0f5, type: 2}
   sword: {fileID: 0}
   blocked: 0
   chunksRemoved: 0
