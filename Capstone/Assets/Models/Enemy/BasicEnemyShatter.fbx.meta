@@ -3,7 +3,22 @@ guid: a07fc26b18e0df14981f230cee5370e9
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: headFoliage_MAT
+    second: {fileID: 2100000, guid: 291f94ccfe91edd4a812731d61caa132, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: ca1c0246ef874ee4ba6b36a5f5823f28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stomachFoliage_MAT
+    second: {fileID: 2100000, guid: 291f94ccfe91edd4a812731d61caa132, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
