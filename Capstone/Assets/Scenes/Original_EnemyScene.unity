@@ -766,6 +766,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 2
       objectReference: {fileID: 0}
@@ -1907,6 +1911,7 @@ PrefabInstance:
     - {fileID: 7411265491027567847, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &333083455 stripped
 Transform:
@@ -2104,7 +2109,8 @@ PrefabInstance:
         Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3677492051525022829, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
 --- !u!4 &440528675 stripped
 Transform:
@@ -2326,7 +2332,8 @@ PrefabInstance:
         Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3677492051525022829, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
 --- !u!4 &455743631 stripped
 Transform:
@@ -2668,13 +2675,17 @@ PrefabInstance:
       value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3801,6 +3812,7 @@ PrefabInstance:
     - {fileID: 7411265491027567847, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &688146473 stripped
 Transform:
@@ -4116,6 +4128,10 @@ PrefabInstance:
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
@@ -4806,27 +4822,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
-      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(635.727234,-50.07306)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.36591244,109.903412)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.454468,215.454437)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-95.79761,138.698242)"},"ID":4,"Name":"Is
-        Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(46.352356,127.842957)"},"ID":5,"Name":"Enemy
-        DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(190,180)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(2.404541,106.857117)"},"ID":7,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-190,173.8462)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-76.9997253,152.055115)"},"ID":9,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(77.24604,153.023224)"},"ID":10,"Name":"Enemy
-        WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(197.22226,166.324844)"},"ID":11,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0,110)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-241.8492,220.716827)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-66.66675,153.888885)"},"ID":14,"Name":"Can
-        Attack","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyATTACK","NodeData":{"Offset":"(53.077198,160)"},"ID":15,"Name":"Enemy
-        ATTACK","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.35,-50,0.550059259,0.550059259],[0.5,-50,0,0],[0.6,90,0,0],[0.75,90,0,0],[1,0,-221.163132,-221.163132]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(43.4636078,238.355423)"},"ID":16,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.OutsideDistance","NodeData":{"Offset":"(-4.49142838,184.582291)"},"ID":17,"Name":"Outside
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(135.238,183.043579)"},"ID":18,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.IsSurrounding","NodeData":{"Offset":"(260.725861,185.6397)"},"ID":19,"Name":"Is
-        Surrounding","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemyMovement","NodeData":{"Offset":"(394.533569,183.968384)"},"ID":20,"Name":"Enemy
-        Movement","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(726.759338,204.545914)"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Self","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-100,194.999268)"},"ID":22,"Name":"Within
-        Distance","Instant":true,"SinglefieldOfView":60,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(27.15969,177.979462)"},"ID":23,"Name":"In
-        Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(204.891479,201.591675)"},"ID":24,"Name":"Enemy
-        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
-      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6220677820544955877, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -5259,6 +5254,7 @@ PrefabInstance:
     - {fileID: 7411265491027567847, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &773488895 stripped
 Transform:
@@ -5929,7 +5925,8 @@ PrefabInstance:
         Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3677492051525022829, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
 --- !u!4 &1018638915 stripped
 Transform:
@@ -6036,7 +6033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1042869497
 Transform:
   m_ObjectHideFlags: 0
@@ -6343,13 +6340,17 @@ PrefabInstance:
       value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7484,6 +7485,7 @@ PrefabInstance:
     - {fileID: 7411265491027567847, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &1064772053 stripped
 Transform:
@@ -7722,7 +7724,8 @@ PrefabInstance:
         Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3677492051525022829, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
 --- !u!4 &1250523364 stripped
 Transform:
@@ -8102,6 +8105,10 @@ PrefabInstance:
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
@@ -9541,6 +9548,7 @@ PrefabInstance:
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 3782197337816835738, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!1 &1483988583 stripped
 GameObject:
@@ -10012,6 +10020,10 @@ PrefabInstance:
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
@@ -11155,6 +11167,7 @@ PrefabInstance:
     - {fileID: 8492306053362553960, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 776937869667442649, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 4687788242815328144, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &1606798933 stripped
 Transform:
@@ -11325,7 +11338,8 @@ PrefabInstance:
         Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3677492051525022829, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
 --- !u!4 &1647151354 stripped
 Transform:
@@ -11368,7 +11382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1680033378
 Transform:
   m_ObjectHideFlags: 0
@@ -11753,13 +11767,17 @@ PrefabInstance:
       value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - target: {fileID: 1563500564873866627, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -12894,6 +12912,7 @@ PrefabInstance:
     - {fileID: 7411265491027567847, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &1746625711 stripped
 Transform:
@@ -13276,6 +13295,10 @@ PrefabInstance:
       propertyPath: sword
       value: 
       objectReference: {fileID: 563537281}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
       value: 1
@@ -13800,6 +13823,7 @@ PrefabInstance:
     - {fileID: 7926328272945739415, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 4843468235911302062, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 2729791319487344119, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &2033416596 stripped
 Transform:
@@ -14088,6 +14112,10 @@ PrefabInstance:
     - target: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1563500564873866626, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: enemyGroupNumber
@@ -15231,6 +15259,7 @@ PrefabInstance:
     - {fileID: 7411265491027567847, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1710423883257046325, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
     - {fileID: 1273585780396026596, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+    - {fileID: 2169421660259760915, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
 --- !u!4 &2107466362 stripped
 Transform:
@@ -15432,7 +15461,8 @@ PrefabInstance:
         Combat","Instant":true,"Disabled":true},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(160,187.500122)"},"ID":24,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3movemntPos":"(0,0,0)","Vector3enemyPos":"(0,0,0)"}]}]}]}]}]}]}]}}'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3677492051525022829, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 338d6b905a4762040815fe7c73866c62, type: 3}
 --- !u!4 &143075690287136888 stripped
 Transform:
@@ -15592,7 +15622,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8085078013886287665, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58d38587dfd40c744adf8d12d8a37bef, type: 3}
 --- !u!4 &2847295578743705028 stripped
 Transform:
