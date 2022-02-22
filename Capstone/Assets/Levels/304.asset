@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 304
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Scenes/PlayerScene.unity
+  - scenePath: Assets/Scenes/304_PlayerScene.unity
     isActive: 0
     isLoaded: 1
   - scenePath: Assets/Scenes/304_Original_EnemyScene.unity
@@ -31,4 +31,4 @@ MonoBehaviour:
   - scenePath: Assets/Scenes/Village_Lighting.unity
     isActive: 0
     isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 5510f252e8dffc44d94a0b9b4bd600fe, type: 2}
+  gameLevelData: {fileID: 11400000, guid: 3836c821fda6c1e4fbae45345deaaaa4, type: 2}

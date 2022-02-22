@@ -64,6 +64,13 @@ namespace Bladesmiths.Capstone
             {
                 FMODUnity.RuntimeManager.PlayOneShot(enemyHit);
                 Player player = other.transform.GetComponent<Player>();
+
+                if(player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)) == null)
+                {
+                    enemy.SwordAttack(player.ID);
+                    return;
+                }
+
                 if (player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_ParryAttempt &&
                     player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_ParrySuccess &&
                     player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)).ID != Enums.PlayerCondition.F_Blocking)
