@@ -71,11 +71,6 @@ namespace Bladesmiths.Capstone
                     fleeList.Add(element.gameObject);
                 }
             }
-
-            //targetExists = true;
-
-            //fleeList = 
-
         }
 
         public override TaskStatus OnUpdate()
@@ -115,15 +110,7 @@ namespace Bladesmiths.Capstone
         {
             base.OnEnd();
             enemy.surrounding = false;
-            //desiredPos = Vector3.zero;
-            //movemntPos = Vector3.zero;
-            //chosenDir = Vector3.zero;
-            //enemyPos = Vector3.zero;
-            //allDirections = null;
-            //intrest = null;
-            //danger = null;
             enemy.canMove = false;
-
         }
 
         /// <summary>
@@ -219,29 +206,29 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public override void OnDrawGizmos()
         {
-            //if (allDirections == null ||
-            //    intrest == null ||
-            //    danger == null)
-            //{
-            //    return;
-            //}
+            if (allDirections == null ||
+                intrest == null ||
+                danger == null)
+            {
+                return;
+            }
 
-            //for (int i = 0; i <= numRays - 1; i++)
-            //{
-            //    Gizmos.color = Color.red;
-            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
-            //    Gizmos.color = Color.green;
-            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);               
+            for (int i = 0; i <= numRays - 1; i++)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
+                Gizmos.color = Color.green;
+                Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);
 
-            //}
-            //Gizmos.color = Color.blue;
-            //Gizmos.DrawRay(transform.position, chosenDir * 2f);
-            //Gizmos.color = Color.cyan;
-            //Gizmos.DrawSphere(chosenDir + transform.position, .3f);
-            //Gizmos.color = Color.magenta;
-            //Gizmos.DrawSphere(desiredPos, .3f);
-            //Gizmos.color = Color.gray;
-            //DrawCircle();
+            }
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, chosenDir * 2f);
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawSphere(chosenDir + transform.position, .3f);
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawSphere(desiredPos, .3f);
+            Gizmos.color = Color.gray;
+            DrawCircle();
         }
 
         public void DrawCircle()

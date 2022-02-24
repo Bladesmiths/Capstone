@@ -20,8 +20,6 @@ namespace Bladesmiths.Capstone
         // Gets a reference to the player
         // Will be used for finding the player in the world
         [SerializeField] protected Player player;
-        private BehaviorTree behaviorTree;
-        public ExternalBehavior externalBehaviorTree;
 
         [SerializeField] private GameObject sword;
         public bool blocked = false;
@@ -119,15 +117,9 @@ namespace Bladesmiths.Capstone
         {
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
-            behaviorTree = GetComponent<BehaviorTree>();
             AIDirector.Instance.AddToEnemyGroup(this, enemyGroupNumber);
             ObjectController.Instance.AddIdentifiedObject(ObjectTeam, this);
-            //ExternalBehavior behavior = Instantiate(externalBehaviorTree);
-            externalBehaviorTree.Init();
-
-            behaviorTree.ExternalBehavior = externalBehaviorTree;
-
-
+            
             stunned = false;
             player = GameObject.Find("Player").GetComponent<Player>();
 

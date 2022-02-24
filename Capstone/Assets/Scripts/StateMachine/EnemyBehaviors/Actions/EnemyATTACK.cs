@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using UnityEngine.AI;
 using UnityEngine;
 
 namespace Bladesmiths.Capstone
@@ -21,6 +22,7 @@ namespace Bladesmiths.Capstone
 
         private float preAttackTimer;
         private float preAttackTimerMax;
+        private NavMeshAgent agent;
 
         public EnemyATTACK(GameObject sword, Enemy enemy)
         {
@@ -48,34 +50,29 @@ namespace Bladesmiths.Capstone
                 return TaskStatus.Success;
             }
 
-            _enemy.moveVector = transform.position;
-            _enemy.rotateVector = Player.instance.transform.position - transform.position;
+            if (agent != null)
+            {
+                agent.SetDestination(transform.position);
+            }
 
+            Vector3 dist = Player.instance.transform.position - transform.position;
 
-            //if (attack)
-            //{
-            //    Attack();
+            //dist.Normalize();
+            Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
+            if (lookRotVec.magnitude > Mathf.Epsilon)
+            {
+                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+                    Time.deltaTime * 5f);
+                transform.rotation = q;
+            }
 
-            //    if (_sword.transform.localEulerAngles.x == 90)
-            //    {
-            //        attack = false;
-            //    }
-            //}
-            //else
-            //{
-            //    StopAttack();
-
-            //    if (_sword.transform.localEulerAngles.x <= 0.1)
-            //    {
-            //        _enemy.CanHit = false;
-            //    }
-            //}
             return TaskStatus.Running;
         }
 
         public override void OnStart()
         {
             _enemy = gameObject.GetComponent<Enemy>();
+            agent = GetComponent<NavMeshAgent>();
             _sword = _enemy.Sword;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
