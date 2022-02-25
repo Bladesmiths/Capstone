@@ -127,7 +127,7 @@ namespace Bladesmiths.Capstone
             moveSpeed = 5f;
             controller = GetComponent<CharacterController>();
             agent = GetComponent<NavMeshAgent>();
-            attackTimerMax = 1f;
+            attackTimerMax = 0.3f;
             attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;

@@ -41,8 +41,10 @@ namespace Bladesmiths.Capstone
         public Vector3 chosenDir;
         public Vector3 lookPos;
         private int dir;
-        private float seekAgainTimer;
-        private float seekAgainTimerMax;
+        private float moveTimer;
+        private float moveTimerMax;
+        [SerializeField]
+        private float sideDist;
 
         public override void OnStart()
         {
@@ -55,8 +57,8 @@ namespace Bladesmiths.Capstone
             danger = new float[numRays];
             fleeList = new List<GameObject>();
             seekList = new List<Vector3>();
-            seekAgainTimerMax = 2f;
-            seekAgainTimer = seekAgainTimerMax;
+            moveTimerMax = Random.Range(0.5f, 1.5f);
+            moveTimer = moveTimerMax;
 
             for (int i = 0; i < numRays; i++)
             {
@@ -108,8 +110,16 @@ namespace Bladesmiths.Capstone
             // Get the perpendicular vector to the distance between the Player and the Enemy
             seekList[0] = (Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position;
             desiredPos = player.transform.position;
+
             PopulateAll();            
             AttackTimer();
+
+            moveTimer -= Time.deltaTime;
+            if (moveTimer <= 0)
+            {
+                moveTimer = moveTimerMax;
+                return TaskStatus.Success;
+            }
 
             //if (seekAgainTimer <= 0)
             //{
@@ -118,7 +128,7 @@ namespace Bladesmiths.Capstone
             //    dir = Random.Range(-1, 2);
             //}
 
-            Vector3 movePos = chosenDir + transform.position;
+            Vector3 movePos = (chosenDir * sideDist) + transform.position;
 
             if (dir == 0)
             {
@@ -254,7 +264,6 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public override void OnDrawGizmos()
         {
-            Debug.Log(allDirections);
             if (allDirections == null ||
                 intrest == null ||
                 danger == null)
