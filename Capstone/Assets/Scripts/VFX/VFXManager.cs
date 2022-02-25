@@ -1,7 +1,10 @@
+using DG.Tweening;
+
 namespace Bladesmiths.Capstone
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using DG;
 
     public class VFXManager : MonoBehaviour
     {
@@ -22,6 +25,11 @@ namespace Bladesmiths.Capstone
         public GameObject bladeObject;
         public float defaultBladeEmissionLevel;
         private Material bladeMaterial;
+
+        private float targetEmissionLevel = 2f;
+
+        private float emissionRiseDuration = 1f;
+        private float emissionDropDuration = 0.7f;
 
         private void Awake()
         {
@@ -62,7 +70,7 @@ namespace Bladesmiths.Capstone
             }
 
             vfxObject.SetActive(true);
-            EnableBladeEmission(bladeMaterial, 1f);
+            EnableBladeEmission(bladeMaterial, emissionRiseDuration);
         }
 
         /// <summary>
@@ -76,7 +84,7 @@ namespace Bladesmiths.Capstone
             }
 
             vfxObject.SetActive(false);
-            DisableBladeEmission(bladeMaterial, 2f);
+            DisableBladeEmission(bladeMaterial, emissionDropDuration);
         }
 
         public void PlayCollisionOneShotVFX(float duration, Vector3 location, Quaternion rotation)
@@ -121,7 +129,8 @@ namespace Bladesmiths.Capstone
             }
 
             float lerp = duration;
-            bladeMaterial.SetFloat("_EmissiveIntensity", Mathf.SmoothStep(defaultBladeEmissionLevel, 2f, duration));
+            //bladeMaterial.SetFloat("_EmissiveIntensity", Mathf.SmoothStep(defaultBladeEmissionLevel, 2f, duration));
+            bladeMaterial.DOFloat(targetEmissionLevel, "_EmissiveIntensity", duration);
         }
 
         public void DisableBladeEmission(Material bladeMaterial, float duration)
@@ -131,7 +140,8 @@ namespace Bladesmiths.Capstone
                 return;
             }
 
-            bladeMaterial.SetFloat("_EmissiveIntensity", Mathf.SmoothStep(2f, defaultBladeEmissionLevel, duration));
+            //bladeMaterial.SetFloat("_EmissiveIntensity", Mathf.SmoothStep(2f, defaultBladeEmissionLevel, duration));
+            bladeMaterial.DOFloat(defaultBladeEmissionLevel, "_EmissiveIntensity", duration);
         }
     }
 }
