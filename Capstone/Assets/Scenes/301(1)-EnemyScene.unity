@@ -5650,6 +5650,18 @@ PrefabInstance:
       propertyPath: damagingID
       value: -11
       objectReference: {fileID: 0}
+    - target: {fileID: 1774450610, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774450611, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774450611, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: player
       value: 
@@ -5669,7 +5681,7 @@ PrefabInstance:
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
     - target: {fileID: 1438253611527912812, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
