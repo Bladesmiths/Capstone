@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6892de03df57c4f90076d7071c9c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 35
   timeTillDestruction: 999
   objectController: {fileID: 0}
   damagingTimerLimit: 0

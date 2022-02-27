@@ -31,7 +31,7 @@ namespace Bladesmiths.Capstone
         // Start is called before the first frame update
         void Start()        {
             
-            Damage = 20;
+            Damage = 45;
             //ID = damagingID;
         }
 
