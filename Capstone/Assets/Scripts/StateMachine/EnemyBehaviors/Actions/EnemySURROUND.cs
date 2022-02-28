@@ -7,6 +7,19 @@ using BehaviorDesigner.Runtime.Tasks;
 
 namespace Bladesmiths.Capstone
 {
+    public struct SeekPoint
+    {
+        public Vector3 point;
+        public float weight;
+        public SeekPoint(Vector3 pos, float w)
+        {
+            point = pos;
+            weight = w;
+        }
+        
+    }
+
+
     public class EnemySURROUND : Action
     {
         public float maxSpeed = 10f;
@@ -28,21 +41,22 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject fleeTarget;
         public List<GameObject> fleeList;
-        public List<Vector3> seekList;
+        public List<SeekPoint> seekList;
+        public Vector3 rotVec;
 
         private bool targetExists;
 
         [SerializeField]
         private Player player;
         private Enemy enemy;
+        public float seekSpeed;
 
         private Vector3 target;
         public Vector3 desiredPos;
         public Vector3 chosenDir;
         public Vector3 lookPos;
         private int dir;
-        private float moveTimer;
-        private float moveTimerMax;
+
         [SerializeField]
         private float sideDist;
 
@@ -56,9 +70,10 @@ namespace Bladesmiths.Capstone
             intrest = new float[numRays];
             danger = new float[numRays];
             fleeList = new List<GameObject>();
-            seekList = new List<Vector3>();
-            moveTimerMax = Random.Range(0.5f, 1.5f);
-            moveTimer = moveTimerMax;
+            seekList = new List<SeekPoint>();
+            enemy.moveTimerMax = Random.Range(0.5f, 3f);
+            enemy.moveTimer = enemy.moveTimerMax;
+            seekSpeed = 2f;
 
             for (int i = 0; i < numRays; i++)
             {
@@ -70,9 +85,9 @@ namespace Bladesmiths.Capstone
             enemy.canMove = true;
             enemy.moveVector = Vector3.zero;
             dir = Random.Range(-1, 2);
+            dir = dir == 0 ? 1 : dir;
 
             //Vector3 dist = player.transform.position - transform.position;
-
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
             //desiredPos = (Vector3.Cross(Vector3.up, dist) * dir) + transform.position;
@@ -87,53 +102,63 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-            seekList.Add(desiredPos);
+            seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
 
         }
 
         private void AttackTimer()
         {
-            enemy.attackTimer -= Time.deltaTime;
+            if((player.transform.position - transform.position).magnitude < 2.5f)
+            {
+                enemy.attackTimer -= Time.deltaTime;
+            }
             if (enemy.attackTimer <= 0)
             {
                 AIDirector.Instance.PopulateAttackQueue(enemy);
                 enemy.attackTimer = enemy.attackTimerMax;
             }
-
         }
 
         public override TaskStatus OnUpdate()
         {
             Vector3 dist = player.transform.position - transform.position;
             lookPos = dist;
+            seekList.Clear();
+
+            if (dist.magnitude > 2.5f)
+            {
+                seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
+            }
+            else if (dist.magnitude <= 2.3f)
+            {
+                seekList.Add(new SeekPoint((dist * -1), 1f));
+
+            }
+            else if (dist.magnitude > 2.3f && dist.magnitude < 2.5f)
+            {
+                seekList.Add(new SeekPoint(transform.position, 1f));
+            }
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
-            seekList[0] = (Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position;
+            seekList.Add(new SeekPoint((Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position, 1f));
             desiredPos = player.transform.position;
 
             PopulateAll();            
             AttackTimer();
 
-            moveTimer -= Time.deltaTime;
-            if (moveTimer <= 0)
+            if (dist.magnitude <= 2.5f)
             {
-                moveTimer = moveTimerMax;
+                enemy.moveTimer -= Time.deltaTime;
+            }
+            if (enemy.moveTimer <= 0)
+            {
+                enemy.moveTimer = enemy.moveTimerMax;
                 return TaskStatus.Success;
             }
 
-            //if (seekAgainTimer <= 0)
-            //{
-            //    seekAgainTimer = seekAgainTimerMax;
-
-            //    dir = Random.Range(-1, 2);
-            //}
+            sideDist = dist.magnitude > 2.5f ? 10f : 0.3f;
 
             Vector3 movePos = (chosenDir * sideDist) + transform.position;
-
-            if (dir == 0)
-            {
-                movePos = transform.position;
-            }
 
             if (agent != null)
             {
@@ -142,6 +167,7 @@ namespace Bladesmiths.Capstone
 
             //dist.Normalize();
             Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
+            rotVec = lookRotVec;
             if (lookRotVec.magnitude > Mathf.Epsilon)
             {
                 Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
@@ -150,7 +176,6 @@ namespace Bladesmiths.Capstone
             }
             
             return TaskStatus.Running;
-
         }
 
         public override void OnEnd()
@@ -177,13 +202,13 @@ namespace Bladesmiths.Capstone
         {
             Vector3 pathDir = Vector3.zero;
             //pathDir = desiredPos - transform.position;
-            float mag = 0;
+            float mag = 1;
 
-            foreach (Vector3 vec in seekList)
+            foreach (SeekPoint vec in seekList)
             {
-                mag = (vec - transform.position).magnitude;
+                mag = (vec.point - transform.position).magnitude;
                 //mag = 1 / mag;
-                pathDir += (vec - transform.position) * mag;
+                pathDir += (vec.point - transform.position) * vec.weight;
             }
 
             //mag = 1 / mag;
@@ -264,29 +289,31 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public override void OnDrawGizmos()
         {
-            if (allDirections == null ||
-                intrest == null ||
-                danger == null)
-            {
-                return;
-            }
+            Gizmos.DrawRay(transform.position, rotVec);
 
-            for (int i = 0; i <= numRays - 1; i++)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
-                Gizmos.color = Color.green;
-                Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);
+            //if (allDirections == null ||
+            //    intrest == null ||
+            //    danger == null)
+            //{
+            //    return;
+            //}
 
-            }
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(transform.position, chosenDir * 2f);
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(chosenDir + transform.position, .3f);
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(seekList[0], .3f);
-            Gizmos.color = Color.gray;
-            DrawCircle();
+            //for (int i = 0; i <= numRays - 1; i++)
+            //{
+            //    Gizmos.color = Color.red;
+            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
+            //    Gizmos.color = Color.green;
+            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);
+
+            //}
+            //Gizmos.color = Color.blue;
+            //Gizmos.DrawRay(transform.position, chosenDir * 2f);
+            //Gizmos.color = Color.cyan;
+            //Gizmos.DrawSphere(chosenDir + transform.position, .3f);
+            //Gizmos.color = Color.magenta;
+            //Gizmos.DrawSphere(seekList[0].point, .3f);
+            //Gizmos.color = Color.gray;
+            //DrawCircle();
         }
 
         public void DrawCircle()

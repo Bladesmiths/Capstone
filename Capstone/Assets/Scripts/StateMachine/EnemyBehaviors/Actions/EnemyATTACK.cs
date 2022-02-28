@@ -17,8 +17,8 @@ namespace Bladesmiths.Capstone
         private GameObject _sword;
         private Enemy _enemy;
         private bool attack;
-        private float timer;
-        private float timerMax;
+        public float timer;
+        public float timerMax;
 
         private float preAttackTimer;
         private float preAttackTimerMax;
@@ -80,8 +80,9 @@ namespace Bladesmiths.Capstone
             _sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.75f, 2f);
+            _enemy.attackTimerMax = Random.Range(0.5f, 2f);
             _enemy.canMove = true;
+            _enemy.InCombat = true;
         }
 
         public override void OnEnd()
@@ -93,31 +94,5 @@ namespace Bladesmiths.Capstone
             _enemy.canMove = false;
 
         }
-
-        /// <summary>
-        /// The method for the Enemy attacking the Player
-        /// </summary>
-        public void Attack()
-        {
-            preAttackTimer += Time.deltaTime;
-            if (preAttackTimer <= preAttackTimerMax)
-            {
-                _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(-50f, _sword.transform.eulerAngles.y, 0f), 0.1f);
-            }
-            else
-            {
-                _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(90f, _sword.transform.eulerAngles.y, 0f), 0.6f);
-            }
-        }
-
-        /// <summary>
-        /// The method for resetting the Enemy's sword
-        /// </summary>
-        public void StopAttack()
-        {
-            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f), 0.4f);
-
-        }
-
     }
 }
