@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using DG.Tweening;
 
 namespace Bladesmiths.Capstone.Testing
 {
@@ -15,16 +16,32 @@ namespace Bladesmiths.Capstone.Testing
         [SerializeField] private GameObject projectile;
         [SerializeField] private float maxLifeTime;
 
+        [SerializeField] private GameObject sword;
+        [SerializeField] private Transform aboveHeadSwordTransform;
+        [SerializeField] private float nodeDuration;
+
         [SerializeField] private List<GameObject> activeProjectiles;
+
+        private float timer;
 
         public override void OnStart()
         {
+            timer = 0;
             player = playerShared.Value;
             activeProjectiles = new List<GameObject>();
         }
 
         public override TaskStatus OnUpdate()
         {
+            if(timer < nodeDuration)
+            {
+                sword.transform.DOLocalMove(aboveHeadSwordTransform.localPosition, nodeDuration);
+
+                timer += Time.deltaTime;
+
+                return TaskStatus.Running;
+            }
+
             Vector3 spawnPos = projectileSpawnPoint.position;
             Vector3 direction = (player.transform.position - spawnPos).normalized;
             float angle = 0;
@@ -43,7 +60,9 @@ namespace Bladesmiths.Capstone.Testing
                 gameObject.GetComponent<Boss>().ObjectController.AddIdentifiedObject(Enums.Team.Enemy, tempProjectile.GetComponent<TestingProjectile>());
 
                 // Move next projectile up a bit and have it be facing 10 degrees to right of the last one
-                spawnPos.y += 0.3f;
+                spawnPos.y += 0.1f;
+                spawnPos.z = projectileSpawnPoint.position.z + (0.4f * Mathf.Sin(angle));
+                spawnPos.x = projectileSpawnPoint.position.x + (0.4f * Mathf.Cos(angle));
                 direction = Quaternion.Euler(0, angle += 10 , 0) * direction;
             }
 
