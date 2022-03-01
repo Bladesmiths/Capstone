@@ -4404,6 +4404,8 @@ MonoBehaviour:
   damagingTimerLimit: 0
   attackTimer: 0
   attackTimerMax: 0
+  moveTimer: 0
+  moveTimerMax: 0
   stunned: 0
   canMove: 0
   enemyGroupNumber: 2
@@ -4481,7 +4483,7 @@ MonoBehaviour:
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 1
-  externalBehavior: {fileID: 0}
+  externalBehavior: {fileID: 11400000, guid: f73e3e59c454c99468c0f0db762ac593, type: 2}
   mBehaviorSource:
     behaviorName: Behavior
     behaviorDescription: 

@@ -11162,8 +11162,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!195 &5694287827745066432
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11213,7 +11213,6 @@ MonoBehaviour:
   damagingObjectIDs: 
   objectController: {fileID: 0}
   player: {fileID: 0}
-  externalBehaviorTree: {fileID: 11400000, guid: b90e45e211642b043821d8858dbebeba, type: 2}
   sword: {fileID: 8664234738843790977}
   blocked: 0
   chunksRemoved: 0
@@ -11226,6 +11225,8 @@ MonoBehaviour:
   damagingTimerLimit: 0
   attackTimer: 0
   attackTimerMax: 0
+  moveTimer: 0
+  moveTimerMax: 0
   stunned: 0
   canMove: 0
   enemyGroupNumber: 0
@@ -15740,8 +15741,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6022847457494820146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: 0, z: 0.59}
-  m_LocalScale: {x: 1, y: 1.1854, z: 0.2514}
+  m_LocalPosition: {x: -0.35, y: 0, z: 0.382}
+  m_LocalScale: {x: 0.79804146, y: 1.8295, z: 0.15949}
   m_Children: []
   m_Father: {fileID: 4080522337349755645}
   m_RootOrder: 2
@@ -15806,8 +15807,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.99999964, z: 1.7166241}
+  m_Center: {x: -0.0000000041207584, y: 0, z: -0.35831234}
 --- !u!114 &3676412834658109056
 MonoBehaviour:
   m_ObjectHideFlags: 0

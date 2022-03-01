@@ -19,6 +19,8 @@ namespace Bladesmiths.Capstone
         private bool attack;
         public float timer;
         public float timerMax;
+        public float waitTimer;
+        public float waitTimerMax;
 
         private float preAttackTimer;
         private float preAttackTimerMax;
@@ -45,6 +47,11 @@ namespace Bladesmiths.Capstone
             //Debug.Log(timer);
 
             if(timer >= timerMax)
+            {
+                waitTimer += Time.deltaTime;
+            }
+
+            if(waitTimer >= waitTimerMax)
             {
                 _enemy.CanHit = false;
                 return TaskStatus.Success;
@@ -83,6 +90,8 @@ namespace Bladesmiths.Capstone
             _enemy.attackTimerMax = Random.Range(0.5f, 2f);
             _enemy.canMove = true;
             _enemy.InCombat = true;
+            waitTimer = 0;
+            waitTimerMax = 1f;
         }
 
         public override void OnEnd()

@@ -59,6 +59,8 @@ namespace Bladesmiths.Capstone
         {
             player = gameObject.transform.root.GetComponent<Player>();
             sfxPlay = false;
+            damagingTimerLimit = 1f;
+            damagingTimer = 0f;
         }
 
         void Update() 
@@ -122,14 +124,18 @@ namespace Bladesmiths.Capstone
             if(col.gameObject.GetComponent<Shield>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                col.gameObject.transform.parent.GetComponent<Enemy>().AddDamagingID(ID);
+                damaging = true;
+                Debug.Log(col.gameObject);
+
             }
             else if (col.gameObject.GetComponent<IDamageable>() != null)
             {
                 if (col.gameObject.GetComponent<Enemy>() || col.gameObject.GetComponent<Boss>())
                 {
                     FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                    Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
-                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                    //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
+                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID, ID);
                 }
             }
         }

@@ -135,7 +135,7 @@ namespace Bladesmiths.Capstone
             fadeOutLength = 3f;
             chunksRemoved = 3;
             canMove = false;
-            
+            damagingTimer = 0f;
 
             if (agent != null)
             {

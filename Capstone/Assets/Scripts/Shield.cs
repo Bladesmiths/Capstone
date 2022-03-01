@@ -66,7 +66,7 @@ namespace Bladesmiths.Capstone
                     Debug.Log("Collision Entered! : " + other.gameObject);
                     // Block has been triggered
                     enemy.blocked = true;
-
+                    //enemy.AddDamagingID(damagingObject.ID);
                     // Add the ID of the damaging object to the blocked ID list
                     // And subscribe to the DamagingFinished event
                     //blockedObjectIDs.Add(damagingObject.ID);
