@@ -606,14 +606,14 @@ namespace Bladesmiths.Capstone
         /// Attack with the player's sword
         /// </summary>
         /// <param name="targetID">The id of the object to attack</param>
-        public void SwordAttack(int targetID, int swordID)
+        public void SwordAttack(int targetID)
         {
-            float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(swordID, Damage);
-                Health += damageDealt * currentSword.LifeStealPercentage;
+            float damageDealt = ((IDamageable)ObjectController[targetID].IdentifiedObject).TakeDamage(currentSword.ID, Damage);
+            Health += damageDealt * currentSword.LifeStealPercentage;
 
             if (damageDealt != 0)
             {
-                damaging = true;
+                currentSword.damaging = true;
             }
         }
 

@@ -26,7 +26,7 @@ namespace Bladesmiths.Capstone
         private FMODUnity.EventReference SwordHitEvent;
         public bool sfxPlay;
 
-        private bool damaging;
+        public bool damaging;
         private float damagingTimerLimit = 1f;
         private float damagingTimer;
 
@@ -61,6 +61,9 @@ namespace Bladesmiths.Capstone
             sfxPlay = false;
             damagingTimerLimit = 1f;
             damagingTimer = 0f;
+            ObjectController = ObjectController.Instance;
+            ObjectController.Instance.AddIdentifiedObject(Team.Player, this);
+
         }
 
         void Update() 
@@ -114,6 +117,12 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        public void AddToDamaging(int swordID)
+        {
+            player.AddDamagingID(swordID);
+
+        }
+
         void OnCollisionEnter(Collision col)
         {
             if(col.gameObject.GetComponent<BreakableBox>())
@@ -135,7 +144,10 @@ namespace Bladesmiths.Capstone
                 {
                     FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
                     //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
-                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID, ID);
+                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                    player.AddDamagingID(ID);
+
+//                    ((Sword)ObjectController[ID].IdentifiedObject).AddToDamaging(ID);
                 }
             }
         }

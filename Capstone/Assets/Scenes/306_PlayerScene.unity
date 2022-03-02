@@ -1764,7 +1764,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775061, y: 1}
+    m_SensorSize: {x: 1.7781818, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1787,7 +1787,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136034365}
-  m_LocalRotation: {x: -0.018141506, y: -0.000000059604645, z: 0.000000029802322, w: 0.9998355}
+  m_LocalRotation: {x: -0.018141475, y: -0, z: 0.000000007450581, w: 0.9998355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4419,7 +4419,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775061, y: 1}
+    m_SensorSize: {x: 1.7781818, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4442,7 +4442,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189441, y: -0.000000059604645, z: 0.000000022351742, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189458, y: -0.000000029802322, z: 0.000000022351742, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4653,7 +4653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.21814, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -4910,7 +4910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.21814, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -7395,6 +7395,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   sfxPlay: 0
+  damaging: 0
 --- !u!65 &708863168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8385,7 +8386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.21814, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -13438,7 +13439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261776968}
   m_LocalRotation: {x: -0, y: -0.9242162, z: -0, w: 0.3818697}
-  m_LocalPosition: {x: -155.6, y: 2.2, z: 8.7}
+  m_LocalPosition: {x: -106.03, y: 2.2, z: -8.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7589707967055093299}
@@ -14699,6 +14700,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   sfxPlay: 0
+  damaging: 0
 --- !u!65 &1383281545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16961,8 +16963,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: -0.080960914, y: 0.9032061, z: -0.19594492, w: -0.37318853}
-  m_LocalPosition: {x: -152.77657, y: 5.55, z: 11.533405}
+  m_LocalRotation: {x: -0.080960944, y: 0.9032061, z: -0.19594496, w: -0.37318853}
+  m_LocalPosition: {x: -103.20656, y: 5.55, z: -5.586595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17767,7 +17769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.21814, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -19244,7 +19246,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775061, y: 1}
+    m_SensorSize: {x: 1.7781818, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -19333,7 +19335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802336007}
   m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
-  m_LocalPosition: {x: -152.77657, y: 5.55, z: 11.533405}
+  m_LocalPosition: {x: -103.20656, y: 5.55, z: -5.586595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409920310}
@@ -22053,6 +22055,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   sfxPlay: 0
+  damaging: 0
 --- !u!65 &1902602805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24323,7 +24326,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7775061, y: 1}
+    m_SensorSize: {x: 1.7781818, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24346,7 +24349,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: -0.000000039115548, y: -0.000000059604645, z: 0.000000044703484, w: 1}
+  m_LocalRotation: {x: 0.0000000037252903, y: -0.000000059604645, z: 0.000000007450581, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25928,6 +25931,7 @@ MonoBehaviour:
       Data4: -149635798
     Path: event:/Player SFX/Player Sword General Hit
   sfxPlay: 0
+  damaging: 0
 --- !u!65 &2553928950019674411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27541,6 +27545,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   sfxPlay: 0
+  damaging: 0
 --- !u!1 &5067248400411774393
 GameObject:
   m_ObjectHideFlags: 0
@@ -28137,6 +28142,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   sfxPlay: 0
+  damaging: 0
 --- !u!1 &5896027825765860816
 GameObject:
   m_ObjectHideFlags: 0
@@ -28379,6 +28385,7 @@ MonoBehaviour:
       Data4: 0
     Path: 
   sfxPlay: 0
+  damaging: 0
 --- !u!4 &6386935757216995065
 Transform:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ namespace Bladesmiths.Capstone
                 allDirections[i] = Quaternion.Euler(0, Mathf.Rad2Deg * angle, 0) * Vector3.forward;
 
             }
-            enemy.InCombat = true;
+            //enemy.InCombat = true;
             enemy.canMove = true;
             enemy.moveVector = Vector3.zero;
             desiredPos = player.transform.position;

@@ -81,7 +81,7 @@ namespace Bladesmiths.Capstone
                 allDirections[i] = Quaternion.Euler(0, Mathf.Rad2Deg * angle, 0) * Vector3.forward;
             }
 
-            enemy.InCombat = true;
+            //enemy.InCombat = true;
             enemy.canMove = true;
             enemy.moveVector = Vector3.zero;
             dir = Random.Range(-1, 2);
@@ -289,7 +289,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public override void OnDrawGizmos()
         {
-            Gizmos.DrawRay(transform.position, rotVec);
+            //Gizmos.DrawRay(transform.position, rotVec);
 
             //if (allDirections == null ||
             //    intrest == null ||

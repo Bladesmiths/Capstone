@@ -81,6 +81,7 @@ namespace Bladesmiths.Capstone
             _enemy = gameObject.GetComponent<Enemy>();
             agent = GetComponent<NavMeshAgent>();
             _sword = _enemy.Sword;
+            //_sword.GetComponent<Sword>().damaging = true;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
