@@ -47,7 +47,7 @@ namespace Bladesmiths.Capstone.Testing
             float angle = 0;
 
             // Spawn i projectiles
-            for (int i = 0; i < 36; i ++)
+            for (int i = 0; i < 42; i ++)
             {
                 // Have the projectiles face the player
                 GameObject tempProjectile = GameObject.Instantiate(projectile, spawnPos, Quaternion.Euler(0, 0, 0));
