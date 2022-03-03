@@ -16,6 +16,8 @@ public class BackUp : Action
     [SerializeField] private float backUpMaxTime;
 
     [SerializeField] private Transform bossArenaCenter;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float acceleration;
 
     private NavMeshAgent navMeshAgent;
     private Vector3 destination;
@@ -30,6 +32,9 @@ public class BackUp : Action
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         destination = transform.position + (-transform.forward * backUpAmount);
+
+        navMeshAgent.speed = moveSpeed;
+        navMeshAgent.acceleration = acceleration;
     }
 
     public override TaskStatus OnUpdate()
