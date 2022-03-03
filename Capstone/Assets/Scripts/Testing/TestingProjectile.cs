@@ -117,7 +117,6 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="col">The collision that occurred</param>
         void OnCollisionEnter(Collision col)
         {
-            Debug.Log(col.gameObject.name);
             if (col.gameObject.GetComponent<Player>() == true)
             {
                 // Check if the object in the collision is the player
@@ -139,7 +138,7 @@ namespace Bladesmiths.Capstone.Testing
             else if (col.gameObject.tag == "Untagged")
             {
                 // Destroy the projectile once it has collided
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
 
             else

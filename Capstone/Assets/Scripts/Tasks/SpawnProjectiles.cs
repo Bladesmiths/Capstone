@@ -29,6 +29,7 @@ namespace Bladesmiths.Capstone.Testing
             timer = 0;
             player = playerShared.Value;
             activeProjectiles = new List<GameObject>();
+            gameObject.GetComponent<Boss>().activeProjectiles.Clear();
         }
 
         public override TaskStatus OnUpdate()

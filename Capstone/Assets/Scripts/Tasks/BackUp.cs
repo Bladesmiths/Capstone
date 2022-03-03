@@ -15,6 +15,8 @@ public class BackUp : Action
     // How long until they give up on backing up
     [SerializeField] private float backUpMaxTime;
 
+    [SerializeField] private Transform bossArenaCenter;
+
     private NavMeshAgent navMeshAgent;
     private Vector3 destination;
     private float timer;
@@ -23,6 +25,7 @@ public class BackUp : Action
     {
         base.OnStart();
 
+        timer = 0;
         player = playerShared.Value;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -34,9 +37,15 @@ public class BackUp : Action
         timer += Time.deltaTime;
 
         // Go to a position behind where the boss is
-        if (Vector3.Distance(transform.position, destination) >= 0.5f || timer <= backUpMaxTime)
+        if (Vector3.Distance(transform.position, destination) >= 0.5f && timer <= backUpMaxTime)
         {
             navMeshAgent.SetDestination(destination);
+            return TaskStatus.Running;
+        }
+        else if(Vector3.Distance(transform.position, destination) >= 0.5f && timer > backUpMaxTime)
+        {
+            destination = bossArenaCenter.position;
+            timer = 0;
             return TaskStatus.Running;
         }
         else
