@@ -10,7 +10,7 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// The behavior for how the Enemies should attack
     /// </summary>
-    public class EnemyATTACK : Action
+    public class EnemyATTACK_First : Action
     {
         [SerializeField]
         private AnimationCurve curve;
@@ -26,7 +26,10 @@ namespace Bladesmiths.Capstone
         private float preAttackTimerMax;
         private NavMeshAgent agent;
 
-        public EnemyATTACK(GameObject sword, Enemy enemy)
+        private Vector3 dist;
+        private Vector3 playerPos;
+
+        public EnemyATTACK_First(GameObject sword, Enemy enemy)
         {
             _sword = sword;
             _enemy = enemy;
@@ -34,7 +37,7 @@ namespace Bladesmiths.Capstone
             preAttackTimerMax = 0.5f;
         }
 
-        public EnemyATTACK()
+        public EnemyATTACK_First()
         {
 
         }
@@ -49,20 +52,19 @@ namespace Bladesmiths.Capstone
             if(timer >= timerMax)
             {
                 waitTimer += Time.deltaTime;
+                return TaskStatus.Success;
             }
 
-            if(waitTimer >= waitTimerMax)
+            if (waitTimer >= waitTimerMax)
             {
-                _enemy.CanHit = false;
-                return TaskStatus.Success;
+                //_enemy.CanHit = false;
             }
 
             if (agent != null)
             {
-                agent.SetDestination(transform.position);
+                agent.SetDestination(playerPos);
             }
 
-            Vector3 dist = Player.instance.transform.position - transform.position;
 
             //dist.Normalize();
             Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
@@ -88,11 +90,15 @@ namespace Bladesmiths.Capstone
             _sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.5f, 2f);
+            //_enemy.attackTimerMax = Random.Range(0.5f, 2f);
             _enemy.canMove = true;
             _enemy.InCombat = true;
             waitTimer = 0;
             waitTimerMax = 1f;
+
+            dist = Player.instance.transform.position - transform.position;
+            playerPos = (dist * 0.5f) + transform.position;
+
         }
 
         public override void OnEnd()

@@ -194,6 +194,7 @@ namespace Bladesmiths.Capstone
         public void AttackPlayer(Enemy e)
         {
             e.CanHit = true;
+            e.attackTimer = e.attackTimerMax;
         }
 
         /// <summary>

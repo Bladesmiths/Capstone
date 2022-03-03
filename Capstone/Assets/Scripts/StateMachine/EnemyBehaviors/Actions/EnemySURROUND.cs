@@ -74,6 +74,8 @@ namespace Bladesmiths.Capstone
             enemy.moveTimerMax = Random.Range(0.5f, 3f);
             enemy.moveTimer = enemy.moveTimerMax;
             seekSpeed = 2f;
+            enemy.CanHit = false;
+            agent.speed = 3.5f;
 
             for (int i = 0; i < numRays; i++)
             {
@@ -108,14 +110,14 @@ namespace Bladesmiths.Capstone
 
         private void AttackTimer()
         {
-            if((player.transform.position - transform.position).magnitude < 2.5f)
+            if((player.transform.position - transform.position).magnitude < 70.5f)
             {
                 enemy.attackTimer -= Time.deltaTime;
             }
             if (enemy.attackTimer <= 0)
             {
-                AIDirector.Instance.PopulateAttackQueue(enemy);
                 enemy.attackTimer = enemy.attackTimerMax;
+                AIDirector.Instance.PopulateAttackQueue(enemy);
             }
         }
 
@@ -124,6 +126,8 @@ namespace Bladesmiths.Capstone
             Vector3 dist = player.transform.position - transform.position;
             lookPos = dist;
             seekList.Clear();
+            //Debug.Log("AttackTimer" + enemy.attackTimer);
+            //Debug.Log("AttackTimerMax" + enemy.attackTimerMax);
 
             if (dist.magnitude > 2.5f)
             {
