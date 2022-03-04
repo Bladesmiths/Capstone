@@ -44,6 +44,18 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// Checks to see if the Enemy can see the Player
+        /// </summary>
+        /// <param name="target">The Player</param>
+        /// <param name="fov">The Field of View</param>
+        /// <returns></returns>
+        public bool InSight(Transform target, float fov)
+        {
+            Vector3 dir = target.position - transform.position;
+            return Vector3.Angle(dir, transform.forward) < fov;
+        }
+
+        /// <summary>
         /// Subtract an amount of damage from the character's health
         /// </summary>
         /// <param name="damagingID">The id of the damaging object that is damaging this character</param>

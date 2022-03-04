@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
                     
-            sword.transform.rotation = enemy.swordRot;
+            sword.transform.localRotation = enemy.swordRot;
             return TaskStatus.Success;
             
         }
