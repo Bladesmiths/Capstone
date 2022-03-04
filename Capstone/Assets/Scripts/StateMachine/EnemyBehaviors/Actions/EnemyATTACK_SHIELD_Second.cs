@@ -2,43 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
-using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Bladesmiths.Capstone
 {
     /// <summary>
     /// The behavior for how the Enemies should attack
     /// </summary>
-    public class EnemyDASHATTACK : Action
+    public class EnemyATTACK_SHIELD_Second : Action
     {
         [SerializeField]
         private AnimationCurve curve;
+        [SerializeField]
+        private AnimationCurve shieldCurve;
         private GameObject _sword;
-        private Enemy _enemy;
+        private GameObject _shield;
+        private Enemy_Shield _enemy;
         private bool attack;
-        public float timer;
-        public float timerMax;
-        public float waitTimer;
-        public float waitTimerMax;
+        private float timer;
+        private float timerMax;
+        private NavMeshAgent agent;
 
         private float preAttackTimer;
         private float preAttackTimerMax;
-        private NavMeshAgent agent;
 
         private Vector3 dist;
         private Vector3 playerPos;
-        private bool dash;
 
-        public EnemyDASHATTACK(GameObject sword, Enemy enemy)
+        public EnemyATTACK_SHIELD_Second(GameObject sword, Enemy enemy)
         {
             _sword = sword;
-            _enemy = enemy;
+            //_enemy = enemy;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
         }
 
-        public EnemyDASHATTACK()
+        public EnemyATTACK_SHIELD_Second()
         {
 
         }
@@ -47,24 +47,25 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
             float val = curve.Evaluate(timer);
+            float shieldVal = shieldCurve.Evaluate(timer);
             _sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
+            _shield.transform.localRotation = Quaternion.Euler(0f, shieldVal, 0f);
 
-            if(timer <= timerMax)
-            {
-                dist = Player.instance.transform.position - transform.position;
-                agent.SetDestination(transform.position);
-            }
-            else
-            {
-                waitTimer += Time.deltaTime;
-            }
+            //Debug.Log(timer);
 
-            if(waitTimer >= waitTimerMax)
+            if(timer >= timerMax)
             {
-
+                _enemy.CanHit = false;
+                return TaskStatus.Success;
             }
 
+            if (agent != null)
+            {
+                agent.SetDestination(playerPos);
+            }
 
+
+            //dist.Normalize();
             Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
             if (lookRotVec.magnitude > Mathf.Epsilon)
             {
@@ -78,37 +79,30 @@ namespace Bladesmiths.Capstone
 
         public override void OnStart()
         {
-            _enemy = gameObject.GetComponent<Enemy>();
+            _enemy = gameObject.GetComponent<Enemy_Shield>();
+            _sword = _enemy.Sword;
             agent = GetComponent<NavMeshAgent>();
-            _sword = _enemy.Sword;
-            _sword = _enemy.Sword;
-            //_sword.GetComponent<Sword>().damaging = true;
+            _shield = _enemy.shield;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
             _sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.5f, 2f);
-            _enemy.canMove = true;
+            _enemy.attackTimerMax = Random.Range(0.75f, 2f);
             _enemy.InCombat = true;
-            waitTimer = 0;
-            waitTimerMax = 0.5f;
-            dash = true;
 
             dist = Player.instance.transform.position - transform.position;
+            playerPos = (dist * 0.5f) + transform.position;
         }
 
         public override void OnEnd()
         {
             _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            _shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;
-            _enemy.canMove = false;
-
-
-
         }
     }
 }

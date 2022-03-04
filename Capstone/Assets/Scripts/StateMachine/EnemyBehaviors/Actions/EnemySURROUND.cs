@@ -76,6 +76,7 @@ namespace Bladesmiths.Capstone
             seekSpeed = 2f;
             enemy.CanHit = false;
             agent.speed = 3.5f;
+            enemy.InCombat = true;
 
             for (int i = 0; i < numRays; i++)
             {
@@ -110,7 +111,7 @@ namespace Bladesmiths.Capstone
 
         private void AttackTimer()
         {
-            if((player.transform.position - transform.position).magnitude < 70.5f)
+            if(enemy.InCombat)
             {
                 enemy.attackTimer -= Time.deltaTime;
             }

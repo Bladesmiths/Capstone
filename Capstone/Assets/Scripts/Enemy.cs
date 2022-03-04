@@ -31,6 +31,7 @@ namespace Bladesmiths.Capstone
         protected float moveSpeed;
         public Vector3 moveVector;
         public Vector3 rotateVector;
+        public Quaternion swordRot;
 
         [SerializeField] protected float damage;
 
@@ -136,6 +137,7 @@ namespace Bladesmiths.Capstone
             chunksRemoved = 3;
             canMove = false;
             damagingTimer = 0f;
+            swordRot = Sword.transform.localRotation;
 
             if (agent != null)
             {
