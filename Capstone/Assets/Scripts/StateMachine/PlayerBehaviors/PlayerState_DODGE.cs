@@ -169,6 +169,7 @@ namespace Bladesmiths.Capstone
             _animIDDodge = Animator.StringToHash("Dodge");
             _animIDForward = Animator.StringToHash("Forward");
 
+            _player.shouldLookAt = false;
             // Testing
             //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;
         }
@@ -178,6 +179,8 @@ namespace Bladesmiths.Capstone
             canDmg = true;
             _controller.SimpleMove(Vector3.zero);
             _animator.SetBool(_animIDDodge, false);
+
+            _player.shouldLookAt = true;
         }
     }
 }
