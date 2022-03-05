@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: 310_Setup
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Scenes/PlayerScene.unity
+  - scenePath: Assets/Scenes/310_PlayerScene.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Scenes/Original_EnemyScene.unity
+  - scenePath: Assets/Scenes/310_EnemyScene.unity
     isActive: 0
     isLoaded: 1
   - scenePath: Assets/Scenes/Village_Audio.unity
@@ -31,4 +31,4 @@ MonoBehaviour:
   - scenePath: Assets/Scenes/Village_Lighting.unity
     isActive: 0
     isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 5510f252e8dffc44d94a0b9b4bd600fe, type: 2}
+  gameLevelData: {fileID: 11400000, guid: d01fd6fee907d8d4e9d1619fcde94c74, type: 2}
