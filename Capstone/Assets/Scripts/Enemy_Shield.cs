@@ -65,10 +65,10 @@ namespace Bladesmiths.Capstone
         {
             // The resullt of Character's Take Damage
             // Was damage taken or not
-            if(shield.GetComponent<Shield>().BlockTriggered)
-            {
-                damage = 0;
-            }
+            //if(shield.GetComponent<Shield>().BlockTriggered)
+            //{
+            //    damage = 0;
+            //}
 
             float damageResult = base.TakeDamage(damagingID, damage);
 

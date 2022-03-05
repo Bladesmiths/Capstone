@@ -2361,6 +2361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1192109836}
     m_Modifications:
+    - target: {fileID: 676500222629865258, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: edeb549249924b247912549aa92c029d, type: 2}
     - target: {fileID: 977449061654060393, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 335

@@ -17,7 +17,7 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private AnimationCurve shieldCurve;
         private GameObject _sword;
-        private GameObject _shield;
+        //private GameObject _shield;
         private Enemy_Shield _enemy;
         private bool attack;
         private float timer;
@@ -47,9 +47,9 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
             float val = curve.Evaluate(timer);
-            float shieldVal = shieldCurve.Evaluate(timer);
+            //float shieldVal = shieldCurve.Evaluate(timer);
             _sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
-            _shield.transform.localRotation = Quaternion.Euler(0f, shieldVal, 0f);
+            //_shield.transform.localRotation = Quaternion.Euler(0f, shieldVal, 0f);
 
             //Debug.Log(timer);
 
@@ -82,7 +82,7 @@ namespace Bladesmiths.Capstone
             _enemy = gameObject.GetComponent<Enemy_Shield>();
             _sword = _enemy.Sword;
             agent = GetComponent<NavMeshAgent>();
-            _shield = _enemy.shield;
+            //_shield = _enemy.shield;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
@@ -99,7 +99,7 @@ namespace Bladesmiths.Capstone
         public override void OnEnd()
         {
             _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
-            _shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            //_shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;

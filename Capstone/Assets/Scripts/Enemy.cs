@@ -264,7 +264,8 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                for (int i = 0; i < NumChunks(); i++)
+                int num = NumChunks();
+                for (int i = 0; i < num; i++)
                 {
                     RemoveRandomChunk();
                 }

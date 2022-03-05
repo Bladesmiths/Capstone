@@ -134,7 +134,7 @@ namespace Bladesmiths.Capstone
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
                 col.gameObject.transform.parent.GetComponent<Enemy>().AddDamagingID(ID);
-
+                col.gameObject.GetComponent<Shield>().RemoveChunks();
                 damaging = true;
                 Debug.Log(col.gameObject);
 
@@ -143,12 +143,15 @@ namespace Bladesmiths.Capstone
             {
                 if (col.gameObject.GetComponent<Enemy>() || col.gameObject.GetComponent<Boss>())
                 {
-                    if(col.gameObject.GetComponent<Enemy_Shield>())
+                    if(col.gameObject.GetComponent<Enemy_Shield>() &&
+                        col.gameObject.GetComponent<Enemy_Shield>().shield != null)
                     {
-                        if(col.gameObject.GetComponent<Enemy_Shield>().InSight(player.transform, 55))
+                        if(col.gameObject.GetComponent<Enemy_Shield>().InSight(player.transform, 55) && 
+                            !col.gameObject.GetComponent<Enemy_Shield>().shield.GetComponent<Shield>().IsEmpty)
                         {
                             FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
                             col.gameObject.transform.GetComponent<Enemy_Shield>().AddDamagingID(ID);
+
                             damaging = true;
 
                         }
