@@ -117,6 +117,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
+        public bool shouldLookAt = true;
         #endregion
 
         #region Fields from the Move State and Jump State
