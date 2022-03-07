@@ -15,27 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayerScene.unity
     guid: 6f1d69806e6d0b3468441267d5e29cd2
   - enabled: 1
-    path: 
-    guid: 0f5ceda1a21c1134c8cf30dbcd852311
-  - enabled: 1
-    path: Assets/Scenes/Village_Audio.unity
-    guid: d2fd4a180d6490948a9800526555b144
-  - enabled: 1
-    path: Assets/Scenes/Village_Gameplay.unity
-    guid: cf8c5adb9f181fc48b71bb7be07c1f51
-  - enabled: 1
-    path: Assets/Scenes/Village_Geo.unity
-    guid: 6aa7f19054ff5af42b6a64e5b616bf29
-  - enabled: 1
-    path: Assets/Scenes/Village_Lighting.unity
-    guid: b127da1c2d029774385e5fe0dfced803
-  - enabled: 1
-    path: Assets/Scenes/WinScreen.unity
-    guid: f2953db07961b734d8b26eaaf95c836d
-  - enabled: 1
-    path: Assets/Scenes/PlayerScene.unity
-    guid: 6f1d69806e6d0b3468441267d5e29cd2
-  - enabled: 1
     path: Assets/Scenes/Original_EnemyScene.unity
     guid: c247dd43608e80147a409aa95298a967
   - enabled: 1
@@ -51,10 +30,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Village_Lighting.unity
     guid: b127da1c2d029774385e5fe0dfced803
   - enabled: 1
-    path: Assets/Scenes/Village_GrassInner.unity
-    guid: b62481eb1dc2988429f9d6f69fd40136
+    path: Assets/Scenes/Village_Area1.unity
+    guid: d89ab7b2d28a7e347b318c01cfc751b6
   - enabled: 1
-    path: Assets/Scenes/Village_GrassOuter.unity
-    guid: 933ba222a4c21af44a9e100c8a3f45d7
+    path: Assets/Scenes/Village_Area2.unity
+    guid: b84d826e410944044bb5e85c1de0993d
+  - enabled: 1
+    path: Assets/Scenes/Village_Area3.unity
+    guid: eb4c5af38260fcf4b88f76a408bb18d7
+  - enabled: 1
+    path: Assets/Scenes/Village_Area4.unity
+    guid: c17a5f4183cc226499c78edcac07b49c
+  - enabled: 1
+    path: Assets/Scenes/Village_Area5.unity
+    guid: 1368554c7e5163f41a4b2132b09307c9
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: f2953db07961b734d8b26eaaf95c836d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

@@ -18,17 +18,32 @@ MonoBehaviour:
     isLoaded: 1
   - scenePath: Assets/Scenes/Original_EnemyScene.unity
     isActive: 0
-    isLoaded: 0
+    isLoaded: 1
   - scenePath: Assets/Scenes/Village_Audio.unity
     isActive: 0
-    isLoaded: 0
+    isLoaded: 1
   - scenePath: Assets/Scenes/Village_Gameplay.unity
     isActive: 0
-    isLoaded: 0
+    isLoaded: 1
   - scenePath: Assets/Scenes/Village_Geo.unity
-    isActive: 0
-    isLoaded: 0
+    isActive: 1
+    isLoaded: 1
   - scenePath: Assets/Scenes/Village_Lighting.unity
     isActive: 0
-    isLoaded: 0
-  gameLevelData: {fileID: 11400000, guid: 6bb7f499a9886084f8bc176150ae5015, type: 2}
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area1.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area2.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area3.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area4.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area5.unity
+    isActive: 0
+    isLoaded: 1
+  gameLevelData: {fileID: 11400000, guid: cb43d96e93bafb9428692ea09f81b1d5, type: 2}
