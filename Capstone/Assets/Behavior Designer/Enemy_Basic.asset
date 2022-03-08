@@ -48,7 +48,11 @@ MonoBehaviour:
         See","Instant":true,"SinglefieldOfView":60},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(146.97998,163.63562)"},"ID":42,"Name":"Enemy
         SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3rotVec":"(0,0,0)","SingleseekSpeed":0,"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3lookPos":"(0,0,0)","SinglesideDist":0.3},{"Type":"Bladesmiths.Capstone.ResetEnemySword","NodeData":{"Offset":"(305.161133,166.13)"},"ID":43,"Name":"Reset
         Enemy Sword","Instant":true},{"Type":"Bladesmiths.Capstone.CustomWait","NodeData":{"Offset":"(446.012451,163.63562)"},"ID":44,"Name":"Custom
-        Wait","Instant":true,"Singletimer":0,"SingletimerMax":0}]}]}]}]}]}}'
+        Wait","Instant":true,"Singletimer":0,"SingletimerMax":0}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(807.602234,192.422363)"},"ID":45,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.IsBlocked","NodeData":{"Offset":"(-149.19928,154.880371)"},"ID":46,"Name":"Is
+        Blocked","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySTUN","NodeData":{"Offset":"(149.9624,151.390625)"},"ID":47,"Name":"Enemy
+        STUN","Instant":true,"SinglestunTimerMax":1,"AnimationCurvecurveY":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"AnimationCurvecurveZ":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(1332.8208,174.358932)"},"ID":48,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.IsParried","NodeData":{"Offset":"(-78.58701,153.390869)"},"ID":49,"Name":"Is
+        Parried","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySTUN","NodeData":{"Offset":"(139.998291,163.870972)"},"ID":50,"Name":"Enemy
+        STUN","Instant":true,"SinglestunTimerMax":5,"AnimationCurvecurveY":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"AnimationCurvecurveZ":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]}]}]}]}}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 

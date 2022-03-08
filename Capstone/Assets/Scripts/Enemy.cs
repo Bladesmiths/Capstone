@@ -22,7 +22,6 @@ namespace Bladesmiths.Capstone
         [SerializeField] protected Player player;
 
         [SerializeField] private GameObject sword;
-        public bool blocked = false;
 
         [SerializeField] protected int chunksRemoved;
         protected bool damaged = false;
@@ -32,6 +31,7 @@ namespace Bladesmiths.Capstone
         public Vector3 moveVector;
         public Vector3 rotateVector;
         public Quaternion swordRot;
+        public Vector3 defaultSwordPos;
 
         [SerializeField] protected float damage;
 
@@ -59,6 +59,8 @@ namespace Bladesmiths.Capstone
         public float moveTimerMax;
         public bool stunned;
         public bool canMove;
+        public bool parried;
+        public bool blocked = false;
 
         public int enemyGroupNumber;
 
@@ -138,6 +140,7 @@ namespace Bladesmiths.Capstone
             canMove = false;
             damagingTimer = 0f;
             swordRot = Sword.transform.localRotation;
+            defaultSwordPos = Sword.transform.localPosition;
 
             if (agent != null)
             {
