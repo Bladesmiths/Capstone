@@ -182,8 +182,11 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <param name="e"></param>
         public void PopulateAttackQueue(Enemy e)
-        {            
-            attackQueue.AddLast(e);
+        {
+            if (!attackQueue.Contains(e))
+            {
+                attackQueue.AddLast(e);
+            }
 
         }
 

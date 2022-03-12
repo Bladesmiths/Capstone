@@ -98,7 +98,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnd()
         {
-            _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            _sword.transform.localRotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             //_shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();

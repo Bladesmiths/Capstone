@@ -42,7 +42,7 @@ namespace Bladesmiths.Capstone
             timer += Time.deltaTime;
             float valZ = curveZ.Evaluate(timer);
             float valY = curveY.Evaluate(timer);            
-            sword.transform.rotation = Quaternion.Euler(0f, valY, valZ);
+            sword.transform.localRotation = Quaternion.Euler(0f, valY, valZ);
             dist = playerPos - transform.position; 
 
             if(timer >= timerMax)
