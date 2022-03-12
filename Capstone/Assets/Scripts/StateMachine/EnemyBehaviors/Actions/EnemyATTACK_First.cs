@@ -95,6 +95,8 @@ namespace Bladesmiths.Capstone
             _enemy.InCombat = true;
             waitTimer = 0;
             waitTimerMax = 1f;
+            _enemy.isAttacking = true;
+            _enemy.attackedYet = true;
 
             dist = Player.instance.transform.position - transform.position;
             playerPos = (dist * 0.5f) + transform.position;

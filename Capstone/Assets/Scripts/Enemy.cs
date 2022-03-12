@@ -61,10 +61,12 @@ namespace Bladesmiths.Capstone
         public bool canMove;
         public bool parried;
         public bool blocked = false;
+        public bool attackedYet;
 
         public int enemyGroupNumber;
 
         private bool inCombat;
+        public bool isAttacking;
 
         [SerializeField]
         public GameObject geo;

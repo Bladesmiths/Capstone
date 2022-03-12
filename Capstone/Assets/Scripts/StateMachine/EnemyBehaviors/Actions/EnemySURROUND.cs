@@ -71,7 +71,7 @@ namespace Bladesmiths.Capstone
             danger = new float[numRays];
             fleeList = new List<GameObject>();
             seekList = new List<SeekPoint>();
-            enemy.moveTimerMax = Random.Range(0.5f, 3f);
+            enemy.moveTimerMax = Random.Range(0.5f, 1f);
             enemy.moveTimer = enemy.moveTimerMax;
             seekSpeed = 2f;
             enemy.CanHit = false;

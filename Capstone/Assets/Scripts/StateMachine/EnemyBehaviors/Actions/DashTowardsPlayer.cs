@@ -37,7 +37,8 @@ namespace Bladesmiths.Capstone
             sword = enemy.Sword;
             sword.GetComponent<BoxCollider>().enabled = true;
             enemy.attackTimerMax = Random.Range(0.5f, 2f);
-
+            enemy.isAttacking = true;
+            enemy.attackedYet = true;
 
         }
 
@@ -64,6 +65,7 @@ namespace Bladesmiths.Capstone
             agent.speed = 3.5f;
             agent.acceleration = 8f;
             sword.GetComponent<BoxCollider>().enabled = false;
+            enemy.isAttacking = false;
 
         }
 

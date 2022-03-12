@@ -109,6 +109,7 @@ namespace Bladesmiths.Capstone
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;
             _enemy.canMove = false;
+            _enemy.isAttacking = false;
 
         }
     }
