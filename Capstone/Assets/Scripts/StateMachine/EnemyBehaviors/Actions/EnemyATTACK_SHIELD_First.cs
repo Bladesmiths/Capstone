@@ -91,14 +91,16 @@ namespace Bladesmiths.Capstone
             timerMax = 1f;
             _enemy.attackTimerMax = Random.Range(0.75f, 2f);
             _enemy.InCombat = true;
+            _enemy.isAttacking = true;
+            _enemy.attackedYet = true;
 
             dist = Player.instance.transform.position - transform.position;
-            playerPos = (dist * 0.5f) + transform.position;
+            playerPos = (dist * 0.1f) + transform.position;
         }
 
         public override void OnEnd()
         {
-            _sword.transform.localRotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             //_shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();

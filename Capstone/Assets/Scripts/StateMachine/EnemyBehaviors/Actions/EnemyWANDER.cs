@@ -60,6 +60,7 @@ namespace Bladesmiths.Capstone
             wanderPoint = new Vector3(x, y, z);
             _self.canMove = true;
             _self.InCombat = false;
+            _self.attackedYet = false;
 
         }
 

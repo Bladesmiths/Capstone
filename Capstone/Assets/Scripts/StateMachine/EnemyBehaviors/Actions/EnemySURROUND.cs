@@ -56,6 +56,9 @@ namespace Bladesmiths.Capstone
         public Vector3 chosenDir;
         public Vector3 lookPos;
         private int dir;
+        public float seekDist;
+        public float seekDistClose;
+        public float seekDistFar;
 
         [SerializeField]
         private float sideDist;
@@ -117,7 +120,7 @@ namespace Bladesmiths.Capstone
             }
             if (enemy.attackTimer <= 0)
             {
-                Debug.Log("Attack");
+                //Debug.Log("Attack");
                 enemy.attackTimer = enemy.attackTimerMax;
                 AIDirector.Instance.PopulateAttackQueue(enemy);
             }
@@ -131,16 +134,16 @@ namespace Bladesmiths.Capstone
             //Debug.Log("AttackTimer" + enemy.attackTimer);
             //Debug.Log("AttackTimerMax" + enemy.attackTimerMax);
 
-            if (dist.magnitude > 2.5f)
+            if (dist.magnitude > seekDist)
             {
                 seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
             }
-            else if (dist.magnitude <= 2.3f)
+            else if (dist.magnitude <= seekDistClose)
             {
                 seekList.Add(new SeekPoint((dist * -1), 1f));
 
             }
-            else if (dist.magnitude > 2.3f && dist.magnitude < 2.5f)
+            else if (dist.magnitude > seekDistClose && dist.magnitude < seekDist)
             {
                 seekList.Add(new SeekPoint(transform.position, 1f));
             }
@@ -152,7 +155,7 @@ namespace Bladesmiths.Capstone
             PopulateAll();            
             AttackTimer();
 
-            if (dist.magnitude <= 2.5f)
+            if (dist.magnitude <= seekDist)
             {
                 enemy.moveTimer -= Time.deltaTime;
             }
@@ -162,7 +165,7 @@ namespace Bladesmiths.Capstone
                 return TaskStatus.Success;
             }
 
-            sideDist = dist.magnitude > 2.5f ? 10f : 0.3f;
+            sideDist = dist.magnitude > seekDist ? seekDistFar : 0.3f;
 
             Vector3 movePos = (chosenDir * sideDist) + transform.position;
 

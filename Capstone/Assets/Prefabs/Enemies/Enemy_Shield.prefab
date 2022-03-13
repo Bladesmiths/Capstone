@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 1058455954201779013}
   - component: {fileID: 7949415508084684185}
   - component: {fileID: 7368773183464884629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 935230331812800911}
   - component: {fileID: 6471459645144236267}
   - component: {fileID: 6333161531304665273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.078
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 2956368415733333041}
   - component: {fileID: 8644702350830864678}
   - component: {fileID: 1900094005398127520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.074
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 2209590826642358627}
   - component: {fileID: 1142755666482495275}
   - component: {fileID: 1440374037044397643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.052
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1471,7 +1471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6407910739885446318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: geo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1513,7 @@ GameObject:
   - component: {fileID: 7148206274649957135}
   - component: {fileID: 8053191868421779457}
   - component: {fileID: 5668175744748685263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.051
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1638,7 @@ GameObject:
   - component: {fileID: 1827812293531910131}
   - component: {fileID: 7584338791740857935}
   - component: {fileID: 7334231409647532022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.041
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1762,7 +1762,7 @@ GameObject:
   - component: {fileID: 4655618091593368956}
   - component: {fileID: 2309928505363512918}
   - component: {fileID: 8088019478508618819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 2001090108246149188}
   - component: {fileID: 79431434394845260}
   - component: {fileID: 5659046651631125519}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2087,7 +2087,7 @@ GameObject:
   - component: {fileID: 5552183736872233352}
   - component: {fileID: 5647865900616682327}
   - component: {fileID: 5686866648665901930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.022
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 5563722808462770979}
   - component: {fileID: 2594435775955003725}
   - component: {fileID: 6743657120902805606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.036
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2276,7 +2276,7 @@ GameObject:
   - component: {fileID: 4210170633791773879}
   - component: {fileID: 7336646897589831283}
   - component: {fileID: 1693747179885078613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2479,7 +2479,7 @@ GameObject:
   - component: {fileID: 904952353843307996}
   - component: {fileID: 2058258778426699013}
   - component: {fileID: 7061347428761541206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2592,7 +2592,7 @@ GameObject:
   - component: {fileID: 867604348891680333}
   - component: {fileID: 4010128816737242187}
   - component: {fileID: 6284406908628642244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.040
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2718,7 +2718,7 @@ GameObject:
   - component: {fileID: 4131682215042533968}
   - component: {fileID: 6889106239097913755}
   - component: {fileID: 6159221842843638039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3427,7 +3427,7 @@ GameObject:
   - component: {fileID: 8198447541950089495}
   - component: {fileID: 6005161549533151958}
   - component: {fileID: 1595495244902117658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3557,7 +3557,7 @@ GameObject:
   - component: {fileID: 7733260026751154826}
   - component: {fileID: 7540590184539308225}
   - component: {fileID: 5301382911532537529}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3713,7 +3713,7 @@ GameObject:
   - component: {fileID: 3853920799769378171}
   - component: {fileID: 981203774107970220}
   - component: {fileID: 3274008486453524588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4023,7 +4023,7 @@ GameObject:
   - component: {fileID: 5615214046493547149}
   - component: {fileID: 8031314060292238174}
   - component: {fileID: 3450851360257103876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.070
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4147,7 +4147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2142796653339706770}
   - component: {fileID: 6143187855738283418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4426,7 +4426,7 @@ GameObject:
   - component: {fileID: 7139194289696566303}
   - component: {fileID: 1380725346626112965}
   - component: {fileID: 6192602798992701786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.064
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4582,7 +4582,7 @@ GameObject:
   - component: {fileID: 7959071159438146462}
   - component: {fileID: 523142467214859866}
   - component: {fileID: 1230437980847336548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.071
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4740,7 +4740,7 @@ GameObject:
   - component: {fileID: 895713884254285457}
   - component: {fileID: 7409417744802311136}
   - component: {fileID: 7080038438396713869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4866,7 +4866,7 @@ GameObject:
   - component: {fileID: 1299967336835351803}
   - component: {fileID: 715404726922725103}
   - component: {fileID: 5466621742797785950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5089,7 +5089,7 @@ GameObject:
   - component: {fileID: 2161839571468310684}
   - component: {fileID: 2058300204251519958}
   - component: {fileID: 9094684582209809555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5216,7 +5216,7 @@ GameObject:
   - component: {fileID: 5495729870575117178}
   - component: {fileID: 1960638228688689945}
   - component: {fileID: 2895066010482149566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.063
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5341,7 +5341,7 @@ GameObject:
   - component: {fileID: 3121885415154252976}
   - component: {fileID: 4308157205700974150}
   - component: {fileID: 1758739120336694312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5682,7 +5682,7 @@ GameObject:
   - component: {fileID: 4958544777193557007}
   - component: {fileID: 7241414818387874223}
   - component: {fileID: 7459436912004815698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5777,7 +5777,7 @@ GameObject:
   - component: {fileID: 5011875348246847337}
   - component: {fileID: 1147993442894480359}
   - component: {fileID: 1405901162160318374}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.077
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6308,7 +6308,7 @@ GameObject:
   - component: {fileID: 3842051782949918441}
   - component: {fileID: 231953620113146740}
   - component: {fileID: 1401032842873487083}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6527,7 +6527,7 @@ GameObject:
   - component: {fileID: 1917968611308455020}
   - component: {fileID: 7945831361966893969}
   - component: {fileID: 3038559290768146462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.072
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6742,7 +6742,7 @@ GameObject:
   - component: {fileID: 3454788029311131134}
   - component: {fileID: 2051464382938849170}
   - component: {fileID: 1676496473440571603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.028
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7147,7 +7147,7 @@ GameObject:
   - component: {fileID: 5592675003568223774}
   - component: {fileID: 5552380357071919006}
   - component: {fileID: 9041908217736856873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7456,7 +7456,7 @@ GameObject:
   - component: {fileID: 2165406230722671928}
   - component: {fileID: 6014623847130892440}
   - component: {fileID: 5741277524625934314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7570,7 +7570,7 @@ GameObject:
   - component: {fileID: 5975100503556549488}
   - component: {fileID: 6439742497549287522}
   - component: {fileID: 2818196312790246501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.054
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7787,7 +7787,7 @@ GameObject:
   - component: {fileID: 7554495912343711828}
   - component: {fileID: 3962595120530515497}
   - component: {fileID: 8026472344933832995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7931,7 +7931,7 @@ GameObject:
   - component: {fileID: 8851539447566911254}
   - component: {fileID: 165529348612508571}
   - component: {fileID: 759217674292626371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8056,7 +8056,7 @@ GameObject:
   - component: {fileID: 4414161088054845537}
   - component: {fileID: 417688049545012481}
   - component: {fileID: 4855885523497856322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.037
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8179,7 +8179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7919352658504429398}
   - component: {fileID: 7324418250273899574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_headFoliage_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8368,7 +8368,7 @@ GameObject:
   - component: {fileID: 2991509461779876244}
   - component: {fileID: 4122160275618399401}
   - component: {fileID: 77585614674385579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8682,7 +8682,7 @@ GameObject:
   - component: {fileID: 5051324751324347788}
   - component: {fileID: 696349384082513356}
   - component: {fileID: 2229049413738392040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8795,7 +8795,7 @@ GameObject:
   - component: {fileID: 8956602251422709700}
   - component: {fileID: 5271205014570643996}
   - component: {fileID: 4764352960867648470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.038
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8987,7 +8987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7736925568396306368}
   - component: {fileID: 4212603918668379922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: neckPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9080,7 +9080,7 @@ GameObject:
   - component: {fileID: 9075960271222490664}
   - component: {fileID: 7377642543710380469}
   - component: {fileID: 5102412584786821313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9175,7 +9175,7 @@ GameObject:
   - component: {fileID: 2978884348852201827}
   - component: {fileID: 2281618609641968002}
   - component: {fileID: 7285605668797404016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.062
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9270,7 +9270,7 @@ GameObject:
   - component: {fileID: 124324196774657309}
   - component: {fileID: 8492411416919826399}
   - component: {fileID: 1409147512051453579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.026
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9397,7 +9397,7 @@ GameObject:
   - component: {fileID: 1666222270720227409}
   - component: {fileID: 5042557211517218364}
   - component: {fileID: 5982909414622127976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9649,7 +9649,7 @@ GameObject:
   - component: {fileID: 1503328535977450456}
   - component: {fileID: 8570103932666568701}
   - component: {fileID: 2432338139595539293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.067
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9743,7 +9743,7 @@ GameObject:
   - component: {fileID: 4599035395051310210}
   - component: {fileID: 6840787778871167970}
   - component: {fileID: 6761987736089520061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9949,7 +9949,7 @@ GameObject:
   - component: {fileID: 5484562021916167171}
   - component: {fileID: 7138111934163405054}
   - component: {fileID: 3687122628324648499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10092,7 +10092,7 @@ GameObject:
   - component: {fileID: 9186018979231155652}
   - component: {fileID: 2321322421314584914}
   - component: {fileID: 6780690707580787623}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.068
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10403,7 +10403,7 @@ GameObject:
   - component: {fileID: 4312926785487377732}
   - component: {fileID: 7499394344746993729}
   - component: {fileID: 8240016096067849568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10826,7 +10826,7 @@ GameObject:
   - component: {fileID: 4690184241065801733}
   - component: {fileID: 3673548088008610647}
   - component: {fileID: 2701258022054155233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.076
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10982,7 +10982,7 @@ GameObject:
   - component: {fileID: 5578337914826526324}
   - component: {fileID: 9164531770938621014}
   - component: {fileID: 2234758377836052189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11107,7 +11107,7 @@ GameObject:
   - component: {fileID: 2412442459230365947}
   - component: {fileID: 6946506281444231611}
   - component: {fileID: 5995343674541780707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.057
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11202,7 +11202,7 @@ GameObject:
   - component: {fileID: 1410294338557739080}
   - component: {fileID: 7969091886293449646}
   - component: {fileID: 4115472048454088622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.061
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11296,7 +11296,7 @@ GameObject:
   - component: {fileID: 3819696958988719719}
   - component: {fileID: 4315817142152794199}
   - component: {fileID: 6717458886700020183}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11408,7 +11408,7 @@ GameObject:
   - component: {fileID: 4636302103960335795}
   - component: {fileID: 7777965936874279172}
   - component: {fileID: 2123384638205175588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_arm_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11490,7 +11490,7 @@ GameObject:
   - component: {fileID: 719890044192745938}
   - component: {fileID: 2668908150551234656}
   - component: {fileID: 7951604142708592054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11646,7 +11646,7 @@ GameObject:
   - component: {fileID: 4166524373958929099}
   - component: {fileID: 7982482788401794239}
   - component: {fileID: 4511900031077812806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.073
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11869,7 +11869,7 @@ GameObject:
   - component: {fileID: 2577363342451621882}
   m_Layer: 7
   m_Name: Enemy_Shield
-  m_TagString: Untagged
+  m_TagString: Targettable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12008,11 +12008,11 @@ MonoBehaviour:
   objectController: {fileID: 0}
   player: {fileID: 0}
   sword: {fileID: 8664234738843790977}
-  blocked: 0
   chunksRemoved: 0
   moveVector: {x: 0, y: 0, z: 0}
   rotateVector: {x: 0, y: 0, z: 0}
   swordRot: {x: 0, y: 0, z: 0, w: 0}
+  defaultSwordPos: {x: 0, y: 0, z: 0}
   damage: 0
   shrinkSpeed: 0
   viewDistance: 6
@@ -12024,7 +12024,11 @@ MonoBehaviour:
   moveTimerMax: 0
   stunned: 0
   canMove: 0
+  parried: 0
+  blocked: 0
+  attackedYet: 0
   enemyGroupNumber: 0
+  isAttacking: 0
   geo: {fileID: 398319078774083818}
   bodyChunks: {fileID: 481280532007529492}
   spine: {fileID: 4922214786883378987}
@@ -12253,7 +12257,7 @@ GameObject:
   - component: {fileID: 3629059708747042867}
   - component: {fileID: 8671896968918884489}
   - component: {fileID: 2531494295019650489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.048
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12567,7 +12571,7 @@ GameObject:
   - component: {fileID: 755434708758639023}
   - component: {fileID: 3453556585443945894}
   - component: {fileID: 8865620259752134176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.047
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12723,7 +12727,7 @@ GameObject:
   - component: {fileID: 68091486206537197}
   - component: {fileID: 7467001466023108070}
   - component: {fileID: 8077291566674507977}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13035,7 +13039,7 @@ GameObject:
   - component: {fileID: 500563473088039650}
   - component: {fileID: 8074590740680881871}
   - component: {fileID: 8127261478896706656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.042
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13191,7 +13195,7 @@ GameObject:
   - component: {fileID: 8051350659376947171}
   - component: {fileID: 2471140684724785545}
   - component: {fileID: 4678517232223432105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13547,7 +13551,7 @@ GameObject:
   - component: {fileID: 4760415181952338210}
   - component: {fileID: 6607531087643926854}
   - component: {fileID: 6354479549848623877}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13950,7 +13954,7 @@ GameObject:
   - component: {fileID: 1308563548443473730}
   - component: {fileID: 4718904667095833360}
   - component: {fileID: 3337074913026477087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.044
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14075,7 +14079,7 @@ GameObject:
   - component: {fileID: 6736007178364668685}
   - component: {fileID: 1904743210961868700}
   - component: {fileID: 4614688931544034793}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14154,7 +14158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234586810043748648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySpine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14195,7 +14199,7 @@ GameObject:
   - component: {fileID: 2588027214519780934}
   - component: {fileID: 4411631843977944924}
   - component: {fileID: 4264434961562660053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14289,7 +14293,7 @@ GameObject:
   - component: {fileID: 7255814028899459338}
   - component: {fileID: 5961625076471234342}
   - component: {fileID: 9159241735921863688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14676,7 +14680,7 @@ GameObject:
   - component: {fileID: 2691855208846339449}
   - component: {fileID: 2707495341118930799}
   - component: {fileID: 607527088263582523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14864,7 +14868,7 @@ GameObject:
   - component: {fileID: 4744796850661781859}
   - component: {fileID: 4374307100402170935}
   - component: {fileID: 4580838902738426702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15078,7 +15082,7 @@ GameObject:
   - component: {fileID: 5278644857090795846}
   - component: {fileID: 8665120637843736500}
   - component: {fileID: 8387537375551095293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15159,7 +15163,7 @@ GameObject:
   - component: {fileID: 6768388686607820664}
   - component: {fileID: 6591239272722174274}
   - component: {fileID: 8013723309619967953}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15364,7 +15368,7 @@ GameObject:
   - component: {fileID: 8866364617444444990}
   - component: {fileID: 3656251083554889433}
   - component: {fileID: 179488022519580589}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.069
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15490,7 +15494,7 @@ GameObject:
   - component: {fileID: 7821734910733269237}
   - component: {fileID: 8364553438300241364}
   - component: {fileID: 7329666936583809516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.032
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15800,7 +15804,7 @@ GameObject:
   - component: {fileID: 5322980765187737647}
   - component: {fileID: 5385419377237891328}
   - component: {fileID: 4836163392281471303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.065
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15926,7 +15930,7 @@ GameObject:
   - component: {fileID: 6294744859974155530}
   - component: {fileID: 2128781750642290137}
   - component: {fileID: 4603168162259654165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.045
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16050,7 +16054,7 @@ GameObject:
   - component: {fileID: 6563225504337840728}
   - component: {fileID: 7385355343377232318}
   - component: {fileID: 2764556149150927511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16130,7 +16134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6108703928147169281}
   - component: {fileID: 5195757679905238874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_stomachFoliage_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16223,7 +16227,7 @@ GameObject:
   - component: {fileID: 9113697367908822501}
   - component: {fileID: 435772305479462984}
   - component: {fileID: 8323568325594430426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.043
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16318,7 +16322,7 @@ GameObject:
   - component: {fileID: 488475549881155728}
   - component: {fileID: 8079229850442143865}
   - component: {fileID: 8314648037338934122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16507,7 +16511,7 @@ GameObject:
   - component: {fileID: 6335373430133685883}
   - component: {fileID: 3307898812415268884}
   - component: {fileID: 3149229550116147132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16633,7 +16637,7 @@ GameObject:
   - component: {fileID: 7199628129890767562}
   - component: {fileID: 7607721118343674980}
   - component: {fileID: 862953676250712764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.033
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17458,7 +17462,7 @@ GameObject:
   - component: {fileID: 8291356965458892963}
   - component: {fileID: 6518815040994584193}
   - component: {fileID: 3393512818340568813}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17859,7 +17863,7 @@ GameObject:
   - component: {fileID: 8030031694662385367}
   - component: {fileID: 1846417335763728706}
   - component: {fileID: 5906334054372410216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18213,7 +18217,7 @@ GameObject:
   - component: {fileID: 666853263498236780}
   - component: {fileID: 7289246264281659772}
   - component: {fileID: 8504090318783262857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.046
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18431,7 +18435,7 @@ GameObject:
   - component: {fileID: 8432692418634396683}
   - component: {fileID: 5948741139195291463}
   - component: {fileID: 2031136568730452243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18526,7 +18530,7 @@ GameObject:
   - component: {fileID: 5349245076837077380}
   - component: {fileID: 7235608637975241295}
   - component: {fileID: 4676853449857159494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.060
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18621,7 +18625,7 @@ GameObject:
   - component: {fileID: 1792815115321025887}
   - component: {fileID: 2108393012797161548}
   - component: {fileID: 3178815455868952785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.066
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18715,7 +18719,7 @@ GameObject:
   - component: {fileID: 6848632796679153928}
   - component: {fileID: 4498616599372466937}
   - component: {fileID: 3401553410862909039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18856,7 +18860,7 @@ GameObject:
   - component: {fileID: 6808589045743891223}
   - component: {fileID: 5934104230542852856}
   - component: {fileID: 1080455700572622961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18937,7 +18941,7 @@ GameObject:
   - component: {fileID: 8903248871876118146}
   - component: {fileID: 5439759327332808534}
   - component: {fileID: 3091589854671544980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19080,7 +19084,7 @@ GameObject:
   - component: {fileID: 3025421278999830206}
   - component: {fileID: 8109874531566650363}
   - component: {fileID: 4174937800407107762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19253,7 +19257,7 @@ GameObject:
   - component: {fileID: 2613425468243471949}
   - component: {fileID: 1375538530603654208}
   - component: {fileID: 8195489859223735526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.055
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19471,7 +19475,7 @@ GameObject:
   - component: {fileID: 4371834141491607694}
   - component: {fileID: 7515011425299290354}
   - component: {fileID: 6143259289609839528}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.056
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19597,7 +19601,7 @@ GameObject:
   - component: {fileID: 668413272759948076}
   - component: {fileID: 2195998784570694136}
   - component: {fileID: 5012133182024715580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19914,7 +19918,7 @@ GameObject:
   - component: {fileID: 2654422946401870325}
   - component: {fileID: 8269221897189447021}
   - component: {fileID: 6163577610354569851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20026,7 +20030,7 @@ GameObject:
   - component: {fileID: 4464858091818681856}
   - component: {fileID: 1415483540556531550}
   - component: {fileID: 6617944493140047240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.020
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20275,7 +20279,7 @@ GameObject:
   - component: {fileID: 3317518149308409733}
   - component: {fileID: 8143764498931492179}
   - component: {fileID: 8269566160849431305}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20532,7 +20536,7 @@ GameObject:
   - component: {fileID: 8546116616557554360}
   - component: {fileID: 5316349049994043035}
   - component: {fileID: 864507135647469381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_head_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21187,7 +21191,7 @@ GameObject:
   - component: {fileID: 2156757815840795602}
   - component: {fileID: 1325876011418722817}
   - component: {fileID: 5470837201101046182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22173,7 +22177,7 @@ GameObject:
   - component: {fileID: 8946391747720369685}
   - component: {fileID: 8097262373000125271}
   - component: {fileID: 6923255373287768445}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.075
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22299,7 +22303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 807925933840554578}
   - component: {fileID: 6467508337589135845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22862,7 +22866,7 @@ GameObject:
   - component: {fileID: 5915556325780734700}
   - component: {fileID: 3646406708612957317}
   - component: {fileID: 7875508631491132600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.053
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23173,7 +23177,7 @@ GameObject:
   - component: {fileID: 2393771986952054662}
   - component: {fileID: 415460119746564136}
   - component: {fileID: 8473557610424333346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.059
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23267,7 +23271,7 @@ GameObject:
   - component: {fileID: 9078967561705797848}
   - component: {fileID: 5847748750915345872}
   - component: {fileID: 2845459605878126794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23468,7 +23472,7 @@ GameObject:
   - component: {fileID: 1871578495301368048}
   - component: {fileID: 890702396410633456}
   - component: {fileID: 4835959698353242411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.002_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24003,7 +24007,7 @@ GameObject:
   - component: {fileID: 4554096861551129399}
   - component: {fileID: 7193201685398137834}
   - component: {fileID: 8306180601319509547}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.039
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24221,7 +24225,7 @@ GameObject:
   - component: {fileID: 7412734583950850089}
   - component: {fileID: 1209095899573466340}
   - component: {fileID: 1558420209038657921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.058
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24439,7 +24443,7 @@ GameObject:
   - component: {fileID: 4352091697858525431}
   - component: {fileID: 653987136822373610}
   - component: {fileID: 1184006373720220284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicEnemy_pelvis_GEO_04_cell.035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24625,7 +24629,7 @@ GameObject:
   - component: {fileID: 7134915065843737047}
   - component: {fileID: 4442414355003437575}
   - component: {fileID: 2990733838889465114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield_cell.001_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}

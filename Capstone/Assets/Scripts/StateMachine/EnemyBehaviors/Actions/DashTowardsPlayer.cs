@@ -9,6 +9,8 @@ namespace Bladesmiths.Capstone
     public class DashTowardsPlayer : Action
     {
         private Vector3 dist;
+        private Vector3 distance;
+
         private NavMeshAgent agent;
         public Vector3 playerPos;
         public AnimationCurve curveZ;
@@ -31,7 +33,9 @@ namespace Bladesmiths.Capstone
             enemy = GetComponent<Enemy>(); 
             agent.speed = enemySpeed;
             agent.acceleration = enemyAccl;
-            playerPos = Player.instance.transform.position;// - transform.position;
+            //playerPos = Player.instance.transform.position;// - transform.position;
+            distance = Player.instance.transform.position - transform.position;
+            playerPos = (-distance.normalized * 2f) + Player.instance.transform.position;
             timerMax = 1f;
             timer = 0;
             sword = enemy.Sword;
@@ -66,6 +70,16 @@ namespace Bladesmiths.Capstone
             agent.acceleration = 8f;
             sword.GetComponent<BoxCollider>().enabled = false;
             enemy.isAttacking = false;
+
+        }
+
+        /// <summary>
+        /// Draws a UI element around the Enemy
+        /// </summary>
+        public override void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawSphere(playerPos, .3f);
 
         }
 

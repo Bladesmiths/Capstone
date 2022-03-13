@@ -51,14 +51,9 @@ namespace Bladesmiths.Capstone
 
             if(timer >= timerMax)
             {
-                waitTimer += Time.deltaTime;
                 _enemy.CanHit = false;
                 return TaskStatus.Success;
 
-            }
-
-            if (waitTimer >= waitTimerMax)
-            {
             }
 
             if (agent != null)
@@ -98,7 +93,7 @@ namespace Bladesmiths.Capstone
             waitTimerMax = 1f;
 
             dist = Player.instance.transform.position - transform.position;
-            playerPos = (dist * 0.5f) + transform.position;
+            playerPos = (dist * 0.1f) + transform.position;
 
         }
 

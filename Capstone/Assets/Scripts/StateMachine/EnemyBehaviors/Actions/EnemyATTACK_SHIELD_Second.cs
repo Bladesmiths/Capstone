@@ -93,7 +93,7 @@ namespace Bladesmiths.Capstone
             _enemy.InCombat = true;
 
             dist = Player.instance.transform.position - transform.position;
-            playerPos = (dist * 0.5f) + transform.position;
+            playerPos = (dist * 0.1f) + transform.position;
         }
 
         public override void OnEnd()
@@ -103,6 +103,8 @@ namespace Bladesmiths.Capstone
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;
+            _enemy.isAttacking = false;
+
         }
     }
 }
