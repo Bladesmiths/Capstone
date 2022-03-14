@@ -21,6 +21,8 @@ namespace Bladesmiths.Capstone
         [SerializeField] private int damagingID;
         private float timer;
 
+        [SerializeField] private float damageAmount;
+
         private void Awake()
         {
             ObjectController = ObjectController.Instance;
@@ -31,7 +33,7 @@ namespace Bladesmiths.Capstone
         // Start is called before the first frame update
         void Start()        {
             
-            Damage = 20;
+            Damage = damageAmount;
             //ID = damagingID;
         }
 

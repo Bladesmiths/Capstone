@@ -21,7 +21,7 @@ namespace Bladesmiths.Capstone.Testing
 
         [Tooltip("How long until the projectile is destroyed")]
         [SerializeField]
-        private float timeTillDestruction;
+        public float timeTillDestruction;
 
         [SerializeField]
         private ObjectController objectController;
@@ -36,6 +36,8 @@ namespace Bladesmiths.Capstone.Testing
         private float damagingTimerLimit;
         private float damagingTimer;
         private bool damaging;
+
+        public bool canMove = true;
         #endregion
 
         // Gives access to the velocity field
@@ -71,7 +73,7 @@ namespace Bladesmiths.Capstone.Testing
         {
             // As long as velocity is not 0,
             // Move it according to velocity
-            if (velocity != Vector3.zero)
+            if (velocity != Vector3.zero && canMove)
             {
                 transform.position = transform.position + velocity * Time.deltaTime;
             }
@@ -136,7 +138,7 @@ namespace Bladesmiths.Capstone.Testing
             else if (col.gameObject.tag == "Untagged")
             {
                 // Destroy the projectile once it has collided
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
 
             else
