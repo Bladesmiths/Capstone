@@ -43,7 +43,6 @@ namespace Bladesmiths.Capstone
 
         private void Start()
         {
-            //allEnemyGroups.Add(enemyGroup);
             currentGroup = enemyGroups[0];
         }
 
@@ -54,21 +53,24 @@ namespace Bladesmiths.Capstone
                 CheckForPossibleAttacker();
             }
 
-            //if(allEnemyGroups.First.Value.enemies.Count == 0)
-            //{
-            //    groupCount++;
-            //    if (groupCount != enemyGroups.Count)
-            //    {                    
-            //        currentGroup.SetActive(false);
-            //        currentGroup = enemyGroups[groupCount];
-            //        currentGroup.SetActive(true);
-            //        allEnemyGroups.RemoveFirst();                    
-            //    }
-            //    else if(groupCount == enemyGroups.Count)
-            //    {
-            //        currentGroup.SetActive(false);
-            //    }
-            //}
+            if (enemyGroups[groupCount].transform.childCount == 0)
+            {
+                CrystalWallManager.instance.SwitchWalls(groupCount);
+                groupCount++;
+                if (groupCount != enemyGroups.Count)
+                {
+                    //currentGroup.SetActive(false);
+                    currentGroup = enemyGroups[groupCount];
+                    //currentGroup.SetActive(true);
+                    //allEnemyGroups.RemoveFirst();
+
+                }
+                else if (groupCount == enemyGroups.Count)
+                {
+                    //CrystalWallManager.instance.SwitchWalls(groupCount);
+                    //currentGroup.SetActive(false);
+                }
+            }
         }
 
         /// <summary>
