@@ -117,6 +117,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
+        public bool shouldLookAt = true;
         #endregion
 
         #region Fields from the Move State and Jump State
@@ -595,6 +596,8 @@ namespace Bladesmiths.Capstone
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
                 sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
 
+                sword.GetComponent<Sword>().SwordType = newSwordType;
+                
                 // Set the animation paramater to change the attack animation
                 animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
@@ -802,7 +805,7 @@ namespace Bladesmiths.Capstone
             
             if (fade.GetComponent<Image>().color.a >= 1)
             {
-                Debug.Log("Loading winscreen");
+                //Debug.Log("Loading winscreen");
 
                 if (points >= maxPoints)
                 {

@@ -1764,7 +1764,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7759104, y: 1}
+    m_SensorSize: {x: 1.7785088, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4419,7 +4419,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7759104, y: 1}
+    m_SensorSize: {x: 1.7785088, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4442,7 +4442,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189484, y: 0.000000029802326, z: -0.0000000074505815, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189514, y: -0.000000029802326, z: 0.000000014901163, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4653,7 +4653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.3947, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -4910,7 +4910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.3947, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -7463,6 +7463,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_SwordTrails_Ruby
       objectReference: {fileID: 0}
+    - target: {fileID: 6535355946735744520, guid: 77a168d4dfbf98c4ea842bfd4086b8b7, type: 3}
+      propertyPath: bladeObject
+      value: 
+      objectReference: {fileID: 6985290544283586830}
+    - target: {fileID: 6535355946735744520, guid: 77a168d4dfbf98c4ea842bfd4086b8b7, type: 3}
+      propertyPath: effectDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535355946735744520, guid: 77a168d4dfbf98c4ea842bfd4086b8b7, type: 3}
+      propertyPath: emitterDuration
+      value: 1.267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535355946735744520, guid: 77a168d4dfbf98c4ea842bfd4086b8b7, type: 3}
+      propertyPath: collisionVFXObject
+      value: 
+      objectReference: {fileID: 4737892531360219046, guid: af648924aa8dedd4db42d6a3bfac7d2f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77a168d4dfbf98c4ea842bfd4086b8b7, type: 3}
 --- !u!1 &744417629
@@ -8385,7 +8401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.3947, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -13412,6 +13428,7 @@ MonoBehaviour:
   fade: {fileID: 2083527668}
   hasFadedToBlack: 0
   justDied: 0
+  shouldLookAt: 1
   timer: 0
   animator: {fileID: 0}
   speed: 0
@@ -13952,6 +13969,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.726
       objectReference: {fileID: 0}
+    - target: {fileID: 8675380613580175265, guid: ba422058a908ce546b8372c316e4742b, type: 3}
+      propertyPath: bladeObject
+      value: 
+      objectReference: {fileID: 1276691523226234014}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba422058a908ce546b8372c316e4742b, type: 3}
 --- !u!1 &1328525584
@@ -16961,7 +16982,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594495, w: -0.37318859}
+  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
   m_LocalPosition: {x: -100.613556, y: 10.347, z: -53.966595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17767,7 +17788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 880.3947, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -19244,7 +19265,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7759104, y: 1}
+    m_SensorSize: {x: 1.7785088, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -19253,7 +19274,7 @@ MonoBehaviour:
     BarrelClipping: 0.25
     Anamorphism: 0
   m_Transitions:
-    m_BlendHint: 0
+    m_BlendHint: 3
     m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
@@ -21987,6 +22008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7984055924287755416, guid: b9f8f8ee7d183ac48a362362dedcb1d6, type: 3}
+      propertyPath: bladeObject
+      value: 
+      objectReference: {fileID: 9072585554918240346}
     - target: {fileID: 9144215020911189774, guid: b9f8f8ee7d183ac48a362362dedcb1d6, type: 3}
       propertyPath: m_Name
       value: VFX_SwordTrails_Sapphire
@@ -24323,7 +24348,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7759104, y: 1}
+    m_SensorSize: {x: 1.7785088, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24346,7 +24371,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.000000016763806, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.0000000055879354, y: 0.000000029802322, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25916,7 +25941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordSwings: []
-  vfx: []
+  vfx:
+  - {fileID: 33038434}
   swordModel: {fileID: 0}
   swordType: 0
   offset: {fileID: 0}

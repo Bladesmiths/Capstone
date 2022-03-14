@@ -3472,6 +3472,8 @@ VFXRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3500,7 +3502,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669477575}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 61e9ab45f58c3b940a5ca7bb2a6f6a0c, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: f5c2a82716482914ead38fcae2c9189b, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -3549,7 +3551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669477575}
   m_LocalRotation: {x: -0.14729351, y: 0.6915957, z: -0.14729348, w: 0.69159573}
-  m_LocalPosition: {x: 0.0000003808269, y: 8.78, z: -881.9249}
+  m_LocalPosition: {x: -0, y: 7, z: -890}
   m_LocalScale: {x: 9.353073, y: 9.353074, z: 9.353073}
   m_Children: []
   m_Father: {fileID: 1600660397}

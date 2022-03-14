@@ -44,6 +44,7 @@ namespace Bladesmiths.Capstone
                                     "raycast to a potential target should begin")]
         private Transform playerCamRoot;
 
+        private Player player; 
         #endregion
 
         public bool Active 
@@ -64,7 +65,9 @@ namespace Bladesmiths.Capstone
 
         public ObjectController ObjectController { get; set; }
 
-        void Start() { }
+        void Start() {
+            player = transform.parent.GetComponent<Player>();
+        }
 
         void Update()
         {
@@ -85,7 +88,11 @@ namespace Bladesmiths.Capstone
                 // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
 
-                transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, transform.parent.position.y, targetedObject.transform.position.z));
+                // Disables look at while player is dodging
+                if (player.shouldLookAt)
+                {
+                    transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, transform.parent.position.y, targetedObject.transform.position.z));
+                }
 
                 // Left Over in case we want target lock to turn if
                 // something is obscuring the ray
@@ -159,8 +166,12 @@ namespace Bladesmiths.Capstone
                     }
                 }
 
-                // Set the target cam's look at to the closest enemy
-                targetLockCam.LookAt = targetedObject.transform;
+                // Disables Look At while dodging
+                if (player.shouldLookAt)
+                {
+                    // Set the target cam's look at to the closest enemy
+                    targetLockCam.LookAt = targetedObject.transform;
+                }
 
                 // Subscribe to OnDestruction Event
                 targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
@@ -301,7 +312,12 @@ namespace Bladesmiths.Capstone
             targetedObject.GetComponent<IIdentified>().OnDestruction -= RemoveTargetedEnemy;
 
             targetedObject = closestEnemyToTarget;
-            targetLockCam.LookAt = targetedObject.transform;
+
+            // Disables Look At while dodging
+            if (player.shouldLookAt)
+            {
+                targetLockCam.LookAt = targetedObject.transform;
+            }
 
             // Subscribe to OnDestruction Event
             targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
