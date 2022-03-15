@@ -11,6 +11,7 @@ public class SeekPlayer : Action
     private GameObject player;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float acceleration;
     [SerializeField] private float turnSpeed;
     [SerializeField] private float stoppingDistance;
 
@@ -21,6 +22,7 @@ public class SeekPlayer : Action
         player = playerShared.Value;
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = moveSpeed;
+        navMeshAgent.acceleration = acceleration;
         navMeshAgent.angularSpeed = turnSpeed;
     }
 

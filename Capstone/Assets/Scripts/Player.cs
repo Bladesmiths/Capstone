@@ -58,6 +58,7 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
+        [SerializeField] private GameObject boss;
        
         private TargetLock targetLock;
 
@@ -117,6 +118,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject fade;
         public bool hasFadedToBlack;
         public bool justDied;
+        public bool shouldLookAt = true;
         #endregion
 
         #region Fields from the Move State and Jump State
@@ -284,6 +286,7 @@ namespace Bladesmiths.Capstone
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
             targetLock = GameObject.Find("TargetLockManager").GetComponent<TargetLock>();
+            boss = GameObject.Find("Boss");
 
             inputs.player = this;
 
@@ -595,6 +598,8 @@ namespace Bladesmiths.Capstone
                 sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
                 sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
 
+                sword.GetComponent<Sword>().SwordType = newSwordType;
+                
                 // Set the animation paramater to change the attack animation
                 animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
@@ -785,6 +790,11 @@ namespace Bladesmiths.Capstone
                 animator.SetBool(animIDDead, false);
             }
             damaged = false; 
+
+            if(boss == null)
+                boss = GameObject.Find("Boss");
+
+            boss.GetComponent<Boss>().Health = boss.GetComponent<Boss>().MaxHealth;
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());

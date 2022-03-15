@@ -11,19 +11,14 @@ namespace Bladesmiths.Capstone
     public class Sword : MonoBehaviour, IDamaging
     {
         #region Fields
-        [SerializeField]
-        private List<AnimationClip> swordSwings = new List<AnimationClip>();
-        [SerializeField]
-        private List<GameObject> vfx = new List<GameObject>();
-        [SerializeField]
-        private GameObject swordModel; 
-        [SerializeField]
-        private Enums.SwordType swordType;
-        [SerializeField]
-        private Transform offset;
+
+        [SerializeField] private List<AnimationClip> swordSwings = new List<AnimationClip>();
+        [SerializeField] private List<GameObject> vfx = new List<GameObject>();
+        [SerializeField] private GameObject swordModel;
+        [SerializeField] private Enums.SwordType swordType;
+        [SerializeField] private Transform offset;
         private Player player;
-        [SerializeField]
-        private FMODUnity.EventReference SwordHitEvent;
+        [SerializeField] private FMODUnity.EventReference SwordHitEvent;
         public bool sfxPlay;
 
         public bool damaging;
@@ -32,27 +27,85 @@ namespace Bladesmiths.Capstone
 
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
         public event IIdentified.OnDestructionDelegate OnDestruction;
+
         #endregion
 
         #region Properties
-        public float Damage { get => BalancingData.SwordData[swordType].Damage; }
-        public float ChipDamagePercentage { get => BalancingData.SwordData[swordType].ChipDamagePercentage; }
-        public float LifeStealPercentage { get => BalancingData.SwordData[swordType].LifeStealPercentage; }
-        public float PlayerMovementMultiplier { get => BalancingData.SwordData[swordType].PlayerMovementMultiplier; }
-        public float DamageTakenModifier { get => BalancingData.SwordData[swordType].DamageTakenModifier; }
-        public float KnockbackTreshold { get => BalancingData.SwordData[swordType].KnockbackTreshold; }
-        public float ParryDelay { get => BalancingData.SwordData[swordType].ParryDelay; }
-        public float ParryLength { get => BalancingData.SwordData[swordType].ParryLength; }
-        public float ParryCooldown { get => BalancingData.SwordData[swordType].ParryCooldown; }
+
+        public float Damage
+        {
+            get => BalancingData.SwordData[swordType].Damage;
+        }
+
+        public float ChipDamagePercentage
+        {
+            get => BalancingData.SwordData[swordType].ChipDamagePercentage;
+        }
+
+        public float LifeStealPercentage
+        {
+            get => BalancingData.SwordData[swordType].LifeStealPercentage;
+        }
+
+        public float PlayerMovementMultiplier
+        {
+            get => BalancingData.SwordData[swordType].PlayerMovementMultiplier;
+        }
+
+        public float DamageTakenModifier
+        {
+            get => BalancingData.SwordData[swordType].DamageTakenModifier;
+        }
+
+        public float KnockbackTreshold
+        {
+            get => BalancingData.SwordData[swordType].KnockbackTreshold;
+        }
+
+        public float ParryDelay
+        {
+            get => BalancingData.SwordData[swordType].ParryDelay;
+        }
+
+        public float ParryLength
+        {
+            get => BalancingData.SwordData[swordType].ParryLength;
+        }
+
+        public float ParryCooldown
+        {
+            get => BalancingData.SwordData[swordType].ParryCooldown;
+        }
+
         public bool IsActive { get; set; }
-        public Enums.SwordType SwordType { get => swordType; }
-        public Transform Offset { get => offset; }
-        private BalancingData BalancingData { get => player.CurrentBalancingData; }
+
+        public Enums.SwordType SwordType
+        {
+            get => swordType;
+            set => swordType = value;
+        }
+
+        public Transform Offset
+        {
+            get => offset;
+        }
+
+        private BalancingData BalancingData
+        {
+            get => player.CurrentBalancingData;
+        }
+
         public bool Damaging { get; set; }
         public int ID { get; set; }
         public Team ObjectTeam { get; set; }
         public ObjectController ObjectController { get; set; }
-        public GameObject GameObject { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public GameObject GameObject
+        {
+            get => throw new System.NotImplementedException();
+            set => throw new System.NotImplementedException();
+        }
+
         #endregion
 
         void Start()
@@ -66,7 +119,7 @@ namespace Bladesmiths.Capstone
 
         }
 
-        void Update() 
+        void Update()
         {
             if (damaging)
             {
@@ -94,7 +147,6 @@ namespace Bladesmiths.Capstone
                     damaging = false;
                 }
             }
-
         }
 
         public void ToggleTrailVFX(bool isEnabled)
@@ -125,12 +177,12 @@ namespace Bladesmiths.Capstone
 
         void OnCollisionEnter(Collision col)
         {
-            if(col.gameObject.GetComponent<BreakableBox>())
+            if (col.gameObject.GetComponent<BreakableBox>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
             }
 
-            if(col.gameObject.GetComponent<Shield>())
+            if (col.gameObject.GetComponent<Shield>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
                 col.gameObject.transform.parent.GetComponent<Enemy>().AddDamagingID(ID);
@@ -170,6 +222,17 @@ namespace Bladesmiths.Capstone
                         player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
 
                     }                   
+
+                    FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                    //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
+                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+
+                    if (vfx.Count > 0 && swordType == SwordType.Ruby)
+                    {
+                        vfx[0].GetComponent<VFXManager>()
+                            .PlayCollisionOneShotVFX(3.0f, col.transform.position, col.transform.rotation);
+                    }
+
                 }
             }
         }

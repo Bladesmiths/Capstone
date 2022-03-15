@@ -21,6 +21,8 @@ namespace Bladesmiths.Capstone
         [SerializeField] private int damagingID;
         private float timer;
 
+        [SerializeField] private float damageAmount;
+
         private void Awake()
         {
             ObjectController = ObjectController.Instance;
@@ -31,7 +33,7 @@ namespace Bladesmiths.Capstone
         // Start is called before the first frame update
         void Start()        {
             
-            Damage = 20;
+            Damage = damageAmount;
             //ID = damagingID;
         }
 
@@ -42,9 +44,14 @@ namespace Bladesmiths.Capstone
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<Player>())
+            Player player = other.gameObject.GetComponent<Player>();
+
+            if (player != null)
             {
-                other.gameObject.GetComponent<Player>().TakeDamage(ID, Damage);
+                if (player.GetPlayerFSMState() != PlayerCondition.F_Blocking)
+                {
+                    other.gameObject.GetComponent<Player>().TakeDamage(ID, Damage);
+                }
                 DamagingFinished += other.gameObject.GetComponent<Player>().RemoveDamagingID;
                 Damaging = true;
             }
