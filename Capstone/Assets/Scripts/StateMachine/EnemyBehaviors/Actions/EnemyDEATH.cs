@@ -58,7 +58,6 @@ namespace Bladesmiths.Capstone
             _enemy = GetComponent<Enemy>();
             // Removes the Enemy from its group and the attack queue
             AIDirector.Instance.RemoveFromGroups(_enemy);
-            Player.instance.Sword.GetComponent<Sword>().damaging = false;
 
             GameObject body = _enemy.bodyChunks;
 
