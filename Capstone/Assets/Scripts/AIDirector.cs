@@ -102,6 +102,16 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// Removes specific Enemy from the AttackQueue
+        /// </summary>
+        /// <param name="e"> Enemy to Remove</param>
+        public void RemoveFromAttackQueue(Enemy e)
+        {
+            e.CanHit = false;
+            attackQueue.Remove(e);
+        }
+
+        /// <summary>
         /// Gets the Enemy group that the parameter is in
         /// </summary>
         /// <param name="e">The Enemy we are checking</param>
