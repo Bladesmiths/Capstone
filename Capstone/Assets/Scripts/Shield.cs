@@ -57,7 +57,6 @@ namespace Bladesmiths.Capstone
         {           
             if(shieldChunks.transform.childCount <= 0)
             {
-                Debug.Log("NO MORE CHILDREN IN SHIELD");
                 shieldChunks.transform.parent = null;
                 Destroy(shieldChunks);
                 return;
@@ -110,7 +109,6 @@ namespace Bladesmiths.Capstone
                 if(ObjectController[damagingObject.ID].ObjectTeam == Enums.Team.Player &&
                     !enemy.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
-                    Debug.Log("Collision Entered! : " + other.gameObject);
                     // Block has been triggered
                     enemy.blocked = true;
                     //ObjectController[damagingObject.ID].IdentifiedObject

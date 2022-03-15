@@ -253,7 +253,6 @@ namespace Bladesmiths.Capstone
 
             if (desireableTargets.Count == 0)
             {
-                Debug.Log("No other targets");
                 return;
             }
             // Target the most desireable enemy along the direction to the current target

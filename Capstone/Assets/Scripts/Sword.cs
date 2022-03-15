@@ -136,8 +136,6 @@ namespace Bladesmiths.Capstone
                 col.gameObject.transform.parent.GetComponent<Enemy>().AddDamagingID(ID);
                 col.gameObject.GetComponent<Shield>().RemoveChunks();
                 damaging = true;
-                Debug.Log(col.gameObject);
-
             }
             else if (col.gameObject.GetComponent<IDamageable>() != null)
             {
@@ -153,7 +151,6 @@ namespace Bladesmiths.Capstone
                             col.gameObject.transform.GetComponent<Enemy_Shield>().AddDamagingID(ID);
 
                             damaging = true;
-
                         }
                         else
                         {

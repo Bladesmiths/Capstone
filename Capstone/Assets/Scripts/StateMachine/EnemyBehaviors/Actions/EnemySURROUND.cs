@@ -120,7 +120,7 @@ namespace Bladesmiths.Capstone
             }
             if (enemy.attackTimer <= 0)
             {
-                //Debug.Log("Attack");
+                Debug.Log("Attack");
                 enemy.attackTimer = enemy.attackTimerMax;
                 AIDirector.Instance.PopulateAttackQueue(enemy);
             }

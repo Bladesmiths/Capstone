@@ -91,7 +91,6 @@ namespace Bladesmiths.Capstone
             if (Physics.Raycast(_enemy.shootLoc.position, transform.forward, out hit, 10f, _enemy.PlayerLayer))
             {
                 timer += Time.deltaTime;
-                Debug.Log(hit.collider.gameObject);
                 if (fireTimer >= fireTimerLimit)
                 {
                     FireProjectile();

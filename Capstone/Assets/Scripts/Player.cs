@@ -805,7 +805,7 @@ namespace Bladesmiths.Capstone
             
             if (fade.GetComponent<Image>().color.a >= 1)
             {
-                Debug.Log("Loading winscreen");
+                //Debug.Log("Loading winscreen");
 
                 if (points >= maxPoints)
                 {
