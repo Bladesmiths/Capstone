@@ -55,7 +55,7 @@ namespace Bladesmiths.Capstone
             agent.SetDestination(playerPos);
             dist = playerPos - transform.position;
 
-            if (dist.magnitude <= 0.5f || timer >= timerMax)
+            if (/*dist.magnitude <= 0.5f || */timer >= timerMax)
             {
                 //GetComponent<Enemy>().CanHit = false;
                 return TaskStatus.Success;
