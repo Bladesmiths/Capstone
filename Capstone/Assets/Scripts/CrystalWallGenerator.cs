@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
         [Range(-3f, 3f)] [SerializeField]
         private float objectHeightEnd = 2.0f;
         [Range(0f, 10f)] [SerializeField]
-        private float timerSlowdownDivisor = 2.0f;
+        private float timerSlowdownDivisor = 1.5f;
 
 
         [SerializeField]
