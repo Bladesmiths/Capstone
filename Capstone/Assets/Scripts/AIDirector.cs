@@ -68,11 +68,7 @@ namespace Bladesmiths.Capstone
             if(disableWall)
             {
                 CrystalWallManager.instance.SwitchWalls(groupCount);
-                groupCount++;
-                if (groupCount != enemyGroups.Count)
-                {
-                    currentGroup = enemyGroups[groupCount];
-                }
+                groupCount++;                
             }
         }
 
