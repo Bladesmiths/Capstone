@@ -120,7 +120,6 @@ namespace Bladesmiths.Capstone
             }
             if (enemy.attackTimer <= 0)
             {
-                Debug.Log("Attack");
                 enemy.attackTimer = enemy.attackTimerMax;
                 AIDirector.Instance.PopulateAttackQueue(enemy);
             }
@@ -131,9 +130,7 @@ namespace Bladesmiths.Capstone
             Vector3 dist = player.transform.position - transform.position;
             lookPos = dist;
             seekList.Clear();
-            //Debug.Log("AttackTimer" + enemy.attackTimer);
-            //Debug.Log("AttackTimerMax" + enemy.attackTimerMax);
-
+            
             if (dist.magnitude > seekDist)
             {
                 seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
@@ -146,8 +143,7 @@ namespace Bladesmiths.Capstone
             else if (dist.magnitude > seekDistClose && dist.magnitude < seekDist)
             {
                 seekList.Add(new SeekPoint(transform.position, 1f));
-                seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
-
+                //seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
             }
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
