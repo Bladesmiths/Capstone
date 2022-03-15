@@ -146,6 +146,8 @@ namespace Bladesmiths.Capstone
             else if (dist.magnitude > seekDistClose && dist.magnitude < seekDist)
             {
                 seekList.Add(new SeekPoint(transform.position, 1f));
+                seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
+
             }
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
