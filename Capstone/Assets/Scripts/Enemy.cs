@@ -162,7 +162,7 @@ namespace Bladesmiths.Capstone
             {
                 inCombat = true;
             }
-
+                        
             // If the enemy is currently damaging an object
             if (damaging)
             {
