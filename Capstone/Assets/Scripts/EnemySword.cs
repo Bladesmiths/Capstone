@@ -17,6 +17,7 @@ namespace Bladesmiths.Capstone
         public float Damage { get; set; }
         public bool Damaging { get; set; }
         public GameObject GameObject { get; set; }
+        [field: SerializeField]
         public int ID { get; set; }
         public Team ObjectTeam { get; set; }
         public ObjectController ObjectController { get; set; }

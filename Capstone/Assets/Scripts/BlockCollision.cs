@@ -47,7 +47,7 @@ namespace Bladesmiths.Capstone
         {
             // Exits the method if the colliding object is in Player or Default
             // This will probably need to be added to as we go on
-            if (!Active || (LayerMask.GetMask("Player", "Default") & 1 << other.gameObject.layer) != 0)
+            if (!Active || (LayerMask.GetMask("Player", "Default", "OnlyHitPlayer") & 1 << other.gameObject.layer) != 0)
             {
                 return;
             }
