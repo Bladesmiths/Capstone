@@ -57,15 +57,18 @@ namespace Bladesmiths.Capstone
 
             disableWall = true;
 
-            for (int i = 0; i < enemyGroups[groupCount].transform.childCount; i++)
+            if (groupCount < enemyGroups.Count)
             {
-                if(enemyGroups[groupCount].transform.GetChild(i).GetComponent<Enemy>().Health > 0)
+                for (int i = 0; i < enemyGroups[groupCount].transform.childCount; i++)
                 {
-                    disableWall = false;
-                }                           
+                    if (enemyGroups[groupCount].transform.GetChild(i).GetComponent<Enemy>().Health > 0)
+                    {
+                        disableWall = false;
+                    }
+                }
             }
 
-            if(disableWall)
+            if(disableWall && groupCount < enemyGroups.Count)
             {
                 CrystalWallManager.instance.SwitchWalls(groupCount);
                 groupCount++;                
