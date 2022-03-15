@@ -68,6 +68,7 @@ namespace Bladesmiths.Capstone
             _player.canDmg = false;
             _player.ResetChipDamage();
             _player.damaged = false;
+            _player.transform.Find("TargetLockManager").GetComponent<TargetLock>().Active = false;
 
             //_animator.SetBool(_animIDDeath, false);
             //_animator.SetTrigger(_animIDDamaged);

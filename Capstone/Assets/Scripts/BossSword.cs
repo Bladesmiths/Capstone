@@ -44,9 +44,14 @@ namespace Bladesmiths.Capstone
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<Player>())
+            Player player = other.gameObject.GetComponent<Player>();
+
+            if (player != null)
             {
-                other.gameObject.GetComponent<Player>().TakeDamage(ID, Damage);
+                if (player.GetPlayerFSMState() != PlayerCondition.F_Blocking)
+                {
+                    other.gameObject.GetComponent<Player>().TakeDamage(ID, Damage);
+                }
                 DamagingFinished += other.gameObject.GetComponent<Player>().RemoveDamagingID;
                 Damaging = true;
             }

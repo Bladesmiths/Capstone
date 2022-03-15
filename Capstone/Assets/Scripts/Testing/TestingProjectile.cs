@@ -112,43 +112,9 @@ namespace Bladesmiths.Capstone.Testing
 
         /// <summary>
         /// When the projectile collides with an object check if it is the player
-        /// If it is the player, damage them and show they're being damaged
-        /// </summary>
-        /// <param name="col">The collision that occurred</param>
-        void OnCollisionEnter(Collision col)
-        {
-            if (col.gameObject.GetComponent<Player>() == true)
-            {
-                // Check if the object in the collision is the player
-                if ((player.GetPlayerFSMState() != Enums.PlayerCondition.F_Blocking) ||
-                    (player.GetPlayerFSMState() != Enums.PlayerCondition.F_ParryAttempt))
-                {
-                    // Damage the player
-                    //player.TakeDamage(ID, damage);
-                    ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
-
-
-                    // Start a coroutine to change the player's material to show they've been damaged
-                    player.StartCoroutine(
-                        Util.DamageMaterialTimer(player.gameObject.GetComponentInChildren<SkinnedMeshRenderer>()));
-                }
-                Destroy(gameObject, 2f);
-            }
-
-            else if (col.gameObject.tag == "Untagged")
-            {
-                // Destroy the projectile once it has collided
-                //Destroy(gameObject);
-            }
-
-            else
-            {
-                Destroy(gameObject, 15f);
-            }
-        }
-
-        /// <summary>
-        /// When the projectile collides with the player block box, it is destroyed and preventing the player from taking damage
+        /// If it is the player, damage them 
+        /// If it is the parry detector, change the projectile's velocity
+        /// If it is the boss, damage them
         /// </summary>
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
@@ -158,8 +124,11 @@ namespace Bladesmiths.Capstone.Testing
                 // Testing
                 //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
 
-                Velocity = -Velocity;
-                
+                Velocity = new Vector3(-Velocity.x, 0, -Velocity.z);
+                ObjectTeam = Enums.Team.Player;
+                ObjectController[ID].ObjectTeam = ObjectTeam;
+
+                return;
             }
 
             //if(other.gameObject.name == "Block Detector")
@@ -167,6 +136,30 @@ namespace Bladesmiths.Capstone.Testing
             //    Destroy(gameObject);
 
             //}
+
+            if (other.gameObject.GetComponent<IDamageable>() != null)
+            {
+                if (other.gameObject.GetComponent<Player>())
+                {
+                    // Check if the object in the collision is the player
+                    if ((player.GetPlayerFSMState() != Enums.PlayerCondition.F_Blocking) &&
+                        (player.GetPlayerFSMState() != Enums.PlayerCondition.F_ParryAttempt))
+                    {
+                        // Damage the player
+                        //player.TakeDamage(ID, damage);
+                        ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                    }
+                }
+                else
+                {
+                    ((IDamageable)ObjectController[other.gameObject.GetComponent<IDamageable>().ID].IdentifiedObject).TakeDamage(ID, damage);
+                }
+                Destroy(gameObject, 2f);
+            }
+            else
+            {
+                Destroy(gameObject, 15f);
+            }
         }
 
         private void OnDestroy()

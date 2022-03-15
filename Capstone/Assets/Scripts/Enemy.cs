@@ -295,7 +295,6 @@ namespace Bladesmiths.Capstone
 
                 inCombat = true;
                 damaged = true;
-                //damaged = true;
             }
 
             // Return whether damage was taken or not

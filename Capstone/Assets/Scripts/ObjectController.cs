@@ -106,7 +106,7 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// Maintains a reference to a damageable object and its team
     /// </summary>
-    public struct IdentifiedTeamPair
+    public class IdentifiedTeamPair
     {
         [SerializeField]
         private Team objectTeam;
