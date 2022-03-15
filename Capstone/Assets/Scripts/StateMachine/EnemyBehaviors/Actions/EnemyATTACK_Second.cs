@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using UnityEngine.AI;
 using UnityEngine;
 
 namespace Bladesmiths.Capstone
@@ -9,20 +10,26 @@ namespace Bladesmiths.Capstone
     /// <summary>
     /// The behavior for how the Enemies should attack
     /// </summary>
-    public class EnemyATTACK : Action
+    public class EnemyATTACK_Second : Action
     {
         [SerializeField]
         private AnimationCurve curve;
         private GameObject _sword;
         private Enemy _enemy;
         private bool attack;
-        private float timer;
-        private float timerMax;
+        public float timer;
+        public float timerMax;
+        public float waitTimer;
+        public float waitTimerMax;
 
         private float preAttackTimer;
         private float preAttackTimerMax;
+        private NavMeshAgent agent;
 
-        public EnemyATTACK(GameObject sword, Enemy enemy)
+        private Vector3 dist;
+        private Vector3 playerPos;
+
+        public EnemyATTACK_Second(GameObject sword, Enemy enemy)
         {
             _sword = sword;
             _enemy = enemy;
@@ -30,7 +37,7 @@ namespace Bladesmiths.Capstone
             preAttackTimerMax = 0.5f;
         }
 
-        public EnemyATTACK()
+        public EnemyATTACK_Second()
         {
 
         }
@@ -46,45 +53,48 @@ namespace Bladesmiths.Capstone
             {
                 _enemy.CanHit = false;
                 return TaskStatus.Success;
+
             }
 
-            _enemy.moveVector = transform.position;
-            _enemy.rotateVector = Player.instance.transform.position - transform.position;
+            if (agent != null)
+            {
+                agent.SetDestination(playerPos);
+            }
 
 
-            //if (attack)
-            //{
-            //    Attack();
+            //dist.Normalize();
+            Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
+            if (lookRotVec.magnitude > Mathf.Epsilon)
+            {
+                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+                    Time.deltaTime * 5f);
+                transform.rotation = q;
+            }
 
-            //    if (_sword.transform.localEulerAngles.x == 90)
-            //    {
-            //        attack = false;
-            //    }
-            //}
-            //else
-            //{
-            //    StopAttack();
-
-            //    if (_sword.transform.localEulerAngles.x <= 0.1)
-            //    {
-            //        _enemy.CanHit = false;
-            //    }
-            //}
             return TaskStatus.Running;
         }
 
         public override void OnStart()
         {
             _enemy = gameObject.GetComponent<Enemy>();
+            agent = GetComponent<NavMeshAgent>();
             _sword = _enemy.Sword;
+            //_sword.GetComponent<Sword>().damaging = true;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
             _sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.75f, 3f);
+            _enemy.attackTimerMax = Random.Range(0.5f, 2f);
             _enemy.canMove = true;
+            _enemy.InCombat = true;
+            waitTimer = 0;
+            waitTimerMax = 1f;
+
+            dist = Player.instance.transform.position - transform.position;
+            playerPos = (dist * 0.1f) + transform.position;
+
         }
 
         public override void OnEnd()
@@ -94,33 +104,8 @@ namespace Bladesmiths.Capstone
             _enemy.ClearDamaging();
             _sword.GetComponent<BoxCollider>().enabled = false;
             _enemy.canMove = false;
+            _enemy.isAttacking = false;
 
         }
-
-        /// <summary>
-        /// The method for the Enemy attacking the Player
-        /// </summary>
-        public void Attack()
-        {
-            preAttackTimer += Time.deltaTime;
-            if (preAttackTimer <= preAttackTimerMax)
-            {
-                _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(-50f, _sword.transform.eulerAngles.y, 0f), 0.1f);
-            }
-            else
-            {
-                _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(90f, _sword.transform.eulerAngles.y, 0f), 0.6f);
-            }
-        }
-
-        /// <summary>
-        /// The method for resetting the Enemy's sword
-        /// </summary>
-        public void StopAttack()
-        {
-            _sword.transform.rotation = Quaternion.Slerp(_sword.transform.rotation, Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f), 0.4f);
-
-        }
-
     }
 }

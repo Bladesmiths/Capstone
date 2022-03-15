@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
         [Range(-3f, 3f)] [SerializeField]
         private float objectHeightEnd = 2.0f;
         [Range(0f, 10f)] [SerializeField]
-        private float timerSlowdownDivisor = 2.0f;
+        private float timerSlowdownDivisor = 1.5f;
 
 
         [SerializeField]
@@ -66,14 +66,24 @@ namespace Bladesmiths.Capstone
             {
                 dissolveTimer += Time.deltaTime;
                 float height = objectHeightStart + dissolveTimer / timerSlowdownDivisor;
-                cutoffHeight = amethystMaterial.GetFloat("_CutoffHeight");
-                amethystMaterial.SetFloat("_CutoffHeight", height);
+
+                // Gets the instance of each material instead of the material itself
+                for(int i = 0; i < transform.childCount; i++)
+                {
+                    Material mat = GetComponentsInChildren<MeshRenderer>()[i].material;
+
+                    cutoffHeight = mat.GetFloat("_CutoffHeight");
+
+                    mat.SetFloat("_CutoffHeight", height);
+                }     
             }
 
             if (amethystMaterial != null && dissolveToggle &&
                 cutoffHeight > objectHeightEnd)
             {
                 dissolveToggle = false;
+                ClearWall();
+                gameObject.SetActive(false);
             }
         }
 

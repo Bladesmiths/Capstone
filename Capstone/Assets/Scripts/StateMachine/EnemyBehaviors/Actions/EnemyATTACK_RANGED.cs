@@ -72,7 +72,7 @@ namespace Bladesmiths.Capstone
             _sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.75f, 3f);
+            _enemy.attackTimerMax = Random.Range(0.75f, 2f);
             projectileVelocity = Vector3.forward * speed;
         }
 
@@ -91,7 +91,6 @@ namespace Bladesmiths.Capstone
             if (Physics.Raycast(_enemy.shootLoc.position, transform.forward, out hit, 10f, _enemy.PlayerLayer))
             {
                 timer += Time.deltaTime;
-                Debug.Log(hit.collider.gameObject);
                 if (fireTimer >= fireTimerLimit)
                 {
                     FireProjectile();

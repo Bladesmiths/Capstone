@@ -160,7 +160,7 @@ namespace Bladesmiths.Capstone.UI
                     resumeButton.SetActive(true);
 
                     playerInput.SwitchCurrentActionMap("Player");
-                    Debug.Log("Current Action Map: " + playerInput.currentActionMap);
+                    //Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
                     pauseMenu.SetActive(false);
                     Cursor.lockState = CursorLockMode.Locked;

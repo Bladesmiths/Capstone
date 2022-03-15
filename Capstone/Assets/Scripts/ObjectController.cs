@@ -13,7 +13,7 @@ namespace Bladesmiths.Capstone
     public class ObjectController : SerializedMonoBehaviour
     {
         //[SerializeField] [Tooltip("The next ID to assign to an object")]
-        private int currentValidId = -1;
+        private int currentValidId = 0;
 
         private static ObjectController instance;
 
@@ -51,10 +51,10 @@ namespace Bladesmiths.Capstone
             //currentValidId = -1;
             Player player = Player.instance;
             IdentifiedTeamPair playerTeamPair = new IdentifiedTeamPair(Team.Player, player);
-            IdentifiedTeamPair playerSwordPair = new IdentifiedTeamPair(Team.Player, player.Sword.GetComponent<Sword>());
+            //IdentifiedTeamPair playerSwordPair = new IdentifiedTeamPair(Team.Player, player.Sword.GetComponent<Sword>());
 
             identifiedObjects.Add(GenerateID(), playerTeamPair);
-            identifiedObjects.Add(GenerateID(), playerSwordPair);
+            //identifiedObjects.Add(GenerateID(), playerSwordPair);
 
             VerifyObjects();
         }

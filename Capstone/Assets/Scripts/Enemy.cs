@@ -20,11 +20,8 @@ namespace Bladesmiths.Capstone
         // Gets a reference to the player
         // Will be used for finding the player in the world
         [SerializeField] protected Player player;
-        private BehaviorTree behaviorTree;
-        public ExternalBehavior externalBehaviorTree;
 
         [SerializeField] private GameObject sword;
-        public bool blocked = false;
 
         [SerializeField] protected int chunksRemoved;
         protected bool damaged = false;
@@ -33,6 +30,8 @@ namespace Bladesmiths.Capstone
         protected float moveSpeed;
         public Vector3 moveVector;
         public Vector3 rotateVector;
+        public Quaternion swordRot;
+        public Vector3 defaultSwordPos;
 
         [SerializeField] protected float damage;
 
@@ -56,12 +55,18 @@ namespace Bladesmiths.Capstone
 
         public float attackTimer;
         public float attackTimerMax;
+        public float moveTimer;
+        public float moveTimerMax;
         public bool stunned;
         public bool canMove;
+        public bool parried;
+        public bool blocked = false;
+        public bool attackedYet;
 
         public int enemyGroupNumber;
 
         private bool inCombat;
+        public bool isAttacking;
 
         [SerializeField]
         public GameObject geo;
@@ -119,29 +124,26 @@ namespace Bladesmiths.Capstone
         {
             // Sets the team of the enemy
             ObjectTeam = Team.Enemy;
-            behaviorTree = GetComponent<BehaviorTree>();
             AIDirector.Instance.AddToEnemyGroup(this, enemyGroupNumber);
             ObjectController.Instance.AddIdentifiedObject(ObjectTeam, this);
-            //ExternalBehavior behavior = Instantiate(externalBehaviorTree);
-            externalBehaviorTree.Init();
-
-            behaviorTree.ExternalBehavior = externalBehaviorTree;
-
-
+            
             stunned = false;
-            player = GameObject.Find("Player").GetComponent<Player>();
+            player = Player.instance;
 
             moveVector = Vector3.zero;
             moveSpeed = 5f;
             controller = GetComponent<CharacterController>();
             agent = GetComponent<NavMeshAgent>();
-            attackTimerMax = 1f;
+            attackTimerMax = 0.3f;
             attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
             chunksRemoved = 3;
             canMove = false;
-            
+            damagingTimer = 0f;
+            swordRot = Sword.transform.localRotation;
+            defaultSwordPos = Sword.transform.localPosition;
+            blocked = false;
 
             if (agent != null)
             {
@@ -155,6 +157,11 @@ namespace Bladesmiths.Capstone
         {
             //FSM.Tick();
             //Debug.Log(InCombat);
+
+            if((player.transform.position - transform.position).magnitude <= 2.5f)
+            {
+                inCombat = true;
+            }
 
             // If the enemy is currently damaging an object
             if (damaging)
@@ -182,31 +189,7 @@ namespace Bladesmiths.Capstone
                     damagingTimer = 0.0f;
                     damaging = false;
                 }
-            }
-
-            //// Movement
-            //if (canMove && agent != null)
-            //{
-            //    agent.SetDestination(moveVector);
-                
-            //    var lookRotVec = new Vector3(rotateVector.x + 0.001f, 0f, rotateVector.z);
-            //    if (lookRotVec.magnitude > Mathf.Epsilon)
-            //    {
-            //        Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
-            //            Time.deltaTime * 5f);
-            //        transform.rotation = q;
-            //    }
-            //}
-
-            //Debug.DrawLine(transform.position, rotateVector, Color.red);
-
-            // This is dumb and it probably needs to be changed, but I need to be able to see debug messages
-            //if (!float.IsNaN(rotateVector.x)) 
-            //{
-            //    Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rotateVector, Vector3.up), 0.25f);
-            //    q.eulerAngles = new Vector3(0, q.eulerAngles.y, 0);
-            //    transform.rotation = q;
-            //}
+            }           
         }
 
         public void ClearDamaging()
@@ -271,7 +254,6 @@ namespace Bladesmiths.Capstone
             return chunksRemoved * (int)(player.CurrentSword.Damage / 5);
         }
 
-
         /// <summary>
         /// Subtract an amount of damage from the character's health
         /// </summary>
@@ -288,7 +270,8 @@ namespace Bladesmiths.Capstone
             // Change the object to red and set damaged to true
             if (damageResult > 0)
             {
-                for (int i = 0; i < NumChunks(); i++)
+                int num = NumChunks();
+                for (int i = 0; i < num; i++)
                 {
                     RemoveRandomChunk();
                 }

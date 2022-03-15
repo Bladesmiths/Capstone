@@ -73,7 +73,7 @@ namespace Bladesmiths.Capstone
                     // Something has gone wrong because damaging shouldn't be true otherwise
                     else
                     {
-                        Debug.Log("Damaging Finished Event was not subscribed to correctly");
+                        //Debug.Log("Damaging Finished Event was not subscribed to correctly");
                     }
 
                     // Reset fields

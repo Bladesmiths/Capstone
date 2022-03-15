@@ -43,7 +43,10 @@ namespace Bladesmiths.Capstone
                 {
                     //Player.parrySuccessful = true;
                     Player.animator.SetTrigger(_animIDParrySuccess);
-
+                    if(other.GetComponent<Enemy>())
+                    {
+                        other.GetComponent<Enemy>().parried = true;
+                    }
                     // Adding the damaging ID 
                     Player.AddDamagingID(damagingObject.ID);
 

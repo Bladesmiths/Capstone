@@ -22,6 +22,7 @@ namespace Bladesmiths.Capstone
         public LinkedList<Enemy> attackQueue;
         private static AIDirector instance;
         private bool enemyAttacking;
+        private bool disableWall;
 
 
         public static AIDirector Instance { get => instance;  }
@@ -43,8 +44,8 @@ namespace Bladesmiths.Capstone
 
         private void Start()
         {
-            //allEnemyGroups.Add(enemyGroup);
             currentGroup = enemyGroups[0];
+            disableWall = true;
         }
 
         private void Update()
@@ -54,21 +55,24 @@ namespace Bladesmiths.Capstone
                 CheckForPossibleAttacker();
             }
 
-            //if(allEnemyGroups.First.Value.enemies.Count == 0)
-            //{
-            //    groupCount++;
-            //    if (groupCount != enemyGroups.Count)
-            //    {                    
-            //        currentGroup.SetActive(false);
-            //        currentGroup = enemyGroups[groupCount];
-            //        currentGroup.SetActive(true);
-            //        allEnemyGroups.RemoveFirst();                    
-            //    }
-            //    else if(groupCount == enemyGroups.Count)
-            //    {
-            //        currentGroup.SetActive(false);
-            //    }
-            //}
+            disableWall = true;
+
+            if (groupCount < enemyGroups.Count)
+            {
+                for (int i = 0; i < enemyGroups[groupCount].transform.childCount; i++)
+                {
+                    if (enemyGroups[groupCount].transform.GetChild(i).GetComponent<Enemy>().Health > 0)
+                    {
+                        disableWall = false;
+                    }
+                }
+            }
+
+            if(disableWall && groupCount < enemyGroups.Count)
+            {
+                CrystalWallManager.instance.SwitchWalls(groupCount);
+                groupCount++;                
+            }
         }
 
         /// <summary>
@@ -95,6 +99,16 @@ namespace Bladesmiths.Capstone
             }
             return false;
 
+        }
+
+        /// <summary>
+        /// Removes specific Enemy from the AttackQueue
+        /// </summary>
+        /// <param name="e"> Enemy to Remove</param>
+        public void RemoveFromAttackQueue(Enemy e)
+        {
+            e.CanHit = false;
+            attackQueue.Remove(e);
         }
 
         /// <summary>
@@ -182,8 +196,11 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <param name="e"></param>
         public void PopulateAttackQueue(Enemy e)
-        {            
-            attackQueue.AddLast(e);
+        {
+            if (!attackQueue.Contains(e))
+            {
+                attackQueue.AddLast(e);
+            }
 
         }
 
@@ -194,6 +211,7 @@ namespace Bladesmiths.Capstone
         public void AttackPlayer(Enemy e)
         {
             e.CanHit = true;
+            e.attackTimer = e.attackTimerMax;
         }
 
         /// <summary>

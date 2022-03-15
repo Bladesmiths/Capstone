@@ -31,7 +31,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityParticleSystem
             }
 
 #if !(UNITY_5_1 || UNITY_5_2)
-            Debug.Log("Warning: SetEmissionRate is not used in Unity 5.3 or later.");
+            //Debug.Log("Warning: SetEmissionRate is not used in Unity 5.3 or later.");
 #else
             particleSystem.emissionRate = emissionRate.Value;
 #endif

@@ -60,7 +60,7 @@ namespace Bladesmiths.Capstone
             player = Player.instance.transform;
             _enemy = gameObject.GetComponent<Enemy>();
             controller = _enemy.GetComponent<CharacterController>();
-            _enemy.InCombat = true;
+            //_enemy.InCombat = true;
             _enemy.canMove = true;
 
         }

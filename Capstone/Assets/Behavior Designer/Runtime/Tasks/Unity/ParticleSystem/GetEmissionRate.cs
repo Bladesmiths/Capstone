@@ -32,7 +32,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityParticleSystem
             }
 
 #if !(UNITY_5_1 || UNITY_5_2)
-            Debug.Log("Warning: GetEmissionRate is not used in Unity 5.3 or later.");
+            //Debug.Log("Warning: GetEmissionRate is not used in Unity 5.3 or later.");
 #else
             storeResult.Value = particleSystem.emissionRate;
 #endif
