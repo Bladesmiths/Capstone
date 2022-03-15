@@ -22,6 +22,7 @@ namespace Bladesmiths.Capstone
         public LinkedList<Enemy> attackQueue;
         private static AIDirector instance;
         private bool enemyAttacking;
+        private bool disableWall;
 
 
         public static AIDirector Instance { get => instance;  }
@@ -44,6 +45,7 @@ namespace Bladesmiths.Capstone
         private void Start()
         {
             currentGroup = enemyGroups[0];
+            disableWall = true;
         }
 
         private void Update()
@@ -53,39 +55,25 @@ namespace Bladesmiths.Capstone
                 CheckForPossibleAttacker();
             }
 
-            for(int i = 0; i < enemyGroups[groupCount].transform.childCount; i++)
+            disableWall = true;
+
+            for (int i = 0; i < enemyGroups[groupCount].transform.childCount; i++)
             {
                 if(enemyGroups[groupCount].transform.GetChild(i).GetComponent<Enemy>().Health > 0)
                 {
-                    break;
-                }
+                    disableWall = false;
+                }                           
+            }
 
+            if(disableWall)
+            {
                 CrystalWallManager.instance.SwitchWalls(groupCount);
                 groupCount++;
                 if (groupCount != enemyGroups.Count)
                 {
                     currentGroup = enemyGroups[groupCount];
-                }                
+                }
             }
-
-            //if (enemyGroups[groupCount].transform.childCount == 0)
-            //{
-            //    CrystalWallManager.instance.SwitchWalls(groupCount);
-            //    groupCount++;
-            //    if (groupCount != enemyGroups.Count)
-            //    {
-            //        //currentGroup.SetActive(false);
-            //        currentGroup = enemyGroups[groupCount];
-            //        //currentGroup.SetActive(true);
-            //        //allEnemyGroups.RemoveFirst();
-
-            //    }
-            //    else if (groupCount == enemyGroups.Count)
-            //    {
-            //        //CrystalWallManager.instance.SwitchWalls(groupCount);
-            //        //currentGroup.SetActive(false);
-            //    }
-            //}
         }
 
         /// <summary>

@@ -143,6 +143,7 @@ namespace Bladesmiths.Capstone
             damagingTimer = 0f;
             swordRot = Sword.transform.localRotation;
             defaultSwordPos = Sword.transform.localPosition;
+            blocked = false;
 
             if (agent != null)
             {
