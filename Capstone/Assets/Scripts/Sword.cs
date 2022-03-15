@@ -222,10 +222,7 @@ namespace Bladesmiths.Capstone
                         player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
 
                     }                   
-
-                    FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                    //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
-                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                                       
 
                     if (vfx.Count > 0 && swordType == SwordType.Ruby)
                     {
