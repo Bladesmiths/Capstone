@@ -40,17 +40,24 @@ namespace Bladesmiths.Capstone
 
 
         [SerializeField]
-        private Material amethystMaterial;
-        [SerializeField] [ReadOnly]
+        private Material amethystTransparentMaterial;
 
+        [SerializeField] 
+        private Material amethystOpaqueMaterial;
+        
+        [SerializeField] [ReadOnly]
         private float cutoffHeight;
 
         private float dissolveTimer = 0f;
         private bool dissolveToggle = false;
+
+        private List<MeshRenderer> crystalRenderers;
         
         // Start is called before the first frame update
         void Start()
         {
+            crystalRenderers = new List<MeshRenderer>();
+            
             ResetMaterialCutoff();
 
             GenerateWall();
@@ -61,7 +68,6 @@ namespace Bladesmiths.Capstone
         // Update is called once per frame
         void Update()
         {
-
             if (dissolveToggle)
             {
                 dissolveTimer += Time.deltaTime;
@@ -78,7 +84,7 @@ namespace Bladesmiths.Capstone
                 }     
             }
 
-            if (amethystMaterial != null && dissolveToggle &&
+            if (amethystTransparentMaterial != null && dissolveToggle &&
                 cutoffHeight > objectHeightEnd)
             {
                 dissolveToggle = false;
@@ -112,14 +118,19 @@ namespace Bladesmiths.Capstone
 
                 // Random rotations for crystals
                 newCrystal.transform.localRotation = Quaternion.Euler(new Vector3(0, Random.Range(0f, 360f), 0));
+                
+                // Add mesh renderer reference to list
+                var renderer = newCrystal.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
+                renderer.material = amethystOpaqueMaterial;
+                crystalRenderers.Add(renderer);
             }
         }
 
         [Button("Reset Material Cutoff Value")]
         public void ResetMaterialCutoff()
         {
-            if (amethystMaterial != null)
-                amethystMaterial.SetFloat("_CutoffHeight", objectHeightStart);
+            if (amethystTransparentMaterial != null)
+                amethystTransparentMaterial.SetFloat("_CutoffHeight", objectHeightStart);
         }
 
         [TitleGroup("Play Mode Only Actions")]
@@ -127,7 +138,12 @@ namespace Bladesmiths.Capstone
         [DisableInEditorMode]
         public void DissolveWall()
         {
-            if (amethystMaterial != null)
+            for (int i = 0; i < crystalRenderers.Count; i++)
+            {
+                crystalRenderers[i].material = amethystTransparentMaterial;
+            }
+            
+            if (amethystTransparentMaterial != null)
             {
                 dissolveToggle = true;
             }

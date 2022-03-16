@@ -2265,9 +2265,17 @@ PrefabInstance:
       value: 7.3
       objectReference: {fileID: 0}
     - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      propertyPath: amethystOpaqueMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d9bcf7c700672ce459a0950788c08a06, type: 2}
+    - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      propertyPath: amethystTransparentMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e471b6e452e8ce47ba849a4ce0b3d5a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
 --- !u!4 &128779560 stripped
@@ -3004,9 +3012,17 @@ PrefabInstance:
       value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      propertyPath: amethystOpaqueMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d9bcf7c700672ce459a0950788c08a06, type: 2}
+    - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      propertyPath: amethystTransparentMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e471b6e452e8ce47ba849a4ce0b3d5a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
 --- !u!4 &175755314 stripped
@@ -6290,9 +6306,17 @@ PrefabInstance:
       value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      propertyPath: amethystOpaqueMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d9bcf7c700672ce459a0950788c08a06, type: 2}
+    - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780359754570717924, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
+      propertyPath: amethystTransparentMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e471b6e452e8ce47ba849a4ce0b3d5a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2080d43134be52040b484293dabdcc3b, type: 3}
 --- !u!4 &362225756 stripped
