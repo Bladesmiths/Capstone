@@ -685,10 +685,12 @@ namespace Bladesmiths.Capstone
                     if(Health <= 0)
                     {
                         damaged = true;
+                        animator.SetTrigger(animIDDamaged);
                         animator.SetBool(animIDDead, true);
                     }
 
-                    if (damaged)
+                    //Enter take damage animation unless in ruby form
+                    if (damaged && currentSword.SwordType != SwordType.Ruby)
                     {
                         animator.SetTrigger(animIDDamaged);
                     }
