@@ -31438,6 +31438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lifesteal Info Zone
       objectReference: {fileID: 0}
+    - target: {fileID: 2620429776408177611, guid: d1dc08b46dbbb8f4398aca72b3818e42, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6808986966062802600, guid: d1dc08b46dbbb8f4398aca72b3818e42, type: 3}
       propertyPath: kbmIndex
       value: none
