@@ -165,5 +165,10 @@ public class MainMenuFunctions : MonoBehaviour
         SceneManager.LoadSceneAsync("Village_Gameplay", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("Village_Geo", LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync("Village_Lighting", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Area1", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Area2", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Area3", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Area4", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("Village_Area5", LoadSceneMode.Additive);
     }
 }
