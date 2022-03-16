@@ -73,7 +73,6 @@ namespace Bladesmiths.Capstone
         {
             if (isDuringFading) return;
             
-            Debug.Log("Next Slide");
             bool fading = introSlideDataList[currentSlideIndex].fading;
             if (!mainMenu.Paused && currentSlideIndex <= introSlideDataList.Count - 1)
             {

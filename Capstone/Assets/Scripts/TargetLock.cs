@@ -23,7 +23,7 @@ namespace Bladesmiths.Capstone
 
         // List of enemies in the level
         [SerializeField]
-        private List<GameObject> targettableList = new List<GameObject>();
+        private Dictionary<int, GameObject> targettableDict = new Dictionary<int, GameObject>();
 
         // List of enemies that are visible to the player
         // Updated each time the system is re-enabled
@@ -44,6 +44,7 @@ namespace Bladesmiths.Capstone
                                     "raycast to a potential target should begin")]
         private Transform playerCamRoot;
 
+        private Player player; 
         #endregion
 
         public bool Active 
@@ -51,7 +52,7 @@ namespace Bladesmiths.Capstone
             get => active; 
             set
             {
-                if (targettableList.Count > 0)
+                if (targettableDict.Count > 0)
                 {
                     active = value;
                 }
@@ -64,7 +65,9 @@ namespace Bladesmiths.Capstone
 
         public ObjectController ObjectController { get; set; }
 
-        void Start() { }
+        void Start() {
+            player = transform.parent.GetComponent<Player>();
+        }
 
         void Update()
         {
@@ -80,12 +83,16 @@ namespace Bladesmiths.Capstone
             }
 
             // If target lock is enabled
-            if (Active && targettableList.Count != 0)
+            if (Active && targettableDict.Count != 0)
             {
                 // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
 
-                transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, transform.parent.position.y, targetedObject.transform.position.z));
+                // Disables look at while player is dodging
+                if (player.shouldLookAt)
+                {
+                    transform.parent.LookAt(new Vector3(targetedObject.transform.position.x, transform.parent.position.y, targetedObject.transform.position.z));
+                }
 
                 // Left Over in case we want target lock to turn if
                 // something is obscuring the ray
@@ -118,7 +125,7 @@ namespace Bladesmiths.Capstone
         {
             // If the target lock system is currently active
             // Find all visible enemies and then find the closest
-            if (Active && targettableList.Count != 0)
+            if (Active && targettableDict.Count != 0)
             {
                 // Find all visible enemies and place them in a list
                 visibleTargets = FindVisibleEnemies();
@@ -159,8 +166,12 @@ namespace Bladesmiths.Capstone
                     }
                 }
 
-                // Set the target cam's look at to the closest enemy
-                targetLockCam.LookAt = targetedObject.transform;
+                // Disables Look At while dodging
+                if (player.shouldLookAt)
+                {
+                    // Set the target cam's look at to the closest enemy
+                    targetLockCam.LookAt = targetedObject.transform;
+                }
 
                 // Subscribe to OnDestruction Event
                 targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
@@ -253,7 +264,6 @@ namespace Bladesmiths.Capstone
 
             if (desireableTargets.Count == 0)
             {
-                Debug.Log("No other targets");
                 return;
             }
             // Target the most desireable enemy along the direction to the current target
@@ -301,7 +311,12 @@ namespace Bladesmiths.Capstone
             targetedObject.GetComponent<IIdentified>().OnDestruction -= RemoveTargetedEnemy;
 
             targetedObject = closestEnemyToTarget;
-            targetLockCam.LookAt = targetedObject.transform;
+
+            // Disables Look At while dodging
+            if (player.shouldLookAt)
+            {
+                targetLockCam.LookAt = targetedObject.transform;
+            }
 
             // Subscribe to OnDestruction Event
             targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
@@ -318,7 +333,8 @@ namespace Bladesmiths.Capstone
         private List<GameObject> FindVisibleEnemies()
         {
             // Filter the list of enemies to only the enemies that are visible
-            List<GameObject> visibleFiltered = targettableList.Where(x => IsEnemyVisible(x)).ToList(); 
+            List<GameObject> visibleFiltered = targettableDict.Where(x => 
+            IsEnemyVisible(x.Value)).ToDictionary(x => x.Key, x => x.Value).Values.ToList(); 
 
             // If there aren't any visible enemies return null
             if (visibleFiltered.Count == 0)
@@ -365,7 +381,7 @@ namespace Bladesmiths.Capstone
         /// <param name="id">The id of the enemy that should be removed</param>
         private void RemoveTargetedEnemy(int id)
         {
-            targettableList.Remove(ObjectController[id].IdentifiedObject.GameObject);
+            targettableDict.Remove(id);
             DisableTargetLock();
         }
 
@@ -388,12 +404,12 @@ namespace Bladesmiths.Capstone
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag != "Targettable")
+            if (other.tag != "Targettable" && other.tag != "Enemy")
             {
                 return;
             }
 
-            targettableList.Add(other.gameObject); 
+            targettableDict.Add(other.GetComponent<IIdentified>().ID, other.gameObject); 
         }
 
         /// <summary>
@@ -402,9 +418,14 @@ namespace Bladesmiths.Capstone
         /// <param name="other"></param>
         private void OnTriggerExit(Collider other)
         {
-            targettableList.Remove(other.gameObject);
+            if (other.tag != "Targettable" && other.tag != "Enemy")
+            {
+                return;
+            }
+
+            targettableDict.Remove(other.GetComponent<IIdentified>().ID);
             
-            if (targettableList.Count == 0)
+            if (targettableDict.Count == 0)
             {
                 // Switch back to the other camera having top priority
                 targetLockCam.Priority = 0;

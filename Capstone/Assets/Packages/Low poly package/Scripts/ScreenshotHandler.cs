@@ -25,7 +25,7 @@ public class ScreenshotHandler : MonoBehaviour {
 
             byte[] byteArray = renderResult.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.dataPath + "/CameraScreenshot.png", byteArray);
-            Debug.Log("Saved CameraScreenshot.png");
+            //Debug.Log("Saved CameraScreenshot.png");
 
             RenderTexture.ReleaseTemporary(renderTexture);
             myCamera.targetTexture = null;

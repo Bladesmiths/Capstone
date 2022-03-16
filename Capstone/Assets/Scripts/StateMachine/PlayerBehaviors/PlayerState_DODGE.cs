@@ -33,7 +33,7 @@ namespace Bladesmiths.Capstone
         private int _animIDMotionSpeed;
         private int _animIDForward;
         private int _animIDDodgeMove;
-        private int animIDMoving;
+        private int _animIDMoving;
         private float animBlend;
         private bool _hasAnimator;
         private CharacterController _controller;
@@ -79,7 +79,7 @@ namespace Bladesmiths.Capstone
                     speed = 5f;
                     backstep = true;
 
-                    animator.SetBool(animIDMoving, false);
+                    animator.SetBool(_animIDMoving, false);
 
 
                 }
@@ -93,16 +93,10 @@ namespace Bladesmiths.Capstone
                     _player.transform.rotation = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
                     
                     inputDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-                    animator.SetBool(animIDMoving, true);
+                    animator.SetBool(_animIDMoving, true);
 
                 }
             }
-
-        }
-
-        public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
-        {
-            animIDMoving = Animator.StringToHash("Moving");
 
         }
 
@@ -168,7 +162,9 @@ namespace Bladesmiths.Capstone
             hasAnimator = _player.TryGetComponent(out _animator);
             _animIDDodge = Animator.StringToHash("Dodge");
             _animIDForward = Animator.StringToHash("Forward");
+            _animIDMoving = Animator.StringToHash("Moving");
 
+            _player.shouldLookAt = false;
             // Testing
             //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numDodges"]).Data.CurrentValue++;
         }
@@ -178,6 +174,8 @@ namespace Bladesmiths.Capstone
             canDmg = true;
             _controller.SimpleMove(Vector3.zero);
             _animator.SetBool(_animIDDodge, false);
+
+            _player.shouldLookAt = true;
         }
     }
 }

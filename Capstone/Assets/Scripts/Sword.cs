@@ -21,7 +21,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private FMODUnity.EventReference SwordHitEvent;
         public bool sfxPlay;
 
-        private bool damaging;
+        public bool damaging;
         private float damagingTimerLimit = 1f;
         private float damagingTimer;
 
@@ -112,6 +112,11 @@ namespace Bladesmiths.Capstone
         {
             player = gameObject.transform.root.GetComponent<Player>();
             sfxPlay = false;
+            damagingTimerLimit = 1f;
+            damagingTimer = 0f;
+            ObjectController = ObjectController.Instance;
+            ObjectController.Instance.AddIdentifiedObject(Team.Player, this);
+
         }
 
         void Update()
@@ -164,6 +169,12 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        public void AddToDamaging(int swordID)
+        {
+            player.AddDamagingID(swordID);
+
+        }
+
         void OnCollisionEnter(Collision col)
         {
             if (col.gameObject.GetComponent<BreakableBox>())
@@ -174,20 +185,51 @@ namespace Bladesmiths.Capstone
             if (col.gameObject.GetComponent<Shield>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                col.gameObject.transform.parent.GetComponent<Enemy>().AddDamagingID(ID);
+                col.gameObject.GetComponent<Shield>().RemoveChunks();
+                damaging = true;
             }
             else if (col.gameObject.GetComponent<IDamageable>() != null)
             {
                 if (col.gameObject.GetComponent<Enemy>() || col.gameObject.GetComponent<Boss>())
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                    //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
-                    player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                    if(col.gameObject.GetComponent<Enemy_Shield>() &&
+                        col.gameObject.GetComponent<Enemy_Shield>().shield != null)
+                    {
+                        if(col.gameObject.GetComponent<Enemy_Shield>().InSight(player.transform, 55) && 
+                            !col.gameObject.GetComponent<Enemy_Shield>().shield.GetComponent<Shield>().IsEmpty)
+                        {
+                            FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                            col.gameObject.transform.GetComponent<Enemy_Shield>().AddDamagingID(ID);
+
+                            damaging = true;
+                        }
+                        else
+                        {
+                            //Debug.Log(col.gameObject);
+                            FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                            //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
+                            player.AddDamagingID(ID);
+                            player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log(col.gameObject);
+                        FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                        //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
+                        player.AddDamagingID(ID);
+                        player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+
+                    }                   
+                                       
 
                     if (vfx.Count > 0 && swordType == SwordType.Ruby)
                     {
                         vfx[0].GetComponent<VFXManager>()
                             .PlayCollisionOneShotVFX(3.0f, col.transform.position, col.transform.rotation);
                     }
+
                 }
             }
         }

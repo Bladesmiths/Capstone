@@ -23,8 +23,8 @@ namespace Bladesmiths.Capstone
         {
             Vector3 dirToEnemy = _player.transform.position - _enemy.transform.position;
 
-            Debug.Log(Vector3.Distance(_enemy.transform.position, _player.transform.position + _player.transform.rotation * Vector3.forward));//_player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward)));
-            Debug.DrawLine(_enemy.transform.position, _player.transform.position + _player.transform.rotation * Vector3.forward);// _player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward));
+            //Debug.Log(Vector3.Distance(_enemy.transform.position, _player.transform.position + _player.transform.rotation * Vector3.forward));//_player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward)));
+            //Debug.DrawLine(_enemy.transform.position, _player.transform.position + _player.transform.rotation * Vector3.forward);// _player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward));
 
             //Debug.Log(_player.transform.forward * Vector3.Dot(dirToEnemy, _player.transform.forward));
 

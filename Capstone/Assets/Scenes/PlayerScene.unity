@@ -1764,7 +1764,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7788018, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -2720,7 +2720,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218543045}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4419,7 +4419,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7788018, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4653,7 +4653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -4910,7 +4910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -8401,7 +8401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -13408,6 +13408,7 @@ MonoBehaviour:
   respawnPoint: {x: 0, y: 0, z: 0}
   respawnRotation: {x: 0, y: 0, z: 0}
   canDmg: 0
+  boss: {fileID: 0}
   inState: 0
   damaged: 0
   parryEnd: 0
@@ -13428,6 +13429,7 @@ MonoBehaviour:
   fade: {fileID: 2083527668}
   hasFadedToBlack: 0
   justDied: 0
+  shouldLookAt: 1
   timer: 0
   animator: {fileID: 0}
   speed: 0
@@ -16981,8 +16983,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: -0.080960944, y: 0.9032061, z: -0.19594496, w: -0.37318853}
-  m_LocalPosition: {x: -104.09656, y: 10.347, z: -2.276595}
+  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
+  m_LocalPosition: {x: -100.613556, y: 10.347, z: -53.966595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17581,7 +17583,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 401
   targettingSphere: {fileID: 1601330934}
-  targettableList: []
   targetLockCam: {fileID: 2107349663}
   targetImage: {fileID: 185477265}
   playerCamRoot: {fileID: 1556772311}
@@ -17787,7 +17788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -19264,7 +19265,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7788018, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -19273,7 +19274,7 @@ MonoBehaviour:
     BarrelClipping: 0.25
     Anamorphism: 0
   m_Transitions:
-    m_BlendHint: 0
+    m_BlendHint: 3
     m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
@@ -24347,7 +24348,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7788018, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24370,7 +24371,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.0000000037252903, y: -0.000000059604645, z: 0.000000007450581, w: 1}
+  m_LocalRotation: {x: -0.0000000055879354, y: 0.000000029802322, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

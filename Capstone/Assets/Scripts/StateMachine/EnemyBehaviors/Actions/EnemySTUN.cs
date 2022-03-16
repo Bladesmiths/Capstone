@@ -1,58 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BehaviorDesigner.Runtime;
+using BehaviorDesigner.Runtime.Tasks;
 
 namespace Bladesmiths.Capstone
 {
-    public class EnemySTUN : EnemyState
+    public class EnemySTUN : Action
     {
         private float stunTimer;
-        private float stunTimerMax;
+        public float stunTimerMax;
         private GameObject _sword;
         private Enemy _enemy;
-        private Player _player;
-        private float defaultSword;
-        public bool continueAttacking;
+        public AnimationCurve curveY;
+        public AnimationCurve curveZ;
+
 
         public EnemySTUN(GameObject sword, Enemy enemy, Player player)
         {
             _sword = sword;
             _enemy = enemy;
-            _player = player;
-            defaultSword = sword.transform.localEulerAngles.y;
+            
         }
-        public override void OnEnter()
+
+        public EnemySTUN()
         {
+            
+        }
+
+        public override void OnStart()
+        {
+            _enemy = GetComponent<Enemy>();
+            _sword = _enemy.Sword;
+            _sword.GetComponent<BoxCollider>().enabled = true;
+            _sword.GetComponent<BoxCollider>().isTrigger = false;
+            _sword.GetComponent<Rigidbody>().isKinematic = false;
+
             stunTimer = 0;
             stunTimerMax = 1f;
-            continueAttacking = false;
             _enemy.stunned = false;
-            defaultSword = _sword.transform.eulerAngles.y;
-            //_player.parrySuccessful = false;
+            //defaultSword = _sword.transform.eulerAngles.y;
         }
 
-        public override void Tick()
+        public override TaskStatus OnUpdate()
         {
-            //_sword.transform.rotation.SetFromToRotation(defaultSword, new Vector3(-25.419f, -18.094f, -32.499f));
-            if (stunTimer <= stunTimerMax / 2f)
-            {
-                _sword.transform.rotation = Quaternion.Lerp(_sword.transform.rotation, Quaternion.Euler(-25.419f, _sword.transform.eulerAngles.y, -32.499f), 0.1f);
-            }
-            else
-            {
-                _sword.transform.rotation = Quaternion.Lerp(_sword.transform.rotation, Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f), 0.8f);
-            }
-
             stunTimer += Time.deltaTime;
             if(stunTimer >= stunTimerMax)
             {
-                continueAttacking = true;
+                stunTimer = 0f;
+                return TaskStatus.Success;
             }
+
+            return TaskStatus.Running;
+
         }
 
-        public override void OnExit()
+        public override void OnEnd()
         {
-            _sword.transform.rotation = Quaternion.Euler(0f, defaultSword, 0f);
+            _sword.transform.localPosition = _enemy.defaultSwordPos;
+            _sword.transform.localRotation = _enemy.swordRot;
+            _sword.GetComponent<BoxCollider>().enabled = false;
+            _sword.GetComponent<BoxCollider>().isTrigger = true;
+            _sword.GetComponent<Rigidbody>().isKinematic = true;
+            _enemy.blocked = false;
+            _enemy.parried = false;
         }
 
     }

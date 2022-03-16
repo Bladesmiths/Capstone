@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bladesmiths.Capstone.Enums;
 
 namespace Bladesmiths.Capstone
 {
@@ -9,10 +10,14 @@ namespace Bladesmiths.Capstone
         private List<int> blockedObjectIDs = new List<int>();
         private Player player;
         private Enemy enemy;
+        private GameObject shieldChunks;
+        private int chunksRemoved;
 
         public ObjectController ObjectController { get; set; }
         public bool BlockTriggered { get; private set; }
         public bool Active { get; set; }
+
+        public bool IsEmpty { get { return transform.childCount == 0; } }
 
         public delegate void OnBlockDelegate(float chipDamageTotal);
 
@@ -23,9 +28,11 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             ObjectController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
-            //player = gameObject.transform.root.gameObject.GetComponent<Player>();
+            player = Player.instance;
             enemy = gameObject.GetComponentInParent<Enemy>();
             Active = true;
+            shieldChunks = gameObject;
+            chunksRemoved = 1;
         }
 
         // Update is called once per frame
@@ -46,6 +53,45 @@ namespace Bladesmiths.Capstone
             }
         }
 
+        public void RemoveRandomChunk()
+        {           
+            if(shieldChunks.transform.childCount <= 0)
+            {
+                shieldChunks.transform.parent = null;
+                Destroy(shieldChunks);
+                return;
+            }
+
+            GameObject remover = shieldChunks;
+
+            GameObject removedChunk = remover.transform.GetChild(UnityEngine.Random.Range(0, remover.transform.childCount)).gameObject;
+            removedChunk.transform.parent = null;
+            removedChunk.AddComponent<BoxCollider>();
+            removedChunk.AddComponent<Rigidbody>();
+            removedChunk.AddComponent<EnemyChunk>();
+        }
+
+        public int NumChunks()
+        {
+            int dmg = (int)player.CurrentSword.Damage;
+            if (player.CurrentSword.SwordType == SwordType.Ruby)
+            {
+                dmg *= 2;
+            }
+
+            return chunksRemoved * (dmg / 5);
+        }
+
+        public void RemoveChunks()
+        {
+            int num = NumChunks();
+            for (int i = 0; i < num; i++)
+            {
+                RemoveRandomChunk();
+            }
+
+        }
+
         private void OnCollisionEnter(Collision other)
         {
             //// Exits the method if the colliding object is in Enemy or Default
@@ -63,10 +109,10 @@ namespace Bladesmiths.Capstone
                 if(ObjectController[damagingObject.ID].ObjectTeam == Enums.Team.Player &&
                     !enemy.DamagingObjectIDs.Contains(damagingObject.ID))
                 {
-                    Debug.Log("Collision Entered! : " + other.gameObject);
                     // Block has been triggered
                     enemy.blocked = true;
-
+                    //ObjectController[damagingObject.ID].IdentifiedObject
+                    //enemy.AddDamagingID(damagingObject.ID);
                     // Add the ID of the damaging object to the blocked ID list
                     // And subscribe to the DamagingFinished event
                     //blockedObjectIDs.Add(damagingObject.ID);

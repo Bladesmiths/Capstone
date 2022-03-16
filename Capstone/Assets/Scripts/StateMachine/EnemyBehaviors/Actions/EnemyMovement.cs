@@ -59,7 +59,7 @@ namespace Bladesmiths.Capstone
                 allDirections[i] = Quaternion.Euler(0, Mathf.Rad2Deg * angle, 0) * Vector3.forward;
 
             }
-            enemy.InCombat = true;
+            //enemy.InCombat = true;
             enemy.canMove = true;
             enemy.moveVector = Vector3.zero;
             desiredPos = player.transform.position;
@@ -71,11 +71,6 @@ namespace Bladesmiths.Capstone
                     fleeList.Add(element.gameObject);
                 }
             }
-
-            //targetExists = true;
-
-            //fleeList = 
-
         }
 
         public override TaskStatus OnUpdate()
@@ -115,15 +110,7 @@ namespace Bladesmiths.Capstone
         {
             base.OnEnd();
             enemy.surrounding = false;
-            //desiredPos = Vector3.zero;
-            //movemntPos = Vector3.zero;
-            //chosenDir = Vector3.zero;
-            //enemyPos = Vector3.zero;
-            //allDirections = null;
-            //intrest = null;
-            //danger = null;
             enemy.canMove = false;
-
         }
 
         /// <summary>
@@ -231,7 +218,7 @@ namespace Bladesmiths.Capstone
             //    Gizmos.color = Color.red;
             //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
             //    Gizmos.color = Color.green;
-            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);               
+            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);
 
             //}
             //Gizmos.color = Color.blue;
