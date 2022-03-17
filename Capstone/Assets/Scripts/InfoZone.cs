@@ -29,6 +29,7 @@ public class InfoZone : MonoBehaviour
         // If the object collided with is the player
         if (other.transform.root.gameObject.CompareTag("Player"))
         {
+            infoPanel.withinZone = true;
             infoPanel.SetInfoUI(gamepadIndex, kbmIndex, textIndex);
         }
     }
@@ -38,6 +39,7 @@ public class InfoZone : MonoBehaviour
         // If the object collided with is the player
         if (other.transform.root.gameObject.CompareTag("Player"))
         {
+            infoPanel.withinZone = false;
             infoPanel.ClearInfoUI();
         }
     }
