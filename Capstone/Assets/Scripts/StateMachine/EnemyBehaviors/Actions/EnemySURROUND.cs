@@ -78,7 +78,10 @@ namespace Bladesmiths.Capstone
             enemy.moveTimer = enemy.moveTimerMax;
             seekSpeed = 2f;
             enemy.CanHit = false;
-            agent.speed = 3.5f;
+            if (agent != null)
+            {
+                agent.speed = 3.5f;
+            }
             enemy.InCombat = true;
 
             for (int i = 0; i < numRays; i++)
