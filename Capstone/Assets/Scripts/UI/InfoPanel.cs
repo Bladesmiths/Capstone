@@ -39,6 +39,9 @@ public class InfoPanel : SerializedMonoBehaviour
     private string currentInputKBM;
     private string currentInputGamepad;
 
+    //Is the player currently standing insize an info trigger zone?
+    public bool withinZone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +65,7 @@ public class InfoPanel : SerializedMonoBehaviour
     //Called via OnControlsChanged in playerInputsScript
     public void ChooseControlSchemeIcons()
     {
-        if (currentInputGamepad != null && currentInputKBM != null)
+        if (currentInputGamepad != null && currentInputKBM != null && withinZone)
         {
             SetInfoUI(currentInputGamepad, currentInputKBM, currentTextIndex);
         }
