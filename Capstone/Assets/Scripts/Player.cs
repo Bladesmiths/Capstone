@@ -418,18 +418,18 @@ namespace Bladesmiths.Capstone
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
 
             // Recentering code for the camera
-            if(inputs.move != Vector2.zero)
-            {
-                freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
-                freeLookCam.m_YAxisRecentering.m_enabled = false;
-                freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
-                freeLookCam.m_YAxisRecentering.CancelRecentering();
-            }
-            else
-            {
-                freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
-                freeLookCam.m_YAxisRecentering.m_enabled = true;
-            }
+            //if(inputs.move != Vector2.zero)
+            //{
+            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
+            //    freeLookCam.m_YAxisRecentering.m_enabled = false;
+            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
+            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
+            //}
+            //else
+            //{
+            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
+            //    freeLookCam.m_YAxisRecentering.m_enabled = true;
+            //}
 
             
 
