@@ -83,7 +83,7 @@ namespace Bladesmiths.Capstone
             }
 
             // If target lock is enabled
-            if (Active && targettableDict.Count != 0)
+            if (Active && targettableDict.Count != 0 && targetedObject != null)
             {
                 // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
@@ -351,6 +351,11 @@ namespace Bladesmiths.Capstone
         /// <returns>A boolean indicating whether or not the object is visible</returns>
         private bool IsEnemyVisible(GameObject enemy)
         {
+            if (enemy == null)
+            {
+                return false;
+            }
+
             RaycastHit hit;
 
             // Known Weirdness here

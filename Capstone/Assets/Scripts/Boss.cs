@@ -53,6 +53,8 @@ namespace Bladesmiths.Capstone
 
         protected override void Die()
         {
+            base.Die();
+
             if (player != null)
             {
                 player.GetComponent<Player>().AddToMaxPoints();

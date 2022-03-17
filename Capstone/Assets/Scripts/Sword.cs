@@ -111,12 +111,12 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             player = gameObject.transform.root.GetComponent<Player>();
+            ID = player.ID; 
             sfxPlay = false;
             damagingTimerLimit = 1f;
             damagingTimer = 0f;
             ObjectController = ObjectController.Instance;
             ObjectController.Instance.AddIdentifiedObject(Team.Player, this);
-
         }
 
         void Update()

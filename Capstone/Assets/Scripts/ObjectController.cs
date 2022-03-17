@@ -24,7 +24,18 @@ namespace Bladesmiths.Capstone
         // Indexer to return an identified pair from an id
         public IdentifiedTeamPair this[int id]
         {
-            get { return identifiedObjects[id]; }
+            get 
+            { 
+                if (identifiedObjects.ContainsKey(id))
+                {
+                    return identifiedObjects[id];
+                }
+                else
+                {
+                    Debug.Log($"ObjectController does not contain a definition for ID: {id}");
+                    return null;
+                }
+            }
         }
 
         public static ObjectController Instance

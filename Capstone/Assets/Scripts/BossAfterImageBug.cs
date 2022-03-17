@@ -116,11 +116,6 @@ namespace Bladesmiths.Capstone
             player.TakeDamage(ID, 1);
         }
 
-        protected override void Die()
-        {
-
-        }
-
         public override void Respawn()
         {
             throw new NotImplementedException();
