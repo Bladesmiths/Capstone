@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Bladesmiths.Capstone
-{
+{ 
     public class BreakableBox : MonoBehaviour
     {
         public bool isBroken;
@@ -50,7 +51,7 @@ namespace Bladesmiths.Capstone
                 // Save that the box is broken
                 isBroken = true;
 
-                collision.transform.root.gameObject.GetComponent<Player>().AddPoints();
+                //collision.transform.root.gameObject.GetComponent<Player>().AddPoints();
                 // Turn off the parent box collider
                 GetComponent<BoxCollider>().enabled = false;
                 // Loop through all the childen and enable their physics
