@@ -39,6 +39,9 @@ namespace Bladesmiths.Capstone.UI
         [BoxGroup("HUD/SecondRow/Sword Select")]
         [SerializeField]
         private GameObject swordSelectObject;
+        [BoxGroup("HUD/SecondRow/Sword Select")]
+        [SerializeField]
+        private GameObject swordSelectTwoSwordsObject;
 
         [HorizontalGroup("HUD/SecondRow")]
         [BoxGroup("HUD/SecondRow/Sword Select")]
@@ -57,10 +60,16 @@ namespace Bladesmiths.Capstone.UI
         private Dictionary<Enums.SwordType, Image> gemImages = new Dictionary<Enums.SwordType, Image>();
         [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
         [OdinSerialize]
+        private Dictionary<Enums.SwordType, Image> gemImagesTwoSwords = new Dictionary<Enums.SwordType, Image>();
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
+        [OdinSerialize]
         private Dictionary<Enums.SwordType, Color> backgroundColors = new Dictionary<Enums.SwordType, Color>();
         [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
         [OdinSerialize]
         private Dictionary<Enums.SwordType, Image> backgroundImages = new Dictionary<Enums.SwordType, Image>();
+        [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
+        [OdinSerialize]
+        private Dictionary<Enums.SwordType, Image> backgroundImagesTwoSwords = new Dictionary<Enums.SwordType, Image>();
 
         [HorizontalGroup("HUD/SecondRow")] [BoxGroup("HUD/SecondRow/Sword Select")]
         [SerializeField]
@@ -141,7 +150,11 @@ namespace Bladesmiths.Capstone.UI
                 UpdateHealth(player.Health, player.ChipDamageTotal, player.MaxHealth);
                 UpdateScore(player.Points, player.MaxPoints);
 
-                if (swordSelectObject.activeInHierarchy)
+                if(swordSelectTwoSwordsObject.activeInHierarchy)
+                {
+                    UpdateSwordSelect(player.Inputs.currentSwordType);
+                }
+                else if (swordSelectObject.activeInHierarchy)
                 {
                     UpdateSwordSelect(player.Inputs.currentSwordType);
                 }
@@ -311,14 +324,25 @@ namespace Bladesmiths.Capstone.UI
         private void UpdateSwordSelect(Enums.SwordType currentSwordType)
         {
             // Only update if the new sword type isn't the old one
-            if (currentSwordSelect != currentSwordType)
+            if ((currentSwordSelect != currentSwordType))// && (player.currentSwords.Count > (int)currentSwordType))
             {
-                // Set the background of the old one to white
-                backgroundImages[currentSwordSelect].color = Color.white;
+                if (swordSelectTwoSwordsObject.activeInHierarchy)
+                {
+                    // Set the background of the old one to white
+                    backgroundImagesTwoSwords[currentSwordSelect].color = Color.white;
 
-                // Set the background of the new one to its color
-                backgroundImages[currentSwordType].color = backgroundColors[currentSwordType];
+                    // Set the background of the new one to its color
+                    backgroundImagesTwoSwords[currentSwordType].color = backgroundColors[currentSwordType];
+                }
+                else if (swordSelectObject.activeInHierarchy)
+                {
+                    // Set the background of the old one to white
+                    backgroundImages[currentSwordSelect].color = Color.white;
 
+                    // Set the background of the new one to its color
+                    backgroundImages[currentSwordType].color = backgroundColors[currentSwordType];
+                }
+                
                 // Update the field
                 currentSwordSelect = currentSwordType;
             }
@@ -355,6 +379,39 @@ namespace Bladesmiths.Capstone.UI
             }
 
             swordSelectObject.SetActive(active);
+        }
+
+        /// <summary>
+        /// Toggle the radial menu on or off
+        /// </summary>
+        /// <param name="active">Whether the radial menu should be active or not0</param>
+        public void ToggleTwoSwordsRadialMenu(bool active)
+        {
+            // Only update appearance of sword select if it should be active
+            if (active)
+            {
+                // Loop through all gem types
+                foreach (Enums.SwordType swordType in gemImagesTwoSwords.Keys)
+                {
+                    // If the sword type is the currently selected one
+                    // Set it to the active values
+                    if (swordType == currentSwordSelect)
+                    {
+                        gemImagesTwoSwords[swordType].sprite = activeGemSprites[swordType];
+                        gemImagesTwoSwords[swordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize);
+                        backgroundImagesTwoSwords[swordType].color = backgroundColors[swordType];
+                    }
+                    // Otherwise set it to inactive values
+                    else
+                    {
+                        gemImagesTwoSwords[swordType].sprite = inactiveGemSprites[swordType];
+                        gemImagesTwoSwords[swordType].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
+                        backgroundImagesTwoSwords[swordType].color = Color.white;
+                    }
+                }
+            }
+
+            swordSelectTwoSwordsObject.SetActive(active);
         }
     }
 }
