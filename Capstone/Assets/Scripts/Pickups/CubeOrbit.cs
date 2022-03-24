@@ -2,27 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeOrbit : MonoBehaviour
+namespace Bladesmiths.Capstone
 {
-    private GameObject parentObject;
-    private float orbitSpeed;
-    [SerializeField]
-    private Vector3 orbitAxis = Vector3.up; 
-
-    // Start is called before the first frame update
-    void Start()
+    public class CubeOrbit : MonoBehaviour
     {
-        parentObject = transform.parent.parent.gameObject;
-        orbitSpeed = Random.Range(30, 50);
+        #region Fields
+        [SerializeField]
+        private Transform rootObject = null;
+        private float orbitSpeed = 30;
+        private Vector3 orbitAxis = Vector3.up;
+        private OrbitManager orbitManager;
+        #endregion
 
-        Vector3 displaceFromParent = (parentObject.transform.position - transform.position).normalized;
-        transform.position = parentObject.transform.position + displaceFromParent * 0.8f;
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            // If there is a root object and the orbit manager hasn't been turned off
+            // Rotate the cube around the given point and axis
+            if (rootObject != null && orbitManager.Active)
+            {
+                transform.RotateAround(transform.position, orbitAxis, orbitSpeed * Time.deltaTime);
+                Debug.DrawLine(transform.position, rootObject.transform.position, Color.red);
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.RotateAround(parentObject.transform.position, orbitAxis, orbitSpeed * Time.deltaTime);
-        Debug.DrawLine(transform.position, parentObject.transform.position, Color.red);
+        /// <summary>
+        /// Initializes all important values for the Cube Orbit because it needs paramaters 
+        /// </summary>
+        /// <param name="root">The root object it should orbit around</param>
+        /// <param name="axis">The axis it should rotate around</param>
+        /// <param name="speed">The speed it should orbit at</param>
+        /// <param name="manager">The Orbit Manager of its parent object</param>
+        public void Init(Transform root, Vector3 axis, float speed, OrbitManager manager)
+        {
+            rootObject = root;
+            orbitAxis = axis;
+            orbitSpeed = speed;
+            orbitManager = manager;
+        }
     }
 }
