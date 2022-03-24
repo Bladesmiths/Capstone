@@ -7,8 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
-    [CreateAssetMenu(fileName = "SwordGemPickup", menuName = "ScriptableObjects/SwordGemPickup")]
-    public class SwordGemPickup : SerializedScriptableObject
+    public class SwordGemPickup : SerializedMonoBehaviour
     {
         [OdinSerialize]
         public Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
