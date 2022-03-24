@@ -8,7 +8,7 @@ namespace Bladesmiths.Capstone
     {
         #region Fields
         [SerializeField]
-        private Transform rootObject = null;
+        private Transform rootTransform = null;
         private float orbitSpeed = 30;
         private Vector3 orbitAxis = Vector3.up;
         private OrbitManager orbitManager;
@@ -19,10 +19,10 @@ namespace Bladesmiths.Capstone
         {
             // If there is a root object and the orbit manager hasn't been turned off
             // Rotate the cube around the given point and axis
-            if (rootObject != null && orbitManager.Active)
+            if (rootTransform != null && orbitManager.Active)
             {
-                transform.RotateAround(transform.position, orbitAxis, orbitSpeed * Time.deltaTime);
-                Debug.DrawLine(transform.position, rootObject.transform.position, Color.red);
+                transform.RotateAround(rootTransform.position, orbitAxis, orbitSpeed * Time.deltaTime);
+                Debug.DrawLine(transform.position, rootTransform.transform.position, Color.red);
             }
         }
 
@@ -35,7 +35,7 @@ namespace Bladesmiths.Capstone
         /// <param name="manager">The Orbit Manager of its parent object</param>
         public void Init(Transform root, Vector3 axis, float speed, OrbitManager manager)
         {
-            rootObject = root;
+            rootTransform = root;
             orbitAxis = axis;
             orbitSpeed = speed;
             orbitManager = manager;
