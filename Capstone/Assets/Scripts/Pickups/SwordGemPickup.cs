@@ -12,6 +12,13 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         public Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
 
+        public static SwordGemPickup instance;
+
+        private void Start()
+        {
+            instance = this;
+        }
+
         /// <summary>
         /// Adds the picked up sword to the Player's list of currently obtained swords
         /// </summary>

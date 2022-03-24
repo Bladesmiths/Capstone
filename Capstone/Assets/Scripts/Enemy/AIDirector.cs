@@ -48,6 +48,7 @@ namespace Bladesmiths.Capstone
         {
             currentGroup = enemyGroups[0];
             disableWall = true;
+            gems = SwordGemPickup.instance;
         }
 
         private void Update()
