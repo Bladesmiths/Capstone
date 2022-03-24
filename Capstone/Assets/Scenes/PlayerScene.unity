@@ -1572,6 +1572,7 @@ MonoBehaviour:
   infoTextPlusR: {fileID: 2110583665}
   uiManager: {fileID: 1863759866}
   playerInputs: {fileID: 1261776969}
+  withinZone: 0
 --- !u!114 &125179845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1764,7 +1765,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -1787,7 +1788,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136034365}
-  m_LocalRotation: {x: -0.00033258647, y: -0.9173154, z: 0.3977391, w: 0.018329978}
+  m_LocalRotation: {x: -0.018141463, y: 0.000000029802322, z: -0.000000007450581, w: 0.9998355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4419,7 +4420,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -4442,7 +4443,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.00033348054, y: -0.90226215, z: 0.43079805, w: 0.018329978}
+  m_LocalRotation: {x: 0.018189477, y: 0.000000029802326, z: -0.000000014901163, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6342,7 +6343,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 47
+    Value: 47.000004
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -9034,7 +9035,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 47
+    Value: 47.000004
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -10584,6 +10585,123 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &955228536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955228538}
+  - component: {fileID: 955228537}
+  m_Layer: 0
+  m_Name: SwordPickupObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &955228537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955228536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6fb7bbc8b24045bbe32dfea67655d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: swords
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+--- !u!4 &955228538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955228536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -35.76999, y: 1.780014, z: -110.66999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971509772
 GameObject:
   m_ObjectHideFlags: 0
@@ -13102,9 +13220,6 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 1902602802}
-    - {fileID: 1383281542}
-    - {fileID: 708863165}
     - {fileID: 6318953244586518413}
     - {fileID: 5846498886889251706}
     - {fileID: 5040008817425853434}
@@ -13271,7 +13386,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: swords
+    - Name: allSwords
       Entry: 7
       Data: 2|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
@@ -13290,43 +13405,23 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: currentSwords
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 9
       Data: 3
     - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
+      Entry: 12
       Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -13335,11 +13430,11 @@ MonoBehaviour:
       Data: 
     - Name: swordsGeo
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 5|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -13361,7 +13456,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -13373,7 +13468,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 10
-      Data: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -13385,7 +13480,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 10
-      Data: 5
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -14452,7 +14547,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 47
+    Value: 47.000004
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -16985,7 +17080,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: 0.19442776, y: 0.38968438, z: -0.08453961, w: 0.89621264}
+  m_LocalRotation: {x: 0.19442773, y: 0.38968438, z: -0.08453959, w: 0.8962126}
   m_LocalPosition: {x: -103.65542, y: 10.347, z: -57.467995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -19267,7 +19362,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -19307,7 +19402,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 47
+    Value: 47.000004
     m_SpeedMode: 1
     m_MaxSpeed: 0.5
     m_AccelTime: 0.1
@@ -19355,7 +19450,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802336007}
-  m_LocalRotation: {x: -0.08096095, y: 0.90320605, z: -0.19594494, w: -0.3731886}
+  m_LocalRotation: {x: 0.19442776, y: 0.38968438, z: -0.08453961, w: 0.89621264}
   m_LocalPosition: {x: -103.65542, y: 10.347, z: -57.467995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21052,13 +21147,39 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: backgroundColors
+    - Name: gemImagesTwoSwords
       Entry: 7
       Data: 7|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
-        Assembly-CSharp],[UnityEngine.Color, UnityEngine.CoreModule]], mscorlib
+        Assembly-CSharp],[UnityEngine.UI.Image, UnityEngine.UI]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 8|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: backgroundColors
+      Entry: 7
+      Data: 9|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp],[UnityEngine.Color, UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -21161,11 +21282,11 @@ MonoBehaviour:
       Data: 
     - Name: backgroundImages
       Entry: 7
-      Data: 9|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 11|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp],[UnityEngine.UI.Image, UnityEngine.UI]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 10|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 12|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -21221,13 +21342,29 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: backgroundImagesTwoSwords
+      Entry: 7
+      Data: 13|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp],[UnityEngine.UI.Image, UnityEngine.UI]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 8
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: xboxInputs
       Entry: 7
-      Data: 11|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
+      Data: 14|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
         UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 12|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 15|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -21459,11 +21596,11 @@ MonoBehaviour:
       Data: 
     - Name: ps4Inputs
       Entry: 7
-      Data: 13|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
+      Data: 16|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
         UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 12
+      Data: 15
     - Name: 
       Entry: 12
       Data: 0
@@ -21475,11 +21612,11 @@ MonoBehaviour:
       Data: 
     - Name: kbmInputs
       Entry: 7
-      Data: 14|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
+      Data: 17|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Sprite,
         UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 12
+      Data: 15
     - Name: 
       Entry: 12
       Data: 17
@@ -21698,6 +21835,7 @@ MonoBehaviour:
   playerInput: {fileID: 1261776969}
   pointsText: {fileID: 870288407}
   swordSelectObject: {fileID: 708433277}
+  swordSelectTwoSwordsObject: {fileID: 0}
   activeSize: 190
   inactiveSize: 140
   currentSwordSelect: 0
@@ -24207,7 +24345,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7759104, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24395,7 +24533,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7768817, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -24418,7 +24556,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: 0.000000007450581, y: -0.9099489, z: 0.41431504, w: 0.018333018}
+  m_LocalRotation: {x: -0.000000014901161, y: 0.000000029802322, z: -0.000000007450581, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
