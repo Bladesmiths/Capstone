@@ -18,9 +18,13 @@ namespace Bladesmiths.Capstone.UI
 
         [TitleGroup("Player")]
         [SerializeField] private Player player;
+        [SerializeField] float playerPrevHealth;
         [SerializeField] private Cinemachine.CinemachineFreeLook camera;
         private float maxSpeedX;
         private float maxSpeedY;
+
+        private Boss boss;
+        float bossPrevHealth;
 
         [SerializeField] private PlayerInput playerInput;
 
@@ -32,7 +36,12 @@ namespace Bladesmiths.Capstone.UI
 
         //Health chunk objects
         [OdinSerialize]
-        private List<GameObject> healthBarObjects = new List<GameObject>();
+        private List<GameObject> playerHealthBarObjects = new List<GameObject>();
+
+        [HorizontalGroup("HUD/FirstRow")]
+        [BoxGroup("HUD/FirstRow/Health Bar Objects")]
+        [OdinSerialize]
+        private List<GameObject> bossHealthBarObjects = new List<GameObject>();
 
         #region Sword Select Fields
         [HorizontalGroup("HUD/SecondRow")]
@@ -140,14 +149,17 @@ namespace Bladesmiths.Capstone.UI
             //By default, the health bar is 100 objects ordered from tip to base. 
             //Ex: When the player takes 1 damage, going from 100 to 99 health, the chunk at index 0 shatters.
             //This is really confusing and should probably be changed in the source PSB file, but for now we reverse the list.
-            healthBarObjects.Reverse();
+            playerHealthBarObjects.Reverse();
+            bossHealthBarObjects.Reverse();
+
+            boss = Boss.instance;
         }
 
         void LateUpdate()
         {
-            if (player != null)
+            if (player != null && playerPrevHealth != player?.Health)
             {
-                UpdateHealth(player.Health, player.ChipDamageTotal, player.MaxHealth);
+                UpdatePlayerHealthBar(player.Health, player.ChipDamageTotal, player.MaxHealth);               
                 UpdateScore(player.Points, player.MaxPoints);
 
                 if(swordSelectTwoSwordsObject.activeInHierarchy)
@@ -158,6 +170,16 @@ namespace Bladesmiths.Capstone.UI
                 {
                     UpdateSwordSelect(player.Inputs.currentSwordType);
                 }
+            }
+
+            if (boss != null && bossPrevHealth != boss?.Health)
+            {
+                UpdateBossHealthBar(boss.Health, boss.MaxHealth);
+            }
+            //Change script execution order to remove the need for this check?
+            else if (boss == null)
+            {
+                boss = Boss.instance;
             }
         }
 
@@ -220,13 +242,14 @@ namespace Bladesmiths.Capstone.UI
         }
         
         /// <summary>
-        /// Update health bar UI to reflect state of player's health
+        /// Update player health bar UI to reflect state of player's health
         /// </summary>
         /// <param name="currentHealth"></param>
         /// <param name="currentChipDamage"></param>
         /// <param name="maxHealth"></param>
-        private void UpdateHealth(float currentHealth, float currentChipDamage, float maxHealth)
+        private void UpdatePlayerHealthBar(float currentHealth, float currentChipDamage, float maxHealth)
         {
+            playerPrevHealth = currentHealth;
             //This commented out code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
             //For now the raw health values are being used directly because the player has 100 health and the UI has 100 chunks.
             
@@ -252,59 +275,90 @@ namespace Bladesmiths.Capstone.UI
             }
 
             //Modify chunk status (the order of these matters)
-            ShatterChunks(remainingChunks, chipChunks);
-            ChipChunks(remainingChunks, chipChunks);
-            HealChunks(remainingChunks, chipChunks);
-            UnChipChunks(remainingChunks, chipChunks);
+            ShatterChunks(remainingChunks, chipChunks, playerHealthBarObjects);
+            ChipChunks(remainingChunks, chipChunks, playerHealthBarObjects);
+            HealChunks(remainingChunks, chipChunks, playerHealthBarObjects);
+            UnChipChunks(remainingChunks, chipChunks, playerHealthBarObjects);
 
             //Save values for future comparison
             prevHealthChunks = remainingChunks;
             prevChipChunks = chipChunks;
         }
 
-        //Shatter any health chunks that have an index higher than the remaining chunk count
-        private void ShatterChunks(int healthChunks, int chipChunks)
+        /// <summary>
+        /// Update boss health bar UI to reflect state of boss's health
+        /// The boss doesn't regain or chip health chunks, so its logic is simpler than the player's
+        /// </summary>
+        /// <param name="currentHealth"></param>
+        /// <param name="maxHealth"></param>
+        private void UpdateBossHealthBar(float currentHealth, float maxHealth)
         {
-            for (int i = healthChunks + chipChunks; i < healthBarObjects.Count; i++)
+            bossPrevHealth = currentHealth;
+            //This commented out code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
+            //For now the raw health values are being used directly because the player has 100 health and the UI has 100 chunks.
+
+            //float healthAndChipPercentage = (currentHealth + currentChipDamage) / maxHealth;
+            //float currentHealthPercentage = currentHealth / maxHealth;
+            //float chipHealthPercentage = healthAndChipPercentage - currentHealthPercentage;
+
+            //Determine how many chunks remain in the health bar after taking damage
+            //int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
+            //int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count); 
+
+            int remainingChunks = (int)(currentHealth / (maxHealth / 100));
+
+            int totalChunks = remainingChunks;
+
+            //Modify chunk status
+            ShatterChunks(remainingChunks, 0, bossHealthBarObjects);
+
+            //Save values for future comparison
+            prevHealthChunks = remainingChunks;
+        }
+
+        //Shatter any health chunks that have an index higher than the remaining chunk count
+        private void ShatterChunks(int healthChunks, int chipChunks, List<GameObject> characterHealthBarObjects)
+        {
+            for (int i = healthChunks + chipChunks; i < characterHealthBarObjects.Count; i++)
             {
-                healthBarObjects[i].GetComponent<HealthChunk>().Shatter();
+                characterHealthBarObjects[i].GetComponent<HealthChunk>().Shatter();
             }
         }
 
         //Chip any health chunks that have an index higher than the remaining chunk count
-        private void ChipChunks(int healthChunks, int chipChunks)
+        private void ChipChunks(int healthChunks, int chipChunks, List<GameObject> characterHealthBarObjects)
         {
             for (int i = healthChunks; i < healthChunks + chipChunks; i++)
             {
-                healthBarObjects[i].GetComponent<HealthChunk>().Chip();
+                characterHealthBarObjects[i].GetComponent<HealthChunk>().Chip();
             }
         }
 
         //Return chipped health chunks to their normal appearance
         //This behavior applies when successfully parrying
-        private void UnChipChunks(int healthChunks, int chipChunks)
+        private void UnChipChunks(int healthChunks, int chipChunks, List<GameObject> characterHealthBarObjects)
         {
             for (int i = 0; i < healthChunks; i++)
             {
-                healthBarObjects[i].GetComponent<HealthChunk>().UnChip();
+                characterHealthBarObjects[i].GetComponent<HealthChunk>().UnChip();
             }
         }
 
         //Restore health
         //This behavior applies when lifestealing
         //This means invisible chunks need to be made visible
-        private void HealChunks(int healthChunks, int chipChunks)
+        private void HealChunks(int healthChunks, int chipChunks, List<GameObject> characterHealthBarObjects)
         {
             for (int i = prevHealthChunks; i < healthChunks; i++)
             {
-                healthBarObjects[i].GetComponent<HealthChunk>().Restore();
+                characterHealthBarObjects[i].GetComponent<HealthChunk>().Restore();
             }
         }
 
         //Reset all chunks to original positions / sizes (usually when player respawns)
         public void ResetChunks()
         {
-            foreach (GameObject chunk in healthBarObjects)
+            foreach (GameObject chunk in playerHealthBarObjects)
             {
                 chunk.GetComponent<HealthChunk>().FullReset();
             }

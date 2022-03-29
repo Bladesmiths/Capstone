@@ -232,10 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecfc07fa6e28034ea315fdac5e14042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  well: {fileID: 0}
-  speed: -120
-  damage: 100
-  damagingTimerLimit: 0.5
 --- !u!1001 &333083454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5337,11 +5333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: maxHealth
-      value: 300
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: currentHealth
-      value: 300
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: objectController
