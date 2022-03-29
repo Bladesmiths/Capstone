@@ -49,7 +49,7 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private Vector3 respawnPoint;
         [SerializeField]
-        private Vector3 respawnRotation;
+        private Quaternion respawnRotation;
 
         public bool canDmg;
 
@@ -287,6 +287,8 @@ namespace Bladesmiths.Capstone
 
             currentSword = swords[SwordType.Topaz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
+
+            SetRespawn(transform);
 
             ResetChipDamageTimers(); 
         }
@@ -770,10 +772,10 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <param name="position">The respawn point for the player</param>
         /// <param name="rotation">The respawn rotation for the player</param>
-        public void SetRespawn(Vector3 position, Vector3 rotation)
+        public void SetRespawn(Transform respawnTransform)
         {
-            respawnPoint = position;
-            respawnRotation = rotation;
+            respawnPoint = respawnTransform.position;
+            respawnRotation = respawnTransform.rotation;
         }
 
         /// <summary>
@@ -788,15 +790,16 @@ namespace Bladesmiths.Capstone
                 Health = MaxHealth;
                 uiManager.ResetChunks();
                 transform.position = respawnPoint;
-                transform.rotation = Quaternion.Euler(respawnRotation);
+                transform.rotation = respawnRotation;
+                player.GetComponent<Animator>().rootRotation = respawnRotation;
                 animator.SetBool(animIDDead, false);
             }
             damaged = false; 
 
-            if(boss == null)
-                boss = GameObject.Find("Boss");
+            //if(boss == null)
+            //    boss = GameObject.Find("Boss 2.0");
 
-            boss.GetComponent<Boss>().Health = boss.GetComponent<Boss>().MaxHealth;
+            Boss.instance.Health = Boss.instance.MaxHealth;
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());

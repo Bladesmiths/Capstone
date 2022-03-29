@@ -16,8 +16,8 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             // Respawn point is the empty gameobject attached to this
-            respawnPoint = transform.GetChild(0).position;
-            respawnRotation = transform.GetChild(0).rotation.eulerAngles;
+            //respawnPoint = transform.GetChild(0).position;
+            //respawnRotation = transform.GetChild(0).rotation.eulerAngles;
             hasActivated = false;
         }
 
@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
                 {
                     player = other.transform.root.gameObject.GetComponent<Player>();
                     // Set the players respawn point to this if passing through it for the first time
-                    player.SetRespawn(respawnPoint, respawnRotation);
+                    player.SetRespawn(transform.GetChild(0));
                     hasActivated = true;
                 }
             }
