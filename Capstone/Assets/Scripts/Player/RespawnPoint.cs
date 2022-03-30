@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
                 {
                     player = other.transform.root.gameObject.GetComponent<Player>();
                     // Set the players respawn point to this if passing through it for the first time
-                    player.SetRespawn(transform.GetChild(0));
+                    player.SetRespawn(transform.GetChild(0), Player.instance.FreeLookCam.m_XAxis.Value);
                     hasActivated = true;
                 }
             }

@@ -50,6 +50,8 @@ namespace Bladesmiths.Capstone
         private Vector3 respawnPoint;
         [SerializeField]
         private Quaternion respawnRotation;
+        [SerializeField]
+        private float respawnCamAxisValue;
 
         public bool canDmg;
 
@@ -177,6 +179,8 @@ namespace Bladesmiths.Capstone
         // The event to call when damaging is finished
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
 
+        public CinemachineFreeLook FreeLookCam { get => freeLookCam; }
+
         #region Testing Fields 
         [Header("Testing Fields")]
         [SerializeField]
@@ -288,7 +292,7 @@ namespace Bladesmiths.Capstone
             currentSword = swords[SwordType.Topaz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
 
-            SetRespawn(transform);
+            SetRespawn(transform, freeLookCam.m_XAxis.Value);
 
             ResetChipDamageTimers(); 
         }
@@ -772,10 +776,11 @@ namespace Bladesmiths.Capstone
         /// </summary>
         /// <param name="position">The respawn point for the player</param>
         /// <param name="rotation">The respawn rotation for the player</param>
-        public void SetRespawn(Transform respawnTransform)
+        public void SetRespawn(Transform respawnTransform, float camXAxisValue)
         {
             respawnPoint = respawnTransform.position;
             respawnRotation = respawnTransform.rotation;
+            respawnCamAxisValue = camXAxisValue;
         }
 
         /// <summary>
@@ -790,7 +795,7 @@ namespace Bladesmiths.Capstone
                 Health = MaxHealth;
                 uiManager.ResetChunks();
                 transform.position = respawnPoint;
-                transform.rotation = respawnRotation;
+                freeLookCam.m_XAxis.Value = respawnCamAxisValue;
                 player.GetComponent<Animator>().rootRotation = respawnRotation;
                 animator.SetBool(animIDDead, false);
             }
