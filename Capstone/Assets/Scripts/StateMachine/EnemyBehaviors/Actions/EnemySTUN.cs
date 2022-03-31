@@ -10,7 +10,7 @@ namespace Bladesmiths.Capstone
     {
         private float stunTimer;
         public float stunTimerMax;
-        private GameObject _sword;
+        //private GameObject _sword;
         private Enemy _enemy;
         public AnimationCurve curveY;
         public AnimationCurve curveZ;
@@ -18,7 +18,7 @@ namespace Bladesmiths.Capstone
 
         public EnemySTUN(GameObject sword, Enemy enemy, Player player)
         {
-            _sword = sword;
+            //_sword = sword;
             _enemy = enemy;
             
         }
@@ -31,10 +31,10 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             _enemy = GetComponent<Enemy>();
-            _sword = _enemy.Sword;
-            _sword.GetComponent<BoxCollider>().enabled = true;
-            _sword.GetComponent<BoxCollider>().isTrigger = false;
-            _sword.GetComponent<Rigidbody>().isKinematic = false;
+            //_sword = _enemy.Sword;
+            //_sword.GetComponent<BoxCollider>().enabled = true;
+            //_sword.GetComponent<BoxCollider>().isTrigger = false;
+           // _sword.GetComponent<Rigidbody>().isKinematic = false;
 
             stunTimer = 0;
             stunTimerMax = 1f;
@@ -57,11 +57,11 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnd()
         {
-            _sword.transform.localPosition = _enemy.defaultSwordPos;
-            _sword.transform.localRotation = _enemy.swordRot;
-            _sword.GetComponent<BoxCollider>().enabled = false;
-            _sword.GetComponent<BoxCollider>().isTrigger = true;
-            _sword.GetComponent<Rigidbody>().isKinematic = true;
+            //_sword.transform.localPosition = _enemy.defaultSwordPos;
+            //_sword.transform.localRotation = _enemy.swordRot;
+            //_sword.GetComponent<BoxCollider>().enabled = false;
+            //_sword.GetComponent<BoxCollider>().isTrigger = true;
+            //_sword.GetComponent<Rigidbody>().isKinematic = true;
             _enemy.blocked = false;
             _enemy.parried = false;
         }

@@ -13,7 +13,7 @@ namespace Bladesmiths.Capstone
 
         private float timer;
         private float timerMax;
-        private GameObject sword;
+        //private GameObject sword;
         private Enemy enemy;
 
 
@@ -28,7 +28,7 @@ namespace Bladesmiths.Capstone
             enemy = GetComponent<Enemy>(); 
             timerMax = 1f;
             timer = 0;
-            sword = enemy.Sword;
+            //sword = enemy.Sword;
 
         }
 
@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
                     
-            sword.transform.localRotation = enemy.swordRot;
+            //sword.transform.localRotation = enemy.swordRot;
             return TaskStatus.Success;
             
         }

@@ -17,7 +17,7 @@ namespace Bladesmiths.Capstone
         public AnimationCurve curveY;
         private float timer;
         private float timerMax;
-        private GameObject sword;
+        //private GameObject sword;
         private Enemy enemy;
         public float enemySpeed;
         public float enemyAccl;
@@ -38,8 +38,8 @@ namespace Bladesmiths.Capstone
             playerPos = (-distance.normalized * 2f) + Player.instance.transform.position;
             timerMax = 1f;
             timer = 0;
-            sword = enemy.Sword;
-            sword.GetComponent<BoxCollider>().enabled = true;
+            //sword = enemy.Sword;
+            //sword.GetComponent<BoxCollider>().enabled = true;
             enemy.attackTimerMax = Random.Range(0.5f, 2f);
             enemy.isAttacking = true;
             enemy.attackedYet = true;
@@ -51,7 +51,7 @@ namespace Bladesmiths.Capstone
             timer += Time.deltaTime;
             float valZ = curveZ.Evaluate(timer);
             float valY = curveY.Evaluate(timer);            
-            sword.transform.localRotation = Quaternion.Euler(0f, valY, valZ);
+            //sword.transform.localRotation = Quaternion.Euler(0f, valY, valZ);
             agent.SetDestination(playerPos);
             dist = playerPos - transform.position;
 
@@ -67,7 +67,7 @@ namespace Bladesmiths.Capstone
         {
             agent.speed = 3.5f;
             agent.acceleration = 8f;
-            sword.GetComponent<BoxCollider>().enabled = false;
+            //sword.GetComponent<BoxCollider>().enabled = false;
             enemy.isAttacking = false;
 
         }

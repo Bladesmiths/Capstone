@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Bladesmiths.Capstone
 {
-    public class StopAttack : Action
+    public class Canhit : Action
     {
-        public StopAttack()
+        public Canhit()
         {
 
         }
@@ -16,8 +16,6 @@ namespace Bladesmiths.Capstone
         {
             base.OnStart();
             GetComponent<Enemy>().CanHit = false;
-            GetComponent<Enemy>().canMove = false;
-            GetComponent<Enemy>().isAttacking = false;
         }
 
         public override TaskStatus OnUpdate()
@@ -27,8 +25,7 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnd()
         {
-            base.OnEnd();            
-
+            base.OnEnd();
         }
 
     }

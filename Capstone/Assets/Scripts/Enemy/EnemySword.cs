@@ -27,7 +27,7 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             // Gets all of the info from the Enemy class
-            enemy = gameObject.transform.parent.GetComponent<Enemy>();
+            enemy = gameObject.transform.GetComponentInParent<Enemy>();
             ID = enemy.ID;
             ObjectTeam = enemy.ObjectTeam;
             Damage = enemy.Damage;
@@ -61,10 +61,10 @@ namespace Bladesmiths.Capstone
                 return;
             }
 
-            if (other.transform.GetComponent<Player>())
+            if (other.transform.root.GetComponent<Player>())
             {
                 FMODUnity.RuntimeManager.PlayOneShot(enemyHit);
-                Player player = other.transform.GetComponent<Player>();
+                Player player = other.transform.root.GetComponent<Player>();
 
                 if(player.CheckAnimationBehavior(player.animator.GetCurrentAnimatorStateInfo(0)) == null)
                 {
