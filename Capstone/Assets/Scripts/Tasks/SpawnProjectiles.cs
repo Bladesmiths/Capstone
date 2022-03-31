@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone.Testing
         {
             if(timer < nodeDuration)
             {
-                sword.transform.DOLocalMove(aboveHeadSwordTransform.localPosition, nodeDuration);
+                //sword.transform.DOLocalMove(aboveHeadSwordTransform.localPosition, nodeDuration);
 
                 timer += Time.deltaTime;
 
