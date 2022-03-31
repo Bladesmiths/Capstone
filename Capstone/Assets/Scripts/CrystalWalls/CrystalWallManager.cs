@@ -11,6 +11,8 @@ namespace Bladesmiths.Capstone
         public List<CrystalWallGenerator> crystalWallsGroup1;
         public List<CrystalWallGenerator> crystalWallsGroup2;
         public List<CrystalWallGenerator> crystalWallsGroup3;
+        public List<CrystalWallGenerator> crystalWallsGroup4;
+
         private List<List<CrystalWallGenerator>> allCrystalWalls;
 
 
@@ -28,6 +30,7 @@ namespace Bladesmiths.Capstone
             allCrystalWalls.Add(crystalWallsGroup1);
             allCrystalWalls.Add(crystalWallsGroup2);
             allCrystalWalls.Add(crystalWallsGroup3);
+            allCrystalWalls.Add(crystalWallsGroup4);
 
         }
 

@@ -77,7 +77,7 @@ namespace Bladesmiths.Capstone
                 {
                     gems.Pickup(Enums.SwordType.Ruby);
                 }
-                else if(groupCount == 1)
+                else if(groupCount == 2)
                 {
                     gems.Pickup(Enums.SwordType.Sapphire);
                 }
