@@ -59,6 +59,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject boss;
        
         private TargetLock targetLock;
+        public BossTrigger bossTrigger;
 
         #region State Fields
         [Header("State Fields")]
@@ -799,6 +800,7 @@ namespace Bladesmiths.Capstone
                 boss = GameObject.Find("Boss");
 
             boss.GetComponent<Boss>().Health = boss.GetComponent<Boss>().MaxHealth;
+            bossTrigger.BossTriggerReset();
 
             //Set boss health bar UI to show 0 chunks
             //Chunks will then animate when entering boss arena

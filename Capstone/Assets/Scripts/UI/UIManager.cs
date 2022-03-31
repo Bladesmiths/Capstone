@@ -151,11 +151,12 @@ namespace Bladesmiths.Capstone.UI
 
             //By default, the health bar is 100 objects ordered from tip to base. 
             //Ex: When the player takes 1 damage, going from 100 to 99 health, the chunk at index 0 shatters.
-            //This is really confusing and should probably be changed in the source PSB file, but for now we reverse the list.
+            //This is really confusing and would ideally be changed in the source PSB file,
+            //But the PSB importer seems to remember layer orders and never let go. For now, we reverse the list.
             playerHealthBarObjects.Reverse();
             bossHealthBarObjects.Reverse();
 
-            boss = Boss.instance;
+            boss = GameObject.Find("Boss").GetComponent<Boss>();
         }
 
         void LateUpdate()
@@ -183,11 +184,6 @@ namespace Bladesmiths.Capstone.UI
             if (boss != null && bossHealthBar.activeSelf && bossPrevHealth != boss.Health)
             {
                 UpdateBossHealthBar(boss.Health, boss.MaxHealth);
-            }
-            //Change script execution order to remove the need for this check?
-            else if (boss == null)
-            {
-                boss = Boss.instance;
             }
         }
 

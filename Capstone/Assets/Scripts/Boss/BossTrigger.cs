@@ -10,10 +10,19 @@ namespace Bladesmiths.Capstone
         private Player player;
         private UIManager uiManager;
 
+        public static BossTrigger instance;
+
         // Start is called before the first frame update
         void Start()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+
             player = Player.instance;
+            player.bossTrigger = this;
+
             uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         }
 
@@ -29,9 +38,11 @@ namespace Bladesmiths.Capstone
         {
             player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 20;
             uiManager.ToggleBossHealthBar(true);
-
         }
-        private void OnTriggerExit(Collider other)
+
+        //Reset everything changed by entering the boss trigger
+        //Occurs on player respawn
+        public void BossTriggerReset()
         {
             player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 8;
             uiManager.ToggleBossHealthBar(false);
