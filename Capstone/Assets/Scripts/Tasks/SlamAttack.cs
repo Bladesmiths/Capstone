@@ -27,14 +27,14 @@ public class SlamAttack : Action
         if (timer <= nodeDuration)
         {
             // Tween the sword from vertical down to barely touching the ground
-            sword.transform.DOLocalRotate(new Vector3(98, 0, 0), 0.2f);
+            //sword.transform.DOLocalRotate(new Vector3(98, 0, 0), 0.2f);
             timer += Time.deltaTime;
             return TaskStatus.Running;
         }
         // Active the shockwave box and expand it over a second
         shockwave.SetActive(true);
-        shockwave.transform.DOScaleX(15, 1);
-        sword.transform.DOComplete();
+        shockwave.transform.DOScaleX(8, 1);
+        //sword.transform.DOComplete();
         return TaskStatus.Success;
     }
 }

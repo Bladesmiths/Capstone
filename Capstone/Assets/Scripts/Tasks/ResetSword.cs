@@ -12,7 +12,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject sword;
         [SerializeField] private GameObject swordBlade;
         [SerializeField] private Transform originalBladeTransform;
-        [SerializeField] private Transform originalSwordPosTransform;
+        //[SerializeField] private Transform originalSwordPosTransform;
         [SerializeField] private float nodeDuration;
 
         [SerializeField] private GameObject shockwave;
@@ -39,9 +39,9 @@ namespace Bladesmiths.Capstone
                 swordBlade.transform.DOLocalRotateQuaternion(originalBladeTransform.localRotation, nodeDuration);
                 swordBlade.transform.DOLocalMove(originalBladeTransform.localPosition, nodeDuration);
 
-                sword.transform.DOLocalRotate(new Vector3(0, 0, 0), nodeDuration);
+                //sword.transform.DOLocalRotate(new Vector3(0, 0, 0), nodeDuration);
 
-                sword.transform.DOLocalMove(originalSwordPosTransform.localPosition, nodeDuration);
+                //sword.transform.DOLocalMove(originalSwordPosTransform.localPosition, nodeDuration);
 
                 timer += Time.deltaTime;
 
