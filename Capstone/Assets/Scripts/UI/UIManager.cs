@@ -305,7 +305,7 @@ namespace Bladesmiths.Capstone.UI
             //int remainingChunks = (int)(currentHealthPercentage * healthBarObjects.Count);
             //int chipChunks = (int)(chipHealthPercentage * healthBarObjects.Count); 
 
-            int remainingChunks = (int)(currentHealth / (maxHealth / 100));
+            int remainingChunks = (int)(currentHealth / (maxHealth / bossHealthBarObjects.Count));
 
             int totalChunks = remainingChunks;
 
