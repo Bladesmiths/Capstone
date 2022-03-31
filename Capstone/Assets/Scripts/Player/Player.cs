@@ -800,6 +800,10 @@ namespace Bladesmiths.Capstone
 
             boss.GetComponent<Boss>().Health = boss.GetComponent<Boss>().MaxHealth;
 
+            //Set boss health bar UI to show 0 chunks
+            //Chunks will then animate when entering boss arena
+            uiManager.UpdateBossHealthBar(0, boss.GetComponent<Boss>().MaxHealth);
+
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());
         }

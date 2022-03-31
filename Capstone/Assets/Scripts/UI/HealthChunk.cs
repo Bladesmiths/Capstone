@@ -8,6 +8,8 @@ public class HealthChunk : MonoBehaviour
     Rigidbody2D chunkRigidbody;
     Image image;
     Vector3 originalPosition;
+    Quaternion originalRotation;
+    float originalRigidbodyRotation;
     float originalScale;
 
     public bool shattered = false;
@@ -28,9 +30,15 @@ public class HealthChunk : MonoBehaviour
         chunkRigidbody = GetComponent<Rigidbody2D>();
         image = GetComponent<Image>();
         originalPosition = transform.position;
+        originalRotation = transform.rotation;
         originalScale = transform.localScale.x;
+        originalRigidbodyRotation = chunkRigidbody.rotation;
         image.type = Image.Type.Filled;
         image.fillMethod = Image.FillMethod.Horizontal;
+
+        //Copy spriteRenderer sprite to Image component so the health bar shows in the UI
+        //Used for one-time conversion from PSD importer default settings that create a spriteRenderer
+        //image.sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
 
@@ -168,12 +176,12 @@ public class HealthChunk : MonoBehaviour
         //Reset rigidbody
         chunkRigidbody.velocity = Vector2.zero;
         chunkRigidbody.angularVelocity = 0.0f;
-        chunkRigidbody.rotation = 0.0f;
+        chunkRigidbody.rotation = originalRigidbodyRotation;
         chunkRigidbody.gravityScale = 0.0f;
 
         //Reset chunk location, size, color, etc.
         transform.position = originalPosition;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
+        transform.rotation = originalRotation;
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
         image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
         chipped = false;

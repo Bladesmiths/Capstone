@@ -96,11 +96,14 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private bool isPaused;
 
         //Health chunk counts from last health UI update
-        private int prevHealthChunks = 100;
-        private int prevChipChunks = 0;
+        private int prevPlayerHealthChunks = 100;
+        private int prevPlayerChipChunks = 0;
+
+        private int prevBossHealthChunks;
 
         [SerializeField] private GameObject settingsButton;
         [SerializeField] private SettingsManager settingsManager;
+        [SerializeField] private GameObject bossHealthBar;
 
         public float MaxSpeedX
         {
@@ -157,12 +160,16 @@ namespace Bladesmiths.Capstone.UI
 
         void LateUpdate()
         {
-            if (player != null && playerPrevHealth != player?.Health)
+            if (player != null)
             {
-                UpdatePlayerHealthBar(player.Health, player.ChipDamageTotal, player.MaxHealth);               
+                //Update player health bar when their health changes
+                if (playerPrevHealth != player.Health)
+                {
+                    UpdatePlayerHealthBar(player.Health, player.ChipDamageTotal, player.MaxHealth);
+                }
                 UpdateScore(player.Points, player.MaxPoints);
 
-                if(swordSelectTwoSwordsObject.activeInHierarchy)
+                if (swordSelectTwoSwordsObject.activeInHierarchy)
                 {
                     UpdateSwordSelect(player.Inputs.currentSwordType);
                 }
@@ -172,7 +179,8 @@ namespace Bladesmiths.Capstone.UI
                 }
             }
 
-            if (boss != null && bossPrevHealth != boss?.Health)
+            //Update boss health bar when their health changes
+            if (boss != null && bossHealthBar.activeSelf && bossPrevHealth != boss.Health)
             {
                 UpdateBossHealthBar(boss.Health, boss.MaxHealth);
             }
@@ -277,12 +285,12 @@ namespace Bladesmiths.Capstone.UI
             //Modify chunk status (the order of these matters)
             ShatterChunks(remainingChunks, chipChunks, playerHealthBarObjects);
             ChipChunks(remainingChunks, chipChunks, playerHealthBarObjects);
-            HealChunks(remainingChunks, chipChunks, playerHealthBarObjects);
+            HealChunks(remainingChunks, chipChunks, playerHealthBarObjects, prevPlayerHealthChunks);
             UnChipChunks(remainingChunks, chipChunks, playerHealthBarObjects);
 
             //Save values for future comparison
-            prevHealthChunks = remainingChunks;
-            prevChipChunks = chipChunks;
+            prevPlayerHealthChunks = remainingChunks;
+            prevPlayerChipChunks = chipChunks;
         }
 
         /// <summary>
@@ -291,7 +299,7 @@ namespace Bladesmiths.Capstone.UI
         /// </summary>
         /// <param name="currentHealth"></param>
         /// <param name="maxHealth"></param>
-        private void UpdateBossHealthBar(float currentHealth, float maxHealth)
+        public void UpdateBossHealthBar(float currentHealth, float maxHealth)
         {
             bossPrevHealth = currentHealth;
             //This commented out code converts the player's raw health values into percentages so the UI can work with any max health value, not just 100.
@@ -311,9 +319,10 @@ namespace Bladesmiths.Capstone.UI
 
             //Modify chunk status
             ShatterChunks(remainingChunks, 0, bossHealthBarObjects);
+            HealChunks(remainingChunks, 0, bossHealthBarObjects, prevBossHealthChunks);
 
             //Save values for future comparison
-            prevHealthChunks = remainingChunks;
+            prevBossHealthChunks = remainingChunks;
         }
 
         //Shatter any health chunks that have an index higher than the remaining chunk count
@@ -345,11 +354,11 @@ namespace Bladesmiths.Capstone.UI
         }
 
         //Restore health
-        //This behavior applies when lifestealing
+        //This behavior applies when lifestealing or resetting after death
         //This means invisible chunks need to be made visible
-        private void HealChunks(int healthChunks, int chipChunks, List<GameObject> characterHealthBarObjects)
+        private void HealChunks(int healthChunks, int chipChunks, List<GameObject> characterHealthBarObjects, int prevChunks)
         {
-            for (int i = prevHealthChunks; i < healthChunks; i++)
+            for (int i = prevChunks; i < healthChunks; i++)
             {
                 characterHealthBarObjects[i].GetComponent<HealthChunk>().Restore();
             }
@@ -466,6 +475,15 @@ namespace Bladesmiths.Capstone.UI
             }
 
             swordSelectTwoSwordsObject.SetActive(active);
+        }
+
+        /// <summary>
+        /// Show or hide the boss health bar UI elements.
+        /// Triggered when the player crosses the bridge for the boss fight (in BossTrigger script)
+        /// </summary>
+        public void ToggleBossHealthBar(bool show)
+        {
+            bossHealthBar.SetActive(show);
         }
     }
 }
