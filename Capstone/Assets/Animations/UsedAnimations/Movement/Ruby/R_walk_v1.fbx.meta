@@ -19,9 +19,25 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'LeftUpLeg'
+      : position error = 4.855032 mm\n\t'LeftLeg' : position error = 15.212386 mm\n\t'LeftFoot'
+      : position error = 13.679598 mm\n\t'RightUpLeg' : position error = 6.152191
+      mm\n\t'RightLeg' : position error = 5.500418 mm\n\t'RightFoot' : position error
+      = 4.946493 mm\n"
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'R_walk_v1' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Spine' has translation animation that will
+      be discarded.\n\t'Spine1' has translation animation that will be discarded.\n\t'Spine2'
+      has translation animation that will be discarded.\n\t'RightForeArm' has translation
+      animation that will be discarded.\n\t'RightHand' has translation animation
+      that will be discarded.\n\t'LeftUpLeg' has translation animation that will
+      be discarded.\n\t'LeftLeg' has translation animation that will be discarded.\n\t'LeftFoot'
+      has translation animation that will be discarded.\n\t'LeftToeBase' has translation
+      animation that will be discarded.\n\t'RightUpLeg' has translation animation
+      that will be discarded.\n\t'RightLeg' has translation animation that will be
+      discarded.\n\t'RightFoot' has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -33,7 +49,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: R_walk_v1
+      takeName: R_walk_v1
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
