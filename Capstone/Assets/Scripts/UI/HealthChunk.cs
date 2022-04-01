@@ -89,7 +89,7 @@ public class HealthChunk : MonoBehaviour
         if (!chipped)
         {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-            image.color = new Color(0.6f, 0.6f, 0.6f, image.color.a); //Maintain current visibility
+            //SetColor(false);
             chipped = true;
         }
     }
@@ -120,7 +120,7 @@ public class HealthChunk : MonoBehaviour
     {
         if (chipped)
         {
-            image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
+            //SetColor(true);
             growing = true;
         }
     }
@@ -183,7 +183,7 @@ public class HealthChunk : MonoBehaviour
         transform.position = originalPosition;
         transform.rotation = originalRotation;
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
-        image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
+        //SetColor(true);
         chipped = false;
         SetOpacity(0f);
     }
@@ -207,9 +207,9 @@ public class HealthChunk : MonoBehaviour
     /// <returns></returns>
     private float ChangeOpacity(float opacityChange)
     {
-        Color tempColor = GetComponent<Image>().color;
+        Color tempColor = image.color;
         tempColor.a += opacityChange;
-        GetComponent<Image>().color = tempColor;
+        image.color = tempColor;
 
         return tempColor.a;
     }
@@ -219,9 +219,9 @@ public class HealthChunk : MonoBehaviour
     /// </summary>
     private void SetOpacity(float opacityValue)
     {
-        Color tempColor = GetComponent<Image>().color;
+        Color tempColor = image.color;
         tempColor.a = opacityValue;
-        GetComponent<Image>().color = tempColor;
+        image.color = tempColor;
 
     }
 
@@ -239,5 +239,38 @@ public class HealthChunk : MonoBehaviour
         }
 
         return transform.localScale.x;
+    }
+
+    /// <summary>
+    /// Sets the color of the chunk
+    /// </summary>
+    /// <returns></returns>
+    public void SetColor(Color chunkColor)
+    {
+        //Color chunkColor = image.color;
+        //float chunkOpacity = chunkColor.a;
+
+        ////Convert from RGBA to HSV
+        //float H, S, V;
+        //Color.RGBToHSV(chunkColor, out H, out S, out V);
+
+        //if (!rainbow)
+        //{
+        //    //Change color slightly
+        //    H = Mathf.PingPong(Time.time / 3, 1f);
+        //    S = Mathf.PingPong(Time.time / 3, 1f);
+        //}
+
+        ////Convert back to RGBA
+        //chunkColor = Color.HSVToRGB(H, S, V);
+        //chunkColor.a = chunkOpacity;
+
+        //// Chunk color is darkened when the chunk is chipped
+        //if (!unchipped)
+        //{ 
+        //    //chunkColor = new Color(chunkColor.r * 0.6f, chunkColor.g * 0.6f, chunkColor.b * 0.6f, chunkOpacity);
+        //}
+
+        image.color = chunkColor;
     }
 }

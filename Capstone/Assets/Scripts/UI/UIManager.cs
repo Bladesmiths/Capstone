@@ -105,6 +105,9 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private SettingsManager settingsManager;
         [SerializeField] private GameObject bossHealthBar;
 
+        private Color chunkColor;
+        public bool rainbow = true;
+
         public float MaxSpeedX
         {
             get { return maxSpeedX; }
@@ -157,12 +160,14 @@ namespace Bladesmiths.Capstone.UI
             bossHealthBarObjects.Reverse();
 
             boss = GameObject.Find("Boss").GetComponent<Boss>();
+            chunkColor = new Color(1, 1, 1, 1);
         }
 
         void LateUpdate()
         {
             if (player != null)
             {
+                ColorChunks(playerHealthBarObjects);
                 //Update player health bar when their health changes
                 if (playerPrevHealth != player.Health)
                 {
@@ -181,9 +186,14 @@ namespace Bladesmiths.Capstone.UI
             }
 
             //Update boss health bar when their health changes
-            if (boss != null && bossHealthBar.activeSelf && bossPrevHealth != boss.Health)
+            if (boss != null && bossHealthBar.activeSelf)
             {
-                UpdateBossHealthBar(boss.Health, boss.MaxHealth);
+                if (bossPrevHealth != boss.Health)
+                {
+                    UpdateBossHealthBar(boss.Health, boss.MaxHealth);
+                }
+
+                ColorChunks(bossHealthBarObjects);
             }
         }
 
@@ -316,6 +326,7 @@ namespace Bladesmiths.Capstone.UI
             //Modify chunk status
             ShatterChunks(remainingChunks, 0, bossHealthBarObjects);
             HealChunks(remainingChunks, 0, bossHealthBarObjects, prevBossHealthChunks);
+            
 
             //Save values for future comparison
             prevBossHealthChunks = remainingChunks;
@@ -366,6 +377,35 @@ namespace Bladesmiths.Capstone.UI
             foreach (GameObject chunk in playerHealthBarObjects)
             {
                 chunk.GetComponent<HealthChunk>().FullReset();
+            }
+
+            foreach (GameObject chunk in bossHealthBarObjects)
+            {
+                chunk.GetComponent<HealthChunk>().FullReset();
+            }
+        }
+
+
+        //Set all chunks to a specified color
+        public void ColorChunks(List<GameObject> characterHealthBarObjects)
+        {
+            //Convert from RGBA to HSV
+            float H, S, V;
+            Color.RGBToHSV(chunkColor, out H, out S, out V);
+
+            if (rainbow)
+            {
+                //Change color slightly
+                H = Mathf.PingPong(Time.time / 3, 1f);
+                S = Mathf.PingPong(Time.time / 3, 1f);
+            }
+
+            //Convert back to RGBA
+            chunkColor = Color.HSVToRGB(H, S, V);
+
+            foreach (GameObject chunk in characterHealthBarObjects)
+            {
+                chunk.GetComponent<HealthChunk>().SetColor(chunkColor);
             }
         }
 
