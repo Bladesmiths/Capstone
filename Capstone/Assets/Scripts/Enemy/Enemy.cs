@@ -75,6 +75,8 @@ namespace Bladesmiths.Capstone
         public GameObject spine;
 
         public Collider axeCollider;
+        public Collider headCollider;
+
 
         public float Damage
         {
