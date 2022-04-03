@@ -81,6 +81,8 @@ namespace Bladesmiths.Capstone
         {
             _enemy = gameObject.GetComponent<Enemy_Shield>();
             //_sword = _enemy.Sword;
+            _enemy.animator.SetTrigger("Attack");
+
             agent = GetComponent<NavMeshAgent>();
             //_shield = _enemy.shield;
             preAttackTimer = 0f;
@@ -103,7 +105,8 @@ namespace Bladesmiths.Capstone
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
             //_sword.GetComponent<BoxCollider>().enabled = false;
-            _enemy.isAttacking = false;
+            _enemy.canMove = false;
+
 
         }
     }

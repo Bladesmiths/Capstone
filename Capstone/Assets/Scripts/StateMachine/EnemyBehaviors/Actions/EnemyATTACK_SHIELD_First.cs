@@ -13,8 +13,6 @@ namespace Bladesmiths.Capstone
     public class EnemyATTACK_SHIELD_First : Action
     {
         [SerializeField]
-        private AnimationCurve curve;
-        [SerializeField]
         private AnimationCurve shieldCurve;
         //private GameObject _sword;
         //private GameObject _shield;
@@ -32,8 +30,7 @@ namespace Bladesmiths.Capstone
 
         public EnemyATTACK_SHIELD_First(GameObject sword, Enemy enemy)
         {
-            //_sword = sword;
-            //_enemy = enemy;
+            
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
         }
@@ -46,7 +43,6 @@ namespace Bladesmiths.Capstone
         public override TaskStatus OnUpdate()
         {
             timer += Time.deltaTime;
-            float val = curve.Evaluate(timer);
             //float shieldVal = shieldCurve.Evaluate(timer);
             //_sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
             //_shield.transform.localRotation = Quaternion.Euler(0f, shieldVal, 0f);
@@ -83,10 +79,9 @@ namespace Bladesmiths.Capstone
             //_sword = _enemy.Sword;
             agent = GetComponent<NavMeshAgent>();
             //_shield = _enemy.shield;
-            preAttackTimer = 0f;
-            preAttackTimerMax = 0.5f;
+            _enemy.animator.SetTrigger("Attack");
+
             attack = true;
-            //_sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
             _enemy.attackTimerMax = Random.Range(0.75f, 2f);
@@ -104,6 +99,7 @@ namespace Bladesmiths.Capstone
             //_shield.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
+            _enemy.canMove = false;
             //_sword.GetComponent<BoxCollider>().enabled = false;
         }
     }
