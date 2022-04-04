@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthChunk : MonoBehaviour
 {
     Rigidbody2D chunkRigidbody;
-    Image image;
+    public Image image;
     Vector3 originalPosition;
     Quaternion originalRotation;
     float originalRigidbodyRotation;
@@ -245,32 +245,14 @@ public class HealthChunk : MonoBehaviour
     /// Sets the color of the chunk
     /// </summary>
     /// <returns></returns>
-    public void SetColor(Color chunkColor)
+    public void SetColor(Color endColor, float time)
     {
-        //Color chunkColor = image.color;
-        //float chunkOpacity = chunkColor.a;
+        if (image != null)
+        {
+            //Maintain opacity
+            endColor.a = image.color.a;
 
-        ////Convert from RGBA to HSV
-        //float H, S, V;
-        //Color.RGBToHSV(chunkColor, out H, out S, out V);
-
-        //if (!rainbow)
-        //{
-        //    //Change color slightly
-        //    H = Mathf.PingPong(Time.time / 3, 1f);
-        //    S = Mathf.PingPong(Time.time / 3, 1f);
-        //}
-
-        ////Convert back to RGBA
-        //chunkColor = Color.HSVToRGB(H, S, V);
-        //chunkColor.a = chunkOpacity;
-
-        //// Chunk color is darkened when the chunk is chipped
-        //if (!unchipped)
-        //{ 
-        //    //chunkColor = new Color(chunkColor.r * 0.6f, chunkColor.g * 0.6f, chunkColor.b * 0.6f, chunkOpacity);
-        //}
-
-        image.color = chunkColor;
+            image.color = Color.Lerp(image.color, endColor, time);
+        }
     }
 }

@@ -602,6 +602,9 @@ namespace Bladesmiths.Capstone
                 animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
                 // TODO: Player sword switching animation
+
+                //Update player health bar color
+                uiManager.SwitchSwordHealthBar(currentSword.SwordType);
             }
         }
 
@@ -801,10 +804,6 @@ namespace Bladesmiths.Capstone
 
             boss.GetComponent<Boss>().Health = boss.GetComponent<Boss>().MaxHealth;
             bossTrigger.BossTriggerReset();
-
-            //Set boss health bar UI to show 0 chunks
-            //Chunks will then animate when entering boss arena
-            uiManager.UpdateBossHealthBar(0, boss.GetComponent<Boss>().MaxHealth);
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());

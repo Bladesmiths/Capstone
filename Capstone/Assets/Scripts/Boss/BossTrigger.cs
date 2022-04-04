@@ -45,6 +45,7 @@ namespace Bladesmiths.Capstone
         public void BossTriggerReset()
         {
             player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 8;
+            uiManager.UpdateBossHealthBar(true);
             uiManager.ToggleBossHealthBar(false);
         }
     }
