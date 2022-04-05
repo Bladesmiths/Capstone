@@ -172,7 +172,7 @@ namespace Bladesmiths.Capstone.UI
             playerHealthBarChunks.Reverse();
             bossHealthBarChunks.Reverse();
 
-            boss = GameObject.Find("Boss").GetComponent<Boss>();
+            boss = Boss.instance;
 
             //Set player health bar to topaz
             StartCoroutine(ColorChunks(playerHealthBarChunks, topazChunkColor));
