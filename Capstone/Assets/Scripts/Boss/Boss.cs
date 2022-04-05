@@ -19,6 +19,10 @@ namespace Bladesmiths.Capstone
 
         public static Boss instance;
 
+        public Vector3 lastPosition;
+        public int hasntMovedCounter;
+        public bool againstWallAgain;
+
         // Start is called before the first frame update
         void Start()
         {

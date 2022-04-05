@@ -2417,7 +2417,7 @@ MonoBehaviour:
         False\n"},"ID":35,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":17},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"SweepWindUp"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"BooleansetOnce":false},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetBoolParameter","NodeData":{"Offset":"(69.38519,545.708)","Comment":"Sweep
         False"},"ID":36,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":18},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Sweep"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"BooleansetOnce":false},{"Type":"FacePlayer","NodeData":{"Offset":"(126.975189,202.922241)"},"ID":37,"Name":"Face
         Player","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SingleturnSpeed":8},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetBoolParameter","NodeData":{"Offset":"(208.242462,313.357666)","Comment":"Running
-        True"},"ID":38,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":19},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Running"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"BooleansetOnce":false},{"Type":"BackUp","NodeData":{"Offset":"(275.36,219.051514)"},"ID":39,"Name":"Back
+        True"},"ID":38,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":19},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Running"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"BooleansetOnce":false},{"Type":"Bladesmiths.Capstone.BackUp","NodeData":{"Offset":"(269.771118,510.97876)"},"ID":39,"Name":"Back
         Up","Instant":true,"SharedGameObjectplayerShared":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"Player","IsShared":true},"SinglebackUpAmount":15,"SinglebackUpMaxTime":3,"TransformbossArenaCenter":20,"SinglemoveSpeed":8,"Singleacceleration":10},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetBoolParameter","NodeData":{"Offset":"(351.992676,368.670166)","Comment":"Running
         False"},"ID":40,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":21},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Running"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"BooleansetOnce":false}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.RandomSelector","NodeData":{"Offset":"(1431.01965,802.990234)"},"ID":41,"Name":"Random
         Selector","Instant":true,"Int32seed":0,"BooleanuseSeed":false,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-260,440)","Comment":"Sweep
@@ -2574,6 +2574,9 @@ MonoBehaviour:
   player: {fileID: 0}
   activeSword: {fileID: 1737866518}
   activeProjectiles: []
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasntMovedCounter: 0
+  againstWallAgain: 0
 --- !u!136 &342647815
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6678,7 +6681,7 @@ PrefabInstance:
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
     - target: {fileID: 1438253611527912812, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
