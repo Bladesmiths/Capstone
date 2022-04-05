@@ -59,6 +59,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject boss;
        
         private TargetLock targetLock;
+        public BossTrigger bossTrigger;
 
         #region State Fields
         [Header("State Fields")]
@@ -601,6 +602,9 @@ namespace Bladesmiths.Capstone
                 animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
                 // TODO: Player sword switching animation
+
+                //Update player health bar color
+                uiManager.SwitchSwordHealthBar(currentSword.SwordType);
             }
         }
 
@@ -799,6 +803,7 @@ namespace Bladesmiths.Capstone
                 boss = GameObject.Find("Boss");
 
             boss.GetComponent<Boss>().Health = boss.GetComponent<Boss>().MaxHealth;
+            bossTrigger.BossTriggerReset();
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());

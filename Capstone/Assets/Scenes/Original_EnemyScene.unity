@@ -236,7 +236,6 @@ MonoBehaviour:
   speed: -120
   damage: 100
   damagingTimerLimit: 0.5
---- !u!1001 &180450364
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -12867,8 +12866,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 107.17829, y: 9.756993, z: 96.67235}
-  m_Center: {x: 14.02393, y: 3.0409253, z: 8.958473}
+  m_Size: {x: 4.080639, y: 15, z: 11.798759}
+  m_Center: {x: -37.524895, y: 3.040925, z: -13.179646}
 --- !u!4 &1930573025
 Transform:
   m_ObjectHideFlags: 0
@@ -12876,13 +12875,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930573022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.27, y: 1.79, z: -112.05}
+  m_LocalRotation: {x: -0, y: 0.10467729, z: -0, w: 0.99450624}
+  m_LocalPosition: {x: -41.59, y: 1.79, z: -121.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 12.017, z: 0}
 --- !u!1001 &2033416595
 PrefabInstance:
   m_ObjectHideFlags: 0
