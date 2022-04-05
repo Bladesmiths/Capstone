@@ -401,9 +401,12 @@ namespace Bladesmiths.Capstone.UI
                 chunk.FullReset();
             }
 
-            foreach (HealthChunk chunk in bossHealthBarChunks)
+            if (bossHealthBar.activeSelf)
             {
-                chunk.FullReset();
+                foreach (HealthChunk chunk in bossHealthBarChunks)
+                {
+                    chunk.FullReset();
+                }
             }
         }
 

@@ -11,6 +11,7 @@ namespace Bladesmiths.Capstone
         private UIManager uiManager;
 
         public static BossTrigger instance;
+        private bool fightingBoss = false;
 
         // Start is called before the first frame update
         void Start()
@@ -38,6 +39,7 @@ namespace Bladesmiths.Capstone
         {
             player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 20;
             uiManager.ToggleBossHealthBar(true);
+            fightingBoss = true;
         }
 
         //Reset everything changed by entering the boss trigger
@@ -45,8 +47,15 @@ namespace Bladesmiths.Capstone
         public void BossTriggerReset()
         {
             player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 8;
-            uiManager.UpdateBossHealthBar(true);
-            uiManager.ToggleBossHealthBar(false);
+
+            //No need to reset if boss wasn't active
+            if(fightingBoss)
+            {
+                uiManager.UpdateBossHealthBar(true);
+                uiManager.ToggleBossHealthBar(false);
+
+                fightingBoss = false;
+            }
         }
     }
 }
