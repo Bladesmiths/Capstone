@@ -19,6 +19,10 @@ namespace Bladesmiths.Capstone
 
         public static Boss instance;
 
+        public Vector3 lastPosition;
+        public int hasntMovedCounter;
+        public bool againstWallAgain;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -27,7 +31,7 @@ namespace Bladesmiths.Capstone
 
             GetComponent<BehaviorTree>().SetVariableValue("Player", player);
 
-            if (instance == null)
+            if(instance == null)
             {
                 instance = this;
             }
@@ -45,30 +49,42 @@ namespace Bladesmiths.Capstone
                 Die();
             }
 
-            if (damaged)
-            {
-                timer += Time.deltaTime;
-
-                if (timer >= 0.5f)
-                {
-                    gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-                    damaged = false;
-                    timer = 0f;
-                }
-            }
+            //if (damaged)
+            //{
+            //    timer += Time.deltaTime;
+            //
+            //    if (timer >= 0.5f)
+            //    {
+            //        gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+            //        damaged = false;
+            //        timer = 0f;
+            //    }
+            //}
         }
 
         protected override void Die()
         {
             base.Die();
 
+            GetComponent<BehaviorTree>().DisableBehavior();
+
+            //GetComponent<BehaviorTree>().EnableBehavior();
+
             if (player != null)
             {
-                player.GetComponent<Player>().AddToMaxPoints();
+                if (timer == 0)
+                {
+                    GetComponent<BehaviorTree>().DisableBehavior();
+                    GetComponent<Animator>().SetBool("Dead", true);
+                }
+
+                timer += Time.deltaTime;
+                if (timer >= 2)
+                    player.GetComponent<Player>().AddToMaxPoints();
             }
             
-            gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
-            gameObject.SetActive(false);
+            //gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+            //gameObject.SetActive(false);
         }
 
         public override void Respawn()
