@@ -36,9 +36,12 @@ namespace Bladesmiths.Capstone
         //This is effectively the "start of boss fight" trigger
         private void OnTriggerEnter(Collider other)
         {
-            player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 20;
-            uiManager.ToggleBossHealthBar(true);
-            fightingBoss = true;
+            if (other.name == player.name)
+            {
+                player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 20;
+                uiManager.ToggleBossHealthBar(true);
+                fightingBoss = true;
+            }
         }
 
         //Reset everything changed by entering the boss trigger
@@ -47,7 +50,7 @@ namespace Bladesmiths.Capstone
         {
             player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 8;
 
-            //No need to reset if boss wasn't active
+            //Only reset if boss was active
             if(fightingBoss)
             {
                 uiManager.UpdateBossHealthBar(true);
