@@ -585,11 +585,14 @@ namespace Bladesmiths.Capstone.UI
             //Set boss health bar color to amethyst
             bossHealthBar.SetActive(show);
 
-            foreach (HealthChunk chunk in bossHealthBarChunks)
+            if (show)
             {
-                if (chunk.image != null)
+                foreach (HealthChunk chunk in bossHealthBarChunks)
                 {
-                    chunk.image.color = amethystColor;
+                    if (chunk.image != null)
+                    {
+                        chunk.image.color = amethystColor;
+                    }
                 }
             }
 

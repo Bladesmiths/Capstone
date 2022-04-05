@@ -25,7 +25,7 @@ public class HealthChunk : MonoBehaviour
     /// <summary>
     /// Get references to components and save the chunk's original status so it can be reset later
     /// </summary>
-    void Start()
+    void Awake()
     {
         chunkRigidbody = GetComponent<Rigidbody2D>();
         image = GetComponent<Image>();
