@@ -61,6 +61,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject boss;
        
         private TargetLock targetLock;
+        public BossTrigger bossTrigger;
 
         #region State Fields
         [Header("State Fields")]
@@ -94,7 +95,9 @@ namespace Bladesmiths.Capstone
         [Header("Sword Fields")]
         public Sword currentSword;
         [OdinSerialize]
-        private Dictionary<SwordType, GameObject> swords = new Dictionary<SwordType, GameObject>();
+        public Dictionary<SwordType, GameObject> allSwords = new Dictionary<SwordType, GameObject>();
+        [OdinSerialize]
+        public Dictionary<SwordType, GameObject> currentSwords = new Dictionary<SwordType, GameObject>();
         [OdinSerialize]
         private Dictionary<SwordType, GameObject> swordsGeo = new Dictionary<SwordType, GameObject>();
         private int animIDSwordChoice;
@@ -289,7 +292,7 @@ namespace Bladesmiths.Capstone
 
             inputs.player = this;
 
-            currentSword = swords[SwordType.Topaz].GetComponent<Sword>();
+            currentSword = allSwords[SwordType.Topaz].GetComponent<Sword>();
             animIDSwordChoice = Animator.StringToHash("Sword Choice");
 
             SetRespawn(transform, freeLookCam.m_XAxis.Value);
@@ -567,13 +570,13 @@ namespace Bladesmiths.Capstone
             if (newSwordType != currentSword.SwordType)
             {
                 // Set the old sword data and model to inactive and the new to active
-                swords[CurrentSword.SwordType].SetActive(false);
-                swords[newSwordType].SetActive(true);
+                currentSwords[CurrentSword.SwordType].SetActive(false);
+                currentSwords[newSwordType].SetActive(true);
                 swordsGeo[CurrentSword.SwordType].SetActive(false);
                 swordsGeo[newSwordType].SetActive(true);
 
                 // Update the current sword field
-                currentSword = swords[newSwordType].GetComponent<Sword>();
+                currentSword = currentSwords[newSwordType].GetComponent<Sword>();
 
                 // Update the position according to offset
                 //sword.transform.localPosition = currentSword.Offset.position;
@@ -596,8 +599,8 @@ namespace Bladesmiths.Capstone
                 //}
 
                 // Update the box collider dimensions
-                sword.GetComponent<BoxCollider>().center = swords[newSwordType].GetComponent<BoxCollider>().center;
-                sword.GetComponent<BoxCollider>().size = swords[newSwordType].GetComponent<BoxCollider>().size;
+                sword.GetComponent<BoxCollider>().center = currentSwords[newSwordType].GetComponent<BoxCollider>().center;
+                sword.GetComponent<BoxCollider>().size = currentSwords[newSwordType].GetComponent<BoxCollider>().size;
 
                 sword.GetComponent<Sword>().SwordType = newSwordType;
                 
@@ -605,6 +608,9 @@ namespace Bladesmiths.Capstone
                 animator.SetFloat(animIDSwordChoice, (float)currentSword.SwordType);
 
                 // TODO: Player sword switching animation
+
+                //Update player health bar color
+                uiManager.SwitchSwordHealthBar(currentSword.SwordType);
             }
         }
 
@@ -801,10 +807,8 @@ namespace Bladesmiths.Capstone
             }
             damaged = false; 
 
-            //if(boss == null)
-            //    boss = GameObject.Find("Boss 2.0");
-
             Boss.instance.Health = Boss.instance.MaxHealth;
+            bossTrigger.BossTriggerReset();
 
             // Call the fade in method multiple times so it can fade
             StartCoroutine(FadeIn());

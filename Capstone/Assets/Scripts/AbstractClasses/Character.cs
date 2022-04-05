@@ -66,7 +66,8 @@ namespace Bladesmiths.Capstone
             }
             
             // Subtract damage from health
-            Health -= damage;
+            // Round damage to an int to avoid rounding isues with health bar chunk display
+            Health -= (int)damage;
 
             if (Health <= 0)
             {

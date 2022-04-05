@@ -109,38 +109,74 @@ namespace Bladesmiths.Capstone
 			// Only do things if the radial menu is on
 			if (swordSelectActive)
             {
-				// Get the mouse position from the input
-				Vector2 delta = value.Get<Vector2>();
-
-				// Only do this if the input is not zero
-				// And if the magnitude of the vector is larger than a certain
-				// value so that we can verify the delta is purposeful
-				if (delta != Vector2.zero && delta.sqrMagnitude >= 50)
+				if (player.currentSwords.Count > 2)
 				{
-					// Calculate the angle of input using trig and convert to deg
-					float angle = Mathf.Atan2(delta.y, -delta.x) * Mathf.Rad2Deg;
+					// Get the mouse position from the input
+					Vector2 delta = value.Get<Vector2>();
 
-					// Move 0 to the space between topaz and sapphire
-					angle += 203.5f;
-
-					// Modify the angle if it isn't in the range (0, 360)
-					if (angle < 0) angle += 360;
-					if (angle > 360) angle -= 360;
-
-					//Debug.Log(angle);
-
-					// Update currentSwordType according to angle
-					if (angle > 0 && angle <= 113.5)
+					// Only do this if the input is not zero
+					// And if the magnitude of the vector is larger than a certain
+					// value so that we can verify the delta is purposeful
+					if (delta != Vector2.zero && delta.sqrMagnitude >= 50)
 					{
-						currentSwordType = Enums.SwordType.Sapphire;
+						// Calculate the angle of input using trig and convert to deg
+						float angle = Mathf.Atan2(delta.y, -delta.x) * Mathf.Rad2Deg;
+
+						// Move 0 to the space between topaz and sapphire
+						angle += 203.5f;
+
+						// Modify the angle if it isn't in the range (0, 360)
+						if (angle < 0) angle += 360;
+						if (angle > 360) angle -= 360;
+
+						//Debug.Log(angle);
+
+						// Update currentSwordType according to angle
+						if (angle > 0 && angle <= 113.5)
+						{
+							currentSwordType = Enums.SwordType.Sapphire;
+						}
+						else if (angle > 113.5 && angle <= 223.5)
+						{
+							currentSwordType = Enums.SwordType.Ruby;
+						}
+						else
+						{
+							currentSwordType = Enums.SwordType.Topaz;
+						}
 					}
-					else if (angle > 113.5 && angle <= 223.5)
+				}
+				else
+                {
+					// Get the mouse position from the input
+					Vector2 delta = value.Get<Vector2>();
+
+					// Only do this if the input is not zero
+					// And if the magnitude of the vector is larger than a certain
+					// value so that we can verify the delta is purposeful
+					if (delta != Vector2.zero && delta.sqrMagnitude >= 50)
 					{
-						currentSwordType = Enums.SwordType.Ruby;
-					}
-					else
-					{
-						currentSwordType = Enums.SwordType.Topaz;
+						// Calculate the angle of input using trig and convert to deg
+						float angle = Mathf.Atan2(delta.y, -delta.x) * Mathf.Rad2Deg;
+
+						// Move 0 to the space between topaz and sapphire
+						angle += 0f;
+
+						// Modify the angle if it isn't in the range (0, 360)
+						if (angle < 0) angle += 360;
+						if (angle > 360) angle -= 360;
+
+						//Debug.Log(angle);
+
+						// Update currentSwordType according to angle
+						if (angle > 180 && angle <= 360)
+						{
+							currentSwordType = Enums.SwordType.Ruby;
+						}
+						else
+						{
+							currentSwordType = Enums.SwordType.Topaz;
+						}
 					}
 				}
             }
@@ -148,8 +184,11 @@ namespace Bladesmiths.Capstone
 		
 		public void OnSwitchSwordSpecific(InputValue value)
         {
-			currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
-			player.SwitchSword(currentSwordType);
+			if (player.currentSwords.Count > value.Get<float>() - 1)
+			{
+				currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
+				player.SwitchSword(currentSwordType);
+			}
         }
 
 		/// <summary>
@@ -284,7 +323,16 @@ namespace Bladesmiths.Capstone
         {
 			swordSelectActive = newSwordSelectState;
 
-			uiManager.ToggleRadialMenu(swordSelectActive);
+			if(player.currentSwords.Count == 2)
+            {
+				uiManager.ToggleTwoSwordsRadialMenu(swordSelectActive);
+			}
+			else if (player.currentSwords.Count > 2)
+			{
+				uiManager.ToggleRadialMenu(swordSelectActive);
+			}
+
+			//uiManager.ToggleRadialMenu(swordSelectActive);
 
 			if (swordSelectActive)
             {
@@ -292,8 +340,11 @@ namespace Bladesmiths.Capstone
             }
 			else
             {
-				player.SwitchSword(currentSwordType); 
-            }
+				if (player.currentSwords.Count > (int)currentSwordType)
+				{
+					player.SwitchSword(currentSwordType);
+				}
+			}
 
 			playerLookCamera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = !swordSelectActive;
         }

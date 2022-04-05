@@ -1,24 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Bladesmiths.Capstone
-{
+{ 
     public class BreakableBox : MonoBehaviour
     {
-        public bool isBroken;
-        private float fadeOutTimer;
-        private float fadeOutLength;
-        private float shrinkSpeed;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            isBroken = false;
-            fadeOutTimer = 0;
-            fadeOutLength = 10.5f;
-            shrinkSpeed = 1.0f;
-        }
+        public bool isBroken = false;
+        private float fadeOutTimer = 0;
+        [SerializeField]
+        private float fadeOutLength = 10.5f;
+        private float shrinkSpeed = 1.0f;
 
         // Update is called once per frame
         void Update()
@@ -50,7 +43,7 @@ namespace Bladesmiths.Capstone
                 // Save that the box is broken
                 isBroken = true;
 
-                collision.transform.root.gameObject.GetComponent<Player>().AddPoints();
+                //collision.transform.root.gameObject.GetComponent<Player>().AddPoints();
                 // Turn off the parent box collider
                 GetComponent<BoxCollider>().enabled = false;
                 // Loop through all the childen and enable their physics

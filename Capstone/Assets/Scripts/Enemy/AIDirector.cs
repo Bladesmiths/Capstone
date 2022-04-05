@@ -23,6 +23,8 @@ namespace Bladesmiths.Capstone
         private static AIDirector instance;
         private bool enemyAttacking;
         private bool disableWall;
+        public SwordGemPickup gems;
+
 
 
         public static AIDirector Instance { get => instance;  }
@@ -46,6 +48,7 @@ namespace Bladesmiths.Capstone
         {
             currentGroup = enemyGroups[0];
             disableWall = true;
+            gems = SwordGemPickup.instance;
         }
 
         private void Update()
@@ -70,6 +73,15 @@ namespace Bladesmiths.Capstone
 
             if(disableWall && groupCount < enemyGroups.Count)
             {
+                if (groupCount == 0)
+                {
+                    gems.Pickup(Enums.SwordType.Ruby);
+                }
+                else if(groupCount == 2)
+                {
+                    gems.Pickup(Enums.SwordType.Sapphire);
+                }
+
                 CrystalWallManager.instance.SwitchWalls(groupCount);
                 groupCount++;                
             }

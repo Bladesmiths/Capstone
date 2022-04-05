@@ -51,7 +51,7 @@ namespace Bladesmiths.Capstone
         private float dissolveTimer = 0f;
         private bool dissolveToggle = false;
 
-        private List<MeshRenderer> crystalRenderers;
+        private List<MeshRenderer> crystalRenderers = new List<MeshRenderer>();
         
         // Start is called before the first frame update
         void Start()
