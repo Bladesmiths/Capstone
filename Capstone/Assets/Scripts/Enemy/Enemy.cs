@@ -70,9 +70,9 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         public GameObject geo;
         [SerializeField]
-        public GameObject bodyChunks;
+        public List<GameObject> bodyChunks;
         [SerializeField]
-        public GameObject spine;
+        public GameObject[] spine;
 
         public Collider axeCollider;
         public Collider headCollider;
@@ -223,18 +223,21 @@ namespace Bladesmiths.Capstone
 
         public void RemoveRandomChunk()
         {
-            if (bodyChunks.transform.childCount <= 10)
+            if (bodyChunks.Count <= 10)
             {
                 return;    
             }
         
-            GameObject remover = bodyChunks;
+            //List<GameObject> remover = bodyChunks;
             
-            GameObject removedChunk = remover.transform.GetChild(UnityEngine.Random.Range(0, remover.transform.childCount)).gameObject;
+            GameObject removedChunk = bodyChunks[UnityEngine.Random.Range(0, bodyChunks.Count)].gameObject;
             removedChunk.transform.parent = null;
             removedChunk.AddComponent<BoxCollider>();
             removedChunk.AddComponent<Rigidbody>();
+            //removedChunk.GetComponent<Rigidbody>().isKinematic = true;
             removedChunk.AddComponent<EnemyChunk>();
+            removedChunk.GetComponent<EnemyChunk>().ApplyForce();
+            bodyChunks.Remove(removedChunk);
         }
 
         public int NumChunks()
@@ -259,6 +262,7 @@ namespace Bladesmiths.Capstone
             if (damageResult > 0)
             {
                 int num = NumChunks();
+                //Debug.Log(num);
                 for (int i = 0; i < num; i++)
                 {
                     RemoveRandomChunk();

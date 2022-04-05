@@ -28139,8 +28139,10 @@ MonoBehaviour:
   enemyGroupNumber: 1
   isAttacking: 0
   geo: {fileID: 0}
-  bodyChunks: {fileID: 0}
-  spine: {fileID: 0}
+  bodyChunks:
+  - {fileID: 0}
+  spine:
+  - {fileID: 0}
   axeCollider: {fileID: 0}
   headCollider: {fileID: 0}
 --- !u!4 &1563500565259462059
@@ -32942,8 +32944,10 @@ MonoBehaviour:
   enemyGroupNumber: 1
   isAttacking: 0
   geo: {fileID: 322943618012156061}
-  bodyChunks: {fileID: 527365964758625379}
-  spine: {fileID: 5022488645304901468}
+  bodyChunks:
+  - {fileID: 0}
+  spine:
+  - {fileID: 0}
   axeCollider: {fileID: 0}
   headCollider: {fileID: 0}
   shield: {fileID: 8595514461307789845}
@@ -42965,8 +42969,10 @@ MonoBehaviour:
   enemyGroupNumber: 3
   isAttacking: 0
   geo: {fileID: 6245815079130950554}
-  bodyChunks: {fileID: 3348513759542348590}
-  spine: {fileID: 2857011119330454178}
+  bodyChunks:
+  - {fileID: 0}
+  spine:
+  - {fileID: 0}
   axeCollider: {fileID: 0}
   headCollider: {fileID: 0}
   PlayerLayer:
@@ -54051,6 +54057,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 2767726670735880461, guid: c1d8f2e3c84d17248a8526469c897297, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2953594985524317047, guid: c1d8f2e3c84d17248a8526469c897297, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.10843692
@@ -54318,6 +54328,10 @@ PrefabInstance:
     - target: {fileID: 3422928094856025047, guid: c1d8f2e3c84d17248a8526469c897297, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3440117041117090884, guid: c1d8f2e3c84d17248a8526469c897297, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3458361837162809631, guid: c1d8f2e3c84d17248a8526469c897297, type: 3}
       propertyPath: m_LocalPosition.x
