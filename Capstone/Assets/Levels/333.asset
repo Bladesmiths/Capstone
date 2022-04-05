@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdeed9e7c772edb418a75dff720bc717, type: 3}
-  m_Name: 318
+  m_Name: 333
   m_EditorClassIdentifier: 
   setupList:
-  - scenePath: Assets/Scenes/318_Original_EnemyScene.unity
+  - scenePath: Assets/Scenes/333_PlayerScene.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Scenes/PlayerScene.unity
+  - scenePath: Assets/Scenes/333_EnemyScene.unity
     isActive: 0
     isLoaded: 1
   - scenePath: Assets/Scenes/Village_Audio.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Scenes/318_Village_Gameplay.unity
+  - scenePath: Assets/Scenes/Village_Gameplay.unity
     isActive: 0
     isLoaded: 1
-  - scenePath: Assets/Scenes/318_Village_Geo.unity
+  - scenePath: Assets/Scenes/Village_Geo.unity
     isActive: 1
     isLoaded: 1
   - scenePath: Assets/Scenes/Village_Lighting.unity
@@ -46,4 +46,4 @@ MonoBehaviour:
   - scenePath: Assets/Scenes/Village_Area5.unity
     isActive: 0
     isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 5510f252e8dffc44d94a0b9b4bd600fe, type: 2}
+  gameLevelData: {fileID: 11400000, guid: 14117122e2fe60c47b2ab75ebca80e6d, type: 2}

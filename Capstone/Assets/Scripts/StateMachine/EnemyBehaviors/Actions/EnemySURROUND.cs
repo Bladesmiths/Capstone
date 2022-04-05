@@ -242,7 +242,8 @@ namespace Bladesmiths.Capstone
             // Combines all of the dangers into one vector
             foreach (GameObject gO in fleeList)
             {
-                pathDir += gO.transform.position - transform.position;
+                if (gO != null)
+                    pathDir += gO.transform.position - transform.position;
             }
 
             float mag = pathDir.magnitude;
