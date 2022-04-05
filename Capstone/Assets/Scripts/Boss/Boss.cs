@@ -23,6 +23,14 @@ namespace Bladesmiths.Capstone
         public int hasntMovedCounter;
         public bool againstWallAgain;
 
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -30,11 +38,6 @@ namespace Bladesmiths.Capstone
             ObjectController.Instance.AddIdentifiedObject(Team.Enemy, this);
 
             GetComponent<BehaviorTree>().SetVariableValue("Player", player);
-
-            if(instance == null)
-            {
-                instance = this;
-            }
         }
 
         // Update is called once per frame

@@ -288,7 +288,6 @@ namespace Bladesmiths.Capstone
             cinemachineTargetYaw = player.transform.rotation.eulerAngles.y;
 
             targetLock = GameObject.Find("TargetLockManager").GetComponent<TargetLock>();
-            boss = GameObject.Find("Boss");
 
             inputs.player = this;
 
@@ -298,6 +297,11 @@ namespace Bladesmiths.Capstone
             SetRespawn(transform, freeLookCam.m_XAxis.Value);
 
             ResetChipDamageTimers(); 
+        }
+
+        void Start()
+        {
+            boss = Boss.instance.gameObject;
         }
 
         private void Update()
