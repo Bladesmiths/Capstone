@@ -72,6 +72,7 @@ namespace Bladesmiths.Capstone
 
             //_animator.SetBool(_animIDDeath, false);
             //_animator.SetTrigger(_animIDDamaged);
+
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

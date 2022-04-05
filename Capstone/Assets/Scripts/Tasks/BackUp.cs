@@ -5,59 +5,74 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine.AI;
 
-public class BackUp : Action
+namespace Bladesmiths.Capstone
 {
-    public SharedGameObject playerShared;
-    private GameObject player;
-
-    // How much should they back up
-    [SerializeField] private float backUpAmount;
-    // How long until they give up on backing up
-    [SerializeField] private float backUpMaxTime;
-
-    [SerializeField] private Transform bossArenaCenter;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float acceleration;
-
-    private NavMeshAgent navMeshAgent;
-    private Vector3 destination;
-    private float timer;
-
-    public override void OnStart()
+    public class BackUp : Action
     {
-        base.OnStart();
+        public SharedGameObject playerShared;
+        private GameObject player;
 
-        timer = 0;
-        player = playerShared.Value;
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        // How much should they back up
+        [SerializeField] private float backUpAmount;
+        // How long until they give up on backing up
+        [SerializeField] private float backUpMaxTime;
 
-        destination = transform.position + (-transform.forward * backUpAmount);
+        [SerializeField] private Transform bossArenaCenter;
+        [SerializeField] private float moveSpeed;
+        [SerializeField] private float acceleration;
 
-        navMeshAgent.speed = moveSpeed;
-        navMeshAgent.acceleration = acceleration;
-    }
+        private NavMeshAgent navMeshAgent;
+        private Vector3 destination;
 
-    public override TaskStatus OnUpdate()
-    {
-        timer += Time.deltaTime;
-
-        // Go to a position behind where the boss is
-        if (Vector3.Distance(transform.position, destination) >= 0.5f && timer <= backUpMaxTime)
+        public override void OnStart()
         {
-            navMeshAgent.SetDestination(destination);
-            return TaskStatus.Running;
+            base.OnStart();
+
+            player = playerShared.Value;
+            navMeshAgent = GetComponent<NavMeshAgent>();
+
+            destination = transform.position + (-transform.forward * backUpAmount);
+
+            navMeshAgent.speed = moveSpeed;
+            navMeshAgent.acceleration = acceleration;
         }
-        else if(Vector3.Distance(transform.position, destination) >= 0.5f && timer > backUpMaxTime)
+
+        public override TaskStatus OnUpdate()
         {
-            destination = bossArenaCenter.position;
-            timer = 0;
-            return TaskStatus.Running;
-        }
-        else
-        {
-            navMeshAgent.isStopped = true;
-            navMeshAgent.ResetPath();
-            return TaskStatus.Success;
+            if(transform.position == GetComponent<Boss>().lastPosition)
+            {
+                GetComponent<Boss>().hasntMovedCounter++;
+            }
+
+            if (Vector3.Distance(transform.position, destination) >= 0.5f && GetComponent<Boss>().againstWallAgain)
+            {
+                destination = bossArenaCenter.position;
+                navMeshAgent.SetDestination(destination);
+                GetComponent<Boss>().lastPosition = transform.position;
+                return TaskStatus.Running;
+            }
+            else if (Vector3.Distance(transform.position, destination) >= 0.5f && GetComponent<Boss>().hasntMovedCounter >= 2)
+            {
+                navMeshAgent.isStopped = true;
+                navMeshAgent.ResetPath();
+                GetComponent<Boss>().againstWallAgain = true;
+                return TaskStatus.Success;
+            }
+            else if (Vector3.Distance(transform.position, destination) >= 0.5f)
+            {
+                navMeshAgent.SetDestination(destination);
+                GetComponent<Boss>().lastPosition = transform.position;
+                return TaskStatus.Running;
+            }
+            else
+            {
+                navMeshAgent.isStopped = true;
+                navMeshAgent.ResetPath();
+                GetComponent<Boss>().againstWallAgain = false;
+                GetComponent<Boss>().hasntMovedCounter = 0;
+                return TaskStatus.Success;
+            }
+
         }
     }
 }
