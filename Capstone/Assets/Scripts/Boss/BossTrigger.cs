@@ -36,7 +36,7 @@ namespace Bladesmiths.Capstone
         //This is effectively the "start of boss fight" trigger
         private void OnTriggerEnter(Collider other)
         {
-            if (other.name == player.name)
+            if (other.name == player.name && !fightingBoss)
             {
                 player.transform.Find("TargetLockManager").GetComponent<SphereCollider>().radius = 20;
                 uiManager.ToggleBossHealthBar(true);

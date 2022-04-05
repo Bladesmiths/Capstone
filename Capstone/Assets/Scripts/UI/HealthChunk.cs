@@ -29,8 +29,8 @@ public class HealthChunk : MonoBehaviour
     {
         chunkRigidbody = GetComponent<Rigidbody2D>();
         image = GetComponent<Image>();
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
+        originalPosition = transform.localPosition;
+        originalRotation = transform.localRotation;
         originalScale = transform.localScale.x;
         originalRigidbodyRotation = chunkRigidbody.rotation;
         image.type = Image.Type.Filled;
@@ -180,8 +180,8 @@ public class HealthChunk : MonoBehaviour
         chunkRigidbody.gravityScale = 0.0f;
 
         //Reset chunk location, size, color, etc.
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
+        transform.localPosition = originalPosition;
+        transform.localRotation = originalRotation;
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
         //SetColor(true);
         chipped = false;
