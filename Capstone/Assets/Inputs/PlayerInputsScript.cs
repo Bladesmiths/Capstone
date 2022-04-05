@@ -184,9 +184,9 @@ namespace Bladesmiths.Capstone
 		
 		public void OnSwitchSwordSpecific(InputValue value)
         {
-			currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
 			if (player.currentSwords.Count > value.Get<float>() - 1)
 			{
+				currentSwordType = (Enums.SwordType)(value.Get<float>() - 1);
 				player.SwitchSword(currentSwordType);
 			}
         }

@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
 
         public static SwordGemPickup instance;
 
-        private void Start()
+        private void Awake()
         {
             instance = this;
         }

@@ -9,7 +9,6 @@ namespace Bladesmiths.Capstone
     {
         private Player player;
         private UIManager uiManager;
-
         public static BossTrigger instance;
         private bool fightingBoss = false;
 
