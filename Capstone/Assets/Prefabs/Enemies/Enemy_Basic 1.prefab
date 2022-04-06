@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 3003608337125097539}
   - component: {fileID: 2767726670735880461}
   - component: {fileID: 7487871503920381292}
+  - component: {fileID: 3660208676656404530}
   m_Layer: 0
   m_Name: Wrist_R
   m_TagString: Untagged
@@ -465,6 +466,22 @@ CapsuleCollider:
   m_Height: 0.6
   m_Direction: 0
   m_Center: {x: -0.12, y: 0, z: 0}
+--- !u!54 &3660208676656404530
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682850247233953470}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &728097553056205850
 GameObject:
   m_ObjectHideFlags: 0
@@ -4957,7 +4974,6 @@ MonoBehaviour:
   - {fileID: 4957295776866200320}
   - {fileID: 3520326056672630217}
   - {fileID: 6202556599079181856}
-  - {fileID: 8034559849449083636}
   - {fileID: 6998079144714924875}
   - {fileID: 5253591057306739704}
   - {fileID: 6486171152565302632}
