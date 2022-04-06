@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5c9e03370244e354eb5bef3fad16879a
+guid: 512f5471d7a791842a2c2e97896ea372
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 1413249729232648545
-    second: T_walk_v1
+      74: 2366469202215877300
+    second: R_run_v1
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -21,25 +21,29 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'LeftUpLeg'
-      : position error = 4.766925 mm\n\t'LeftLeg' : position error = 9.979599 mm\n\t'LeftFoot'
-      : position error = 8.974145 mm\n\t'RightUpLeg' : position error = 6.684065
-      mm\n"
+      : position error = 13.892183 mm\n\t'LeftLeg' : position error = 20.877359 mm\n\t'LeftFoot'
+      : position error = 18.769073 mm\n\t'RightUpLeg' : position error = 19.718279
+      mm\n\t'RightLeg' : position error = 4.465487 mm\n\t'RightFoot' : position error
+      = 4.015815 mm\n"
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'T_walk_v1' has import animation warnings that
+    animationImportWarnings: "\nClip 'R_run_v1' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'Spine' has translation animation that will
       be discarded.\n\t'Spine1' has translation animation that will be discarded.\n\t'Spine2'
-      has translation animation that will be discarded.\n\t'LeftUpLeg' has translation
-      animation that will be discarded.\n\t'LeftLeg' has translation animation that
-      will be discarded.\n\t'LeftFoot' has translation animation that will be discarded.\n\t'LeftToeBase'
-      has translation animation that will be discarded.\n\t'RightUpLeg' has translation
-      animation that will be discarded.\n\t'RightLeg' has translation animation that
-      will be discarded.\n\t'RightFoot' has translation animation that will be discarded.\n"
+      has translation animation that will be discarded.\n\t'LeftForeArm' has translation
+      animation that will be discarded.\n\t'RightForeArm' has translation animation
+      that will be discarded.\n\t'RightHand' has translation animation that will
+      be discarded.\n\t'LeftUpLeg' has translation animation that will be discarded.\n\t'LeftLeg'
+      has translation animation that will be discarded.\n\t'LeftFoot' has translation
+      animation that will be discarded.\n\t'LeftToeBase' has translation animation
+      that will be discarded.\n\t'RightUpLeg' has translation animation that will
+      be discarded.\n\t'RightLeg' has translation animation that will be discarded.\n\t'RightFoot'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -48,11 +52,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: T_walk_v1
-      takeName: T_walk_v1
+      name: R_run_v1
+      takeName: R_run_v1
       internalID: 0
       firstFrame: 1
-      lastFrame: 32
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -75,7 +79,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0.96
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
