@@ -234,15 +234,15 @@ namespace Bladesmiths.Capstone
             removedChunk.transform.parent = null;
             removedChunk.AddComponent<BoxCollider>();
             removedChunk.AddComponent<Rigidbody>();
-            //removedChunk.GetComponent<Rigidbody>().isKinematic = true;
             removedChunk.AddComponent<EnemyChunk>();
-            removedChunk.GetComponent<EnemyChunk>().ApplyForce();
             bodyChunks.Remove(removedChunk);
         }
 
         public int NumChunks()
         {
-            return chunksRemoved * (int)(player.CurrentSword.Damage / 5);
+            //return 3;
+
+            return 1 * (int)(player.CurrentSword.Damage / 5);
         }
 
         /// <summary>
