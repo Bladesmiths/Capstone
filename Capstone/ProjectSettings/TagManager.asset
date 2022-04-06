@@ -6,10 +6,10 @@ TagManager:
   tags:
   - CinemachineTarget
   - Enemy
-  - Targettable
   - PreventDmg
   - Damaging
   - Projectile
+  - Targetable
   layers:
   - Default
   - TransparentFX

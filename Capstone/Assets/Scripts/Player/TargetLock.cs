@@ -19,11 +19,11 @@ namespace Bladesmiths.Capstone
         private LayerMask obscuringLayers;
 
         [SerializeField]
-        private SphereCollider targettingSphere;
+        private SphereCollider targetingSphere;
 
         // List of enemies in the level
         [SerializeField]
-        private Dictionary<int, GameObject> targettableDict = new Dictionary<int, GameObject>();
+        private Dictionary<int, GameObject> targetableDict = new Dictionary<int, GameObject>();
 
         // List of enemies that are visible to the player
         // Updated each time the system is re-enabled
@@ -52,7 +52,7 @@ namespace Bladesmiths.Capstone
             get => active; 
             set
             {
-                if (targettableDict.Count > 0)
+                if (targetableDict.Count > 0)
                 {
                     active = value;
                 }
@@ -83,7 +83,7 @@ namespace Bladesmiths.Capstone
             }
 
             // If target lock is enabled
-            if (Active && targettableDict.Count != 0 && targetedObject != null)
+            if (Active && targetableDict.Count != 0 && targetedObject != null)
             {
                 // Reposition the target image and make the player look at the target
                 RepositionTargetImage();
@@ -125,7 +125,7 @@ namespace Bladesmiths.Capstone
         {
             // If the target lock system is currently active
             // Find all visible enemies and then find the closest
-            if (Active && targettableDict.Count != 0)
+            if (Active && targetableDict.Count != 0)
             {
                 // Find all visible enemies and place them in a list
                 visibleTargets = FindVisibleEnemies();
@@ -174,7 +174,7 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Subscribe to OnDestruction Event
-                targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
+                targetedObject.transform.parent.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
 
                 // Set the target lock camera to the top priority
                 targetLockCam.Priority = 2;
@@ -308,7 +308,7 @@ namespace Bladesmiths.Capstone
             }
 
             // Unsubscribe to OnDestruction Event
-            targetedObject.GetComponent<IIdentified>().OnDestruction -= RemoveTargetedEnemy;
+            targetedObject.transform.parent.GetComponent<IIdentified>().OnDestruction -= RemoveTargetedEnemy;
 
             targetedObject = closestEnemyToTarget;
 
@@ -319,7 +319,7 @@ namespace Bladesmiths.Capstone
             }
 
             // Subscribe to OnDestruction Event
-            targetedObject.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
+            targetedObject.transform.parent.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
 
             RepositionTargetImage(); 
         }
@@ -333,7 +333,7 @@ namespace Bladesmiths.Capstone
         private List<GameObject> FindVisibleEnemies()
         {
             // Filter the list of enemies to only the enemies that are visible
-            List<GameObject> visibleFiltered = targettableDict.Where(x => 
+            List<GameObject> visibleFiltered = targetableDict.Where(x => 
             IsEnemyVisible(x.Value)).ToDictionary(x => x.Key, x => x.Value).Values.ToList(); 
 
             // If there aren't any visible enemies return null
@@ -386,7 +386,7 @@ namespace Bladesmiths.Capstone
         /// <param name="id">The id of the enemy that should be removed</param>
         private void RemoveTargetedEnemy(int id)
         {
-            targettableDict.Remove(id);
+            targetableDict.Remove(id);
             DisableTargetLock();
         }
 
@@ -409,12 +409,12 @@ namespace Bladesmiths.Capstone
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag != "Targettable" && other.tag != "Enemy")
+            if (other.tag != "Targetable")
             {
                 return;
             }
 
-            targettableDict.Add(other.GetComponent<IIdentified>().ID, other.gameObject); 
+            targetableDict.Add(other.GetComponent<TargetLockPoint>().ID, other.gameObject); 
         }
 
         /// <summary>
@@ -423,14 +423,14 @@ namespace Bladesmiths.Capstone
         /// <param name="other"></param>
         private void OnTriggerExit(Collider other)
         {
-            if (other.tag != "Targettable" && other.tag != "Enemy")
+            if (other.tag != "Targetable")
             {
                 return;
             }
 
-            targettableDict.Remove(other.GetComponent<IIdentified>().ID);
+            targetableDict.Remove(other.GetComponent<TargetLockPoint>().ID);
             
-            if (targettableDict.Count == 0)
+            if (targetableDict.Count == 0)
             {
                 // Switch back to the other camera having top priority
                 targetLockCam.Priority = 0;
