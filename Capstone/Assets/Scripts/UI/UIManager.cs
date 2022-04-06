@@ -491,24 +491,36 @@ namespace Bladesmiths.Capstone.UI
                 if (swordSelectTwoSwordsObject.activeInHierarchy)
                 {
                     // Set the background of the old one to white
-                    backgroundImagesTwoSwords[currentSwordSelect].color = Color.white;
+                    //backgroundImagesTwoSwords[currentSwordSelect].color = Color.white;
+                    backgroundImagesTwoSwords[currentSwordSelect].enabled = false;
 
                     // Set the background of the new one to its color
-                    backgroundImagesTwoSwords[currentSwordType].color = backgroundColors[currentSwordType];
+                    //backgroundImagesTwoSwords[currentSwordType].color = backgroundColors[currentSwordType];
+                    backgroundImagesTwoSwords[currentSwordType].enabled = true;
                 }
                 else if (swordSelectObject.activeInHierarchy)
                 {
                     // Set the background of the old one to white
-                    backgroundImages[currentSwordSelect].color = Color.white;
+                    //backgroundImages[currentSwordSelect].color = Color.white;
+                    backgroundImages[currentSwordSelect].enabled = false;
 
                     // Set the background of the new one to its color
-                    backgroundImages[currentSwordType].color = backgroundColors[currentSwordType];
+                    //backgroundImages[currentSwordType].color = backgroundColors[currentSwordType];
+                    backgroundImages[currentSwordType].enabled = true;
                 }
-                
+
                 // Update the field
                 currentSwordSelect = currentSwordType;
             }
         }
+
+
+        public void GainNewSword(SwordType type)
+        {
+
+
+        }
+
 
         /// <summary>
         /// Toggle the radial menu on or off
@@ -526,16 +538,17 @@ namespace Bladesmiths.Capstone.UI
                     // Set it to the active values
                     if (swordType == currentSwordSelect)
                     {
-                        gemImages[swordType].sprite = activeGemSprites[swordType];
-                        gemImages[swordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize);
-                        backgroundImages[swordType].color = backgroundColors[swordType];
+                        //backgroundImages[swordType].enabled = true;
+                        //gemImages[swordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize);
+                        //backgroundImages[swordType].color = backgroundColors[swordType];
                     }
                     // Otherwise set it to inactive values
                     else
                     {
-                        gemImages[swordType].sprite = inactiveGemSprites[swordType];
-                        gemImages[swordType].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
-                        backgroundImages[swordType].color = Color.white;
+                        //backgroundImages[swordType].enabled = false;
+                        //gemImages[swordType].sprite = inactiveGemSprites[swordType];
+                        //gemImages[swordType].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
+                        //backgroundImages[swordType].color = Color.white;
                     }
                 }
             }
@@ -559,16 +572,17 @@ namespace Bladesmiths.Capstone.UI
                     // Set it to the active values
                     if (swordType == currentSwordSelect)
                     {
-                        gemImagesTwoSwords[swordType].sprite = activeGemSprites[swordType];
-                        gemImagesTwoSwords[swordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize);
-                        backgroundImagesTwoSwords[swordType].color = backgroundColors[swordType];
+                        //backgroundImagesTwoSwords[swordType].enabled = true;
+                        //gemImages[swordType].rectTransform.sizeDelta = new Vector2(activeSize, activeSize);
+                        //backgroundImages[swordType].color = backgroundColors[swordType];
                     }
                     // Otherwise set it to inactive values
                     else
                     {
-                        gemImagesTwoSwords[swordType].sprite = inactiveGemSprites[swordType];
-                        gemImagesTwoSwords[swordType].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
-                        backgroundImagesTwoSwords[swordType].color = Color.white;
+                        //backgroundImagesTwoSwords[swordType].enabled = false;
+                        //gemImages[swordType].sprite = inactiveGemSprites[swordType];
+                        //gemImages[swordType].rectTransform.sizeDelta = new Vector2(inactiveSize, inactiveSize);
+                        //backgroundImages[swordType].color = Color.white;
                     }
                 }
             }

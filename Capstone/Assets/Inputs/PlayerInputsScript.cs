@@ -169,7 +169,7 @@ namespace Bladesmiths.Capstone
 						//Debug.Log(angle);
 
 						// Update currentSwordType according to angle
-						if (angle > 180 && angle <= 360)
+						if (angle > 90 && angle <= 270)
 						{
 							currentSwordType = Enums.SwordType.Ruby;
 						}
