@@ -213,6 +213,15 @@ namespace Bladesmiths.Capstone
                                 player.AddDamagingID(ID);
                                 player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
                             }
+
+                        }
+                        else
+                        {
+                            //Debug.Log(col.gameObject);
+                            FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                            //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
+                            player.AddDamagingID(ID);
+                            player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
                         }
                     }
                     else

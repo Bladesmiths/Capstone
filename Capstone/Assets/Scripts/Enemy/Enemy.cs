@@ -5,6 +5,7 @@ using System;
 using UnityEngine.AI;
 using Bladesmiths.Capstone.Enums;
 using BehaviorDesigner.Runtime;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
@@ -68,7 +69,9 @@ namespace Bladesmiths.Capstone
         public bool isAttacking;
 
         [SerializeField]
-        public GameObject geo;
+        public GameObject[] geo;
+        [SerializeField]
+        public GameObject[] special;
         [SerializeField]
         public List<GameObject> bodyChunks;
         [SerializeField]
@@ -126,7 +129,7 @@ namespace Bladesmiths.Capstone
             attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
-            chunksRemoved = 3;
+            chunksRemoved = 2;
             canMove = false;
             damagingTimer = 0f;
             //swordRot = Sword.transform.localRotation;
@@ -221,6 +224,7 @@ namespace Bladesmiths.Capstone
             throw new NotImplementedException();
         }
 
+        [Button("RemoveChunck")]
         public void RemoveRandomChunk()
         {
             //if (bodyChunks.Count <= 10)
@@ -241,8 +245,7 @@ namespace Bladesmiths.Capstone
         public int NumChunks()
         {
             //return 3;
-
-            return 1 * (int)(player.CurrentSword.Damage / 5);
+            return chunksRemoved * (int)(player.CurrentSword.Damage / 5);
         }
 
         /// <summary>
