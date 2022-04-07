@@ -269,7 +269,7 @@ namespace Bladesmiths.Capstone
 
             LandTimeoutDelta = -1.0f;
 
-            isGrounded = false;
+            isGrounded = true;
             controllerVelocity = Vector2.zero;
 
             Health = MaxHealth;
@@ -411,12 +411,8 @@ namespace Bladesmiths.Capstone
                 speed *= inputs.move.magnitude;
             }
 
-            // if the speed is less than the walkspeed and greater than 0 then set it to the walk speed
-
-
             // If the player isn't moving set their speed to 0
             if (inputs.move == Vector2.zero) speed = 0.0f;
-
 
             // Animator input
             // animator.SetFloat(animIDForward, speed / targetSpeed);
@@ -424,23 +420,7 @@ namespace Bladesmiths.Capstone
 
             // normalise input direction
             inputDirection = new Vector3(inputs.move.x, 0.0f, inputs.move.y).normalized;
-
-            // Recentering code for the camera
-            //if(inputs.move != Vector2.zero)
-            //{
-            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = false;
-            //    freeLookCam.m_YAxisRecentering.m_enabled = false;
-            //    freeLookCam.m_RecenterToTargetHeading.CancelRecentering();
-            //    freeLookCam.m_YAxisRecentering.CancelRecentering();
-            //}
-            //else
-            //{
-            //    freeLookCam.m_RecenterToTargetHeading.m_enabled = true;
-            //    freeLookCam.m_YAxisRecentering.m_enabled = true;
-            //}
-
-            
-
+          
             // Runs if the player is inputting a movement key and whenever the targetspeed is not 0
             // This allows for the player to not rotate a different direction based off of what they
             // are inputting when dodging or in another state
@@ -479,7 +459,7 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void Jump()
         {
-            if (controller.isGrounded)
+            if (controller.isGrounded || controller.velocity.magnitude == 0)
             {
                 //Debug.Log("<color=brown>Grounded</color>");
                 fallTimeoutDelta = FallTimeout;
@@ -537,8 +517,6 @@ namespace Bladesmiths.Capstone
             }
             else
             {
-                //Debug.Log("<color=blue>In Air</color>");
-
                 LandTimeoutDelta = landTimeout;
 
                 // reset the jump timeout timer
