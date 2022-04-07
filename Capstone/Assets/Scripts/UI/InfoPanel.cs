@@ -18,6 +18,8 @@ public class InfoPanel : SerializedMonoBehaviour
     public Image infoImageR;
     public Image infoImageU;
 
+    private CanvasGroup canvasGroup;
+
     public TextMeshProUGUI infoText;
     public TextMeshProUGUI infoTextPlusL;
     public TextMeshProUGUI infoTextPlusR;
@@ -27,7 +29,7 @@ public class InfoPanel : SerializedMonoBehaviour
     [BoxGroup("Tutorial Text/FirstRow/Tutorial Text")] [LabelWidth(70)]
 
     [OdinSerialize]
-    Dictionary<int, string> infoTextDictionary = new Dictionary<int, string>();
+    Dictionary<string, string> infoTextDictionary = new Dictionary<string, string>();
 
     [SerializeField] UIManager uiManager;
     [SerializeField] PlayerInput playerInputs;
@@ -35,7 +37,7 @@ public class InfoPanel : SerializedMonoBehaviour
     private Dictionary<string, Sprite> xboxInputs;
     private Dictionary<string, Sprite> kbmInputs;
 
-    private int currentTextIndex;
+    private string currentTextKey;
     private string currentInputKBM;
     private string currentInputGamepad;
 
@@ -47,6 +49,7 @@ public class InfoPanel : SerializedMonoBehaviour
     {
         //firstCluster = GameObject.Find("Breakable Gem Cluster").GetComponent<BreakableBox>();
         //finalCluster = GameObject.Find("Breakable Gem Cluster (7)").GetComponent<LastBreakableBox>();
+        canvasGroup = GetComponent<CanvasGroup>();
 
         playerInputs = uiManager.Inputs;
         xboxInputs = uiManager.xboxInputs;
@@ -67,23 +70,62 @@ public class InfoPanel : SerializedMonoBehaviour
     {
         if (currentInputGamepad != null && currentInputKBM != null && withinZone)
         {
-            SetInfoUI(currentInputGamepad, currentInputKBM, currentTextIndex);
+            SetInfoUI(currentInputGamepad, currentInputKBM, currentTextKey);
+        }
+    }
+
+    public IEnumerator Fade(bool fadingIn)
+    {
+        //Fade In
+        if (fadingIn)
+        {
+            infoImage.enabled = true;
+            infoText.enabled = true;
+
+            infoTextPlusL.enabled = false;
+            infoTextPlusR.enabled = false;
+
+            infoImageLL.enabled = false;
+            infoImageL.enabled = false;
+            infoImageR.enabled = false;
+            infoImageU.enabled = false;
+
+            while (canvasGroup.alpha < 1.0f)
+            {
+                canvasGroup.alpha += Time.deltaTime;
+                yield return null;
+            }
+        }
+        //Fade Out
+        else
+        {
+            while (canvasGroup.alpha > 0.0f)
+            {
+                canvasGroup.alpha -= Time.deltaTime;
+                yield return null;
+            }
+
+            infoImage.sprite = null;
+            infoText.text = "";
+
+            infoImage.enabled = false;
+            infoText.enabled = false;
+
+            infoTextPlusL.enabled = false;
+            infoTextPlusR.enabled = false;
+
+            infoImageLL.enabled = false;
+            infoImageL.enabled = false;
+            infoImageR.enabled = false;
+            infoImageU.enabled = false;
         }
     }
 
     //Modify info panel image and text to display information
-    public void SetInfoUI(string gamepadIconIndex, string kbmIconIndex, int textIndex)
+    public void SetInfoUI(string gamepadIconIndex, string kbmIconIndex, string textKey)
     {
-        infoImage.enabled = true;
-        infoText.enabled = true;
-
-        infoTextPlusL.enabled = false;
-        infoTextPlusR.enabled = false;
-
-        infoImageLL.enabled = false;
-        infoImageL.enabled = false;
-        infoImageR.enabled = false;
-        infoImageU.enabled = false;
+        StopAllCoroutines();
+        StartCoroutine(Fade(true));
 
         //Only show a control icon if there's an icon to show
         if (gamepadIconIndex != "none" && kbmIconIndex != "none")
@@ -160,7 +202,7 @@ public class InfoPanel : SerializedMonoBehaviour
 
         //Set text
         //Determined entirely by an index value attached to the zone the player has entered
-        infoText.text = " - " + infoTextDictionary[textIndex];
+        infoText.text = " - " + infoTextDictionary[textKey];
 
         //Specific case for final cluster message
         //Hide text when enemies are defeated / cluster is active
@@ -177,24 +219,13 @@ public class InfoPanel : SerializedMonoBehaviour
 
         currentInputGamepad = gamepadIconIndex;
         currentInputKBM = kbmIconIndex;
-        currentTextIndex = textIndex;
+        currentTextKey = textKey;
     }
 
     //Hide info panel when not in use
     public void ClearInfoUI()
-    { 
-        infoImage.sprite = null;
-        infoText.text = "";
-
-        infoImage.enabled = false;
-        infoText.enabled = false;
-
-        infoTextPlusL.enabled = false;
-        infoTextPlusR.enabled = false;
-
-        infoImageLL.enabled = false;
-        infoImageL.enabled = false;
-        infoImageR.enabled = false;
-        infoImageU.enabled = false;
+    {
+        StopAllCoroutines();
+        StartCoroutine(Fade(false));
     }
 }
