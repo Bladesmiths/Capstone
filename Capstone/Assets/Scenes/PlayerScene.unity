@@ -4723,6 +4723,7 @@ GameObject:
   - component: {fileID: 125179846}
   - component: {fileID: 125179845}
   - component: {fileID: 125179844}
+  - component: {fileID: 125179848}
   m_Layer: 5
   m_Name: InfoPanel
   m_TagString: Untagged
@@ -4779,24 +4780,24 @@ MonoBehaviour:
     SerializationNodes:
     - Name: infoTextDictionary
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 11
+      Data: 15
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 0
+      Entry: 1
+      Data: move
     - Name: $v
       Entry: 1
       Data: Walk
@@ -4807,8 +4808,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 1
+      Entry: 1
+      Data: look
     - Name: $v
       Entry: 1
       Data: Look Around
@@ -4819,8 +4820,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 2
+      Entry: 1
+      Data: attack
     - Name: $v
       Entry: 1
       Data: Attack
@@ -4831,8 +4832,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 3
+      Entry: 1
+      Data: block
     - Name: $v
       Entry: 1
       Data: Block
@@ -4843,8 +4844,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 4
+      Entry: 1
+      Data: parry
     - Name: $v
       Entry: 1
       Data: Parry / Deflect
@@ -4855,8 +4856,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 5
+      Entry: 1
+      Data: roll
     - Name: $v
       Entry: 1
       Data: Dodge Roll
@@ -4867,8 +4868,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 6
+      Entry: 1
+      Data: form
     - Name: $v
       Entry: 1
       Data: Change Sword Form
@@ -4879,32 +4880,8 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 7
-    - Name: $v
       Entry: 1
-      Data: Smash all 8 Gem Clusters -
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 8
-    - Name: $v
-      Entry: 1
-      Data: Defeat both enemies! -
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 9
+      Data: menu
     - Name: $v
       Entry: 1
       Data: Open the Menu
@@ -4915,11 +4892,87 @@ MonoBehaviour:
       Entry: 7
       Data: 
     - Name: $k
-      Entry: 3
-      Data: 10
+      Entry: 1
+      Data: lifesteal
     - Name: $v
       Entry: 1
-      Data: In <color=#FFFF00>Topaz</color> form, your sword drains life from enemies.
+      Data: Your <color=#ffda57>Topaz</color> sword drains life from enemies -
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: armor
+    - Name: $v
+      Entry: 1
+      Data: Enemies cannot interrupt your <color=#ed0b00>Ruby</color> sword attacks
+        -
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: dash
+    - Name: $v
+      Entry: 1
+      Data: The <color=#526eff>Sapphire</color> sword improves your roll to a dash
+        -
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: target
+    - Name: $v
+      Entry: 1
+      Data: Target Enemy
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: chip
+    - Name: $v
+      Entry: 1
+      Data: Chip damage taken when blocking is restored by parrying -
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: damage
+    - Name: $v
+      Entry: 1
+      Data: Damage taken is decreased by <color=#ed0b00>Ruby</color> and increased
+        by <color=#526eff>Sapphire</color> -
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: restoreHealth
+    - Name: $v
+      Entry: 1
+      Data: Break <color=#a200ff>Amethyst</color> clusters to restore your health
+        -
     - Name: 
       Entry: 8
       Data: 
@@ -5004,6 +5057,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125179842}
   m_CullTransparentMesh: 1
+--- !u!225 &125179848
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125179842}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &127523495
 GameObject:
   m_ObjectHideFlags: 0
@@ -5827,7 +5892,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136034365}
-  m_LocalRotation: {x: -0.018141463, y: 0.000000029802322, z: -0.000000007450581, w: 0.9998355}
+  m_LocalRotation: {x: -0.018141463, y: -0, z: 0.000000014901161, w: 0.9998355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16558,7 +16623,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189477, y: 0.000000029802326, z: -0.000000014901163, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189507, y: 0.000000029802326, z: -0.000000014901163, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -64228,7 +64293,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: 0.19442774, y: 0.38968438, z: -0.0845396, w: 0.8962126}
+  m_LocalRotation: {x: 0.19442774, y: 0.38968438, z: -0.08453959, w: 0.89621264}
   m_LocalPosition: {x: -100.34541, y: 10.347, z: -54.367992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -76887,7 +76952,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 18
+      Data: 19
     - Name: 
       Entry: 7
       Data: 
@@ -77101,6 +77166,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 6
       Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: clickRightStick
+    - Name: $v
+      Entry: 10
+      Data: 481
     - Name: 
       Entry: 8
       Data: 
@@ -85126,7 +85203,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: -0.000000014901159, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.000000014901161, y: 0.000000029802322, z: -0.000000014901161, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

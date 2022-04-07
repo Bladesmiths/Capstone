@@ -7,7 +7,7 @@ public class InfoZone : MonoBehaviour
 {
     public string gamepadIndex;
     public string kbmIndex;
-    public int textIndex;
+    public string textKey;
 
     public InfoPanel infoPanel;
 
@@ -30,7 +30,7 @@ public class InfoZone : MonoBehaviour
         if (other.transform.root.gameObject.CompareTag("Player"))
         {
             infoPanel.withinZone = true;
-            infoPanel.SetInfoUI(gamepadIndex, kbmIndex, textIndex);
+            infoPanel.SetInfoUI(gamepadIndex, kbmIndex, textKey);
         }
     }
 
