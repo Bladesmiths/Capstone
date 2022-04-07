@@ -356,17 +356,18 @@ namespace Bladesmiths.Capstone
                 return false;
             }
 
-            RaycastHit hit;
+            Func<Transform, Transform, bool> compareXZ = (Transform t1, Transform t2) => 
+            { 
+                return t1.position.x == t2.position.x && t1.position.z == t2.position.z; 
+            };
 
-            // Known Weirdness here
-            // If the ray hits a child of the actual thing that could potentially be targetted
-            // There could be problems
-            // To minimize this issue:
-            // Try to keep children centered on the parent
-            // Or make sure that the thing tagged with "Targetable" is the thing that has the collider
-            // May need a better fix in the future
-            return (Physics.Linecast(playerCamRoot.position, 
-                enemy.GetComponent<Collider>().bounds.center, out hit, obscuringLayers) && hit.transform == enemy.transform); 
+            RaycastHit hit;
+            bool hitBool = Physics.Linecast(playerCamRoot.position, 
+                enemy.GetComponent<Collider>().bounds.center, out hit, obscuringLayers) 
+                && compareXZ(hit.transform, enemy.transform);
+
+            
+            return hitBool;
         }
 
         /// <summary>
