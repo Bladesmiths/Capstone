@@ -79,10 +79,13 @@ namespace Bladesmiths.Capstone
             count = _enemy.spine.Length;
             for (int i = 0; i < count; i++)
             {
-                _enemy.spine[i].gameObject.AddComponent<BoxCollider>();
-                _enemy.spine[i].gameObject.AddComponent<Rigidbody>();
-                _enemy.spine[i].gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
-                _enemy.spine[i].transform.parent = null;
+                if (_enemy.spine[i].gameObject != null)
+                {
+                    _enemy.spine[i].gameObject.AddComponent<BoxCollider>();
+                    _enemy.spine[i].gameObject.AddComponent<Rigidbody>();
+                    _enemy.spine[i].gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                    _enemy.spine[i].transform.parent = null;
+                }
             }
 
             count = _enemy.geo.Length;

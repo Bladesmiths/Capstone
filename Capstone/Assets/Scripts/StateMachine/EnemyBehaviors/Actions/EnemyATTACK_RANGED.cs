@@ -63,12 +63,17 @@ namespace Bladesmiths.Capstone
         {
             _enemy = gameObject.GetComponent<Enemy_Ranged>();
             //_sword = _enemy.Sword;
+            _enemy.animator.SetTrigger("Attack");
+
             speed = 6f;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             fireTimerLimit = 2f;
             fireTimer = fireTimerLimit;
             attack = true;
+            _enemy.InCombat = true;
+            _enemy.isAttacking = true;
+            _enemy.attackedYet = true;
             //_sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
@@ -90,6 +95,8 @@ namespace Bladesmiths.Capstone
 
             if (Physics.Raycast(_enemy.shootLoc.position, transform.forward, out hit, 10f, _enemy.PlayerLayer))
             {
+                //FireProjectile();
+
                 timer += Time.deltaTime;
                 if (fireTimer >= fireTimerLimit)
                 {

@@ -668,8 +668,12 @@ namespace Bladesmiths.Capstone
 
                 // The resullt of Character's Take Damage
                 // Was damage taken or not
-                float damageResult = base.TakeDamage(damagingID, damage);
+                float damageResult = 0;
 
+                if (objectController[damagingID] != null)
+                {
+                    damageResult = base.TakeDamage(damagingID, damage);
+                }
                 // If damage was taken
                 // Update the playerHealth field for analytics
                 if (damageResult > 0)
