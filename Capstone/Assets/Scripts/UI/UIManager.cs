@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 using Sirenix.Serialization;
 using UnityEngine.SceneManagement;
 using Bladesmiths.Capstone.Enums;
+using DG.Tweening;
 
 namespace Bladesmiths.Capstone.UI
 {
@@ -28,6 +29,8 @@ namespace Bladesmiths.Capstone.UI
         float bossPrevHealth;
         bool bossBarAnimationStarted;
         bool bossBarAnimationFinished;
+        public bool gainingSword;
+        private SwordType newSword;
 
         [SerializeField] private PlayerInput playerInput;
 
@@ -155,6 +158,7 @@ namespace Bladesmiths.Capstone.UI
         {
             // Initialize variables
             isPaused = false;
+            gainingSword = false;
             if (player != null)
             {
                 UpdateScore(0, player.MaxPoints);
@@ -517,9 +521,58 @@ namespace Bladesmiths.Capstone.UI
 
         public void GainNewSword(SwordType type)
         {
-
-
+            StartCoroutine(GetNewSword(type));
         }
+
+        public IEnumerator GetNewSword(SwordType type)
+        {
+            gainingSword = true;
+
+            if (player.currentSwords.Count == 2)
+            {
+                ToggleTwoSwordsRadialMenu(true);
+
+                backgroundImagesTwoSwords[currentSwordSelect].enabled = true;
+                yield return new WaitForSeconds(1f);
+
+                //gemImagesTwoSwords[type].material.DOColor(Color.red, 0.5f);
+                //gemImagesTwoSwords[type].DO
+                gemImagesTwoSwords[type].DOFade(1f, 2f);
+                //gemImagesTwoSwords[type].DOColor(Color.white, 2f);
+                yield return new WaitForSeconds(3f);
+
+
+                //yield return new WaitUntil(newSwordSelected());
+
+
+
+                ToggleTwoSwordsRadialMenu(false);
+
+            }
+            else if (player.currentSwords.Count > 2)
+            {
+                ToggleRadialMenu(true);
+
+                backgroundImages[currentSwordSelect].enabled = true;
+
+                //gemImagesTwoSwords[type].material.DOColor(Color.red, 0.5f);
+                gemImages[type].DOColor(Color.blue, 2f);
+                //gemImagesTwoSwords[type].DOColor(Color.white, 2f);
+                yield return new WaitForSeconds(2f);
+
+                ToggleRadialMenu(false);
+
+            }
+
+            gainingSword = false;
+        }
+
+        //public Func<bool> rubySwordSelected()
+        //{
+        //    return SwordGemPickup.instance.
+
+
+        //}
 
 
         /// <summary>

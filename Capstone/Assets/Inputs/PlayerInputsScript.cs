@@ -101,7 +101,10 @@ namespace Bladesmiths.Capstone
 
 		public void OnOpenSwordSelector(InputValue value)
 		{
-			OpenSwordSelectInput(value.isPressed);
+			if (!uiManager.gainingSword)
+			{
+				OpenSwordSelectInput(value.isPressed);
+			}
 		}
 
 		public void OnSwitchSword(InputValue value)
