@@ -258,7 +258,7 @@ namespace Bladesmiths.Capstone.UI
                 camera.m_RecenterToTargetHeading.m_enabled = false;
                 camera.m_YAxisRecentering.m_enabled = false;
 
-                //Time.timeScale = 0;
+                Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
 
                 pauseMenu.SetActive(true);
