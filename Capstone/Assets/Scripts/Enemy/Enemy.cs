@@ -129,7 +129,7 @@ namespace Bladesmiths.Capstone
             attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
-            chunksRemoved = 2;
+            chunksRemoved = 1;
             canMove = false;
             damagingTimer = 0f;
             //swordRot = Sword.transform.localRotation;
