@@ -530,49 +530,81 @@ namespace Bladesmiths.Capstone.UI
 
             if (player.currentSwords.Count == 2)
             {
+                gemImagesTwoSwords[type].color = new Color(
+                    gemImagesTwoSwords[type].color.r, 
+                    gemImagesTwoSwords[type].color.b, 
+                    gemImagesTwoSwords[type].color.g, 0f);
+
                 ToggleTwoSwordsRadialMenu(true);
 
                 backgroundImagesTwoSwords[currentSwordSelect].enabled = true;
                 yield return new WaitForSeconds(1f);
-
-                //gemImagesTwoSwords[type].material.DOColor(Color.red, 0.5f);
-                //gemImagesTwoSwords[type].DO
+                
                 gemImagesTwoSwords[type].DOFade(1f, 2f);
-                //gemImagesTwoSwords[type].DOColor(Color.white, 2f);
                 yield return new WaitForSeconds(3f);
 
+                player.Inputs.swordSelectActive = true;
+                camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
+                StartCoroutine(PulseGem(type, Color.red, gemImagesTwoSwords));
+                yield return new WaitUntil(rubySwordSelected());
 
-                //yield return new WaitUntil(newSwordSelected());
+                StopCoroutine(PulseGem(type, Color.red, gemImagesTwoSwords));
+                player.Inputs.swordSelectActive = false;                
+                gemImagesTwoSwords[type].DOColor(Color.red, 1f);
+                yield return new WaitForSeconds(1f);
 
-
-
+                player.SwitchSword(SwordType.Ruby);
                 ToggleTwoSwordsRadialMenu(false);
+                camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = true;
+
 
             }
             else if (player.currentSwords.Count > 2)
             {
+                gemImages[type].color = new Color(
+                    gemImages[type].color.r,
+                    gemImages[type].color.b,
+                    gemImages[type].color.g, 0f);
+
                 ToggleRadialMenu(true);
 
                 backgroundImages[currentSwordSelect].enabled = true;
+                yield return new WaitForSeconds(1f);
 
-                //gemImagesTwoSwords[type].material.DOColor(Color.red, 0.5f);
-                gemImages[type].DOColor(Color.blue, 2f);
-                //gemImagesTwoSwords[type].DOColor(Color.white, 2f);
-                yield return new WaitForSeconds(2f);
+                gemImages[type].DOFade(1f, 2f);
+                yield return new WaitForSeconds(3f);
 
+                player.Inputs.swordSelectActive = true;
+                camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
+                StartCoroutine(PulseGem(type, Color.blue, gemImages));
+                yield return new WaitUntil(sapphireSwordSelected());
+
+                StopCoroutine(PulseGem(type, Color.blue, gemImages));
+                player.Inputs.swordSelectActive = false;
+                gemImages[type].DOColor(Color.blue, 1f);
+                yield return new WaitForSeconds(1f);
+
+                player.SwitchSword(SwordType.Sapphire);
                 ToggleRadialMenu(false);
-
+                camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = true;
             }
 
             gainingSword = false;
         }
 
-        //public Func<bool> rubySwordSelected()
-        //{
-        //    return SwordGemPickup.instance.
+        public Func<bool> rubySwordSelected()=> () => player.Inputs.currentSwordType == SwordType.Ruby;
+        public Func<bool> sapphireSwordSelected() => () => player.Inputs.currentSwordType == SwordType.Sapphire;
 
 
-        //}
+        public IEnumerator PulseGem(SwordType type, Color c, Dictionary<SwordType, Image> dict)
+        {
+            dict[type].DOColor(c, 0.5f);
+            yield return new WaitForSeconds(0.5f);
+            dict[type].DOColor(Color.white, 0.5f);
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(PulseGem(type, c, dict));
+        }
+
 
 
         /// <summary>
