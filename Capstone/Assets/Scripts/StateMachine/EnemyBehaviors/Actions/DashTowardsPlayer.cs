@@ -13,11 +13,10 @@ namespace Bladesmiths.Capstone
 
         private NavMeshAgent agent;
         public Vector3 playerPos;
-        public AnimationCurve curveZ;
-        public AnimationCurve curveY;
+        
         private float timer;
         private float timerMax;
-        private GameObject sword;
+        //private GameObject sword;
         private Enemy enemy;
         public float enemySpeed;
         public float enemyAccl;
@@ -30,16 +29,17 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             agent = GetComponent<NavMeshAgent>();
-            enemy = GetComponent<Enemy>(); 
+            enemy = GetComponent<Enemy>();
+            enemy.animator.SetTrigger("Dash");
             agent.speed = enemySpeed;
             agent.acceleration = enemyAccl;
             //playerPos = Player.instance.transform.position;// - transform.position;
             distance = Player.instance.transform.position - transform.position;
             playerPos = (-distance.normalized * 2f) + Player.instance.transform.position;
-            timerMax = 1f;
+            timerMax = 1.41f;
             timer = 0;
-            sword = enemy.Sword;
-            sword.GetComponent<BoxCollider>().enabled = true;
+            //sword = enemy.Sword;
+            //sword.GetComponent<BoxCollider>().enabled = true;
             enemy.attackTimerMax = Random.Range(0.5f, 2f);
             enemy.isAttacking = true;
             enemy.attackedYet = true;
@@ -49,9 +49,7 @@ namespace Bladesmiths.Capstone
         public override TaskStatus OnUpdate()
         {
             timer += Time.deltaTime;
-            float valZ = curveZ.Evaluate(timer);
-            float valY = curveY.Evaluate(timer);            
-            sword.transform.localRotation = Quaternion.Euler(0f, valY, valZ);
+                 
             agent.SetDestination(playerPos);
             dist = playerPos - transform.position;
 
@@ -67,7 +65,7 @@ namespace Bladesmiths.Capstone
         {
             agent.speed = 3.5f;
             agent.acceleration = 8f;
-            sword.GetComponent<BoxCollider>().enabled = false;
+            //sword.GetComponent<BoxCollider>().enabled = false;
             enemy.isAttacking = false;
 
         }

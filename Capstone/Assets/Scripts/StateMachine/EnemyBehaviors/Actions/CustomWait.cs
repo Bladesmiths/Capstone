@@ -11,12 +11,15 @@ namespace Bladesmiths.Capstone
         public float timer;
         public float timerMax;
         private NavMeshAgent agent;
+        public bool canHitTrigger;
+        private Enemy enemy;
 
         public override void OnStart()
         {
             timer = 0;
             timerMax = Random.Range(0.5f, 1f);
             agent = GetComponent<NavMeshAgent>();
+            enemy = GetComponent<Enemy>();
         }
 
         public override TaskStatus OnUpdate()
@@ -48,7 +51,10 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnd()
         {
-
+            if(canHitTrigger)
+            {
+                enemy.CanHit = false;
+            }
 
         }
 

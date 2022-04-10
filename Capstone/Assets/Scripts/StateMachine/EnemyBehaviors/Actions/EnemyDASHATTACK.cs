@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
     {
         [SerializeField]
         private AnimationCurve curve;
-        private GameObject _sword;
+        //private GameObject _sword;
         private Enemy _enemy;
         private bool attack;
         public float timer;
@@ -32,7 +32,7 @@ namespace Bladesmiths.Capstone
 
         public EnemyDASHATTACK(GameObject sword, Enemy enemy)
         {
-            _sword = sword;
+            //_sword = sword;
             _enemy = enemy;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
@@ -47,7 +47,7 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
             float val = curve.Evaluate(timer);
-            _sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
+            //_sword.transform.rotation = Quaternion.Euler(val, _sword.transform.eulerAngles.y, 0f);
 
             if(timer <= timerMax)
             {
@@ -80,13 +80,13 @@ namespace Bladesmiths.Capstone
         {
             _enemy = gameObject.GetComponent<Enemy>();
             agent = GetComponent<NavMeshAgent>();
-            _sword = _enemy.Sword;
-            _sword = _enemy.Sword;
+            //_sword = _enemy.Sword;
+            //_sword = _enemy.Sword;
             //_sword.GetComponent<Sword>().damaging = true;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             attack = true;
-            _sword.GetComponent<BoxCollider>().enabled = true;
+            //_sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
             _enemy.attackTimerMax = Random.Range(0.5f, 2f);
@@ -101,10 +101,10 @@ namespace Bladesmiths.Capstone
 
         public override void OnEnd()
         {
-            _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            //_sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
-            _sword.GetComponent<BoxCollider>().enabled = false;
+            //_sword.GetComponent<BoxCollider>().enabled = false;
             _enemy.canMove = false;
 
 
