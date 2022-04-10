@@ -11,6 +11,19 @@ namespace Bladesmiths.Capstone
         private void Start()
         {
             center = transform.position;
+            Rigidbody[] bodies = transform.GetComponentsInChildren<Rigidbody>();
+            Debug.Log("Parent Pos: " + center);
+
+            for (int i = 0; i < bodies.Length; i++)
+            {
+                Vector3 dist = bodies[i].gameObject.transform.position - center;
+                //dist = transform.rotation * dist;
+                Debug.Log("RigidBody Pos: " + bodies[i].gameObject.transform.position);
+                Debug.Log("Distance: " + dist.normalized);
+                //rb.gameObject.transform.parent = null;
+                bodies[i].AddForce(dist.normalized * 10, ForceMode.Impulse);
+
+            }
         }
 
         private void Update()

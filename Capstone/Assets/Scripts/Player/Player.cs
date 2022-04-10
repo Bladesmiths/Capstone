@@ -584,16 +584,9 @@ namespace Bladesmiths.Capstone
                     swordsGeo[CurrentSword.SwordType].transform.GetChild(0).position,
                     swordsGeo[CurrentSword.SwordType].transform.GetChild(0).rotation);
 
-                Debug.Log(swordHilt.transform.position);
                 PlayerShatterSword shatter = shatterSword.GetComponent<PlayerShatterSword>();
 
-                foreach(Rigidbody rb in shatterSword.GetComponentsInChildren<Rigidbody>())
-                {
-                    Vector3 dist = shatter.center - rb.gameObject.transform.position;
-                    //rb.gameObject.transform.parent = null;
-                    rb.AddForce(dist.normalized * 3, ForceMode.Impulse);
-
-                }
+                
 
                 currentSwords[newSwordType].SetActive(true);
 

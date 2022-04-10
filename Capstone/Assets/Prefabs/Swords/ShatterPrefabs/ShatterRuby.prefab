@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 156896066861210568}
   - component: {fileID: 80766836241012208}
   - component: {fileID: 5237014189118868311}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 7204741208021633698}
   - component: {fileID: 3351566164616737785}
   - component: {fileID: 6836377763501661909}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 6605936091042062238}
   - component: {fileID: 2461192877240944800}
   - component: {fileID: 3102397116192595455}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 8072846630446219320}
   - component: {fileID: 4814825198048891055}
   - component: {fileID: 2825775376903353035}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 5001446193623882053}
   - component: {fileID: 4116479431612549912}
   - component: {fileID: 1757104900539611622}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 9206691114167389891}
   - component: {fileID: 1532568391581250261}
   - component: {fileID: 7017023990389033345}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 7596454673108490519}
   - component: {fileID: 4344986487936567449}
   - component: {fileID: 5106356089917716283}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 6109692775031928377}
   - component: {fileID: 7299596482287321525}
   - component: {fileID: 8299055252987897271}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,7 +1022,7 @@ GameObject:
   - component: {fileID: 2754273544377054401}
   - component: {fileID: 2208036867303252498}
   - component: {fileID: 7761529644219121985}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 3353973409819125164}
   - component: {fileID: 1278388604240706823}
   - component: {fileID: 8947591866592866280}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 6611788561413157354}
   - component: {fileID: 4759318123535790109}
   - component: {fileID: 8218971871588898969}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1400,7 +1400,7 @@ GameObject:
   - component: {fileID: 8779266752528688165}
   - component: {fileID: 4764538017341213450}
   - component: {fileID: 3455395046919345986}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 2216403667455857199}
   - component: {fileID: 825331353516234357}
   - component: {fileID: 8492782360961817329}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell.024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 6509370321009595600}
   - component: {fileID: 4801587091270458657}
   - component: {fileID: 8387939025240459960}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: rubyBlade_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1777,7 +1777,7 @@ GameObject:
   - component: {fileID: 7872550690746117249}
   - component: {fileID: 9038071831607862306}
   - component: {fileID: 2400282330832546760}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: ShatterRuby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
