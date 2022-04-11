@@ -12,17 +12,10 @@ namespace Bladesmiths.Capstone
         {
             center = transform.position;
             Rigidbody[] bodies = transform.GetComponentsInChildren<Rigidbody>();
-            Debug.Log("Parent Pos: " + center);
 
             for (int i = 0; i < bodies.Length; i++)
             {
-                Vector3 dist = bodies[i].gameObject.transform.position - center;
-                //dist = transform.rotation * dist;
-                Debug.Log("RigidBody Pos: " + bodies[i].gameObject.transform.position);
-                Debug.Log("Distance: " + dist.normalized);
-                //rb.gameObject.transform.parent = null;
-                bodies[i].AddForce(dist.normalized * 10, ForceMode.Impulse);
-
+                bodies[i].AddExplosionForce(5f, Player.instance.transform.position, 5f, 0.1f, ForceMode.Impulse);
             }
         }
 

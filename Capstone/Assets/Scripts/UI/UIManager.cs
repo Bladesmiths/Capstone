@@ -549,6 +549,7 @@ namespace Bladesmiths.Capstone.UI
                 // Opens the sword switching menu
                 ToggleTwoSwordsRadialMenu(true);
                 player.GetComponent<PlayerInputsScript>().switchingSwords = true;
+                player.ResetAnimationParameters();
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImagesTwoSwords[currentSwordSelect].enabled = true;
