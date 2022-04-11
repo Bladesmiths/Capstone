@@ -25,6 +25,7 @@ namespace Bladesmiths.Capstone
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
+		public bool switchingSwords = false;
 
 		[Header("UI Objects")]
 		public UI.UIManager uiManager;
@@ -58,7 +59,8 @@ namespace Bladesmiths.Capstone
 		#region On Input Methods
 		public void OnMove(InputValue value)
 		{
-			MoveInput(value.Get<Vector2>());
+			if(!switchingSwords)
+				MoveInput(value.Get<Vector2>());
 		}
 
 		public void OnLook(InputValue value)
@@ -71,37 +73,46 @@ namespace Bladesmiths.Capstone
 
 		public void OnJump(InputValue value)
 		{
-			JumpInput(value.isPressed);
+			if (!switchingSwords)
+				JumpInput(value.isPressed);
 		}
 
 		public void OnSprint(InputValue value)
 		{
-			SprintInput(value.isPressed);
+			if (!switchingSwords)
+				SprintInput(value.isPressed);
 		}
 
 		public void OnAttack(InputValue value)
 		{
-			AttackInput(value.isPressed);
+			if (!switchingSwords)
+				AttackInput(value.isPressed);
 		}
 
 		public void OnParry(InputValue value)
 		{
-			ParryInput(value.isPressed);
+			if (!switchingSwords)
+				ParryInput(value.isPressed);
 		}
 
 		public void OnBlock(InputValue value)
         {
-			BlockInput(value.isPressed);
+			if (!switchingSwords)
+				BlockInput(value.isPressed);
         }
 
 		public void OnDodge(InputValue value)
 		{
-			DodgeInput(value.isPressed);
+			if (!switchingSwords)
+				DodgeInput(value.isPressed);
 		}
 
 		public void OnOpenSwordSelector(InputValue value)
 		{
-			OpenSwordSelectInput(value.isPressed);
+			if (!uiManager.gainingSword)
+			{
+				OpenSwordSelectInput(value.isPressed);
+			}
 		}
 
 		public void OnSwitchSword(InputValue value)
@@ -169,7 +180,7 @@ namespace Bladesmiths.Capstone
 						//Debug.Log(angle);
 
 						// Update currentSwordType according to angle
-						if (angle > 180 && angle <= 360)
+						if (angle > 90 && angle <= 270)
 						{
 							currentSwordType = Enums.SwordType.Ruby;
 						}
@@ -197,11 +208,14 @@ namespace Bladesmiths.Capstone
 		/// <param name="value">The value of the control</param>
 		public void OnTargetLock(InputValue value)
 		{
-			// Toggles the target lock state to its opposite value
-			targetLockManager.Active = !targetLockManager.Active;
-			Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
-			// Runs the LockOnEnemy method no matter what because it serves both purposes
-			targetLockManager.LockOnEnemy();
+			if (!switchingSwords)
+			{
+				// Toggles the target lock state to its opposite value
+				targetLockManager.Active = !targetLockManager.Active;
+				Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
+				// Runs the LockOnEnemy method no matter what because it serves both purposes
+				targetLockManager.LockOnEnemy();
+			}
 		}
 
 		/// <summary>

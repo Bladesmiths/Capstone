@@ -58,8 +58,13 @@ namespace Bladesmiths.Capstone
         [OdinSerialize]
         private Dictionary<PlayerCondition, float> speedValues = new Dictionary<PlayerCondition, float>();
 
+        [OdinSerialize]
+        public Dictionary<SwordType, GameObject> shatterSwords = new Dictionary<SwordType, GameObject>();
+
         [SerializeField] private GameObject boss;
-       
+        
+        public GameObject swordHilt;
+
         private TargetLock targetLock;
         public BossTrigger bossTrigger;
 
@@ -553,7 +558,16 @@ namespace Bladesmiths.Capstone
             {
                 // Set the old sword data and model to inactive and the new to active
                 currentSwords[CurrentSword.SwordType].SetActive(false);
+                GameObject shatterSword = Instantiate(shatterSwords[CurrentSword.SwordType], 
+                    swordsGeo[CurrentSword.SwordType].transform.GetChild(0).position,
+                    swordsGeo[CurrentSword.SwordType].transform.GetChild(0).rotation);
+
+                PlayerShatterSword shatter = shatterSword.GetComponent<PlayerShatterSword>();
+
+                
+
                 currentSwords[newSwordType].SetActive(true);
+
                 swordsGeo[CurrentSword.SwordType].SetActive(false);
                 swordsGeo[newSwordType].SetActive(true);
 
