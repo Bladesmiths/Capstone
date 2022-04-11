@@ -24,15 +24,17 @@ namespace Bladesmiths.Capstone.Testing
             {
                 GameObject tempProj = GameObject.Instantiate(projectile);
                 tempProj.transform.forward = transform.forward;
-                tempProj.GetComponent<SpawnEnemyProjectile>().velocity = (enemySpawnPoint.position - projectileSpawnPoint.position).normalized * 7;
-                tempProj.GetComponent<SpawnEnemyProjectile>().velocity.x += Mathf.Cos(i * 20);
-                //tempProj.GetComponent<SpawnEnemyProjectile>().velocity.z += Mathf.Sin(i * 5);
-                //tempProj.GetComponent<SpawnEnemyProjectile>().velocity.x += i * 5;
-                tempProj.transform.position = projectileSpawnPoint.position;
-                //tempProj.transform.position = new Vector3(projectileSpawnPoint.position.x + (i * 5), projectileSpawnPoint.position.y, projectileSpawnPoint.position.z);
-                //new Vector3(projectileSpawnPoint.position.x + (i * 5), projectileSpawnPoint.position.y,projectileSpawnPoint.position.z);
 
-                if (i == 0)
+                // Rotates the projectile so the 3 move out in a spread
+                tempProj.transform.Rotate(0, i * 20, 0);
+                // Set the velocity to go forward and down
+                tempProj.GetComponent<SpawnEnemyProjectile>().velocity += tempProj.transform.forward * 7;
+                tempProj.GetComponent<SpawnEnemyProjectile>().velocity += -tempProj.transform.up * 5;
+
+                tempProj.transform.position = projectileSpawnPoint.position;
+
+                // One of the 3 should be a health pickup
+                if (i == 1)
                 {
                     tempProj.GetComponent<SpawnEnemyProjectile>().isHealthPickup = true;
                 }
