@@ -10,6 +10,7 @@ TagManager:
   - Damaging
   - Projectile
   - Targetable
+  - Targettable
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - SeeThroughLayer
   - 
   m_SortingLayers:
   - name: Default

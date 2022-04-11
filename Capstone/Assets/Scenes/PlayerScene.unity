@@ -5794,7 +5794,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7794486, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -16981,7 +16981,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7794486, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -17004,7 +17004,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409920308}
-  m_LocalRotation: {x: 0.018189477, y: 0.000000029802326, z: -0.000000014901163, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189507, y: 0.000000029802326, z: -0.000000014901163, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18392,7 +18392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.9023, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -19490,7 +19490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.9023, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -31119,7 +31119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.9023, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -67093,7 +67093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.9023, y: 0}
+  m_AnchoredPosition: {x: 880, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -70152,7 +70152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1719389757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Swords
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72179,7 +72179,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7794486, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -85405,7 +85405,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7794486, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -87472,7 +87472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481698656838747674}
   - component: {fileID: 5475037042724925898}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: beltGEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87520,7 +87520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5358008685146262142}
   - component: {fileID: 3376954996520393272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sapphireSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87705,7 +87705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2801984816345933364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Geometry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87782,7 +87782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9221989221564307326}
   - component: {fileID: 9108291599966819151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: topazBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88724,7 +88724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7383264830800982631}
   - component: {fileID: 5370367417152802617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tunicGEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88880,7 +88880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7043752652093518558}
   - component: {fileID: 4362895645141688723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bracerGEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89684,7 +89684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 271609234549762356}
   - component: {fileID: 9069613653746408532}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90134,7 +90134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270139898480634999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90282,7 +90282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4422467682403470909}
   - component: {fileID: 5040008817425853436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sapphire_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90767,7 +90767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4735143225712279832}
   - component: {fileID: 8931664747578976312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rubySword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90879,7 +90879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6958657721436040635}
   - component: {fileID: 5846498886889251708}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ruby_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91122,7 +91122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7781826857221560333}
   - component: {fileID: 6318953244586518415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: topaz_GEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91419,7 +91419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120572266922756214}
   - component: {fileID: 1593073346353757003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: capeHood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91634,7 +91634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836498312777259921}
   - component: {fileID: 6629866407554824193}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rubyBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91651,7 +91651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7451670770999499093}
   - component: {fileID: 4043571827185238060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: maskGEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92391,7 +92391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168144585717227745}
   - component: {fileID: 4939133665853987843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: topazSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92671,7 +92671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3130885955945540838}
   - component: {fileID: 115962742461519815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rubySwordHilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92992,7 +92992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6053508289276483005}
   - component: {fileID: 3541467912051703108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sapphireBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93092,7 +93092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948642257791012977}
   - component: {fileID: 8613227186701761430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bodyGEO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
