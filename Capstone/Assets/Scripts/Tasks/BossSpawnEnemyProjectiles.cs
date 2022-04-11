@@ -30,6 +30,7 @@ namespace Bladesmiths.Capstone.Testing
                 // Set the velocity to go forward and down
                 tempProj.GetComponent<SpawnEnemyProjectile>().velocity += tempProj.transform.forward * 7;
                 tempProj.GetComponent<SpawnEnemyProjectile>().velocity += -tempProj.transform.up * 5;
+                tempProj.transform.GetChild(0).transform.forward = tempProj.GetComponent<SpawnEnemyProjectile>().velocity;
 
                 tempProj.transform.position = projectileSpawnPoint.position;
 
