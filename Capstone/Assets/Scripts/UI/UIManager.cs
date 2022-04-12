@@ -562,17 +562,17 @@ namespace Bladesmiths.Capstone.UI
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImagesTwoSwords[currentSwordSelect].enabled = true;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.1f);
                 
                 // Fades in the new sword
-                gemImagesTwoSwords[type].DOFade(1f, 2f);
-                yield return new WaitForSeconds(3f);
+                gemImagesTwoSwords[type].DOFade(1f, 1f);
+                player.Inputs.swordSelectActive = true;
+                swordSelected = true;
+                yield return new WaitForSeconds(1f);
 
                 // Pulses the gem and waits until the Player selects it
-                player.Inputs.swordSelectActive = true;
                 StartCoroutine(PulseGem(type, Color.red, gemImagesTwoSwords));
                 yield return new WaitUntil(rubySwordSelected());
-                swordSelected = true;
 
                 StopCoroutine(PulseGem(type, Color.red, gemImagesTwoSwords));
                 player.Inputs.swordSelectActive = false;                
@@ -603,18 +603,18 @@ namespace Bladesmiths.Capstone.UI
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImages[currentSwordSelect].enabled = true;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.1f);
 
                 // Fades in the new sword
-                gemImages[type].DOFade(1f, 2f);
-                yield return new WaitForSeconds(3f);
+                gemImages[type].DOFade(1f, 1f);
+                player.Inputs.swordSelectActive = true;
+                swordSelected = true;
+                yield return new WaitForSeconds(1f);
 
                 // Pulses the gem and waits until the Player selects it
-                player.Inputs.swordSelectActive = true;
                 StartCoroutine(PulseGem(type, Color.blue, gemImages));
                 yield return new WaitUntil(sapphireSwordSelected());
 
-                swordSelected = true;
                 StopCoroutine(PulseGem(type, Color.blue, gemImages));
                 player.Inputs.swordSelectActive = false;
                 gemImages[type].DOColor(Color.blue, 1f);
