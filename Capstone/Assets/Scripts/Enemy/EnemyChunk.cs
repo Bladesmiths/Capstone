@@ -34,6 +34,18 @@ namespace Bladesmiths.Capstone
                     MonoBehaviour.Destroy(gameObject);
                 }
             }
+
+
+
         }
+
+        public void ApplyForce()
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.one, ForceMode.Impulse);
+
+        }
+
+
     }
 }

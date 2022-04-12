@@ -29,7 +29,10 @@ namespace Bladesmiths.Capstone
         public override TaskStatus OnUpdate()
         {
             // Reset the shockwave
-            shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
+            if (shockwave != null)
+            {
+                shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
+            }
             shockwave.SetActive(false);
             // When the node isn't finished
             if (timer < nodeDuration)

@@ -4,6 +4,7 @@ using UnityEngine;
 using Bladesmiths.Capstone.Enums;
 using Sirenix.Serialization;
 using Sirenix.OdinInspector;
+using Bladesmiths.Capstone.UI;
 
 namespace Bladesmiths.Capstone
 {
@@ -14,6 +15,8 @@ namespace Bladesmiths.Capstone
 
         public static SwordGemPickup instance;
 
+        public UIManager uiManager;
+
         private void Awake()
         {
             instance = this;
@@ -23,9 +26,11 @@ namespace Bladesmiths.Capstone
         /// Adds the picked up sword to the Player's list of currently obtained swords
         /// </summary>
         /// <param name="sword"></param>
+        [Button("Add Sword")]
         public void Pickup(SwordType sword)
         {            
             Player.instance.currentSwords.Add(sword, swords[sword]);
+            uiManager.GainNewSword(sword);
         }
     }
 }

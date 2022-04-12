@@ -10,6 +10,7 @@ TagManager:
   - Damaging
   - Projectile
   - Targetable
+  - Targettable
   layers:
   - Default
   - TransparentFX
@@ -25,6 +26,9 @@ TagManager:
   - IgnoreEnemies
   - Nav
   - OnlyHitPlayer
+  - SpawnEnemyProjectile
+  - IgnoreMostCollisions
+  - Ground
   - 
   - 
   - 
@@ -39,9 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - SeeThroughLayer
   - 
   m_SortingLayers:
   - name: Default

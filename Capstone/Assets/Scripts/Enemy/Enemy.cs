@@ -5,6 +5,7 @@ using System;
 using UnityEngine.AI;
 using Bladesmiths.Capstone.Enums;
 using BehaviorDesigner.Runtime;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
@@ -14,11 +15,13 @@ namespace Bladesmiths.Capstone
         private CharacterController controller;
         private NavMeshAgent agent;
 
+        public Animator animator;
+
         // Gets a reference to the player
         // Will be used for finding the player in the world
         [SerializeField] protected Player player;
 
-        [SerializeField] private GameObject sword;
+        //[SerializeField] private GameObject sword;
 
         [SerializeField] protected int chunksRemoved;
         protected bool damaged = false;
@@ -27,8 +30,8 @@ namespace Bladesmiths.Capstone
         protected float moveSpeed;
         public Vector3 moveVector;
         public Vector3 rotateVector;
-        public Quaternion swordRot;
-        public Vector3 defaultSwordPos;
+        //public Quaternion swordRot;
+        //public Vector3 defaultSwordPos;
 
         [SerializeField] protected float damage;
 
@@ -66,11 +69,17 @@ namespace Bladesmiths.Capstone
         public bool isAttacking;
 
         [SerializeField]
-        public GameObject geo;
+        public GameObject[] geo;
         [SerializeField]
-        public GameObject bodyChunks;
+        public GameObject[] special;
         [SerializeField]
-        public GameObject spine;
+        public List<GameObject> bodyChunks;
+        [SerializeField]
+        public GameObject[] spine;
+
+        public Collider axeCollider;
+        public Collider headCollider;
+
 
         public float Damage
         {
@@ -85,10 +94,10 @@ namespace Bladesmiths.Capstone
 
         public bool CanHit { get; set; }
 
-        public GameObject Sword
-        {
-            get => sword;
-        }
+        //public GameObject Sword
+        //{
+            //get => sword;
+        //}
 
         public bool InCombat
         {
@@ -108,7 +117,7 @@ namespace Bladesmiths.Capstone
             ObjectTeam = Team.Enemy;
             AIDirector.Instance.AddToEnemyGroup(this, enemyGroupNumber);
             ObjectController.Instance.AddIdentifiedObject(ObjectTeam, this);
-            
+            animator = GetComponent<Animator>();
             stunned = false;
             player = Player.instance;
 
@@ -120,11 +129,11 @@ namespace Bladesmiths.Capstone
             attackTimer = 0f;
             fadeOutTimer = 0f;
             fadeOutLength = 3f;
-            chunksRemoved = 3;
+            chunksRemoved = 1;
             canMove = false;
             damagingTimer = 0f;
-            swordRot = Sword.transform.localRotation;
-            defaultSwordPos = Sword.transform.localPosition;
+            //swordRot = Sword.transform.localRotation;
+            //defaultSwordPos = Sword.transform.localPosition;
             blocked = false;
 
             if (agent != null)
@@ -215,24 +224,27 @@ namespace Bladesmiths.Capstone
             throw new NotImplementedException();
         }
 
+        [Button("RemoveChunck")]
         public void RemoveRandomChunk()
         {
-            if (bodyChunks.transform.childCount <= 10)
-            {
-                return;    
-            }
+            //if (bodyChunks.Count <= 10)
+            //{
+            //    return;    
+            //}
         
-            GameObject remover = bodyChunks;
+            //List<GameObject> remover = bodyChunks;
             
-            GameObject removedChunk = remover.transform.GetChild(UnityEngine.Random.Range(0, remover.transform.childCount)).gameObject;
-            removedChunk.transform.parent = null;
+            GameObject removedChunk = bodyChunks[UnityEngine.Random.Range(0, bodyChunks.Count)].gameObject;
             removedChunk.AddComponent<BoxCollider>();
             removedChunk.AddComponent<Rigidbody>();
             removedChunk.AddComponent<EnemyChunk>();
+            removedChunk.transform.parent = null;
+            bodyChunks.Remove(removedChunk);
         }
 
         public int NumChunks()
         {
+            //return 3;
             return chunksRemoved * (int)(player.CurrentSword.Damage / 5);
         }
 
@@ -253,6 +265,7 @@ namespace Bladesmiths.Capstone
             if (damageResult > 0)
             {
                 int num = NumChunks();
+                //Debug.Log(num);
                 for (int i = 0; i < num; i++)
                 {
                     RemoveRandomChunk();
