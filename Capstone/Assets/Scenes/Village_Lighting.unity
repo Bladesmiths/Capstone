@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGlobal: 1
   fadeRadius: 0
-  priority: 1
+  priority: 0
   customPasses:
   - id: 0
   injectionPoint: 1
