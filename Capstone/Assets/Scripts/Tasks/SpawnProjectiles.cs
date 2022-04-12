@@ -62,6 +62,7 @@ namespace Bladesmiths.Capstone.Testing
                 GameObject tempProjectile = GameObject.Instantiate(projectile, spawnPos, Quaternion.Euler(0, 0, 0));
 
                 tempProjectile.GetComponent<TestingProjectile>().Velocity = direction * 20;
+                tempProjectile.transform.forward = tempProjectile.GetComponent<TestingProjectile>().Velocity;
                 tempProjectile.GetComponent<TestingProjectile>().canMove = false;
                 tempProjectile.GetComponent<TestingProjectile>().timeTillDestruction = maxLifeTime;
                 activeProjectiles.Add(tempProjectile);
@@ -88,6 +89,7 @@ namespace Bladesmiths.Capstone.Testing
                     GameObject tempProjectile = GameObject.Instantiate(projectile, spawnPos, Quaternion.Euler(0, 0, 0));
 
                     tempProjectile.GetComponent<TestingProjectile>().Velocity = direction * 20;
+                    tempProjectile.transform.forward = tempProjectile.GetComponent<TestingProjectile>().Velocity;
                     tempProjectile.GetComponent<TestingProjectile>().canMove = false;
                     tempProjectile.GetComponent<TestingProjectile>().timeTillDestruction = maxLifeTime;
                     activeProjectiles.Add(tempProjectile);

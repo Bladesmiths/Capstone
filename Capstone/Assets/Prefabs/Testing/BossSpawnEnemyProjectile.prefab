@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2511099757053633317}
   - component: {fileID: 5187524186119639189}
   - component: {fileID: 5937334219449122337}
-  - component: {fileID: 5625911631067389373}
-  m_Layer: 10
-  m_Name: BossProjectile
+  - component: {fileID: -3063366158141944485}
+  m_Layer: 14
+  m_Name: BossSpawnEnemyProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
-  - {fileID: 35544783372409600}
+  - {fileID: 6706408501204154156}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,9 +95,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7, z: 1.2}
+  m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5625911631067389373
+--- !u!114 &-3063366158141944485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,15 +106,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861298083143071199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6892de03df57c4f90076d7071c9c16, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a56ce5434975d447b671db3e9cc12da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 35
-  timeTillDestruction: 999
-  objectController: {fileID: 0}
-  damagingTimerLimit: 0
-  canMove: 0
---- !u!1001 &2619165534207568460
+  velocity: {x: 0, y: 0, z: 0}
+  isHealthPickup: 0
+  timeTillDestruction: 5
+  healthPickup: {fileID: 6254387197349663901, guid: c4e58bad2dc430c4d8ac6e2217560eaf, type: 3}
+  enemy: {fileID: 1563500564873866625, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
+--- !u!1001 &8734326960354379360
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -171,8 +171,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a444b0278145c424e8aa070f990baf25, type: 3}
---- !u!4 &35544783372409600 stripped
+--- !u!4 &6706408501204154156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2605159657507172684, guid: a444b0278145c424e8aa070f990baf25, type: 3}
-  m_PrefabInstance: {fileID: 2619165534207568460}
+  m_PrefabInstance: {fileID: 8734326960354379360}
   m_PrefabAsset: {fileID: 0}
