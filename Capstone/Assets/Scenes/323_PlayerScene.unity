@@ -6304,7 +6304,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.7789474, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -12053,7 +12053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &273437698
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17244,7 +17244,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.7789474, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -18789,7 +18789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.553, y: 0}
+  m_AnchoredPosition: {x: 880.6316, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429325579
@@ -18828,7 +18828,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1e6ad998ea6311c448277b35ab9661ac, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -19365,7 +19365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &458710629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19776,7 +19776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &473727010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20037,7 +20037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.553, y: 0}
+  m_AnchoredPosition: {x: 880.6316, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476415513
@@ -20076,7 +20076,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1e6ad998ea6311c448277b35ab9661ac, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -20445,7 +20445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493006199
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22183,7 +22183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &524885099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33199,7 +33199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.553, y: 0}
+  m_AnchoredPosition: {x: 880.6316, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789944184
@@ -33238,7 +33238,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1e6ad998ea6311c448277b35ab9661ac, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -39532,6 +39532,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  uiManager: {fileID: 0}
 --- !u!4 &955228538
 Transform:
   m_ObjectHideFlags: 0
@@ -49624,7 +49625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1177966970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54439,13 +54440,39 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: allSwords
+    - Name: shatterSwords
       Entry: 7
       Data: 2|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: allSwords
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+        Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -54503,11 +54530,11 @@ MonoBehaviour:
       Data: 
     - Name: currentSwords
       Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 6|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 9
-      Data: 3
+      Data: 5
     - Name: 
       Entry: 12
       Data: 1
@@ -54531,11 +54558,11 @@ MonoBehaviour:
       Data: 
     - Name: swordsGeo
       Entry: 7
-      Data: 5|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 7|System.Collections.Generic.Dictionary`2[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 6|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
+      Data: 8|System.Collections.Generic.EnumEqualityComparer`1[[Bladesmiths.Capstone.Enums.SwordType,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -54607,6 +54634,7 @@ MonoBehaviour:
   respawnCamAxisValue: 0
   canDmg: 0
   boss: {fileID: 0}
+  swordHilt: {fileID: 0}
   bossTrigger: {fileID: 0}
   inState: 0
   damaged: 0
@@ -54694,6 +54722,7 @@ MonoBehaviour:
   playerLookCamera: {fileID: 1802336007}
   targetLockManager: {fileID: 1601330935}
   analogMovement: 0
+  switchingSwords: 0
   uiManager: {fileID: 1863759866}
   infoPanel: {fileID: 125179844}
   settingsManager: {fileID: 1863759870}
@@ -55880,7 +55909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1296434324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66732,9 +66761,9 @@ RectTransform:
   m_Father: {fileID: 909397755}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 617.64, y: -67.24175}
   m_SizeDelta: {x: 238.19592, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &1538848946
@@ -68842,7 +68871,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573736001}
-  m_LocalRotation: {x: 0.19442774, y: 0.38968438, z: -0.08453959, w: 0.89621264}
+  m_LocalRotation: {x: 0.19442773, y: 0.38968438, z: -0.0845396, w: 0.8962126}
   m_LocalPosition: {x: -100.34541, y: 10.347, z: -54.367992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -70427,7 +70456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1594229430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71686,7 +71715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 880.553, y: 0}
+  m_AnchoredPosition: {x: 880.6316, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627851452
@@ -71725,7 +71754,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1e6ad998ea6311c448277b35ab9661ac, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -74995,7 +75024,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1e6ad998ea6311c448277b35ab9661ac, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -75532,7 +75561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743240968
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77133,7 +77162,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.7789474, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -80377,24 +80406,24 @@ MonoBehaviour:
     - {fileID: 513376455}
     - {fileID: 1644777770}
     - {fileID: 1585870873}
-    - {fileID: 21300000, guid: 02b99b4e1ea1bed4ba3d0b706a5f0263, type: 3}
-    - {fileID: 21300000, guid: 31e3eac3acf3552429ca151ccf2adc56, type: 3}
-    - {fileID: 21300000, guid: 6d5a12c30a7fad5489aef128cde38442, type: 3}
-    - {fileID: 21300000, guid: c08e043a69763dc4f8fa933a29d80a8e, type: 3}
-    - {fileID: 21300000, guid: d1610599218d48042bffac0712c379a6, type: 3}
+    - {fileID: 21300000, guid: ae2d452dbd2513e43af04347b414c072, type: 3}
+    - {fileID: 21300000, guid: dc33068f7defcde48aef424ba8ee42e3, type: 3}
+    - {fileID: 21300000, guid: 121dbe728e2e7594dbb4ce3872128f76, type: 3}
+    - {fileID: 21300000, guid: 3b7575b1269adb9488cb56cf0929d67a, type: 3}
+    - {fileID: 21300000, guid: 00769b796a4523e4dbd82a04add6b564, type: 3}
     - {fileID: 21300000, guid: d544feb63b186dd45b32d12cfc6762bf, type: 3}
     - {fileID: 21300000, guid: 4cc6aa9aa8107734da22c80d289cff98, type: 3}
     - {fileID: 21300000, guid: 44d8f279ef345c442ae875caa0c26731, type: 3}
     - {fileID: 21300000, guid: cfa9b832ea5877745a96e61e8ffaeca2, type: 3}
-    - {fileID: 21300000, guid: 9f6dd55c5f63e57429cbf74017db7435, type: 3}
-    - {fileID: 21300000, guid: 9368e6d8c4336004a97641c413cf148e, type: 3}
-    - {fileID: 21300000, guid: 93a88f356b3879b48aa811916d2dd6e1, type: 3}
-    - {fileID: 21300000, guid: f626b8bb6c12d874fa0754d6d24227de, type: 3}
-    - {fileID: 21300000, guid: cd86868821e094841905abc95fb24d48, type: 3}
-    - {fileID: 21300000, guid: ad0d36b421b1f4a448565fa62fcf2fbb, type: 3}
-    - {fileID: 21300000, guid: 60aa50b40be25b348a7c1e40fb92ace1, type: 3}
+    - {fileID: 21300000, guid: 14fb96bd2774d3c49adc34b038ab06c5, type: 3}
+    - {fileID: 21300000, guid: 617738d583a021e4397f78b0d1691fc9, type: 3}
+    - {fileID: 21300000, guid: 5efbff14786b14f439921f8fa5e887e3, type: 3}
+    - {fileID: 21300000, guid: 660128f21931efd4b96977475471a234, type: 3}
+    - {fileID: 21300000, guid: 8d3c4cd011b017947a1bae488f3c1b4d, type: 3}
+    - {fileID: 21300000, guid: b1e193cebd68671438a69455316182dd, type: 3}
+    - {fileID: 21300000, guid: 5f6bb5dd345730742b6a11d8eb184b1d, type: 3}
     - {fileID: 21300000, guid: 4273c283a5e145a468dc60af5dcb46e7, type: 3}
-    - {fileID: 21300000, guid: 045fc33ac6f6fb54091df7e576f217bc, type: 3}
+    - {fileID: 21300000, guid: ce847f6b03919df4ba158dd8732266aa, type: 3}
     - {fileID: 21300000, guid: 014c64fb6c950db49b6f3a3d0adab367, type: 3}
     - {fileID: 21300000, guid: f5bb1f4bef35d144987dd308376b7ad3, type: 3}
     - {fileID: 21300000, guid: 4bc4b5cacd96ce74ba95ada219adba33, type: 3}
@@ -82739,6 +82768,7 @@ MonoBehaviour:
   player: {fileID: 1261776970}
   playerPrevHealth: 0
   camera: {fileID: 1802336009}
+  gainingSword: 0
   playerInput: {fileID: 1261776969}
   pointsText: {fileID: 870288407}
   swordSelectObject: {fileID: 708433277}
@@ -90952,7 +90982,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7788018, y: 1}
+    m_SensorSize: {x: 1.7789474, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -90975,7 +91005,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110197243}
-  m_LocalRotation: {x: -0.000000014901161, y: 0.000000029802322, z: -0.000000014901161, w: 1}
+  m_LocalRotation: {x: -0, y: 0.000000029802322, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
