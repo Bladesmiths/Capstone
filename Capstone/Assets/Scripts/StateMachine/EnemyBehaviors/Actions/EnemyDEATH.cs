@@ -28,27 +28,27 @@ namespace Bladesmiths.Capstone
 
         public override TaskStatus OnUpdate()
         {
-            //fadeOutTimer += Time.deltaTime;
-            
+            fadeOutTimer += Time.deltaTime;
 
-            //// When the object should fade out
-            //if (fadeOutTimer >= fadeOutLength)
-            //{
-            //    // Shrink the cubes
-            //    _enemy.transform.localScale = new Vector3(
-            //        _enemy.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
-            //        _enemy.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
-            //        _enemy.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
 
-            //    // After the cubes are shrunk, destroy it
-            //    if (_enemy.transform.localScale.x <= 0 &&
-            //        _enemy.transform.localScale.y <= 0 &&
-            //        _enemy.transform.localScale.z <= 0)
-            //    {
-            //        MonoBehaviour.Destroy(_enemy.gameObject);
-            //        return TaskStatus.Success;
-            //    }
-            //}
+            // When the object should fade out
+            if (fadeOutTimer >= fadeOutLength)
+            {
+                // Shrink the cubes
+                _enemy.transform.localScale = new Vector3(
+                    _enemy.transform.localScale.x - (shrinkSpeed * Time.deltaTime),
+                    _enemy.transform.localScale.y - (shrinkSpeed * Time.deltaTime),
+                    _enemy.transform.localScale.z - (shrinkSpeed * Time.deltaTime));
+
+                // After the cubes are shrunk, destroy it
+                if (_enemy.transform.localScale.x <= 0 &&
+                    _enemy.transform.localScale.y <= 0 &&
+                    _enemy.transform.localScale.z <= 0)
+                {
+                    MonoBehaviour.Destroy(_enemy.gameObject);
+                    return TaskStatus.Success;
+                }
+            }
             return TaskStatus.Running;
 
         }
@@ -60,50 +60,63 @@ namespace Bladesmiths.Capstone
             AIDirector.Instance.RemoveFromGroups(_enemy);
             Player.instance.Sword.GetComponent<Sword>().damaging = false;
 
-            GameObject body = _enemy.bodyChunks;
+            List<GameObject> body = _enemy.bodyChunks;
 
             // Allows for the destruction of Enemy's
             _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            int count = body.transform.childCount;
+            int count = body.Count;
             for (int i = 0; i < count; i++)
             {
-                body.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
-                body.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
-                body.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
-                body.transform.GetChild(0).parent = null;
+                body[i].gameObject.AddComponent<BoxCollider>();
+                body[i].gameObject.AddComponent<Rigidbody>();
+                body[i].gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                body[i].transform.parent = null;
+                //body.Remove(body[i]);
+            }
+            _enemy.bodyChunks.Clear();
+
+            count = _enemy.spine.Length;
+            for (int i = 0; i < count; i++)
+            {
+                if (_enemy.spine[i].gameObject != null)
+                {
+                    _enemy.spine[i].gameObject.AddComponent<BoxCollider>();
+                    _enemy.spine[i].gameObject.AddComponent<Rigidbody>();
+                    _enemy.spine[i].gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                    _enemy.spine[i].transform.parent = null;
+                }
             }
 
-            count = _enemy.spine.transform.childCount;
+            count = _enemy.geo.Length;
             for (int i = 0; i < count; i++)
             {
-                _enemy.spine.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
-                _enemy.spine.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
-                _enemy.spine.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
-                _enemy.spine.transform.GetChild(0).parent = null;
-            }
-                        
-            count = _enemy.geo.transform.childCount;
-            for (int i = 0; i < count; i++)
-            {
-                GameObject gO = _enemy.geo.transform.GetChild(0).gameObject;
+                GameObject gO = _enemy.geo[i];
                 gO.AddComponent<BoxCollider>();
                 gO.AddComponent<Rigidbody>();
                 gO.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
-
                 gO.transform.parent = null;
 
             }
 
-            _enemy.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
-            _enemy.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
-            _enemy.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+            count = _enemy.special.Length;
+            for (int i = 0; i < count; i++)
+            {
+                GameObject gO = _enemy.special[i];
+                gO.SetActive(!gO.activeInHierarchy);
+                gO.transform.parent = null;
 
-            _enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().enabled = true;
-            _enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().isTrigger = false;
-            _enemy.transform.GetChild(1).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
-            _enemy.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            _enemy.transform.GetChild(1).parent = null;
+            }
+
+            //_enemy.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
+            //_enemy.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+            //_enemy.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+
+            //_enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().enabled = true;
+            //_enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().isTrigger = false;
+            //_enemy.transform.GetChild(1).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+            //_enemy.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            //_enemy.transform.GetChild(1).parent = null;
 
 
             _enemy.gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 2f;

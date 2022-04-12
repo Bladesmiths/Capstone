@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 58749a79d90edcd4c93eab8cba3cb36d
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -7488142092435225893
+    second: FKExtraRoot_M|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 8449760857130657186
+    second: FKExtraRoot_M|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: 7330390192507783684
+    second: FKExtraRoot_M|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: 903958458276035525
+    second: FKExtraRoot_M|FKSystem|Take 001|BaseLayer
+  - first:
+      74: 455640416438671741
+    second: FKExtraRoot_M|IKSystem|Take 001|BaseLayer
+  - first:
+      74: 582817621814353894
+    second: FKFollowRoot|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 1577930743810848684
+    second: FKFollowRoot|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: -4784237105066513674
+    second: FKFollowRoot|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: 5242188024329526400
+    second: FKFollowRoot|FKSystem|Take 001|BaseLayer
+  - first:
+      74: 6592033986052865307
+    second: FKFollowRoot|IKSystem|Take 001|BaseLayer
+  - first:
+      74: 2064701045892364677
+    second: FKSystem|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 4856285839320342842
+    second: FKSystem|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: -6021684188394246111
+    second: FKSystem|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: -8075516600985849918
+    second: FKSystem|FKSystem|Take 001|BaseLayer
+  - first:
+      74: 8678679834437456061
+    second: FKSystem|IKSystem|Take 001|BaseLayer
+  - first:
+      74: -2284329240073521178
+    second: IKSystem|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: -7647705991807223776
+    second: IKSystem|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: 8046955393749312819
+    second: IKSystem|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: -1424411319930526258
+    second: IKSystem|FKSystem|Take 001|BaseLayer
+  - first:
+      74: -3606928925787445751
+    second: IKSystem|IKSystem|Take 001|BaseLayer
+  - first:
+      74: 8328334035284510391
+    second: DeformationSystem|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 5856470228619456915
+    second: DeformationSystem|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: 6395714794274077146
+    second: DeformationSystem|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: -1600994105939759137
+    second: DeformationSystem|FKSystem|Take 001|BaseLayer
+  - first:
+      74: -106769954343071869
+    second: DeformationSystem|IKSystem|Take 001|BaseLayer
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

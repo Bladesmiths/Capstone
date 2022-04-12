@@ -27,6 +27,8 @@ TagManager:
   - Nav
   - OnlyHitPlayer
   - SpawnEnemyProjectile
+  - IgnoreMostCollisions
+  - Ground
   - 
   - 
   - 
@@ -41,8 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - SeeThroughLayer
   - 
   m_SortingLayers:
   - name: Default

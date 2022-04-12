@@ -15,7 +15,7 @@ namespace Bladesmiths.Capstone
         public AnimationCurve curveY;
         private float timer;
         private float timerMax;
-        private GameObject sword;
+        //private GameObject sword;
         private Enemy enemy;
 
 
@@ -33,7 +33,7 @@ namespace Bladesmiths.Capstone
             playerPos = Player.instance.transform.position;// - transform.position;
             timerMax = 1f;
             timer = 0;
-            sword = enemy.Sword;
+            //sword = enemy.Sword;
 
         }
 
@@ -42,7 +42,7 @@ namespace Bladesmiths.Capstone
             timer += Time.deltaTime;
             float valZ = curveZ.Evaluate(timer);
             float valY = curveY.Evaluate(timer);            
-            sword.transform.localRotation = Quaternion.Euler(0f, valY, valZ);
+            //sword.transform.localRotation = Quaternion.Euler(0f, valY, valZ);
             dist = playerPos - transform.position; 
 
             if(timer >= timerMax)

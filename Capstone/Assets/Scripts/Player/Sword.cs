@@ -193,16 +193,27 @@ namespace Bladesmiths.Capstone
             {
                 if (col.gameObject.GetComponent<Enemy>() || col.gameObject.GetComponent<Boss>())
                 {
-                    if(col.gameObject.GetComponent<Enemy_Shield>() &&
-                        col.gameObject.GetComponent<Enemy_Shield>().shield != null)
+                    if(col.gameObject.GetComponent<Enemy_Shield>())
                     {
-                        if(col.gameObject.GetComponent<Enemy_Shield>().InSight(player.transform, 55) && 
-                            !col.gameObject.GetComponent<Enemy_Shield>().shield.GetComponent<Shield>().IsEmpty)
+                        if (col.gameObject.GetComponent<Enemy_Shield>().shield != null)
                         {
-                            FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
-                            col.gameObject.transform.GetComponent<Enemy_Shield>().AddDamagingID(ID);
+                            if (col.gameObject.GetComponent<Enemy_Shield>().InSight(player.transform, 55) &&
+                                !col.gameObject.GetComponent<Enemy_Shield>().shield.GetComponent<Shield>().IsEmpty)
+                            {
+                                FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                                col.gameObject.transform.GetComponent<Enemy_Shield>().AddDamagingID(ID);
 
-                            damaging = true;
+                                damaging = true;
+                            }
+                            else
+                            {
+                                //Debug.Log(col.gameObject);
+                                FMODUnity.RuntimeManager.PlayOneShot(SwordHitEvent);
+                                //Debug.Log(col.gameObject.GetComponent<IDamageable>().ID);
+                                player.AddDamagingID(ID);
+                                player.SwordAttack(col.gameObject.GetComponent<IDamageable>().ID);
+                            }
+
                         }
                         else
                         {
