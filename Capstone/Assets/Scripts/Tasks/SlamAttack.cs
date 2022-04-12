@@ -21,6 +21,7 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             timer = 0;
+            slamVFX.GetComponent<VFXManager>().DisableVFX();
             //DOTween.SetTweensCapacity(1250, 50);
         }
 

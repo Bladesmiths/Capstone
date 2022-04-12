@@ -16,7 +16,6 @@ namespace Bladesmiths.Capstone
         [SerializeField] private float nodeDuration;
 
         [SerializeField] private GameObject shockwave;
-        [SerializeField] private GameObject slamVFX;
 
         private float timer;
 
@@ -30,10 +29,9 @@ namespace Bladesmiths.Capstone
         public override TaskStatus OnUpdate()
         {
             // Reset the shockwave
-            if (shockwave != null && slamVFX != null)
+            if (shockwave != null)
             {
                 shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
-                slamVFX.GetComponent<VFXManager>().DisableVFX();
             }
             shockwave.SetActive(false);
             // When the node isn't finished
