@@ -856,6 +856,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1600660397}
     m_Modifications:
+    - target: {fileID: 3754905405867228279, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905405867228279, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905405867228279, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905405871749398, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -892,6 +904,18 @@ PrefabInstance:
       propertyPath: m_FontData.m_MaxSize
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905406080911273, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406080911273, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406080911273, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905406230880010, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -916,6 +940,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905406313596078, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406313596078, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406313596078, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905406369693596, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -935,6 +971,10 @@ PrefabInstance:
     - target: {fileID: 3754905406395271661, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406414387754, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3754905406516807141, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.y
@@ -964,6 +1004,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResetBindings
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905406758150068, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406758150068, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905406782620717, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -979,6 +1027,14 @@ PrefabInstance:
     - target: {fileID: 3754905406829150662, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406887540008, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406887540008, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3754905406933353224, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1023,6 +1079,14 @@ PrefabInstance:
     - target: {fileID: 3754905407149036077, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407232621772, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407232621772, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3754905407319233147, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_FontData.m_MaxSize
@@ -1607,6 +1671,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3754905406015987511, guid: 94778a56420415642930df99f5e70bad, type: 3}
   m_PrefabInstance: {fileID: 557806679}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &557806699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557806696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 451431d540d5a074b9454090a858dca4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &632800435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3470,10 +3564,7 @@ VFXRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3736,6 +3827,7 @@ MonoBehaviour:
   rebindBackButton: {fileID: 2034667458}
   rebindResetAllButton: {fileID: 1249825165}
   onPauseScreenOnly: 0
+  settingsButtonImage: {fileID: 0}
 --- !u!224 &1932125817
 RectTransform:
   m_ObjectHideFlags: 0

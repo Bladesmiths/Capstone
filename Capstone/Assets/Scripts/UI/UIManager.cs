@@ -94,7 +94,7 @@ namespace Bladesmiths.Capstone.UI
 
         [TitleGroup("Menus")]
         [BoxGroup("Menus/Pause Menu")]
-        [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject pauseMenuObject;
 
         [BoxGroup("Menus/Pause Menu")]
         [SerializeField] private GameObject resumeButton;
@@ -125,11 +125,7 @@ namespace Bladesmiths.Capstone.UI
 
         public bool rainbow = true;
 
-        public float MaxSpeedX
-        {
-            get { return maxSpeedX; }
-            set { maxSpeedX = value; }
-        }
+        private PauseMenu pauseMenu;
 
         #region Input Icon Dictionaries
         [TitleGroup("Input Icons")]
@@ -151,8 +147,15 @@ namespace Bladesmiths.Capstone.UI
         [OdinSerialize] 
         public Dictionary<string, Sprite> kbmInputs = new Dictionary<string, Sprite>();
         #endregion
-
+        
+        public float MaxSpeedX
+        {
+            get { return maxSpeedX; }
+            set { maxSpeedX = value; }
+        }
+        
         public PlayerInput Inputs { get => playerInput; }
+        public PauseMenu PauseMenu { get => pauseMenu; }
 
         // Start is called before the first frame update
         void Start()
@@ -179,6 +182,9 @@ namespace Bladesmiths.Capstone.UI
             bossHealthBarChunks.Reverse();
 
             boss = Boss.instance;
+
+            pauseMenu = pauseMenuObject.GetComponent<PauseMenu>();
+            pauseMenu.SwapControls(playerInput.currentControlScheme);
 
             //Set player health bar to topaz
             StartCoroutine(ColorChunks(playerHealthBarChunks, topazChunkColor));
@@ -230,7 +236,7 @@ namespace Bladesmiths.Capstone.UI
                     playerInput.SwitchCurrentActionMap("Player");
                     //Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
-                    pauseMenu.SetActive(false);
+                    pauseMenuObject.SetActive(false);
                     Cursor.lockState = CursorLockMode.Locked;
 
                     // Allows the camera fto move and recenter
@@ -258,6 +264,9 @@ namespace Bladesmiths.Capstone.UI
                 //EventSystem.current.SetSelectedGameObject(resumeButton);
                 //Debug.Log("Current Action Map: " + playerInput.currentActionMap);
 
+                pauseMenu.SwapFormInfo(player.Inputs.currentSwordType);
+                pauseMenu.SwapControls(playerInput.currentControlScheme);
+
                 // Stops the camera from moving and stops the recentering
                 camera.m_XAxis.m_MaxSpeed = 0f;
                 camera.m_YAxis.m_MaxSpeed = 0f;
@@ -267,7 +276,7 @@ namespace Bladesmiths.Capstone.UI
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
 
-                pauseMenu.SetActive(true);
+                pauseMenuObject.SetActive(true);
 
                 EventSystem.current.SetSelectedGameObject(settingsButton);
                 settingsManager.onPauseScreenOnly = true;
