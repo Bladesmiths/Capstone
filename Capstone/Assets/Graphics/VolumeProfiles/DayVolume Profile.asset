@@ -101,7 +101,7 @@ MonoBehaviour:
     max: 1
   aerosolTint:
     m_OverrideState: 1
-    m_Value: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    m_Value: {r: 0.9716981, g: 0.88513446, b: 0.8021093, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -165,13 +165,13 @@ MonoBehaviour:
     max: 1
   horizonTint:
     m_OverrideState: 1
-    m_Value: {r: 0.40258992, g: 0.4445683, b: 0.7830189, a: 1}
+    m_Value: {r: 0.7830189, g: 0.41785884, b: 0.2770114, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 0
   zenithTint:
     m_OverrideState: 1
-    m_Value: {r: 0.16862746, g: 0.23137257, b: 0.7372549, a: 1}
+    m_Value: {r: 0.8867924, g: 0.6119125, b: 0.09620863, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 0

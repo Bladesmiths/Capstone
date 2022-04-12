@@ -240,7 +240,7 @@ MonoBehaviour:
       type: {class: SeeThroughPass, ns: Bladesmiths.Capstone, asm: Assembly-CSharp}
       data:
         m_Name: See Through Pass
-        enabled: 1
+        enabled: 0
         targetColorBuffer: 0
         targetDepthBuffer: 0
         clearFlags: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
         m_Version: 0
         seeThroughLayer:
           serializedVersion: 2
-          m_Bits: 1073741888
+          m_Bits: 2147483712
         seeThroughMaterial: {fileID: 2100000, guid: 0c7b52eff3967e54abc21ace320a749d, type: 2}
         stencilShader: {fileID: 4800000, guid: 4103478be9fedcb41ba60b31a3d19f02, type: 3}
 --- !u!1 &595703979
