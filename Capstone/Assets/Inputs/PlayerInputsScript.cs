@@ -19,6 +19,7 @@ namespace Bladesmiths.Capstone
 		public bool block = false;
 		public bool dodge = false;
 		public bool swordSelectActive = false;
+		public int attackNum; 
 		public Enums.SwordType currentSwordType;
 		public GameObject playerLookCamera;
 		public TargetLock targetLockManager; 
@@ -40,6 +41,7 @@ namespace Bladesmiths.Capstone
 		private int _animIDDash; 
 		private int _animIDAttack;
 		private int _animIDMoving;
+		private int _animIDAttackNum; 
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -55,6 +57,7 @@ namespace Bladesmiths.Capstone
 			_animIDDodge = Animator.StringToHash("Dodge");
 			_animIDDash = Animator.StringToHash("Dash");
 			_animIDParry = Animator.StringToHash("Parry");
+			_animIDAttackNum = Animator.StringToHash("Attack Num");
 		}
 		#region On Input Methods
 		public void OnMove(InputValue value)
@@ -288,9 +291,17 @@ namespace Bladesmiths.Capstone
 
 		public void AttackInput(bool newAttackState)
 		{
+			bool prevAttack = attack;
+
 			attack = newAttackState;
 
+			animator.SetFloat(_animIDAttackNum, attackNum);
+
 			animator.SetBool(_animIDAttack, attack);
+			attack = false;
+
+			if (!prevAttack)
+				attackNum = attackNum + 1 > 2 ? 0 : attackNum + 1;
 		}
 
 		public void ParryInput(bool newParryState)
