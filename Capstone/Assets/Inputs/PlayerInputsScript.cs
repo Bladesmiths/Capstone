@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
-	public class PlayerInputsScript : MonoBehaviour
+	public class PlayerInputsScript : SerializedMonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Player player; 
@@ -19,8 +21,9 @@ namespace Bladesmiths.Capstone
 		public bool block = false;
 		public bool dodge = false;
 		public bool swordSelectActive = false;
-		public int attackNum; 
 		public Enums.SwordType currentSwordType;
+		[OdinSerialize]
+		public Dictionary<Enums.SwordType, int> animNumbers = new Dictionary<Enums.SwordType,int>();
 		public GameObject playerLookCamera;
 		public TargetLock targetLockManager; 
 
@@ -49,7 +52,10 @@ namespace Bladesmiths.Capstone
 		public bool cursorInputForLook = true;
 #endif
 
-        private void Start()
+		public int DesiredAttackNum { get; set; }
+		public int CurrentAttackNum {get; set; }
+
+		private void Start()
         {
 			_animIDMoving = Animator.StringToHash("Moving");
 			_animIDAttack = Animator.StringToHash("Attack");
@@ -59,8 +65,9 @@ namespace Bladesmiths.Capstone
 			_animIDParry = Animator.StringToHash("Parry");
 			_animIDAttackNum = Animator.StringToHash("Attack Num");
 		}
-		#region On Input Methods
-		public void OnMove(InputValue value)
+
+        #region On Input Methods
+        public void OnMove(InputValue value)
 		{
 			if(!switchingSwords)
 				MoveInput(value.Get<Vector2>());
@@ -291,17 +298,18 @@ namespace Bladesmiths.Capstone
 
 		public void AttackInput(bool newAttackState)
 		{
-			bool prevAttack = attack;
+			DesiredAttackNum++;
+
+			if (DesiredAttackNum > animNumbers[currentSwordType])
+			{
+				DesiredAttackNum = animNumbers[currentSwordType];
+				return;
+			}
 
 			attack = newAttackState;
 
-			animator.SetFloat(_animIDAttackNum, attackNum);
-
-			animator.SetBool(_animIDAttack, attack);
-			attack = false;
-
-			if (!prevAttack)
-				attackNum = attackNum + 1 > 2 ? 0 : attackNum + 1;
+			if (DesiredAttackNum - 1 == 0)
+				animator.SetBool(_animIDAttack, attack);
 		}
 
 		public void ParryInput(bool newParryState)
@@ -367,7 +375,11 @@ namespace Bladesmiths.Capstone
             {
 				if (player.currentSwords.Count > (int)currentSwordType)
 				{
-					player.SwitchSword(currentSwordType);
+                    if (player.SwitchSword(currentSwordType))
+                    {
+						Debug.Log("Calling Reset for Sword Switching");
+						ResetAttackNums();
+                    }
 				}
 			}
 
@@ -387,6 +399,21 @@ namespace Bladesmiths.Capstone
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
+
+		public int GetAndIncrementCurrentAttackNum()
+        {
+			CurrentAttackNum = Mathf.Min(CurrentAttackNum + 1, animNumbers[currentSwordType]);
+
+			return CurrentAttackNum;
+        }
+
+		public void ResetAttackNums()
+		{
+			CurrentAttackNum = 0;
+			DesiredAttackNum = 0;
+
+			animator.SetFloat(_animIDAttackNum, 0);
+        }
 
 #endif
 	}

@@ -20,7 +20,15 @@ namespace Bladesmiths.Capstone
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             animator.GetComponent<Player>().SpeedUpdate(stateInfo);
-            animator.GetComponent<Player>().ResetAnimationParameters();
+
+            if (stateInfo.shortNameHash != Animator.StringToHash("Attack Blend Tree"))
+            {
+                animator.GetComponent<Player>().ResetAnimationParameters();
+            }
+            else
+            {
+                animator.GetComponent<Player>().ResetAnimationParametersForAttack();
+            }
         }
     }
 

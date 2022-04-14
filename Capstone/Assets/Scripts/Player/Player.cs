@@ -40,6 +40,10 @@ namespace Bladesmiths.Capstone
         private GameObject player;
         [SerializeField]
         private GameObject sword;
+        [SerializeField]
+        private Collider swordCollider;
+        [SerializeField]
+        private bool swordColliderActive;
 
         [SerializeField]
         private GameObject parryDetector;
@@ -312,6 +316,7 @@ namespace Bladesmiths.Capstone
         private void Update()
         {
             //FSM.Tick();
+            swordCollider.enabled = swordColliderActive;
 
             Move();
             Jump();
@@ -384,7 +389,28 @@ namespace Bladesmiths.Capstone
             animator.SetFloat(animIDForward, 0);
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
+            //animator.SetFloat("Attack Num", 0);
             animator.SetBool(animIDMoving, false);
+
+            //Debug.Log("Calling Reset in Player");
+            //inputs.ResetAttackNums();
+        }
+
+        /// <summary>
+        /// Resets the parameters in the animator for the attack state
+        /// </summary>
+        public void ResetAnimationParametersForAttack()
+        {
+            //animator.SetBool(animIDBlock, false);
+            animator.SetBool(animIDDodge, false);
+            animator.SetFloat(animIDForward, 0);
+            animator.SetBool(animIDJump, false);
+            animator.SetBool(animIDAttack, false);
+            //animator.SetFloat("Attack Num", 0);
+            animator.SetBool(animIDMoving, false);
+
+            //Debug.Log("Calling Reset in Player");
+            //inputs.ResetAttackNums();
         }
 
         /// <summary>
@@ -550,11 +576,14 @@ namespace Bladesmiths.Capstone
         /// Switches the players sword to a new sword
         /// </summary>
         /// <param name="newSwordType"></param>
-        public void SwitchSword(SwordType newSwordType)
+        /// <returns>A boolean indicating whether it switched successfully or not</returns>
+        public bool SwitchSword(SwordType newSwordType)
         {
             // Check to make sure the new sword is not the old sword
             // because that's a waste of time
-            if (newSwordType != currentSword.SwordType)
+            if (newSwordType == currentSword.SwordType)
+                return false;
+            else
             {
                 // Set the old sword data and model to inactive and the new to active
                 currentSwords[CurrentSword.SwordType].SetActive(false);
@@ -608,6 +637,8 @@ namespace Bladesmiths.Capstone
                 //Update player health bar color
                 uiManager.SwitchSwordHealthBar(currentSword.SwordType);
             }
+
+            return true;
         }
 
         /// <summary>

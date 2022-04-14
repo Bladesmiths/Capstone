@@ -85,8 +85,6 @@ namespace Bladesmiths.Capstone
             id = PlayerCondition.F_Jumping;
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
-
-
             _hasAnimator = _player.TryGetComponent(out _animator);
             _animIDGrounded = Animator.StringToHash("Grounded");
             _animIDJump = Animator.StringToHash("Jump");
