@@ -389,28 +389,7 @@ namespace Bladesmiths.Capstone
             animator.SetFloat(animIDForward, 0);
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
-            //animator.SetFloat("Attack Num", 0);
             animator.SetBool(animIDMoving, false);
-
-            //Debug.Log("Calling Reset in Player");
-            //inputs.ResetAttackNums();
-        }
-
-        /// <summary>
-        /// Resets the parameters in the animator for the attack state
-        /// </summary>
-        public void ResetAnimationParametersForAttack()
-        {
-            //animator.SetBool(animIDBlock, false);
-            animator.SetBool(animIDDodge, false);
-            animator.SetFloat(animIDForward, 0);
-            animator.SetBool(animIDJump, false);
-            animator.SetBool(animIDAttack, false);
-            //animator.SetFloat("Attack Num", 0);
-            animator.SetBool(animIDMoving, false);
-
-            //Debug.Log("Calling Reset in Player");
-            //inputs.ResetAttackNums();
         }
 
         /// <summary>

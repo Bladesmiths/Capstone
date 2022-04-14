@@ -222,7 +222,7 @@ namespace Bladesmiths.Capstone
 			{
 				// Toggles the target lock state to its opposite value
 				targetLockManager.Active = !targetLockManager.Active;
-				Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
+				//Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
 				// Runs the LockOnEnemy method no matter what because it serves both purposes
 				targetLockManager.LockOnEnemy();
 			}

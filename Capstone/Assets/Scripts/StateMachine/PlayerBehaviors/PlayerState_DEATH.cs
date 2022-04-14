@@ -56,6 +56,7 @@ namespace Bladesmiths.Capstone
             //id = PlayerCondition.F_Dead;
             _animator = animator;
             base.OnStateEnter(animator, stateInfo, layerIndex);
+            Player.instance.Inputs.ResetAttackNums();
 
             // Assign damaged & dead paramater ids
             _animIDDamaged = Animator.StringToHash("Damaged");

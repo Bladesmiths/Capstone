@@ -51,10 +51,10 @@ namespace Bladesmiths.Capstone
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateEnter(animator, stateInfo, layerIndex);
             _player = animator.gameObject.GetComponent<Player>();
             id = PlayerCondition.F_TakingDamage;
             base.OnStateEnter(animator, stateInfo, layerIndex);
+            Player.instance.Inputs.ResetAttackNums();
 
             _animator = animator;
 
@@ -73,10 +73,10 @@ namespace Bladesmiths.Capstone
 
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {            
-            Timer = 0; 
+            Timer = 0;
             //_player.inState = false;
             //_player.damaged = false;
-
+            Player.instance.Inputs.ResetAttackNums();
         }
 
     }
