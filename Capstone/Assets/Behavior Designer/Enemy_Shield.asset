@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23f08d2ae4cba14087c1ed36193d82b, type: 3}
+  m_Name: Enemy_Shield
+  m_EditorClassIdentifier: 
+  mBehaviorSource:
+    behaviorName: Shield Enemy
+    behaviorDescription: The behavior for how the Enemy works.
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(474.188782,829.926941)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-0.7690964,120)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-1.53833008,110)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-151.53833,220)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.IsDead","NodeData":{"Offset":"(-101.53833,140)"},"ID":4,"Name":"Is
+        Dead","Instant":true},{"Type":"Bladesmiths.Capstone.EnemyDEATH","NodeData":{"Offset":"(48.46167,130)"},"ID":5,"Name":"Enemy
+        DEATH","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(190,225.483887)"},"ID":6,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-203.701782,247.530884)"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-258.549927,124.393311)"},"ID":8,"Name":"Selector","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Parallel","NodeData":{"Offset":"(-78.5498657,174.393311)"},"ID":9,"Name":"Parallel","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-58.5498657,254.393311)"},"ID":10,"Name":"Within
+        Distance","Instant":true,"Singledistance":10,"SingledistVec":0},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(71.45007,264.3933)"},"ID":11,"Name":"Inverter","Instant":true,"Children":[{"Type":"Bladesmiths.Capstone.CanSee","NodeData":{"Offset":"(1.45007324,114.393311)"},"ID":12,"Name":"Can
+        See","Instant":true,"SinglefieldOfView":60}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(81.4501343,164.393311)"},"ID":13,"Name":"Inverter","Instant":true,"Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(1.45013428,114.393311)"},"ID":14,"Name":"Within
+        Distance","Instant":true,"Singledistance":10,"SingledistVec":0}]}]},{"Type":"Bladesmiths.Capstone.EnemyWANDER","NodeData":{"Offset":"(81.4501343,154.393311)"},"ID":15,"Name":"Enemy
+        WANDER","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(190,276.129028)"},"ID":16,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-283.314362,256.5904)"},"ID":17,"Name":"Attack","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.CanAttack","NodeData":{"Offset":"(-155.436035,151.136353)"},"ID":18,"Name":"Can
+        Attack","Instant":true},{"Type":"Bladesmiths.Capstone.CustomWait","NodeData":{"Offset":"(-35.4360352,151.136353)"},"ID":19,"Name":"Custom
+        Wait","Instant":true,"Disabled":true,"Singletimer":0,"SingletimerMax":0.5,"BooleancanHitTrigger":false},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(94.5639648,321.13623)"},"ID":20,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-185.436035,151.13623)","Comment":"Dash
+        Attack"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"Bladesmiths.Capstone.InCombat","NodeData":{"Offset":"(-613.5386,180.547974)"},"ID":22,"Name":"In
+        Combat","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-491.071655,181.69812)"},"ID":23,"Name":"Inverter","Instant":true,"Children":[{"Type":"Bladesmiths.Capstone.IsAttacking","NodeData":{"Offset":"(4.772766,108.735596)"},"ID":24,"Name":"Is
+        Attacking","Instant":true}]},{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-338.37735,180.547974)"},"ID":25,"Name":"Within
+        Distance","Instant":true,"Singledistance":10,"SingledistVec":0},{"Type":"BehaviorDesigner.Runtime.Tasks.Inverter","NodeData":{"Offset":"(-208.37735,180.547974)"},"ID":26,"Name":"Inverter","Instant":true,"Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-5.43606567,131.13623)"},"ID":27,"Name":"Within
+        Distance","Instant":true,"Singledistance":2.5,"SingledistVec":0}]},{"Type":"Bladesmiths.Capstone.DashTowardsPlayer","NodeData":{"Offset":"(-35.4360352,171.13623)"},"ID":28,"Name":"Dash
+        Towards Player","Instant":true,"Vector3playerPos":"(0,0,0)","SingleenemySpeed":30,"SingleenemyAccl":30},{"Type":"Bladesmiths.Capstone.StopAttack","NodeData":{"Offset":"(189.858276,171.13623)"},"ID":29,"Name":"Stop
+        Attack","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(674.563843,151.13623)","Comment":"Basic
+        Attack"},"ID":30,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-180.890671,186.287735)"},"ID":31,"Name":"Within
+        Distance","Instant":true,"Singledistance":2.5,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.EnemyATTACK_SHIELD_First","NodeData":{"Offset":"(13.3879738,176.288086)"},"ID":32,"Name":"Enemy
+        ATTACK   SHIELD   First","Instant":true,"AnimationCurveshieldCurve":{"Keys":[[0,0,0,0],[0.4,90,1.42991376,1.42991376],[1,0,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(208.8064,178.290283)"},"ID":33,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.3},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.EnemyATTACK_SHIELD_Second","NodeData":{"Offset":"(400.346252,182.3479)"},"ID":34,"Name":"Enemy
+        ATTACK   SHIELD   Second","Instant":true,"AnimationCurvecurve":{"Keys":[[0,0,0,0],[0.3,-50,0.9929767,0.9929767],[0.4,-50,1.34896886,1.34896886],[0.5,90,1.48251152,1.48251152],[0.6,90,1.34868872,1.34868872],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"AnimationCurveshieldCurve":{"Keys":[[0,0,0,0],[0.4,90,0,0],[1,0,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(611.304443,168.260986)"},"ID":35,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.3},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Bladesmiths.Capstone.StopAttack","NodeData":{"Offset":"(745.6433,166.468018)"},"ID":36,"Name":"Stop
+        Attack","Instant":true}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(231.4502,284.3933)"},"ID":37,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.WithinDistance","NodeData":{"Offset":"(-128.5498,164.393311)"},"ID":38,"Name":"Within
+        Distance","Instant":true,"Singledistance":10,"SingledistVec":0},{"Type":"Bladesmiths.Capstone.CanSee","NodeData":{"Offset":"(1.45019531,164.393311)"},"ID":39,"Name":"Can
+        See","Instant":true,"SinglefieldOfView":60},{"Type":"Bladesmiths.Capstone.EnemySURROUND","NodeData":{"Offset":"(151.4502,164.393311)"},"ID":40,"Name":"Enemy
+        SURROUND","Instant":true,"SinglemaxSpeed":10,"SinglesteerForce":0.2,"SinglelookAhead":10,"Int32numRays":8,"Vector3[]allDirections":[],"Single[]intrest":[],"Single[]danger":[],"List`1fleeList":[],"List`1seekList":[],"Vector3rotVec":"(0,0,0)","SingleseekSpeed":0,"Vector3desiredPos":"(0,0,0)","Vector3chosenDir":"(0,0,0)","Vector3lookPos":"(0,0,0)","SingleseekDist":2.5,"SingleseekDistClose":2.3,"SingleseekDistFar":10,"SinglesideDist":0.3},{"Type":"Bladesmiths.Capstone.Attackedyet","NodeData":{"Offset":"(285.019775,165.4126)"},"ID":41,"Name":"Attackedyet","Instant":true},{"Type":"Bladesmiths.Capstone.CustomWait_Longer","NodeData":{"Offset":"(437.499634,168.958252)"},"ID":42,"Name":"Custom
+        Wait   Longer","Instant":true,"Singletimer":0,"SingletimerMax":0}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(837.677368,273.795654)"},"ID":43,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.IsBlocked","NodeData":{"Offset":"(-152.001953,153.795654)"},"ID":44,"Name":"Is
+        Blocked","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySTUN","NodeData":{"Offset":"(147.998047,153.795654)"},"ID":45,"Name":"Enemy
+        STUN","Instant":true,"SinglestunTimerMax":1,"AnimationCurvecurveY":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"AnimationCurvecurveZ":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(1357.6814,253.795654)"},"ID":46,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Bladesmiths.Capstone.IsParried","NodeData":{"Offset":"(-82.00195,153.795654)"},"ID":47,"Name":"Is
+        Parried","Instant":true},{"Type":"Bladesmiths.Capstone.EnemySTUN","NodeData":{"Offset":"(137.998047,163.795654)"},"ID":48,"Name":"Enemy
+        STUN","Instant":true,"SinglestunTimerMax":5,"AnimationCurvecurveY":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"},"AnimationCurvecurveZ":{"Keys":[[0,0,0,0],[1,1,0,0]],"PreWrapMode":"ClampForever","PostWrapMode":"ClampForever"}}]}]}]}]}}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.2

@@ -995,17 +995,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your training is complete!
-
-
-    More creatures approach.
-
-    May you
-    return unharmed...
-
-
-
-    <i>*This playtest is complete!*</i>'
+  m_text: "The warlord now defeated, his constructs crumbled into dust.\n\nMy apprentice
+    stood victorious, but their village had been damaged. \n\nAfter seeing to the
+    fires and the wounded, my apprentice came to a difficult decision.\n\nThey left
+    the village, Topaz and Amethyst in hand, determined to discover in what state
+    war had left the world beyond the village walls."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fd367ed821afe744971b35573b726dd, type: 2}
   m_sharedMaterial: {fileID: -2674396041870844798, guid: 6fd367ed821afe744971b35573b726dd, type: 2}
@@ -1032,8 +1026,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.29
-  m_fontSizeBase: 48.29
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

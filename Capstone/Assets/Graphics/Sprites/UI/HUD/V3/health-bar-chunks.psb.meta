@@ -2335,6 +2335,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 2}
+  - name: Black & White 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 429
+      y: 341
+      width: 0
+      height: 0
+    spriteID: 447d818ba480eb84f87565f6dfd56926
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -579, y: 224}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -2663,6 +2685,13 @@ ScriptedImporter:
     spriteID: 56a75c6e606a1ec48952984fbd272289
     layerID: 59
     mosaicPosition: {x: 732, y: 311}
+  - name: Black & White 1
+    spriteName: Black & White 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 447d818ba480eb84f87565f6dfd56926
+    layerID: 2695
+    mosaicPosition: {x: 429, y: 341}
   - name: healthChunk
     spriteName: healthChunk_40
     isGroup: 0

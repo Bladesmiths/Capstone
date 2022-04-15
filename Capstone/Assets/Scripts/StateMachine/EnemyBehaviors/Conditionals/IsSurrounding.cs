@@ -19,7 +19,6 @@ namespace Bladesmiths.Capstone
 
         public override TaskStatus OnUpdate()
         {
-            Debug.Log("Surrounding: " + GetComponent<Enemy>().surrounding);
             if (GetComponent<Enemy>().surrounding == false)
             {
                 return TaskStatus.Success;

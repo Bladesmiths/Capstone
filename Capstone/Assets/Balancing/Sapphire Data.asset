@@ -21,10 +21,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  damage: 20
+  damage: 25
   chipDamagePercentage: 0.6
   lifeStealPercentage: 0
-  damageTakenModifier: 1.2
+  damageTakenModifier: 1.3
   playerMovementMultiplier: 0.8
   knockboackThreshold: 0
   parryDelay: 0

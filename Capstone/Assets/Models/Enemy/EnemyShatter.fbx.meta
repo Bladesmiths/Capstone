@@ -1,8 +1,83 @@
 fileFormatVersion: 2
-guid: 7e9b86b9ab5f69948adcbf7b57bec466
+guid: 7885871f3c41ed645a08ff5d3449b323
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -7488142092435225893
+    second: FKExtraRoot_M|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 8449760857130657186
+    second: FKExtraRoot_M|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: 7330390192507783684
+    second: FKExtraRoot_M|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: 903958458276035525
+    second: FKExtraRoot_M|FKSystem|Take 001|BaseLayer
+  - first:
+      74: 455640416438671741
+    second: FKExtraRoot_M|IKSystem|Take 001|BaseLayer
+  - first:
+      74: 582817621814353894
+    second: FKFollowRoot|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 1577930743810848684
+    second: FKFollowRoot|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: -4784237105066513674
+    second: FKFollowRoot|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: 5242188024329526400
+    second: FKFollowRoot|FKSystem|Take 001|BaseLayer
+  - first:
+      74: 6592033986052865307
+    second: FKFollowRoot|IKSystem|Take 001|BaseLayer
+  - first:
+      74: 2064701045892364677
+    second: FKSystem|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 4856285839320342842
+    second: FKSystem|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: -6021684188394246111
+    second: FKSystem|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: -8075516600985849918
+    second: FKSystem|FKSystem|Take 001|BaseLayer
+  - first:
+      74: 8678679834437456061
+    second: FKSystem|IKSystem|Take 001|BaseLayer
+  - first:
+      74: -2284329240073521178
+    second: IKSystem|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: -7647705991807223776
+    second: IKSystem|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: 8046955393749312819
+    second: IKSystem|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: -1424411319930526258
+    second: IKSystem|FKSystem|Take 001|BaseLayer
+  - first:
+      74: -3606928925787445751
+    second: IKSystem|IKSystem|Take 001|BaseLayer
+  - first:
+      74: 8328334035284510391
+    second: DeformationSystem|DeformationSystem|Take 001|BaseLayer
+  - first:
+      74: 5856470228619456915
+    second: DeformationSystem|FKExtraRoot_M|Take 001|BaseLayer
+  - first:
+      74: 6395714794274077146
+    second: DeformationSystem|FKFollowRoot|Take 001|BaseLayer
+  - first:
+      74: -1600994105939759137
+    second: DeformationSystem|FKSystem|Take 001|BaseLayer
+  - first:
+      74: -106769954343071869
+    second: DeformationSystem|IKSystem|Take 001|BaseLayer
   externalObjects: {}
   materials:
     materialImportMode: 2

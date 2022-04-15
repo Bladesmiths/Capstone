@@ -31,4 +31,19 @@ MonoBehaviour:
   - scenePath: Assets/Scenes/Village_Lighting.unity
     isActive: 0
     isLoaded: 1
-  gameLevelData: {fileID: 11400000, guid: 5510f252e8dffc44d94a0b9b4bd600fe, type: 2}
+  - scenePath: Assets/Scenes/Village_Area1.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area2.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area3.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area4.unity
+    isActive: 0
+    isLoaded: 1
+  - scenePath: Assets/Scenes/Village_Area5.unity
+    isActive: 0
+    isLoaded: 1
+  gameLevelData: {fileID: 11400000, guid: cb43d96e93bafb9428692ea09f81b1d5, type: 2}

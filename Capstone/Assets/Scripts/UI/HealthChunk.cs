@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class HealthChunk : MonoBehaviour
 {
     Rigidbody2D chunkRigidbody;
-    Image image;
+    public Image image;
     Vector3 originalPosition;
+    Quaternion originalRotation;
+    float originalRigidbodyRotation;
     float originalScale;
 
     public bool shattered = false;
@@ -23,14 +25,20 @@ public class HealthChunk : MonoBehaviour
     /// <summary>
     /// Get references to components and save the chunk's original status so it can be reset later
     /// </summary>
-    void Start()
+    void Awake()
     {
         chunkRigidbody = GetComponent<Rigidbody2D>();
         image = GetComponent<Image>();
-        originalPosition = transform.position;
+        originalPosition = transform.localPosition;
+        originalRotation = transform.localRotation;
         originalScale = transform.localScale.x;
+        originalRigidbodyRotation = chunkRigidbody.rotation;
         image.type = Image.Type.Filled;
         image.fillMethod = Image.FillMethod.Horizontal;
+
+        //Copy spriteRenderer sprite to Image component so the health bar shows in the UI
+        //Used for one-time conversion from PSD importer default settings that create a spriteRenderer
+        //image.sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
 
@@ -81,7 +89,7 @@ public class HealthChunk : MonoBehaviour
         if (!chipped)
         {
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-            image.color = new Color(0.6f, 0.6f, 0.6f, image.color.a); //Maintain current visibility
+            //SetColor(false);
             chipped = true;
         }
     }
@@ -112,7 +120,7 @@ public class HealthChunk : MonoBehaviour
     {
         if (chipped)
         {
-            image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
+            //SetColor(true);
             growing = true;
         }
     }
@@ -168,14 +176,14 @@ public class HealthChunk : MonoBehaviour
         //Reset rigidbody
         chunkRigidbody.velocity = Vector2.zero;
         chunkRigidbody.angularVelocity = 0.0f;
-        chunkRigidbody.rotation = 0.0f;
+        chunkRigidbody.rotation = originalRigidbodyRotation;
         chunkRigidbody.gravityScale = 0.0f;
 
         //Reset chunk location, size, color, etc.
-        transform.position = originalPosition;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
+        transform.localPosition = originalPosition;
+        transform.localRotation = originalRotation;
         transform.localScale = new Vector3(originalScale, originalScale, originalScale);
-        image.color = new Color(1.0f, 1.0f, 1.0f, image.color.a); //Maintain current visibility
+        //SetColor(true);
         chipped = false;
         SetOpacity(0f);
     }
@@ -199,9 +207,9 @@ public class HealthChunk : MonoBehaviour
     /// <returns></returns>
     private float ChangeOpacity(float opacityChange)
     {
-        Color tempColor = GetComponent<Image>().color;
+        Color tempColor = image.color;
         tempColor.a += opacityChange;
-        GetComponent<Image>().color = tempColor;
+        image.color = tempColor;
 
         return tempColor.a;
     }
@@ -211,9 +219,9 @@ public class HealthChunk : MonoBehaviour
     /// </summary>
     private void SetOpacity(float opacityValue)
     {
-        Color tempColor = GetComponent<Image>().color;
+        Color tempColor = image.color;
         tempColor.a = opacityValue;
-        GetComponent<Image>().color = tempColor;
+        image.color = tempColor;
 
     }
 
@@ -231,5 +239,20 @@ public class HealthChunk : MonoBehaviour
         }
 
         return transform.localScale.x;
+    }
+
+    /// <summary>
+    /// Sets the color of the chunk
+    /// </summary>
+    /// <returns></returns>
+    public void SetColor(Color endColor, float time)
+    {
+        if (image != null)
+        {
+            //Maintain opacity
+            endColor.a = image.color.a;
+
+            image.color = Color.Lerp(image.color, endColor, time);
+        }
     }
 }

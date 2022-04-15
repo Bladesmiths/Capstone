@@ -83,7 +83,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2fc4bd9f7208d12438b81e691657fdf6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 99d79a811c3dd044d86188abe7f74cc6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -181,7 +181,7 @@ Material:
     - _COAT_THICKNESS: 5
     - _COAT_WEIGHT: 0
     - _CoatMask: 0
-    - _CrystalIOR: 2.081
+    - _CrystalIOR: 1.881
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0
@@ -206,7 +206,7 @@ Material:
     - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
-    - _EmissiveIntensity: 1.56
+    - _EmissiveIntensity: 0.64
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
@@ -306,7 +306,7 @@ Material:
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _COAT_COLOR: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 0, b: 0.8, a: 1}
-    - _CrystalColor: {r: 1, g: 1, b: 1, a: 1}
+    - _CrystalColor: {r: 0.36405307, g: 0.5028627, b: 0.764151, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 0}

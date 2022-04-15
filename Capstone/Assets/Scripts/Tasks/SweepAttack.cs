@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class SweepAttack : Action
 {
-    [SerializeField] private GameObject sword;
+    //[SerializeField] private GameObject sword;
     [SerializeField] private Transform originalSwordTransform;
     [SerializeField] private float nodeDuration;
 
@@ -33,13 +33,13 @@ public class SweepAttack : Action
         if(currentRotation <= rotationEnd)
         {
             // Rotate the sword down to parallel with the ground and spin the boss
-            sword.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.05f);
+            //sword.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.05f);
             transform.Rotate(0, -720 * Time.deltaTime, 0);
             currentRotation += 720 * Time.deltaTime;
 
             return TaskStatus.Running;
         }
-        sword.transform.DOComplete();
+        //sword.transform.DOComplete();
         return TaskStatus.Success;
     }
 }

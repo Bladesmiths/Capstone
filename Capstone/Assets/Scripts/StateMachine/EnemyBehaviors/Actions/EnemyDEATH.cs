@@ -29,7 +29,7 @@ namespace Bladesmiths.Capstone
         public override TaskStatus OnUpdate()
         {
             fadeOutTimer += Time.deltaTime;
-            
+
 
             // When the object should fade out
             if (fadeOutTimer >= fadeOutLength)
@@ -58,25 +58,68 @@ namespace Bladesmiths.Capstone
             _enemy = GetComponent<Enemy>();
             // Removes the Enemy from its group and the attack queue
             AIDirector.Instance.RemoveFromGroups(_enemy);
+            Player.instance.Sword.GetComponent<Sword>().damaging = false;
+
+            List<GameObject> body = _enemy.bodyChunks;
 
             // Allows for the destruction of Enemy's
             _enemy.gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-            for(int i = 0; i < _enemy.transform.GetChild(1).childCount; i++)
+            int count = body.Count;
+            for (int i = 0; i < count; i++)
             {
-                _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<BoxCollider>();
-                _enemy.transform.GetChild(1).GetChild(i).gameObject.AddComponent<Rigidbody>();
-                _enemy.transform.GetChild(1).GetChild(i).GetComponent<Rigidbody>().isKinematic = false;
+                body[i].gameObject.AddComponent<BoxCollider>();
+                body[i].gameObject.AddComponent<Rigidbody>();
+                body[i].gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                body[i].transform.parent = null;
+                //body.Remove(body[i]);
+            }
+            _enemy.bodyChunks.Clear();
+
+            count = _enemy.spine.Length;
+            for (int i = 0; i < count; i++)
+            {
+                if (_enemy.spine[i].gameObject != null)
+                {
+                    _enemy.spine[i].gameObject.AddComponent<BoxCollider>();
+                    _enemy.spine[i].gameObject.AddComponent<Rigidbody>();
+                    _enemy.spine[i].gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 40f;
+                    _enemy.spine[i].transform.parent = null;
+                }
             }
 
-            _enemy.transform.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
-            _enemy.transform.GetChild(3).GetComponent<Rigidbody>().isKinematic = false;
-            _enemy.transform.GetChild(4).GetComponent<Rigidbody>().isKinematic = false;
-            // Turns on all of the physics on the Enemy
-            //foreach (Rigidbody child in _enemy.transform.GetComponentsInChildren<Rigidbody>())
-            //{
-            //    child.isKinematic = false;
-            //}
+            count = _enemy.geo.Length;
+            for (int i = 0; i < count; i++)
+            {
+                GameObject gO = _enemy.geo[i];
+                gO.AddComponent<BoxCollider>();
+                gO.AddComponent<Rigidbody>();
+                gO.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+                gO.transform.parent = null;
+
+            }
+
+            count = _enemy.special.Length;
+            for (int i = 0; i < count; i++)
+            {
+                GameObject gO = _enemy.special[i];
+                gO.SetActive(!gO.activeInHierarchy);
+                gO.transform.parent = null;
+
+            }
+
+            //_enemy.transform.GetChild(0).gameObject.AddComponent<BoxCollider>();
+            //_enemy.transform.GetChild(0).gameObject.AddComponent<Rigidbody>();
+            //_enemy.transform.GetChild(0).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+
+            //_enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().enabled = true;
+            //_enemy.transform.GetChild(1).gameObject.GetComponent<BoxCollider>().isTrigger = false;
+            //_enemy.transform.GetChild(1).gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 1f;
+            //_enemy.transform.GetChild(1).gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            //_enemy.transform.GetChild(1).parent = null;
+
+
+            _enemy.gameObject.AddComponent<EnemyChunk>().shrinkSpeed = 2f;
         }
 
         public override void OnEnd()

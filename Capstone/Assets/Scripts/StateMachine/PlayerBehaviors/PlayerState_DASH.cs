@@ -129,12 +129,14 @@ namespace Bladesmiths.Capstone
             camera = Camera.main.gameObject;
 
             _player.gameObject.layer = LayerMask.NameToLayer("IgnoreEnemies");
+            _player.shouldLookAt = false;
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _controller.SimpleMove(Vector3.zero);
             _player.gameObject.layer = LayerMask.NameToLayer("Player");
+            _player.shouldLookAt = true;
         }
     }
 }

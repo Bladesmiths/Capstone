@@ -12,6 +12,7 @@ namespace Bladesmiths.Capstone
         [SerializeField] private GameObject sword;
         [SerializeField] private GameObject swordBlade;
         [SerializeField] private Transform originalBladeTransform;
+        //[SerializeField] private Transform originalSwordPosTransform;
         [SerializeField] private float nodeDuration;
 
         [SerializeField] private GameObject shockwave;
@@ -28,7 +29,10 @@ namespace Bladesmiths.Capstone
         public override TaskStatus OnUpdate()
         {
             // Reset the shockwave
-            shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
+            if (shockwave != null)
+            {
+                shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
+            }
             shockwave.SetActive(false);
             // When the node isn't finished
             if (timer < nodeDuration)
@@ -38,7 +42,9 @@ namespace Bladesmiths.Capstone
                 swordBlade.transform.DOLocalRotateQuaternion(originalBladeTransform.localRotation, nodeDuration);
                 swordBlade.transform.DOLocalMove(originalBladeTransform.localPosition, nodeDuration);
 
-                sword.transform.DOLocalRotate(new Vector3(0, 0, 0), nodeDuration);
+                //sword.transform.DOLocalRotate(new Vector3(0, 0, 0), nodeDuration);
+
+                //sword.transform.DOLocalMove(originalSwordPosTransform.localPosition, nodeDuration);
 
                 timer += Time.deltaTime;
 

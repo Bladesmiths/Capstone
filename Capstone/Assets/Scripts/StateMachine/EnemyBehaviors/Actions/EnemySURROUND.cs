@@ -7,6 +7,19 @@ using BehaviorDesigner.Runtime.Tasks;
 
 namespace Bladesmiths.Capstone
 {
+    public struct SeekPoint
+    {
+        public Vector3 point;
+        public float weight;
+        public SeekPoint(Vector3 pos, float w)
+        {
+            point = pos;
+            weight = w;
+        }
+        
+    }
+
+
     public class EnemySURROUND : Action
     {
         public float maxSpeed = 10f;
@@ -28,51 +41,62 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private GameObject fleeTarget;
         public List<GameObject> fleeList;
-        public List<Vector3> seekList;
+        public List<SeekPoint> seekList;
+        public Vector3 rotVec;
 
         private bool targetExists;
 
         [SerializeField]
         private Player player;
         private Enemy enemy;
-        private NavMeshPath currentPath;
+        public float seekSpeed;
 
         private Vector3 target;
         public Vector3 desiredPos;
         public Vector3 chosenDir;
-        public Vector3 movemntPos;
-        public Vector3 enemyPos;
+        public Vector3 lookPos;
         private int dir;
-        private float seekAgainTimer;
-        private float seekAgainTimerMax;
+        public float seekDist;
+        public float seekDistClose;
+        public float seekDistFar;
+
+        [SerializeField]
+        private float sideDist;
 
         public override void OnStart()
         {
             enemy = GetComponent<Enemy>();
+            agent = GetComponent<NavMeshAgent>();
             enemy.surrounding = true;
             player = Player.instance;
             allDirections = new Vector3[numRays];
             intrest = new float[numRays];
             danger = new float[numRays];
             fleeList = new List<GameObject>();
-            seekList = new List<Vector3>();
-            seekAgainTimerMax = 2f;
-            seekAgainTimer = seekAgainTimerMax;
+            seekList = new List<SeekPoint>();
+            enemy.moveTimerMax = Random.Range(0.5f, 1f);
+            enemy.moveTimer = enemy.moveTimerMax;
+            seekSpeed = 2f;
+            enemy.CanHit = false;
+            if (agent != null)
+            {
+                agent.speed = 3.5f;
+            }
+            enemy.InCombat = true;
 
             for (int i = 0; i < numRays; i++)
             {
                 float angle = i * 2 * Mathf.PI / numRays;
                 allDirections[i] = Quaternion.Euler(0, Mathf.Rad2Deg * angle, 0) * Vector3.forward;
-
             }
-            enemy.InCombat = true;
+
+            //enemy.InCombat = true;
             enemy.canMove = true;
             enemy.moveVector = Vector3.zero;
             dir = Random.Range(-1, 2);
-            Debug.Log("1: "+dir);
+            dir = dir == 0 ? 1 : dir;
 
             //Vector3 dist = player.transform.position - transform.position;
-
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
             //desiredPos = (Vector3.Cross(Vector3.up, dist) * dir) + transform.position;
@@ -87,80 +111,88 @@ namespace Bladesmiths.Capstone
                 }
             }
 
-            seekList.Add(desiredPos);
-            //seekList.Add(player.transform.position);
+            seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
 
         }
 
         private void AttackTimer()
         {
-            enemy.attackTimer -= Time.deltaTime;
+            if(enemy.InCombat)
+            {
+                enemy.attackTimer -= Time.deltaTime;
+            }
             if (enemy.attackTimer <= 0)
             {
-                AIDirector.Instance.PopulateAttackQueue(enemy);
                 enemy.attackTimer = enemy.attackTimerMax;
+                AIDirector.Instance.PopulateAttackQueue(enemy);
             }
-
         }
 
         public override TaskStatus OnUpdate()
-        {            
-
+        {
             Vector3 dist = player.transform.position - transform.position;
+            lookPos = dist;
+            seekList.Clear();
+            
+            if (dist.magnitude > seekDist)
+            {
+                seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
+            }
+            else if (dist.magnitude <= seekDistClose)
+            {
+                seekList.Add(new SeekPoint((dist * -1), 1f));
+
+            }
+            else if (dist.magnitude > seekDistClose && dist.magnitude < seekDist)
+            {
+                seekList.Add(new SeekPoint(transform.position, 1f));
+                //seekList.Add(new SeekPoint(player.transform.position, seekSpeed));
+            }
 
             // Get the perpendicular vector to the distance between the Player and the Enemy
-            seekList[0] = (Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position;
-            PopulateAll();
+            seekList.Add(new SeekPoint((Vector3.Cross(Vector3.up, dist).normalized * dir) + transform.position, 1f));
+            desiredPos = player.transform.position;
 
-            //if ((seekList[0] - transform.position).magnitude <= 0.5f)
-            //{
-            //    // Rest everything
-            //    seekAgainTimer -= Time.deltaTime;
-            //    Debug.Log("2: " + dir);
-
-            seekAgainTimer -= Time.deltaTime;
-            //}
-            //Debug.Log(seekAgainTimer);
+            PopulateAll();            
             AttackTimer();
 
-
-            if (seekAgainTimer <= 0)
+            if (dist.magnitude <= seekDist)
             {
-                seekAgainTimer = seekAgainTimerMax;
-
-                dir = Random.Range(-1, 2);
-                Debug.Log("3: " + dir);
-
+                enemy.moveTimer -= Time.deltaTime;
+            }
+            if (enemy.moveTimer <= 0)
+            {
+                enemy.moveTimer = enemy.moveTimerMax;
+                return TaskStatus.Success;
             }
 
-            Vector3 movePos = chosenDir + transform.position;
+            sideDist = dist.magnitude > seekDist ? seekDistFar : 0.3f;
 
-            if (dir == 0)
+            Vector3 movePos = (chosenDir * sideDist) + transform.position;
+
+            if (agent != null)
             {
-                movePos = transform.position;
+                agent.SetDestination(movePos);                
             }
-            //Debug.Log("Move Position: " + movePos);
 
-            enemy.moveVector = movePos;
-            enemy.rotateVector = dist;
-
+            //dist.Normalize();
+            Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
+            rotVec = lookRotVec;
+            if (lookRotVec.magnitude > Mathf.Epsilon)
+            {
+                Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+                    Time.deltaTime * 5f);
+                transform.rotation = q;
+            }
+            
             return TaskStatus.Running;
-
         }
 
         public override void OnEnd()
         {
             base.OnEnd();
-            enemy.surrounding = false;
-            //desiredPos = Vector3.zero;
-            //movemntPos = Vector3.zero;
-            //chosenDir = Vector3.zero;
-            //enemyPos = Vector3.zero;
-            //allDirections = null;
-            //intrest = null;
-            //danger = null;
+            enemy.surrounding = false;            
             enemy.canMove = false;
-
         }
 
         /// <summary>
@@ -180,13 +212,13 @@ namespace Bladesmiths.Capstone
         {
             Vector3 pathDir = Vector3.zero;
             //pathDir = desiredPos - transform.position;
-            float mag = 0;
+            float mag = 1;
 
-            foreach (Vector3 vec in seekList)
+            foreach (SeekPoint vec in seekList)
             {
-                mag = (vec - transform.position).magnitude;
-                mag = 1 / mag;
-                pathDir += (vec - transform.position) * mag;
+                mag = (vec.point - transform.position).magnitude;
+                //mag = 1 / mag;
+                pathDir += (vec.point - transform.position) * vec.weight;
             }
 
             //mag = 1 / mag;
@@ -210,7 +242,8 @@ namespace Bladesmiths.Capstone
             // Combines all of the dangers into one vector
             foreach (GameObject gO in fleeList)
             {
-                pathDir += gO.transform.position - transform.position;
+                if (gO != null)
+                    pathDir += gO.transform.position - transform.position;
             }
 
             float mag = pathDir.magnitude;
@@ -267,11 +300,11 @@ namespace Bladesmiths.Capstone
         /// </summary>
         public override void OnDrawGizmos()
         {
-            //Debug.Log(allDirections);
+            //Gizmos.DrawRay(transform.position, rotVec);
+
             //if (allDirections == null ||
             //    intrest == null ||
-            //    danger == null || 
-            //    allDirections[0] == null)
+            //    danger == null)
             //{
             //    return;
             //}
@@ -281,7 +314,7 @@ namespace Bladesmiths.Capstone
             //    Gizmos.color = Color.red;
             //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * danger[i] * 2f);
             //    Gizmos.color = Color.green;
-            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);               
+            //    Gizmos.DrawRay(transform.position, Quaternion.Euler(0, transform.eulerAngles.y, 0) * allDirections[i].normalized * intrest[i] * 2f);
 
             //}
             //Gizmos.color = Color.blue;
@@ -289,7 +322,7 @@ namespace Bladesmiths.Capstone
             //Gizmos.color = Color.cyan;
             //Gizmos.DrawSphere(chosenDir + transform.position, .3f);
             //Gizmos.color = Color.magenta;
-            //Gizmos.DrawSphere(seekList[0], .3f);
+            //Gizmos.DrawSphere(seekList[0].point, .3f);
             //Gizmos.color = Color.gray;
             //DrawCircle();
         }

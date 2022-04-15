@@ -14,7 +14,7 @@ namespace Bladesmiths.Capstone
     {
         [SerializeField]
         private AnimationCurve curve;
-        private GameObject _sword;
+        //private GameObject _sword;
         private Enemy_Ranged _enemy;
         private bool attack;
         private float timer;
@@ -30,7 +30,7 @@ namespace Bladesmiths.Capstone
 
         public EnemyATTACK_RANGED(GameObject sword, Enemy_Ranged enemy)
         {
-            _sword = sword;
+            //_sword = sword;
             _enemy = enemy;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
@@ -62,26 +62,31 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             _enemy = gameObject.GetComponent<Enemy_Ranged>();
-            _sword = _enemy.Sword;
+            //_sword = _enemy.Sword;
+            _enemy.animator.SetTrigger("Attack");
+
             speed = 6f;
             preAttackTimer = 0f;
             preAttackTimerMax = 0.5f;
             fireTimerLimit = 2f;
             fireTimer = fireTimerLimit;
             attack = true;
-            _sword.GetComponent<BoxCollider>().enabled = true;
+            _enemy.InCombat = true;
+            _enemy.isAttacking = true;
+            _enemy.attackedYet = true;
+            //_sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
             timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.75f, 3f);
+            _enemy.attackTimerMax = Random.Range(0.75f, 2f);
             projectileVelocity = Vector3.forward * speed;
         }
 
         public override void OnEnd()
         {
-            _sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
+            //_sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
             _enemy.ClearDamaging();
-            _sword.GetComponent<BoxCollider>().enabled = false;
+            //_sword.GetComponent<BoxCollider>().enabled = false;
         }
 
         public void CheckIfInRange()
@@ -90,8 +95,9 @@ namespace Bladesmiths.Capstone
 
             if (Physics.Raycast(_enemy.shootLoc.position, transform.forward, out hit, 10f, _enemy.PlayerLayer))
             {
+                //FireProjectile();
+
                 timer += Time.deltaTime;
-                Debug.Log(hit.collider.gameObject);
                 if (fireTimer >= fireTimerLimit)
                 {
                     FireProjectile();

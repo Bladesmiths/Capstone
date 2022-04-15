@@ -14,6 +14,7 @@ namespace Bladesmiths.Capstone
     {
         private Enemy _self;
         private CharacterController controller;
+        private NavMeshAgent agent;
         
         // The point to head towards
         private Vector3 wanderPoint;
@@ -42,6 +43,7 @@ namespace Bladesmiths.Capstone
         {
             //controller = _self.GetComponent<CharacterController>();
             _self = gameObject.GetComponent<Enemy>();
+            agent = GetComponent<NavMeshAgent>();
             center = transform.position;
             moveTimer = 0;
             moveTimerMax = 1f;
@@ -58,6 +60,8 @@ namespace Bladesmiths.Capstone
             wanderPoint = new Vector3(x, y, z);
             _self.canMove = true;
             _self.InCombat = false;
+            AIDirector.Instance.RemoveFromAttackQueue(GetComponent<Enemy>());
+            _self.attackedYet = false;
 
         }
 
@@ -79,8 +83,21 @@ namespace Bladesmiths.Capstone
                 // Moves the Enemy
                 Vector3 dist = wanderPoint - _self.transform.position;
 
-                _self.moveVector = wanderPoint;// dist.normalized;
-                _self.rotateVector = dist.normalized;
+                if (agent != null)
+                {
+                    //transform.Translate(wanderPoint);
+
+                    agent.SetDestination(wanderPoint);
+                }
+                dist.Normalize();
+
+                Vector3 lookRotVec = new Vector3(dist.x + 0.001f, 0f, dist.z);
+                if (lookRotVec.magnitude > Mathf.Epsilon)
+                {
+                    Quaternion q = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookRotVec),
+                        Time.deltaTime * 5f);
+                    transform.rotation = q;
+                }                
             }
             else
             {

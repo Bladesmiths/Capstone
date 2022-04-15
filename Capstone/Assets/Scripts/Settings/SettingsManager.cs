@@ -50,6 +50,8 @@ namespace Bladesmiths.Capstone.UI
 
         public bool onPauseScreenOnly;
 
+        public GameObject settingsButtonImage;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -119,6 +121,14 @@ namespace Bladesmiths.Capstone.UI
                 onPauseScreenOnly = false;
                 EventSystem.current.SetSelectedGameObject(graphicsButton);
                 //settingsButton.GetComponent<Button>().interactable = false;
+
+                if (GetComponent<UIManager>())
+                {
+                    GetComponent<UIManager>().PauseMenu.TogglePauseInfoDisplays();
+                }
+
+                if (SceneManager.GetActiveScene().name != "MainMenu")
+                    settingsButtonImage.SetActive(false);
             }
             else
             {
@@ -135,6 +145,11 @@ namespace Bladesmiths.Capstone.UI
                 {
                     //settingsButton.GetComponent<Button>().interactable = true;
                     EventSystem.current.SetSelectedGameObject(settingsButton);
+
+                    if (GetComponent<UIManager>())
+                        GetComponent<UIManager>().PauseMenu.TogglePauseInfoDisplays();
+                    
+                    settingsButtonImage.SetActive(true);
                 }
                 onPauseScreenOnly = true;
             }
