@@ -23,6 +23,8 @@ namespace Bladesmiths.Capstone
         public int hasntMovedCounter;
         public bool againstWallAgain;
 
+        public Dictionary<string,float> actionCounter;
+
         private void Awake()
         {
             if (instance == null)
@@ -38,6 +40,8 @@ namespace Bladesmiths.Capstone
             ObjectController.Instance.AddIdentifiedObject(Team.Enemy, this);
 
             GetComponent<BehaviorTree>().SetVariableValue("Player", player);
+
+            actionCounter = new Dictionary<string, float>();
         }
 
         // Update is called once per frame
