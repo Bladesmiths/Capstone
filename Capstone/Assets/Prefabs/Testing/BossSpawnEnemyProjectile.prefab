@@ -114,6 +114,8 @@ MonoBehaviour:
   timeTillDestruction: 5
   healthPickup: {fileID: 6254387197349663901, guid: c4e58bad2dc430c4d8ac6e2217560eaf, type: 3}
   enemy: {fileID: 4687196854911201774, guid: c1d8f2e3c84d17248a8526469c897297, type: 3}
+  boss: {fileID: 0}
+  parentTransform: {fileID: 0}
 --- !u!1001 &8734326960354379360
 PrefabInstance:
   m_ObjectHideFlags: 0

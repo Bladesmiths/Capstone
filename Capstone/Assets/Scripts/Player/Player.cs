@@ -805,9 +805,9 @@ namespace Bladesmiths.Capstone
                 player.GetComponent<Animator>().rootRotation = respawnRotation;
                 animator.SetBool(animIDDead, false);
             }
-            damaged = false; 
+            damaged = false;
 
-            Boss.instance.Health = Boss.instance.MaxHealth;
+            Boss.instance.Reset();
             bossTrigger.BossTriggerReset();
 
             // Call the fade in method multiple times so it can fade

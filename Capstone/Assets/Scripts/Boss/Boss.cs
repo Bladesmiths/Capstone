@@ -24,6 +24,9 @@ namespace Bladesmiths.Capstone
         public bool againstWallAgain;
 
         public Dictionary<string,float> actionCounter;
+        public List<GameObject> spawnedObjects;
+
+        [SerializeField] private Transform spawnPosition;
 
         private void Awake()
         {
@@ -42,6 +45,7 @@ namespace Bladesmiths.Capstone
             GetComponent<BehaviorTree>().SetVariableValue("Player", player);
 
             actionCounter = new Dictionary<string, float>();
+            spawnedObjects = new List<GameObject>();
         }
 
         // Update is called once per frame
@@ -97,6 +101,19 @@ namespace Bladesmiths.Capstone
         public override void Respawn()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            Health = MaxHealth;
+            transform.position = spawnPosition.position;
+            actionCounter.Clear();
+            
+            foreach(GameObject obj in spawnedObjects)
+            {
+                Destroy(obj);
+            }
+            spawnedObjects.Clear();
         }
 
         /// <summary>
