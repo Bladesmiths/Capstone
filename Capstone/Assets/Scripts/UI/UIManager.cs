@@ -242,8 +242,8 @@ namespace Bladesmiths.Capstone.UI
                     // Allows the camera fto move and recenter
                     camera.m_XAxis.m_MaxSpeed = maxSpeedX;
                     camera.m_YAxis.m_MaxSpeed = maxSpeedY;
-                    camera.m_RecenterToTargetHeading.m_enabled = true;
-                    camera.m_YAxisRecentering.m_enabled = true;
+                    //camera.m_RecenterToTargetHeading.m_enabled = true;
+                    //camera.m_YAxisRecentering.m_enabled = true;
 
                     Time.timeScale = 1;
                 }
@@ -270,8 +270,8 @@ namespace Bladesmiths.Capstone.UI
                 // Stops the camera from moving and stops the recentering
                 camera.m_XAxis.m_MaxSpeed = 0f;
                 camera.m_YAxis.m_MaxSpeed = 0f;
-                camera.m_RecenterToTargetHeading.m_enabled = false;
-                camera.m_YAxisRecentering.m_enabled = false;
+                //camera.m_RecenterToTargetHeading.m_enabled = false;
+                //camera.m_YAxisRecentering.m_enabled = false;
 
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
