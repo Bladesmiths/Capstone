@@ -17,6 +17,9 @@
 
         ShaderTagId[] shaderTags;
 
+        /// <summary>
+        /// Allocate all the resources you need to render your pass.
+        /// </summary>
         protected override void Setup(ScriptableRenderContext renderContext, CommandBuffer cmd)
         {
             if (stencilShader == null)
@@ -33,6 +36,9 @@
             };
         }
 
+        /// <summary>
+        /// Describe what HDRP renders during the Custom Pass.
+        /// </summary>
         protected override void Execute(CustomPassContext ctx)
         {
             // We first render objects into the user stencil bit 0, this will allow us to detect
@@ -89,6 +95,9 @@
             CoreUtils.DrawRendererList(renderContext, cmd, rendererList);
         }
 
+        /// <summary>
+        /// Clear the resources you allocated in the Setup method.
+        /// </summary>
         protected override void Cleanup()
         {
             // Cleanup code
