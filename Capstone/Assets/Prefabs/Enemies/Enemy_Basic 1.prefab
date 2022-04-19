@@ -5381,8 +5381,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!1 &4769379498562437542
 GameObject:
   m_ObjectHideFlags: 0
@@ -7791,7 +7791,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 58749a79d90edcd4c93eab8cba3cb36d, type: 3}
+  - {fileID: 2100000, guid: ca1c0246ef874ee4ba6b36a5f5823f28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
