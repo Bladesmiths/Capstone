@@ -1335,36 +1335,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3487148343459043377, guid: c6f27cc3c86de4e41bf611ad863bfcb0, type: 3}
   m_PrefabInstance: {fileID: 1582818194}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &487507624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 487507625}
-  m_Layer: 0
-  m_Name: BossSpawnedEnemies
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &487507625
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487507624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494098107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4605712723058616411, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
@@ -2897,7 +2867,7 @@ PrefabInstance:
     - target: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 935388459691670865, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1438253611527912812, guid: fc68b55ad06cc44468085c0af5194160, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7162,8 +7132,6 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   hasntMovedCounter: 0
   againstWallAgain: 0
-  spawnedObjects: []
-  spawnPosition: {fileID: 1566948464}
 --- !u!114 &1494100361
 MonoBehaviour:
   m_ObjectHideFlags: 0
