@@ -295,6 +295,11 @@ namespace Bladesmiths.Capstone
 
 		public void ParryInput(bool newParryState)
 		{
+			if (parry)
+            {
+				return;
+			}
+
 			parry = newParryState;
 
 			animator.SetBool(_animIDParry, parry);
