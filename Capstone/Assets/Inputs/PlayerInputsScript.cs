@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 
 namespace Bladesmiths.Capstone
 {
-	public class PlayerInputsScript : MonoBehaviour
+	public class PlayerInputsScript : SerializedMonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Player player; 
@@ -20,6 +22,8 @@ namespace Bladesmiths.Capstone
 		public bool dodge = false;
 		public bool swordSelectActive = false;
 		public Enums.SwordType currentSwordType;
+		[OdinSerialize]
+		public Dictionary<Enums.SwordType, int> animNumbers = new Dictionary<Enums.SwordType,int>();
 		public GameObject playerLookCamera;
 		public TargetLock targetLockManager; 
 
@@ -40,6 +44,7 @@ namespace Bladesmiths.Capstone
 		private int _animIDDash; 
 		private int _animIDAttack;
 		private int _animIDMoving;
+		private int _animIDAttackNum; 
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -47,7 +52,10 @@ namespace Bladesmiths.Capstone
 		public bool cursorInputForLook = true;
 #endif
 
-        private void Start()
+		public int DesiredAttackNum { get; set; }
+		public int CurrentAttackNum {get; set; }
+
+		private void Start()
         {
 			_animIDMoving = Animator.StringToHash("Moving");
 			_animIDAttack = Animator.StringToHash("Attack");
@@ -55,9 +63,11 @@ namespace Bladesmiths.Capstone
 			_animIDDodge = Animator.StringToHash("Dodge");
 			_animIDDash = Animator.StringToHash("Dash");
 			_animIDParry = Animator.StringToHash("Parry");
+			_animIDAttackNum = Animator.StringToHash("Attack Num");
 		}
-		#region On Input Methods
-		public void OnMove(InputValue value)
+
+        #region On Input Methods
+        public void OnMove(InputValue value)
 		{
 			if(!switchingSwords)
 				MoveInput(value.Get<Vector2>());
@@ -212,7 +222,7 @@ namespace Bladesmiths.Capstone
 			{
 				// Toggles the target lock state to its opposite value
 				targetLockManager.Active = !targetLockManager.Active;
-				Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
+				//Debug.Log($"Target Lock Enabled: {targetLockManager.Active}");
 				// Runs the LockOnEnemy method no matter what because it serves both purposes
 				targetLockManager.LockOnEnemy();
 			}
@@ -288,9 +298,18 @@ namespace Bladesmiths.Capstone
 
 		public void AttackInput(bool newAttackState)
 		{
+			DesiredAttackNum++;
+
+			if (DesiredAttackNum > animNumbers[currentSwordType])
+			{
+				DesiredAttackNum = animNumbers[currentSwordType];
+				return;
+			}
+
 			attack = newAttackState;
 
-			animator.SetBool(_animIDAttack, attack);
+			if (DesiredAttackNum - 1 == 0)
+				animator.SetBool(_animIDAttack, attack);
 		}
 
 		public void ParryInput(bool newParryState)
@@ -361,7 +380,11 @@ namespace Bladesmiths.Capstone
             {
 				if (player.currentSwords.Count > (int)currentSwordType)
 				{
-					player.SwitchSword(currentSwordType);
+                    if (player.SwitchSword(currentSwordType))
+                    {
+						Debug.Log("Calling Reset for Sword Switching");
+						ResetAttackNums();
+                    }
 				}
 			}
 
@@ -381,6 +404,21 @@ namespace Bladesmiths.Capstone
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
+
+		public int GetAndIncrementCurrentAttackNum()
+        {
+			CurrentAttackNum = Mathf.Min(CurrentAttackNum + 1, animNumbers[currentSwordType]);
+
+			return CurrentAttackNum;
+        }
+
+		public void ResetAttackNums()
+		{
+			CurrentAttackNum = 0;
+			DesiredAttackNum = 0;
+
+			animator.SetFloat(_animIDAttackNum, 0);
+        }
 
 #endif
 	}

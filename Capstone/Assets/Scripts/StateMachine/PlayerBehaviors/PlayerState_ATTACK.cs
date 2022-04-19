@@ -27,6 +27,7 @@ namespace Bladesmiths.Capstone
         private int _animIDSpeed;
         private int _animIDAttack;
         private int _animIDMotionSpeed;
+        private int _animIDAttackNum;
         private bool _hasAnimator;
 
         private float timer;
@@ -38,6 +39,8 @@ namespace Bladesmiths.Capstone
         private Quaternion _targetRotation;
         private GameObject camera;
         private bool playSound;
+
+        private int currentAttackNum; 
 
         [SerializeField]
         private FMODUnity.EventReference SwordMissEvent;
@@ -66,33 +69,33 @@ namespace Bladesmiths.Capstone
         //        length / player.CurrentBalancingData.AttackAnimSpeeds[SwordType.Sapphire]);
         //}
 
-        public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-        {
-            base.OnStateMove(animator, stateInfo, layerIndex);
+        //public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        //{
+        //    base.OnStateMove(animator, stateInfo, layerIndex);
 
-            if (_input.attack)
-            {
-                if (_input.move == Vector2.zero)
-                {
-                    _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
+        //    if (_input.attack)
+        //    {
+        //        if (_input.move == Vector2.zero)
+        //        {
+        //            _targetRotation = Quaternion.Euler(0.0f, _player.transform.eulerAngles.y, 0.0f);
 
-                    inputDirection = _targetRotation * Vector3.forward;
-                }
-                else if (_input.move != Vector2.zero)
-                {
-                    Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+        //            inputDirection = _targetRotation * Vector3.forward;
+        //        }
+        //        else if (_input.move != Vector2.zero)
+        //        {
+        //            Vector3 inputMove = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-                    // rotate to face input direction relative to camera position
-                    _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
-                        Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
+        //            // rotate to face input direction relative to camera position
+        //            _targetRotation = Quaternion.Euler(0.0f, Mathf.Atan2(inputMove.x, inputMove.z) *
+        //                Mathf.Rad2Deg + camera.transform.eulerAngles.y, 0.0f);
 
-                    _player.transform.rotation = _targetRotation;
+        //            _player.transform.rotation = _targetRotation;
 
-                    inputDirection = _targetRotation * Vector3.forward;
-                }
-            }
+        //            inputDirection = _targetRotation * Vector3.forward;
+        //        }
+        //    }
 
-        }
+        //}
 
 
         public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
@@ -113,7 +116,7 @@ namespace Bladesmiths.Capstone
         {
             timer += Time.deltaTime;
 
-            _input.attack = false;
+            //_input.attack = false;
 
             if (_controller.isGrounded)
             {
@@ -132,13 +135,12 @@ namespace Bladesmiths.Capstone
             }
 
             //Change attack animation speed according to animation curve
-            animator.speed = activeCurve.Evaluate(timer);
+            if (Player.instance.currentSword.SwordType != SwordType.Topaz)
+                animator.speed = activeCurve.Evaluate(timer);
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //base.OnStateEnter(animator, stateInfo, layerIndex);
-
             _player = animator.GetComponent<Player>();
             _input = _player.GetComponent<PlayerInputsScript>();
             _animator = animator;
@@ -147,6 +149,7 @@ namespace Bladesmiths.Capstone
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             playSound = true;
+            _input.attack = false;
 
             //Choose animation curve based on current sword form
             switch (animator.GetFloat("Sword Choice"))
@@ -172,6 +175,7 @@ namespace Bladesmiths.Capstone
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDAttack = Animator.StringToHash("Attack");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDAttackNum = Animator.StringToHash("Attack Num");
             _controller = _player.GetComponent<CharacterController>();
             camera = GameObject.FindGameObjectWithTag("MainCamera");
             if (_animator != null)
@@ -183,8 +187,9 @@ namespace Bladesmiths.Capstone
                 _hasAnimator = false;
             }
 
-            _animator.SetBool(_animIDAttack, true);
-            
+            currentAttackNum = _input.GetAndIncrementCurrentAttackNum();
+            _animator.SetFloat(_animIDAttackNum, currentAttackNum - 1);
+
             // Toggle trail VFX ON
             _player.currentSword.ToggleTrailVFX(true);
             
@@ -214,7 +219,6 @@ namespace Bladesmiths.Capstone
             // Toggle trail VFX OFF
             _player.currentSword.ToggleTrailVFX(false);
 
-            _animator.SetBool(_animIDAttack, false);
             _player.ClearDamaging();
 
             AIDirector.Instance.ResetBlocks();
@@ -222,6 +226,15 @@ namespace Bladesmiths.Capstone
             //Reset animator speed when leaving attack state
             animator.speed = 1;
 
+            if (currentAttackNum >= _input.DesiredAttackNum && !_input.attack)
+            {
+                _animator.SetBool(_animIDAttack, false);
+                _input.ResetAttackNums();
+            }
+            else
+            {
+                _animator.SetBool(_animIDAttack, true);
+            }
         }
     }
 }
