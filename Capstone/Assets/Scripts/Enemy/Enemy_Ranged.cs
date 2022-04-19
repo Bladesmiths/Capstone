@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using UnityEngine.AI;
 using Bladesmiths.Capstone.Enums;
+using Sirenix.OdinInspector;
+using Bladesmiths.Capstone.Testing;
 
 
 namespace Bladesmiths.Capstone
@@ -16,6 +18,22 @@ namespace Bladesmiths.Capstone
         
 
         public Vector3 projectileVelocity;
+        
+        /// <summary>
+        /// Adds the picked up sword to the Player's list of currently obtained swords
+        /// </summary>
+        /// <param name="sword"></param>
+        [Button("Fire Projectile")]
+        public void FireProjectile()
+        {
+            GameObject newProjectile = MonoBehaviour.Instantiate(projectilePrefab, shootLoc.position, Quaternion.identity);
+            newProjectile.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+
+            TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
+            projectileComponent.Velocity = Quaternion.Euler(0, transform.eulerAngles.y, 0) * projectileVelocity;
+
+            ObjectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
+        }
 
         public override void Awake()
         {
@@ -44,7 +62,5 @@ namespace Bladesmiths.Capstone
         {
 
         }
-
-       
     }
 }
