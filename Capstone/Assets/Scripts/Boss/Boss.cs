@@ -111,7 +111,17 @@ namespace Bladesmiths.Capstone
             
             foreach(GameObject obj in spawnedObjects)
             {
-                Destroy(obj);
+                if (obj != null)
+                {
+                    if (obj.GetComponent<Enemy>() != null)
+                    {
+                        obj.GetComponent<Enemy>().Health = 0;
+                    }
+                    else
+                    {
+                        Destroy(obj);
+                    }
+                }
             }
             spawnedObjects.Clear();
         }

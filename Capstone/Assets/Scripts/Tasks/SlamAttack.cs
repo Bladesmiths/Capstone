@@ -39,8 +39,8 @@ namespace Bladesmiths.Capstone
             slamVFX.GetComponent<VFXManager>().EnableVFX();
             // Active the shockwave box and expand it over a second
             shockwave.SetActive(true);
-            shockwave.transform.DOScaleX(6, 0.5f);
-            shockwave.transform.DOScaleZ(6, 0.5f);
+            shockwave.transform.DOScaleX(4, 0.3f);
+            shockwave.transform.DOScaleZ(4, 0.3f);
             //sword.transform.DOComplete();
 
             return TaskStatus.Success;

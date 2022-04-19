@@ -31,7 +31,7 @@ namespace Bladesmiths.Capstone
             // Reset the shockwave
             if (shockwave != null)
             {
-                shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, shockwave.transform.localScale.z);
+                shockwave.transform.localScale = new Vector3(1, shockwave.transform.localScale.y, 1);
             }
             shockwave.SetActive(false);
             // When the node isn't finished

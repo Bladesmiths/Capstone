@@ -278,5 +278,10 @@ namespace Bladesmiths.Capstone
             // Return whether damage was taken or not
             return damageResult;
         }
+
+        private void OnDestroy()
+        {
+            Health = 0;
+        }
     }
 }

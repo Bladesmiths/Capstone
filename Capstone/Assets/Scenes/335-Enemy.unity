@@ -3647,9 +3647,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   m_Radius: 0.2
-  m_Height: 0.5659859
+  m_Height: 0.625
   m_Direction: 2
-  m_Center: {x: 7.7079587e-10, y: -0.0000005134609, z: 0.008805112}
+  m_Center: {x: 7.7079587e-10, y: -0.0000005134609, z: -0.03}
 --- !u!1 &1116218461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3459281111658975088, guid: c6f27cc3c86de4e41bf611ad863bfcb0, type: 3}
@@ -7132,6 +7132,8 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   hasntMovedCounter: 0
   againstWallAgain: 0
+  spawnedObjects: []
+  spawnPosition: {fileID: 1566948464}
 --- !u!114 &1494100361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7247,7 +7249,7 @@ MonoBehaviour:
         True"},"ID":142,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":69},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Slam"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"BooleansetOnce":false},{"Type":"ActivateCollider","NodeData":{"Offset":"(683.685669,176.842041)","Comment":"Blade"},"ID":143,"Name":"Activate
         Collider","Instant":true,"GameObjectcolliderParent":70},{"Type":"Bladesmiths.Capstone.SlamAttack","NodeData":{"Offset":"(799.1709,177.3162)"},"ID":144,"Name":"Slam
         Attack","Instant":true,"SinglenodeDuration":0.7,"GameObjectshockwave":71,"GameObjectslamVFX":72},{"Type":"DisableCollider","NodeData":{"Offset":"(919.4126,175.788513)","Comment":"Blade"},"ID":145,"Name":"Disable
-        Collider","Instant":true,"GameObjectcolliderParent":73},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(1037.92676,179.17511)"},"ID":146,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.8},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetBoolParameter","NodeData":{"Offset":"(1090.92273,570.6724)","Comment":"SlamAnticipation
+        Collider","Instant":true,"GameObjectcolliderParent":73},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(1037.92676,179.17511)"},"ID":146,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.6},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetBoolParameter","NodeData":{"Offset":"(1090.92273,570.6724)","Comment":"SlamAnticipation
         False"},"ID":147,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":74},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"SlamAnticipation"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"BooleansetOnce":false},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator.SetBoolParameter","NodeData":{"Offset":"(1105.12585,347.179443)","Comment":"Slam
         False"},"ID":148,"Name":"Set Bool Parameter","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":75},"SharedStringparamaterName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Slam"},"SharedBoolboolValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"BooleansetOnce":false},{"Type":"Bladesmiths.Capstone.ResetSword","NodeData":{"Offset":"(1167.79407,184.048828)"},"ID":149,"Name":"Reset
         Sword","Instant":true,"GameObjectswordBlade":76,"TransformoriginalBladeTransform":77,"SinglenodeDuration":1,"GameObjectshockwave":78},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(1260.74316,380.740356)"},"ID":150,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(1900,200)","Comment":"Crystal
@@ -8719,6 +8721,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5327928743918207320, guid: c6f27cc3c86de4e41bf611ad863bfcb0, type: 3}
   m_PrefabInstance: {fileID: 1582818194}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1898721085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898721086}
+  m_Layer: 0
+  m_Name: BossSpawnedEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1898721086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898721085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901304489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1632555407803598578, guid: 899eb2ef298dd234c948f318882b75ea, type: 3}
