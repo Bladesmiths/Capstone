@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572678713}
   - component: {fileID: 572678712}
+  - component: {fileID: 572678714}
   m_Layer: 0
   m_Name: Main Background Track
   m_TagString: Untagged
@@ -155,18 +156,20 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -258691219
-      Data2: 1227208809
-      Data3: -2069715783
-      Data4: -2006937797
-    Path: event:/Main Battle Track
+      Data1: 1374551709
+      Data2: 1126117336
+      Data3: 648311680
+      Data4: -1413761607
+    Path: event:/Main Battle Track New
   Event: 
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: Threat
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -184,3 +187,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572678714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572678711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55996c7aa1f465e4d88adc0d62d321c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  reverb: 0
+  delay: 0
+  delayTime: 0
+  pitch: 0

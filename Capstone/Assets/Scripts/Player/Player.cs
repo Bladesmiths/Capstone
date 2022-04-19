@@ -10,6 +10,8 @@ using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using FMODUnity;
+using FMOD.Studio;
 
 using Bladesmiths.Capstone.UI;
 using StarterAssets;
@@ -67,6 +69,8 @@ namespace Bladesmiths.Capstone
 
         private TargetLock targetLock;
         public BossTrigger bossTrigger;
+
+        public bool InCombat;
 
         #region State Fields
         [Header("State Fields")]
@@ -254,6 +258,7 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
             canDmg = true;
+            InCombat = false;
 
             if (instance == null)
             {
@@ -386,6 +391,24 @@ namespace Bladesmiths.Capstone
             animator.SetBool(animIDAttack, false);
             animator.SetBool(animIDMoving, false);
         }
+
+        //[FMODUnity.EventRef]
+        public string EVENT = "event:/EVENT";
+        //public FMOD.Studio.EventInstance AUDIO EVENT;
+        //public FMOD.Studio.ParameterInstance PARAMETER EVENT;
+
+        //void Start()
+        //{
+        //    AUDIO EVENT = FMODUnity.RuntimeManager.CreateInstance(NAME EVENT);
+        //    AUDIO EVENT.getParameter(“NAME PARAMETER FMOD”, out PARAMETER EVENT);
+        //    AUDIO EVENT.start();
+        //}
+
+        //void OnTriggerEnter(Collider other)
+        //{
+        //    PARAMETER EVENT.setValue(VALUE IN FLOAT);
+        //}
+
 
         /// <summary>
         /// Is ran in the Update and allows for the player to move
