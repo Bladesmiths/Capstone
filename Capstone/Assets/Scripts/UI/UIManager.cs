@@ -278,7 +278,11 @@ namespace Bladesmiths.Capstone.UI
 
                 pauseMenuObject.SetActive(true);
 
+                settingsManager.settingsButtonImage.SetActive(true);
+
                 EventSystem.current.SetSelectedGameObject(settingsButton);
+                settingsButton.GetComponent<Button>().OnSelect(null); // Or myButton.OnSelect(new BaseEventData(EventSystem.current))
+
                 settingsManager.onPauseScreenOnly = true;
             }
         }

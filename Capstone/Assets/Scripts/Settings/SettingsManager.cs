@@ -149,12 +149,13 @@ namespace Bladesmiths.Capstone.UI
                 else
                 {
                     //settingsButton.GetComponent<Button>().interactable = true;
-                    EventSystem.current.SetSelectedGameObject(settingsButton);
 
                     if (GetComponent<UIManager>())
                         GetComponent<UIManager>().PauseMenu.TogglePauseInfoDisplays();
                     
                     settingsButtonImage.SetActive(true);
+
+                    EventSystem.current.SetSelectedGameObject(settingsButton);
                 }
                 onPauseScreenOnly = true;
             }
