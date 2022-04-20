@@ -24,6 +24,10 @@ namespace Bladesmiths.Capstone
 
         private bool CanFade;
 
+        [SerializeField]
+        [Range(0f, 1f)]
+        private float Threat;
+
         void Start()
         {
             instance = GetComponent<StudioEventEmitter>().EventInstance;
@@ -38,6 +42,7 @@ namespace Bladesmiths.Capstone
             //instance.setParameterByName("DelayTime", delayTime);
             //instance.setParameterByName("Pitch", pitch);
             instance.getParameterByName("Threat", out float temp);
+            Threat = temp;
 
             if (Vector3.Distance(Boss.instance.transform.position, Player.instance.transform.position) <= 50f)
             {
@@ -45,8 +50,6 @@ namespace Bladesmiths.Capstone
             }
             else
             {
-                StartCoroutine(FadeOut(temp));
-
                 if (AIDirector.Instance.GetClosestEnemyDist() <= 7.5f && CanFade && temp != 1)
                 {
                     CanFade = false;
@@ -72,6 +75,7 @@ namespace Bladesmiths.Capstone
             while(level < 1)
             {
                 instance.getParameterByName("Threat", out level);
+                Threat = level;
                 level += Time.deltaTime;
                 instance.setParameterByName("Threat", level);
 
@@ -93,6 +97,7 @@ namespace Bladesmiths.Capstone
             while (level > 0)
             {
                 instance.getParameterByName("Threat", out level);
+                Threat = level;
                 level -= Time.deltaTime;
                 instance.setParameterByName("Threat", level);
 
