@@ -22,7 +22,7 @@ namespace Bladesmiths.Capstone
         public bool sfxPlay;
 
         public bool damaging;
-        private float damagingTimerLimit = 1f;
+        private float damagingTimerLimit = 0.5f;
         private float damagingTimer;
 
         public event IDamaging.OnDamagingFinishedDelegate DamagingFinished;
@@ -113,7 +113,6 @@ namespace Bladesmiths.Capstone
             player = gameObject.transform.root.GetComponent<Player>();
             ID = player.ID; 
             sfxPlay = false;
-            damagingTimerLimit = 1f;
             damagingTimer = 0f;
             ObjectController = ObjectController.Instance;
             ObjectController.Instance.AddIdentifiedObject(Team.Player, this);

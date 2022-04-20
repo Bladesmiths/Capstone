@@ -307,6 +307,10 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             boss = Boss.instance.gameObject;
+
+            //Set the sword's hitbox size on startup
+            sword.GetComponent<BoxCollider>().center = currentSword.GetComponent<BoxCollider>().center;
+            sword.GetComponent<BoxCollider>().size = currentSword.GetComponent<BoxCollider>().size;
         }
 
         private void Update()
