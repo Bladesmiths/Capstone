@@ -47,12 +47,12 @@ namespace Bladesmiths.Capstone
             {
                 StartCoroutine(FadeOut(temp));
 
-                if (AIDirector.Instance.GetClosestEnemyDist() <= 5f && CanFade && temp != 1)
+                if (AIDirector.Instance.GetClosestEnemyDist() <= 7.5f && CanFade && temp != 1)
                 {
                     CanFade = false;
                     StartCoroutine(FadeInMusic(temp));
                 }
-                else if (AIDirector.Instance.GetClosestEnemyDist() > 5f && CanFade && temp != 0)
+                else if (AIDirector.Instance.GetClosestEnemyDist() > 7.5f && CanFade && temp != 0)
                 {
                     CanFade = false;
                     StartCoroutine(FadeOut(temp));
