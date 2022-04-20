@@ -123,8 +123,6 @@ namespace Bladesmiths.Capstone.UI
 
         private Color32 bossChunkColor;
 
-        public bool rainbow = true;
-
         private PauseMenu pauseMenu;
 
         #region Input Icon Dictionaries
@@ -177,7 +175,7 @@ namespace Bladesmiths.Capstone.UI
             //By default, the health bar is 100 objects ordered from tip to base. 
             //Ex: When the player takes 1 damage, going from 100 to 99 health, the chunk at index 0 shatters.
             //This is really confusing and would ideally be changed in the source PSB file,
-            //But the PSB importer seems to remember layer orders and never let go. For now, we reverse the list.
+            //But the PSB importer seems to remember the initial layer order and never let go. For now, we reverse the list.
             playerHealthBarChunks.Reverse();
             bossHealthBarChunks.Reverse();
 
@@ -539,7 +537,7 @@ namespace Bladesmiths.Capstone.UI
         }
 
         /// <summary>
-        /// The main Corutine that runs when the Player gains a new sword
+        /// The main Coroutine that runs when the Player gains a new sword
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -588,6 +586,9 @@ namespace Bladesmiths.Capstone.UI
 
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = true;
                 player.GetComponent<PlayerInputsScript>().switchingSwords = false;
+
+                //Move the sword switching tutorial zone so its message appears
+                GameObject.Find("SwordForm Info Zone").GetComponent<BoxCollider>().enabled = true;
             }
             else if (player.currentSwords.Count > 2)
             {
