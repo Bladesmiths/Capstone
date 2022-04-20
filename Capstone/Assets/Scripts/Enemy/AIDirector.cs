@@ -114,6 +114,28 @@ namespace Bladesmiths.Capstone
         }
 
         /// <summary>
+        /// Gets the distance to the closest Enemy
+        /// </summary>
+        /// <returns></returns>
+        public float GetClosestEnemyDist()
+        {
+            float dist = 1000f;
+            foreach (EnemyList group in allEnemyGroups)
+            {
+                foreach(Enemy e in group.enemies)
+                {
+                    float toPlayer = Vector3.Distance(e.gameObject.transform.position, Player.instance.transform.position);
+                    if (toPlayer < dist)
+                    {
+                        dist = toPlayer;
+                    }
+                }
+            }
+
+            return dist;
+        }
+
+        /// <summary>
         /// Removes specific Enemy from the AttackQueue
         /// </summary>
         /// <param name="e"> Enemy to Remove</param>
