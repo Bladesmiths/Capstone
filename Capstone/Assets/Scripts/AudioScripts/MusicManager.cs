@@ -39,18 +39,24 @@ namespace Bladesmiths.Capstone
             //instance.setParameterByName("Pitch", pitch);
             instance.getParameterByName("Threat", out float temp);
 
-            if (AIDirector.Instance.GetClosestEnemyDist() <= 5f && CanFade && temp != 1)
+            if (Vector3.Distance(Boss.instance.transform.position, Player.instance.transform.position) <= 50f)
             {
-                CanFade = false;
                 StartCoroutine(FadeInMusic(temp));
-                Debug.Log("StartFadeIn");
             }
-            else if(AIDirector.Instance.GetClosestEnemyDist() > 5f && CanFade && temp != 0)
+            else
             {
-                CanFade = false;
                 StartCoroutine(FadeOut(temp));
-                Debug.Log("StartFadeOut");
 
+                if (AIDirector.Instance.GetClosestEnemyDist() <= 5f && CanFade && temp != 1)
+                {
+                    CanFade = false;
+                    StartCoroutine(FadeInMusic(temp));
+                }
+                else if (AIDirector.Instance.GetClosestEnemyDist() > 5f && CanFade && temp != 0)
+                {
+                    CanFade = false;
+                    StartCoroutine(FadeOut(temp));
+                }
             }
         }
 
