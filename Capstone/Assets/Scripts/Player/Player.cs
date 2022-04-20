@@ -154,7 +154,7 @@ namespace Bladesmiths.Capstone
         private CharacterController controller;
 
         public float speed;
-        float targetSpeed = 0;
+        public float targetSpeed = 0;
 
         private float targetRotation = 0.0f;
         private float rotationVelocity;
@@ -385,6 +385,9 @@ namespace Bladesmiths.Capstone
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
             animator.SetBool(animIDMoving, false);
+            animator.SetBool(animIDFreeFall, false);
+            animator.SetBool(animIDGrounded, true);
+
         }
 
         /// <summary>
@@ -392,6 +395,10 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void Move()
         {
+            if(uiManager.gainingSword)
+            {
+                return;
+            }
             hasAnimator = this.TryGetComponent(out animator);
 
             // Checks to see if the player is grounded
@@ -464,6 +471,10 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void Jump()
         {
+            if (uiManager.gainingSword)
+            {
+                return;
+            }
             if (controller.isGrounded || controller.velocity.magnitude == 0)
             {
                 //Debug.Log("<color=brown>Grounded</color>");
