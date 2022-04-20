@@ -545,8 +545,11 @@ namespace Bladesmiths.Capstone.UI
         /// <returns></returns>
         public IEnumerator GetNewSword(SwordType type)
         {
+            player.targetSpeed = 0;
+            player.animator.SetFloat(Animator.StringToHash("Forward"), 0);
             gainingSword = true;
             swordSelected = false;
+            //player.ResetAnimationParameters();
 
             if (player.currentSwords.Count == 2)
             {
@@ -558,7 +561,6 @@ namespace Bladesmiths.Capstone.UI
                 // Opens the sword switching menu
                 ToggleTwoSwordsRadialMenu(true);
                 player.GetComponent<PlayerInputsScript>().switchingSwords = true;
-                player.ResetAnimationParameters();
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImagesTwoSwords[currentSwordSelect].enabled = true;
@@ -599,7 +601,6 @@ namespace Bladesmiths.Capstone.UI
                 // Opens the sword switching menu
                 ToggleRadialMenu(true);
                 player.GetComponent<PlayerInputsScript>().switchingSwords = true;
-                player.ResetAnimationParameters();
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImages[currentSwordSelect].enabled = true;
@@ -632,6 +633,8 @@ namespace Bladesmiths.Capstone.UI
             }
 
             gainingSword = false;
+            player.speed = 0;
+            //player.ResetAnimationParameters();
         }
 
         /// <summary>

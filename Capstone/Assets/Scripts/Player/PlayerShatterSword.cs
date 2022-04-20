@@ -33,7 +33,6 @@ namespace Bladesmiths.Capstone
                 force = new Vector3(force.x + Random.Range(-3f, 6f), Mathf.Abs(force.y) * 15f, force.z + Random.Range(-3f, 3f));
                 
                 bodies[i].AddForceAtPosition(force, composite, ForceMode.Impulse);
-                Debug.Log("Chunk Num: " + i + "    Force: " + force);
             }
         }
 
