@@ -153,7 +153,13 @@ namespace Bladesmiths.Capstone.UI
             get { return maxSpeedX; }
             set { maxSpeedX = value; }
         }
-        
+
+        public float MaxSpeedY
+        {
+            get { return maxSpeedY; }
+            set { maxSpeedY = value; }
+        }
+
         public PlayerInput Inputs { get => playerInput; }
         public PauseMenu PauseMenu { get => pauseMenu; }
 

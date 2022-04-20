@@ -18,6 +18,7 @@ namespace Bladesmiths.Capstone.UI
         [SerializeField] private GameObject mouseSensitivitySlider;
 
         private float xSpeed;
+        private float ySpeed;
 
         // Start is called before the first frame update
         void Start()
@@ -29,23 +30,30 @@ namespace Bladesmiths.Capstone.UI
         void Update()
         {
             // Temp fix until editing the input action directly is fixed
-            if(SceneManager.GetActiveScene().name == "PlayerScene")
+            if(SceneManager.GetActiveScene().name != "MainMenu")
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = xSpeed;
                 uIManager.MaxSpeedX = xSpeed;
+
+                freeLookCamera.m_YAxis.m_MaxSpeed = ySpeed;
+                uIManager.MaxSpeedY = ySpeed;
             }
         }
 
         public void UpdateMouseSensitivity(float value)
         {
             // X rotation
-            if (SceneManager.GetActiveScene().name == "PlayerScene")
+            if (SceneManager.GetActiveScene().name != "MainMenu")
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = value;
                 uIManager.MaxSpeedX = value;
+
+                freeLookCamera.m_YAxis.m_MaxSpeed = value;
+                uIManager.MaxSpeedY = value;
             }
 
             xSpeed = value;
+            ySpeed = value;
 
             PlayerPrefs.SetFloat("MouseSensitivity", value);
 
@@ -100,10 +108,11 @@ namespace Bladesmiths.Capstone.UI
         {
             // Load mouse sensitivity
             // X rotation
-            if (PlayerPrefs.GetFloat("MouseSensitivity") != 0 && SceneManager.GetActiveScene().name == "PlayerScene")
+            if (PlayerPrefs.GetFloat("MouseSensitivity") != 0 && SceneManager.GetActiveScene().name != "MainMenu")
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = PlayerPrefs.GetFloat("MouseSensitivity");
                 uIManager.MaxSpeedX = PlayerPrefs.GetFloat("MouseSensitivity");
+                uIManager.MaxSpeedY = PlayerPrefs.GetFloat("MouseSensitivity");
                 mouseSensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MouseSensitivity");
             }
         }
