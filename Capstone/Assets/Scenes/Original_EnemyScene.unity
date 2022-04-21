@@ -2518,7 +2518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3751842628564370580, guid: 46b1e61acc994d5419cd264a53290ad5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.312
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3751842628564370580, guid: 46b1e61acc994d5419cd264a53290ad5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7662,7 +7662,7 @@ PrefabInstance:
     - target: {fileID: 8735525554392478037, guid: f34051720ecb2cf4c960211b1d7bf0de, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8735525554392478037, guid: f34051720ecb2cf4c960211b1d7bf0de, type: 3}
     - target: {fileID: 9145720840302600445, guid: f34051720ecb2cf4c960211b1d7bf0de, type: 3}
       propertyPath: m_RootOrder
       value: 4
