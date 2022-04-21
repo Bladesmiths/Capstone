@@ -227,13 +227,13 @@ namespace Bladesmiths.Capstone
         [Button("RemoveChunck")]
         public void RemoveRandomChunk()
         {
-            //if (bodyChunks.Count <= 10)
-            //{
-            //    return;    
-            //}
-        
+            if (bodyChunks.Count <= 0)
+            {
+                return;
+            }
+
             //List<GameObject> remover = bodyChunks;
-            
+
             GameObject removedChunk = bodyChunks[UnityEngine.Random.Range(0, bodyChunks.Count)].gameObject;
             removedChunk.AddComponent<BoxCollider>();
             removedChunk.AddComponent<Rigidbody>();
