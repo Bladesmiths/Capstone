@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{440aecac-18f7-4be6-bf9a-8f12cf9e69c9}">
+		<property name="color">
+			<value>Yellow</value>
+		</property>
 		<property name="name">
 			<value>Player Switch Sword</value>
 		</property>
@@ -128,6 +131,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{ddaf98d7-84d0-4ae1-aab0-0a414e0f1da8}" />
 	<object class="SingleSound" id="{ba619b91-ffee-45d3-a96c-c67bf03d8042}">
+		<relationship name="modulators">
+			<destination>{bcf4f94b-6914-4845-8e76-690e05ac88af}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{ddfd12c4-3d3e-40b7-a19c-498a9fac9567}</destination>
 		</relationship>
@@ -140,5 +146,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{5674f19d-ad09-428c-b34f-fe01a94994d4}" />
 	<object class="MixerBusFader" id="{464b3091-0419-4b06-a6f6-9decb3381ece}" />
+	<object class="RandomizerModulator" id="{bcf4f94b-6914-4845-8e76-690e05ac88af}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>10.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{7c1da34e-f224-4368-8a02-06585509f79c}" />
 </objects>
