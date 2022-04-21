@@ -269,6 +269,15 @@ namespace Bladesmiths.Capstone
 		public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
+
+			if (Mathf.Abs(newMoveDirection.x) > 0 || newMoveDirection.y < 0)
+            {
+				player.shouldLookAt = false;
+            }
+			else
+            {
+				player.shouldLookAt = true;
+            }
 		}
 
 		public void LookInput(Vector2 newLookDirection)

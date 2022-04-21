@@ -38,6 +38,9 @@ namespace Bladesmiths.Capstone.Testing
         private bool damaging;
 
         public bool canMove = true;
+
+        private bool hit;
+        private float timer;
         #endregion
 
         // Gives access to the velocity field
@@ -71,6 +74,13 @@ namespace Bladesmiths.Capstone.Testing
         /// </summary>
         void Update()
         {
+            timer += Time.deltaTime;
+            
+            if (timer > 60)
+            {
+                Destroy(gameObject); 
+            }
+
             // As long as velocity is not 0,
             // Move it according to velocity
             if (velocity != Vector3.zero && canMove)
@@ -119,6 +129,9 @@ namespace Bladesmiths.Capstone.Testing
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
+            if (hit)
+                return;
+
             if (other.gameObject.name == "Parry Detector")
             {
                 // Testing
@@ -127,7 +140,8 @@ namespace Bladesmiths.Capstone.Testing
                 Velocity = new Vector3(-Velocity.x, 0, -Velocity.z);
                 ObjectTeam = Enums.Team.Player;
                 ObjectController[ID].ObjectTeam = ObjectTeam;
-
+                damage = 20;
+                hit = false;
                 return;
             }
 
@@ -137,9 +151,13 @@ namespace Bladesmiths.Capstone.Testing
 
             //}
 
-            if (other.gameObject.GetComponent<IDamageable>() != null)
+            if ((other.gameObject.GetComponent<IDamageable>() != null &&
+                other.gameObject.GetComponent<IDamageable>().ObjectTeam != ObjectTeam ) ||
+                other.gameObject.name == "Block Detector")
             {
-                if (other.gameObject.GetComponent<Player>())
+                if ((other.gameObject.GetComponent<Player>() ||
+                    other.gameObject.name == "Block Detector") &&
+                    ObjectTeam != Enums.Team.Player)
                 {
                     // Check if the object in the collision is the player
                     if ((player.GetPlayerFSMState() != Enums.PlayerCondition.F_Blocking) &&
@@ -148,10 +166,14 @@ namespace Bladesmiths.Capstone.Testing
                         // Damage the player
                         //player.TakeDamage(ID, damage);
                         ((IDamageable)ObjectController[player.ID].IdentifiedObject).TakeDamage(ID, damage);
+                        hit = true;
                     }
                 }
                 else
                 {
+                    if (other.gameObject.name == "Block Detector")
+                        return;
+
                     ((IDamageable)ObjectController[other.gameObject.GetComponent<IDamageable>().ID].IdentifiedObject).TakeDamage(ID, damage);
                 }
                 Destroy(gameObject, 2f);

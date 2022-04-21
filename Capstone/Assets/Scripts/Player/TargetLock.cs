@@ -134,8 +134,7 @@ namespace Bladesmiths.Capstone
                 // Turn off the target locking system and disable the target lock camera
                 if (visibleTargets == null)
                 {
-                    Active = false;
-                    targetLockCam.Priority = 0; 
+                    DisableTargetLock();
                     return; 
                 }
 
@@ -167,11 +166,11 @@ namespace Bladesmiths.Capstone
                 }
 
                 // Disables Look At while dodging
-                if (player.shouldLookAt)
-                {
+                //if (player.shouldLookAt)
+                //{
                     // Set the target cam's look at to the closest enemy
                     targetLockCam.LookAt = targetedObject.transform;
-                }
+                //}
 
                 // Subscribe to OnDestruction Event
                 targetedObject.transform.parent.GetComponent<IIdentified>().OnDestruction += RemoveTargetedEnemy;
@@ -242,6 +241,14 @@ namespace Bladesmiths.Capstone
 
             // Refresh list of visilble enemies 
             visibleTargets = FindVisibleEnemies();
+
+            // If there are no visible enemies
+            // Turn off the target locking system and disable the target lock camera
+            if (visibleTargets == null)
+            {
+                DisableTargetLock();
+                return;
+            }
 
             // Filter to desirable enemies from visible enemies
             List<GameObject> desireableTargets = visibleTargets.Where(x =>  
@@ -388,7 +395,9 @@ namespace Bladesmiths.Capstone
         private void RemoveTargetedEnemy(int id)
         {
             targetableDict.Remove(id);
-            DisableTargetLock();
+
+            LockOnEnemy();
+            //DisableTargetLock();
         }
 
         /// <summary>
