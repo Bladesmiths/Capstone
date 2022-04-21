@@ -13,6 +13,8 @@ namespace Bladesmiths.Capstone
         protected bool damaged = false;
         private float timer;
 
+        public AudioManager audioManager;
+
         [SerializeField] private GameObject activeSword;
 
         public List<GameObject> activeProjectiles;

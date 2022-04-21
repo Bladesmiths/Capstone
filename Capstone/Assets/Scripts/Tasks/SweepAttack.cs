@@ -4,6 +4,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using DG.Tweening;
+using Bladesmiths.Capstone;
 
 public class SweepAttack : Action
 {
@@ -18,6 +19,7 @@ public class SweepAttack : Action
 
     private float rotationEnd;
     private float currentRotation;
+    private bool ended = true;
 
     public override void OnStart()
     {
@@ -25,10 +27,17 @@ public class SweepAttack : Action
         player = playerShared.Value;
         rotationEnd = 420;
         currentRotation = 0;
+        ended = true;
+        GetComponent<Boss>().audioManager.Play3DSound("BossSweep", transform.position);
+
     }
 
     public override TaskStatus OnUpdate()
     {
+        if(ended)
+        {
+            ended = false;
+        }
         // While a "full" rotation has not been completed
         if(currentRotation <= rotationEnd)
         {
@@ -39,6 +48,7 @@ public class SweepAttack : Action
 
             return TaskStatus.Running;
         }
+        ended = true;
         //sword.transform.DOComplete();
         return TaskStatus.Success;
     }

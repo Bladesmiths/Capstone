@@ -29,6 +29,9 @@ namespace Bladesmiths.Capstone
         [SerializeField]
         private BalancingData currentBalancingData;
 
+        [SerializeField]
+        private AudioManager audioManager;
+
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
 
@@ -601,8 +604,8 @@ namespace Bladesmiths.Capstone
                     swordsGeo[CurrentSword.SwordType].transform.GetChild(0).rotation);
 
                 PlayerShatterSword shatter = shatterSword.GetComponent<PlayerShatterSword>();
+                audioManager.PlaySound("SwitchSword");
 
-                
 
                 currentSwords[newSwordType].SetActive(true);
 
