@@ -11054,7 +11054,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   shootLoc: {fileID: 4954534934367579714}
-  projectilePrefab: {fileID: 3861298083143071199, guid: 40705d8999592c042bd81ccf366286cc, type: 3}
+  projectilePrefab: {fileID: 3861298083143071199, guid: 28b51f0d54178f84d8b805292caff186, type: 3}
   projectileVelocity: {x: 0, y: 0, z: 6}
 --- !u!54 &6278110720612899835
 Rigidbody:
