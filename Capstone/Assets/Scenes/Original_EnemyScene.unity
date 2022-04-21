@@ -7157,6 +7157,7 @@ MonoBehaviour:
   damagingObjectIDs: 
   objectController: {fileID: 0}
   player: {fileID: 0}
+  audioManager: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
   activeSword: {fileID: 0}
   activeProjectiles: []
   lastPosition: {x: 0, y: 0, z: 0}
