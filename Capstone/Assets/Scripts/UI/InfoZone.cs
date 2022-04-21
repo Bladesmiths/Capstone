@@ -1,3 +1,4 @@
+using Bladesmiths.Capstone;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,15 @@ public class InfoZone : MonoBehaviour
     public string kbmIndex;
     public string textKey;
 
-    public InfoPanel infoPanel;
+    private InfoPanel infoPanel;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         //The UIManager should really be static or something, but right now it isn't
         infoPanel = GameObject.Find("InfoPanel").GetComponent<InfoPanel>();
+        player = Player.instance;
     }
 
     // Update is called once per frame
