@@ -31,6 +31,7 @@ namespace Bladesmiths.Capstone
 
             TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
             projectileComponent.Velocity = Quaternion.Euler(0, transform.eulerAngles.y, 0) * projectileVelocity;
+            projectileComponent.canMove = true;
 
             ObjectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
         }

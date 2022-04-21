@@ -138,6 +138,7 @@ namespace Bladesmiths.Capstone.Testing
                 //((TestDataInt)GameObject.Find("TestingController").GetComponent<TestingController>().ReportedData["numBlocks"]).Data.CurrentValue++;
 
                 Velocity = new Vector3(-Velocity.x, 0, -Velocity.z);
+                transform.rotation *= Quaternion.Euler(0f, 180f, 0f);
                 ObjectTeam = Enums.Team.Player;
                 ObjectController[ID].ObjectTeam = ObjectTeam;
                 damage = 20;
