@@ -2164,6 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905405908534299
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,6 +4188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905406243720209
 GameObject:
   m_ObjectHideFlags: 0
@@ -4758,6 +4760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905406313596079
 GameObject:
   m_ObjectHideFlags: 0
@@ -6410,6 +6413,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3754905406573360646
 GameObject:
   m_ObjectHideFlags: 0
@@ -7747,6 +7762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905406786567010
 GameObject:
   m_ObjectHideFlags: 0
@@ -9024,6 +9040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905407003557773
 GameObject:
   m_ObjectHideFlags: 0
@@ -9170,6 +9187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905407009585226
 GameObject:
   m_ObjectHideFlags: 0
@@ -11875,6 +11893,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2594529291774948623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11887,6 +11917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905407550248638
 GameObject:
   m_ObjectHideFlags: 0
@@ -12033,6 +12064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905407551664530
 GameObject:
   m_ObjectHideFlags: 0
@@ -12884,6 +12916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!1 &3754905407719670383
 GameObject:
   m_ObjectHideFlags: 0
@@ -17814,7 +17847,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 690190895482579582, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_Text
-      value: Press RS X
+      value: Press RS/X
       objectReference: {fileID: 0}
     - target: {fileID: 690190895482579582, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_FontData.m_Font
