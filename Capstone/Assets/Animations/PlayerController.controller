@@ -1156,18 +1156,36 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.2
-      inSlope: -0.20000005
-      outSlope: -0.20000005
+      value: 1.5011328
+      inSlope: -0.0025174355
+      outSlope: -0.0025174355
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.45
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.2498593
+      inSlope: -0.022171041
+      outSlope: -0.022171041
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: -0.20000005
-      outSlope: -0.20000005
+      inSlope: -0.49971867
+      outSlope: -0.49971867
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -2622,9 +2640,6 @@ AnimatorStateMachine:
   - first: {fileID: -6200274138629593010}
     second:
     - {fileID: 4560168474364895058}
-  - first: {fileID: 8464860632184180212}
-    second:
-    - {fileID: -480955475765093465}
   - first: {fileID: -4970824541251344839}
     second:
     - {fileID: 3737231457431453582}
@@ -2634,6 +2649,9 @@ AnimatorStateMachine:
   - first: {fileID: 7787112969373104522}
     second:
     - {fileID: 9160066569895818234}
+  - first: {fileID: 8464860632184180212}
+    second:
+    - {fileID: -480955475765093465}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 100, y: 40, z: 0}
   m_EntryPosition: {x: 110, y: 160, z: 0}

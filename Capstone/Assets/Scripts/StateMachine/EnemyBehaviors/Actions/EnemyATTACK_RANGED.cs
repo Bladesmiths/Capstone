@@ -100,26 +100,12 @@ namespace Bladesmiths.Capstone
                 timer += Time.deltaTime;
                 if (fireTimer >= fireTimerLimit)
                 {
-                    FireProjectile();
+                    _enemy.FireProjectile();
                     fireTimer = 0;
                 }
 
             }
 
         }
-
-        private void FireProjectile()
-        {
-            GameObject newProjectile = MonoBehaviour.Instantiate(_enemy.projectilePrefab, _enemy.shootLoc.position, Quaternion.identity);
-            newProjectile.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-
-            TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
-            projectileComponent.Velocity = Quaternion.Euler(0, transform.eulerAngles.y, 0) * projectileVelocity;
-
-            _enemy.ObjectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
-        }
-
-
-
     }
 }
