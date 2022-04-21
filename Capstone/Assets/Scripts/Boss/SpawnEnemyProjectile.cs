@@ -19,6 +19,9 @@ namespace Bladesmiths.Capstone.Testing
         void Start()
         {
             StartCoroutine(Util.DestroyTimer(timeTillDestruction, gameObject));
+
+            boss = Boss.instance.gameObject;
+            parentTransform = GameObject.Find("BossSpawnedEnemies").transform;
         }
 
         // Update is called once per frame
