@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{cb962e00-3e38-492f-a151-3aa68fb7654d}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>Boss Slam</value>
 		</property>
@@ -52,6 +55,9 @@
 		</relationship>
 	</object>
 	<object class="MixerInput" id="{e040d1e1-53f7-4b95-8bff-9246caf0cf66}">
+		<relationship name="masters">
+			<destination>{5f8687c7-2c42-4c52-ba38-f191ae9e4c7b}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{8d03160e-770b-4f32-a806-cb67ca8052a5}</destination>
 		</relationship>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{f8ac8505-2ea3-4515-9972-84ef7df7178b}">
+		<property name="color">
+			<value>Magenta</value>
+		</property>
 		<property name="name">
 			<value>UI Button Hover</value>
 		</property>
@@ -52,6 +55,9 @@
 		</relationship>
 	</object>
 	<object class="MixerInput" id="{41fb4a7c-8316-4817-87de-e717104261c8}">
+		<relationship name="masters">
+			<destination>{5f8687c7-2c42-4c52-ba38-f191ae9e4c7b}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{a14c3977-7fd1-483a-a938-9aa87a5914e6}</destination>
 		</relationship>
@@ -81,7 +87,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{c9e21564-369c-4c25-a176-344aea3f601c}">
 		<property name="volume">
-			<value>6</value>
+			<value>7</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{b872496c-b8b2-4561-9f64-26af97ec6bf1}</destination>

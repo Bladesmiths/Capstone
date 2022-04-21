@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{27cc4c72-27b0-4c42-90c2-3cafadd19c1a}">
+		<property name="color">
+			<value>Magenta</value>
+		</property>
 		<property name="name">
 			<value>UI Play Button Clicked</value>
 		</property>
@@ -53,6 +56,9 @@
 		</relationship>
 	</object>
 	<object class="MixerInput" id="{1dd2f667-d0ff-4958-be2c-9edc0aeeff47}">
+		<relationship name="masters">
+			<destination>{5f8687c7-2c42-4c52-ba38-f191ae9e4c7b}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{663b6e3a-2660-4c0d-9085-b789a4fd6448}</destination>
 		</relationship>

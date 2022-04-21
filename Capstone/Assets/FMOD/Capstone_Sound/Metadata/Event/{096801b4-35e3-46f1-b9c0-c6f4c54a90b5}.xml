@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{096801b4-35e3-46f1-b9c0-c6f4c54a90b5}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>Boss Sweep</value>
 		</property>
@@ -52,6 +55,9 @@
 		</relationship>
 	</object>
 	<object class="MixerInput" id="{baa3893c-7a6d-43a0-90fc-0611df12a6f9}">
+		<relationship name="masters">
+			<destination>{5f8687c7-2c42-4c52-ba38-f191ae9e4c7b}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{7a23a98e-6214-4e83-b548-61a75a61f66b}</destination>
 		</relationship>
