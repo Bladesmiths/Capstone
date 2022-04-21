@@ -17,7 +17,7 @@ namespace Bladesmiths.Capstone
         public override void OnStart()
         {
             timer = 0;
-            timerMax = Random.Range(0.3f, 0.8f);
+            timerMax = Random.Range(0.5f, 1f);
             agent = GetComponent<NavMeshAgent>();
             enemy = GetComponent<Enemy>();
         }

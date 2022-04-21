@@ -54,13 +54,6 @@ namespace Bladesmiths.Capstone
 
             dist = Player.instance.transform.position - animator.transform.position;
             playerPos = (dist * 0.1f) + animator.transform.position;
-            _enemy.attackTimerMax = Random.Range(0.75f, 1.5f);
-
-            if (animator.gameObject.GetComponent<Enemy_Ranged>() != null)
-            {
-                animator.gameObject.GetComponent<Enemy_Ranged>().FireProjectile();
-            }
-
 
         }
 

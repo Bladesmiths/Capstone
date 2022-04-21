@@ -123,7 +123,7 @@ namespace Bladesmiths.Capstone
             }
             if (enemy.attackTimer <= 0)
             {
-                //enemy.attackTimer = enemy.attackTimerMax;
+                enemy.attackTimer = enemy.attackTimerMax;
                 AIDirector.Instance.PopulateAttackQueue(enemy);
             }
         }
