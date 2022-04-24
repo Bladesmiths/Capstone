@@ -10,6 +10,8 @@ using Sirenix.Serialization;
 using Bladesmiths.Capstone.Enums;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using FMODUnity;
+using FMOD.Studio;
 
 using Bladesmiths.Capstone.UI;
 using StarterAssets;
@@ -26,6 +28,9 @@ namespace Bladesmiths.Capstone
         #region Fields
         [SerializeField]
         private BalancingData currentBalancingData;
+
+        [SerializeField]
+        private AudioManager audioManager;
 
         //[SerializeField] private TransitionManager playerTransitionManager;
         [Header("Player Fields")]
@@ -67,6 +72,8 @@ namespace Bladesmiths.Capstone
 
         private TargetLock targetLock;
         public BossTrigger bossTrigger;
+
+        public bool InCombat;
 
         #region State Fields
         [Header("State Fields")]
@@ -154,7 +161,7 @@ namespace Bladesmiths.Capstone
         private CharacterController controller;
 
         public float speed;
-        float targetSpeed = 0;
+        public float targetSpeed = 0;
 
         private float targetRotation = 0.0f;
         private float rotationVelocity;
@@ -254,6 +261,7 @@ namespace Bladesmiths.Capstone
             animBlend = 0;
             dodgeTimer = 0;
             canDmg = true;
+            InCombat = false;
 
             if (instance == null)
             {
@@ -307,6 +315,10 @@ namespace Bladesmiths.Capstone
         void Start()
         {
             boss = Boss.instance.gameObject;
+
+            //Set the sword's hitbox size on startup
+            sword.GetComponent<BoxCollider>().center = currentSword.GetComponent<BoxCollider>().center;
+            sword.GetComponent<BoxCollider>().size = currentSword.GetComponent<BoxCollider>().size;
         }
 
         private void Update()
@@ -385,13 +397,38 @@ namespace Bladesmiths.Capstone
             animator.SetBool(animIDJump, false);
             animator.SetBool(animIDAttack, false);
             animator.SetBool(animIDMoving, false);
+            animator.SetBool(animIDFreeFall, false);
+            animator.SetBool(animIDGrounded, true);
+
         }
+
+        //[FMODUnity.EventRef]
+        public string EVENT = "event:/EVENT";
+        //public FMOD.Studio.EventInstance AUDIO EVENT;
+        //public FMOD.Studio.ParameterInstance PARAMETER EVENT;
+
+        //void Start()
+        //{
+        //    AUDIO EVENT = FMODUnity.RuntimeManager.CreateInstance(NAME EVENT);
+        //    AUDIO EVENT.getParameter(“NAME PARAMETER FMOD”, out PARAMETER EVENT);
+        //    AUDIO EVENT.start();
+        //}
+
+        //void OnTriggerEnter(Collider other)
+        //{
+        //    PARAMETER EVENT.setValue(VALUE IN FLOAT);
+        //}
+
 
         /// <summary>
         /// Is ran in the Update and allows for the player to move
         /// </summary>
         private void Move()
         {
+            if(uiManager.gainingSword)
+            {
+                return;
+            }
             hasAnimator = this.TryGetComponent(out animator);
 
             // Checks to see if the player is grounded
@@ -464,6 +501,10 @@ namespace Bladesmiths.Capstone
         /// </summary>
         private void Jump()
         {
+            if (uiManager.gainingSword)
+            {
+                return;
+            }
             if (controller.isGrounded || controller.velocity.magnitude == 0)
             {
                 //Debug.Log("<color=brown>Grounded</color>");
@@ -563,8 +604,8 @@ namespace Bladesmiths.Capstone
                     swordsGeo[CurrentSword.SwordType].transform.GetChild(0).rotation);
 
                 PlayerShatterSword shatter = shatterSword.GetComponent<PlayerShatterSword>();
+                audioManager.PlaySound("SwitchSword");
 
-                
 
                 currentSwords[newSwordType].SetActive(true);
 
@@ -805,9 +846,9 @@ namespace Bladesmiths.Capstone
                 player.GetComponent<Animator>().rootRotation = respawnRotation;
                 animator.SetBool(animIDDead, false);
             }
-            damaged = false; 
+            damaged = false;
 
-            Boss.instance.Health = Boss.instance.MaxHealth;
+            Boss.instance.Reset();
             bossTrigger.BossTriggerReset();
 
             // Call the fade in method multiple times so it can fade

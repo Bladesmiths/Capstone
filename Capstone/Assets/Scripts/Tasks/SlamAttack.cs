@@ -38,9 +38,10 @@ namespace Bladesmiths.Capstone
             slamVFX.transform.position = new Vector3(shockwave.transform.position.x, 0, shockwave.transform.position.z);
             slamVFX.GetComponent<VFXManager>().EnableVFX();
             // Active the shockwave box and expand it over a second
+            GetComponent<Boss>().audioManager.Play3DSound("BossSlam", shockwave.transform.position);
             shockwave.SetActive(true);
-            shockwave.transform.DOScaleX(6, 0.5f);
-            shockwave.transform.DOScaleZ(6, 0.5f);
+            shockwave.transform.DOScaleX(4, 0.3f);
+            shockwave.transform.DOScaleZ(4, 0.3f);
             //sword.transform.DOComplete();
 
             return TaskStatus.Success;

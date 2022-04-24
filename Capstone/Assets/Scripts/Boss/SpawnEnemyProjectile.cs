@@ -12,11 +12,16 @@ namespace Bladesmiths.Capstone.Testing
 
         [SerializeField] private GameObject healthPickup;
         [SerializeField] private GameObject enemy;
+        [SerializeField] private GameObject boss;
+        [SerializeField] private Transform parentTransform;
 
         // Start is called before the first frame update
         void Start()
         {
             StartCoroutine(Util.DestroyTimer(timeTillDestruction, gameObject));
+
+            boss = Boss.instance.gameObject;
+            parentTransform = GameObject.Find("BossSpawnedEnemies").transform;
         }
 
         // Update is called once per frame
@@ -44,14 +49,14 @@ namespace Bladesmiths.Capstone.Testing
 
         private void SpawnEnemy()
         {
-            Instantiate(enemy, transform.position, transform.rotation);
+            boss.GetComponent<Boss>().spawnedObjects.Add(Instantiate(enemy, transform.position, transform.rotation, parentTransform));
         }
 
         private void SpawnHealthPickup()
         {
             Vector3 position = transform.position;
             position.y = 1;
-            Instantiate(healthPickup, position, transform.rotation);
+            boss.GetComponent<Boss>().spawnedObjects.Add(Instantiate(healthPickup, position, transform.rotation, parentTransform));
         }
     }
 }

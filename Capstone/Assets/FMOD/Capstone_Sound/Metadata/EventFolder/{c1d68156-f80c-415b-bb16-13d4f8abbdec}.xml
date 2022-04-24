@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EventFolder" id="{c1d68156-f80c-415b-bb16-13d4f8abbdec}">
+		<property name="name">
+			<value>Main Battle Track Stems</value>
+		</property>
+		<relationship name="folder">
+			<destination>{9f0f1f2b-3254-456f-b232-ae554cf80995}</destination>
+		</relationship>
+	</object>
+</objects>

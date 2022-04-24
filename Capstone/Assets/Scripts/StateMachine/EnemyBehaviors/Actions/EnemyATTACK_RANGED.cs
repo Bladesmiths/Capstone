@@ -51,7 +51,7 @@ namespace Bladesmiths.Capstone
 
             if (timer >= timerMax)
             {
-                _enemy.CanHit = false;
+                //_enemy.CanHit = false;
                 return TaskStatus.Success;
             }
 
@@ -63,7 +63,6 @@ namespace Bladesmiths.Capstone
         {
             _enemy = gameObject.GetComponent<Enemy_Ranged>();
             //_sword = _enemy.Sword;
-            _enemy.animator.SetTrigger("Attack");
 
             speed = 6f;
             preAttackTimer = 0f;
@@ -76,8 +75,8 @@ namespace Bladesmiths.Capstone
             _enemy.attackedYet = true;
             //_sword.GetComponent<BoxCollider>().enabled = true;
             timer = 0f;
-            timerMax = 1f;
-            _enemy.attackTimerMax = Random.Range(0.75f, 2f);
+            timerMax = 0.1f;
+            _enemy.attackTimerMax = Random.Range(0.75f, 1.5f);
             projectileVelocity = Vector3.forward * speed;
         }
 
@@ -85,6 +84,8 @@ namespace Bladesmiths.Capstone
         {
             //_sword.transform.rotation = Quaternion.Euler(0f, _sword.transform.eulerAngles.y, 0f);
             _enemy.attackTimer = _enemy.attackTimerMax;
+            _enemy.isAttacking = false;
+
             _enemy.ClearDamaging();
             //_sword.GetComponent<BoxCollider>().enabled = false;
         }
@@ -97,29 +98,15 @@ namespace Bladesmiths.Capstone
             {
                 //FireProjectile();
 
-                timer += Time.deltaTime;
                 if (fireTimer >= fireTimerLimit)
                 {
-                    FireProjectile();
+                    _enemy.animator.SetTrigger("Attack");
+                    //_enemy.FireProjectile();
                     fireTimer = 0;
                 }
 
             }
 
         }
-
-        private void FireProjectile()
-        {
-            GameObject newProjectile = MonoBehaviour.Instantiate(_enemy.projectilePrefab, _enemy.shootLoc.position, Quaternion.identity);
-            newProjectile.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-
-            TestingProjectile projectileComponent = newProjectile.GetComponent<TestingProjectile>();
-            projectileComponent.Velocity = Quaternion.Euler(0, transform.eulerAngles.y, 0) * projectileVelocity;
-
-            _enemy.ObjectController.AddIdentifiedObject(Enums.Team.Enemy, projectileComponent);
-        }
-
-
-
     }
 }

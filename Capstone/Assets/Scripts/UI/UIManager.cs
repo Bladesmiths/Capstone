@@ -123,8 +123,6 @@ namespace Bladesmiths.Capstone.UI
 
         private Color32 bossChunkColor;
 
-        public bool rainbow = true;
-
         private PauseMenu pauseMenu;
 
         #region Input Icon Dictionaries
@@ -153,7 +151,13 @@ namespace Bladesmiths.Capstone.UI
             get { return maxSpeedX; }
             set { maxSpeedX = value; }
         }
-        
+
+        public float MaxSpeedY
+        {
+            get { return maxSpeedY; }
+            set { maxSpeedY = value; }
+        }
+
         public PlayerInput Inputs { get => playerInput; }
         public PauseMenu PauseMenu { get => pauseMenu; }
 
@@ -177,7 +181,7 @@ namespace Bladesmiths.Capstone.UI
             //By default, the health bar is 100 objects ordered from tip to base. 
             //Ex: When the player takes 1 damage, going from 100 to 99 health, the chunk at index 0 shatters.
             //This is really confusing and would ideally be changed in the source PSB file,
-            //But the PSB importer seems to remember layer orders and never let go. For now, we reverse the list.
+            //But the PSB importer seems to remember the initial layer order and never let go. For now, we reverse the list.
             playerHealthBarChunks.Reverse();
             bossHealthBarChunks.Reverse();
 
@@ -242,8 +246,8 @@ namespace Bladesmiths.Capstone.UI
                     // Allows the camera fto move and recenter
                     camera.m_XAxis.m_MaxSpeed = maxSpeedX;
                     camera.m_YAxis.m_MaxSpeed = maxSpeedY;
-                    camera.m_RecenterToTargetHeading.m_enabled = true;
-                    camera.m_YAxisRecentering.m_enabled = true;
+                    //camera.m_RecenterToTargetHeading.m_enabled = true;
+                    //camera.m_YAxisRecentering.m_enabled = true;
 
                     Time.timeScale = 1;
                 }
@@ -270,15 +274,19 @@ namespace Bladesmiths.Capstone.UI
                 // Stops the camera from moving and stops the recentering
                 camera.m_XAxis.m_MaxSpeed = 0f;
                 camera.m_YAxis.m_MaxSpeed = 0f;
-                camera.m_RecenterToTargetHeading.m_enabled = false;
-                camera.m_YAxisRecentering.m_enabled = false;
+                //camera.m_RecenterToTargetHeading.m_enabled = false;
+                //camera.m_YAxisRecentering.m_enabled = false;
 
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
 
                 pauseMenuObject.SetActive(true);
 
+                settingsManager.settingsButtonImage.SetActive(true);
+
                 EventSystem.current.SetSelectedGameObject(settingsButton);
+                settingsButton.GetComponent<Button>().OnSelect(null); // Or myButton.OnSelect(new BaseEventData(EventSystem.current))
+
                 settingsManager.onPauseScreenOnly = true;
             }
         }
@@ -539,14 +547,17 @@ namespace Bladesmiths.Capstone.UI
         }
 
         /// <summary>
-        /// The main Corutine that runs when the Player gains a new sword
+        /// The main Coroutine that runs when the Player gains a new sword
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
         public IEnumerator GetNewSword(SwordType type)
         {
+            player.targetSpeed = 0;
+            player.animator.SetFloat(Animator.StringToHash("Forward"), 0);
             gainingSword = true;
             swordSelected = false;
+            //player.ResetAnimationParameters();
 
             if (player.currentSwords.Count == 2)
             {
@@ -558,7 +569,6 @@ namespace Bladesmiths.Capstone.UI
                 // Opens the sword switching menu
                 ToggleTwoSwordsRadialMenu(true);
                 player.GetComponent<PlayerInputsScript>().switchingSwords = true;
-                player.ResetAnimationParameters();
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImagesTwoSwords[currentSwordSelect].enabled = true;
@@ -588,6 +598,9 @@ namespace Bladesmiths.Capstone.UI
 
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = true;
                 player.GetComponent<PlayerInputsScript>().switchingSwords = false;
+
+                //Move the sword switching tutorial zone so its message appears
+                GameObject.Find("SwordForm Info Zone").GetComponent<BoxCollider>().enabled = true;
             }
             else if (player.currentSwords.Count > 2)
             {
@@ -599,7 +612,6 @@ namespace Bladesmiths.Capstone.UI
                 // Opens the sword switching menu
                 ToggleRadialMenu(true);
                 player.GetComponent<PlayerInputsScript>().switchingSwords = true;
-                player.ResetAnimationParameters();
                 camera.GetComponent<CustomCinemachineInputProvider>().InputEnabled = false;
 
                 backgroundImages[currentSwordSelect].enabled = true;
@@ -632,6 +644,8 @@ namespace Bladesmiths.Capstone.UI
             }
 
             gainingSword = false;
+            player.speed = 0;
+            //player.ResetAnimationParameters();
         }
 
         /// <summary>

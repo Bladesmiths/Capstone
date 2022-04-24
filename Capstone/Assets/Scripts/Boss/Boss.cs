@@ -13,6 +13,8 @@ namespace Bladesmiths.Capstone
         protected bool damaged = false;
         private float timer;
 
+        public AudioManager audioManager;
+
         [SerializeField] private GameObject activeSword;
 
         public List<GameObject> activeProjectiles;
@@ -24,6 +26,9 @@ namespace Bladesmiths.Capstone
         public bool againstWallAgain;
 
         public Dictionary<string,float> actionCounter;
+        public List<GameObject> spawnedObjects;
+
+        [SerializeField] private Transform spawnPosition;
 
         private void Awake()
         {
@@ -42,6 +47,7 @@ namespace Bladesmiths.Capstone
             GetComponent<BehaviorTree>().SetVariableValue("Player", player);
 
             actionCounter = new Dictionary<string, float>();
+            spawnedObjects = new List<GameObject>();
         }
 
         // Update is called once per frame
@@ -97,6 +103,29 @@ namespace Bladesmiths.Capstone
         public override void Respawn()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            Health = MaxHealth;
+            transform.position = spawnPosition.position;
+            actionCounter.Clear();
+            
+            foreach(GameObject obj in spawnedObjects)
+            {
+                if (obj != null)
+                {
+                    if (obj.GetComponent<Enemy>() != null)
+                    {
+                        obj.GetComponent<Enemy>().Health = 0;
+                    }
+                    else
+                    {
+                        Destroy(obj);
+                    }
+                }
+            }
+            spawnedObjects.Clear();
         }
 
         /// <summary>

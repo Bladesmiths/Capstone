@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodableAsset" id="{5bb91ea0-458c-4d10-8925-2d40a55acbd0}">
+		<property name="assetPath">
+			<value>BattleTrackStems/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{25d4c4a8-bc18-445b-9930-d9288a29a9c3}</destination>
+		</relationship>
+	</object>
+</objects>

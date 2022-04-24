@@ -872,14 +872,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905405871749398, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleSoundSettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905405871749398, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905405909786881, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -920,26 +912,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905406230880010, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleGameplaySettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905406230880010, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905406311679261, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905406311679261, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleControlsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905406311679261, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905406313596078, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -964,14 +940,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905406395271661, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleControlsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905406395271661, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905406414387754, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -984,7 +952,19 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905406536288529, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932125816}
+    - target: {fileID: 3754905406536288529, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSettingsMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905406536288535, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905406720279769, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1000,10 +980,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125818}
-    - target: {fileID: 3754905406757503262, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResetBindings
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905406758150068, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1016,14 +992,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905406782620717, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleGraphicsSettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905406782620717, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905406829150662, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 80
@@ -1052,26 +1020,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905406989311500, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleSoundSettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905406989311500, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905407003557775, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905407003557775, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitToMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905407003557775, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905407149036077, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: Rebind
@@ -1088,9 +1040,29 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3754905407235862956, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407235862956, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407235862956, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3754905407319233147, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407354012014, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407354012014, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3754905407435384614, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_IsActive
@@ -1103,6 +1075,10 @@ PrefabInstance:
     - target: {fileID: 3754905407512972484, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Name
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754905407512972484, guid: 94778a56420415642930df99f5e70bad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3754905407512972487, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Pivot.x
@@ -1204,26 +1180,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905407550248632, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleGameplaySettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905407550248632, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905407681250283, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1932125816}
-    - target: {fileID: 3754905407681250283, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleSettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754905407681250283, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Bladesmiths.Capstone.UI.SettingsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3754905407719670382, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1240,105 +1200,33 @@ PrefabInstance:
       propertyPath: m_FontData.m_MaxSize
       value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 4433818454107532962, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press Shift
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818454294913933, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818454366141206, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press RMB
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818454430836474, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: MMB
-      objectReference: {fileID: 0}
     - target: {fileID: 4433818454613296973, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
-      value: Space
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818454737424478, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818454838902902, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818454856454292, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press LT
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818455053421623, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press Scroll Wheel
+      value: Ctrl
       objectReference: {fileID: 0}
     - target: {fileID: 4433818455065743319, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: LS
       objectReference: {fileID: 0}
-    - target: {fileID: 4433818455135175512, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: B
-      objectReference: {fileID: 0}
     - target: {fileID: 4433818455189178282, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: W/A/S/D
       objectReference: {fileID: 0}
-    - target: {fileID: 4433818455230379601, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: A
-      objectReference: {fileID: 0}
     - target: {fileID: 4433818455331382590, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
-      value: RS
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818455389151921, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press LB
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818455599884463, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: RS
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4433818455619209118, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
-      value: RS
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818455686496999, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: LMB
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818455754403020, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: RB
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818455759357984, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press RT
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4433818455884303829, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
-      value: Delta
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4433818455891260964, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: RS
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818456010764723, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Press Q
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818456067836120, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Right Stick Press
-      objectReference: {fileID: 0}
-    - target: {fileID: 4433818456091845150, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Alt
       objectReference: {fileID: 0}
     - target: {fileID: 7541612201247444353, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
@@ -1360,17 +1248,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7541612201262007433, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Dodge
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612201312862331, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: Move
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612201355637120, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 7541612201385847960, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
@@ -1384,10 +1264,6 @@ PrefabInstance:
       propertyPath: m_Action
       value: 
       objectReference: {fileID: 3796831973753997035, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
-    - target: {fileID: 7541612201515459936, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Block
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612201579874444, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
@@ -1400,10 +1276,6 @@ PrefabInstance:
       propertyPath: m_Action
       value: 
       objectReference: {fileID: 9222971792643135665, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
-    - target: {fileID: 7541612201724096382, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Switch Sword
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612201766561126, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1415,18 +1287,6 @@ PrefabInstance:
     - target: {fileID: 7541612201766561130, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_BindingId
       value: 23f037c6-c45a-4afe-998b-2260105be9cb
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612201780299062, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612201846631197, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612201883570161, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Open Sword Selector
       objectReference: {fileID: 0}
     - target: {fileID: 7541612201909045246, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
@@ -1468,26 +1328,10 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 23f037c6-c45a-4afe-998b-2260105be9cb
       objectReference: {fileID: 0}
-    - target: {fileID: 7541612202101945954, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Parry
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612202184336847, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Dodge
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612202191523593, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Target Lock
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612202245989093, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
       objectReference: {fileID: -4331886190481805008, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
-    - target: {fileID: 7541612202348292467, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Open Sword Selector
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612202364207138, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
@@ -1512,14 +1356,6 @@ PrefabInstance:
       propertyPath: m_Action
       value: 
       objectReference: {fileID: 6104589473053344391, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
-    - target: {fileID: 7541612202605591751, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Block
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541612202704625963, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Target Lock
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612202787033280, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
@@ -1536,18 +1372,10 @@ PrefabInstance:
       propertyPath: m_Action
       value: 
       objectReference: {fileID: 2545555939361734834, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
-    - target: {fileID: 7541612203130246981, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Parry
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612203284031150, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Action
       value: 
       objectReference: {fileID: 1331419880979640959, guid: 80c2a78b866737e4283b0120f85dd76c, type: 3}
-    - target: {fileID: 7541612203327736806, guid: 94778a56420415642930df99f5e70bad, type: 3}
-      propertyPath: m_Text
-      value: Move Target
-      objectReference: {fileID: 0}
     - target: {fileID: 7541612203340580870, guid: 94778a56420415642930df99f5e70bad, type: 3}
       propertyPath: m_Text
       value: Move
@@ -1847,6 +1675,8 @@ GameObject:
   - component: {fileID: 691334678}
   - component: {fileID: 691334677}
   - component: {fileID: 691334676}
+  - component: {fileID: 691334679}
+  - component: {fileID: 691334680}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1930,6 +1760,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &691334677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,6 +1810,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691334674}
   m_CullTransparentMesh: 1
+--- !u!114 &691334679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691334674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &691334680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691334674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: HoverButton
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1 &751821853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,6 +2598,8 @@ GameObject:
   - component: {fileID: 1169566951}
   - component: {fileID: 1169566950}
   - component: {fileID: 1169566949}
+  - component: {fileID: 1169566952}
+  - component: {fileID: 1169566953}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2798,6 +2683,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1169566950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2836,6 +2733,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169566947}
   m_CullTransparentMesh: 1
+--- !u!114 &1169566952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169566947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1169566953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169566947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: HoverButton
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1 &1234325916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,6 +2786,8 @@ GameObject:
   - component: {fileID: 1234325920}
   - component: {fileID: 1234325919}
   - component: {fileID: 1234325918}
+  - component: {fileID: 1234325921}
+  - component: {fileID: 1234325922}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -2943,6 +2883,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1234325919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,6 +2933,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234325916}
   m_CullTransparentMesh: 1
+--- !u!114 &1234325921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234325916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4a139d54bed1b46904e9b62d8a914a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1234325922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234325916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 2eeb7b4aa06d00f40a2f871bf5d31d56, type: 2}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: HoverButton
+            m_BoolArgument: 0
+          m_CallState: 1
 --- !u!1 &1249825165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3754905406757503260, guid: 94778a56420415642930df99f5e70bad, type: 3}
@@ -3564,7 +3557,10 @@ VFXRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

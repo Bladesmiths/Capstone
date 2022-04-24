@@ -44,7 +44,7 @@ namespace Bladesmiths.Capstone.Testing
             }
 
             Vector3 spawnPos = projectileSpawnPoint.position;
-            Vector3 direction = (player.transform.position - spawnPos).normalized;
+            Vector3 direction = (new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) - spawnPos).normalized;
             Vector3 stoppingVector = new Vector3(-0.9f, -0.3f, -0.2f);
             float angle = 0;
 
@@ -80,7 +80,7 @@ namespace Bladesmiths.Capstone.Testing
             if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= 5)
             {
                 spawnPos = projectileSpawnPoint.position;
-                direction = (player.transform.position - spawnPos).normalized;
+                direction = (new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) - spawnPos).normalized;
                 angle = 0;
                 // Spawn inner projectiles
                 for (int i = 0; i < 10; i++)

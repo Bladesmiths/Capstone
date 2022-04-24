@@ -1,0 +1,259 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f66c45a794c10c488035f4aa25bb4de, type: 3}
+  m_Name: AudioManager
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: soundEffects
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[FMODUnity.EventReference,
+        FMODUnity]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: StartGame
+    - Name: $v
+      Entry: 7
+      Data: FMODUnity.EventReference, FMODUnity
+    - Name: Guid
+      Entry: 7
+      Data: FMOD.GUID, FMODUnity
+    - Name: Data1
+      Entry: 3
+      Data: 667700338
+    - Name: Data2
+      Entry: 3
+      Data: 1279403952
+    - Name: Data3
+      Entry: 3
+      Data: -1354972528
+    - Name: Data4
+      Entry: 3
+      Data: 446484909
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Path
+      Entry: 1
+      Data: event:/Interface/UI Play Button Clicked
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: HoverButton
+    - Name: $v
+      Entry: 7
+      Data: FMODUnity.EventReference, FMODUnity
+    - Name: Guid
+      Entry: 7
+      Data: FMOD.GUID, FMODUnity
+    - Name: Data1
+      Entry: 3
+      Data: -122911483
+    - Name: Data2
+      Entry: 3
+      Data: 1159016099
+    - Name: Data3
+      Entry: 3
+      Data: -276532583
+    - Name: Data4
+      Entry: 3
+      Data: -1961363587
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Path
+      Entry: 1
+      Data: event:/Interface/UI Button Hover
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ButtonClick
+    - Name: $v
+      Entry: 7
+      Data: FMODUnity.EventReference, FMODUnity
+    - Name: Guid
+      Entry: 7
+      Data: FMOD.GUID, FMODUnity
+    - Name: Data1
+      Entry: 3
+      Data: 1020649715
+    - Name: Data2
+      Entry: 3
+      Data: 1154608623
+    - Name: Data3
+      Entry: 3
+      Data: 1080383412
+    - Name: Data4
+      Entry: 3
+      Data: 462507392
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Path
+      Entry: 1
+      Data: event:/Interface/UI Button Click
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: SwitchSword
+    - Name: $v
+      Entry: 7
+      Data: FMODUnity.EventReference, FMODUnity
+    - Name: Guid
+      Entry: 7
+      Data: FMOD.GUID, FMODUnity
+    - Name: Data1
+      Entry: 3
+      Data: 1141566636
+    - Name: Data2
+      Entry: 3
+      Data: 1273370871
+    - Name: Data3
+      Entry: 3
+      Data: 311401151
+    - Name: Data4
+      Entry: 3
+      Data: -915824945
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Path
+      Entry: 1
+      Data: event:/Player SFX/Player Switch Sword
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: BossSweep
+    - Name: $v
+      Entry: 7
+      Data: FMODUnity.EventReference, FMODUnity
+    - Name: Guid
+      Entry: 7
+      Data: FMOD.GUID, FMODUnity
+    - Name: Data1
+      Entry: 3
+      Data: 157811124
+    - Name: Data2
+      Entry: 3
+      Data: 1190213091
+    - Name: Data3
+      Entry: 3
+      Data: -188301127
+    - Name: Data4
+      Entry: 3
+      Data: -1248834875
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Path
+      Entry: 1
+      Data: event:/Enemy SFX/Boss Sweep
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: BossSlam
+    - Name: $v
+      Entry: 7
+      Data: FMODUnity.EventReference, FMODUnity
+    - Name: Guid
+      Entry: 7
+      Data: FMOD.GUID, FMODUnity
+    - Name: Data1
+      Entry: 3
+      Data: -879350272
+    - Name: Data2
+      Entry: 3
+      Data: 1227832888
+    - Name: Data3
+      Entry: 3
+      Data: -1506127455
+    - Name: Data4
+      Entry: 3
+      Data: 1298511759
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Path
+      Entry: 1
+      Data: event:/Enemy SFX/Boss Slam
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

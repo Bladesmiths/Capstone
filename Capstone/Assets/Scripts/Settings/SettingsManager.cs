@@ -55,10 +55,13 @@ namespace Bladesmiths.Capstone.UI
         // Start is called before the first frame update
         void Start()
         {
-            // Load settings from the manager since the individual panels are default disabled
-            gameplaySettingsScript.LoadGameplayPrefs();
-            soundSettingsScript.LoadSoundPrefs();
-            graphicSettingsScript.LoadGraphicPrefs();
+            if (SceneManager.GetActiveScene().name != "WinScreen")
+            {
+                // Load settings from the manager since the individual panels are default disabled
+                gameplaySettingsScript.LoadGameplayPrefs();
+                soundSettingsScript.LoadSoundPrefs();
+                graphicSettingsScript.LoadGraphicPrefs();
+            }
 
             //onPauseScreenOnly = true;
         }
@@ -67,7 +70,9 @@ namespace Bladesmiths.Capstone.UI
         void Update()
         {
             // If the rebind menu is active, the back and reset all buttons aren't selected, AND this button was just selected
-            if (controlsMenu.activeSelf && EventSystem.current.currentSelectedGameObject != rebindBackButton && EventSystem.current.currentSelectedGameObject != rebindResetAllButton && lastSelectedButton != EventSystem.current.currentSelectedGameObject)
+            if (SceneManager.GetActiveScene().name != "WinScreen" && controlsMenu.activeSelf && EventSystem.current.currentSelectedGameObject != rebindBackButton && 
+                EventSystem.current.currentSelectedGameObject != rebindResetAllButton && 
+                lastSelectedButton != EventSystem.current.currentSelectedGameObject)
             {
                 // Move the scrollbar to where the button is
                 rebindScrollbar.value = (1 - (Mathf.Abs(EventSystem.current.currentSelectedGameObject.transform.parent.localPosition.y) / 1800)) + 0.084f;
@@ -144,12 +149,13 @@ namespace Bladesmiths.Capstone.UI
                 else
                 {
                     //settingsButton.GetComponent<Button>().interactable = true;
-                    EventSystem.current.SetSelectedGameObject(settingsButton);
 
                     if (GetComponent<UIManager>())
                         GetComponent<UIManager>().PauseMenu.TogglePauseInfoDisplays();
                     
                     settingsButtonImage.SetActive(true);
+
+                    EventSystem.current.SetSelectedGameObject(settingsButton);
                 }
                 onPauseScreenOnly = true;
             }
@@ -250,6 +256,7 @@ namespace Bladesmiths.Capstone.UI
 
         public void QuitToMenu()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MainMenu");
         }
     }
